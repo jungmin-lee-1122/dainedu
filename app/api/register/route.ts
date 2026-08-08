@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 
 // 사전등록 폼 접수 → 구글 시트 저장.
-// 구글 Apps Script 웹 앱 URL을 환경변수 SHEET_WEBHOOK_URL 에 넣어두면,
-// 접수가 들어올 때마다 시트에 한 줄씩 자동 기록됩니다.
+// 구글 Apps Script 웹 앱 URL을 환경변수 SHEET_WEBHOOK_URL 에 넣어야 저장됩니다.
 export async function POST(request: Request) {
   try {
     const data = await request.json();
@@ -14,19 +13,33 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
     }
 
-    // 접수 로그 (Vercel Logs에서도 확인 가능)
     console.log("[사전등록]", JSON.stringify(data));
 
     const webhook = process.env.SHEET_WEBHOOK_URL;
-    if (webhook) {
-      const res = await fetch(webhook, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) {
-        return NextResponse.json({ ok: false, error: "sheet" }, { status: 502 });
-      }
+    if (!webhook) {
+      // 환경변수가 비어있음 → 저장 불가 (솔직하게 실패 반환)
+      console.error("SHEET_WEBHOOK_URL is not set");
+      return NextResponse.json({ ok: false, error: "no_webhook" }, { status: 500 });
+    }
+
+    const res = await fetch(webhook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      redirect: "follow",
+    });
+
+    const text = await res.text();
+    let sheetOk = false;
+    try {
+      sheetOk = JSON.parse(text)?.ok === true;
+    } catch {
+      sheetOk = false;
+    }
+
+    if (!res.ok || !sheetOk) {
+      console.error("Sheet save failed:", res.status, text.slice(0, 300));
+      return NextResponse.json({ ok: false, error: "sheet" }, { status: 502 });
     }
 
     return NextResponse.json({ ok: true });
