@@ -520,3 +520,93 @@ img,video,svg{max-width:100%}
 @media(max-width:640px){.dn-hallline{display:block}}
 /* safety net: keep the poster underneath so a blanked video never shows bare navy */
 .scroll-scrub__layer[data-video-painted="true"] .scroll-scrub__poster{visibility:visible !important}
+
+/* ============================================================
+   ▼▼▼ 커스텀: 상단 공지바 + 밝은 테마 + 메가메뉴 (2026-08) ▼▼▼
+   ============================================================ */
+
+/* ─── 1) 상단 고정 공지바 ─── */
+.dn-topbar{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  display:flex;justify-content:center;align-items:center;gap:12px;
+  min-height:42px;padding:7px 16px;
+  background:#10192ef0;backdrop-filter:blur(6px);
+  color:var(--dn-paper);text-decoration:none;text-align:center;
+  border-bottom:1px solid rgba(192,153,79,.35)
+}
+.dn-topbar-mark{color:var(--dn-gold-soft);font-weight:700;font-size:14px}
+.dn-topbar .dn-entry-badge{
+  letter-spacing:.08em;color:var(--dn-deep);
+  background:linear-gradient(135deg,#E7CE9A,var(--dn-gold));
+  border:1px solid #c0994f66;border-radius:999px;
+  padding:3px 10px;font-size:11px;font-weight:700;display:inline-block;white-space:nowrap
+}
+.dn-topbar-title{color:#fff;font-size:15px;font-weight:800;letter-spacing:-.01em;margin:0}
+.dn-topbar-desc{color:rgba(247,244,236,.85);font-size:14px}
+.dn-topbar-desc b{color:var(--dn-gold-soft);font-weight:800}
+
+/* 공지바 높이만큼 내비게이션을 아래로 */
+.dn-nav{top:42px}
+
+/* ─── 2) 밝은 테마 — 내비게이션 ─── */
+.dn-nav{
+  background:rgba(255,255,255,.92) !important;
+  backdrop-filter:blur(10px) saturate(1.05) !important
+}
+.dn-nav.is-solid{background:rgba(255,255,255,.97) !important;box-shadow:0 6px 20px -12px rgba(16,25,46,.35)}
+.dn-nav::after{background:linear-gradient(90deg,transparent,rgba(192,153,79,.5) 22%,rgba(192,153,79,.75) 50%,rgba(192,153,79,.5) 78%,transparent)}
+.dn-nav-mark{height:46px !important;width:auto}
+
+/* ─── 3) 메가메뉴 (hover 시 세부 메뉴) ─── */
+.dn-gnb{list-style:none;display:flex;align-items:center;gap:2px;margin:0 auto;padding:0}
+.dn-gnb-item{position:relative}
+.dn-gnb-item>a{
+  display:block;padding:12px 16px;font-size:15px;font-weight:700;
+  color:var(--dn-navy);text-decoration:none;white-space:nowrap;letter-spacing:-.01em
+}
+.dn-gnb-item:hover>a{color:var(--dn-gold)}
+.dn-gnb-sub{
+  position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);
+  min-width:158px;display:flex;flex-direction:column;padding:8px;
+  background:#fff;border:1px solid var(--dn-line);border-radius:12px;
+  box-shadow:0 20px 44px -18px rgba(16,25,46,.4);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .18s ease,transform .18s ease;z-index:90
+}
+.dn-gnb-item:hover .dn-gnb-sub{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dn-gnb-sub a{padding:9px 14px;border-radius:8px;font-size:14px;color:var(--dn-ink);text-decoration:none;white-space:nowrap}
+.dn-gnb-sub a:hover{background:var(--dn-cream);color:var(--dn-navy)}
+
+/* ─── 4) 밝은 테마 — 남색 섹션 전환 ─── */
+.dn-body{background:#fff !important}
+
+/* Why Dain 밴드: 아주 옅은 네이비 톤으로 (밝지만 구분감 유지) */
+.dn-band{background:#EEF2F9 !important;color:var(--dn-navy) !important}
+.dn-band h2{color:var(--dn-navy)}
+.dn-band p{color:var(--dn-ink-soft) !important}
+.dn-band li{color:var(--dn-ink);border-top-color:rgba(16,25,46,.12) !important}
+.dn-band li:last-child{border-bottom-color:rgba(16,25,46,.12) !important}
+.dn-stat{background:#fff !important;border:1px solid var(--dn-line) !important;box-shadow:0 10px 26px -18px rgba(16,25,46,.3)}
+.dn-stat span{color:var(--dn-ink-soft) !important}
+
+/* 사전등록 폼 섹션 */
+.dn-formsec{background:linear-gradient(180deg,#EEF2F9,#F7F4EC) !important}
+.dn-formsec .dn-inv{color:var(--dn-navy) !important}
+.dn-formsec .dn-invsoft{color:var(--dn-ink-soft) !important}
+
+/* 푸터 */
+.dn-footer{background:#fff !important;color:var(--dn-ink-soft) !important;border-top:1px solid var(--dn-line)}
+.dn-footer b{color:var(--dn-navy) !important}
+
+/* ─── 5) 반응형 ─── */
+@media(max-width:1000px){
+  .dn-gnb{display:none}          /* 모바일: 메가메뉴 숨김 (브랜드+CTA만) */
+}
+@media(max-width:560px){
+  .dn-topbar{gap:8px;padding:6px 10px}
+  .dn-topbar-title{font-size:13px}
+  .dn-topbar-desc{display:none}  /* 좁은 화면: 설명 문구 숨김 */
+  .dn-nav{top:38px}
+  .dn-nav-mark{height:36px !important}
+}
+/* ▲▲▲ 커스텀 끝 ▲▲▲ */
