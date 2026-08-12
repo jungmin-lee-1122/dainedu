@@ -90,7 +90,7 @@ export const landingMarkup = String.raw`
             <div class="dn-hall-text">
               <span class="dn-hall-label">AURUM RE-START<span class="dn-hall-label-sub"> | 빛나는 황금기를 여는 재도전 시스템</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">N수 아우름</h3>
+                <h3 class="dn-hall-title">N수 아우룸</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
