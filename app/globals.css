@@ -744,4 +744,12 @@ img,video,svg{max-width:100%}
 .dn-footer .dn-foot-name{font-size:17px;font-weight:800;letter-spacing:.12em;color:#fff !important}
 .dn-foot-brandline{display:block;height:2px;width:100%;min-width:88px;background:linear-gradient(90deg,var(--dn-gold),var(--dn-gold-soft));border-radius:2px}
 .dn-foot-clock{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--dn-gold-soft);font-variant-numeric:tabular-nums}
+/* ─── 21) 배경음악 켜기/끄기 버튼 ─── */
+.dn-bgm{position:fixed;right:20px;bottom:20px;z-index:95;width:46px;height:46px;border:0;border-radius:50%;background:rgba(16,25,46,.9);color:#F7F4EC;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px -6px rgba(0,0,0,.5);transition:transform .2s ease,background .2s ease}
+.dn-bgm:hover{transform:translateY(-2px);background:var(--dn-navy)}
+.dn-bgm svg{width:22px;height:22px;fill:currentColor}
+.dn-bgm-off{display:none}
+.dn-bgm.is-off{color:var(--dn-gold-soft)}
+.dn-bgm.is-off .dn-bgm-on{display:none}
+.dn-bgm.is-off .dn-bgm-off{display:block}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */

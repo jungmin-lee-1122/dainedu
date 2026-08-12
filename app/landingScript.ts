@@ -140,4 +140,5 @@ export const landingScript = String.raw`/* =====================================
 
 (function(){/* ===== 화면 폭에 비례해 전체 배율 조정 (기준 1440px = 맥북에어) ===== */function fit(){var el=document.documentElement,w=window.innerWidth;if(w<1024){el.style.zoom="";return;}var z=w/1440;z=Math.max(1,Math.min(z,2));el.style.zoom=z;}fit();window.addEventListener("resize",fit);})();
 (function(){var els=document.querySelectorAll(".js-clock");if(!els.length)return;function p(x){return (x<10?"0":"")+x;}function tick(){var d=new Date();var t=p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());for(var i=0;i<els.length;i++)els[i].textContent=t;}tick();setInterval(tick,1000);})();
+(function(){var a=document.getElementById("bgm"),b=document.getElementById("bgmBtn");if(!a||!b)return;a.volume=0.35;var stopped=false;function ui(){b.classList.toggle("is-off",a.paused);}function play(){var pr=a.play();if(pr&&pr.then){pr.then(ui).catch(ui);}else{ui();}}b.addEventListener("click",function(){if(a.paused){stopped=false;play();}else{stopped=true;a.pause();ui();}});function kick(){if(!stopped&&a.paused)play();}document.addEventListener("pointerdown",kick,{once:true});play();ui();})();
 `;
