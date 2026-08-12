@@ -731,4 +731,10 @@ img,video,svg{max-width:100%}
   .dn-footer .dn-foot{flex-direction:column-reverse;align-items:flex-start}
   .dn-foot-tel{font-size:28px}
 }
+/* ─── 19) 브랜드: 아이콘 + DAIN EDU + 골드라인 + 실시간 시계 ─── */
+.dn-nav-icon{height:44px;width:auto;display:block;flex:0 0 auto}
+.dn-nav-brandtext{display:flex;flex-direction:column;gap:3px;line-height:1.05}
+.dn-nav-name{font-size:16px;font-weight:800;letter-spacing:.1em;color:var(--dn-navy)}
+.dn-nav-line{display:block;height:2px;width:100%;min-width:80px;background:linear-gradient(90deg,var(--dn-gold),var(--dn-gold-soft));border-radius:2px}
+.dn-nav-clock{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--dn-navy);font-variant-numeric:tabular-nums}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */

@@ -3,7 +3,7 @@ export const landingMarkup = String.raw`
 <main class="dn-body">
   <a class="dn-topbar" href="/register" aria-label="설명회 사전등록 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">9/19 SAT</span><h3 class="dn-topbar-title">설명회 사전등록</h3><span class="dn-topbar-desc">그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.</span></a>
   <nav class="dn-nav" aria-label="주 메뉴">
-    <a class="dn-nav-brand" href="#top"><img src="/dain-logo.png" alt="다인교육 DAIN EDU" class="dn-nav-mark"/></a>
+    <a class="dn-nav-brand" href="#top"><img src="/dain-icon.png" alt="다인교육" class="dn-nav-icon"/><span class="dn-nav-brandtext"><b class="dn-nav-name">DAIN EDU</b><span class="dn-nav-line"></span><span class="dn-nav-clock" id="dnClock">00:00:00</span></span></a>
     <ul class="dn-gnb">
       <li class="dn-gnb-item">
         <a href="#about">학원소개</a>
