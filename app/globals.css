@@ -741,7 +741,7 @@ img,video,svg{max-width:100%}
 .dn-foot-brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:16px}
 .dn-foot-icon{height:52px;width:auto;display:block;flex:0 0 auto}
 .dn-foot-brandtext{display:flex;flex-direction:column;gap:4px;line-height:1.05}
-.dn-foot-name{font-size:17px;font-weight:800;letter-spacing:.12em;color:#fff}
+.dn-foot-name{font-size:17px;font-weight:800;letter-spacing:.12em;color:#fff !important}
 .dn-foot-brandline{display:block;height:2px;width:100%;min-width:88px;background:linear-gradient(90deg,var(--dn-gold),var(--dn-gold-soft));border-radius:2px}
 .dn-foot-clock{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--dn-gold-soft);font-variant-numeric:tabular-nums}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */
