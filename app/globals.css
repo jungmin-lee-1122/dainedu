@@ -616,7 +616,7 @@ img,video,svg{max-width:100%}
 .dn-banner-img{width:100%;height:auto;display:block}
 
 /* ─── 7) N수관 · 고등관 진입 카드 ─── */
-.dn-halls{padding:10px 0 10px;background:#fff}
+.dn-halls{padding:10px 0 50px;background:#fff}
 .dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .dn-hall-card{
   position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;
