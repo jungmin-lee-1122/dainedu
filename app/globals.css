@@ -631,6 +631,7 @@ img,video,svg{max-width:100%}
 .dn-hall-card:hover::before{opacity:1}
 .dn-hall-text{position:relative;z-index:2}
 .dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dn-gold);margin-bottom:10px}
+.dn-hall-label-sub{color:var(--dn-navy);letter-spacing:-.01em;font-weight:700}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
 .dn-hall-title{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:32px;font-weight:900;color:var(--dn-navy);margin:0;letter-spacing:-.02em}
 .dn-hall-play{
