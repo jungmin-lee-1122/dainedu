@@ -84,7 +84,7 @@ export const landingMarkup = String.raw`
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
-            <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="18" y="80" width="106" height="20" rx="4" fill="#24365A"/><rect x="18" y="80" width="14" height="20" rx="4" fill="#C0994F"/><rect x="26" y="57" width="98" height="20" rx="4" fill="#2E4470"/><rect x="26" y="57" width="14" height="20" rx="4" fill="#D9BE8C"/><rect x="12" y="34" width="102" height="20" rx="4" fill="#10192E"/><rect x="12" y="34" width="14" height="20" rx="4" fill="#C0994F"/><path d="M92 34 v24 l-7 -6 -7 6 v-24 z" fill="#C0994F"/></svg>
+            <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M48 62 L48 80 Q70 94 92 80 L92 62 L70 71 Z" fill="#2E4470"/><path d="M70 28 L128 52 L70 76 L12 52 Z" fill="#24365A"/><circle cx="70" cy="52" r="5" fill="#D9BE8C"/><path d="M124 52 L124 84" stroke="#C0994F" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="124" cy="89" r="6" fill="#C0994F"/></svg>
           </a>
           <a class="dn-hall-card" href="/register">
             <div class="dn-hall-text">
@@ -94,7 +94,7 @@ export const landingMarkup = String.raw`
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
-            <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="18" y="80" width="106" height="20" rx="4" fill="#24365A"/><rect x="18" y="80" width="14" height="20" rx="4" fill="#C0994F"/><rect x="26" y="57" width="98" height="20" rx="4" fill="#2E4470"/><rect x="26" y="57" width="14" height="20" rx="4" fill="#D9BE8C"/><rect x="12" y="34" width="102" height="20" rx="4" fill="#10192E"/><rect x="12" y="34" width="14" height="20" rx="4" fill="#C0994F"/><path d="M92 34 v24 l-7 -6 -7 6 v-24 z" fill="#C0994F"/></svg>
+            <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M46 30 H34 Q26 30 26 40 Q26 52 44 55" fill="none" stroke="#C0994F" stroke-width="5" stroke-linecap="round"/><path d="M94 30 H106 Q114 30 114 40 Q114 52 96 55" fill="none" stroke="#C0994F" stroke-width="5" stroke-linecap="round"/><path d="M46 24 H94 V44 Q94 70 70 74 Q46 70 46 44 Z" fill="#C0994F"/><path d="M70 38 l2.8 5.6 6.2 0.9 -4.5 4.4 1.1 6.2 -5.6 -2.9 -5.6 2.9 1.1 -6.2 -4.5 -4.4 6.2 -0.9 z" fill="#F2E3C4"/><rect x="65" y="74" width="10" height="12" fill="#A87F38"/><rect x="52" y="86" width="36" height="7" rx="2" fill="#24365A"/><rect x="45" y="93" width="50" height="9" rx="2" fill="#24365A"/></svg>
           </a>
         </div>
       </div>
