@@ -304,7 +304,7 @@ a{color:inherit}
 :root{--dn-navy:#24365A;--dn-deep:#10192E;--dn-gold:#C0994F;--dn-gold-soft:#D9BE8C;--dn-paper:#F7F4EC;--dn-ink:rgba(23,26,34,.9);--dn-ink-soft:rgba(23,26,34,.6);--dn-line:#E3DCCB;--dn-cream:#FAF8F3}
 .dn-body{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;letter-spacing:-0.01em;color:var(--dn-ink);background:var(--dn-cream)}
 .dn-serif{font-family:"Noto Serif KR",serif}
-.dn-wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.dn-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .dn-nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:linear-gradient(180deg,rgba(16,25,46,.85),rgba(16,25,46,0));backdrop-filter:blur(6px)}
 .dn-nav-brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
 .dn-nav-brand b{font-size:17px;letter-spacing:-.01em}
@@ -609,4 +609,98 @@ img,video,svg{max-width:100%}
   .dn-nav{top:38px}
   .dn-nav-mark{height:36px !important}
 }
+/* ─── 6) GRAND OPEN 배너 ─── */
+.dn-banner{padding:10px 0 10px;background:#fff}
+.dn-banner-link{display:block;border-radius:18px;overflow:hidden;box-shadow:0 18px 44px -22px rgba(16,25,46,.4);transition:transform .25s ease,box-shadow .25s ease}
+.dn-banner-link:hover{transform:translateY(-3px);box-shadow:0 26px 58px -22px rgba(16,25,46,.5)}
+.dn-banner-img{width:100%;height:auto;display:block}
+
+/* ─── 7) N수관 · 고등관 진입 카드 ─── */
+.dn-halls{padding:10px 0 10px;background:#fff}
+.dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.dn-hall-card{
+  position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  overflow:hidden;padding:22px 28px;min-height:0;
+  background:linear-gradient(158deg,#FFFFFF 0%,#F5F8FD 100%);
+  border:1px solid var(--dn-line);border-radius:22px;text-decoration:none;
+  box-shadow:0 16px 40px -24px rgba(16,25,46,.32);
+  transition:transform .28s cubic-bezier(.22,.7,.3,1),box-shadow .28s ease,border-color .28s ease
+}
+.dn-hall-card:hover{transform:translateY(-5px);border-color:#c0994f66;box-shadow:0 30px 62px -26px rgba(16,25,46,.42)}
+.dn-hall-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--dn-gold) 20%,#F2E3C4 50%,var(--dn-gold) 80%,transparent);opacity:0;transition:opacity .28s ease}
+.dn-hall-card:hover::before{opacity:1}
+.dn-hall-text{position:relative;z-index:2}
+.dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dn-gold);margin-bottom:10px}
+.dn-hall-title-row{display:flex;align-items:center;gap:12px}
+.dn-hall-title{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:32px;font-weight:900;color:var(--dn-navy);margin:0;letter-spacing:-.02em}
+.dn-hall-play{
+  display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:50%;background:linear-gradient(135deg,#E7CE9A,var(--dn-gold));
+  color:#10192E;font-size:20px;font-weight:700;line-height:1;
+  box-shadow:0 6px 16px -6px rgba(192,153,79,.6);transition:transform .25s ease
+}
+.dn-hall-card:hover .dn-hall-play{transform:translateX(4px)}
+.dn-hall-desc{margin:14px 0 0;font-size:15px;color:var(--dn-ink-soft);line-height:1.6;max-width:22ch;word-break:keep-all}
+.dn-hall-books{width:84px;height:auto;flex:0 0 auto;position:relative;z-index:1;filter:drop-shadow(0 10px 14px rgba(16,25,46,.16))}
+@media(max-width:840px){
+  .dn-halls-grid{grid-template-columns:1fr}
+  .dn-hall-card{padding:20px 24px}
+  .dn-hall-books{width:74px}
+}
+@media(max-width:420px){
+  .dn-hall-books{display:none}
+  .dn-hall-title{font-size:28px}
+}
+/* ─── 8) 롤링 배너 (박스형 슬라이더) ─── */
+.dn-rolling{padding:132px 0 8px;background:#fff}
+.dn-slider{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 20px 48px -24px rgba(16,25,46,.42);background:#EAEDFB}
+.dn-slides{display:flex;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
+.dn-slide{flex:0 0 100%;display:block;line-height:0}
+.dn-slide img{width:100%;height:auto;display:block;aspect-ratio:1000/380;object-fit:cover}
+.dn-slider-ctrl{position:absolute;left:clamp(16px,4vw,44px);bottom:clamp(16px,4vw,34px);display:flex;align-items:center;gap:10px;z-index:3}
+.dn-slider-btn{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;background:rgba(16,25,46,.82);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease,transform .2s ease}
+.dn-slider-btn:hover{background:var(--dn-navy);transform:translateY(-1px)}
+.dn-slider-count{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.9);font-size:13px;font-weight:700;color:var(--dn-ink-soft)}
+.dn-slider-count .dn-cur{color:var(--dn-navy)}
+.dn-slider-count .dn-line{width:52px;height:2px;background:linear-gradient(90deg,var(--dn-navy),rgba(16,25,46,.15))}
+.dn-slider-all{margin-left:2px;background:var(--dn-navy);color:#fff;padding:10px 18px;border-radius:9px;font-size:13.5px;font-weight:700;text-decoration:none;transition:background .2s ease,transform .2s ease}
+.dn-slider-all:hover{background:var(--dn-deep);transform:translateY(-1px)}
+@media(max-width:560px){
+  .dn-rolling{padding-top:104px}
+  .dn-slider-btn{width:34px;height:34px;font-size:17px}
+  .dn-slider-count{padding:6px 10px;font-size:12px}
+  .dn-slider-count .dn-line{width:32px}
+  .dn-slider-all{padding:8px 13px;font-size:12.5px}
+}
+/* ─── 10) 사전등록 전용 페이지: 고정 헤더만큼 상단 여백 ─── */
+.dn-formsec{padding-top:clamp(132px,18vh,168px) !important}
+/* ─── 12) 롤링: 슬라이더 + 옆 포스터 ─── */
+.dn-rolling-row{display:flex;gap:16px;align-items:stretch}
+.dn-rolling-row .dn-slider{flex:1 1 auto;min-width:0}
+.dn-poster{flex:0 0 30%;max-width:340px;position:relative;overflow:hidden;border-radius:22px;box-shadow:0 20px 48px -24px rgba(16,25,46,.42);transition:transform .25s ease,box-shadow .25s ease}
+.dn-poster:hover{transform:translateY(-3px);box-shadow:0 26px 58px -22px rgba(16,25,46,.5)}
+.dn-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:760px){
+  .dn-rolling-row{flex-direction:column}
+  .dn-poster{flex:1 1 auto;max-width:none;aspect-ratio:16/8}
+}
+
+/* ─── 15) 롤링 영역 높이 복구 (약 390~440px) ─── */
+@media(min-width:761px){
+  .dn-rolling-row{height:clamp(390px,40vw,440px)}
+  .dn-rolling-row .dn-slides,.dn-rolling-row .dn-slide{height:100%}
+  .dn-rolling-row .dn-slide img{height:100%;aspect-ratio:auto;object-fit:cover}
+}
+/* ─── 16) 로고·D-day 버튼을 본문(dn-wrap 1200) 좌우 끝선에 맞춤 (메뉴는 가운데) ─── */
+@media(min-width:768px){
+  .dn-nav,
+  .dn-nav.is-solid{
+    padding-left:max(24px, calc((100% - 1200px) / 2 + 24px));
+    padding-right:max(24px, calc((100% - 1200px) / 2 + 24px))
+  }
+}
+/* ─── 17) 수능 D-day: 클릭/링크 아님 (표시 전용) ─── */
+.dn-navcta.dn-dday{cursor:default}
+.dn-navcta.dn-dday:hover{transform:none}
+.dn-navcta.dn-dday:hover::before{left:-60%}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */

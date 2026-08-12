@@ -133,4 +133,8 @@ export const landingScript = String.raw`/* =====================================
       btn.disabled = false; btn.textContent = "사전등록 완료하기";
     });
   });
-})();`;
+})();
+(function(){var s=document.getElementById("dnSlider");if(!s)return;var track=s.querySelector(".dn-slides");var slides=s.querySelectorAll(".dn-slide");var cur=s.querySelector(".dn-cur");var tot=s.querySelector(".dn-total");var n=slides.length,i=0,timer;function pad(x){return ("0"+x).slice(-2);}if(tot)tot.textContent=pad(n);function go(idx){i=(idx+n)%n;track.style.transform="translateX("+(-i*100)+"%)";if(cur)cur.textContent=pad(i+1);}var btns=s.querySelectorAll(".dn-slider-btn");for(var k=0;k<btns.length;k++){btns[k].addEventListener("click",function(e){e.preventDefault();go(i+(this.getAttribute("data-dir")==="next"?1:-1));restart();});}function restart(){clearInterval(timer);timer=setInterval(function(){go(i+1);},4500);}go(0);restart();})();
+
+(function(){var num=document.getElementById("dnDdayNum");if(!num)return;var cap=document.getElementById("dnDdayCap");/* ===== 매년 여기 수능 날짜만 수정하세요 (연, 월-1, 일) ===== */var SUNEUNG=new Date(2026,10,19);/* 예) 2027년이면 new Date(2027,10,18) 처럼 변경 */SUNEUNG.setHours(0,0,0,0);var now=new Date();now.setHours(0,0,0,0);var d=Math.round((SUNEUNG-now)/86400000);num.textContent=d>0?("D-"+d):(d===0?"D-DAY":("D+"+(-d)));if(cap)cap.textContent=SUNEUNG.getFullYear()+" 수능";})();
+`;
