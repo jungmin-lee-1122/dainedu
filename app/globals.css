@@ -603,10 +603,6 @@ img,video,svg{max-width:100%}
   .dn-gnb{display:none}          /* 모바일: 메가메뉴 숨김 (브랜드+CTA만) */
 }
 @media(max-width:560px){
-  .dn-topbar{gap:8px;padding:6px 10px}
-  .dn-topbar-title{font-size:13px}
-  .dn-topbar-desc{display:none}  /* 좁은 화면: 설명 문구 숨김 */
-  .dn-nav{top:38px}
   .dn-nav-mark{height:36px !important}
 }
 /* ─── 6) GRAND OPEN 배너 ─── */
@@ -690,8 +686,9 @@ img,video,svg{max-width:100%}
 /* ─── 15) 롤링 영역 높이 복구 (약 390~440px) ─── */
 @media(min-width:761px){
   .dn-rolling-row{height:clamp(390px,40vw,440px)}
-  .dn-rolling-row .dn-slides,.dn-rolling-row .dn-slide{height:100%}
-  .dn-rolling-row .dn-slide img{height:100%;aspect-ratio:auto;object-fit:cover}
+  .dn-rolling-row .dn-slides,.dn-rolling-row .dn-slide,.dn-rolling-row .dn-slide picture{height:100%}
+  .dn-rolling-row .dn-slide picture{display:block}
+  .dn-rolling-row .dn-slide img{height:100%;width:100%;aspect-ratio:auto;object-fit:cover}
 }
 /* ─── 16) 로고·D-day 버튼을 본문(dn-wrap 1200) 좌우 끝선에 맞춤 (메뉴는 가운데) ─── */
 @media(min-width:768px){
@@ -764,4 +761,84 @@ img,video,svg{max-width:100%}
 .dn-foot-tel-menu a:hover{background:rgba(255,255,255,.08)}
 .dn-tel-label{font-size:13px;color:rgba(255,255,255,.7);font-weight:600;white-space:nowrap}
 .dn-tel-num{font-size:15px;font-weight:800;color:var(--dn-gold-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* ═══════════ 23) 모바일 반응형 정리 (~900px) ═══════════ */
+@media(max-width:900px){
+  /* 상단 공지바: 두 줄 허용, 잘림 방지 */
+  .dn-topbar{flex-wrap:wrap;justify-content:center;gap:6px 8px;padding:8px 12px;line-height:1.35}
+  .dn-topbar-title{font-size:14px}
+  .dn-topbar-desc{display:block;font-size:12.5px;width:100%;text-align:center}
+  .dn-topbar .dn-entry-badge{font-size:10.5px;padding:2px 8px}
+
+  /* 헤더: 공지바+네비를 고정 대신 자연스럽게 쌓기(겹침·잘림 방지) */
+  .dn-topbar{position:static}
+  .dn-nav{position:static;top:auto;padding:8px 14px !important;gap:10px}
+  .dn-nav-icon{height:34px}
+  .dn-nav-name{font-size:13px;letter-spacing:.08em}
+  .dn-nav-line{min-width:60px;height:1.5px}
+  .dn-nav-clock{font-size:11.5px}
+  .dn-navcta{padding:7px 10px 7px 12px !important;font-size:12px;gap:6px}
+  .dn-navcta .cta-badge{font-size:10px;padding:3px 8px}
+
+  /* 롤링: 세로 배치(슬라이더 위 / 포스터 아래) */
+  .dn-rolling{padding:14px 0 8px}
+  .dn-rolling-row{flex-direction:column;height:auto !important;gap:12px}
+  .dn-rolling-row .dn-slider{width:100%}
+  .dn-rolling-row .dn-slides,.dn-rolling-row .dn-slide{height:auto}
+  .dn-rolling-row .dn-slide picture{display:block;line-height:0}
+  .dn-rolling-row .dn-slide img{width:100%;height:auto;aspect-ratio:1080/600;object-fit:cover}
+  .dn-slider{border-radius:14px}
+  .dn-poster{flex:1 1 auto;max-width:none;width:100%;aspect-ratio:1285/1512;border-radius:14px}
+  .dn-poster img{position:absolute;inset:0}
+
+  /* 슬라이더 컨트롤: 작게 */
+  .dn-slider-ctrl{left:12px;bottom:12px;gap:7px}
+  .dn-slider-btn{width:32px;height:32px;font-size:16px}
+  .dn-slider-count{padding:5px 10px;font-size:11.5px}
+  .dn-slider-count .dn-line{width:40px}
+
+  /* 진입 카드: 1열 */
+  .dn-halls{padding:10px 0 30px}
+  .dn-halls-grid{grid-template-columns:1fr;gap:12px}
+  .dn-hall-card{padding:18px 20px;border-radius:16px}
+  .dn-hall-title{font-size:24px}
+  .dn-hall-label{font-size:10px;letter-spacing:.12em}
+  .dn-hall-label-sub{display:block;margin-top:4px;letter-spacing:0}
+  .dn-hall-books{width:64px}
+  .dn-hall-play{width:28px;height:28px;font-size:17px}
+
+  /* 푸터: 세로 스택 */
+  .dn-footer{padding:38px 0 40px !important}
+  .dn-footer .dn-foot{flex-direction:column;align-items:flex-start;gap:22px}
+  .dn-foot-icon{height:42px}
+  .dn-foot-name{font-size:15px}
+  .dn-foot-tel{font-size:24px !important;padding:9px 15px !important}
+  .dn-foot-tel-menu{min-width:0;width:100%;left:0}
+  .dn-foot-tel-menu a{gap:12px;padding:10px 12px}
+  .dn-tel-label{font-size:12px;white-space:normal}
+  .dn-tel-num{font-size:14px}
+  .dn-foot-links{gap:18px;margin-bottom:14px}
+  .dn-foot-info{font-size:12px;line-height:1.85}
+  .dn-foot-sep{margin:0 6px}
+  .dn-foot-info p{word-break:keep-all}
+  .dn-foot-sns{gap:9px;flex-wrap:wrap}
+  .dn-sns{width:38px;height:38px}
+  .dn-sns img{width:19px;height:19px}
+
+  /* 사전등록 폼 페이지 */
+  .dn-formsec{padding-top:40px !important;padding-bottom:56px}
+  .dn-formcard{padding:28px 20px;border-radius:16px}
+  .dn-choices{grid-template-columns:1fr}
+
+  /* 배경음악 버튼 */
+  .dn-bgm{right:14px;bottom:14px;width:42px;height:42px}
+}
+
+/* 아주 좁은 화면(~420px) 미세 조정 */
+@media(max-width:420px){
+  .dn-topbar-desc{font-size:12px}
+  .dn-nav-icon{height:30px}
+  .dn-hall-title{font-size:21px}
+  .dn-hall-books{width:54px}
+  .dn-foot-tel{font-size:21px !important}
+}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */

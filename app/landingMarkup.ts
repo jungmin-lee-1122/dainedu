@@ -56,10 +56,10 @@ export const landingMarkup = String.raw`
         <div class="dn-rolling-row">
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
-              <a class="dn-slide" href="/register"><img src="/slideA.png" alt="다인교육 그랜드 오픈"/></a>
-              <a class="dn-slide" href="/register"><img src="/slideB.png" alt="최고의 강사진이 동탄에서"/></a>
-              <a class="dn-slide" href="/register"><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></a>
-              <a class="dn-slide" href="/register"><img src="/slideD.png" alt="새로운 입시의 기준을 세우다"/></a>
+              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideA-m.png"/><img src="/slideA.png" alt="다인교육 그랜드 오픈"/></picture></a>
+              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideB-m.png"/><img src="/slideB.png" alt="최고의 강사진이 동탄에서"/></picture></a>
+              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></a>
+              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideD-m.png"/><img src="/slideD.png" alt="새로운 입시의 기준을 세우다"/></picture></a>
             </div>
             <div class="dn-slider-ctrl">
               <button class="dn-slider-btn" type="button" data-dir="prev" aria-label="이전 슬라이드">‹</button>
