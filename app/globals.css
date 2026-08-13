@@ -769,9 +769,9 @@ img,video,svg{max-width:100%}
   .dn-topbar-desc{display:block;font-size:12.5px;width:100%;text-align:center}
   .dn-topbar .dn-entry-badge{font-size:10.5px;padding:2px 8px}
 
-  /* 헤더: 공지바+네비를 고정 대신 자연스럽게 쌓기(겹침·잘림 방지) */
+  /* 헤더: 공지바는 스크롤, 네비는 상단 고정 */
   .dn-topbar{position:static}
-  .dn-nav{position:static;top:auto;padding:8px 14px !important;gap:10px}
+  .dn-nav{position:sticky;top:0;padding:8px 14px !important;gap:10px}
   .dn-nav-icon{height:34px}
   .dn-nav-name{font-size:13px;letter-spacing:.08em}
   .dn-nav-line{min-width:60px;height:1.5px}
