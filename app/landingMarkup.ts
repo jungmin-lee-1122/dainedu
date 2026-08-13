@@ -104,7 +104,14 @@ export const landingMarkup = String.raw`
     <div class="dn-wrap dn-foot">
       <div class="dn-foot-left">
         <div class="dn-foot-brand"><img src="/dain-foot-icon.png" alt="다인교육" class="dn-foot-icon"/><span class="dn-foot-brandtext"><b class="dn-foot-name">DAIN EDU</b><span class="dn-foot-brandline"></span><span class="dn-foot-clock js-clock">00:00:00</span></span></div>
-        <a class="dn-foot-tel" href="tel:16000000">1600-0000</a>
+        <div class="dn-foot-tel-wrap">
+          <button class="dn-foot-tel" id="footTelBtn" type="button" aria-expanded="false" aria-label="대표번호 펼치기">031-8003-0221<span class="dn-foot-tel-caret" aria-hidden="true">▾</span></button>
+          <div class="dn-foot-tel-menu" id="footTelMenu">
+            <a href="tel:03180030221"><span class="dn-tel-label">주식회사 다인교육 (본점)</span><span class="dn-tel-num">031-8003-0221</span></a>
+            <a href="tel:03180030222"><span class="dn-tel-label">다인 학습센터</span><span class="dn-tel-num">031-8003-0222</span></a>
+            <a href="tel:03180030224"><span class="dn-tel-label">다인 아카데미</span><span class="dn-tel-num">031-8003-0224</span></a>
+          </div>
+        </div>
         <nav class="dn-foot-links">
           <a href="#about">회사소개</a>
           <a href="#terms">이용약관</a>
@@ -112,7 +119,7 @@ export const landingMarkup = String.raw`
         </nav>
         <div class="dn-foot-info">
           <p>다인아카데미<span class="dn-foot-sep">|</span>대표 (주)다인교육<span class="dn-foot-sep">|</span>e-mail: help@dain-edu.com</p>
-          <p>개인정보보호책임자: 김양현<span class="dn-foot-sep">|</span>대표번호 1600-0000<span class="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층</p>
+          <p>개인정보보호책임자: 김양현<span class="dn-foot-sep">|</span>대표번호 031-8003-0221<span class="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층</p>
           <p>사업자등록번호 421-85-03313<span class="dn-foot-sep">|</span>학원설립·운영등록번호: 제0000호 다인아카데미<span class="dn-foot-badge">교습비 안내</span></p>
         </div>
         <p class="dn-foot-copy">Copyright © DAIN EDU. All Rights Reserved.</p>

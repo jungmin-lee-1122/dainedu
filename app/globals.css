@@ -752,4 +752,15 @@ img,video,svg{max-width:100%}
 .dn-bgm.is-off{color:var(--dn-gold-soft)}
 .dn-bgm.is-off .dn-bgm-on{display:none}
 .dn-bgm.is-off .dn-bgm-off{display:block}
+/* ─── 22) 푸터 대표번호 드롭다운 ─── */
+.dn-foot-tel-wrap{position:relative;display:inline-block;margin-bottom:22px}
+.dn-foot-tel-wrap .dn-foot-tel{margin:0 !important;background:none;border:0;padding:0;cursor:pointer;text-align:left;display:inline-flex;align-items:center}
+.dn-foot-tel-caret{font-size:16px;margin-left:12px;color:var(--dn-gold-soft);display:inline-block;transition:transform .2s ease;line-height:1}
+.dn-foot-tel-wrap.is-open .dn-foot-tel-caret{transform:rotate(180deg)}
+.dn-foot-tel-menu{position:absolute;left:0;top:100%;margin-top:12px;min-width:280px;background:#182642;border:1px solid rgba(192,153,79,.35);border-radius:12px;padding:6px;box-shadow:0 20px 44px -16px rgba(0,0,0,.65);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s ease,transform .18s ease;z-index:40}
+.dn-foot-tel-wrap.is-open .dn-foot-tel-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.dn-foot-tel-menu a{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:11px 14px;border-radius:8px;text-decoration:none}
+.dn-foot-tel-menu a:hover{background:rgba(255,255,255,.08)}
+.dn-tel-label{font-size:13px;color:rgba(255,255,255,.7);font-weight:600;white-space:nowrap}
+.dn-tel-num{font-size:15px;font-weight:800;color:var(--dn-gold-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */
