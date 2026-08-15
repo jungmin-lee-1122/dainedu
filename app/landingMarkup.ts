@@ -76,7 +76,7 @@ export const landingMarkup = String.raw`
     <section class="dn-halls">
       <div class="dn-wrap">
         <div class="dn-halls-grid">
-          <a class="dn-hall-card" href="/register">
+          <a class="dn-hall-card" href="/clavis">
             <div class="dn-hall-text">
               <span class="dn-hall-label">CLAVIS HIGH<span class="dn-hall-label-sub"> | 명문대 합격의 열쇠, 핵심 커리큘럼</span></span>
               <div class="dn-hall-title-row">
