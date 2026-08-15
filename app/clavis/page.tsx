@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { clavisScript } from "./clavisScript";
 import {
   heroSlides,
-  promoBanners,
   teacherTabs,
   teachers,
   notices,
@@ -138,23 +137,6 @@ export default function ClavisPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2) 중간 프로모 배너 ── */}
-      <section className="cv-promo">
-        <div className="cv-wrap">
-          <div className="cv-promo-slider" id="cvPromo">
-            <div className="cv-promo-track">
-              {promoBanners.map((b, i) => (
-                <a className="cv-promo-slide" href={b.href} key={i}>
-                  <img src={b.img} alt={b.alt} />
-                </a>
-              ))}
-            </div>
-            <button className="cv-arrow cv-arrow-prev" type="button" data-dir="prev" aria-label="이전">‹</button>
-            <button className="cv-arrow cv-arrow-next" type="button" data-dir="next" aria-label="다음">›</button>
           </div>
         </div>
       </section>

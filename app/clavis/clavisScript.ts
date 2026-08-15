@@ -118,9 +118,6 @@ function trackSlider(opt){
 /* ═══════ 1) 메인 롤링 배너 ═══════ */
 fadeSlider({ id:"cvHero", slide:".cv-hero-slide", tabSel:".cv-hero-tab", playSel:".cv-hero-play", delay:5000 });
 
-/* ═══════ 2) 중간 프로모 배너 ═══════ */
-trackSlider({ id:"cvPromo", track:".cv-promo-track", autoplay:true, delay:3000 });
-
 /* ═══════ 3) 선생님 (과목 탭 + 슬라이드) ═══════ */
 var teacher=trackSlider({ id:"cvTeacher", track:".cv-teacher-track" });
 (function(){

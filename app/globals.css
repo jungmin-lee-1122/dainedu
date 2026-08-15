@@ -894,14 +894,6 @@ img,video,svg{max-width:100%}
 .cv-stat-value{font-size:28px;font-weight:800;color:#fff}
 .cv-stat-value i{font-style:normal;font-size:14px;margin-left:3px;font-weight:600;color:rgba(255,255,255,.75)}
 
-/* ── 2) 중간 프로모 배너 ── */
-.cv-promo{padding:6px 0 34px;background:#fff}
-.cv-promo-slider{position:relative;overflow:hidden}
-.cv-promo-track{display:flex;gap:14px;transition:transform .5s cubic-bezier(.22,.7,.3,1)}
-.cv-promo-slide{flex:0 0 calc((100% - 42px)/4);display:block;border-radius:12px;overflow:hidden;border:1px solid var(--dn-line);line-height:0;transition:transform .2s ease,box-shadow .2s ease}
-.cv-promo-slide:hover{transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(16,25,46,.4)}
-.cv-promo-slide img{width:100%;height:auto;display:block}
-
 /* ── 3) 선생님 ── */
 .cv-teacher{padding:34px 0;background:#fff}
 .cv-tabs{display:flex;gap:2px;align-items:center}
@@ -945,7 +937,11 @@ img,video,svg{max-width:100%}
 
 /* ── 5) 성공수기 + 사이드 배너 ── */
 .cv-bottom{padding:34px 0 80px;background:#fff}
-.cv-bottom-grid{display:grid;grid-template-columns:1fr 300px;gap:44px;align-items:start}
+.cv-bottom-grid{display:grid;grid-template-columns:1fr 300px;gap:44px;align-items:stretch}
+.cv-bottom-grid>.cv-review{display:flex;flex-direction:column}
+.cv-bottom-grid>.cv-side{display:flex}
+.cv-bottom-grid>.cv-side .cv-side-slider{flex:1 1 auto;display:flex;flex-direction:column}
+.cv-bottom-grid>.cv-side .cv-side-track{flex:1 1 auto;aspect-ratio:auto;min-height:0}
 .cv-bottom .cv-sec-head .cv-dots{margin-left:auto}
 .cv-review-slider{position:relative;overflow:hidden}
 .cv-review-track{display:flex;gap:16px;transition:transform .45s cubic-bezier(.22,.7,.3,1)}
@@ -964,7 +960,6 @@ img,video,svg{max-width:100%}
 
 /* ── 클라비스 반응형 ── */
 @media(max-width:1000px){
-  .cv-promo-slide{flex:0 0 calc((100% - 28px)/3)}
   .cv-teacher-card{flex:0 0 calc((100% - 36px)/3)}
   .cv-bottom-grid{grid-template-columns:1fr;gap:34px}
   .cv-side-slider{max-width:420px}
@@ -981,7 +976,6 @@ img,video,svg{max-width:100%}
   .cv-stats{padding:18px 20px;gap:16px}
   .cv-stats-list{gap:20px;margin-left:0;width:100%;justify-content:space-between}
   .cv-stat-value{font-size:22px}
-  .cv-promo-slide{flex:0 0 calc((100% - 14px)/2)}
   .cv-teacher-card{flex:0 0 calc((100% - 18px)/2)}
   .cv-board-grid{grid-template-columns:1fr;gap:34px}
   .cv-arrow{width:32px;height:32px;font-size:17px}
@@ -993,7 +987,6 @@ img,video,svg{max-width:100%}
   .cv-lecture-btn{width:50px;height:50px;font-size:12px}
 }
 @media(max-width:520px){
-  .cv-promo-slide{flex:0 0 100%}
   .cv-teacher-card{flex:0 0 100%}
   .cv-sec-title{font-size:19px}
 }
