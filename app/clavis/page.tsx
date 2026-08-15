@@ -9,7 +9,6 @@ import {
   lectures,
   reviews,
   sideBanners,
-  stats,
 } from "./clavisData";
 
 export const metadata: Metadata = {
@@ -119,25 +118,13 @@ export default function ClavisPage() {
         </div>
       </section>
 
-      {/* ── 성과 띠 ── */}
+      {/* ── 그랜드 오픈 배너 ── */}
       <section className="cv-stats-sec">
         <div className="cv-wrap">
-          <div className="cv-stats">
-            <div className="cv-stats-title">
-              <b>다인교육 동탄점</b>
-              <span>대입 합격 결과</span>
-            </div>
-            <div className="cv-stats-list">
-              {stats.map((s, i) => (
-                <div className="cv-stat" key={i}>
-                  <span className="cv-stat-label">{s.label}</span>
-                  <span className="cv-stat-value">
-                    {s.value}<i>{s.unit}</i>
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <a className="cv-statsbn" href="/register" aria-label="다인에듀 동탄점 09.21 그랜드 오픈">
+            <img src="/clavis/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
+            <span className="cv-statsbn-sheen" aria-hidden="true" />
+          </a>
         </div>
       </section>
 

@@ -882,17 +882,34 @@ img,video,svg{max-width:100%}
 .is-paused .cv-ico-pause{display:none}
 .is-paused .cv-ico-play{display:inline}
 
-/* ── 성과 띠 ── */
-.cv-stats-sec{padding:10px 0 26px;background:#fff}
-.cv-stats{display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding:26px 34px;border-radius:16px;background:linear-gradient(120deg,var(--dn-navy),var(--dn-deep));color:#fff}
-.cv-stats-title{display:flex;flex-direction:column;gap:4px}
-.cv-stats-title b{font-size:15px;color:var(--dn-gold-soft)}
-.cv-stats-title span{font-size:20px;font-weight:800}
-.cv-stats-list{display:flex;gap:34px;margin-left:auto;flex-wrap:wrap}
-.cv-stat{display:flex;flex-direction:column;align-items:center;gap:6px}
-.cv-stat-label{font-size:13px;color:rgba(255,255,255,.7)}
-.cv-stat-value{font-size:28px;font-weight:800;color:#fff}
-.cv-stat-value i{font-style:normal;font-size:14px;margin-left:3px;font-weight:600;color:rgba(255,255,255,.75)}
+/* ── 그랜드 오픈 배너 (광택 + 발광) ── */
+.cv-stats-sec{padding:10px 0 30px;background:#fff}
+.cv-statsbn{position:relative;display:block;border-radius:14px;overflow:hidden;line-height:0;
+  box-shadow:0 10px 30px -14px rgba(16,25,46,.55);
+  animation:cvGlowPulse 3.2s ease-in-out infinite;
+  transition:transform .25s ease}
+.cv-statsbn:hover{transform:translateY(-2px)}
+.cv-statsbn img{width:100%;height:auto;display:block}
+/* 대각선 광택이 주기적으로 지나감 */
+.cv-statsbn-sheen{position:absolute;top:-60%;bottom:-60%;left:-40%;width:26%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),rgba(255,246,214,.35),transparent);
+  transform:skewX(-18deg);pointer-events:none;
+  animation:cvSheen 3.2s ease-in-out infinite}
+@keyframes cvSheen{
+  0%{left:-40%;opacity:0}
+  12%{opacity:1}
+  55%{left:120%;opacity:1}
+  60%{opacity:0}
+  100%{left:120%;opacity:0}
+}
+@keyframes cvGlowPulse{
+  0%,100%{box-shadow:0 10px 30px -14px rgba(16,25,46,.55),0 0 0 rgba(192,153,79,0)}
+  50%{box-shadow:0 10px 30px -14px rgba(16,25,46,.55),0 0 26px rgba(217,190,140,.45)}
+}
+@media(prefers-reduced-motion:reduce){
+  .cv-statsbn{animation:none}
+  .cv-statsbn-sheen{animation:none;opacity:0}
+}
 
 /* ── 3) 선생님 ── */
 .cv-teacher{padding:34px 0;background:#fff}
@@ -973,9 +990,6 @@ img,video,svg{max-width:100%}
   .cv-hero-tabs::-webkit-scrollbar{display:none}
   .cv-hero-tab{flex:0 0 auto;font-size:12.5px;padding:9px 12px}
   .cv-hero-count{display:none}
-  .cv-stats{padding:18px 20px;gap:16px}
-  .cv-stats-list{gap:20px;margin-left:0;width:100%;justify-content:space-between}
-  .cv-stat-value{font-size:22px}
   .cv-teacher-card{flex:0 0 calc((100% - 18px)/2)}
   .cv-board-grid{grid-template-columns:1fr;gap:34px}
   .cv-arrow{width:32px;height:32px;font-size:17px}
