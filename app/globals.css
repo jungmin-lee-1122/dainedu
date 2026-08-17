@@ -1067,6 +1067,13 @@ img,video,svg{max-width:100%}
   font-size:14.5px;font-family:inherit;color:var(--dn-ink-soft);cursor:pointer;transition:all .18s ease}
 .cs-choice:hover{border-color:var(--dn-gold);color:var(--dn-navy);background:#fff}
 .cs-choice.is-on{border-color:transparent;background:linear-gradient(150deg,#2E4470,var(--dn-navy) 55%,#182742);color:#fff;font-weight:700}
+.cs-addr{display:flex;gap:8px}
+.cs-addr input{flex:1 1 auto;min-width:0;cursor:pointer;background:#F7F5EF}
+.cs-addr-btn{flex:0 0 auto;padding:0 18px;border:0;border-radius:10px;cursor:pointer;
+  background:var(--dn-navy);color:#fff;font-size:14px;font-weight:700;font-family:inherit;white-space:nowrap;
+  transition:background .2s ease}
+.cs-addr-btn:hover{background:var(--dn-deep)}
+.cs-addr-detail{margin-top:8px}
 .cs-pw{position:relative}
 .cs-pw input{padding-right:46px}
 .cs-pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;

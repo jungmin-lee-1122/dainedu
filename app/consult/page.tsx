@@ -100,7 +100,7 @@ export default function ConsultPage() {
         <div className="cs-wrap">
           <header className="cs-head">
             <h1 className="cs-title">온라인 상담</h1>
-            <p className="cs-desc">답변이 등록되면 남겨주신 연락처로 알려드려요.</p>
+            <p className="cs-desc">답변이 등록되면 입력하신 이메일로 알려드려요.</p>
           </header>
 
           <form id="csForm" noValidate>
@@ -134,13 +134,34 @@ export default function ConsultPage() {
             <div className="cs-row">
               <div className="cs-field">
                 <label className="cs-label" htmlFor="csPhone">연락처 <i>필수</i></label>
-                <input id="csPhone" name="phone" type="tel" inputMode="numeric" placeholder="휴대전화번호" />
-                <span className="cs-hint">‘-’ 제외하고 번호만 입력해 주세요.</span>
+                <input id="csPhone" name="phone" type="tel" inputMode="numeric" maxLength={13} placeholder="010-0000-0000" />
+                <span className="cs-hint">010-0000-0000 형식으로 입력해 주세요. (숫자만 입력하면 자동으로 ‘-’가 붙습니다)</span>
               </div>
               <div className="cs-field">
                 <label className="cs-label" htmlFor="csAddress">주소 <i>필수</i></label>
-                <input id="csAddress" name="address" placeholder="주소를 입력해 주세요." />
+                <div className="cs-addr">
+                  <input id="csAddress" name="address" placeholder="주소 찾기를 눌러 주세요." readOnly />
+                  <button id="csAddrBtn" className="cs-addr-btn" type="button">주소 찾기</button>
+                </div>
+                <input type="hidden" id="csZip" name="zipcode" />
+                <input
+                  className="cs-addr-detail"
+                  id="csAddrDetail"
+                  name="addressDetail"
+                  maxLength={60}
+                  placeholder="상세주소 (동·호수 등)"
+                />
+                <span className="cs-hint">상세주소는 선택 입력입니다.</span>
               </div>
+            </div>
+
+            <div className="cs-row">
+              <div className="cs-field">
+                <label className="cs-label" htmlFor="csEmail">이메일 <i>필수</i></label>
+                <input id="csEmail" name="email" type="email" inputMode="email" placeholder="example@dain.com" />
+                <span className="cs-hint">답변은 입력하신 이메일로 보내드립니다.</span>
+              </div>
+              <div className="cs-field" />
             </div>
 
             <div className="cs-row">
@@ -291,6 +312,13 @@ export default function ConsultPage() {
       </footer>
 
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
+
+      {/* 도로명 주소 검색 (다음 우편번호 서비스) */}
+      <Script
+        id="daum-postcode"
+        src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+        strategy="afterInteractive"
+      />
 
       <Script id="consult-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: consultScript }} />
     </main>

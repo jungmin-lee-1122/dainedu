@@ -11,10 +11,12 @@ export async function POST(request: Request) {
     const title = String(data?.title || "").trim();
     const content = String(data?.content || "").trim();
     const password = String(data?.password || "").trim();
+    const email = String(data?.email || "").trim();
 
     if (
       !name ||
-      !/^01[0-9]{7,9}$/.test(phone) ||
+      !/^01[0-9]-[0-9]{4}-[0-9]{4}$/.test(phone) ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
       !title ||
       !content ||
       !/^[0-9]{4}$/.test(password)

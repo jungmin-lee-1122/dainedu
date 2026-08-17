@@ -34,10 +34,43 @@ for(var g=0;g<groups.length;g++){
   }
 })();
 
-/* ── 연락처: 숫자만 ── */
+/* ── 연락처: 010-0000-0000 자동 하이픈 ── */
 (function(){
   var el=document.getElementById("csPhone"); if(!el) return;
-  el.addEventListener("input",function(){ el.value=el.value.replace(/[^0-9]/g,""); });
+  el.addEventListener("input",function(){
+    var v=el.value.replace(/[^0-9]/g,"").slice(0,11);
+    if(v.length<4) el.value=v;
+    else if(v.length<8) el.value=v.slice(0,3)+"-"+v.slice(3);
+    else el.value=v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7);
+  });
+})();
+
+/* ── 주소 찾기 (다음 우편번호 서비스) ── */
+(function(){
+  var btn=document.getElementById("csAddrBtn"); if(!btn) return;
+  var addr=document.getElementById("csAddress");
+  var zip=document.getElementById("csZip");
+  var detail=document.getElementById("csAddrDetail");
+  btn.addEventListener("click",function(){
+    if(typeof daum==="undefined"||!daum.Postcode){
+      addr.removeAttribute("readonly");
+      addr.placeholder="주소를 직접 입력해 주세요.";
+      addr.focus();
+      return;
+    }
+    new daum.Postcode({
+      oncomplete:function(data){
+        var road=data.roadAddress||data.jibunAddress||"";
+        var extra="";
+        if(data.bname && /[동|로|가]$/g.test(data.bname)) extra+=data.bname;
+        if(data.buildingName && data.apartment==="Y") extra+=(extra?", ":"")+data.buildingName;
+        if(extra) road+=" ("+extra+")";
+        addr.value=road;
+        if(zip) zip.value=data.zonecode||"";
+        if(detail) detail.focus();
+      }
+    }).open();
+  });
 })();
 
 /* ── 임시 비밀번호: 숫자 4자리 + 보기 토글 ── */
@@ -66,8 +99,9 @@ for(var g=0;g<groups.length;g++){
     if(!data.role){ return fail("상담자 유형을 선택해 주세요."); }
     if(!String(data.name||"").trim()){ return fail("학생 이름을 입력해 주세요."); }
     if(!data.gender){ return fail("성별을 선택해 주세요."); }
-    if(!/^01[0-9]{7,9}$/.test(String(data.phone||""))){ return fail("연락처를 정확히 입력해 주세요. (숫자만)"); }
-    if(!String(data.address||"").trim()){ return fail("주소를 입력해 주세요."); }
+    if(!/^01[0-9]-[0-9]{4}-[0-9]{4}$/.test(String(data.phone||""))){ return fail("연락처를 010-0000-0000 형식으로 입력해 주세요."); }
+    if(!String(data.address||"").trim()){ return fail("주소 찾기를 눌러 주소를 입력해 주세요."); }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email||"").trim())){ return fail("이메일을 정확히 입력해 주세요."); }
     if(!data.course){ return fail("관심 과정을 선택해 주세요."); }
     if(!data.source){ return fail("유입경로를 선택해 주세요."); }
     if(!/^[0-9]{4}$/.test(String(data.password||""))){ return fail("임시 비밀번호를 숫자 4자리로 입력해 주세요."); }
@@ -93,7 +127,7 @@ for(var g=0;g<groups.length;g++){
       for(var h=0;h<hid.length;h++) hid[h].value="";
       var ag=document.getElementById("csAgree"); if(ag) ag.classList.remove("is-on");
       msg.className="cs-msg is-ok";
-      msg.textContent="상담 신청이 접수되었습니다. 답변이 등록되면 연락드리겠습니다.";
+      msg.textContent="상담 신청이 접수되었습니다. 답변은 입력하신 이메일로 보내드리겠습니다.";
     })
     .catch(function(){ fail("전송에 실패했습니다. 잠시 후 다시 시도해 주세요."); })
     .finally(function(){ btn.disabled=false; btn.textContent="온라인 상담 신청하기"; });
