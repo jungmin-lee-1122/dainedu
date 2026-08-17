@@ -1,5 +1,6 @@
 // 온라인 상담 페이지 스크립트 (선택 버튼 · 유효성 검사 · 전송)
-export const consultScript = String.raw`
+import { mobileMenuScript } from "../mobileMenu";
+export const consultScript = `
 (function(){
 
 /* ── 선택형 버튼(상담자 유형 / 성별) ── */
@@ -101,7 +102,7 @@ for(var g=0;g<groups.length;g++){
     if(!data.gender){ return fail("성별을 선택해 주세요."); }
     if(!/^01[0-9]-[0-9]{4}-[0-9]{4}$/.test(String(data.phone||""))){ return fail("연락처를 010-0000-0000 형식으로 입력해 주세요."); }
     if(!String(data.address||"").trim()){ return fail("주소 찾기를 눌러 주소를 입력해 주세요."); }
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email||"").trim())){ return fail("이메일을 정확히 입력해 주세요."); }
+    if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(String(data.email||"").trim())){ return fail("이메일을 정확히 입력해 주세요."); }
     if(!data.course){ return fail("관심 과정을 선택해 주세요."); }
     if(!data.source){ return fail("유입경로를 선택해 주세요."); }
     if(!/^[0-9]{4}$/.test(String(data.password||""))){ return fail("임시 비밀번호를 숫자 4자리로 입력해 주세요."); }
@@ -165,4 +166,6 @@ for(var g=0;g<groups.length;g++){
 })();
 
 })();
+
+${mobileMenuScript}
 `;

@@ -1,5 +1,6 @@
 // 윈터스쿨 페이지 스크립트 (스크롤 등장 · 시스템 단계 · 커리큘럼 탭 · 관리 목록 · FAQ)
-export const winterScript = String.raw`
+import { mobileMenuScript } from "../mobileMenu";
+export const winterScript = `
 (function(){
 
 /* ── 스크롤 등장 애니메이션 ── */
@@ -91,4 +92,6 @@ export const winterScript = String.raw`
 })();
 
 })();
+
+${mobileMenuScript}
 `;

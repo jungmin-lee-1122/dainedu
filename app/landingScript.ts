@@ -1,5 +1,6 @@
 // 히어로 스크롤 영상 + 네비 + 사전등록 폼 스크립트 (원본 그대로)
-export const landingScript = String.raw`/* ============================================================
+import { mobileMenuScript } from "./mobileMenu";
+export const landingScript = `/* ============================================================
    1) 스크롤 스크럽 히어로 (스크롤 위치 = 영상 재생 위치)
    - .scroll-scrub__stage 가 sticky 로 고정되고,
      [data-scroll-scrub-band] 의 높이만큼 스크롤하는 동안
@@ -143,4 +144,6 @@ export const landingScript = String.raw`/* =====================================
 (function(){var a=document.getElementById("bgm"),b=document.getElementById("bgmBtn");if(!a||!b)return;a.volume=0.35;var stopped=false;function play(){b.classList.remove("is-off");var pr=a.play();if(pr&&pr.catch)pr.catch(function(){});}function stop(){b.classList.add("is-off");a.pause();}b.addEventListener("click",function(){if(a.paused){stopped=false;play();}else{stopped=true;stop();}});function kick(){if(!stopped&&a.paused)play();document.removeEventListener("pointerdown",kick);}document.addEventListener("pointerdown",kick,{once:true});play();})();
 (function(){var w=document.querySelector(".dn-foot-tel-wrap");if(!w)return;var btn=w.querySelector(".dn-foot-tel");btn.addEventListener("click",function(e){e.stopPropagation();var open=w.classList.toggle("is-open");btn.setAttribute("aria-expanded",open?"true":"false");});document.addEventListener("click",function(e){if(!w.contains(e.target)){w.classList.remove("is-open");btn.setAttribute("aria-expanded","false");}});})();
 (function(){var t=document.querySelector(".dn-quick-top");if(!t)return;t.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
+
+${mobileMenuScript}
 `;

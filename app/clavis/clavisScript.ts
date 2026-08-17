@@ -1,5 +1,6 @@
 // 고등 클라비스 페이지 스크립트 (슬라이더 엔진 + 시계 + D-day)
-export const clavisScript = String.raw`
+import { mobileMenuScript } from "../mobileMenu";
+export const clavisScript = `
 (function(){
 
 /* ═══════ 공용: 페이드형 슬라이더 (메인 배너 / 사이드 배너) ═══════ */
@@ -192,4 +193,6 @@ fadeSlider({ id:"cvSide", slide:".cv-side-slide", dots:"cvSideDots", playSel:".c
 })();
 
 })();
+
+${mobileMenuScript}
 `;
