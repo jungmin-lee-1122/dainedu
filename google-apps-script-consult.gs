@@ -28,6 +28,7 @@ function doPost(e) {
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
         "접수시각", "상담자유형", "학생이름", "성별", "연락처", "이메일",
+        "학년", "지역", "학교명",
         "우편번호", "주소", "상세주소", "관심과정", "유입경로",
         "임시비밀번호", "제목", "내용", "처리상태"
       ]);
@@ -41,6 +42,9 @@ function doPost(e) {
       data.gender || "",
       data.phone || "",
       data.email || "",
+      data.grade || "",
+      data.region || "",
+      data.school || "",
       data.zipcode || "",
       data.address || "",
       data.addressDetail || "",

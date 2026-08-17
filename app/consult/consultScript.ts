@@ -103,6 +103,9 @@ for(var g=0;g<groups.length;g++){
     if(!/^01[0-9]-[0-9]{4}-[0-9]{4}$/.test(String(data.phone||""))){ return fail("연락처를 010-0000-0000 형식으로 입력해 주세요."); }
     if(!String(data.address||"").trim()){ return fail("주소 찾기를 눌러 주소를 입력해 주세요."); }
     if(!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(String(data.email||"").trim())){ return fail("이메일을 정확히 입력해 주세요."); }
+    if(!data.grade){ return fail("학년을 선택해 주세요."); }
+    if(!data.region){ return fail("지역을 선택해 주세요."); }
+    if(!String(data.school||"").trim()){ return fail("학교명을 입력해 주세요."); }
     if(!data.course){ return fail("관심 과정을 선택해 주세요."); }
     if(!data.source){ return fail("유입경로를 선택해 주세요."); }
     if(!/^[0-9]{4}$/.test(String(data.password||""))){ return fail("임시 비밀번호를 숫자 4자리로 입력해 주세요."); }

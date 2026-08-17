@@ -11,6 +11,24 @@ export const metadata: Metadata = {
 /** 관심 과정 (반 문의) 선택지 */
 const COURSES = ["고등종합", "단과", "독학재수", "재수종합"];
 
+/** 학년 선택지 */
+const GRADES = ["중3", "고1", "고2", "고3", "재수 / N수"];
+
+/** 지역 선택지 — 서울 25개 구 */
+const SEOUL = [
+  "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구",
+  "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구",
+  "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구",
+];
+
+/** 지역 선택지 — 경기 시 단위 */
+const GYEONGGI = [
+  "가평군", "고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시",
+  "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시",
+  "안양시", "양주시", "양평군", "여주시", "연천군", "오산시", "용인시", "의왕시",
+  "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시",
+];
+
 /** 유입경로 선택지 */
 const SOURCES = [
   "지인 소개",
@@ -162,7 +180,40 @@ export default function ConsultPage() {
                 <input id="csEmail" name="email" type="email" inputMode="email" placeholder="example@dain.com" />
                 <span className="cs-hint">답변은 입력하신 이메일로 보내드립니다.</span>
               </div>
-              <div className="cs-field" />
+              <div className="cs-field">
+                <label className="cs-label" htmlFor="csGrade">학년 <i>필수</i></label>
+                <select id="csGrade" name="grade" defaultValue="">
+                  <option value="" disabled>학년을 선택해 주세요.</option>
+                  {GRADES.map((g) => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="cs-row">
+              <div className="cs-field">
+                <label className="cs-label" htmlFor="csRegion">지역 <i>필수</i></label>
+                <select id="csRegion" name="region" defaultValue="">
+                  <option value="" disabled>지역을 선택해 주세요.</option>
+                  <optgroup label="서울">
+                    {SEOUL.map((r) => (
+                      <option key={r} value={`서울 ${r}`}>{r}</option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="경기">
+                    {GYEONGGI.map((r) => (
+                      <option key={r} value={`경기 ${r}`}>{r}</option>
+                    ))}
+                  </optgroup>
+                  <option value="기타">기타 지역</option>
+                </select>
+              </div>
+              <div className="cs-field">
+                <label className="cs-label" htmlFor="csSchool">학교명 <i>필수</i></label>
+                <input id="csSchool" name="school" maxLength={40} placeholder="예) 동탄고등학교" />
+                <span className="cs-hint">재학(예정) 중인 학교명을 입력해 주세요.</span>
+              </div>
             </div>
 
             <div className="cs-row">

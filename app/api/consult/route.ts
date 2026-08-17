@@ -12,9 +12,15 @@ export async function POST(request: Request) {
     const content = String(data?.content || "").trim();
     const password = String(data?.password || "").trim();
     const email = String(data?.email || "").trim();
+    const school = String(data?.school || "").trim();
+    const grade = String(data?.grade || "").trim();
+    const region = String(data?.region || "").trim();
 
     if (
       !name ||
+      !school ||
+      !grade ||
+      !region ||
       !/^01[0-9]-[0-9]{4}-[0-9]{4}$/.test(phone) ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
       !title ||
