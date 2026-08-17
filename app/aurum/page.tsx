@@ -93,7 +93,10 @@ export default function AurumPage() {
             <div className="cv-hero-track">
               {heroSlides.map((s, i) => (
                 <a className="cv-hero-slide" href={s.href} key={i}>
-                  <img src={s.img} alt={s.alt} />
+                  <picture>
+                    <source media="(max-width:900px)" srcSet={s.img.replace(".png", "-m.png")} />
+                    <img src={s.img} alt={s.alt} />
+                  </picture>
                 </a>
               ))}
             </div>
@@ -124,7 +127,10 @@ export default function AurumPage() {
       <section className="cv-stats-sec">
         <div className="cv-wrap">
           <a className="cv-statsbn" href="https://dain-edu.higgsfield.app/seminar" aria-label="다인에듀 동탄점 09.21 그랜드 오픈">
-            <img src="/clavis/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
+            <picture>
+              <source media="(max-width:900px)" srcSet="/clavis/stats-banner-m.png" />
+              <img src="/clavis/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
+            </picture>
             <span className="cv-statsbn-sheen" aria-hidden="true" />
           </a>
         </div>
