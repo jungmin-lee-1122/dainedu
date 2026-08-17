@@ -14,7 +14,7 @@ export const quickMenuMarkup = String.raw`
     </span>
     <span class="dn-quick-label">입학상담</span>
   </a>
-  <a class="dn-quick-item" href="#program">
+  <a class="dn-quick-item" href="/winter">
     <span class="dn-quick-ico">
       <svg viewBox="0 0 32 32" aria-hidden="true">
         <path d="M5 7h9a3 3 0 0 1 3 3v16a2.5 2.5 0 0 0-2.5-2H5z" fill="#24365A"/>

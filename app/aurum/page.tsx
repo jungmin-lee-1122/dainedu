@@ -62,6 +62,7 @@ export default function AurumPage() {
             <div className="dn-gnb-sub">
               <a href="#notice">고등종합</a>
               <a href="#notice">단과</a>
+              <a href="/winter">2027 윈터스쿨</a>
             </div>
           </li>
           <li className="dn-gnb-item">

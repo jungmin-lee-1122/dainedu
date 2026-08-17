@@ -31,6 +31,7 @@ export const landingMarkup = `
           <a href="#program">독학재수</a>
           <a href="#program">고등종합</a>
           <a href="#program">단과</a>
+          <a href="/winter">2027 윈터스쿨</a>
         </div>
       </li>
       <li class="dn-gnb-item">
