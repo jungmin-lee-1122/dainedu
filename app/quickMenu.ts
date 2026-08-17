@@ -2,7 +2,7 @@
 // 홈 / 사전등록 / 클라비스 페이지에서 공통으로 사용합니다.
 export const quickMenuMarkup = String.raw`
 <aside class="dn-quick" aria-label="빠른 메뉴">
-  <a class="dn-quick-item" href="tel:03180030221">
+  <a class="dn-quick-item" href="/consult">
     <span class="dn-quick-ico">
       <svg viewBox="0 0 32 32" aria-hidden="true">
         <path d="M7 5h13a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-6l-5 4v-4H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z" fill="#24365A"/>

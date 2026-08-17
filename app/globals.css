@@ -1041,4 +1041,67 @@ img,video,svg{max-width:100%}
   .dn-bgm{bottom:82px}
   .dn-footer{padding-bottom:96px !important}
 }
+/* ═══════ 26) 온라인 상담 페이지 (/consult) ═══════ */
+.cs-page{background:#fff}
+.cs-sec{padding:150px 0 90px}
+.cs-wrap{max-width:920px;margin:0 auto;padding:0 24px}
+.cs-head{margin-bottom:38px}
+.cs-title{font-size:30px;font-weight:800;color:var(--dn-navy);margin:0 0 10px;letter-spacing:-.02em}
+.cs-desc{font-size:15px;color:var(--dn-ink-soft);margin:0}
+.cs-group-title{font-size:18px;font-weight:800;color:var(--dn-navy);margin:0 0 18px;padding-bottom:12px;border-bottom:2px solid var(--dn-navy)}
+.cs-mt{margin-top:44px}
+.cs-row{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
+.cs-field{margin-bottom:20px;min-width:0}
+.cs-label{display:block;font-size:13.5px;font-weight:700;color:var(--dn-navy);margin-bottom:8px}
+.cs-label i{font-style:normal;font-size:12px;color:#C0453C;margin-left:3px}
+.cs-field input,.cs-field select,.cs-field textarea{
+  width:100%;padding:14px 15px;border:1px solid #DDD8CC;border-radius:10px;
+  font-size:15px;font-family:inherit;color:var(--dn-ink);background:#FCFBF8;box-sizing:border-box}
+.cs-field textarea{resize:vertical;min-height:150px;line-height:1.6}
+.cs-field input::placeholder,.cs-field textarea::placeholder{color:#AEA79A}
+.cs-field input:focus,.cs-field select:focus,.cs-field textarea:focus{
+  outline:none;border-color:var(--dn-gold);box-shadow:0 0 0 3px rgba(192,153,79,.16);background:#fff}
+.cs-hint{display:block;margin-top:7px;font-size:12px;color:#A29A8B}
+.cs-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cs-choice{padding:13px;border:1px solid #DDD8CC;border-radius:999px;background:#FCFBF8;
+  font-size:14.5px;font-family:inherit;color:var(--dn-ink-soft);cursor:pointer;transition:all .18s ease}
+.cs-choice:hover{border-color:var(--dn-gold);color:var(--dn-navy);background:#fff}
+.cs-choice.is-on{border-color:transparent;background:linear-gradient(150deg,#2E4470,var(--dn-navy) 55%,#182742);color:#fff;font-weight:700}
+.cs-pw{position:relative}
+.cs-pw input{padding-right:46px}
+.cs-pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;
+  border:0;background:transparent;color:#A29A8B;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.cs-pw-eye svg{width:20px;height:20px}
+.cs-pw-eye.is-on{color:var(--dn-gold)}
+.cs-agree-row{display:flex;align-items:center;gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid var(--dn-line)}
+.cs-agree{display:inline-flex;align-items:center;gap:9px;border:0;background:transparent;cursor:pointer;
+  font-size:14px;font-family:inherit;color:var(--dn-ink-soft);padding:0}
+.cs-agree i{font-style:normal;color:#C0453C;margin-left:2px;font-size:12.5px}
+.cs-agree-check{width:22px;height:22px;border-radius:50%;background:#E3DCCB;color:#fff;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13px;transition:background .2s ease}
+.cs-agree.is-on{color:var(--dn-navy);font-weight:700}
+.cs-agree.is-on .cs-agree-check{background:var(--dn-navy)}
+.cs-agree-more{margin-left:auto;font-size:13px;color:var(--dn-ink-soft);text-decoration:none}
+.cs-agree-more:hover{color:var(--dn-gold)}
+.cs-agree-detail{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;background:var(--dn-cream);
+  font-size:13px;line-height:1.9;color:var(--dn-ink-soft)}
+.cs-agree-detail.is-open{display:block}
+.cs-agree-detail p{margin:0}
+.cs-msg{margin:20px 0 0;text-align:center;font-size:14px;min-height:20px}
+.cs-msg.is-error{color:#C0453C}
+.cs-msg.is-ok{color:#2E7D5B;font-weight:700}
+.cs-submit-row{display:flex;justify-content:center;margin-top:26px}
+.cs-submit{padding:16px 44px;border:0;border-radius:999px;cursor:pointer;
+  background:linear-gradient(150deg,#2E4470,var(--dn-navy) 48%,#141F38);
+  color:#fff;font-size:16px;font-weight:700;font-family:inherit;
+  box-shadow:0 12px 26px -14px rgba(16,25,46,.7);transition:transform .2s ease,box-shadow .2s ease}
+.cs-submit:hover{transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(16,25,46,.75)}
+.cs-submit:disabled{opacity:.6;cursor:wait;transform:none}
+@media(max-width:900px){
+  .cs-sec{padding:34px 0 70px}
+  .cs-wrap{padding:0 16px}
+  .cs-title{font-size:25px}
+  .cs-row{grid-template-columns:1fr;gap:0}
+  .cs-submit{width:100%}
+}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */
