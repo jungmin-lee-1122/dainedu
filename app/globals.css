@@ -1004,4 +1004,41 @@ img,video,svg{max-width:100%}
   .cv-teacher-card{flex:0 0 100%}
   .cv-sec-title{font-size:19px}
 }
+/* ═══════ 25) 우측 고정 퀵메뉴 ═══════ */
+.dn-quick{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:90;
+  display:flex;flex-direction:column;align-items:center;
+  padding:10px 8px;border-radius:18px;
+  background:rgba(255,255,255,.96);border:1px solid var(--dn-line);
+  box-shadow:0 18px 40px -18px rgba(16,25,46,.45);backdrop-filter:blur(6px)}
+.dn-quick-item{display:flex;flex-direction:column;align-items:center;gap:6px;
+  width:74px;padding:12px 4px;border-radius:12px;text-decoration:none;
+  transition:background .2s ease,transform .2s ease}
+.dn-quick-item+.dn-quick-item{border-top:1px solid rgba(227,220,203,.75)}
+.dn-quick-item:hover{background:var(--dn-cream);transform:translateY(-1px)}
+.dn-quick-ico{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:11px;background:linear-gradient(155deg,#FFFDF8,#F4F1E7);
+  box-shadow:inset 0 0 0 1px rgba(192,153,79,.28)}
+.dn-quick-item:hover .dn-quick-ico{box-shadow:inset 0 0 0 1px rgba(192,153,79,.6)}
+.dn-quick-ico svg{width:24px;height:24px;display:block}
+.dn-quick-label{font-size:11.5px;font-weight:700;color:var(--dn-navy);letter-spacing:-.02em;white-space:nowrap;text-align:center}
+.dn-quick-item:hover .dn-quick-label{color:var(--dn-gold)}
+.dn-quick-top{margin-top:8px;width:34px;height:34px;border:0;border-radius:50%;cursor:pointer;
+  background:var(--dn-navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;
+  transition:background .2s ease,transform .2s ease}
+.dn-quick-top:hover{background:var(--dn-deep);transform:translateY(-2px)}
+.dn-quick-top svg{width:18px;height:18px}
+
+/* 모바일: 하단 가로 바로 전환 */
+@media(max-width:900px){
+  .dn-quick{right:0;left:0;top:auto;bottom:0;transform:none;flex-direction:row;justify-content:space-around;
+    border-radius:16px 16px 0 0;padding:6px 4px;gap:2px}
+  .dn-quick-item{flex:1 1 0;width:auto;padding:7px 2px;gap:4px}
+  .dn-quick-item+.dn-quick-item{border-top:0;border-left:1px solid rgba(227,220,203,.75)}
+  .dn-quick-ico{width:30px;height:30px;border-radius:9px}
+  .dn-quick-ico svg{width:19px;height:19px}
+  .dn-quick-label{font-size:10.5px}
+  .dn-quick-top{display:none}
+  .dn-bgm{bottom:82px}
+  .dn-footer{padding-bottom:96px !important}
+}
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */

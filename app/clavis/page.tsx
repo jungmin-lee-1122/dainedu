@@ -1,6 +1,7 @@
 import Script from "next/script";
 import type { Metadata } from "next";
 import { clavisScript } from "./clavisScript";
+import { quickMenuMarkup } from "../quickMenu";
 import {
   heroSlides,
   teacherTabs,
@@ -44,14 +45,7 @@ export default function ClavisPage() {
               <a href="#about">인사말</a>
               <a href="#about">시설 안내</a>
               <a href="#about">오시는 길</a>
-            </div>
-          </li>
-          <li className="dn-gnb-item">
-            <a href="#system">운영시스템</a>
-            <div className="dn-gnb-sub">
-              <a href="#system">담임 관리</a>
-              <a href="#system">학습 관리</a>
-              <a href="#system">성적 리포트</a>
+              <a href="#system">운영시스템</a>
             </div>
           </li>
           <li className="dn-gnb-item">
@@ -68,6 +62,14 @@ export default function ClavisPage() {
             <div className="dn-gnb-sub">
               <a href="#notice">고등종합</a>
               <a href="#notice">단과</a>
+            </div>
+          </li>
+          <li className="dn-gnb-item">
+            <a href="#contents">콘텐츠</a>
+            <div className="dn-gnb-sub">
+              <a href="#contents">영단어 데일리 테스트</a>
+              <a href="#contents">빈칸·순서·삽입 데일리 훈련</a>
+              <a href="#contents">학과 적성 찾기</a>
             </div>
           </li>
           <li className="dn-gnb-item">
@@ -328,6 +330,8 @@ export default function ClavisPage() {
           </div>
         </div>
       </footer>
+
+      <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
       <Script id="clavis-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: clavisScript }} />
     </main>

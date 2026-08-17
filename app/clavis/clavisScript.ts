@@ -185,5 +185,11 @@ fadeSlider({ id:"cvSide", slide:".cv-side-slide", dots:"cvSideDots", playSel:".c
   });
 })();
 
+/* ═══════ 퀵메뉴 맨 위로 ═══════ */
+(function(){
+  var t=document.querySelector(".dn-quick-top"); if(!t) return;
+  t.addEventListener("click",function(){ window.scrollTo({top:0,behavior:"smooth"}); });
+})();
+
 })();
 `;

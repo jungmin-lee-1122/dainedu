@@ -1,5 +1,6 @@
 // 다인교육 랜딩페이지 마크업 (텍스트/문구는 이 파일에서 수정하세요)
-export const landingMarkup = String.raw`
+import { quickMenuMarkup } from "./quickMenu";
+export const landingMarkup = `
 <main class="dn-body">
   <a class="dn-topbar" href="/register" aria-label="설명회 사전등록 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">9/19 SAT</span><h3 class="dn-topbar-title">설명회 사전등록</h3><span class="dn-topbar-desc">그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.</span></a>
   <nav class="dn-nav" aria-label="주 메뉴">
@@ -11,14 +12,7 @@ export const landingMarkup = String.raw`
           <a href="#about">인사말</a>
           <a href="#about">시설 안내</a>
           <a href="#about">오시는 길</a>
-        </div>
-      </li>
-      <li class="dn-gnb-item">
-        <a href="#system">운영시스템</a>
-        <div class="dn-gnb-sub">
-          <a href="#system">담임 관리</a>
-          <a href="#system">학습 관리</a>
-          <a href="#system">성적 리포트</a>
+          <a href="#system">운영시스템</a>
         </div>
       </li>
       <li class="dn-gnb-item">
@@ -37,6 +31,14 @@ export const landingMarkup = String.raw`
           <a href="#program">독학재수</a>
           <a href="#program">고등종합</a>
           <a href="#program">단과</a>
+        </div>
+      </li>
+      <li class="dn-gnb-item">
+        <a href="#contents">콘텐츠</a>
+        <div class="dn-gnb-sub">
+          <a href="#contents">영단어 데일리 테스트</a>
+          <a href="#contents">빈칸·순서·삽입 데일리 훈련</a>
+          <a href="#contents">학과 적성 찾기</a>
         </div>
       </li>
       <li class="dn-gnb-item">
@@ -133,6 +135,7 @@ export const landingMarkup = String.raw`
       </div>
     </div>
   </footer>
+  ${quickMenuMarkup}
   <audio id="bgm" src="/bgm.m4a" loop preload="auto"></audio>
   <button class="dn-bgm" id="bgmBtn" type="button" aria-label="배경음악 켜기/끄기"><svg class="dn-bgm-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 8.5a4.5 4.5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="dn-bgm-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </main>
