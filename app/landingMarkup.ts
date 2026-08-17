@@ -2,7 +2,7 @@
 import { quickMenuMarkup } from "./quickMenu";
 export const landingMarkup = `
 <main class="dn-body">
-  <a class="dn-topbar" href="/register" aria-label="설명회 사전등록 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">9/19 SAT</span><h3 class="dn-topbar-title">설명회 사전등록</h3><span class="dn-topbar-desc">그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.</span></a>
+  <a class="dn-topbar" href="https://dain-edu.higgsfield.app/seminar" aria-label="설명회 사전등록 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">9/19 SAT</span><h3 class="dn-topbar-title">설명회 사전등록</h3><span class="dn-topbar-desc">그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.</span></a>
   <nav class="dn-nav" aria-label="주 메뉴">
     <a class="dn-nav-brand" href="#top"><img src="/dain-icon.png" alt="다인교육" class="dn-nav-icon"/><span class="dn-nav-brandtext"><b class="dn-nav-name">DAIN EDU</b><span class="dn-nav-line"></span><span class="dn-nav-clock js-clock" id="dnClock">00:00:00</span></span></a>
     <ul class="dn-gnb">
@@ -58,10 +58,10 @@ export const landingMarkup = `
         <div class="dn-rolling-row">
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
-              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideA-m.png"/><img src="/slideA.png" alt="다인교육 그랜드 오픈"/></picture></a>
-              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideB-m.png"/><img src="/slideB.png" alt="최고의 강사진이 동탄에서"/></picture></a>
-              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></a>
-              <a class="dn-slide" href="/register"><picture><source media="(max-width:900px)" srcset="/slideD-m.png"/><img src="/slideD.png" alt="새로운 입시의 기준을 세우다"/></picture></a>
+              <a class="dn-slide" href="https://dain-edu.higgsfield.app/seminar"><picture><source media="(max-width:900px)" srcset="/slideA-m.png"/><img src="/slideA.png" alt="다인교육 그랜드 오픈"/></picture></a>
+              <a class="dn-slide" href="https://dain-edu.higgsfield.app/seminar"><picture><source media="(max-width:900px)" srcset="/slideB-m.png"/><img src="/slideB.png" alt="최고의 강사진이 동탄에서"/></picture></a>
+              <a class="dn-slide" href="https://dain-edu.higgsfield.app/seminar"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></a>
+              <a class="dn-slide" href="https://dain-edu.higgsfield.app/seminar"><picture><source media="(max-width:900px)" srcset="/slideD-m.png"/><img src="/slideD.png" alt="새로운 입시의 기준을 세우다"/></picture></a>
             </div>
             <div class="dn-slider-ctrl">
               <button class="dn-slider-btn" type="button" data-dir="prev" aria-label="이전 슬라이드">‹</button>
@@ -69,12 +69,12 @@ export const landingMarkup = `
               <span class="dn-slider-count"><b class="dn-cur">01</b><span class="dn-line"><i class="dn-line-fill"></i></span><span class="dn-total">03</span></span>
             </div>
           </div>
-          <a class="dn-poster" href="/register"><img src="/poster-dain2.png" alt="다인교육 그랜드 오픈 설명회 포스터"/></a>
+          <a class="dn-poster" href="https://dain-edu.higgsfield.app/seminar"><img src="/poster-dain2.png" alt="다인교육 그랜드 오픈 설명회 포스터"/></a>
         </div>
       </div>
     </section>
     <!-- dn-banner 숨김 (복원하려면 이 줄과 아래 닫는 주석만 지우세요) -->
-    <!--<section class="dn-banner"><div class="dn-wrap"><a class="dn-banner-link" href="/register"><img src="/grand-open.png" alt="다인교육 그랜드 오픈 입시 히어로, 그들이 왔다" class="dn-banner-img"/></a></div></section>-->
+    <!--<section class="dn-banner"><div class="dn-wrap"><a class="dn-banner-link" href="https://dain-edu.higgsfield.app/seminar"><img src="/grand-open.png" alt="다인교육 그랜드 오픈 입시 히어로, 그들이 왔다" class="dn-banner-img"/></a></div></section>-->
     <section class="dn-halls">
       <div class="dn-wrap">
         <div class="dn-halls-grid">

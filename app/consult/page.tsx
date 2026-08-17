@@ -27,7 +27,7 @@ export default function ConsultPage() {
   return (
     <main className="dn-body cs-page">
       {/* ── 헤더 ── */}
-      <a className="dn-topbar" href="/register" aria-label="설명회 사전등록 안내">
+      <a className="dn-topbar" href="https://dain-edu.higgsfield.app/seminar" aria-label="설명회 사전등록 안내">
         <span className="dn-topbar-mark">※</span>
         <span className="dn-entry-badge">9/19 SAT</span>
         <h3 className="dn-topbar-title">설명회 사전등록</h3>

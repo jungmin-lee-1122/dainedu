@@ -21,7 +21,7 @@ export default function ClavisPage() {
   return (
     <main className="dn-body cv-page">
       {/* ── 헤더 ── */}
-      <a className="dn-topbar" href="/register" aria-label="설명회 사전등록 안내">
+      <a className="dn-topbar" href="https://dain-edu.higgsfield.app/seminar" aria-label="설명회 사전등록 안내">
         <span className="dn-topbar-mark">※</span>
         <span className="dn-entry-badge">9/19 SAT</span>
         <h3 className="dn-topbar-title">설명회 사전등록</h3>
@@ -123,7 +123,7 @@ export default function ClavisPage() {
       {/* ── 그랜드 오픈 배너 ── */}
       <section className="cv-stats-sec">
         <div className="cv-wrap">
-          <a className="cv-statsbn" href="/register" aria-label="다인에듀 동탄점 09.21 그랜드 오픈">
+          <a className="cv-statsbn" href="https://dain-edu.higgsfield.app/seminar" aria-label="다인에듀 동탄점 09.21 그랜드 오픈">
             <img src="/clavis/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
             <span className="cv-statsbn-sheen" aria-hidden="true" />
           </a>

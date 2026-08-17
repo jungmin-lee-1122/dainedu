@@ -59,7 +59,7 @@ export const lectures = [
     date: "2026. 09. 19(토) 오후 1시",
     place: "CGV 동탄 4관",
     status: "접수중",
-    href: "/register",
+    href: "https://dain-edu.higgsfield.app/seminar",
   },
 ];
 
@@ -74,7 +74,7 @@ export const reviews = [
 
 /** 5-2) 우측 사이드 배너 */
 export const sideBanners = [
-  { img: "/aurum/side-1.png", href: "/register", alt: "입학 상담 신청" },
+  { img: "/aurum/side-1.png", href: "https://dain-edu.higgsfield.app/seminar", alt: "입학 상담 신청" },
   { img: "/aurum/side-2.png", href: "#", alt: "기숙 시설 안내" },
   { img: "/aurum/side-3.png", href: "#", alt: "윈터스쿨 접수" },
 ];
