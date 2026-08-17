@@ -88,7 +88,7 @@ export const landingMarkup = `
             </div>
             <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="18" y="80" width="106" height="20" rx="4" fill="#24365A"/><rect x="18" y="80" width="14" height="20" rx="4" fill="#C0994F"/><rect x="26" y="57" width="98" height="20" rx="4" fill="#2E4470"/><rect x="26" y="57" width="14" height="20" rx="4" fill="#D9BE8C"/><rect x="12" y="34" width="102" height="20" rx="4" fill="#10192E"/><rect x="12" y="34" width="14" height="20" rx="4" fill="#C0994F"/><path d="M92 34 v24 l-7 -6 -7 6 v-24 z" fill="#C0994F"/></svg>
           </a>
-          <a class="dn-hall-card" href="/register">
+          <a class="dn-hall-card" href="/aurum">
             <div class="dn-hall-text">
               <span class="dn-hall-label">AURUM RE-START<span class="dn-hall-label-sub"> | 빛나는 황금기를 여는 재도전 시스템</span></span>
               <div class="dn-hall-title-row">
