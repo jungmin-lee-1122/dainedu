@@ -21,6 +21,8 @@ import {
   process,
   faqs,
 } from "./winterData";
+import SiteHeader from "../SiteHeader";
+import SiteFooter from "../SiteFooter";
 
 const CONSULT = "/consult";
 
@@ -33,74 +35,7 @@ export const metadata: Metadata = {
 export default function WinterPage() {
   return (
     <main className="wt">
-      {/* ══ 사이트 공통 헤더 ══ */}
-      <a className="dn-topbar" href="https://dain-edu.higgsfield.app/seminar" aria-label="설명회 사전등록 안내">
-        <span className="dn-topbar-mark">※</span>
-        <span className="dn-entry-badge">9/19 SAT</span>
-        <h3 className="dn-topbar-title">설명회 사전등록</h3>
-        <span className="dn-topbar-desc">
-          그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.
-        </span>
-      </a>
-      <nav className="dn-nav" aria-label="주 메뉴">
-        <a className="dn-nav-brand" href="/">
-          <img src="/dain-icon.png" alt="다인교육" className="dn-nav-icon" />
-          <span className="dn-nav-brandtext">
-            <b className="dn-nav-name">DAIN EDU</b>
-            <span className="dn-nav-line" />
-            <span className="dn-nav-clock js-clock">00:00:00</span>
-          </span>
-        </a>
-        <ul className="dn-gnb">
-          <li className="dn-gnb-item">
-            <a href="/clavis#about">학원소개</a>
-            <div className="dn-gnb-sub">
-              <a href="/clavis#about">인사말</a>
-              <a href="/clavis#about">시설 안내</a>
-              <a href="/clavis#about">오시는 길</a>
-              <a href="/clavis#system">운영시스템</a>
-            </div>
-          </li>
-          <li className="dn-gnb-item">
-            <a href="/teachers">강사진 소개</a>
-            {/* 세부 카테고리 숨김 (필요 시 주석 해제)
-            <div className="dn-gnb-sub">
-              <a href="/teachers">국어</a>
-              <a href="/teachers">수학</a>
-              <a href="/teachers">영어</a>
-              <a href="/teachers">탐구</a>
-            </div>
-            */}
-          </li>
-          <li className="dn-gnb-item">
-            <a href="/clavis#notice">모집안내</a>
-            <div className="dn-gnb-sub">
-              <a href="/clavis#notice">고등종합</a>
-              <a href="/clavis#notice">단과</a>
-              <a href="/winter">2027 윈터스쿨</a>
-            </div>
-          </li>
-          <li className="dn-gnb-item">
-            <a href="/clavis#contents">콘텐츠</a>
-            <div className="dn-gnb-sub">
-              <a href="/clavis#contents">영단어 데일리 테스트</a>
-              <a href="/clavis#contents">빈칸·순서·삽입 데일리 훈련</a>
-              <a href="/clavis#contents">학과 적성 찾기</a>
-            </div>
-          </li>
-          <li className="dn-gnb-item">
-            <a href="/clavis#review">학원생활</a>
-            <div className="dn-gnb-sub">
-              <a href="/clavis#review">성공수기</a>
-              <a href="/clavis#review">상담 문의</a>
-            </div>
-          </li>
-        </ul>
-        <span className="dn-navcta dn-dday" aria-label="수능 디데이">
-          <span className="cta-label" id="dnDdayCap">수능</span>
-          <span className="cta-badge" id="dnDdayNum">D-…</span>
-        </span>
-      </nav>
+      <SiteHeader />
 
       {/* ══ 페이지 타이틀 · 경로 ══ */}
       <div className="wt-head" id="top">
@@ -506,6 +441,8 @@ export default function WinterPage() {
           <p className="wt-sign">DAIN EDUCATION</p>
         </div>
       </section>
+
+      <SiteFooter />
 
       {/* ══ 하단 고정 CTA ══ */}
       <div className="wt-fixed" id="wtFixed">
