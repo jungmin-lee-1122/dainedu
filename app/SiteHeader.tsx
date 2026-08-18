@@ -7,6 +7,9 @@ const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
 /** current: 로고 옆 과정 토글에서 현재 켜둘 값 ("clavis" | "aurum" | none) */
 export default function SiteHeader({ current }: { current?: "clavis" | "aurum" }) {
+  // 공지사항 / 이벤트·설명회는 현재 보고 있는 관(고등·N수)의 해당 섹션으로 이동합니다.
+  const base = current === "aurum" ? "/aurum" : "/clavis";
+
   return (
     <>
       <a className="dn-topbar" href={SEMINAR} aria-label="설명회 사전등록 안내">
@@ -91,11 +94,11 @@ export default function SiteHeader({ current }: { current?: "clavis" | "aurum" }
           </li>
 
           <li className="dn-gnb-item">
-            <a href="/#life">학원생활</a>
+            <a href={`${base}#notice`}>학원생활</a>
             <div className="dn-gnb-sub">
-              <a href="/#life">하루 일과</a>
-              <a href="/#life">급식·편의</a>
-              <a href="/consult">상담 문의</a>
+              <a href={`${base}#notice`}>공지사항</a>
+              <a href={`${base}#event`}>이벤트/설명회</a>
+              <a href="/consult">상담문의</a>
             </div>
           </li>
         </ul>

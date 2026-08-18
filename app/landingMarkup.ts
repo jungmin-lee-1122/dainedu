@@ -45,11 +45,11 @@ export const landingMarkup = `
         </div>
       </li>
       <li class="dn-gnb-item">
-        <a href="#life">학원생활</a>
+        <a href="/clavis#notice">학원생활</a>
         <div class="dn-gnb-sub">
-          <a href="#life">하루 일과</a>
-          <a href="#life">급식·편의</a>
-          <a href="#life">상담 문의</a>
+          <a href="/clavis#notice">공지사항</a>
+          <a href="/clavis#event">이벤트/설명회</a>
+          <a href="/consult">상담문의</a>
         </div>
       </li>
     </ul>

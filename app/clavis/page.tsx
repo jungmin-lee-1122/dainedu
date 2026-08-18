@@ -120,9 +120,9 @@ export default function ClavisPage() {
       )}
 
       {/* ── 4) 공지사항 · 설명회 ── */}
-      <section className="cv-board" id="notice">
+      <section className="cv-board" id="board">
         <div className="cv-wrap cv-board-grid">
-          <div className="cv-notice">
+          <div className="cv-notice cv-anchor" id="notice">
             <div className="cv-sec-head">
               <h2 className="cv-sec-title">공지사항</h2>
               <a className="cv-more" href="#notice" aria-label="전체보기">+</a>
@@ -139,10 +139,10 @@ export default function ClavisPage() {
               ))}
             </ul>
           </div>
-          <div className="cv-lecture">
+          <div className="cv-lecture cv-anchor" id="event">
             <div className="cv-sec-head">
-              <h2 className="cv-sec-title">설명회·공개특강</h2>
-              <a className="cv-more" href="#notice" aria-label="전체보기">+</a>
+              <h2 className="cv-sec-title">이벤트 · 설명회</h2>
+              <a className="cv-more" href="#event" aria-label="전체보기">+</a>
             </div>
             <div className="cv-lecture-list">
               {lectures.map((l, i) => (
