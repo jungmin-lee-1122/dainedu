@@ -2,257 +2,329 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import { winterScript } from "./winterScript";
 import {
-  navItems,
-  changes,
-  systemSteps,
-  programs,
-  roadmap,
-  manageItems,
+  sectionNav,
+  hero,
+  benefitTimeline,
+  benefitCards,
+  reforms,
+  whyStats,
+  resultBanner,
+  stories,
+  spaces,
+  manageTabs,
+  manageGroups,
   curriculumTabs,
   curriculum,
   timetable,
-  spaces,
-  whyDain,
+  scholarship,
   admission,
   process,
   faqs,
 } from "./winterData";
 
-const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
+const CONSULT = "/consult";
 
 export const metadata: Metadata = {
   title: "2027 윈터스쿨 — 다인교육 동탄점",
   description:
-    "달라진 입시의 첫 겨울, 준비의 기준도 달라져야 합니다. 2028 개편 입시를 위한 다인교육 겨울 전략 프로그램.",
+    "기준이 바뀌는 겨울, 준비도 바뀌어야 합니다. 2028 개편 입시를 준비하는 다인교육 2027 윈터스쿨 선착순 모집.",
 };
 
 export default function WinterPage() {
   return (
-    <main className="wt-page">
-      {/* ══ 헤더 ══ */}
-      <nav className="wt-nav" aria-label="윈터스쿨 메뉴">
-        <a className="wt-nav-brand" href="/">DAIN EDUCATION</a>
-        <ul className="wt-nav-menu">
-          {navItems.map((n) => (
-            <li key={n.label}>
-              <a href={n.href}>{n.label}</a>
-            </li>
-          ))}
-        </ul>
-        <a className="wt-nav-cta" href="/consult">상담 신청</a>
-      </nav>
+    <main className="wt">
+      {/* ══ 상단 바 ══ */}
+      <div className="wt-top">
+        <a className="wt-top-back" href="/">‹ 다인교육</a>
+        <span className="wt-top-title">2027 윈터스쿨</span>
+        <a className="wt-top-cta" href={CONSULT}>상담 신청</a>
+      </div>
 
       {/* ══ 1) 히어로 ══ */}
       <section className="wt-hero" id="top">
         <img className="wt-hero-bg" src="/winter/hero.png" alt="" aria-hidden="true" />
-        <div className="wt-hero-inner">
-          <p className="wt-hero-kicker">2027 DAIN WINTER SCHOOL</p>
+        <span className="wt-hero-glow" aria-hidden="true" />
+        <div className="wt-hero-in">
+          <p className="wt-hero-eyebrow">{hero.eyebrow}</p>
           <h1 className="wt-hero-title">
-            달라진 입시의 첫 겨울,<br />
-            준비의 기준도<br />
-            달라져야 합니다.
+            {hero.title[0]}
+            <br />
+            <em>{hero.title[1]}</em>
           </h1>
-          <p className="wt-hero-sub">
-            2028 개편 입시를 위한<br />
-            다인교육 겨울 전략 프로그램
-          </p>
-          <p className="wt-hero-target">예비고1 · 예비고2 · 예비고3</p>
-          <div className="wt-hero-btns">
-            <a className="wt-btn wt-btn-gold" href="#admission">WINTER SCHOOL 모집요강</a>
-            <a className="wt-btn wt-btn-line" href="/consult">입학 상담 신청</a>
+          <p className="wt-hero-sub">{hero.sub}</p>
+          <div className="wt-hero-chips">
+            {hero.chips.map((c) => (
+              <span className="wt-chip" key={c}>{c}</span>
+            ))}
           </div>
-          <a className="wt-scroll" href="#program">
-            SCROLL TO DISCOVER <span aria-hidden="true">↓</span>
-          </a>
+          <div className="wt-hero-btns">
+            <a className="wt-btn wt-btn-primary" href="#admission">선착순 모집 안내</a>
+            <a className="wt-btn wt-btn-ghost" href={CONSULT}>입학 상담 신청</a>
+          </div>
         </div>
-        <div className="wt-hero-side" aria-hidden="true">
-          <span>DAIN</span>
-          <span>WINTER</span>
-          <span>SCHOOL</span>
-          <span>2027</span>
+        <div className="wt-hero-marquee" aria-hidden="true">
+          <div className="wt-marquee-row">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <span key={i}>2027 WINTER SCHOOL <i>·</i> DAIN EDUCATION <i>·</i></span>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ══ 2) 바뀌는 입시 ══ */}
-      <section className="wt-standard" id="program">
-        <div className="wt-wrap wt-standard-grid">
-          <div className="wt-reveal">
-            <p className="wt-eyebrow">THE NEW STANDARD</p>
-            <h2 className="wt-h2">
-              2027년 겨울,<br />입시의 기준이 바뀝니다.
-            </h2>
-            <p className="wt-body">
-              고교학점제와 내신 체제 변화,<br />통합형 수능까지.
-            </p>
-            <p className="wt-body">
-              다가오는 입시는<br />이전과 같은 준비만으로<br />대응하기 어렵습니다.
-            </p>
-          </div>
-          <div className="wt-change-list">
-            {changes.map((c, i) => (
-              <div className="wt-change wt-reveal" style={{ transitionDelay: `${i * 90}ms` }} key={c.no}>
-                <span className="wt-change-no">{c.no}</span>
-                <b className="wt-change-title">{c.title}</b>
-                <p className="wt-change-desc">{c.desc}</p>
+      {/* ══ 섹션 내비 (고정) ══ */}
+      <nav className="wt-snav" id="wtSnav" aria-label="섹션 이동">
+        <div className="wt-snav-in">
+          {sectionNav.map((s) => (
+            <a href={s.href} key={s.href}>{s.label}</a>
+          ))}
+        </div>
+      </nav>
+
+      {/* ══ 2) 등록 혜택 ══ */}
+      <section className="wt-sec wt-benefit" id="benefit">
+        <div className="wt-wrap">
+          <p className="wt-tag">등록 혜택</p>
+          <h2 className="wt-h2">
+            흔들리지 않으려면,<br />
+            <em>가장 먼저 시작하세요</em>
+          </h2>
+
+          <div className="wt-timeline">
+            {benefitTimeline.map((t) => (
+              <div className="wt-tl-card wt-up" key={t.tag}>
+                <span className="wt-tl-tag">{t.tag}</span>
+                <b className="wt-tl-title">{t.title}</b>
+                <dl className="wt-tl-rows">
+                  {t.rows.map((r) => (
+                    <div key={r.k}>
+                      <dt>{r.k}</dt>
+                      <dd>{r.v}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ══ 3) 인용 밴드 ══ */}
-      <section className="wt-quote">
-        <div className="wt-wrap">
-          <p className="wt-quote-text wt-reveal">
-            <span className="wt-quote-mark">“</span>
-            입시의 규칙이 바뀌면,<br />
-            준비의 순서도 바뀌어야 합니다.
-            <span className="wt-quote-mark">”</span>
-          </p>
-        </div>
-      </section>
-
-      {/* ══ 4) 운영 시스템 ══ */}
-      <section className="wt-system" id="system">
-        <div className="wt-wrap wt-system-grid">
-          <div className="wt-reveal">
-            <p className="wt-eyebrow wt-gold">DAIN EDUCATION SYSTEM</p>
-            <h2 className="wt-h2 wt-inv">
-              겨울 두 달을<br />단순한 선행으로<br />끝내지 않습니다.
-            </h2>
-            <p className="wt-body wt-inv-soft">
-              현재 위치를 진단하고,<br />
-              목표를 설계하고,<br />
-              실행을 관리하고,<br />
-              결과를 다시 점검합니다.
-            </p>
-          </div>
-          <div className="wt-steps" id="wtSteps">
-            {systemSteps.map((s, i) => (
-              <button
-                className={`wt-step${i === 0 ? " is-on" : ""}`}
-                type="button"
-                data-idx={i}
-                key={s.no}
-              >
-                <span className="wt-step-no">{s.no}</span>
-                <span className="wt-step-main">
-                  <span className="wt-step-en">{s.en}</span>
-                  <span className="wt-step-ko">{s.ko}</span>
-                </span>
-                <span className="wt-step-desc">{s.desc}</span>
-              </button>
+          <div className="wt-bcards">
+            {benefitCards.map((b) => (
+              <article className="wt-bcard wt-up" key={b.badge}>
+                <div className="wt-bcard-head">
+                  <span className="wt-bcard-badge">{b.badge}</span>
+                  <b className="wt-bcard-lead">{b.lead}</b>
+                </div>
+                <div className="wt-bcard-body">
+                  <p className="wt-bcard-when">{b.when}</p>
+                  <p className="wt-bcard-pct">
+                    <span>최대</span>
+                    <b className="wt-num" data-num={b.percent}>0</b>
+                    <i>%</i>
+                    <span>할인</span>
+                  </p>
+                </div>
+                <ul className="wt-bcard-notes">
+                  {b.notes.map((n) => (
+                    <li key={n}>{n}</li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ 5) CLAVIS WINTER ══ */}
-      <section className="wt-program">
-        <div className="wt-wrap wt-program-grid">
-          <div className="wt-reveal">
-            <p className="wt-eyebrow">DAIN SIGNATURE PROGRAM</p>
-            <h2 className="wt-serif">
-              CLAVIS<br />WINTER
-            </h2>
-            <p className="wt-body">성적을 만드는<br />겨울의 열쇠</p>
+      {/* ══ 3) 입시 개편 ══ */}
+      <section className="wt-sec wt-reform" id="reform">
+        <div className="wt-wrap">
+          <p className="wt-tag wt-tag-inv">2028학년도 대입 개편</p>
+          <h2 className="wt-h2 wt-inv">
+            2027년, 내신도 수능도<br />
+            <em>바뀌는 첫 겨울</em>
+          </h2>
+          <p className="wt-lead">검증된 길이 아직 없어, 불안이 전략을 흔드는 겨울입니다.</p>
+
+          <div className="wt-reforms">
+            {reforms.map((r, i) => (
+              <article className="wt-rcard wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={r.no}>
+                <span className="wt-rcard-no">{r.no}</span>
+                <p className="wt-rcard-title">
+                  {r.from && <s>{r.from}</s>}
+                  <b>{r.to}</b>
+                </p>
+                <p className="wt-rcard-desc">{r.desc}</p>
+              </article>
+            ))}
           </div>
-          {programs.map((p, i) => (
-            <div className="wt-prog wt-reveal" style={{ transitionDelay: `${i * 90}ms` }} key={p.en}>
-              <b className="wt-prog-en">{p.en}</b>
-              <p className="wt-prog-ko">{p.ko}</p>
-              <ul className="wt-prog-list">
-                {p.items.map((it) => (
-                  <li key={it}>{it}</li>
+        </div>
+      </section>
+
+      {/* ══ 브리지 ══ */}
+      <section className="wt-bridge">
+        <div className="wt-wrap">
+          <p className="wt-bridge-small wt-up">흔들리는 건 제도입니다</p>
+          <p className="wt-bridge-big wt-up">
+            다인교육 학생의 하루는<br />흔들리지 않았습니다
+          </p>
+        </div>
+      </section>
+
+      {/* ══ 4) WHY DAIN ══ */}
+      <section className="wt-sec wt-why" id="why">
+        <div className="wt-wrap">
+          <p className="wt-tag">WHY DAIN</p>
+          <h2 className="wt-h2">
+            흔들리지 않는 건,<br /><em>데이터입니다</em>
+          </h2>
+          <p className="wt-lead wt-dark">겨울 두 달, 성적이 오른 학생들의 공통 행동 패턴</p>
+
+          <div className="wt-stats">
+            {whyStats.map((s, i) => (
+              <div className="wt-stat wt-up" style={{ transitionDelay: `${i * 70}ms` }} key={s.label}>
+                <span className="wt-stat-label">
+                  {s.label.split("\n").map((l, j) => (
+                    <span key={j}>{l}<br /></span>
+                  ))}
+                </span>
+                <b className="wt-stat-value">
+                  <span className="wt-num" data-num={s.value}>0</span>
+                  <i>{s.unit}</i>
+                </b>
+              </div>
+            ))}
+          </div>
+          <p className="wt-note">※ 2026년 다인교육 동탄점 겨울 프로그램 재원생 기준</p>
+        </div>
+      </section>
+
+      {/* ══ 5) 합격 실적 · 후기 ══ */}
+      <section className="wt-sec wt-result" id="result">
+        <div className="wt-wrap">
+          <p className="wt-tag">성장 기록</p>
+          <h2 className="wt-h2">
+            겨울의 두 달은<br /><em>결과로 남습니다</em>
+          </h2>
+
+          <div className="wt-rbanner wt-up">
+            <span className="wt-rbanner-label">{resultBanner.label}</span>
+            <p className="wt-rbanner-main">
+              <b className="wt-num" data-num={resultBanner.percent}>0</b>
+              <i>%</i>
+              <span>{resultBanner.text}</span>
+            </p>
+          </div>
+
+          <div className="wt-stories" id="wtStories">
+            <div className="wt-stories-track">
+              {stories.map((s) => (
+                <article className="wt-story" key={s.who}>
+                  <b className="wt-story-title">
+                    {s.title.split("\n").map((l, i) => (
+                      <span key={i}>{l}<br /></span>
+                    ))}
+                  </b>
+                  <p className="wt-story-univ">{s.univ}</p>
+                  <p className="wt-story-body">{s.body}</p>
+                  <p className="wt-story-who">{s.who}</p>
+                </article>
+              ))}
+            </div>
+            <div className="wt-stories-ctrl">
+              <button className="wt-arrow" type="button" data-dir="prev" aria-label="이전">‹</button>
+              <button className="wt-arrow" type="button" data-dir="next" aria-label="다음">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 6) 학습 공간 ══ */}
+      <section className="wt-sec wt-space" id="space">
+        <div className="wt-wrap">
+          <p className="wt-tag wt-tag-inv">프리미엄 학습 공간</p>
+          <h2 className="wt-h2 wt-inv">
+            환경이 다르면,<br /><em>집중력도 다릅니다</em>
+          </h2>
+        </div>
+        <div className="wt-space-scroll" id="wtSpace">
+          <div className="wt-space-track">
+            {spaces.map((s) => (
+              <figure className="wt-space-card" key={s.name}>
+                <img src={s.img} alt={s.name} />
+                <figcaption>
+                  <b>{s.name}</b>
+                  <span>
+                    {s.tags.map((t) => (
+                      <i key={t}>{t}</i>
+                    ))}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 7) 관리 시스템 ══ */}
+      <section className="wt-sec wt-manage" id="system">
+        <div className="wt-wrap">
+          <p className="wt-tag">관리 시스템</p>
+          <h2 className="wt-h2">
+            생활부터 입시까지,<br /><em>하나로 관리합니다</em>
+          </h2>
+
+          <div className="wt-mtabs" id="wtManageTabs">
+            {manageTabs.map((t, i) => (
+              <button className={`wt-mtab${i === 0 ? " is-on" : ""}`} type="button" data-tab={t} key={t}>
+                {t}
+              </button>
+            ))}
+          </div>
+
+          {manageTabs.map((t, i) => (
+            <div className={`wt-mpanel${i === 0 ? " is-on" : ""}`} data-panel={t} key={t}>
+              <p className="wt-mpanel-lead">{manageGroups[t].lead}</p>
+              <div className="wt-mgrid">
+                {manageGroups[t].items.map((it) => (
+                  <div className="wt-mitem" key={it.no}>
+                    <span className="wt-mitem-no">{it.no}</span>
+                    <b className="wt-mitem-title">{it.title}</b>
+                    <ul>
+                      {it.lines.map((l) => (
+                        <li key={l}>{l}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-              <span className="wt-prog-arrow" aria-hidden="true">→</span>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ══ 6) 로드맵 ══ */}
-      <section className="wt-roadmap">
-        <div className="wt-wrap">
-          <div className="wt-roadmap-head wt-reveal">
-            <p className="wt-eyebrow">DAIN WINTER ROADMAP</p>
+      {/* ══ 8) 커리큘럼 + 하루 ══ */}
+      <section className="wt-sec wt-cur">
+        <div className="wt-wrap wt-cur-grid">
+          <div>
+            <p className="wt-tag">WINTER CURRICULUM</p>
             <h2 className="wt-h2">
-              한 학생의 겨울은<br />이렇게 설계됩니다.
+              과목별로, 학년별로<br /><em>필요한 준비는 다릅니다</em>
             </h2>
-          </div>
-          <div className="wt-road">
-            <span className="wt-road-start">START</span>
-            <div className="wt-road-track">
-              <span className="wt-road-line" aria-hidden="true" />
-              {roadmap.map((r, i) => (
-                <div className="wt-road-item wt-reveal" style={{ transitionDelay: `${i * 70}ms` }} key={r.step}>
-                  <span className="wt-road-step">{r.step}</span>
-                  <b className="wt-road-title">{r.title}</b>
-                  <span className="wt-road-dot" aria-hidden="true" />
-                  <img className="wt-road-img" src={r.img} alt={r.title} />
-                </div>
-              ))}
-            </div>
-            <span className="wt-road-end">NEW SEMESTER</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 7) 관리 시스템 + 커리큘럼 ══ */}
-      <section className="wt-mix" id="curriculum">
-        <div className="wt-mix-left">
-          <div className="wt-mix-inner">
-            <p className="wt-eyebrow wt-gold">MANAGEMENT SYSTEM</p>
-            <h2 className="wt-h2 wt-inv">
-              공부만 시키는 관리가 아니라,<br />공부가 이어지게 만드는 관리.
-            </h2>
-            <div className="wt-manage-grid">
-              <ol className="wt-manage-list" id="wtManage">
-                {manageItems.map((m, i) => (
-                  <li className={i === 0 ? "is-on" : ""} key={m}>
-                    <span className="wt-manage-no">{String(i + 1).padStart(2, "0")}</span>
-                    {m}
-                  </li>
-                ))}
-              </ol>
-              <img className="wt-manage-img" src="/winter/manage.png" alt="관리 시스템" />
-              <p className="wt-manage-desc">
-                등원부터 하원까지<br />
-                학습 루틴을 관리하여<br />
-                규칙적인 학습 습관을<br />
-                만들어갑니다.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="wt-mix-right">
-          <div className="wt-mix-inner">
-            <p className="wt-eyebrow">WINTER CURRICULUM</p>
-            <h2 className="wt-h2">
-              과목별로, 학년별로,<br />필요한 준비는 다릅니다.
-            </h2>
-            <div className="wt-cur-tabs" id="wtCurTabs">
+            <div className="wt-ctabs" id="wtCurTabs">
               {curriculumTabs.map((t, i) => (
-                <button className={`wt-cur-tab${i === 1 ? " is-on" : ""}`} type="button" data-subject={t} key={t}>
+                <button className={`wt-ctab${i === 1 ? " is-on" : ""}`} type="button" data-subject={t} key={t}>
                   {t}
                 </button>
               ))}
             </div>
             {curriculumTabs.map((t) => (
-              <div
-                className={`wt-cur-panel${t === "수학" ? " is-on" : ""}`}
-                data-panel={t}
-                key={t}
-              >
-                <p className="wt-cur-en">
-                  {curriculum[t].en}
-                  <span className="wt-cur-flow">{curriculum[t].flow.join(" → ")}</span>
+              <div className={`wt-cpanel${t === "수학" ? " is-on" : ""}`} data-panel={t} key={t}>
+                <p className="wt-cflow">
+                  <b>{curriculum[t].en}</b>
+                  <span>{curriculum[t].flow.join(" → ")}</span>
                 </p>
-                <div className="wt-cur-grid">
+                <div className="wt-cgrid">
                   {curriculum[t].grades.map((g) => (
-                    <div className="wt-cur-card" key={g.grade}>
-                      <b className="wt-cur-grade">{g.grade}</b>
+                    <div className="wt-ccard" key={g.grade}>
+                      <b>{g.grade}</b>
                       <ul>
                         {g.items.map((it) => (
                           <li key={it}>{it}</li>
@@ -264,138 +336,113 @@ export default function WinterPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ══ 8) 하루 · 공간 · WHY ══ */}
-      <section className="wt-trio" id="space">
-        <div className="wt-wrap wt-trio-grid">
-          <div className="wt-day wt-reveal">
-            <p className="wt-eyebrow">A DAY AT DAIN</p>
-            <h3 className="wt-h3">
-              몰입은 의지가 아니라<br />루틴에서 만들어집니다.
-            </h3>
-            <div className="wt-day-body">
-              <ul className="wt-time">
-                {timetable.map((t) => (
-                  <li key={t.time}>
-                    <span className="wt-time-h">{t.time}</span>
-                    <span className="wt-time-w">{t.what}</span>
-                  </li>
-                ))}
-              </ul>
-              <img className="wt-day-img" src="/winter/day.png" alt="하루 일과" />
-            </div>
-          </div>
-
-          <div className="wt-space wt-reveal">
-            <p className="wt-eyebrow">SPACE FOR FOCUS</p>
-            <h3 className="wt-h3">공부에 필요한 것만<br />남긴 공간.</h3>
-            <p className="wt-body wt-sm">
-              수업부터 상담, 자기주도학습까지.<br />
-              학생의 하루가 하나의 공간 안에서 자연스럽게 이어집니다.
-            </p>
-            <div className="wt-space-grid">
-              {spaces.map((s) => (
-                <figure className={`wt-space-item${s.big ? " is-big" : ""}`} key={s.name}>
-                  <img src={s.img} alt={s.name} />
-                  <figcaption>{s.name}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-
-          <div className="wt-why wt-reveal">
-            <p className="wt-eyebrow">WHY DAIN</p>
-            <h3 className="wt-h3">
-              학생 한 명의 변화까지<br />놓치지 않는 교육.
-            </h3>
-            <ol className="wt-why-list">
-              {whyDain.map((w) => (
-                <li key={w.no}>
-                  <span className="wt-why-no">{w.no}</span>
-                  {w.text}
+          <aside className="wt-day">
+            <p className="wt-tag">A DAY</p>
+            <h3 className="wt-h3">몰입은 의지가 아니라<br />루틴에서 만들어집니다</h3>
+            <ul className="wt-time">
+              {timetable.map((t) => (
+                <li key={t.time}>
+                  <span>{t.time}</span>
+                  <b>{t.what}</b>
                 </li>
               ))}
-            </ol>
-          </div>
+            </ul>
+          </aside>
         </div>
       </section>
 
-      {/* ══ 9) 모집 안내 + FAQ ══ */}
-      <section className="wt-admission" id="admission">
-        <div className="wt-wrap wt-adm-grid">
-          <div className="wt-adm-left">
-            <p className="wt-eyebrow wt-gold">2027 WINTER SCHOOL</p>
-            <h2 className="wt-h2 wt-inv">2027 윈터스쿨<br />모집 안내</h2>
+      {/* ══ 9) 장학 ══ */}
+      <section className="wt-sec wt-scholar">
+        <div className="wt-wrap">
+          <p className="wt-tag wt-tag-inv">다인 장학</p>
+          <h2 className="wt-h2 wt-inv">
+            흔들리지 않을 이유를<br /><em>하나 더 드립니다</em>
+          </h2>
+          <div className="wt-scholar-grid">
+            {scholarship.map((s, i) => (
+              <div className="wt-scholar-item wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={s.label}>
+                <b>
+                  <span className="wt-num" data-num={s.value}>0</span>
+                  <i>{s.unit}</i>
+                </b>
+                <span>{s.label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="wt-note wt-note-inv">※ 장학 세부 기준은 상담 시 안내드립니다.</p>
+        </div>
+      </section>
+
+      {/* ══ 10) 모집 안내 + FAQ ══ */}
+      <section className="wt-sec wt-adm" id="admission">
+        <div className="wt-wrap">
+          <p className="wt-tag">모집 안내</p>
+          <h2 className="wt-h2">
+            2027 윈터스쿨<br /><em>선착순 모집</em>
+          </h2>
+
+          <div className="wt-adm-grid">
             <dl className="wt-adm-list">
               {admission.map((a) => (
-                <div className="wt-adm-row" key={a.label}>
-                  <dt>{a.label}</dt>
-                  <dd>{a.value}</dd>
+                <div key={a.k}>
+                  <dt>{a.k}</dt>
+                  <dd>{a.v}</dd>
                 </div>
               ))}
             </dl>
-          </div>
-          <div className="wt-adm-mid">
-            <p className="wt-eyebrow wt-gold">REGISTRATION PROCESS</p>
             <ol className="wt-process">
-              {process.map((p, i) => (
-                <li key={p}>
-                  <span className="wt-process-ico" aria-hidden="true">{i + 1}</span>
-                  <span className="wt-process-t">{p}</span>
+              {process.map((p) => (
+                <li key={p.no}>
+                  <span className="wt-process-no">{p.no}</span>
+                  <b>{p.t}</b>
                 </li>
               ))}
             </ol>
           </div>
-          <div className="wt-faq">
-            <p className="wt-eyebrow">FAQ</p>
-            <h3 className="wt-faq-title">
-              <b>WINTER SCHOOL</b> 자주 묻는 질문
-            </h3>
-            <div className="wt-faq-list" id="wtFaq">
-              {faqs.map((f, i) => (
-                <div className="wt-faq-item" key={i}>
-                  <button className="wt-faq-q" type="button">
-                    {f.q}
-                    <span className="wt-faq-mark" aria-hidden="true">+</span>
-                  </button>
-                  <div className="wt-faq-a">
-                    <p>{f.a}</p>
-                  </div>
+
+          <div className="wt-faq" id="wtFaq">
+            <h3 className="wt-faq-head">자주 묻는 질문</h3>
+            {faqs.map((f, i) => (
+              <div className="wt-faq-item" key={i}>
+                <button className="wt-faq-q" type="button">
+                  <span>{f.q}</span>
+                  <i aria-hidden="true">+</i>
+                </button>
+                <div className="wt-faq-a">
+                  <p>{f.a}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══ 10) 클로징 ══ */}
-      <section className="wt-closing">
-        <div className="wt-wrap wt-closing-grid">
-          <div>
-            <p className="wt-eyebrow wt-gold">2027 DAIN WINTER SCHOOL</p>
-            <h2 className="wt-h2 wt-inv">
-              이번 겨울이<br />다음 학년의 기준이 됩니다.
-            </h2>
+      {/* ══ 11) 클로징 ══ */}
+      <section className="wt-close">
+        <div className="wt-wrap">
+          <p className="wt-close-small">2028학년도 처음 열리는 입시</p>
+          <h2 className="wt-close-big">
+            흔들릴 시간 없이,<br /><em>이번 겨울 다인교육에서</em>
+          </h2>
+          <div className="wt-close-btns">
+            <a className="wt-btn wt-btn-primary" href={CONSULT}>입학 상담 신청</a>
+            <a className="wt-btn wt-btn-ghost" href="tel:03180030221">전화 문의 031-8003-0221</a>
           </div>
-          <div className="wt-closing-mid">
-            <p className="wt-closing-note">
-              2028 입시를 준비하는 가장 중요한 겨울,<br />
-              다인교육에서 시작하세요.
-            </p>
-            <p className="wt-closing-strong">
-              2027 WINTER SCHOOL<br />선착순 모집
-            </p>
-          </div>
-          <div className="wt-closing-btns">
-            <a className="wt-btn wt-btn-gold" href="/consult">입학 상담 신청</a>
-            <a className="wt-btn wt-btn-line" href="tel:03180030221">전화 문의 031-8003-0221</a>
-            <a className="wt-btn wt-btn-ghost" href={SEMINAR}>설명회 참석 예약</a>
-          </div>
+          <p className="wt-sign">DAIN EDUCATION</p>
         </div>
-        <p className="wt-sign">DAIN EDUCATION</p>
       </section>
+
+      {/* ══ 하단 고정 CTA ══ */}
+      <div className="wt-fixed" id="wtFixed">
+        <div className="wt-fixed-in">
+          <div className="wt-fixed-info">
+            <span><b>모집기간</b> 2026.10.01(목) ~ 선착순 마감</span>
+            <span><b>입학일</b> 각 학교 방학일로부터 2일 이내</span>
+          </div>
+          <a className="wt-fixed-btn" href={CONSULT}>선착순 예약하기</a>
+        </div>
+      </div>
 
       <Script id="winter-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: winterScript }} />
     </main>
