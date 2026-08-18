@@ -38,7 +38,8 @@ export default function AurumPage() {
       <section className="cv-main-bn" id="top">
         <div className="cv-wrap">
           <div className="cv-hero" id="cvHero">
-            <div className="cv-hero-track">
+            <div className="cv-hero-track cv-hero-track2">
+              <div className="cv-hero-strip">
               {heroSlides.map((s, i) => (
                 <a className="cv-hero-slide" href={s.href} key={i}>
                   <picture>
@@ -47,25 +48,16 @@ export default function AurumPage() {
                   </picture>
                 </a>
               ))}
+              </div>
             </div>
-            <div className="cv-hero-tabs" role="tablist">
-              {heroSlides.map((s, i) => (
-                <button
-                  className="cv-hero-tab"
-                  type="button"
-                  data-idx={i}
-                  key={i}
-                >
-                  {s.tab}
-                </button>
-              ))}
-              <span className="cv-hero-count">
-                <b className="cv-cur">1</b> / <span className="cv-tot">{heroSlides.length}</span>
+            <div className="dn-slider-ctrl">
+              <button className="dn-slider-btn" type="button" data-dir="prev" aria-label="이전 슬라이드">‹</button>
+              <button className="dn-slider-btn" type="button" data-dir="next" aria-label="다음 슬라이드">›</button>
+              <span className="dn-slider-count">
+                <b className="dn-cur">01</b>
+                <span className="dn-line"><i className="dn-line-fill" /></span>
+                <span className="dn-total">0{heroSlides.length}</span>
               </span>
-              <button className="cv-hero-play" type="button" aria-label="자동재생 정지">
-                <span className="cv-ico-pause">❚❚</span>
-                <span className="cv-ico-play">▶</span>
-              </button>
             </div>
           </div>
         </div>

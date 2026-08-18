@@ -866,19 +866,11 @@ img,video,svg{max-width:100%}
 /* ── 1) 메인 롤링 배너 ── */
 .cv-main-bn{padding:132px 0 18px;background:#fff}
 .cv-hero{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 18px 44px -22px rgba(16,25,46,.4);background:#EAEDFB}
-.cv-hero-track{position:relative;width:100%;aspect-ratio:1280/420}
-.cv-hero-slide{position:absolute;inset:0;display:block;opacity:0;visibility:hidden;transform:scale(1.04);transition:opacity .7s ease,transform 6s ease-out}
-.cv-hero-slide.is-active{opacity:1;visibility:visible;transform:scale(1)}
+.cv-hero-track{position:relative;width:100%;aspect-ratio:2262/770;overflow:hidden}
+.cv-hero-strip{display:flex;height:100%;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
+.cv-hero-slide{position:relative;flex:0 0 100%;height:100%;display:block;line-height:0}
 .cv-hero-slide picture{display:block;width:100%;height:100%}
 .cv-hero-slide img{width:100%;height:100%;object-fit:cover;display:block}
-.cv-hero-tabs{position:absolute;left:24px;right:24px;bottom:22px;z-index:4;display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);box-shadow:0 10px 26px -14px rgba(16,25,46,.5)}
-.cv-hero-tab{flex:1 1 0;min-width:0;padding:11px 10px;border:0;border-radius:999px;background:transparent;color:var(--dn-ink-soft);font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .25s ease,color .25s ease}
-.cv-hero-tab:hover{color:var(--dn-navy)}
-.cv-hero-tab.is-active{background:var(--dn-deep);color:#fff}
-.cv-hero-count{flex:0 0 auto;padding:0 10px;font-size:13px;font-weight:700;color:var(--dn-ink-soft);font-variant-numeric:tabular-nums}
-.cv-hero-count .cv-cur{color:var(--dn-navy)}
-.cv-hero-play,.cv-side-play{flex:0 0 auto;width:30px;height:30px;border:0;border-radius:50%;background:rgba(16,25,46,.1);color:var(--dn-navy);font-size:11px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-.cv-hero-play:hover,.cv-side-play:hover{background:var(--dn-navy);color:#fff}
 .cv-ico-play{display:none}
 .is-paused .cv-ico-pause{display:none}
 .is-paused .cv-ico-play{display:inline}
@@ -989,11 +981,7 @@ img,video,svg{max-width:100%}
   .cv-hero{border-radius:14px}
   .cv-hero-track{aspect-ratio:1/1}          /* 모바일: 정사각형 히어로 */
   .cv-hero-slide picture{display:block;width:100%;height:100%}
-  .cv-hero-tabs{left:10px;right:10px;bottom:10px;padding:4px;gap:2px;overflow-x:auto;scrollbar-width:none}
-  .cv-hero-tabs::-webkit-scrollbar{display:none}
-  .cv-hero-tab{flex:0 0 auto;font-size:12.5px;padding:9px 12px}
-  .cv-hero-count{display:none}
-  .cv-teacher-card{flex:0 0 calc((100% - 18px)/2)}
+        .cv-teacher-card{flex:0 0 calc((100% - 18px)/2)}
   .cv-board-grid{grid-template-columns:1fr;gap:34px}
   .cv-arrow{width:32px;height:32px;font-size:17px}
   .cv-arrow-prev{left:2px}
@@ -1647,4 +1635,25 @@ img,video,svg{max-width:100%}
 @media(max-width:560px){
   .sp-halls{grid-template-columns:1fr}
   .sp-video figcaption{left:14px;bottom:12px;font-size:13px}
+}
+
+/* ═══════ 33) 클라비스·아우룸 히어로 컨트롤 (메인 롤링창과 동일) ═══════ */
+.cv-hero .dn-slider-ctrl{position:absolute;left:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,26px);
+  z-index:5;display:flex;align-items:center;gap:10px}
+.cv-hero .dn-slider-btn{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;
+  background:rgba(16,25,46,.82);color:#fff;font-size:20px;line-height:1;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease,transform .2s ease}
+.cv-hero .dn-slider-btn:hover{background:var(--dn-navy);transform:translateY(-1px)}
+.cv-hero .dn-slider-count{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:999px;
+  background:rgba(255,255,255,.9);font-size:13px;font-weight:700;color:var(--dn-ink-soft)}
+.cv-hero .dn-slider-count .dn-cur{color:var(--dn-navy)}
+.cv-hero .dn-slider-count .dn-line{position:relative;width:64px;height:3px;border-radius:2px;
+  background:rgba(16,25,46,.18);overflow:hidden}
+.cv-hero .dn-slider-count .dn-line-fill{position:absolute;left:0;top:0;bottom:0;width:50%;
+  background:var(--dn-navy);border-radius:2px;transition:width .4s ease}
+@media(max-width:900px){
+  .cv-hero .dn-slider-ctrl{left:12px;bottom:12px;gap:7px}
+  .cv-hero .dn-slider-btn{width:32px;height:32px;font-size:16px}
+  .cv-hero .dn-slider-count{padding:5px 10px;font-size:11.5px}
+  .cv-hero .dn-slider-count .dn-line{width:40px}
 }

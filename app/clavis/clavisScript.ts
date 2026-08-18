@@ -116,8 +116,34 @@ function trackSlider(opt){
   return { reset:function(){ pos=0; apply(); } };
 }
 
-/* ═══════ 1) 메인 롤링 배너 ═══════ */
-fadeSlider({ id:"cvHero", slide:".cv-hero-slide", tabSel:".cv-hero-tab", playSel:".cv-hero-play", delay:5000 });
+/* ═══════ 1) 메인 롤링 배너 (가로 슬라이드 + 좌우 버튼 + 진행바) ═══════ */
+(function(){
+  var root=document.getElementById("cvHero"); if(!root) return;
+  var strip=root.querySelector(".cv-hero-strip"); if(!strip) return;
+  var slides=strip.querySelectorAll(".cv-hero-slide");
+  var n=slides.length; if(!n) return;
+  var cur=root.querySelector(".dn-cur");
+  var tot=root.querySelector(".dn-total");
+  var fill=root.querySelector(".dn-line-fill");
+  var i=0, timer=null;
+  function pad(x){ return ("0"+x).slice(-2); }
+  if(tot) tot.textContent=pad(n);
+  function go(idx){
+    i=(idx+n)%n;
+    strip.style.transform="translateX("+(-i*100)+"%)";
+    if(cur) cur.textContent=pad(i+1);
+    if(fill) fill.style.width=((i+1)/n*100)+"%";
+  }
+  function restart(){ if(timer) clearInterval(timer); timer=setInterval(function(){ go(i+1); },4500); }
+  root.addEventListener("click",function(e){
+    var b=e.target.closest?e.target.closest(".dn-slider-btn"):null;
+    if(!b) return;
+    e.preventDefault();
+    go(i+(b.getAttribute("data-dir")==="next"?1:-1));
+    restart();
+  });
+  go(0); restart();
+})();
 
 /* ═══════ 3) 선생님 (과목 탭 + 슬라이드) ═══════ */
 var teacher=trackSlider({ id:"cvTeacher", track:".cv-teacher-track" });
