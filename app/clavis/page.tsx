@@ -12,6 +12,9 @@ import {
   sideBanners,
 } from "./clavisData";
 
+/** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
+const SHOW_BODY = false;
+
 export const metadata: Metadata = {
   title: "고등 클라비스 — 다인교육 동탄점",
   description: "명문대 합격의 열쇠, 핵심 커리큘럼. 다인교육 동탄점 고등 클라비스.",
@@ -49,13 +52,15 @@ export default function ClavisPage() {
             </div>
           </li>
           <li className="dn-gnb-item">
-            <a href="#teachers">강사진 소개</a>
+            <a href="/teachers">강사진 소개</a>
+            {/* 세부 카테고리 숨김 (필요 시 주석 해제)
             <div className="dn-gnb-sub">
-              <a href="#teachers">국어</a>
-              <a href="#teachers">수학</a>
-              <a href="#teachers">영어</a>
-              <a href="#teachers">탐구</a>
+              <a href="/teachers">국어</a>
+              <a href="/teachers">수학</a>
+              <a href="/teachers">영어</a>
+              <a href="/teachers">탐구</a>
             </div>
+            */}
           </li>
           <li className="dn-gnb-item">
             <a href="#notice">모집안내</a>
@@ -87,6 +92,9 @@ export default function ClavisPage() {
         </span>
       </nav>
 
+      {/* ══════════ 본문 임시 숨김 — 다시 보이려면 위쪽 SHOW_BODY 를 true 로 ══════════ */}
+      {SHOW_BODY && (
+        <>
       {/* ── 1) 메인 롤링 배너 ── */}
       <section className="cv-main-bn" id="top">
         <div className="cv-wrap">
@@ -263,6 +271,9 @@ export default function ClavisPage() {
           </div>
         </div>
       </section>
+
+        </>
+      )}
 
       {/* ── 푸터 ── */}
       <footer className="dn-footer">

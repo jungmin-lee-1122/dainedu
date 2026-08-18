@@ -16,13 +16,15 @@ export const landingMarkup = `
         </div>
       </li>
       <li class="dn-gnb-item">
-        <a href="#teachers">강사진 소개</a>
+        <a href="/teachers">강사진 소개</a>
+        <!-- 세부 카테고리 숨김: 필요 시 아래 주석을 풀어주세요
         <div class="dn-gnb-sub">
-          <a href="#teachers">국어</a>
-          <a href="#teachers">수학</a>
-          <a href="#teachers">영어</a>
-          <a href="#teachers">탐구</a>
+          <a href="/teachers">국어</a>
+          <a href="/teachers">수학</a>
+          <a href="/teachers">영어</a>
+          <a href="/teachers">탐구</a>
         </div>
+        -->
       </li>
       <li class="dn-gnb-item">
         <a href="#program">모집안내</a>

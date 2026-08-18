@@ -62,13 +62,15 @@ export default function WinterPage() {
             </div>
           </li>
           <li className="dn-gnb-item">
-            <a href="/clavis#teachers">강사진 소개</a>
+            <a href="/teachers">강사진 소개</a>
+            {/* 세부 카테고리 숨김 (필요 시 주석 해제)
             <div className="dn-gnb-sub">
-              <a href="/clavis#teachers">국어</a>
-              <a href="/clavis#teachers">수학</a>
-              <a href="/clavis#teachers">영어</a>
-              <a href="/clavis#teachers">탐구</a>
+              <a href="/teachers">국어</a>
+              <a href="/teachers">수학</a>
+              <a href="/teachers">영어</a>
+              <a href="/teachers">탐구</a>
             </div>
+            */}
           </li>
           <li className="dn-gnb-item">
             <a href="/clavis#notice">모집안내</a>
