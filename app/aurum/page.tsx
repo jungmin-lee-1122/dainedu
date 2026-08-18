@@ -10,7 +10,7 @@ import {
   teachers,
   notices,
   lectures,
-  reviews,
+  clips,
   sideBanners,
 } from "./aurumData";
 
@@ -172,16 +172,27 @@ export default function AurumPage() {
         <div className="cv-wrap cv-bottom-grid">
           <div className="cv-review">
             <div className="cv-sec-head">
-              <h2 className="cv-sec-title">성공수기</h2>
+              <h2 className="cv-sec-title">선생님 클립영상</h2>
               <div className="cv-dots" id="cvReviewDots" />
             </div>
             <div className="cv-review-slider" id="cvReview">
               <div className="cv-review-track">
-                {reviews.map((r, i) => (
-                  <a className="cv-review-card" href={r.href} key={i}>
-                    <img src={r.img} alt={r.alt} />
-                  </a>
-                ))}
+                {clips.map((c, i) => (
+                <div className="cv-review-card cv-clip" data-yt={c.id} key={i}>
+                  <button className="cv-clip-btn" type="button" aria-label={`${c.title} 재생`}>
+                    <img
+                      className="cv-clip-thumb"
+                      src={`https://i.ytimg.com/vi/${c.id}/hqdefault.jpg`}
+                      alt={c.title}
+                      loading="lazy"
+                    />
+                    <span className="cv-clip-play" aria-hidden="true">
+                      <svg viewBox="0 0 68 48"><path d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.2 0 34 0 34 0S12.8 0 7.5 1.7a8.6 8.6 0 0 0-6 6A89.5 89.5 0 0 0 0 24a89.5 89.5 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.8 48 34 48 34 48s21.2 0 26.5-1.7a8.6 8.6 0 0 0 6-6A89.5 89.5 0 0 0 68 24a89.5 89.5 0 0 0-1.5-16.3z" fill="#FF0000"/><path d="M27 34l18-10-18-10z" fill="#fff"/></svg>
+                    </span>
+                    <span className="cv-clip-title">{c.title}</span>
+                  </button>
+                </div>
+              ))}
               </div>
             </div>
           </div>

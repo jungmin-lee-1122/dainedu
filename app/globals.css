@@ -1654,3 +1654,23 @@ img,video,svg{max-width:100%}
   .cv-hero .dn-slider-count{padding:5px 10px;font-size:11.5px}
   .cv-hero .dn-slider-count .dn-line{width:40px}
 }
+
+/* ═══════ 34) 선생님 클립영상 (유튜브) ═══════ */
+.cv-clip{position:relative;background:#0E1526;border-radius:14px;overflow:hidden;line-height:0}
+.cv-clip-btn{display:block;width:100%;padding:0;border:0;background:transparent;cursor:pointer;position:relative;line-height:0}
+.cv-clip-thumb{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;
+  transition:transform .4s ease,filter .3s ease}
+.cv-clip-btn:hover .cv-clip-thumb{transform:scale(1.04);filter:brightness(.85)}
+.cv-clip-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:auto;
+  pointer-events:none;transition:transform .25s ease;filter:drop-shadow(0 6px 16px rgba(0,0,0,.5))}
+.cv-clip-play svg{width:100%;height:auto;display:block}
+.cv-clip-btn:hover .cv-clip-play{transform:translate(-50%,-50%) scale(1.1)}
+.cv-clip-title{position:absolute;left:0;right:0;bottom:0;padding:36px 16px 14px;text-align:left;
+  font-size:14px;font-weight:700;color:#fff;line-height:1.4;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(8,13,26,.88))}
+.cv-clip.is-playing{aspect-ratio:16/9}
+.cv-clip iframe{width:100%;height:100%;display:block;border:0}
+@media(max-width:900px){
+  .cv-clip-play{width:54px}
+  .cv-clip-title{font-size:13px;padding:30px 14px 12px}
+}

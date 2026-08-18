@@ -70,13 +70,10 @@ export const lectures = [
   },
 ];
 
-/** 5-1) 성공수기 */
-export const reviews = [
-  { img: "/aurum/review-1.png", href: "#", alt: "서울대 의예" },
-  { img: "/aurum/review-2.png", href: "#", alt: "연세대 치의예" },
-  { img: "/aurum/review-3.png", href: "#", alt: "고려대 의과" },
-  { img: "/aurum/review-4.png", href: "#", alt: "성균관대 의예" },
-  { img: "/aurum/review-5.png", href: "#", alt: "한양대 의예" },
+/** 5-1) 선생님 클립영상 (유튜브) — id 만 바꾸면 교체됩니다 */
+export const clips = [
+  { id: "pln4F-B_xq8", title: "선생님 클립영상 1" },
+  { id: "s-o0Oqeq3Uw", title: "선생님 클립영상 2" },
 ];
 
 /** 5-2) 우측 사이드 배너 */

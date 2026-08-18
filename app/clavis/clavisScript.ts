@@ -169,8 +169,27 @@ var teacher=trackSlider({ id:"cvTeacher", track:".cv-teacher-track" });
   if(tabs.length){ tabs[0].classList.add("is-active"); filter(tabs[0].getAttribute("data-subject")); }
 })();
 
-/* ═══════ 5-1) 성공수기 ═══════ */
+/* ═══════ 5-1) 선생님 클립영상 ═══════ */
 trackSlider({ id:"cvReview", track:".cv-review-track", dots:"cvReviewDots" });
+(function(){
+  var box=document.getElementById("cvReview"); if(!box) return;
+  box.addEventListener("click",function(e){
+    var btn=e.target.closest?e.target.closest(".cv-clip-btn"):null;
+    if(!btn) return;
+    var card=btn.closest(".cv-clip");
+    var id=card?card.getAttribute("data-yt"):null;
+    if(!id) return;
+    var f=document.createElement("iframe");
+    f.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0&playsinline=1";
+    f.title="선생님 클립영상";
+    f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    f.allowFullscreen=true;
+    f.setAttribute("frameborder","0");
+    card.innerHTML="";
+    card.appendChild(f);
+    card.classList.add("is-playing");
+  });
+})();
 
 /* ═══════ 5-2) 우측 사이드 배너 ═══════ */
 fadeSlider({ id:"cvSide", slide:".cv-side-slide", dots:"cvSideDots", playSel:".cv-side-play", delay:4000 });
