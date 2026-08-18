@@ -1144,7 +1144,7 @@ img,video,svg{max-width:100%}
 
 @keyframes wtIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
-.wt-snav{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+.wt-snav{position:relative;z-index:1;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
   border-bottom:1px solid #E8EBF1;transition:box-shadow .25s ease}
 .wt-snav.is-stuck{box-shadow:0 8px 24px -18px rgba(16,25,46,.6)}
 .wt-snav-in{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
@@ -1453,13 +1453,10 @@ img,video,svg{max-width:100%}
 .wt .wt-kvnav{position:sticky;top:calc(42px + var(--wt-navh,74px));z-index:65;margin-top:12px;
   border-radius:14px;transition:border-radius .25s ease,box-shadow .25s ease}
 .wt .wt-kvnav.is-stuck{border-radius:0 0 14px 14px;box-shadow:0 12px 28px -18px rgba(8,13,26,.75)}
-/* 섹션 내비는 탭바와 겹치지 않게 그 아래로 */
-.wt .wt-snav{top:calc(42px + var(--wt-navh,74px) + 62px)}
 /* 앵커 이동 시 고정 영역만큼 여백 확보 */
-.wt [id]{scroll-margin-top:calc(42px + var(--wt-navh,74px) + 74px)}
+.wt [id]{scroll-margin-top:calc(42px + var(--wt-navh,74px) + 78px)}
 @media(max-width:900px){
   .wt .wt-kvnav{position:sticky;top:var(--wt-navh,60px)}
-  .wt .wt-snav{top:calc(var(--wt-navh,60px) + 108px)}
   .wt [id]{scroll-margin-top:calc(var(--wt-navh,60px) + 120px)}
 }
 
