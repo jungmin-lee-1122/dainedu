@@ -10,7 +10,7 @@ export const landingMarkup = `
         <a href="#about">학원소개</a>
         <div class="dn-gnb-sub">
           <a href="#about">인사말</a>
-          <a href="#about">시설 안내</a>
+          <a href="/space">시설 안내</a>
           <a href="#about">오시는 길</a>
           <a href="#system">운영시스템</a>
         </div>

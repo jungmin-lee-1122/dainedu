@@ -1,6 +1,6 @@
 // 사전등록 전용 페이지 마크업
 import { quickMenuMarkup } from "../quickMenu";
-export const registerMarkup = `<main class="dn-body"><a class="dn-topbar" href="#register" aria-label="설명회 사전등록 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">9/19 SAT</span><h3 class="dn-topbar-title">설명회 사전등록</h3><span class="dn-topbar-desc">그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.</span></a><nav class="dn-nav" aria-label="주 메뉴"><a class="dn-nav-brand" href="/"><img src="/dain-logo.png" alt="다인교육 DAIN EDU" class="dn-nav-mark"/></a><ul class="dn-gnb"><li class="dn-gnb-item"><a href="#about">학원소개</a><div class="dn-gnb-sub"><a href="#about">인사말</a><a href="#about">시설 안내</a><a href="#about">오시는 길</a><a href="#system">운영시스템</a></div></li><li class="dn-gnb-item">
+export const registerMarkup = `<main class="dn-body"><a class="dn-topbar" href="#register" aria-label="설명회 사전등록 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">9/19 SAT</span><h3 class="dn-topbar-title">설명회 사전등록</h3><span class="dn-topbar-desc">그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.</span></a><nav class="dn-nav" aria-label="주 메뉴"><a class="dn-nav-brand" href="/"><img src="/dain-logo.png" alt="다인교육 DAIN EDU" class="dn-nav-mark"/></a><ul class="dn-gnb"><li class="dn-gnb-item"><a href="#about">학원소개</a><div class="dn-gnb-sub"><a href="#about">인사말</a><a href="/space">시설 안내</a><a href="#about">오시는 길</a><a href="#system">운영시스템</a></div></li><li class="dn-gnb-item">
         <a href="/teachers">강사진 소개</a>
         <!-- 세부 카테고리 숨김: 필요 시 아래 주석을 풀어주세요
         <div class="dn-gnb-sub">

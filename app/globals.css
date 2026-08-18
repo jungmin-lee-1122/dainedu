@@ -1586,10 +1586,12 @@ img,video,svg{max-width:100%}
 .sp-sub{margin:0;font-size:15px;line-height:1.8;color:var(--dn-ink-soft)}
 
 .sp-intro{padding:20px 0 70px}
-.sp-intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sp-intro-grid{display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
 .sp-video{position:relative;margin:0;border-radius:20px;overflow:hidden;line-height:0;background:#0E1526;
+  flex:0 0 auto;width:min(300px,42vw);
   box-shadow:0 20px 46px -26px rgba(16,25,46,.55)}
-.sp-video video{width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover}
+/* 세로형 영상: 222 x 397 비율, 잘리지 않게 전체 표시 */
+.sp-video video{width:100%;height:auto;display:block;aspect-ratio:222/397;object-fit:contain;background:#0E1526}
 .sp-video figcaption{position:absolute;left:20px;bottom:16px;padding:7px 16px;border-radius:999px;
   background:rgba(8,13,26,.72);backdrop-filter:blur(6px);
   font-size:14px;font-weight:800;color:#fff;letter-spacing:.02em}
@@ -1639,7 +1641,7 @@ img,video,svg{max-width:100%}
 @media(max-width:900px){
   .sp-hero{padding:34px 0 30px}
   .sp-wrap{padding:0 18px}
-  .sp-intro-grid{grid-template-columns:1fr}
+  .sp-video{width:min(260px,46vw)}
   .sp-layout,.sp-render{padding:56px 0}
 }
 @media(max-width:560px){
