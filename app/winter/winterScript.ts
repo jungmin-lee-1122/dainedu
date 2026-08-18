@@ -1,6 +1,29 @@
 // 2027 윈터스쿨 페이지 스크립트
-export const winterScript = String.raw`
+import { mobileMenuScript } from "../mobileMenu";
+export const winterScript = `
 (function(){
+
+/* ── 시계 · D-day ── */
+(function(){
+  var els=document.querySelectorAll(".js-clock");
+  if(els.length){
+    var p=function(x){return (x<10?"0":"")+x;};
+    var tick=function(){
+      var d=new Date(), t=p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());
+      for(var i=0;i<els.length;i++) els[i].textContent=t;
+    };
+    tick(); setInterval(tick,1000);
+  }
+  var num=document.getElementById("dnDdayNum");
+  if(num){
+    var cap=document.getElementById("dnDdayCap");
+    var S=new Date(2026,10,19); S.setHours(0,0,0,0);
+    var now=new Date(); now.setHours(0,0,0,0);
+    var d=Math.round((S-now)/86400000);
+    num.textContent = d>0 ? ("D-"+d) : (d===0?"D-DAY":("D+"+(-d)));
+    if(cap) cap.textContent=(S.getFullYear()+1)+"학년도 수능";
+  }
+})();
 
 /* ── 스크롤 등장 ── */
 (function(){
@@ -47,7 +70,7 @@ export const winterScript = String.raw`
 /* ── 섹션 내비 고정 + 현재 위치 표시 ── */
 (function(){
   var nav=document.getElementById("wtSnav"); if(!nav) return;
-  var hero=document.querySelector(".wt-hero");
+  var hero=document.querySelector(".wt-kv");
   var links=nav.querySelectorAll("a");
   function onScroll(){
     var y=window.scrollY||0;
@@ -154,10 +177,10 @@ export const winterScript = String.raw`
   }
 })();
 
-/* ── 하단 고정 CTA (히어로 지나면 등장) ── */
+/* ── 하단 고정 CTA (배너 지나면 등장) ── */
 (function(){
   var bar=document.getElementById("wtFixed"); if(!bar) return;
-  var hero=document.querySelector(".wt-hero");
+  var hero=document.querySelector(".wt-kv");
   function onScroll(){
     var y=window.scrollY||0;
     var h=hero?hero.offsetHeight*0.7:300;
@@ -168,4 +191,5 @@ export const winterScript = String.raw`
 })();
 
 })();
+${mobileMenuScript}
 `;

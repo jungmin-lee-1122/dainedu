@@ -33,40 +33,113 @@ export const metadata: Metadata = {
 export default function WinterPage() {
   return (
     <main className="wt">
-      {/* ══ 상단 바 ══ */}
-      <div className="wt-top">
-        <a className="wt-top-back" href="/">‹ 다인교육</a>
-        <span className="wt-top-title">2027 윈터스쿨</span>
-        <a className="wt-top-cta" href={CONSULT}>상담 신청</a>
+      {/* ══ 사이트 공통 헤더 ══ */}
+      <a className="dn-topbar" href="https://dain-edu.higgsfield.app/seminar" aria-label="설명회 사전등록 안내">
+        <span className="dn-topbar-mark">※</span>
+        <span className="dn-entry-badge">9/19 SAT</span>
+        <h3 className="dn-topbar-title">설명회 사전등록</h3>
+        <span className="dn-topbar-desc">
+          그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.
+        </span>
+      </a>
+      <nav className="dn-nav" aria-label="주 메뉴">
+        <a className="dn-nav-brand" href="/">
+          <img src="/dain-icon.png" alt="다인교육" className="dn-nav-icon" />
+          <span className="dn-nav-brandtext">
+            <b className="dn-nav-name">DAIN EDU</b>
+            <span className="dn-nav-line" />
+            <span className="dn-nav-clock js-clock">00:00:00</span>
+          </span>
+        </a>
+        <ul className="dn-gnb">
+          <li className="dn-gnb-item">
+            <a href="/#about">학원소개</a>
+            <div className="dn-gnb-sub">
+              <a href="/#about">인사말</a>
+              <a href="/#about">시설 안내</a>
+              <a href="/#about">오시는 길</a>
+              <a href="/#system">운영시스템</a>
+            </div>
+          </li>
+          <li className="dn-gnb-item">
+            <a href="/clavis#teachers">강사진 소개</a>
+            <div className="dn-gnb-sub">
+              <a href="/clavis#teachers">국어</a>
+              <a href="/clavis#teachers">수학</a>
+              <a href="/clavis#teachers">영어</a>
+              <a href="/clavis#teachers">탐구</a>
+            </div>
+          </li>
+          <li className="dn-gnb-item">
+            <a href="/clavis">모집안내</a>
+            <div className="dn-gnb-sub">
+              <a href="/clavis">고등 클라비스</a>
+              <a href="/aurum">N수 아우룸</a>
+              <a href="/winter">2027 윈터스쿨</a>
+            </div>
+          </li>
+          <li className="dn-gnb-item">
+            <a href="/#contents">콘텐츠</a>
+            <div className="dn-gnb-sub">
+              <a href="/#contents">영단어 데일리 테스트</a>
+              <a href="/#contents">빈칸·순서·삽입 데일리 훈련</a>
+              <a href="/#contents">학과 적성 찾기</a>
+            </div>
+          </li>
+          <li className="dn-gnb-item">
+            <a href="/#life">학원생활</a>
+            <div className="dn-gnb-sub">
+              <a href="/#life">하루 일과</a>
+              <a href="/#life">급식·편의</a>
+              <a href="/consult">상담 문의</a>
+            </div>
+          </li>
+        </ul>
+        <span className="dn-navcta dn-dday" aria-label="수능 디데이">
+          <span className="cta-label" id="dnDdayCap">수능</span>
+          <span className="cta-badge" id="dnDdayNum">D-…</span>
+        </span>
+      </nav>
+
+      {/* ══ 페이지 타이틀 · 경로 ══ */}
+      <div className="wt-head" id="top">
+        <div className="wt-wrap wt-head-in">
+          <h1 className="wt-head-title">2027 윈터스쿨</h1>
+          <nav className="wt-crumb" aria-label="현재 위치">
+            <a href="/">홈</a>
+            <i aria-hidden="true">›</i>
+            <a href="/clavis">고등 클라비스</a>
+            <i aria-hidden="true">›</i>
+            <span>2027 윈터스쿨</span>
+          </nav>
+        </div>
       </div>
 
-      {/* ══ 1) 히어로 ══ */}
-      <section className="wt-hero" id="top">
-        <img className="wt-hero-bg" src="/winter/hero.png" alt="" aria-hidden="true" />
-        <span className="wt-hero-glow" aria-hidden="true" />
-        <div className="wt-hero-in">
-          <p className="wt-hero-eyebrow">{hero.eyebrow}</p>
-          <h1 className="wt-hero-title">
-            {hero.title[0]}
-            <br />
-            <em>{hero.title[1]}</em>
-          </h1>
-          <p className="wt-hero-sub">{hero.sub}</p>
-          <div className="wt-hero-chips">
-            {hero.chips.map((c) => (
-              <span className="wt-chip" key={c}>{c}</span>
-            ))}
+      {/* ══ 1) 키비주얼 배너 + 세부 탭 ══ */}
+      <section className="wt-kv">
+        <div className="wt-wrap">
+          <div className="wt-kv-box">
+            <img className="wt-kv-img" src="/winter/kv.png" alt="2027 다인교육 윈터스쿨" />
+            <div className="wt-kv-in">
+              <p className="wt-kv-eyebrow">{hero.eyebrow}</p>
+              <p className="wt-kv-title">
+                {hero.title[0]}<br />
+                <em>{hero.title[1]}</em>
+              </p>
+              <p className="wt-kv-sub">{hero.sub}</p>
+              <div className="wt-kv-chips">
+                {hero.chips.map((c) => (
+                  <span className="wt-chip" key={c}>{c}</span>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="wt-hero-btns">
-            <a className="wt-btn wt-btn-primary" href="#admission">선착순 모집 안내</a>
-            <a className="wt-btn wt-btn-ghost" href={CONSULT}>입학 상담 신청</a>
-          </div>
-        </div>
-        <div className="wt-hero-marquee" aria-hidden="true">
-          <div className="wt-marquee-row">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <span key={i}>2027 WINTER SCHOOL <i>·</i> DAIN EDUCATION <i>·</i></span>
+
+          <div className="wt-kvnav">
+            {sectionNav.slice(0, 4).map((s) => (
+              <a href={s.href} key={s.href}>{s.label}</a>
             ))}
+            <a className="wt-kvnav-cta" href={CONSULT}>접수하기</a>
           </div>
         </div>
       </section>
