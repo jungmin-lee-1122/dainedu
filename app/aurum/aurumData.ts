@@ -6,11 +6,18 @@
 
 /** 1) 메인 롤링 배너 (탭 + 자동재생) */
 export const heroSlides = [
-  { tab: "재수종합반", img: "/aurum/hero-1.png", href: "#", alt: "재수종합반" },
-  { tab: "독학재수관", img: "/aurum/hero-2.png", href: "#", alt: "독학재수관" },
-  { tab: "2027 윈터스쿨", img: "/aurum/hero-3.png", href: "#", alt: "2027 윈터스쿨" },
-  { tab: "의약학 집중반", img: "/aurum/hero-4.png", href: "#", alt: "의약학 집중반" },
-  { tab: "총 1억 장학금", img: "/aurum/hero-5.png", href: "#", alt: "총 1억 장학금" },
+  {
+    tab: "2027 특별 입시설명회",
+    img: "/aurum/hero-1.png",
+    href: "https://dain-edu.higgsfield.app/seminar",
+    alt: "2027 입시설명회 — 2026.09.20(일) 14:00 롯데백화점 동탄점 7F 수퍼플렉스관",
+  },
+  {
+    tab: "독학재수반 모집",
+    img: "/aurum/hero-2.png",
+    href: "/consult",
+    alt: "독학재수반 오픈 한정 혜택",
+  },
 ];
 
 /** 3) 선생님 (과목 탭 + 카드 슬라이더) */
