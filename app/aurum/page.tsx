@@ -15,7 +15,7 @@ import {
 } from "./aurumData";
 
 /** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
-const SHOW_BODY = false;
+const SHOW_BODY = true;
 
 export const metadata: Metadata = {
   title: "N수 아우룸 — 다인교육 동탄점",
@@ -25,25 +25,8 @@ export const metadata: Metadata = {
 export default function AurumPage() {
   return (
     <main className="dn-body cv-page">
-      <SiteHeader />
+      <SiteHeader current="aurum" />
 
-      {/* ── 학년 전환 스위치 ── */}
-      <section className="dn-grade-sec">
-        <div className="dn-wrap dn-grade-in">
-          <span className="dn-grade-label">과정 선택</span>
-          <div className="dn-grade" role="tablist" aria-label="과정 전환">
-            <span className="dn-grade-thumb" data-pos="right" aria-hidden="true" />
-            <a className="dn-grade-btn" href="/clavis" role="tab" aria-selected={false}>
-              <b>고등</b>
-              <i>클라비스</i>
-            </a>
-            <a className="dn-grade-btn is-on" href="/aurum" role="tab" aria-selected={true}>
-              <b>N수</b>
-              <i>아우룸</i>
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* ══════════ 본문 임시 숨김 — 다시 보이려면 위쪽 SHOW_BODY 를 true 로 ══════════ */}
       {SHOW_BODY && (

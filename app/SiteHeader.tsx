@@ -5,7 +5,8 @@
 // ═══════════════════════════════════════════════════════════
 const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
-export default function SiteHeader() {
+/** current: 로고 옆 과정 토글에서 현재 켜둘 값 ("clavis" | "aurum" | none) */
+export default function SiteHeader({ current }: { current?: "clavis" | "aurum" }) {
   return (
     <>
       <a className="dn-topbar" href={SEMINAR} aria-label="설명회 사전등록 안내">
@@ -26,6 +27,27 @@ export default function SiteHeader() {
             <span className="dn-nav-clock js-clock">00:00:00</span>
           </span>
         </a>
+
+        {current && (
+          <div className="dn-gtoggle" role="tablist" aria-label="과정 전환">
+            <a
+              className={`dn-gtoggle-btn${current === "aurum" ? " is-on" : ""}`}
+              href="/aurum"
+              role="tab"
+              aria-selected={current === "aurum"}
+            >
+              N수
+            </a>
+            <a
+              className={`dn-gtoggle-btn${current === "clavis" ? " is-on" : ""}`}
+              href="/clavis"
+              role="tab"
+              aria-selected={current === "clavis"}
+            >
+              고등
+            </a>
+          </div>
+        )}
 
         <ul className="dn-gnb">
           <li className="dn-gnb-item">

@@ -1548,31 +1548,19 @@ img,video,svg{max-width:100%}
   .tc-lineup-in{flex-direction:column;align-items:flex-start}
 }
 
-/* ═══════ 31) 과정(학년) 전환 스위치 — 고등 클라비스 ↔ N수 아우룸 ═══════ */
-.dn-grade-sec{padding:112px 0 8px;background:#fff}
-.dn-grade-in{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.dn-grade-label{font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--dn-gold)}
-.dn-grade{position:relative;display:inline-flex;padding:6px;border-radius:999px;
-  background:var(--dn-cream);border:1px solid var(--dn-line);
-  box-shadow:inset 0 1px 3px rgba(16,25,46,.06)}
-.dn-grade-thumb{position:absolute;top:6px;bottom:6px;width:calc(50% - 6px);border-radius:999px;
-  background:linear-gradient(150deg,#2E4470,var(--dn-navy) 55%,#182742);
-  box-shadow:0 8px 20px -10px rgba(16,25,46,.7);
-  transition:transform .32s cubic-bezier(.22,.7,.3,1)}
-.dn-grade-thumb[data-pos="left"]{left:6px;transform:translateX(0)}
-.dn-grade-thumb[data-pos="right"]{left:6px;transform:translateX(100%)}
-.dn-grade-btn{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2px;
-  min-width:120px;padding:11px 26px;border-radius:999px;text-decoration:none;
-  color:var(--dn-ink-soft);transition:color .28s ease}
-.dn-grade-btn b{font-size:16px;font-weight:800;letter-spacing:-.02em}
-.dn-grade-btn i{font-style:normal;font-size:11.5px;font-weight:600;opacity:.75}
-.dn-grade-btn:hover{color:var(--dn-navy)}
-.dn-grade-btn.is-on{color:#fff}
-.dn-grade-btn.is-on i{color:var(--dn-gold-soft);opacity:1}
-@media(max-width:900px){
-  .dn-grade-sec{padding:16px 0 6px}
-  .dn-grade-in{gap:12px}
-  .dn-grade{width:100%}
-  .dn-grade-btn{flex:1 1 0;min-width:0;padding:10px 12px}
-  .dn-grade-btn b{font-size:15px}
+/* ═══════ 31) 로고 옆 과정 토글 (N수 / 고등) ═══════ */
+.dn-gtoggle{display:inline-flex;flex:0 0 auto;gap:2px;margin-left:12px;padding:3px;
+  border-radius:10px;background:rgba(16,25,46,.06)}
+.dn-gtoggle-btn{padding:6px 14px;border-radius:8px;font-size:13px;font-weight:700;
+  color:var(--dn-ink-soft);text-decoration:none;letter-spacing:-.01em;
+  transition:background .22s ease,color .22s ease,box-shadow .22s ease}
+.dn-gtoggle-btn:hover{color:var(--dn-navy)}
+.dn-gtoggle-btn.is-on{background:var(--dn-navy);color:#fff;
+  box-shadow:0 4px 12px -6px rgba(16,25,46,.7)}
+@media(max-width:1000px){
+  .dn-gtoggle{margin-left:8px;padding:2px}
+  .dn-gtoggle-btn{padding:6px 11px;font-size:12px}
+}
+@media(max-width:420px){
+  .dn-gtoggle-btn{padding:5px 9px;font-size:11.5px}
 }
