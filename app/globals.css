@@ -842,7 +842,7 @@ img,video,svg{max-width:100%}
   .dn-foot-tel{font-size:21px !important}
 }
 /* ═══════════════════════════════════════════════════════════
-   24) 고등 클라비스 세부 페이지 (/clavis)
+   24) 포르타·클라비스 세부 페이지 (/porta, /clavis)
    ═══════════════════════════════════════════════════════════ */
 .cv-page{background:#fff}
 .cv-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
@@ -969,7 +969,7 @@ img,video,svg{max-width:100%}
 .cv-side-ctrl .cv-dot.is-active{background:var(--dn-navy)}
 .cv-side-play{margin-left:auto;background:rgba(255,255,255,.85)}
 
-/* ── 클라비스 반응형 ── */
+/* ── 포르타·클라비스 반응형 ── */
 @media(max-width:1000px){
   .cv-teacher-card{flex:0 0 calc((100% - 36px)/3)}
   .cv-bottom-grid{grid-template-columns:1fr;gap:34px}
@@ -1634,7 +1634,7 @@ img,video,svg{max-width:100%}
   .sp-video figcaption{left:14px;bottom:12px;font-size:13px}
 }
 
-/* ═══════ 33) 클라비스·아우룸 히어로 컨트롤 (메인 롤링창과 동일) ═══════ */
+/* ═══════ 33) 포르타·클라비스 히어로 컨트롤 (메인 롤링창과 동일) ═══════ */
 .cv-hero .dn-slider-ctrl{position:absolute;left:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,26px);
   z-index:5;display:flex;align-items:center;gap:10px}
 .cv-hero .dn-slider-btn{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;
@@ -1681,3 +1681,9 @@ img,video,svg{max-width:100%}
 @media(max-width:900px){
   .cv-anchor{scroll-margin-top:110px}
 }
+
+/* ═══════ 36) 홀 카드 제목 구분선 (포르타 │ 고등전문관) ═══════ */
+.dn-hall-div{display:inline-block;width:2px;height:.78em;margin:0 14px;vertical-align:-.03em;
+  background:var(--dn-line);border-radius:2px}
+@media(max-width:900px){ .dn-hall-div{margin:0 10px} }
+@media(max-width:520px){ .dn-hall-div{margin:0 8px} }

@@ -45,10 +45,10 @@ export const landingMarkup = `
         </div>
       </li>
       <li class="dn-gnb-item">
-        <a href="/clavis#notice">학원생활</a>
+        <a href="/porta#notice">학원생활</a>
         <div class="dn-gnb-sub">
-          <a href="/clavis#notice">공지사항</a>
-          <a href="/clavis#event">이벤트/설명회</a>
+          <a href="/porta#notice">공지사항</a>
+          <a href="/porta#event">이벤트/설명회</a>
           <a href="/consult">상담문의</a>
         </div>
       </li>
@@ -81,21 +81,21 @@ export const landingMarkup = `
     <section class="dn-halls">
       <div class="dn-wrap">
         <div class="dn-halls-grid">
-          <a class="dn-hall-card" href="/clavis">
+          <a class="dn-hall-card" href="/porta">
             <div class="dn-hall-text">
-              <span class="dn-hall-label">CLAVIS HIGH<span class="dn-hall-label-sub"> | 명문대 합격의 열쇠, 핵심 커리큘럼</span></span>
+              <span class="dn-hall-label">PORTA HIGH<span class="dn-hall-label-sub"> | 합격의 문을 짓는 3년의 설계를 담다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">고등 클라비스</h3>
+                <h3 class="dn-hall-title">포르타<span class="dn-hall-div" aria-hidden="true"></span>고등전문관</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
             <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="18" y="80" width="106" height="20" rx="4" fill="#24365A"/><rect x="18" y="80" width="14" height="20" rx="4" fill="#C0994F"/><rect x="26" y="57" width="98" height="20" rx="4" fill="#2E4470"/><rect x="26" y="57" width="14" height="20" rx="4" fill="#D9BE8C"/><rect x="12" y="34" width="102" height="20" rx="4" fill="#10192E"/><rect x="12" y="34" width="14" height="20" rx="4" fill="#C0994F"/><path d="M92 34 v24 l-7 -6 -7 6 v-24 z" fill="#C0994F"/></svg>
           </a>
-          <a class="dn-hall-card" href="/aurum">
+          <a class="dn-hall-card" href="/clavis">
             <div class="dn-hall-text">
-              <span class="dn-hall-label">AURUM RE-START<span class="dn-hall-label-sub"> | 빛나는 황금기를 여는 재도전 시스템</span></span>
+              <span class="dn-hall-label">CLAVIS RE-START<span class="dn-hall-label-sub"> | 빛나는 황금기를 여는 재도전 시스템</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">N수 아우룸</h3>
+                <h3 class="dn-hall-title">N수 클라비스</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>

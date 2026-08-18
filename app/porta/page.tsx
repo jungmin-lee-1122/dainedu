@@ -1,6 +1,6 @@
 import Script from "next/script";
 import type { Metadata } from "next";
-import { clavisScript } from "../clavis/clavisScript";
+import { portaScript } from "./portaScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
@@ -12,7 +12,7 @@ import {
   lectures,
   clips,
   sideBanners,
-} from "./aurumData";
+} from "./portaData";
 
 /** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
 const SHOW_BODY = true;
@@ -21,14 +21,14 @@ const SHOW_BODY = true;
 const SHOW_TEACHERS = false;
 
 export const metadata: Metadata = {
-  title: "N수 아우룸 — 다인교육 동탄점",
-  description: "빛나는 황금기를 여는 재도전 시스템. 다인교육 동탄점 N수 아우룸.",
+  title: "포르타 고등전문관 — 다인교육 동탄점",
+  description: "합격의 문을 짓는 3년의 설계를 담다. 다인교육 동탄점 포르타 고등전문관.",
 };
 
-export default function AurumPage() {
+export default function PortaPage() {
   return (
     <main className="dn-body cv-page">
-      <SiteHeader current="aurum" />
+      <SiteHeader current="porta" />
 
 
       {/* ══════════ 본문 임시 숨김 — 다시 보이려면 위쪽 SHOW_BODY 를 true 로 ══════════ */}
@@ -68,8 +68,8 @@ export default function AurumPage() {
         <div className="cv-wrap">
           <a className="cv-statsbn" href="https://dain-edu.higgsfield.app/seminar" aria-label="다인에듀 동탄점 09.21 그랜드 오픈">
             <picture>
-              <source media="(max-width:900px)" srcSet="/clavis/stats-banner-m.png" />
-              <img src="/clavis/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
+              <source media="(max-width:900px)" srcSet="/porta/stats-banner-m.png" />
+              <img src="/porta/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
             </picture>
             <span className="cv-statsbn-sheen" aria-hidden="true" />
           </a>
@@ -223,7 +223,7 @@ export default function AurumPage() {
 
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
-      <Script id="aurum-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: clavisScript }} />
+      <Script id="porta-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: portaScript }} />
     </main>
   );
 }

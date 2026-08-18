@@ -44,7 +44,7 @@ export default function WinterPage() {
           <nav className="wt-crumb" aria-label="현재 위치">
             <a href="/">홈</a>
             <i aria-hidden="true">›</i>
-            <a href="/clavis">고등 클라비스</a>
+            <a href="/porta">포르타 고등전문관</a>
             <i aria-hidden="true">›</i>
             <span>2027 윈터스쿨</span>
           </nav>

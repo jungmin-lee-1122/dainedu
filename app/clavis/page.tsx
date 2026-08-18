@@ -1,6 +1,6 @@
 import Script from "next/script";
 import type { Metadata } from "next";
-import { clavisScript } from "./clavisScript";
+import { portaScript } from "../porta/portaScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
@@ -21,8 +21,8 @@ const SHOW_BODY = true;
 const SHOW_TEACHERS = false;
 
 export const metadata: Metadata = {
-  title: "고등 클라비스 — 다인교육 동탄점",
-  description: "명문대 합격의 열쇠, 핵심 커리큘럼. 다인교육 동탄점 고등 클라비스.",
+  title: "N수 클라비스 — 다인교육 동탄점",
+  description: "빛나는 황금기를 여는 재도전 시스템. 다인교육 동탄점 N수 클라비스.",
 };
 
 export default function ClavisPage() {
@@ -223,7 +223,7 @@ export default function ClavisPage() {
 
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
-      <Script id="clavis-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: clavisScript }} />
+      <Script id="clavis-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: portaScript }} />
     </main>
   );
 }

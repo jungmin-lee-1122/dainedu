@@ -1,6 +1,6 @@
-// 고등 클라비스 페이지 스크립트 (슬라이더 엔진 + 시계 + D-day)
+// 포르타·클라비스 공용 페이지 스크립트 (슬라이더 엔진 + 시계 + D-day)
 import { mobileMenuScript } from "../mobileMenu";
-export const clavisScript = `
+export const portaScript = `
 (function(){
 
 /* ═══════ 공용: 페이드형 슬라이더 (메인 배너 / 사이드 배너) ═══════ */
