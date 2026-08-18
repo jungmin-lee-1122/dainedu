@@ -53,12 +53,12 @@ export default function WinterPage() {
         </a>
         <ul className="dn-gnb">
           <li className="dn-gnb-item">
-            <a href="/#about">학원소개</a>
+            <a href="/clavis#about">학원소개</a>
             <div className="dn-gnb-sub">
-              <a href="/#about">인사말</a>
-              <a href="/#about">시설 안내</a>
-              <a href="/#about">오시는 길</a>
-              <a href="/#system">운영시스템</a>
+              <a href="/clavis#about">인사말</a>
+              <a href="/clavis#about">시설 안내</a>
+              <a href="/clavis#about">오시는 길</a>
+              <a href="/clavis#system">운영시스템</a>
             </div>
           </li>
           <li className="dn-gnb-item">
@@ -71,27 +71,26 @@ export default function WinterPage() {
             </div>
           </li>
           <li className="dn-gnb-item">
-            <a href="/clavis">모집안내</a>
+            <a href="/clavis#notice">모집안내</a>
             <div className="dn-gnb-sub">
-              <a href="/clavis">고등 클라비스</a>
-              <a href="/aurum">N수 아우룸</a>
+              <a href="/clavis#notice">고등종합</a>
+              <a href="/clavis#notice">단과</a>
               <a href="/winter">2027 윈터스쿨</a>
             </div>
           </li>
           <li className="dn-gnb-item">
-            <a href="/#contents">콘텐츠</a>
+            <a href="/clavis#contents">콘텐츠</a>
             <div className="dn-gnb-sub">
-              <a href="/#contents">영단어 데일리 테스트</a>
-              <a href="/#contents">빈칸·순서·삽입 데일리 훈련</a>
-              <a href="/#contents">학과 적성 찾기</a>
+              <a href="/clavis#contents">영단어 데일리 테스트</a>
+              <a href="/clavis#contents">빈칸·순서·삽입 데일리 훈련</a>
+              <a href="/clavis#contents">학과 적성 찾기</a>
             </div>
           </li>
           <li className="dn-gnb-item">
-            <a href="/#life">학원생활</a>
+            <a href="/clavis#review">학원생활</a>
             <div className="dn-gnb-sub">
-              <a href="/#life">하루 일과</a>
-              <a href="/#life">급식·편의</a>
-              <a href="/consult">상담 문의</a>
+              <a href="/clavis#review">성공수기</a>
+              <a href="/clavis#review">상담 문의</a>
             </div>
           </li>
         </ul>
