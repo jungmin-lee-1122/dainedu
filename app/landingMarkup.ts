@@ -93,7 +93,7 @@ export const landingMarkup = `
           </a>
           <a class="dn-hall-card" href="/clavis">
             <div class="dn-hall-text">
-              <span class="dn-hall-label">CLAVIS RE-START<span class="dn-hall-label-sub"> | 빛나는 황금기를 여는 재도전 시스템</span></span>
+              <span class="dn-hall-label">CLAVIS RE-START<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
               <div class="dn-hall-title-row">
                 <h3 class="dn-hall-title">N수 클라비스</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
