@@ -190,6 +190,27 @@ export const winterScript = `
   window.addEventListener("scroll",onScroll,{passive:true});
 })();
 
+
+/* ── 고정 헤더 높이 측정 + 탭바 붙음 상태 ── */
+(function(){
+  var nav=document.querySelector(".dn-nav");
+  var kvnav=document.querySelector(".wt-kvnav");
+  var root=document.documentElement;
+  function measure(){
+    if(nav) root.style.setProperty("--wt-navh", nav.offsetHeight+"px");
+  }
+  function onScroll(){
+    if(!kvnav||!nav) return;
+    var navBottom=nav.getBoundingClientRect().bottom;
+    var kvTop=kvnav.getBoundingClientRect().top;
+    kvnav.classList.toggle("is-stuck", kvTop<=navBottom+1);
+  }
+  measure(); onScroll();
+  window.addEventListener("resize",function(){ measure(); onScroll(); });
+  window.addEventListener("scroll",onScroll,{passive:true});
+  window.addEventListener("load",measure);
+})();
+
 })();
 ${mobileMenuScript}
 `;

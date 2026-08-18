@@ -1459,3 +1459,18 @@ img,video,svg{max-width:100%}
   .wt-kvnav a{flex:1 1 40%;padding:14px 8px;font-size:13px}
   .wt-kvnav-cta{flex:1 1 100% !important;min-width:0}
 }
+
+/* ═══════ 27-c) 윈터: 헤더 + 세부 탭바 고정 ═══════ */
+/* dn-nav 는 fixed(top:42px). 그 바로 아래에 wt-kvnav 를 붙여 함께 고정 */
+.wt .wt-kvnav{position:sticky;top:calc(42px + var(--wt-navh,74px));z-index:65;margin-top:12px;
+  border-radius:14px;transition:border-radius .25s ease,box-shadow .25s ease}
+.wt .wt-kvnav.is-stuck{border-radius:0 0 14px 14px;box-shadow:0 12px 28px -18px rgba(8,13,26,.75)}
+/* 섹션 내비는 탭바와 겹치지 않게 그 아래로 */
+.wt .wt-snav{top:calc(42px + var(--wt-navh,74px) + 62px)}
+/* 앵커 이동 시 고정 영역만큼 여백 확보 */
+.wt [id]{scroll-margin-top:calc(42px + var(--wt-navh,74px) + 74px)}
+@media(max-width:900px){
+  .wt .wt-kvnav{position:sticky;top:var(--wt-navh,60px)}
+  .wt .wt-snav{top:calc(var(--wt-navh,60px) + 108px)}
+  .wt [id]{scroll-margin-top:calc(var(--wt-navh,60px) + 120px)}
+}
