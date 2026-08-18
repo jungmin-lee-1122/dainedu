@@ -95,7 +95,7 @@ export const landingMarkup = `
             <div class="dn-hall-text">
               <span class="dn-hall-label">CLAVIS RE-START<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">N수 클라비스</h3>
+                <h3 class="dn-hall-title">클라비스<span class="dn-hall-div" aria-hidden="true"></span>N수전문관</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>

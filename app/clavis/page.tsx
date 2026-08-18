@@ -21,8 +21,8 @@ const SHOW_BODY = true;
 const SHOW_TEACHERS = false;
 
 export const metadata: Metadata = {
-  title: "N수 클라비스 — 다인교육 동탄점",
-  description: "합격의 문을 열어낼 단 하나의 열쇠를 쥐다. 다인교육 동탄점 N수 클라비스.",
+  title: "클라비스 N수전문관 — 다인교육 동탄점",
+  description: "합격의 문을 열어낼 단 하나의 열쇠를 쥐다. 다인교육 동탄점 클라비스 N수전문관.",
 };
 
 export default function ClavisPage() {

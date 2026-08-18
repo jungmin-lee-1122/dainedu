@@ -7,7 +7,7 @@ const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
 /** current: 로고 옆 과정 토글에서 현재 켜둘 값
  *  "porta"  = 포르타 고등전문관 (/porta)
- *  "clavis" = N수 클라비스     (/clavis)
+ *  "clavis" = 클라비스 N수전문관 (/clavis)
  */
 export default function SiteHeader({ current }: { current?: "porta" | "clavis" }) {
   // 공지사항 / 이벤트·설명회는 현재 보고 있는 관(고등·N수)의 해당 섹션으로 이동합니다.
@@ -82,7 +82,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             <a href="/#program">모집안내</a>
             <div className="dn-gnb-sub">
               <a href="/porta">포르타 고등전문관</a>
-              <a href="/clavis">N수 클라비스</a>
+              <a href="/clavis">클라비스 N수전문관</a>
               <a href="/winter">2027 윈터스쿨</a>
             </div>
           </li>
