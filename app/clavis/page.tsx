@@ -17,6 +17,9 @@ import {
 /** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
 const SHOW_BODY = true;
 
+/** 선생님 섹션 표시 여부 — 임시로 숨김 */
+const SHOW_TEACHERS = false;
+
 export const metadata: Metadata = {
   title: "고등 클라비스 — 다인교육 동탄점",
   description: "명문대 합격의 열쇠, 핵심 커리큘럼. 다인교육 동탄점 고등 클라비스.",
@@ -81,7 +84,8 @@ export default function ClavisPage() {
         </div>
       </section>
 
-      {/* ── 3) 선생님 ── */}
+      {/* ── 3) 선생님 — 임시 숨김 (SHOW_TEACHERS 를 true 로 바꾸면 다시 나옵니다) ── */}
+      {SHOW_TEACHERS && (
       <section className="cv-teacher" id="teachers">
         <div className="cv-wrap">
           <div className="cv-sec-head">
@@ -120,6 +124,8 @@ export default function ClavisPage() {
           </div>
         </div>
       </section>
+
+      )}
 
       {/* ── 4) 공지사항 · 설명회 ── */}
       <section className="cv-board" id="notice">

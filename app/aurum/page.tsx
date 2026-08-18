@@ -17,6 +17,9 @@ import {
 /** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
 const SHOW_BODY = true;
 
+/** 선생님 섹션 표시 여부 — 임시로 숨김 */
+const SHOW_TEACHERS = false;
+
 export const metadata: Metadata = {
   title: "N수 아우룸 — 다인교육 동탄점",
   description: "빛나는 황금기를 여는 재도전 시스템. 다인교육 동탄점 N수 아우룸.",
@@ -81,7 +84,8 @@ export default function AurumPage() {
         </div>
       </section>
 
-      {/* ── 3) 선생님 ── */}
+      {/* ── 3) 선생님 — 임시 숨김 (SHOW_TEACHERS 를 true 로 바꾸면 다시 나옵니다) ── */}
+      {SHOW_TEACHERS && (
       <section className="cv-teacher" id="teachers">
         <div className="cv-wrap">
           <div className="cv-sec-head">
@@ -120,6 +124,8 @@ export default function AurumPage() {
           </div>
         </div>
       </section>
+
+      )}
 
       {/* ── 4) 공지사항 · 설명회 ── */}
       <section className="cv-board" id="notice">
