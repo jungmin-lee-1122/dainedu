@@ -1687,3 +1687,11 @@ img,video,svg{max-width:100%}
   background:var(--dn-line);border-radius:2px}
 @media(max-width:900px){ .dn-hall-div{margin:0 10px} }
 @media(max-width:520px){ .dn-hall-div{margin:0 8px} }
+
+/* ═══════ 37) 태블릿·PC 포스터 전체 노출 (잘림 방지) ═══════ */
+/* 포스터 칸의 가로세로 비율을 이미지와 똑같이 맞춰, 어느 화면에서도
+   포스터가 잘리지 않고 전체가 보이도록 합니다. (모바일은 기존 규칙 유지) */
+@media(min-width:901px){
+  .dn-poster{flex:0 0 auto;width:auto;height:100%;aspect-ratio:1285/1512;max-width:40%}
+  .dn-poster img{object-fit:contain}
+}

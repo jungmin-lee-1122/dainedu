@@ -72,7 +72,7 @@ export const landingMarkup = `
               <span class="dn-slider-count"><b class="dn-cur">01</b><span class="dn-line"><i class="dn-line-fill"></i></span><span class="dn-total">03</span></span>
             </div>
           </div>
-          <a class="dn-poster" href="https://dain-edu.higgsfield.app/seminar"><img src="/poster-dain2.png" alt="다인교육 그랜드 오픈 설명회 포스터"/></a>
+          <a class="dn-poster" href="https://dain-edu.higgsfield.app/seminar"><picture><source media="(max-width:900px)" srcset="/poster-dain3-m.png"/><img src="/poster-dain3.png" alt="다인교육 그랜드 오픈 설명회 — 2026.09.20(일) 14:00~16:00 롯데백화점 동탄점 7층 롯데시네마 수퍼플렉스관"/></picture></a>
         </div>
       </div>
     </section>
@@ -83,7 +83,7 @@ export const landingMarkup = `
         <div class="dn-halls-grid">
           <a class="dn-hall-card" href="/porta">
             <div class="dn-hall-text">
-              <span class="dn-hall-label">PORTA-H<span class="dn-hall-label-sub"> | 합격의 문을 짓는 3년의 설계를 담다</span></span>
+              <span class="dn-hall-label">PORTA H<span class="dn-hall-label-sub"> | 합격의 문을 짓는 3년의 설계를 담다</span></span>
               <div class="dn-hall-title-row">
                 <h3 class="dn-hall-title">포르타<span class="dn-hall-div" aria-hidden="true"></span>고등전문관</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
@@ -93,7 +93,7 @@ export const landingMarkup = `
           </a>
           <a class="dn-hall-card" href="/clavis">
             <div class="dn-hall-text">
-              <span class="dn-hall-label">CLAVIS-N<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
+              <span class="dn-hall-label">CLAVIS N<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
               <div class="dn-hall-title-row">
                 <h3 class="dn-hall-title">클라비스<span class="dn-hall-div" aria-hidden="true"></span>N수전문관</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
