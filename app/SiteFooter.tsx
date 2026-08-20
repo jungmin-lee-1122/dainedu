@@ -3,6 +3,18 @@
 //  모든 세부 페이지에서 <SiteFooter /> 로 불러 씁니다.
 //  회사 정보를 바꾸려면 이 파일만 수정하면 전체 페이지에 반영됩니다.
 // ═══════════════════════════════════════════════════════════
+
+/** SNS 주소 — 계정이 바뀌면 여기만 수정하면 됩니다. */
+export const SNS = {
+  kakao: "#",
+  youtube: "https://www.youtube.com/@dain-edu",
+  blog: "https://blog.naver.com/dainacademy_official",
+  instagram: "https://www.instagram.com/dainedu_dongtan",
+};
+
+/** 카카오톡 아이콘 표시 여부 — 채널이 열리면 true 로 바꾸세요. */
+export const SHOW_KAKAO = false;
+
 export default function SiteFooter() {
   return (
     <footer className="dn-footer">
@@ -64,20 +76,20 @@ export default function SiteFooter() {
         </div>
 
         <div className="dn-foot-sns">
-          <a href="#" className="dn-sns dn-sns-kakao" aria-label="카카오톡">
-            <img src="https://cdn.simpleicons.org/kakaotalk/391B1B" alt="카카오톡" />
-          </a>
-          <a href="#" className="dn-sns dn-sns-youtube" aria-label="유튜브">
+          {/* 카카오톡 숨김 — 채널 주소가 정해지면 아래 SHOW_KAKAO 를 true 로 바꾸세요 */}
+          {SHOW_KAKAO && (
+            <a href={SNS.kakao} className="dn-sns dn-sns-kakao" aria-label="카카오톡" target="_blank" rel="noopener noreferrer">
+              <img src="https://cdn.simpleicons.org/kakaotalk/391B1B" alt="카카오톡" />
+            </a>
+          )}
+          <a href={SNS.youtube} className="dn-sns dn-sns-youtube" aria-label="유튜브" target="_blank" rel="noopener noreferrer">
             <img src="https://cdn.simpleicons.org/youtube/white" alt="유튜브" />
           </a>
-          <a href="#" className="dn-sns dn-sns-naver" aria-label="네이버 블로그">
+          <a href={SNS.blog} className="dn-sns dn-sns-naver" aria-label="네이버 블로그" target="_blank" rel="noopener noreferrer">
             <img src="https://cdn.simpleicons.org/naver/white" alt="네이버 블로그" />
           </a>
-          <a href="#" className="dn-sns dn-sns-insta" aria-label="인스타그램">
+          <a href={SNS.instagram} className="dn-sns dn-sns-insta" aria-label="인스타그램" target="_blank" rel="noopener noreferrer">
             <img src="https://cdn.simpleicons.org/instagram/white" alt="인스타그램" />
-          </a>
-          <a href="#" className="dn-sns dn-sns-facebook" aria-label="페이스북">
-            <img src="https://cdn.simpleicons.org/facebook/white" alt="페이스북" />
           </a>
         </div>
       </div>

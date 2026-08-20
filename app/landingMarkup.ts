@@ -130,11 +130,12 @@ export const landingMarkup = `
         <p class="dn-foot-copy">Copyright © DAIN EDU. All Rights Reserved.</p>
       </div>
       <div class="dn-foot-sns">
-        <a href="#" class="dn-sns dn-sns-kakao" aria-label="카카오톡"><img src="https://cdn.simpleicons.org/kakaotalk/391B1B" alt="카카오톡"/></a>
-        <a href="#" class="dn-sns dn-sns-youtube" aria-label="유튜브"><img src="https://cdn.simpleicons.org/youtube/white" alt="유튜브"/></a>
-        <a href="#" class="dn-sns dn-sns-naver" aria-label="네이버 블로그"><img src="https://cdn.simpleicons.org/naver/white" alt="네이버 블로그"/></a>
-        <a href="#" class="dn-sns dn-sns-insta" aria-label="인스타그램"><img src="https://cdn.simpleicons.org/instagram/white" alt="인스타그램"/></a>
-        <a href="#" class="dn-sns dn-sns-facebook" aria-label="페이스북"><img src="https://cdn.simpleicons.org/facebook/white" alt="페이스북"/></a>
+        <!-- 카카오톡 숨김: 채널이 열리면 아래 한 줄의 주석만 풀고 주소를 넣어주세요
+        <a href="#" class="dn-sns dn-sns-kakao" aria-label="카카오톡" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/kakaotalk/391B1B" alt="카카오톡"/></a>
+        -->
+        <a href="https://www.youtube.com/@dain-edu" class="dn-sns dn-sns-youtube" aria-label="유튜브" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/youtube/white" alt="유튜브"/></a>
+        <a href="https://blog.naver.com/dainacademy_official" class="dn-sns dn-sns-naver" aria-label="네이버 블로그" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/naver/white" alt="네이버 블로그"/></a>
+        <a href="https://www.instagram.com/dainedu_dongtan" class="dn-sns dn-sns-insta" aria-label="인스타그램" target="_blank" rel="noopener noreferrer"><img src="https://cdn.simpleicons.org/instagram/white" alt="인스타그램"/></a>
       </div>
     </div>
   </footer>
