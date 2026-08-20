@@ -6,11 +6,18 @@
 
 /** 1) 메인 롤링 배너 (탭 + 자동재생) */
 export const heroSlides = [
-  { tab: "코스픽", img: "/porta/hero-1.png", href: "#", alt: "코스픽" },
-  { tab: "2027 파이널완성반", img: "/porta/hero-2.png", href: "#", alt: "2027 파이널완성반" },
-  { tab: "2027 윈터스쿨", img: "/porta/hero-3.png", href: "#", alt: "2027 윈터스쿨" },
-  { tab: "FAQ", img: "/porta/hero-4.png", href: "#", alt: "FAQ" },
-  { tab: "총 1억 장학금", img: "/porta/hero-5.png", href: "#", alt: "총 1억 장학금" },
+  {
+    tab: "2027 특별 입시설명회",
+    img: "/porta/hero-1.png",
+    href: "https://dain-edu.higgsfield.app/seminar",
+    alt: "2027 입시설명회 — 2026.09.20(일) 14:00 롯데백화점 동탄점 7F 수퍼플렉스관",
+  },
+  {
+    tab: "2027 윈터스쿨",
+    img: "/porta/hero-2.png",
+    href: "/winter",
+    alt: "2027 WINTER SCHOOL — 승부를 바꾸는 겨울, 시작부터 다르게",
+  },
 ];
 
 /** 2) 중간 프로모 배너 (여러 장 흐르는 슬라이더) */
