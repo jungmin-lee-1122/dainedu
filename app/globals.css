@@ -1934,6 +1934,10 @@ body.rv-lock{overflow:hidden}
 
 .rv{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
   padding:24px 16px}
+/* 닫혀 있을 때는 완전히 없앱니다.
+   (이 줄이 없으면 투명한 팝업이 화면을 덮어 클릭이 막힙니다) */
+.rv[hidden],
+.rv-panel[hidden]{display:none !important}
 .rv-dim{position:absolute;inset:0;background:rgba(10,16,30,.6);opacity:0;
   transition:opacity .26s ease;backdrop-filter:blur(2px)}
 .rv.is-open .rv-dim{opacity:1}
