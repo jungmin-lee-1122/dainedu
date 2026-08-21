@@ -100,7 +100,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             <a href={`${base}#notice`}>학원생활</a>
             <div className="dn-gnb-sub">
               <a href={`${base}#notice`}>공지사항</a>
-              <a href={`${base}#event`}>이벤트/설명회</a>
+              <a href="/event">이벤트/설명회</a>
               <a href="/consult">상담문의</a>
             </div>
           </li>

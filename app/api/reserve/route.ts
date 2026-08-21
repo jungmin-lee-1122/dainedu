@@ -1,0 +1,65 @@
+import { NextResponse } from "next/server";
+
+// 설명회 예약 접수 → 구글 시트 저장
+// 구글 Apps Script 웹 앱 URL을 환경변수 RESERVE_WEBHOOK_URL 에 넣어야 저장됩니다.
+export async function POST(request: Request) {
+  try {
+    const data = await request.json();
+
+    const eventTitle = String(data?.eventTitle || "").trim();
+    const who = String(data?.who || "").trim();
+    const name = String(data?.name || "").trim();
+    const phone = String(data?.phone || "").trim();
+    const school = String(data?.school || "").trim();
+    const grade = String(data?.grade || "").trim();
+    const track = String(data?.track || "").trim();
+    const companion = String(data?.companion || "").trim();
+    const source = String(data?.source || "").trim();
+
+    if (
+      !eventTitle ||
+      !who ||
+      !name ||
+      !school ||
+      !grade ||
+      !track ||
+      !companion ||
+      !source ||
+      !/^01[0-9]-[0-9]{3,4}-[0-9]{4}$/.test(phone)
+    ) {
+      return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
+    }
+
+    console.log("[설명회예약]", JSON.stringify(data));
+
+    const webhook = process.env.RESERVE_WEBHOOK_URL;
+    if (!webhook) {
+      console.error("RESERVE_WEBHOOK_URL is not set");
+      return NextResponse.json({ ok: false, error: "no_webhook" }, { status: 500 });
+    }
+
+    const res = await fetch(webhook, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      redirect: "follow",
+    });
+
+    const text = await res.text();
+    let sheetOk = false;
+    try {
+      sheetOk = JSON.parse(text)?.ok === true;
+    } catch {
+      sheetOk = false;
+    }
+
+    if (!res.ok || !sheetOk) {
+      console.error("Sheet save failed:", res.status, text.slice(0, 300));
+      return NextResponse.json({ ok: false, error: "sheet" }, { status: 502 });
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json({ ok: false, error: "server" }, { status: 500 });
+  }
+}
