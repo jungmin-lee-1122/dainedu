@@ -286,8 +286,15 @@ var form=document.getElementById("rvForm");
           form.reset();
         }else{
           if(msg){
+            /* 원인별 안내 — 관리자가 무엇을 고쳐야 하는지 바로 알 수 있게 */
+            var why=(res&&res.error)||"unknown";
+            var txt="접수에 실패했습니다. 잠시 후 다시 시도하시거나 031-8003-0221로 연락해 주세요.";
+            if(why==="no_webhook") txt="[설정 필요] 구글 시트 주소(RESERVE_WEBHOOK_URL)가 등록되지 않았습니다.";
+            else if(why==="sheet") txt="[연결 실패] 구글 시트에 저장하지 못했습니다. Apps Script 배포 설정을 확인해 주세요.";
+            else if(why==="invalid") txt="입력하신 내용을 다시 확인해 주세요.";
             msg.hidden=false;
-            msg.textContent="접수에 실패했습니다. 잠시 후 다시 시도하시거나 031-8003-0221로 연락해 주세요.";
+            msg.textContent=txt;
+            if(window.console) console.error("[예약 실패]",res);
           }
         }
       })
