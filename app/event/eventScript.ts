@@ -126,9 +126,17 @@ var form=document.getElementById("rvForm");
   var panel=modal.querySelector(".rv-panel");
   var lastFocus=null;
 
-  function open(){
+  /* 시작할 때 확실히 닫아둡니다 (구버전 CSS가 남아 있어도 안전하게) */
+  modal.hidden=true;
+  modal.classList.remove("is-shown","is-open");
+  modal.style.display="none";
+
+  function open(e){
+    if(e && e.preventDefault) e.preventDefault();
     lastFocus=document.activeElement;
     modal.hidden=false;
+    modal.style.display="flex";
+    modal.classList.add("is-shown");
     document.body.classList.add("rv-lock");
     requestAnimationFrame(function(){ modal.classList.add("is-open"); });
     var first=modal.querySelector("#rvName");
@@ -137,15 +145,21 @@ var form=document.getElementById("rvForm");
   function close(){
     modal.classList.remove("is-open");
     document.body.classList.remove("rv-lock");
-    setTimeout(function(){ modal.hidden=true; },260);
+    setTimeout(function(){
+      modal.classList.remove("is-shown");
+      modal.style.display="none";
+      modal.hidden=true;
+    },260);
     if(lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
   var ids=["evBookTop","evBookSide","evBookFix"];
+  var bound=0;
   for(var i=0;i<ids.length;i++){
     var b=document.getElementById(ids[i]);
-    if(b && !b.disabled) b.addEventListener("click",open);
+    if(b && !b.disabled){ b.addEventListener("click",open); bound++; }
   }
+  if(window.console) console.log("[예약] 버튼 연결:",bound,"개");
 
   modal.addEventListener("click",function(e){
     var t=e.target;

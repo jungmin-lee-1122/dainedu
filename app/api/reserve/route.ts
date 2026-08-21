@@ -47,7 +47,8 @@ export async function POST(request: Request) {
 
     console.log("[설명회예약]", JSON.stringify(data));
 
-    const webhook = process.env.RESERVE_WEBHOOK_URL;
+    // 붙여넣을 때 앞뒤 공백·줄바꿈이 딸려오는 경우가 잦아 잘라냅니다.
+    const webhook = (process.env.RESERVE_WEBHOOK_URL || "").trim();
     if (!webhook) {
       console.error("RESERVE_WEBHOOK_URL is not set");
       return NextResponse.json({ ok: false, error: "no_webhook" }, { status: 500 });
