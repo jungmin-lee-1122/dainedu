@@ -1695,3 +1695,13 @@ img,video,svg{max-width:100%}
   .dn-poster{flex:0 0 auto;width:auto;height:100%;aspect-ratio:1285/1512;max-width:40%}
   .dn-poster img{object-fit:contain}
 }
+
+/* ═══════ 38) 모바일 헤더: 과정 토글을 수능 D-day 자리로 ═══════ */
+/* 포르타·클라비스(cv-page)에서는 좁은 화면에서 로고가 밀리지 않도록
+   수능 D-day 버튼을 숨기고, 그 자리에 고등/N수 토글을 배치합니다. */
+@media(max-width:1000px){
+  .cv-page .dn-nav .dn-navcta{display:none}
+  .cv-page .dn-nav .dn-gtoggle{margin-left:auto;margin-right:2px}
+  .cv-page .dn-nav .dn-mbtn{margin-left:0}
+  .cv-page .dn-nav-brand{flex:0 1 auto;min-width:0}
+}
