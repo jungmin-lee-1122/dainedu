@@ -108,12 +108,18 @@ function trackSlider(opt){
       apply();
     }, opt.delay||3500);
   }
-  root.addEventListener("mouseenter",function(){ if(timer) clearInterval(timer); });
-  root.addEventListener("mouseleave",restart);
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+
+  root.addEventListener("mouseenter",stop);
+  root.addEventListener("mouseleave",function(){ if(!root.dataset.autoOff) restart(); });
   window.addEventListener("resize",function(){ pos=Math.min(pos,maxPos()); apply(); });
 
   apply(); restart();
-  return { reset:function(){ pos=0; apply(); } };
+  return {
+    reset:function(){ pos=0; apply(); },
+    /** 영상 재생 등으로 자동 넘김을 완전히 멈출 때 사용 */
+    freeze:function(){ root.dataset.autoOff="1"; stop(); }
+  };
 }
 
 /* ═══════ 1) 메인 롤링 배너 (가로 슬라이드 + 좌우 버튼 + 진행바) ═══════ */
@@ -169,8 +175,11 @@ var teacher=trackSlider({ id:"cvTeacher", track:".cv-teacher-track" });
   if(tabs.length){ tabs[0].classList.add("is-active"); filter(tabs[0].getAttribute("data-subject")); }
 })();
 
-/* ═══════ 5-1) 선생님 클립영상 ═══════ */
-trackSlider({ id:"cvReview", track:".cv-review-track", dots:"cvReviewDots" });
+/* ═══════ 5-1) 선생님 클립영상 (자동 무한 넘김) ═══════ */
+var reviewSlider=trackSlider({
+  id:"cvReview", track:".cv-review-track", dots:"cvReviewDots",
+  autoplay:true, delay:4000
+});
 (function(){
   var box=document.getElementById("cvReview"); if(!box) return;
   box.addEventListener("click",function(e){
@@ -188,6 +197,8 @@ trackSlider({ id:"cvReview", track:".cv-review-track", dots:"cvReviewDots" });
     card.innerHTML="";
     card.appendChild(f);
     card.classList.add("is-playing");
+    /* 영상이 재생되는 동안에는 자동 넘김을 멈춥니다 */
+    if(reviewSlider && reviewSlider.freeze) reviewSlider.freeze();
   });
 })();
 
