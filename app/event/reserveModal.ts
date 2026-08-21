@@ -16,13 +16,19 @@ export function reserveModalMarkup(ev: {
   place: string;
 }) {
   return `
-<div class="rv" id="rvModal" hidden>
-  <div class="rv-dim" data-rv-close></div>
+<section class="rv-sec" id="reserve">
+  <div class="ev-wrap">
+    <div class="rv-sec-head">
+      <h2 class="rv-sec-title">설명회 예약하기</h2>
+      <p class="rv-sec-desc">아래 내용을 채워주시면 좌석이 배정됩니다.</p>
+    </div>
 
-  <div class="rv-panel" role="dialog" aria-modal="true" aria-labelledby="rvHeading">
+    <div class="rv-sec-in">
+<div class="rv" id="rvModal">
+
+  <div class="rv-panel" aria-labelledby="rvHeading">
     <div class="rv-head">
-      <h2 class="rv-title" id="rvHeading">예약하기</h2>
-      <button class="rv-close" type="button" aria-label="닫기" data-rv-close>×</button>
+      <h2 class="rv-title" id="rvHeading">예약 신청서</h2>
     </div>
 
     <div class="rv-body">
@@ -172,7 +178,7 @@ export function reserveModalMarkup(ev: {
   </div>
 
   <!-- 완료 화면 -->
-  <div class="rv-panel rv-done" id="rvDone" hidden role="dialog" aria-modal="true" aria-labelledby="rvDoneHeading">
+  <div class="rv-panel rv-done" id="rvDone" hidden aria-labelledby="rvDoneHeading">
     <div class="rv-done-in">
       <span class="rv-done-mark" aria-hidden="true">
         <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 26.5 l8 8 14 -16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -184,10 +190,12 @@ export function reserveModalMarkup(ev: {
       </p>
       <div class="rv-done-act">
         <a class="rv-done-btn" href="/event">다른 일정 보기</a>
-        <button class="rv-done-btn rv-done-btn-ghost" type="button" data-rv-close>닫기</button>
       </div>
     </div>
   </div>
 </div>
+    </div>
+  </div>
+</section>
 `;
 }

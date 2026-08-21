@@ -95,14 +95,11 @@ export default async function EventViewPage({
             </dl>
 
             <div className="ev-summary-act">
-              <button
-                className="ev-book-btn"
-                type="button"
-                id="evBookTop"
-                disabled={closed}
-              >
-                {closed ? "접수 마감" : "예약하기"}
-              </button>
+              {closed ? (
+                <span className="ev-book-btn is-off">접수 마감</span>
+              ) : (
+                <a className="ev-book-btn" href="#reserve">예약하기</a>
+              )}
               <p className="ev-summary-help">
                 {closed
                   ? "다음 일정은 공지사항으로 안내드립니다."
@@ -182,23 +179,18 @@ export default async function EventViewPage({
                   <dd>{ev.capacity}</dd>
                 </div>
               </dl>
-              <button
-                className="ev-book-btn ev-book-btn-full"
-                type="button"
-                id="evBookSide"
-                disabled={closed}
-              >
-                {closed ? "접수 마감" : "예약하기"}
-              </button>
+              {closed ? (
+                <span className="ev-book-btn ev-book-btn-full is-off">접수 마감</span>
+              ) : (
+                <a className="ev-book-btn ev-book-btn-full" href="#reserve">예약하기</a>
+              )}
               <a className="ev-aside-link" href="/event">다른 일정 보기</a>
             </div>
           </aside>
         </div>
       </section>
 
-      <SiteFooter />
-
-      {/* 예약 폼 (버튼을 누르면 열립니다) */}
+      {/* 예약 폼 — 페이지 안에 그대로 놓입니다 */}
       {!closed && (
         <div
           dangerouslySetInnerHTML={{
@@ -213,15 +205,19 @@ export default async function EventViewPage({
         />
       )}
 
+      <SiteFooter />
+
       {/* 모바일 하단 고정 버튼 */}
       <div className="ev-fixcta">
         <span className="ev-fixcta-info">
           <b>{ev.date.split("오")[0].trim()}</b>
           <em>{ev.capacity}</em>
         </span>
-        <button className="ev-book-btn" type="button" id="evBookFix" disabled={closed}>
-          {closed ? "접수 마감" : "예약하기"}
-        </button>
+        {closed ? (
+          <span className="ev-book-btn is-off">접수 마감</span>
+        ) : (
+          <a className="ev-book-btn" href="#reserve">예약하기</a>
+        )}
       </div>
 
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />

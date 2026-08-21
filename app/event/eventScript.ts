@@ -120,67 +120,17 @@ export const eventViewScript = `
 var modal=document.getElementById("rvModal");
 var form=document.getElementById("rvForm");
 
-/* ═══════ 팝업 열기 / 닫기 ═══════ */
+/* ═══════ 예약하기 버튼 → 폼으로 이동 + 첫 칸에 커서 ═══════ */
 (function(){
-  if(!modal) return;
-  var panel=modal.querySelector(".rv-panel");
-  var lastFocus=null;
-
-  /* 시작할 때 확실히 닫아둡니다 (구버전 CSS가 남아 있어도 안전하게) */
-  modal.hidden=true;
-  modal.classList.remove("is-shown","is-open");
-  modal.style.display="none";
-
-  function open(e){
-    if(e && e.preventDefault) e.preventDefault();
-    lastFocus=document.activeElement;
-    modal.hidden=false;
-    modal.style.display="flex";
-    modal.classList.add("is-shown");
-    document.body.classList.add("rv-lock");
-    requestAnimationFrame(function(){ modal.classList.add("is-open"); });
-    var first=modal.querySelector("#rvName");
-    if(first) setTimeout(function(){ first.focus(); },220);
+  if(!form) return;
+  var links=document.querySelectorAll('a[href="#reserve"]');
+  for(var i=0;i<links.length;i++){
+    links[i].addEventListener("click",function(){
+      var first=document.getElementById("rvName");
+      if(first) setTimeout(function(){ first.focus({preventScroll:true}); },600);
+    });
   }
-  function close(){
-    modal.classList.remove("is-open");
-    document.body.classList.remove("rv-lock");
-    setTimeout(function(){
-      modal.classList.remove("is-shown");
-      modal.style.display="none";
-      modal.hidden=true;
-    },260);
-    if(lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  var ids=["evBookTop","evBookSide","evBookFix"];
-  var bound=0;
-  for(var i=0;i<ids.length;i++){
-    var b=document.getElementById(ids[i]);
-    if(b && !b.disabled){ b.addEventListener("click",open); bound++; }
-  }
-  if(window.console) console.log("[예약] 버튼 연결:",bound,"개");
-
-  modal.addEventListener("click",function(e){
-    var t=e.target;
-    if(t.closest && t.closest("[data-rv-close]")) { e.preventDefault(); close(); }
-  });
-  document.addEventListener("keydown",function(e){
-    if(e.key==="Escape" && !modal.hidden) close();
-  });
-
-  /* 팝업 안에서 탭 순환 */
-  modal.addEventListener("keydown",function(e){
-    if(e.key!=="Tab") return;
-    var box=modal.querySelector(".rv-panel:not([hidden])"); if(!box) return;
-    var f=box.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled])');
-    if(!f.length) return;
-    var first=f[0], last=f[f.length-1];
-    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
-  });
-
-  if(panel){ /* 참조 유지 */ }
+  if(window.console) console.log("[예약] 폼 준비 완료 · 버튼",links.length,"개");
 })();
 
 /* ═══════ 휴대전화 자동 하이픈 ═══════ */
@@ -296,7 +246,10 @@ var form=document.getElementById("rvForm");
       .then(function(res){
         if(res && res.ok){
           if(panel) panel.hidden=true;
-          if(done) done.hidden=false;
+          if(done){
+            done.hidden=false;
+            done.scrollIntoView({block:"center",behavior:"smooth"});
+          }
           form.reset();
         }else{
           if(msg){
