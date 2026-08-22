@@ -1,7 +1,6 @@
 // ═══════════════════════════════════════════════════════════
-//  예약하기 팝업 마크업
-//  ※ 상세 페이지에서 예약하기 버튼을 누르면 열립니다.
-//     입력 항목을 바꾸려면 아래 HTML 과 eventData.ts 의 선택지를 함께 수정하세요.
+//  예약 신청서 마크업 (상세 페이지 우측 칸에 들어갑니다)
+//  ※ 입력 항목을 바꾸려면 아래 HTML 과 eventData.ts 의 선택지를 함께 수정하세요.
 // ═══════════════════════════════════════════════════════════
 import { FORM_GRADES, FORM_TRACKS, FORM_COMPANIONS, FORM_SOURCES } from "./eventData";
 
@@ -16,19 +15,12 @@ export function reserveModalMarkup(ev: {
   place: string;
 }) {
   return `
-<section class="rv-sec" id="reserve">
-  <div class="ev-wrap">
-    <div class="rv-sec-head">
-      <h2 class="rv-sec-title">설명회 예약하기</h2>
-      <p class="rv-sec-desc">아래 내용을 채워주시면 좌석이 배정됩니다.</p>
-    </div>
-
-    <div class="rv-sec-in">
-<div class="rv" id="rvModal">
+<div class="rv" id="reserve">
 
   <div class="rv-panel" aria-labelledby="rvHeading">
     <div class="rv-head">
       <h2 class="rv-title" id="rvHeading">예약 신청서</h2>
+      <span class="rv-head-tag">선착순</span>
     </div>
 
     <div class="rv-body">
@@ -194,8 +186,5 @@ export function reserveModalMarkup(ev: {
     </div>
   </div>
 </div>
-    </div>
-  </div>
-</section>
 `;
 }

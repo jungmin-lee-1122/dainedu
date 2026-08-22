@@ -157,53 +157,33 @@ export default async function EventViewPage({
             </div>
           </div>
 
-          {/* 우측 고정 예약 카드 */}
+          {/* 우측 — 예약 신청서 */}
           <aside className="ev-aside">
-            <div className="ev-aside-card">
-              <span className={`ev-state ev-state-${stateClass}`}>{ev.status}</span>
-              <h3 className="ev-aside-title">{ev.title}</h3>
-              <dl className="ev-aside-meta">
-                <div>
-                  <dt>일시</dt>
-                  <dd>{ev.date}</dd>
-                </div>
-                <div>
-                  <dt>장소</dt>
-                  <dd>
-                    {ev.place}
-                    {ev.placeDetail && <em> {ev.placeDetail}</em>}
-                  </dd>
-                </div>
-                <div>
-                  <dt>정원</dt>
-                  <dd>{ev.capacity}</dd>
-                </div>
-              </dl>
-              {closed ? (
-                <span className="ev-book-btn ev-book-btn-full is-off">접수 마감</span>
-              ) : (
-                <a className="ev-book-btn ev-book-btn-full" href="#reserve">예약하기</a>
-              )}
-              <a className="ev-aside-link" href="/event">다른 일정 보기</a>
-            </div>
+            {closed ? (
+              <div className="ev-aside-card ev-aside-closed" id="reserve">
+                <span className="ev-state ev-state-closed">마감</span>
+                <h3 className="ev-aside-title">접수가 마감되었습니다</h3>
+                <p className="ev-aside-desc">
+                  다음 일정은 공지사항으로 안내드립니다.
+                </p>
+                <a className="ev-book-btn ev-book-btn-full" href="/event">다른 일정 보기</a>
+              </div>
+            ) : (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: reserveModalMarkup({
+                    id: ev.id,
+                    title: ev.title,
+                    date: ev.date,
+                    targets: ev.targets.join(", "),
+                    place: ev.placeDetail ? `${ev.place} ${ev.placeDetail}` : ev.place,
+                  }),
+                }}
+              />
+            )}
           </aside>
         </div>
       </section>
-
-      {/* 예약 폼 — 페이지 안에 그대로 놓입니다 */}
-      {!closed && (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: reserveModalMarkup({
-              id: ev.id,
-              title: ev.title,
-              date: ev.date,
-              targets: ev.targets.join(", "),
-              place: ev.placeDetail ? `${ev.place} ${ev.placeDetail}` : ev.place,
-            }),
-          }}
-        />
-      )}
 
       <SiteFooter />
 
