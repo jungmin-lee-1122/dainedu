@@ -5,6 +5,7 @@ import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
 import { greetingScript } from "./greetingScript";
 import { hero, letter, system, closing } from "./greetingData";
+import PillarArt from "./PillarArt";
 
 export const metadata: Metadata = {
   title: "인사말 — 다인교육 동탄점",
@@ -89,17 +90,19 @@ export default function GreetingPage() {
           <div className="gr-pillars">
             {system.pillars.map((p, i) => (
               <article className="gr-pillar gr-up" style={{ transitionDelay: `${i * 120}ms` }} key={p.no}>
-                <span className="gr-pillar-no">{p.no}</span>
-                <div className="gr-pillar-head">
-                  <span className="gr-pillar-rule" aria-hidden="true" />
-                  <span className="gr-pillar-label">{p.label}</span>
+                <div className="gr-pillar-in">
+                  <div className="gr-pillar-head">
+                    <span className="gr-pillar-no">{p.no}</span>
+                    <span className="gr-pillar-label">{p.label}</span>
+                  </div>
+                  <h3 className="gr-pillar-title">{p.title}</h3>
+                  <p className="gr-pillar-desc">
+                    {p.desc.map((d, j) => (
+                      <span key={j}>{d}</span>
+                    ))}
+                  </p>
                 </div>
-                <h3 className="gr-pillar-title">{p.title}</h3>
-                <p className="gr-pillar-desc">
-                  {p.desc.map((d, j) => (
-                    <span key={j}>{d}</span>
-                  ))}
-                </p>
+                <PillarArt kind={p.art} />
               </article>
             ))}
           </div>

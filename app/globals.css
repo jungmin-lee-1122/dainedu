@@ -2117,23 +2117,36 @@ a.ev-book-btn{text-decoration:none}
 .gr-sign-rule{width:72px;height:1px;background:var(--dn-line)}
 
 /* ═══════ 두 축 ═══════ */
-.gr-system{padding:104px 0;
-  background:radial-gradient(900px 400px at 82% 0%,rgba(192,153,79,.16),transparent 60%),
-    linear-gradient(160deg,#1B2A4A,var(--dn-deep) 60%,#0C1425)}
+.gr-system{padding:104px 0 110px;
+  background:radial-gradient(760px 420px at 88% 8%,rgba(120,150,205,.16),transparent 62%),
+    linear-gradient(165deg,#1E2E50,#16233D 52%,#111C31)}
 .gr-sys-title{margin:26px 0 14px;font-size:clamp(27px,3.4vw,40px);font-weight:800;
   letter-spacing:-.035em;color:#fff;line-height:1.3}
-.gr-sys-sub{margin:0 0 62px;font-size:15.5px;color:rgba(255,255,255,.62);line-height:1.75}
+.gr-sys-sub{margin:0 0 44px;font-size:15.5px;color:rgba(255,255,255,.62);line-height:1.75}
 
-.gr-pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}
-.gr-pillar{position:relative;padding-left:2px}
-.gr-pillar-no{display:block;margin-bottom:16px;font-size:34px;font-weight:800;
-  letter-spacing:-.02em;color:var(--dn-gold);line-height:1}
-.gr-pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
-.gr-pillar-rule{flex:0 0 40px;height:1px;background:rgba(217,190,140,.55)}
-.gr-pillar-label{font-size:13px;font-weight:600;color:var(--dn-gold-soft);letter-spacing:-.01em}
-.gr-pillar-title{margin:0 0 16px;font-size:20.5px;font-weight:800;letter-spacing:-.025em;color:#fff}
-.gr-pillar-desc{margin:0;font-size:14.5px;line-height:1.85;color:rgba(255,255,255,.66)}
+/* ── 두 장의 카드 ── */
+.gr-pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}
+.gr-pillar{position:relative;min-height:380px;padding:38px 36px 34px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);border-radius:22px;
+  background:linear-gradient(155deg,rgba(255,255,255,.055),rgba(255,255,255,.012));
+  transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease}
+.gr-pillar:hover{border-color:rgba(217,190,140,.42);transform:translateY(-3px);
+  box-shadow:0 26px 60px -34px rgba(0,0,0,.75)}
+.gr-pillar-in{position:relative;z-index:1;max-width:60%}
+
+.gr-pillar-head{display:flex;align-items:baseline;gap:16px;margin-bottom:18px}
+.gr-pillar-no{font-size:27px;font-weight:800;letter-spacing:-.02em;color:var(--dn-gold);line-height:1}
+.gr-pillar-label{font-size:14px;font-weight:700;color:var(--dn-gold-soft);letter-spacing:-.01em}
+.gr-pillar-title{margin:0 0 20px;font-size:clamp(21px,2.1vw,27px);font-weight:800;
+  letter-spacing:-.03em;color:#fff;line-height:1.36}
+.gr-pillar-desc{margin:0;font-size:14.5px;line-height:1.9;color:rgba(255,255,255,.62)}
 .gr-pillar-desc span{display:block}
+
+/* 카드 오른쪽 아래 일러스트 */
+.gr-art{position:absolute;right:-6px;bottom:-6px;width:56%;max-width:290px;height:auto;
+  z-index:0;pointer-events:none;
+  transition:transform .45s cubic-bezier(.22,.7,.3,1)}
+.gr-pillar:hover .gr-art{transform:translateY(-5px) scale(1.03)}
 
 /* ═══════ 마무리 ═══════ */
 .gr-closing{padding:88px 0 100px;background:#F6F2EA;text-align:center}
@@ -2155,7 +2168,9 @@ a.ev-book-btn{text-decoration:none}
 @media(max-width:1100px){
   .gr-letter-grid{gap:44px;grid-template-columns:280px minmax(0,1fr)}
   .gr-letter-body{padding-left:44px}
-  .gr-pillars{gap:40px}
+  .gr-pillars{gap:22px}
+  .gr-pillar{padding:32px 28px 30px;min-height:350px}
+  .gr-pillar-in{max-width:66%}
 }
 @media(max-width:900px){
   .gr-wrap{width:calc(100% - 36px)}
@@ -2179,12 +2194,16 @@ a.ev-book-btn{text-decoration:none}
   .gr-p-line::after{content:" "}
   .gr-sign{margin-top:32px}
 
-  .gr-system{padding:60px 0}
-  .gr-sys-sub{margin-bottom:40px;font-size:14.5px}
-  .gr-pillars{grid-template-columns:1fr;gap:36px}
-  .gr-pillar-no{font-size:29px}
+  .gr-system{padding:60px 0 66px}
+  .gr-sys-sub{margin-bottom:30px;font-size:14.5px}
+  .gr-pillars{grid-template-columns:1fr;gap:18px}
+  .gr-pillar{min-height:0;padding:28px 24px 190px;border-radius:18px}
+  .gr-pillar-in{max-width:none}
+  .gr-pillar-no{font-size:24px}
+  .gr-pillar-title{margin-bottom:14px}
   .gr-pillar-desc span{display:inline}
   .gr-pillar-desc span::after{content:" "}
+  .gr-art{width:74%;max-width:250px;right:-10px;bottom:-10px}
 
   .gr-closing{padding:56px 0 64px}
   .gr-closing-act{flex-direction:column}

@@ -55,12 +55,15 @@ export const system = {
   pillars: [
     {
       no: "01",
+      /** 카드 오른쪽 아래 일러스트 — "lecture" | "care" */
+      art: "lecture" as const,
       label: "프리미엄 강의",
       title: "학원가가 증명한 강사진",
       desc: ["대치·목동·분당·평촌, 네 학원가에서", "실력을 증명해온 강사진이 다인아카데미 교실에 직접 섭니다."],
     },
     {
       no: "02",
+      art: "care" as const,
       label: "프리미엄 관리",
       title: "배운 것을 실력으로 만드는 관리",
       desc: ["윈터스쿨 기간 동안 책임지는 초밀착 관리로,", "학습습관과 배운 내용을 완성된 실력으로 이어갑니다."],
