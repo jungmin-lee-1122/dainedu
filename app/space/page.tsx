@@ -8,6 +8,15 @@ import { intros, halls, renderings } from "./spaceData";
 
 const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
+/* ─────────────────────────────────────────────────────────
+   섹션 표시 여부 — 다시 보이게 하려면 true 로 바꾸면 됩니다.
+   현재는 "공간 미리보기(Renderings)"만 노출합니다.
+   ───────────────────────────────────────────────────────── */
+const SHOW_HERO = false;    // 상단 "시설 미리보기" 타이틀
+const SHOW_INTRO = false;   // 다인·다온 인사 영상
+const SHOW_LAYOUT = false;  // 한 층, 네 개의 관
+const SHOW_CTA = false;     // 하단 설명회 예약 배너
+
 export const metadata: Metadata = {
   title: "시설 안내 — 다인교육 동탄점",
   description:
@@ -20,6 +29,7 @@ export default function SpacePage() {
       <SiteHeader />
 
       {/* ── 히어로 ── */}
+      {SHOW_HERO && (
       <section className="sp-hero">
         <div className="sp-wrap">
           <p className="sp-eyebrow">The Campus</p>
@@ -31,8 +41,10 @@ export default function SpacePage() {
           </p>
         </div>
       </section>
+      )}
 
       {/* ── 인사 영상 ── */}
+      {SHOW_INTRO && (
       <section className="sp-intro">
         <div className="sp-wrap">
           <div className="sp-intro-grid">
@@ -57,8 +69,10 @@ export default function SpacePage() {
           <p className="sp-intro-note">다인교육의 직원 다인, 다온이가 시설을 안내합니다</p>
         </div>
       </section>
+      )}
 
       {/* ── 한 층, 네 개의 관 ── */}
+      {SHOW_LAYOUT && (
       <section className="sp-layout">
         <div className="sp-wrap">
           <p className="sp-eyebrow sp-eyebrow-inv">Layout</p>
@@ -77,9 +91,10 @@ export default function SpacePage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── 공간 미리보기 ── */}
-      <section className="sp-render">
+      <section className="sp-render sp-render-solo">
         <div className="sp-wrap">
           <p className="sp-eyebrow">Renderings</p>
           <h2 className="sp-h2">공간 미리보기</h2>
@@ -117,6 +132,7 @@ export default function SpacePage() {
       </section>
 
       {/* ── CTA ── */}
+      {SHOW_CTA && (
       <section className="sp-cta">
         <div className="sp-wrap">
           <p className="sp-eyebrow">See it for real</p>
@@ -125,6 +141,7 @@ export default function SpacePage() {
           <a className="sp-cta-btn" href={SEMINAR}>설명회 참석예약 하기</a>
         </div>
       </section>
+      )}
 
       <SiteFooter />
 

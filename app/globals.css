@@ -2054,3 +2054,139 @@ a.ev-book-btn{text-decoration:none}
 /* 예약 신청서 머리말 태그 */
 .rv-head-tag{flex:0 0 auto;padding:4px 11px;border-radius:999px;background:var(--dn-navy);
   color:#fff;font-size:11.5px;font-weight:800;letter-spacing:-.01em}
+
+/* 시설 안내 — 공간 미리보기만 노출할 때 상단 여백 (고정 헤더 가림 방지) */
+.sp-render-solo{padding-top:150px}
+@media(max-width:900px){ .sp-render-solo{padding-top:34px} }
+
+/* ═══════════════════════════════════════════════════════════
+   42) 인사말 (/greeting)
+   ═══════════════════════════════════════════════════════════ */
+.gr-page{background:#fff;color:var(--dn-ink)}
+.gr-wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+
+/* ── 공통 소제목 ── */
+.gr-eyebrow{margin:0;font-size:11.5px;font-weight:700;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--dn-gold)}
+.gr-eyebrow-inv{display:flex;align-items:center;gap:16px;color:var(--dn-gold-soft)}
+.gr-eyebrow-rule{flex:0 0 64px;height:1px;background:rgba(217,190,140,.5)}
+
+/* 등장 애니메이션 */
+.gr-up,.gr-hero-line{opacity:0;transform:translateY(18px);
+  transition:opacity .75s cubic-bezier(.22,.7,.3,1),transform .75s cubic-bezier(.22,.7,.3,1)}
+.gr-up.is-in,.gr-hero-line.is-in{opacity:1;transform:none}
+
+/* ═══════ 히어로 ═══════ */
+.gr-hero{position:relative;overflow:hidden;background:#F6F2EA;
+  padding:190px 0 120px;min-height:min(78vh,720px);display:flex;align-items:center}
+.gr-hero-photo{position:absolute;inset:0 0 0 38%;z-index:0}
+.gr-hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+/* 크림색 배경이 사진으로 자연스럽게 녹아드는 층 */
+.gr-hero-veil{position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,#F6F2EA 0%,rgba(246,242,234,.97) 26%,rgba(246,242,234,.72) 48%,rgba(246,242,234,.18) 74%,rgba(246,242,234,0) 100%),
+    linear-gradient(180deg,rgba(246,242,234,.55),rgba(246,242,234,0) 30%,rgba(246,242,234,0) 72%,rgba(246,242,234,.5))}
+.gr-hero-in{position:relative;z-index:1}
+
+.gr-eyebrow-ko{margin:8px 0 26px;font-size:15px;font-weight:600;color:#6D6355;letter-spacing:.02em}
+.gr-hero-title{margin:0 0 34px;font-size:clamp(34px,5vw,60px);font-weight:800;
+  letter-spacing:-.035em;line-height:1.24;color:var(--dn-deep)}
+.gr-hero-line{display:block}
+.gr-hero-line b{font-weight:800;color:var(--dn-gold)}
+.gr-hero-line:last-child{font-weight:900;color:#0D1526}
+.gr-hero-meta{margin:0;font-size:12.5px;font-weight:600;letter-spacing:.22em;color:#8C8275}
+
+/* ═══════ 인사말 본문 ═══════ */
+.gr-letter{padding:104px 0;background:#fff}
+.gr-letter-grid{display:grid;grid-template-columns:330px minmax(0,1fr);gap:64px;align-items:start}
+
+.gr-letter-side{padding-right:24px}
+.gr-letter-label{margin:0 0 18px;font-size:13px;font-weight:700;color:var(--dn-gold);letter-spacing:-.01em}
+.gr-letter-rule{display:block;width:44px;height:1.5px;background:var(--dn-gold-soft);margin-bottom:26px}
+.gr-letter-title{margin:0 0 28px;font-size:clamp(25px,2.6vw,33px);font-weight:500;
+  letter-spacing:-.03em;line-height:1.42;color:var(--dn-deep)}
+.gr-letter-title span{display:block}
+.gr-letter-sub{margin:0;font-size:12px;font-weight:600;letter-spacing:.3em;color:#C6C0B5}
+
+.gr-letter-body{border-left:1px solid var(--dn-line);padding-left:64px;min-width:0}
+.gr-p{margin:0 0 26px;font-size:15.5px;line-height:1.95;color:#3E4759}
+.gr-p:last-of-type{margin-bottom:0}
+.gr-p-line{display:block}
+.gr-sign{display:flex;align-items:center;justify-content:flex-end;gap:16px;
+  margin:44px 0 0;font-size:14.5px;font-weight:700;color:var(--dn-navy)}
+.gr-sign-rule{width:72px;height:1px;background:var(--dn-line)}
+
+/* ═══════ 두 축 ═══════ */
+.gr-system{padding:104px 0;
+  background:radial-gradient(900px 400px at 82% 0%,rgba(192,153,79,.16),transparent 60%),
+    linear-gradient(160deg,#1B2A4A,var(--dn-deep) 60%,#0C1425)}
+.gr-sys-title{margin:26px 0 14px;font-size:clamp(27px,3.4vw,40px);font-weight:800;
+  letter-spacing:-.035em;color:#fff;line-height:1.3}
+.gr-sys-sub{margin:0 0 62px;font-size:15.5px;color:rgba(255,255,255,.62);line-height:1.75}
+
+.gr-pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px}
+.gr-pillar{position:relative;padding-left:2px}
+.gr-pillar-no{display:block;margin-bottom:16px;font-size:34px;font-weight:800;
+  letter-spacing:-.02em;color:var(--dn-gold);line-height:1}
+.gr-pillar-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.gr-pillar-rule{flex:0 0 40px;height:1px;background:rgba(217,190,140,.55)}
+.gr-pillar-label{font-size:13px;font-weight:600;color:var(--dn-gold-soft);letter-spacing:-.01em}
+.gr-pillar-title{margin:0 0 16px;font-size:20.5px;font-weight:800;letter-spacing:-.025em;color:#fff}
+.gr-pillar-desc{margin:0;font-size:14.5px;line-height:1.85;color:rgba(255,255,255,.66)}
+.gr-pillar-desc span{display:block}
+
+/* ═══════ 마무리 ═══════ */
+.gr-closing{padding:88px 0 100px;background:#F6F2EA;text-align:center}
+.gr-closing-title{margin:0 0 34px;font-size:clamp(21px,2.6vw,29px);font-weight:800;
+  letter-spacing:-.03em;color:var(--dn-deep)}
+.gr-closing-act{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.gr-btn{display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border-radius:4px;
+  font-size:14.5px;font-weight:700;text-decoration:none;letter-spacing:-.01em;
+  transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease}
+.gr-btn i{font-style:normal;transition:transform .2s ease}
+.gr-btn:hover{transform:translateY(-2px)}
+.gr-btn:hover i{transform:translateX(4px)}
+.gr-btn-fill{background:#9A8156;color:#fff;border:1px solid #9A8156}
+.gr-btn-fill:hover{background:#87703F;border-color:#87703F}
+.gr-btn-line{background:transparent;color:#6D6355;border:1px solid #C9C0B1}
+.gr-btn-line:hover{background:#fff;color:var(--dn-navy);border-color:var(--dn-navy)}
+
+/* ═══════ 반응형 ═══════ */
+@media(max-width:1100px){
+  .gr-letter-grid{gap:44px;grid-template-columns:280px minmax(0,1fr)}
+  .gr-letter-body{padding-left:44px}
+  .gr-pillars{gap:40px}
+}
+@media(max-width:900px){
+  .gr-wrap{width:calc(100% - 36px)}
+
+  /* 히어로: 사진은 아래쪽 배경으로 */
+  .gr-hero{padding:46px 0 300px;min-height:0;display:block}
+  .gr-hero-photo{inset:auto 0 0 0;height:320px}
+  .gr-hero-veil{background:
+    linear-gradient(180deg,#F6F2EA 0%,rgba(246,242,234,.9) 18%,rgba(246,242,234,.25) 52%,rgba(246,242,234,0) 100%)}
+  .gr-eyebrow-ko{margin-bottom:18px;font-size:14px}
+  .gr-hero-title{margin-bottom:24px;line-height:1.3}
+  .gr-hero-meta{font-size:11.5px;letter-spacing:.16em}
+
+  .gr-letter{padding:60px 0}
+  .gr-letter-grid{grid-template-columns:1fr;gap:34px}
+  .gr-letter-side{padding-right:0}
+  .gr-letter-body{border-left:0;border-top:1px solid var(--dn-line);padding-left:0;padding-top:34px}
+  .gr-p{font-size:14.5px;line-height:1.85;margin-bottom:22px}
+  /* 좁은 화면에서는 줄바꿈을 풀어 자연스럽게 흐르게 */
+  .gr-p-line{display:inline}
+  .gr-p-line::after{content:" "}
+  .gr-sign{margin-top:32px}
+
+  .gr-system{padding:60px 0}
+  .gr-sys-sub{margin-bottom:40px;font-size:14.5px}
+  .gr-pillars{grid-template-columns:1fr;gap:36px}
+  .gr-pillar-no{font-size:29px}
+  .gr-pillar-desc span{display:inline}
+  .gr-pillar-desc span::after{content:" "}
+
+  .gr-closing{padding:56px 0 64px}
+  .gr-closing-act{flex-direction:column}
+  .gr-btn{width:100%;justify-content:center}
+}
