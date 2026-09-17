@@ -2138,7 +2138,7 @@ a.ev-book-btn{text-decoration:none}
 .gr-pillar-no{font-size:27px;font-weight:800;letter-spacing:-.02em;color:var(--dn-gold);line-height:1}
 .gr-pillar-label{font-size:14px;font-weight:700;color:var(--dn-gold-soft);letter-spacing:-.01em}
 .gr-pillar-title{margin:0 0 20px;font-size:clamp(21px,2.1vw,27px);font-weight:800;
-  letter-spacing:-.03em;color:#fff;line-height:1.36}
+  letter-spacing:-.03em;color:#fff;line-height:1.36;white-space:nowrap}
 .gr-pillar-desc{margin:0;font-size:14.5px;line-height:1.9;color:rgba(255,255,255,.62)}
 .gr-pillar-desc span{display:block}
 
