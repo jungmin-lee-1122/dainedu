@@ -29,6 +29,7 @@ export const landingMarkup = `
       <li class="dn-gnb-item">
         <a href="#program">모집안내</a>
         <div class="dn-gnb-sub">
+          <a href="/schedule">단과시간표</a>
           <a href="/porta">포르타 고등전문관</a>
           <a href="/clavis">클라비스 N수전문관</a>
           <a href="/winter">2027 윈터스쿨</a>

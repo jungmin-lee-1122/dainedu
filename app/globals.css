@@ -2259,3 +2259,179 @@ a.ev-book-btn{text-decoration:none}
   .gr-closing-act{flex-direction:column}
   .gr-btn{width:100%;justify-content:center}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   43) 강사진 상세 · 단과시간표 (/teachers/[id], /schedule)
+   참고 사이트의 정보 구조만 따르고 다인교육 브랜드로 재설계
+   ═══════════════════════════════════════════════════════════ */
+
+/* 강사진 목록 카드 확장 */
+.tc-filter-btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.tc-result-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 18px;
+  font-size:14px;color:var(--dn-ink-soft)}
+.tc-result-head p{margin:0}.tc-result-head b{color:var(--dn-navy);font-size:16px}
+.tc-result-head span{font-size:12.5px;color:#9A9286}
+.tc-grid{margin:0;padding:0;list-style:none}
+.tc-grid-item{min-width:0}
+.tc-card{position:relative;display:block;aspect-ratio:266/288;min-height:0;padding:0;overflow:hidden;
+  text-decoration:none;color:inherit;background:linear-gradient(145deg,#fff 20%,#F1F4F9 100%)}
+.tc-card .tc-card-top{position:relative;z-index:2;margin:0;padding:18px 18px 0;align-items:flex-start}
+.tc-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tc-tags span{display:inline-flex;padding:4px 8px;border:1px solid rgba(36,54,90,.13);border-radius:4px;
+  background:rgba(255,255,255,.72);font-size:10.5px;font-weight:700;color:#6B7485}
+.tc-card-subject{position:relative;z-index:2;margin:22px 18px 4px;font-size:12.5px;font-weight:800;color:var(--dn-gold)}
+.tc-card-name{position:relative;z-index:2;margin:0 18px;font-size:22px;font-weight:900;letter-spacing:-.035em;color:var(--dn-deep)}
+.tc-card-profile{position:absolute;right:0;bottom:0;width:82%;height:76%;display:flex;align-items:flex-end;justify-content:flex-end;
+  pointer-events:none}
+.tc-card-profile img{width:100%;height:100%;object-fit:contain;object-position:right bottom;transition:transform .4s ease}
+.tc-card-profile>span{display:flex;width:74%;height:86%;align-items:center;justify-content:center;
+  font-family:"Noto Serif KR",serif;font-size:94px;font-weight:900;color:rgba(36,54,90,.12)}
+.tc-card:hover .tc-card-profile img{transform:scale(1.04)}
+.tc-card-overlay{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:22px;background:linear-gradient(180deg,rgba(16,25,46,.1),rgba(16,25,46,.94) 48%,#10192E);
+  color:#fff;opacity:0;transition:opacity .28s ease}
+.tc-card:hover .tc-card-overlay,.tc-card:focus-visible .tc-card-overlay{opacity:1}
+.tc-card-overlay small{margin-bottom:7px;font-size:10px;font-weight:800;letter-spacing:.18em;color:var(--dn-gold-soft)}
+.tc-card-overlay strong{margin-bottom:10px;font-size:14px;line-height:1.45;word-break:keep-all}
+.tc-card-overlay ul{margin:0;padding:0;list-style:none}
+.tc-card-overlay li{font-size:11.5px;line-height:1.65;color:rgba(255,255,255,.72)}
+.tc-card-more{margin-top:12px;font-size:11.5px;font-weight:800;color:var(--dn-gold-soft)}
+.tc-empty{margin:0;padding:72px 20px;border:1px solid var(--dn-line);border-radius:16px;text-align:center;color:#8E8A82}
+
+/* 강사 상세 */
+.td-page{background:#fff}.td-head{padding:160px 0 42px;background:linear-gradient(145deg,#F6F2EA,#F7F9FD)}
+.td-back{display:inline-block;margin-bottom:26px;text-decoration:none;font-size:13px;font-weight:700;color:#7B746A}
+.td-back:hover{color:var(--dn-gold)}
+.td-head h1{margin:0 0 10px;font-size:clamp(29px,4vw,46px);font-weight:900;letter-spacing:-.04em;color:var(--dn-deep)}
+.td-head>div>p:last-child{margin:0;font-size:14.5px;color:var(--dn-ink-soft)}
+.td-body{padding:42px 0 90px}
+.td-subjects{margin-bottom:22px}
+.td-teacher-strip{display:flex;gap:12px;margin:0 0 30px;padding:2px 0 10px;overflow-x:auto;scrollbar-width:none}
+.td-teacher-strip::-webkit-scrollbar{display:none}
+.td-mini{display:flex;flex:0 0 72px;flex-direction:column;align-items:center;gap:7px;text-decoration:none;color:#777E8B}
+.td-mini-face{width:62px;height:62px;overflow:hidden;border:2px solid transparent;border-radius:50%;
+  background:#EEF1F6;display:flex;align-items:center;justify-content:center;transition:border-color .2s ease,transform .2s ease}
+.td-mini-face img{width:100%;height:100%;object-fit:cover;object-position:top}
+.td-mini-face b{font-family:"Noto Serif KR",serif;font-size:24px;color:#ADB5C4}
+.td-mini>span:last-child{width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:11.5px}
+.td-mini:hover .td-mini-face,.td-mini.is-on .td-mini-face{border-color:var(--dn-gold);transform:translateY(-2px)}
+.td-mini.is-on>span:last-child{font-weight:800;color:var(--dn-navy)}
+.td-profile{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,44%);min-height:420px;
+  overflow:hidden;border:1px solid var(--dn-line);border-radius:24px;background:linear-gradient(135deg,#FCFBF8,#EDF1F7)}
+.td-profile::before{content:"DAIN";position:absolute;right:-20px;top:-42px;font-family:"Noto Serif KR",serif;
+  font-size:170px;font-weight:900;letter-spacing:-.08em;color:rgba(36,54,90,.035)}
+.td-profile-copy{position:relative;z-index:2;padding:48px}
+.td-subject{margin:26px 0 4px;font-size:15px;font-weight:800;color:var(--dn-gold)}
+.td-profile h2{margin:0;font-size:clamp(30px,3.5vw,44px);font-weight:900;letter-spacing:-.045em;color:var(--dn-deep)}
+.td-profile h2 small{font-size:.46em;font-weight:700;color:#8A8F98}
+.td-slogan{margin:18px 0 0;font-family:"Noto Serif KR",serif;font-size:clamp(18px,2vw,23px);font-weight:700;
+  line-height:1.5;color:var(--dn-navy);word-break:keep-all}
+.td-rule{width:42px;height:2px;margin:24px 0;background:var(--dn-gold)}
+.td-career{margin:0;padding:0;list-style:none}.td-career li{position:relative;padding-left:13px;font-size:13px;line-height:1.9;color:#5F6672}
+.td-career li::before{content:"·";position:absolute;left:0;font-weight:900;color:var(--dn-gold)}
+.td-video-link{display:inline-flex;margin-top:20px;padding:10px 16px;border:1px solid var(--dn-line);border-radius:999px;
+  text-decoration:none;font-size:12.5px;font-weight:800;color:var(--dn-navy);background:#fff}
+.td-profile-photo{position:relative;z-index:1;min-height:420px;display:flex;align-items:flex-end;justify-content:center}
+.td-profile-photo>img{position:relative;z-index:2;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.td-photo-ring{position:absolute;left:50%;bottom:36px;width:300px;height:300px;transform:translateX(-50%);border-radius:50%;
+  border:1px solid rgba(192,153,79,.35);box-shadow:0 0 0 36px rgba(192,153,79,.05)}
+.td-profile-placeholder{position:relative;z-index:2;display:flex;height:100%;min-height:420px;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.td-profile-placeholder b{font-family:"Noto Serif KR",serif;font-size:116px;color:rgba(36,54,90,.15)}
+.td-profile-placeholder span{padding:7px 13px;border-radius:999px;background:var(--dn-navy);font-size:11.5px;font-weight:800;color:#fff}
+.td-tabs{display:grid;grid-template-columns:1fr 1fr;margin-top:36px;overflow:hidden;border:1px solid var(--dn-line);border-radius:14px;background:var(--dn-line);gap:1px}
+.td-tabs a{padding:16px;text-align:center;text-decoration:none;background:#F8F7F4;font-size:14px;font-weight:800;color:#84807A}
+.td-tabs a.is-on{background:var(--dn-navy);color:#fff}.td-tabs span{color:var(--dn-gold-soft)}
+.td-tab-panel{margin-top:18px}
+.td-ready{padding:70px 24px;border:1px solid var(--dn-line);border-radius:18px;text-align:center;background:#FCFBF8}
+.td-ready b{display:block;margin-bottom:8px;font-size:17px;color:var(--dn-navy)}.td-ready p{margin:0;font-size:13px;color:#8D8981}
+.td-intro-poster{display:block;width:min(100%,760px);height:auto;margin:0 auto;border:1px solid var(--dn-line);border-radius:18px}
+.td-course-list{overflow:hidden;border:1px solid var(--dn-line);border-radius:18px}
+.td-course-list>a{display:grid;grid-template-columns:minmax(0,1fr) 150px 170px 26px;align-items:center;gap:18px;padding:20px 22px;
+  border-bottom:1px solid var(--dn-line);text-decoration:none;color:inherit;transition:background .2s ease}
+.td-course-list>a:last-child{border-bottom:0}.td-course-list>a:hover{background:#FAF8F3}
+.td-course-list div span{display:block;margin-bottom:4px;font-size:11px;font-weight:800;color:var(--dn-gold)}
+.td-course-list div strong{font-size:15px;color:var(--dn-deep)}.td-course-list p{margin:0;font-size:12.5px;color:#777D87}
+.td-course-list i{font-style:normal;color:var(--dn-gold);font-size:18px}
+
+/* 단과시간표 목록 */
+.sc-page{background:#fff}.sc-wrap{width:min(1160px,calc(100% - 48px));margin:0 auto}
+.sc-eyebrow{margin:0 0 11px;font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--dn-gold)}
+.sc-hero{position:relative;padding:165px 0 58px;overflow:hidden;background:linear-gradient(135deg,#F5F1E9,#F3F6FB)}
+.sc-hero-in{display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+.sc-hero h1,.sc-detail-head h1{margin:0 0 12px;font-size:clamp(34px,4.5vw,54px);font-weight:900;letter-spacing:-.05em;color:var(--dn-deep)}
+.sc-hero p:last-child{margin:0;font-size:15px;color:var(--dn-ink-soft)}
+.sc-hero-mark{font-family:"Noto Serif KR",serif;font-size:clamp(46px,8vw,102px);font-weight:900;line-height:.8;
+  color:rgba(36,54,90,.055);letter-spacing:-.06em}
+.sc-content{padding:38px 0 90px}
+.sc-category-tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--dn-line);scrollbar-width:none}
+.sc-category-tabs::-webkit-scrollbar{display:none}
+.sc-category-tabs a{flex:0 0 auto;padding:14px 20px;border-bottom:2px solid transparent;text-decoration:none;
+  white-space:nowrap;font-size:14px;font-weight:700;color:#8E929A}
+.sc-category-tabs a.is-on{border-color:var(--dn-gold);color:var(--dn-navy)}
+.sc-subject-filter{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:24px 0}
+.sc-subject-filter>span{margin-right:4px;font-size:12.5px;font-weight:800;color:#A09A90}
+.sc-subject-filter a{padding:8px 14px;border:1px solid var(--dn-line);border-radius:999px;text-decoration:none;
+  font-size:12.5px;font-weight:700;color:#6E7480;background:#fff}
+.sc-subject-filter a.is-on{border-color:var(--dn-navy);background:var(--dn-navy);color:#fff}
+.sc-list-head{display:flex;align-items:center;justify-content:space-between;margin:30px 0 12px;font-size:13px;color:#8C8E93}
+.sc-list-head p{margin:0}.sc-list-head b{font-size:15px;color:var(--dn-navy)}
+.sc-table-wrap{overflow:hidden;border:1px solid var(--dn-line);border-radius:18px}
+.sc-table{width:100%;border-collapse:collapse;font-size:13.5px}.sc-table th{padding:14px;background:#F6F4EF;color:#797872;font-weight:800}
+.sc-table th:nth-child(2){text-align:left}.sc-table td{padding:17px 14px;border-top:1px solid var(--dn-line);text-align:center;color:#656B75}
+.sc-table tbody tr{transition:background .18s ease}.sc-table tbody tr:hover{background:#FCFAF6}
+.sc-teacher{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:#5C6470;white-space:nowrap}
+.sc-teacher>span,.sc-mobile-face{width:44px;height:44px;overflow:hidden;border-radius:10px;border:1px solid var(--dn-line);background:#EEF1F6;
+  display:flex;align-items:center;justify-content:center}
+.sc-teacher img,.sc-mobile-face img{width:100%;height:100%;object-fit:cover;object-position:top}.sc-teacher b,.sc-mobile-face b{font-size:18px;color:#ABB4C4}
+.sc-course-title{display:block;text-align:left;text-decoration:none;color:inherit}.sc-course-title>span{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px}
+.sc-course-title i,.sc-mobile-top i{padding:3px 7px;border-radius:4px;background:rgba(192,153,79,.12);font-style:normal;font-size:10px;font-weight:800;color:#8B6D33}
+.sc-course-title strong{font-size:14.5px;color:var(--dn-deep)}
+.sc-mobile-cards{display:none;margin:0;padding:0;list-style:none}.sc-empty{padding:70px 20px;border:1px solid var(--dn-line);border-radius:18px;text-align:center;color:#96928A}
+.sc-sample-note{margin:20px 0 0;font-size:11.5px;color:#AAA399}
+
+/* 강좌 상세 */
+.sc-detail-head{padding:158px 0 42px;background:linear-gradient(145deg,#F6F2EA,#F7F9FD)}
+.sc-detail-head a{display:inline-block;margin-bottom:24px;text-decoration:none;font-size:13px;font-weight:700;color:#7B746A}
+.sc-detail-body{padding:42px 0 90px;background:#FAF9F6}.sc-detail-wrap{max-width:1020px}
+.sc-detail-card{display:grid;grid-template-columns:260px minmax(0,1fr);gap:36px;padding:30px;border:1px solid var(--dn-line);border-radius:22px;background:#fff}
+.sc-detail-teacher{position:relative;min-height:340px;overflow:hidden;border-radius:18px;background:linear-gradient(150deg,#EEF1F6,#E2E7F0)}
+.sc-detail-teacher>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.sc-detail-placeholder{display:flex;height:100%;min-height:340px;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.sc-detail-placeholder b{font-family:"Noto Serif KR",serif;font-size:90px;color:rgba(36,54,90,.15)}
+.sc-detail-placeholder span{font-size:11.5px;font-weight:800;color:#7F899B}
+.sc-detail-info{min-width:0;padding:8px 0}.sc-detail-tags{display:flex;flex-wrap:wrap;gap:6px}
+.sc-detail-tags span,.sc-detail-tags i{padding:5px 9px;border-radius:5px;font-size:11px;font-weight:800;font-style:normal}
+.sc-detail-tags span{background:var(--dn-navy);color:#fff}.sc-detail-tags i{background:#F3EBDD;color:#8A6A2E}
+.sc-detail-info h2{margin:15px 0 10px;font-size:clamp(24px,3vw,34px);line-height:1.35;letter-spacing:-.04em;color:var(--dn-deep)}
+.sc-detail-teacher-link{display:inline-block;margin-bottom:20px;text-decoration:none;font-size:12.5px;font-weight:700;color:var(--dn-gold)}
+.sc-detail-rows{display:grid;grid-template-columns:1fr 1fr;margin:0;border-top:1px solid var(--dn-line)}
+.sc-detail-rows>div{display:flex;gap:12px;padding:13px 4px;border-bottom:1px solid var(--dn-line)}
+.sc-detail-rows dt{flex:0 0 64px;font-size:12px;font-weight:800;color:#AAA399}.sc-detail-rows dd{margin:0;font-size:12.5px;font-weight:700;color:#505762}
+.sc-syllabus{margin-top:22px;padding:30px;border:1px solid var(--dn-line);border-radius:22px;background:#fff}
+.sc-syllabus h2{margin:0 0 22px;font-size:23px;color:var(--dn-deep)}.sc-syllabus>img{display:block;max-width:760px;width:100%;height:auto;margin:0 auto}
+.sc-syllabus-ready{padding:64px 20px;text-align:center;background:#F8F7F3;border-radius:14px}
+.sc-syllabus-ready>span{display:flex;width:48px;height:48px;margin:0 auto 16px;border-radius:50%;align-items:center;justify-content:center;
+  background:var(--dn-navy);font-family:"Noto Serif KR",serif;font-weight:900;color:var(--dn-gold-soft)}
+.sc-syllabus-ready b{display:block;margin-bottom:8px;color:var(--dn-navy)}.sc-syllabus-ready p{margin:0;font-size:12.5px;color:#969189}
+
+@media(max-width:900px){
+  .td-head,.sc-detail-head{padding:42px 0 32px}.td-body,.sc-detail-body{padding:32px 0 64px}
+  .td-profile{grid-template-columns:1fr minmax(210px,38%)}.td-profile-copy{padding:34px}.td-profile-photo{min-height:380px}
+  .sc-wrap{width:calc(100% - 36px)}.sc-hero{padding:46px 0 42px}.sc-hero-mark{display:none}.sc-content{padding:28px 0 64px}
+  .sc-table-wrap{display:none}.sc-mobile-cards{display:grid;gap:12px}
+  .sc-mobile-cards>li>a{display:block;padding:18px;border:1px solid var(--dn-line);border-radius:16px;text-decoration:none;color:inherit;background:#fff}
+  .sc-mobile-top{display:flex;align-items:center;gap:8px}.sc-mobile-top>span:nth-child(2){font-size:12.5px;color:#686F7A}
+  .sc-mobile-top>div{display:flex;gap:4px;margin-left:auto}.sc-mobile-cards a>strong{display:block;margin:13px 0 10px;font-size:15px;color:var(--dn-deep)}
+  .sc-mobile-cards dl{margin:0}.sc-mobile-cards dl>div{display:flex;gap:12px;font-size:12.5px;line-height:1.8}.sc-mobile-cards dt{width:60px;color:#A29B91}.sc-mobile-cards dd{margin:0;color:#686F7A}
+  .sc-detail-card{grid-template-columns:210px minmax(0,1fr);gap:24px;padding:22px}
+}
+@media(max-width:640px){
+  .tc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tc-card .tc-card-top{padding:12px 12px 0}.tc-open{display:none}
+  .tc-card-subject{margin:15px 12px 3px;font-size:11px}.tc-card-name{margin:0 12px;font-size:17px}.tc-tags span{padding:3px 6px;font-size:9px}
+  .tc-card-profile>span{font-size:62px}.tc-card-overlay{display:none}
+  .td-profile{display:block;min-height:0}.td-profile-copy{padding:28px 24px 0}.td-profile-photo{min-height:280px}.td-profile-placeholder{min-height:280px}
+  .td-photo-ring{width:210px;height:210px}.td-course-list>a{grid-template-columns:1fr 22px;gap:10px}.td-course-list>a>p{display:none}
+  .sc-category-tabs{margin:0 -18px;padding:0 18px}.sc-category-tabs a{padding:13px 14px}
+  .sc-subject-filter>span{width:100%}.sc-detail-card{grid-template-columns:1fr;padding:18px}.sc-detail-teacher{min-height:260px}.sc-detail-placeholder{min-height:260px}
+  .sc-detail-rows{grid-template-columns:1fr}.sc-syllabus{padding:22px 18px}.sc-syllabus-ready{padding:48px 14px}
+}

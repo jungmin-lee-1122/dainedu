@@ -136,7 +136,8 @@ app/
 ├─ porta/       page.tsx · portaData.ts · portaScript.ts   # 고등 (스크립트는 clavis와 공용)
 ├─ clavis/      page.tsx · clavisData.ts                   # N수 (portaScript 를 import)
 ├─ winter/      page.tsx · winterData.ts · winterScript.ts # 2027 윈터스쿨
-├─ teachers/    page.tsx · teachersData.ts · teachersScript.ts
+├─ teachers/    page.tsx · [id]/page.tsx · teachersData.ts · teachersScript.ts
+├─ schedule/    page.tsx · [id]/page.tsx · scheduleData.ts
 ├─ space/       page.tsx · spaceData.ts · spaceScript.ts
 ├─ consult/     page.tsx · consultScript.ts                # 온라인 상담
 ├─ event/       page.tsx · [id]/page.tsx · eventData.ts · eventScript.ts · reserveModal.ts
@@ -155,7 +156,8 @@ app/
 | `/greeting` | 인사말 — 사진 히어로(강의·관리 붓글씨 강조), 편지글, 3D 일러스트 ACADEMIC SYSTEM 카드 2장, CTA | 완료 |
 | `/porta` `/clavis` | 히어로 슬라이더, 그랜드오픈 배너, 공지·설명회, 유튜브 클립, 사이드 배너 | 완료(선생님 섹션 숨김) |
 | `/winter` | itall.com 오마주 — KV·고정 탭바·혜택·커리큘럼·FAQ | 완료 |
-| `/teachers` | Coming Soon 카드 14개 + 과목 필터 | 완료(실제 강사 정보 대기) |
+| `/teachers` `/teachers/[id]` | URL 과목 필터·강사 카드·상세 프로필·개설 강좌 연결 | 완료(실제 강사 정보·사진 대기) |
+| `/schedule` `/schedule/[id]` | 모집대상·과목 필터 / PC 표·모바일 카드 / 강좌 상세·계획서 | 완료(실제 강좌 데이터 대기) |
 | `/space` | 시설 구성 9개·차별점 3개 + 렌더링 도면 탭 (기존 히어로·영상·4개 관·CTA는 플래그로 숨김) | 완료(시설 실사진 교체 대기) |
 | `/consult` | 상담 폼 → 구글 시트 | **동작 확인됨** |
 | `/event` `/event/[id]` | 설명회 목록·필터 / 상세 + 우측 예약 신청서 | **동작 확인됨** |
@@ -203,6 +205,39 @@ app/
 - 관련 JSX는 `app/space/page.tsx`, 스타일은 `globals.css`의 `32) 시설 안내 (/space)` 구역에 있습니다.
 - 기존 `renderings` 탭과 숨김 플래그 섹션은 삭제하지 않고 그대로 유지했습니다.
 - 타입 검사, CSS 중괄호 검사, `npm run build`까지 통과했습니다.
+
+### 2026-09-17 강사진 · 단과시간표 구조 확장
+
+평촌 5A 아카데미 사이트는 **정보 구조와 동작 흐름만 참고**했고, 화면은 다인교육의 네이비·골드·크림 디자인으로 새로 구현했습니다.
+
+1. **강사진 목록 `/teachers`**
+   - `?subject=`를 사용하는 URL 기반 과목 필터입니다. 새로고침하거나 링크를 공유해도 선택 과목이 유지됩니다.
+   - 카드에는 대상 태그·과목·이름·사진이 보이고, PC 호버 시 한 줄 소개와 약력이 나타납니다.
+   - 모바일은 참고 사이트처럼 2열 카드이며 호버 레이어는 숨깁니다.
+   - 각 카드는 `/teachers/[id]` 상세 페이지로 연결됩니다.
+
+2. **강사 상세 `/teachers/[id]`**
+   - 과목 탭 → 같은 과목의 강사 얼굴 선택줄 → 프로필/약력 → `강사 소개`·`개설 강좌` 탭 순서입니다.
+   - 탭 상태는 `?view=intro|courses`, 과목 상태는 `?subject=`로 유지합니다.
+   - 실제 사진·소개 포스터·영상이 없어도 준비 중 화면이 깨지지 않도록 처리했습니다.
+   - 동적 라우트의 `params`, `searchParams`는 Next.js 16 규칙대로 모두 `await` 합니다.
+
+3. **단과시간표 `/schedule`**
+   - 모집대상 탭과 과목 필터를 조합해 강좌를 찾습니다.
+   - PC에서는 표, 모바일에서는 카드 목록으로 자동 전환합니다.
+   - 강사와 강좌 제목에서 각각 강사 상세·강좌 상세로 이동합니다.
+   - 공용 헤더와 메인 랜딩 메뉴의 `모집안내` 하위에 `단과시간표` 링크를 추가했습니다.
+
+4. **강좌 상세 `/schedule/[id]`**
+   - 강사 영역, 대상·태그, 개강일·기간·시간·수강료·교재, 강의 계획서 영역으로 구성됩니다.
+   - 강의 계획서 이미지가 없으면 브랜드형 준비 중 화면을 표시합니다.
+
+5. **데이터 수정 위치**
+   - 강사: `app/teachers/teachersData.ts`
+   - 강좌·모집대상 탭: `app/schedule/scheduleData.ts`
+   - `teachersData.ts`는 기존 14명 Coming Soon 데이터를 유지하면서 `teacher-01` 형식의 안정적인 ID와 대상 태그를 부여합니다.
+   - `scheduleData.ts`의 6개 강좌는 **화면 구성을 확인하기 위한 예시**입니다. 실제 편성 확정 후 반드시 교체하세요.
+   - 스타일은 `globals.css`의 `43) 강사진 상세 · 단과시간표` 구역에 모여 있습니다.
 
 ### 구글 시트 연동 (3개, 모두 동일 패턴)
 

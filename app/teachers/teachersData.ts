@@ -4,19 +4,25 @@
 // ═══════════════════════════════════════════════════════════
 
 export type Teacher = {
+  id: string;             // 상세 페이지 경로에 쓰는 고유값
   subject: string;
+  tags: string[];         // 카드 상단 대상 태그
   name: string;        // 공개 전에는 "Coming Soon"
   copy: string;        // 한 줄 소개
   career: string[];    // 이력
   openAt: string;      // 공개 예정 시기
   revealed: boolean;   // true 면 실명·사진 공개
   photo?: string;
+  videoUrl?: string;
+  introPoster?: string;
 };
+
+type TeacherSeed = Omit<Teacher, "id" | "tags"> & { tags?: string[] };
 
 /** 과목 필터 순서 */
 export const subjects = ["전체", "수학", "국어", "통합과학", "통합사회", "인문논술", "수리논술"];
 
-export const teachers: Teacher[] = [
+const teacherSeeds: TeacherSeed[] = [
   {
     subject: "수학",
     name: "Coming Soon",
@@ -130,3 +136,13 @@ export const teachers: Teacher[] = [
     revealed: false,
   },
 ];
+
+/**
+ * 상세 페이지 링크가 콘텐츠 수정으로 흔들리지 않도록 배열 순서 기반 ID를 부여합니다.
+ * 실제 강사진 공개 후에도 기존 ID는 유지하고 내용만 교체하세요.
+ */
+export const teachers: Teacher[] = teacherSeeds.map((teacher, index) => ({
+  ...teacher,
+  id: `teacher-${String(index + 1).padStart(2, "0")}`,
+  tags: teacher.tags ?? ["고등", "N수"],
+}));
