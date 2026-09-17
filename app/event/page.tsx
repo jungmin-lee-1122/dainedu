@@ -44,7 +44,7 @@ export default function EventListPage() {
               현재 접수중 <b>{openCount}</b>건
             </span>
             <span className="ev-hero-tel">
-              문의 <a href="tel:03180030221">031-8003-0221</a>
+              문의 <a href="tel:16440224">1644-0224</a>
             </span>
           </div>
         </div>

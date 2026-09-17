@@ -31,10 +31,14 @@ export default function SiteFooter() {
 
           <div className="dn-foot-tel-wrap">
             <button className="dn-foot-tel" type="button" aria-expanded="false" aria-label="대표번호 펼치기">
-              031-8003-0221
+              1644-0224
               <span className="dn-foot-tel-caret" aria-hidden="true">▾</span>
             </button>
             <div className="dn-foot-tel-menu">
+              <a href="tel:16440224">
+                <span className="dn-tel-label">대표번호</span>
+                <span className="dn-tel-num">1644-0224</span>
+              </a>
               <a href="tel:03180030221">
                 <span className="dn-tel-label">주식회사 다인교육 (본점)</span>
                 <span className="dn-tel-num">031-8003-0221</span>
@@ -62,7 +66,7 @@ export default function SiteFooter() {
               <span className="dn-foot-sep">|</span>e-mail: help@dain-edu.com
             </p>
             <p>
-              개인정보보호책임자: 김양현<span className="dn-foot-sep">|</span>대표번호 031-8003-0221
+              개인정보보호책임자: 김양현<span className="dn-foot-sep">|</span>대표번호 1644-0224
               <span className="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층
             </p>
             <p>
