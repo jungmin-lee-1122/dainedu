@@ -124,7 +124,7 @@
 ```
 app/
 ├─ layout.tsx                  # 공통 메타데이터·OG
-├─ globals.css                 # ★ 전체 스타일 (2,200줄, 42개 번호 섹션)
+├─ globals.css                 # ★ 전체 스타일 (약 2,540줄, 44개 번호 섹션)
 ├─ SiteHeader.tsx              # 공용 헤더 — 카테고리 메뉴·수능 D-day·과정 토글
 ├─ SiteFooter.tsx              # 공용 푸터 — SNS 주소는 상단 SNS 객체에서 관리
 ├─ quickMenu.ts                # 우측 고정 퀵메뉴 (HTML 문자열)
@@ -138,6 +138,7 @@ app/
 ├─ winter/      page.tsx · winterData.ts · winterScript.ts # 2027 윈터스쿨
 ├─ teachers/    page.tsx · [id]/page.tsx · teachersData.ts · teachersScript.ts
 ├─ schedule/    page.tsx · [id]/page.tsx · scheduleData.ts
+├─ about/location/ page.tsx · locationScript.ts             # 오시는 길
 ├─ space/       page.tsx · spaceData.ts · spaceScript.ts
 ├─ consult/     page.tsx · consultScript.ts                # 온라인 상담
 ├─ event/       page.tsx · [id]/page.tsx · eventData.ts · eventScript.ts · reserveModal.ts
@@ -158,6 +159,7 @@ app/
 | `/winter` | itall.com 오마주 — KV·고정 탭바·혜택·커리큘럼·FAQ | 완료 |
 | `/teachers` `/teachers/[id]` | URL 과목 필터·강사 카드·상세 프로필·개설 강좌 연결 | 완료(실제 강사 정보·사진 대기) |
 | `/schedule` `/schedule/[id]` | 모집대상·과목 필터 / PC 표·모바일 카드 / 강좌 상세·계획서 | 완료(실제 강좌 데이터 대기) |
+| `/about/location` | 프리미엄 히어로·지도·지도 앱 바로가기·교통/주차·도착 안내 | 완료 |
 | `/space` | 시설 구성 9개·차별점 3개 + 렌더링 도면 탭 (기존 히어로·영상·4개 관·CTA는 플래그로 숨김) | 완료(시설 실사진 교체 대기) |
 | `/consult` | 상담 폼 → 구글 시트 | **동작 확인됨** |
 | `/event` `/event/[id]` | 설명회 목록·필터 / 상세 + 우측 예약 신청서 | **동작 확인됨** |
@@ -239,6 +241,17 @@ app/
    - `scheduleData.ts`의 6개 강좌는 **화면 구성을 확인하기 위한 예시**입니다. 실제 편성 확정 후 반드시 교체하세요.
    - 스타일은 `globals.css`의 `43) 강사진 상세 · 단과시간표` 구역에 모여 있습니다.
 
+### 2026-09-17 오시는 길 페이지 신규 제작
+
+- 경로: `/about/location`
+- 주소: `경기도 화성시 동탄구 반송동 92-7`
+- 도로명/층 안내: `경기도 화성시 동탄 메타폴리스로 53, 6층`
+- 페이지 구성: 프리미엄 네이비·골드 히어로 → 주소 기반 Google 지도 임베드 → 네이버지도·카카오맵·전화 버튼 → 대중교통·자가용·주차 안내 → 3단계 도착 안내 → 대표전화 CTA
+- 지도는 별도 API 키 없이 주소 검색형 Google Maps iframe을 사용합니다.
+- 확인되지 않은 버스 번호나 소요 시간은 임의로 넣지 않았습니다. 실제 교통 정보가 확정되면 `app/about/location/page.tsx`의 `routeCards`를 수정하세요.
+- 공용 헤더와 메인 랜딩페이지의 `학원소개 → 오시는 길` 링크를 `/about/location`으로 연결했습니다.
+- 스타일은 `globals.css`의 `44) 오시는 길` 구역에 있습니다.
+
 ### 구글 시트 연동 (3개, 모두 동일 패턴)
 
 ```
@@ -292,7 +305,6 @@ grep -rn "dain-edu.higgsfield.app" app/
 
 | 메뉴 | 현재 | 필요한 작업 |
 |---|---|---|
-| 학원소개 → 오시는 길 | `#about` | 지도 페이지 신규 제작 |
 | 학원소개 → 운영시스템 | `#system` | 페이지 신규 제작 |
 | 콘텐츠 (3개 항목) | `#contents` | 영단어 테스트 등 기능 기획 필요 |
 | 푸터 이용약관 / 개인정보 처리방침 | `#terms` `#privacy` | **법적 필수 문서. 빠르게 채울 것** |
