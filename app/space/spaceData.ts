@@ -17,6 +17,35 @@ export const halls = [
   { name: "단과관", desc: "과목별 단과 수업 전용 강의실" },
 ];
 
+/** 시설 구성 — 실제 사진 수급 전까지 기존 렌더링 이미지를 사용합니다. */
+export const facilityItems = [
+  { en: "Reception", name: "안내데스크 & 라운지", img: "/space/lounge.jpg" },
+  { en: "Access Control", name: "보안 게이트 출입관리", img: "/space/aerial.jpg" },
+  { en: "Lecture Hall", name: "강의 집중형 강의실", img: "/space/class.jpg" },
+  { en: "Study Zone", name: "독립 자습 공간", img: "/space/study.jpg" },
+  { en: "Study Carrel", name: "1인 프리미엄 지정좌석", img: "/winter/space-2.png" },
+  { en: "Personal Desk", name: "개인 책상 & 수납공간", img: "/winter/space-3.png" },
+  { en: "Consulting Room", name: "1:1 컨설팅룸", img: "/winter/space-4.png" },
+  { en: "Student Lounge", name: "휴게 공간 The Lounge", img: "/space/lounge.jpg" },
+  { en: "CCTV Monitoring", name: "전 구역 CCTV 관제", img: "/space/plan.jpg" },
+];
+
+/** 시설 차별점 */
+export const facilityPoints = [
+  {
+    title: "몰입을 설계한 학습 공간",
+    desc: "강의실과 자습 공간을 분리하고, 좌석 간 시선을 줄여 오롯이 학습에 집중하도록 설계했습니다.",
+  },
+  {
+    title: "입실부터 퇴실까지 관리",
+    desc: "출입 기록과 전 구역 CCTV 관제로 학생의 안전과 학습 시간을 빈틈없이 관리합니다.",
+  },
+  {
+    title: "이동을 줄인 학습 동선",
+    desc: "강의실·자습실·상담실·라운지를 한 층에 배치해 수업과 자습 사이의 이동 시간을 줄였습니다.",
+  },
+];
+
 /** 공간 미리보기 (탭 + 이미지) */
 export const renderings = [
   {

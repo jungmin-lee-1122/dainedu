@@ -4,13 +4,13 @@ import { spaceScript } from "./spaceScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
-import { intros, halls, renderings } from "./spaceData";
+import { intros, halls, facilityItems, facilityPoints, renderings } from "./spaceData";
 
 const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
 /* ─────────────────────────────────────────────────────────
    섹션 표시 여부 — 다시 보이게 하려면 true 로 바꾸면 됩니다.
-   현재는 "공간 미리보기(Renderings)"만 노출합니다.
+   현재는 신규 "시설 구성·차별점"과 "공간 미리보기"를 노출합니다.
    ───────────────────────────────────────────────────────── */
 const SHOW_HERO = false;    // 상단 "시설 미리보기" 타이틀
 const SHOW_INTRO = false;   // 다인·다온 인사 영상
@@ -93,8 +93,55 @@ export default function SpacePage() {
       </section>
       )}
 
+      {/* ── 시설 구성 · 차별점 ── */}
+      <section className="sp-facilities">
+        <div className="sp-facilities-head">
+          <div className="sp-wrap">
+            <p className="sp-facilities-en">DAIN ACADEMY CAMPUS</p>
+            <h1 className="sp-facilities-title">시설안내</h1>
+            <p className="sp-facilities-copy">
+              배움에 집중하는 공간은 달라야 합니다.<br />
+              수업부터 자습, 상담과 휴식까지 한 층 안에서 완성됩니다.
+            </p>
+          </div>
+        </div>
+
+        <div className="sp-wrap sp-facilities-body">
+          <h2 className="sp-facilities-h2">시설 구성</h2>
+          <div className="sp-facility-grid">
+            {facilityItems.map((item, i) => (
+              <article
+                className="sp-facility-card sp-up"
+                style={{ transitionDelay: `${(i % 3) * 80}ms` }}
+                key={item.en}
+              >
+                <span className="sp-facility-no" aria-hidden="true">{i + 1}</span>
+                <figure className="sp-facility-photo">
+                  <img src={item.img} alt={item.name} loading="lazy" />
+                </figure>
+                <div className="sp-facility-label">
+                  <span>{item.en}</span>
+                  <strong>{item.name}</strong>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <h2 className="sp-keypoints-title">차별점 <span>Key Point</span></h2>
+          <div className="sp-keypoints">
+            {facilityPoints.map((point, i) => (
+              <article className="sp-keypoint sp-up" key={point.title}>
+                <span className="sp-keypoint-no" aria-hidden="true">{i + 1}</span>
+                <h3>{point.title}</h3>
+                <p>{point.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 공간 미리보기 ── */}
-      <section className="sp-render sp-render-solo">
+      <section className="sp-render">
         <div className="sp-wrap">
           <p className="sp-eyebrow">Renderings</p>
           <h2 className="sp-h2">공간 미리보기</h2>

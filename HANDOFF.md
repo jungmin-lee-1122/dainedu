@@ -73,7 +73,7 @@
    {SHOW_TEACHERS && ( <section>…</section> )}
    ```
    현재 켜져 있는 플래그: `clavis|porta/page.tsx` 의 `SHOW_BODY=true` `SHOW_TEACHERS=false`,
-   `space/page.tsx` 의 `SHOW_HERO/INTRO/LAYOUT/CTA = false` (공간 미리보기만 노출 중)
+   `space/page.tsx` 의 `SHOW_HERO/INTRO/LAYOUT/CTA = false` (신규 시설 구성·차별점 + 공간 미리보기 노출 중)
 
 4. **`hidden` 속성을 쓸 땐 CSS `display` 와 충돌 주의**
    `.foo{display:flex}` 가 `hidden`을 덮어써서 **투명한 요소가 화면 전체를 덮고 클릭을 막은 사고**가 있었습니다.
@@ -132,6 +132,7 @@ app/
 │
 ├─ page.tsx / landingMarkup.ts / landingScript.ts      # 메인
 ├─ greeting/    page.tsx · greetingData.ts · greetingScript.ts · PillarArt.tsx
+│               └─ public/greeting/system-{lecture|care}-3d.webp
 ├─ porta/       page.tsx · portaData.ts · portaScript.ts   # 고등 (스크립트는 clavis와 공용)
 ├─ clavis/      page.tsx · clavisData.ts                   # N수 (portaScript 를 import)
 ├─ winter/      page.tsx · winterData.ts · winterScript.ts # 2027 윈터스쿨
@@ -151,13 +152,57 @@ app/
 | 경로 | 내용 | 상태 |
 |---|---|---|
 | `/` | 롤링 배너, 포스터, 전문관 2개 카드, 푸터, BGM | 완료 |
-| `/greeting` | 인사말 — 히어로(사진 그라데이션), 편지글, ACADEMIC SYSTEM 카드 2장, CTA | 완료 |
+| `/greeting` | 인사말 — 사진 히어로(강의·관리 붓글씨 강조), 편지글, 3D 일러스트 ACADEMIC SYSTEM 카드 2장, CTA | 완료 |
 | `/porta` `/clavis` | 히어로 슬라이더, 그랜드오픈 배너, 공지·설명회, 유튜브 클립, 사이드 배너 | 완료(선생님 섹션 숨김) |
 | `/winter` | itall.com 오마주 — KV·고정 탭바·혜택·커리큘럼·FAQ | 완료 |
 | `/teachers` | Coming Soon 카드 14개 + 과목 필터 | 완료(실제 강사 정보 대기) |
-| `/space` | 렌더링 도면 탭만 노출 중 (나머지 플래그로 숨김) | 축소 노출 |
+| `/space` | 시설 구성 9개·차별점 3개 + 렌더링 도면 탭 (기존 히어로·영상·4개 관·CTA는 플래그로 숨김) | 완료(시설 실사진 교체 대기) |
 | `/consult` | 상담 폼 → 구글 시트 | **동작 확인됨** |
 | `/event` `/event/[id]` | 설명회 목록·필터 / 상세 + 우측 예약 신청서 | **동작 확인됨** |
+
+### 2026-09-17 인사말 페이지 최근 변경 사항
+
+`/greeting` 페이지는 기존 완성본에서 아래 항목이 추가로 수정되었습니다.
+
+1. **ACADEMIC SYSTEM 카드 일러스트를 3D 이미지로 교체**
+   - 기존 `PillarArt.tsx`의 직접 그린 평면 SVG를 제거하고 `next/image` 기반 이미지 컴포넌트로 단순화했습니다.
+   - 새 에셋:
+     - `public/greeting/system-lecture-3d.webp` — 책·칠판·펜
+     - `public/greeting/system-care-3d.webp` — 체크리스트·달력
+   - 두 파일 모두 투명 배경 WebP이며 각각 약 115KB / 85KB입니다.
+   - PC·모바일 공통 크기와 위치는 `globals.css`의 `.gr-art`, 관리 이미지의 개별 비율은 `.gr-art-care`에서 조정합니다.
+   - `PillarArt.tsx`가 이미지 종류에 따라 `.gr-art-lecture` / `.gr-art-care` 클래스도 출력하므로, 강의 이미지만 별도로 조정하려면 `.gr-art-lecture` 규칙을 추가하면 됩니다.
+   - 원본 생성 이미지가 아니라 위 WebP 파일이 실제 사이트용 최종 에셋입니다.
+
+2. **카드 제목 한 줄 고정**
+   - `.gr-pillar-title`에 `white-space:nowrap`을 적용했습니다.
+   - 특히 `배운 것을 실력으로 만드는 관리`가 두 줄로 갈라지지 않도록 한 의뢰인 요청입니다.
+   - 모바일에서 문구나 글자 크기를 바꿀 때 카드 폭을 넘지 않는지 확인하세요.
+
+3. **히어로의 `강의`, `관리`만 붓글씨로 강조**
+   - `greetingData.ts`의 `<b>강의</b>`, `<b>관리</b>` 구조는 그대로 유지합니다.
+   - `layout.tsx`의 Google Fonts 요청에 `Nanum Brush Script`를 추가했습니다.
+   - `.gr-hero-line b`에만 해당 글꼴을 적용했으며, 색상은 기존 `var(--dn-gold)`를 유지합니다.
+   - 나머지 `프리미엄`, `두 축이 완성하는 겨울`은 기존 Pretendard 계열 그대로입니다.
+
+4. **검증 완료**
+   - `npx tsc --noEmit --incremental false` 통과
+   - CSS 중괄호 수 일치
+   - `npm run build` 통과 (전체 20개 정적 페이지 생성 확인)
+
+> 인사말 페이지 스타일은 `globals.css`의 `42) 인사말 (/greeting)` 구역에 모여 있습니다.
+> 3D 일러스트는 의도적으로 카드 오른쪽 아래에 배치되어 있으므로, 교체 시 투명 여백과 이미지 종횡비를 함께 확인하세요.
+
+### 2026-09-17 시설안내 페이지 최근 변경 사항
+
+- `/space`의 기존 `공간 미리보기` 바로 위에 첨부 레퍼런스를 따른 시설 소개 섹션을 추가했습니다.
+- 상단에는 `시설안내` 제목과 소개 문구, 본문에는 **시설 구성 9개 카드**와 **차별점 Key Point 3개 카드**가 표시됩니다.
+- 내용과 임시 이미지 경로는 `app/space/spaceData.ts`의 `facilityItems`, `facilityPoints`에서 관리합니다.
+- 현재 시설 사진은 예시용으로 기존 `/space`, `/winter` 이미지를 재사용합니다. 실제 사진을 받으면 `facilityItems[].img`만 교체하세요.
+- 화면은 데스크톱 3열, 태블릿 2열, 모바일 1열로 반응합니다.
+- 관련 JSX는 `app/space/page.tsx`, 스타일은 `globals.css`의 `32) 시설 안내 (/space)` 구역에 있습니다.
+- 기존 `renderings` 탭과 숨김 플래그 섹션은 삭제하지 않고 그대로 유지했습니다.
+- 타입 검사, CSS 중괄호 검사, `npm run build`까지 통과했습니다.
 
 ### 구글 시트 연동 (3개, 모두 동일 패턴)
 

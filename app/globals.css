@@ -1599,6 +1599,38 @@ img,video,svg{max-width:100%}
 .sp-hall-name{margin:0 0 10px;font-size:17px;font-weight:800;color:#fff}
 .sp-hall-desc{margin:0;font-size:13px;line-height:1.8;color:rgba(255,255,255,.55);word-break:keep-all}
 
+/* 시설 구성 · 차별점 */
+.sp-facilities{padding-top:150px;background:#fff}
+.sp-facilities-head{padding:48px 0 44px;background:#F3F2F1}
+.sp-facilities-en{margin:0 0 12px;font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--dn-gold)}
+.sp-facilities-title{margin:0 0 18px;font-family:"Noto Serif KR",serif;font-size:clamp(42px,5.4vw,68px);
+  font-weight:900;line-height:1.08;letter-spacing:-.06em;color:var(--dn-deep)}
+.sp-facilities-copy{margin:0;font-size:16px;line-height:1.9;color:#393A40;word-break:keep-all}
+.sp-facilities-body{padding-top:54px;padding-bottom:92px}
+.sp-facilities-h2{margin:0 0 30px;font-size:28px;font-weight:900;letter-spacing:-.04em;color:#191A20}
+
+.sp-facility-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:28px;row-gap:44px}
+.sp-facility-card{position:relative;min-width:0;padding-left:38px}
+.sp-facility-no{position:absolute;top:-8px;left:0;font-family:"Noto Serif KR",serif;font-size:38px;
+  font-style:italic;font-weight:600;line-height:1;color:#C8C4B9}
+.sp-facility-photo{margin:0;overflow:hidden;background:#ECEBE8;aspect-ratio:16/9}
+.sp-facility-photo img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
+.sp-facility-card:hover .sp-facility-photo img{transform:scale(1.045)}
+.sp-facility-label{position:relative;width:max-content;max-width:calc(100% - 16px);margin:-25px 0 0 -14px;
+  padding:10px 17px 11px;background:rgba(247,246,243,.96);box-shadow:0 7px 18px rgba(16,25,46,.05)}
+.sp-facility-label span{display:block;margin-bottom:2px;font-size:9px;color:#676970}
+.sp-facility-label strong{display:block;font-size:16px;line-height:1.35;letter-spacing:-.025em;color:#17181D;word-break:keep-all}
+
+.sp-keypoints-title{margin:68px 0 26px;font-size:25px;font-weight:900;letter-spacing:-.04em;color:#191A20}
+.sp-keypoints-title span{color:var(--dn-gold)}
+.sp-keypoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.sp-keypoint{position:relative;padding:56px 26px 26px;text-align:center;background:#F6F5F2;border:1px solid #F0EEE8}
+.sp-keypoint-no{position:absolute;top:0;left:50%;width:68px;height:34px;transform:translateX(-50%);
+  border-radius:0 0 999px 999px;background:#BBB594;font-family:"Noto Serif KR",serif;font-size:16px;
+  font-style:italic;color:#fff;line-height:28px}
+.sp-keypoint h3{margin:0 0 15px;font-size:19px;font-weight:900;letter-spacing:-.035em;color:#1C1D22;word-break:keep-all}
+.sp-keypoint p{margin:0;font-size:13px;line-height:1.75;color:#4D4E53;word-break:keep-all}
+
 .sp-render{padding:80px 0;background:#fff}
 .sp-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
 .sp-tab{padding:11px 22px;border:1px solid var(--dn-line);border-radius:999px;background:#fff;
@@ -1628,10 +1660,24 @@ img,video,svg{max-width:100%}
   .sp-wrap{padding:0 18px}
   .sp-video{width:min(260px,46vw)}
   .sp-layout,.sp-render{padding:56px 0}
+  .sp-facilities{padding-top:34px}
+  .sp-facilities-head{padding:38px 0 36px}
+  .sp-facilities-body{padding-top:44px;padding-bottom:64px}
+  .sp-facility-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 22px}
+  .sp-keypoints{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .sp-halls{grid-template-columns:1fr}
   .sp-video figcaption{left:14px;bottom:12px;font-size:13px}
+  .sp-facilities-title{font-size:42px}
+  .sp-facilities-copy{font-size:14px;line-height:1.8}
+  .sp-facilities-h2{font-size:24px;margin-bottom:24px}
+  .sp-facility-grid{grid-template-columns:1fr;row-gap:34px}
+  .sp-facility-card{padding-left:34px}
+  .sp-facility-no{font-size:34px}
+  .sp-facility-label strong{font-size:15px}
+  .sp-keypoints-title{margin-top:54px;font-size:22px}
+  .sp-keypoint{padding:52px 22px 24px}
 }
 
 /* ═══════ 33) 포르타·클라비스 히어로 컨트롤 (메인 롤링창과 동일) ═══════ */
