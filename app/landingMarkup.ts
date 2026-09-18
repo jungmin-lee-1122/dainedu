@@ -36,6 +36,16 @@ export const landingMarkup = `
         </div>
       </li>
       <li class="dn-gnb-item">
+        <a href="/event">설명회 · 입시</a>
+        <div class="dn-gnb-sub dn-gnb-sub-grouped">
+          <span class="dn-gnb-gtitle">설명회</span>
+          <a href="/event">설명회 신청</a>
+          <span class="dn-gnb-gtitle">입시</span>
+          <a href="/event">입시자료</a>
+        </div>
+      </li>
+      <!-- 콘텐츠 메뉴 숨김: 다시 보이려면 아래 주석만 풀어주세요
+      <li class="dn-gnb-item">
         <a href="#contents">콘텐츠</a>
         <div class="dn-gnb-sub">
           <a href="#contents">영단어 데일리 테스트</a>
@@ -43,6 +53,7 @@ export const landingMarkup = `
           <a href="#contents">학과 적성 찾기</a>
         </div>
       </li>
+      -->
       <li class="dn-gnb-item">
         <a href="/porta#notice">학원생활</a>
         <div class="dn-gnb-sub">

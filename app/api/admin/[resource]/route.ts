@@ -15,6 +15,7 @@ import {
   newId,
   hasDb,
 } from "@/lib/db";
+import { seedFor } from "@/lib/seed";
 
 export const dynamic = "force-dynamic";
 
@@ -94,6 +95,33 @@ export async function DELETE(
 
   await deleteContent(resource, id);
   return NextResponse.json({ ok: true });
+}
+
+/**
+ * PUT — "현재 사이트 내용 불러오기"
+ * 코드에 있는 기본 내용을 DB 로 옮깁니다. 이미 항목이 있으면 거절합니다.
+ */
+export async function PUT(
+  _req: Request,
+  { params }: { params: Promise<{ resource: string }> }
+) {
+  const { resource } = await params;
+  const bad = await guard(resource);
+  if (bad) return bad;
+
+  const existing = await listContents(resource);
+  if (existing.length > 0) {
+    return NextResponse.json(
+      { ok: false, error: "not_empty", message: "이미 등록된 항목이 있어 불러오지 않았습니다." },
+      { status: 409 }
+    );
+  }
+
+  const rows = seedFor(resource);
+  for (let i = 0; i < rows.length; i++) {
+    await saveContent(resource, rows[i].id, rows[i].data, i);
+  }
+  return NextResponse.json({ ok: true, count: rows.length });
 }
 
 export async function PATCH(

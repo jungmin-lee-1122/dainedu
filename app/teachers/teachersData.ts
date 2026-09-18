@@ -20,7 +20,7 @@ export type Teacher = {
 type TeacherSeed = Omit<Teacher, "id" | "tags"> & { tags?: string[] };
 
 /** 과목 필터 순서 */
-export const subjects = ["전체", "수학", "국어", "통합과학", "통합사회", "인문논술", "수리논술"];
+export const subjects = ["전체", "국어", "수학", "영어", "통합과학", "통합사회", "논술"];
 
 const teacherSeeds: TeacherSeed[] = [
   {
@@ -120,7 +120,7 @@ const teacherSeeds: TeacherSeed[] = [
     revealed: false,
   },
   {
-    subject: "인문논술",
+    subject: "논술",
     name: "Coming Soon",
     copy: "생각을 답안으로 완성합니다.",
     career: ["대치 논술학원 출강", "인문논술 전담"],
@@ -128,7 +128,7 @@ const teacherSeeds: TeacherSeed[] = [
     revealed: false,
   },
   {
-    subject: "수리논술",
+    subject: "논술",
     name: "Coming Soon",
     copy: "증명의 흐름을 설계합니다.",
     career: ["대치 논술학원 출강", "수리논술 전담"],

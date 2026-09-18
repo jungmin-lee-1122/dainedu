@@ -88,6 +88,26 @@ export default function ResourceManager({
     }
   }
 
+  async function importSeed() {
+    if (
+      !confirm(
+        "지금 사이트에 보이는 내용을 그대로 불러옵니다.\n" +
+          "불러온 뒤에는 여기서 직접 수정·삭제하실 수 있습니다. 진행할까요?"
+      )
+    )
+      return;
+    setBusy(true);
+    const res = await fetch(endpoint, { method: "PUT" });
+    const json = await res.json().catch(() => ({}));
+    setBusy(false);
+    if (json?.ok) {
+      setMsg("");
+      load();
+    } else {
+      setMsg(json?.message || "불러오지 못했습니다.");
+    }
+  }
+
   async function remove(id: string) {
     if (!confirm("이 항목을 삭제할까요? 되돌릴 수 없습니다.")) return;
     setBusy(true);
@@ -165,7 +185,22 @@ export default function ResourceManager({
       <section className="ad-list">
         {loading && <p className="ad-empty">불러오는 중…</p>}
         {!loading && items.length === 0 && (
-          <p className="ad-empty">아직 등록된 항목이 없습니다. 오른쪽 위 &lsquo;새로 추가&rsquo;를 눌러 주세요.</p>
+          <div className="ad-first">
+            <b>아직 등록된 항목이 없습니다.</b>
+            <p>
+              지금 사이트에 보이는 내용은 코드에 들어 있는 기본 내용입니다.
+              <br />
+              아래 버튼을 누르면 그 내용이 이곳으로 옮겨져 직접 수정하실 수 있습니다.
+            </p>
+            <div className="ad-first-act">
+              <button className="ad-btn ad-btn-fill" onClick={importSeed} disabled={busy}>
+                {busy ? "불러오는 중…" : "현재 사이트 내용 불러오기"}
+              </button>
+              <button className="ad-btn ad-btn-line" onClick={() => setEditing({ ...defaults })}>
+                빈 상태로 새로 추가
+              </button>
+            </div>
+          </div>
         )}
 
         {items.map((item, i) => (

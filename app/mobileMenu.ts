@@ -45,6 +45,14 @@ export const mobileMenuScript = String.raw`
       list.className="dn-mgroup-list";
       for(var s=0;s<sub.children.length;s++){
         var a=sub.children[s];
+        /* 굵은 구분 제목(설명회 · 입시)은 누를 수 없는 라벨로 */
+        if(a.classList && a.classList.contains("dn-gnb-gtitle")){
+          var lab=document.createElement("span");
+          lab.className="dn-mgroup-label";
+          lab.textContent=a.textContent;
+          list.appendChild(lab);
+          continue;
+        }
         var link=document.createElement("a");
         link.href=a.getAttribute("href")||"#";
         link.textContent=a.textContent;

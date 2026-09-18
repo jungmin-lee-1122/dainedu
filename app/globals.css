@@ -1379,7 +1379,7 @@ img,video,svg{max-width:100%}
 .dn-mgroup-head i{font-style:normal;font-size:18px;color:var(--dn-gold);transition:transform .25s ease}
 .dn-mgroup.is-open .dn-mgroup-head i{transform:rotate(45deg)}
 .dn-mgroup-list{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--dn-cream)}
-.dn-mgroup.is-open .dn-mgroup-list{max-height:320px}
+.dn-mgroup.is-open .dn-mgroup-list{max-height:460px}
 .dn-mgroup-list a{display:block;padding:12px 22px 12px 32px;font-size:14px;color:var(--dn-ink-soft);text-decoration:none}
 .dn-mgroup-list a:hover{color:var(--dn-gold)}
 .dn-mgroup-solo{display:block;padding:16px 22px;font-size:15.5px;font-weight:700;color:var(--dn-navy);text-decoration:none}
@@ -2725,3 +2725,26 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ad-row-main{flex:1 1 100%;order:2}
   .ad-row-act{order:3;flex:1 1 100%;justify-content:flex-end}
 }
+
+/* ═══════ 46) 헤더 드롭다운 — 굵은 구분 제목이 있는 형태 ═══════ */
+/* 예) 설명회 · 입시 → "설명회" / "입시" 는 누를 수 없는 제목입니다. */
+.dn-gnb-sub-grouped{min-width:186px;padding:6px 8px 8px}
+.dn-gnb-gtitle{display:block;margin:10px 6px 6px;padding-bottom:9px;
+  border-bottom:1px solid var(--dn-line);
+  font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--dn-deep);
+  cursor:default;user-select:none;pointer-events:none}
+.dn-gnb-sub-grouped .dn-gnb-gtitle:first-child{margin-top:4px}
+
+/* 모바일 드로어의 같은 제목 */
+.dn-mgroup-label{display:block;margin:14px 22px 4px 32px;padding:0 0 8px;
+  border-bottom:1px solid var(--dn-line);
+  font-size:14px;font-weight:800;color:var(--dn-deep);
+  cursor:default;user-select:none;pointer-events:none}
+.dn-mgroup-list .dn-mgroup-label:first-child{margin-top:4px}
+
+/* 관리자 — 처음 들어왔을 때 안내 상자 */
+.ad-first{padding:40px 28px;text-align:center;border:1px dashed var(--dn-line);
+  border-radius:14px;background:#fff}
+.ad-first b{display:block;margin-bottom:10px;font-size:15.5px;font-weight:800;color:var(--dn-navy)}
+.ad-first p{margin:0 0 22px;font-size:13.5px;line-height:1.8;color:#7C8598}
+.ad-first-act{display:flex;justify-content:center;flex-wrap:wrap;gap:9px}

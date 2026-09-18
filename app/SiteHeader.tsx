@@ -9,6 +9,9 @@ const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
  *  "porta"  = 포르타 고등전문관 (/porta)
  *  "clavis" = 클라비스 N수전문관 (/clavis)
  */
+/** 콘텐츠 메뉴 표시 여부 — 다시 보이려면 true 로 바꾸세요. */
+const SHOW_CONTENTS = false;
+
 export default function SiteHeader({ current }: { current?: "porta" | "clavis" }) {
   // 공지사항 / 이벤트·설명회는 현재 보고 있는 관(고등·N수)의 해당 섹션으로 이동합니다.
   const base = current === "clavis" ? "/clavis" : "/porta";
@@ -88,6 +91,18 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             </div>
           </li>
 
+          {/* ── 설명회 · 입시 ── */}
+          <li className="dn-gnb-item">
+            <a href="/event">설명회 · 입시</a>
+            <div className="dn-gnb-sub dn-gnb-sub-grouped">
+              <span className="dn-gnb-gtitle">설명회</span>
+              <a href="/event">설명회 신청</a>
+              <span className="dn-gnb-gtitle">입시</span>
+              <a href="/event">입시자료</a>
+            </div>
+          </li>
+
+          {SHOW_CONTENTS && (
           <li className="dn-gnb-item">
             <a href="/#contents">콘텐츠</a>
             <div className="dn-gnb-sub">
@@ -96,6 +111,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
               <a href="/#contents">학과 적성 찾기</a>
             </div>
           </li>
+          )}
 
           <li className="dn-gnb-item">
             <a href={`${base}#notice`}>학원생활</a>

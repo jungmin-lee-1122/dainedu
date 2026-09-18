@@ -96,9 +96,9 @@ export const courses: Course[] = [
   {
     id: "course-06",
     teacherId: "teacher-14",
-    subject: "수리논술",
+    subject: "논술",
     targets: ["특강"],
-    tags: ["수리논술", "파이널"],
+    tags: ["논술", "파이널"],
     title: "대학별 수리논술 파이널",
     startDate: "일정 공개 예정",
     period: "대학별 편성",
