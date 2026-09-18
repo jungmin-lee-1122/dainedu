@@ -6,7 +6,7 @@
 //  PATCH  /api/admin/teachers        → 순서 변경 { ids: [...] }
 // ═══════════════════════════════════════════════════════════
 import { NextResponse } from "next/server";
-import { isLoggedIn } from "@/lib/auth";
+import { isLoggedIn } from "@/lib/session";
 import {
   listContents,
   saveContent,

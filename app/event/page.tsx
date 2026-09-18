@@ -1,4 +1,5 @@
 import Script from "next/script";
+import Link from "next/link";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
@@ -26,7 +27,7 @@ export default async function EventListPage() {
       <section className="ev-hero">
         <div className="ev-wrap">
           <nav className="ev-crumb" aria-label="현재 위치">
-            <a href="/">홈</a>
+            <Link href="/">홈</Link>
             <span aria-hidden="true">›</span>
             <span>학원생활</span>
             <span aria-hidden="true">›</span>

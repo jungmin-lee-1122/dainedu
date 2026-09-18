@@ -4,8 +4,11 @@
 //  비밀번호는 환경변수 ADMIN_PASSWORD 로 설정합니다.
 //  로그인에 성공하면 서명된 쿠키를 심어 두고, 이후 요청에서 확인합니다.
 //  쿠키에는 비밀번호가 들어가지 않습니다.
+//
+//  ※ 이 파일은 미들웨어(Edge)에서도 불러 쓰므로
+//     next/headers 같은 서버 전용 기능을 넣으면 안 됩니다.
+//     로그인 상태 확인은 lib/session.ts 를 쓰세요.
 // ═══════════════════════════════════════════════════════════
-import { cookies } from "next/headers";
 
 export const SESSION_COOKIE = "dn_admin";
 
@@ -55,10 +58,4 @@ export function checkPassword(input: string) {
     diff |= input.charCodeAt(i) ^ expected.charCodeAt(i);
   }
   return diff === 0;
-}
-
-/** 서버 컴포넌트·라우트에서 현재 로그인 상태 확인 */
-export async function isLoggedIn() {
-  const store = await cookies();
-  return verifyToken(store.get(SESSION_COOKIE)?.value);
 }

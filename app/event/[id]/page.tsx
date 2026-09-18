@@ -1,4 +1,5 @@
 import Script from "next/script";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SiteHeader from "../../SiteHeader";
@@ -45,9 +46,9 @@ export default async function EventViewPage({
       <section className="ev-kv">
         <div className="ev-wrap">
           <nav className="ev-crumb ev-crumb-inv" aria-label="현재 위치">
-            <a href="/">홈</a>
+            <Link href="/">홈</Link>
             <span aria-hidden="true">›</span>
-            <a href="/event">이벤트 · 설명회</a>
+            <Link href="/event">이벤트 · 설명회</Link>
             <span aria-hidden="true">›</span>
             <b>{ev.kind}</b>
           </nav>
@@ -163,7 +164,7 @@ export default async function EventViewPage({
                 <p className="ev-aside-desc">
                   다음 일정은 공지사항으로 안내드립니다.
                 </p>
-                <a className="ev-book-btn ev-book-btn-full" href="/event">다른 일정 보기</a>
+                <Link className="ev-book-btn ev-book-btn-full" href="/event">다른 일정 보기</Link>
               </div>
             ) : (
               <div

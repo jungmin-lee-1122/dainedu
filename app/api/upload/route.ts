@@ -5,7 +5,7 @@
 // ═══════════════════════════════════════════════════════════
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
-import { isLoggedIn } from "@/lib/auth";
+import { isLoggedIn } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 

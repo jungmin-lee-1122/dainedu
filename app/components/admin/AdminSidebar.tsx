@@ -35,6 +35,7 @@ export default function AdminSidebar() {
 
       <aside className={`ad-side${open ? " is-open" : ""}`}>
         <Link className="ad-side-brand" href="/admin">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/dain-icon.png" alt="" className="ad-side-icon" />
           <span>
             <b>DAIN EDU</b>

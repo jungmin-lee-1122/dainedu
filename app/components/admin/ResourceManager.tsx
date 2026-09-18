@@ -39,7 +39,6 @@ export default function ResourceManager({
   const endpoint = `/api/admin/${resource}`;
 
   const load = useCallback(async () => {
-    setLoading(true);
     try {
       const res = await fetch(endpoint, { cache: "no-store" });
       const json = await res.json().catch(() => ({}));
@@ -57,8 +56,18 @@ export default function ResourceManager({
     setLoading(false);
   }, [endpoint]);
 
+  // 화면이 열릴 때 목록을 한 번 불러옵니다.
+  // (서버에서 받아온 뒤에만 상태를 바꾸므로 렌더가 반복되지 않습니다)
   useEffect(() => {
-    load();
+    let alive = true;
+    void (async () => {
+      const done = await load();
+      if (!alive) return;
+      return done;
+    })();
+    return () => {
+      alive = false;
+    };
   }, [load]);
 
   async function save() {

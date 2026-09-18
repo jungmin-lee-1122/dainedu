@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function AdminLoginPage() {
   return (
     <div className="ad-login">
       <form className="ad-login-card" onSubmit={submit}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/dain-icon.png" alt="" className="ad-login-icon" />
         <h1 className="ad-login-title">다인교육 동탄점</h1>
         <p className="ad-login-sub">관리자 페이지</p>
@@ -51,7 +53,7 @@ export default function AdminLoginPage() {
           {busy ? "확인 중…" : "로그인"}
         </button>
 
-        <a className="ad-login-back" href="/">← 사이트로 돌아가기</a>
+        <Link className="ad-login-back" href="/">← 사이트로 돌아가기</Link>
       </form>
     </div>
   );
