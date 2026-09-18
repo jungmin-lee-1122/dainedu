@@ -29,18 +29,54 @@ export const teachersScript = `
   }
 })();
 
-/* ── 스크롤 등장 ── */
+/* ── 스크롤 등장 ──
+   과목 탭을 누르면 페이지를 새로 읽지 않고 카드만 바뀝니다.
+   그래서 새로 생긴 카드도 자동으로 감시에 등록되도록 해야 합니다.
+   (이 처리가 없으면 탭을 바꿨을 때 카드가 투명한 채로 안 보입니다) */
 (function(){
-  var els=document.querySelectorAll(".tc-up");
-  if(!els.length) return;
+  var SEL=".tc-up";
+
   if(!("IntersectionObserver" in window)){
-    for(var i=0;i<els.length;i++) els[i].classList.add("is-in");
+    var all=document.querySelectorAll(SEL);
+    for(var i=0;i<all.length;i++) all[i].classList.add("is-in");
     return;
   }
+
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("is-in"); io.unobserve(en.target); } });
+    es.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add("is-in"); io.unobserve(en.target); }
+    });
   },{threshold:0.12,rootMargin:"0px 0px -6% 0px"});
-  for(var k=0;k<els.length;k++) io.observe(els[k]);
+
+  function watch(root){
+    if(!root||root.nodeType!==1) return;
+    if(root.matches && root.matches(SEL) && !root.classList.contains("is-in")) io.observe(root);
+    var list=root.querySelectorAll?root.querySelectorAll(SEL):[];
+    for(var k=0;k<list.length;k++){
+      if(!list[k].classList.contains("is-in")) io.observe(list[k]);
+    }
+  }
+
+  watch(document.body);
+
+  /* 카드가 새로 그려지면 다시 등록 */
+  if("MutationObserver" in window){
+    new MutationObserver(function(muts){
+      for(var m=0;m<muts.length;m++){
+        var added=muts[m].addedNodes;
+        for(var n=0;n<added.length;n++) watch(added[n]);
+      }
+    }).observe(document.body,{childList:true,subtree:true});
+  }
+
+  /* 혹시 감시가 늦게 걸려 빈 화면이 남는 경우를 대비한 안전장치 */
+  setTimeout(function(){
+    var left=document.querySelectorAll(SEL+":not(.is-in)");
+    for(var q=0;q<left.length;q++){
+      var r=left[q].getBoundingClientRect();
+      if(r.top<window.innerHeight&&r.bottom>0) left[q].classList.add("is-in");
+    }
+  },1200);
 })();
 
 /* ── 시계 · D-day · 푸터 드롭다운 · 맨 위로 ── */
