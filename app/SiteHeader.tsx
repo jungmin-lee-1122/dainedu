@@ -3,6 +3,8 @@
 //  모든 세부 페이지에서 <SiteHeader /> 로 불러 씁니다.
 //  카테고리를 바꾸려면 이 파일만 수정하면 전체 페이지에 반영됩니다.
 // ═══════════════════════════════════════════════════════════
+import { subjects } from "./teachers/teachersData";
+
 const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
 /** current: 로고 옆 과정 토글에서 현재 켜둘 값
@@ -71,14 +73,17 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
 
           <li className="dn-gnb-item">
             <a href="/teachers">강사진 소개</a>
-            {/* 세부 카테고리 숨김 (필요 시 주석 해제)
             <div className="dn-gnb-sub">
-              <a href="/teachers">국어</a>
-              <a href="/teachers">수학</a>
-              <a href="/teachers">영어</a>
-              <a href="/teachers">탐구</a>
+              {/* 과목 목록은 teachersData.ts 의 subjects 를 그대로 씁니다 */}
+              {subjects.map((s) => (
+                <a
+                  key={s}
+                  href={s === "전체" ? "/teachers" : `/teachers?subject=${encodeURIComponent(s)}`}
+                >
+                  {s}
+                </a>
+              ))}
             </div>
-            */}
           </li>
 
           <li className="dn-gnb-item">

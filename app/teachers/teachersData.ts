@@ -20,7 +20,7 @@ export type Teacher = {
 type TeacherSeed = Omit<Teacher, "id" | "tags"> & { tags?: string[] };
 
 /** 과목 필터 순서 */
-export const subjects = ["전체", "국어", "수학", "영어", "통합과학", "통합사회", "논술"];
+export const subjects = ["전체", "국어", "수학", "영어", "사회탐구", "과학탐구", "논술"];
 
 const teacherSeeds: TeacherSeed[] = [
   {
@@ -88,7 +88,7 @@ const teacherSeeds: TeacherSeed[] = [
     revealed: false,
   },
   {
-    subject: "통합과학",
+    subject: "과학탐구",
     name: "Coming Soon",
     copy: "개념 하나로 두 문제를 지웁니다.",
     career: ["대치 대형학원 출강", "통합과학 정규 담당"],
@@ -96,7 +96,7 @@ const teacherSeeds: TeacherSeed[] = [
     revealed: false,
   },
   {
-    subject: "통합과학",
+    subject: "과학탐구",
     name: "Coming Soon",
     copy: "과학은 암기가 아니라 이해입니다.",
     career: ["대형학원 출강", "물리 · 화학 전담"],
@@ -104,7 +104,7 @@ const teacherSeeds: TeacherSeed[] = [
     revealed: false,
   },
   {
-    subject: "통합사회",
+    subject: "사회탐구",
     name: "Coming Soon",
     copy: "표와 자료에서 답이 보이게.",
     career: ["대형학원 출강", "통합사회 정규 담당"],
@@ -112,7 +112,7 @@ const teacherSeeds: TeacherSeed[] = [
     revealed: false,
   },
   {
-    subject: "통합사회",
+    subject: "사회탐구",
     name: "Coming Soon",
     copy: "흐름을 잡으면 선지가 보입니다.",
     career: ["평촌 대형학원 출강", "윤리 · 사회문화 전담"],

@@ -83,9 +83,9 @@ export const courses: Course[] = [
   {
     id: "course-05",
     teacherId: "teacher-09",
-    subject: "통합과학",
+    subject: "과학탐구",
     targets: ["중3"],
-    tags: ["통합과학", "예비고1"],
+    tags: ["과학탐구", "예비고1"],
     title: "예비고1 통합과학 선행",
     startDate: "일정 공개 예정",
     period: "6주 과정",
