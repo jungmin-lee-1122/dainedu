@@ -278,26 +278,41 @@ app/
 
 ## 5. 다음에 이어서 할 일 (Next Steps)
 
-### 🔴 우선순위 1 — 외부 의존성 제거
+### 🔴 우선순위 1 — Higgsfield 링크 정책 결정 (⚠️ 임의로 손대지 말 것)
 
-**Higgsfield 앱 링크 19곳이 죽어 있습니다.**
-`https://dain-edu.higgsfield.app/seminar` 로 연결된 곳들이 "temporarily unavailable" 상태입니다.
-새로 만든 `/event` 페이지가 이 역할을 대체하므로 **전부 `/event` 로 교체**하는 것이 좋습니다.
+**2026-09-18 확인: Higgsfield 앱이 정상 복구되었습니다.**
+한동안 "temporarily unavailable" 이어서 "전부 `/event` 로 교체" 를 권고했으나, **그 권고는 폐기되었습니다.**
+지금 `https://dain-edu.higgsfield.app/seminar` 는 **9/20 윤여정 대표 초청 설명회 사전등록(선착순 341석)이
+실제로 돌아가고 있는 살아있는 접수 창구**입니다. 그대로 갈아엎으면 **운영 중인 접수 경로가 끊깁니다.**
 
 ```bash
-grep -rn "dain-edu.higgsfield.app" app/
+grep -rn "dain-edu.higgsfield.app" app/   # 현재 18곳
 ```
 
-대상: `SiteHeader.tsx` 상단 공지바, `landingMarkup.ts`(슬라이드 4 + 포스터 + 배너),
-`porta|clavis/*Data.ts` 사이드 배너·설명회 링크, `teachers|space|porta|clavis/page.tsx` CTA, `layout.tsx` metadataBase
+Higgsfield 쪽에는 이 저장소에 없는 콘텐츠(윤여정 초청 설명회, 오늘의 현장 로그, N수전문관 등)가 따로 있어
+사실상 **두 개의 사이트가 병행 운영 중**입니다. 그래서 이건 코드 문제가 아니라 **운영 정책 문제**입니다.
+
+**반드시 의뢰인에게 먼저 물어볼 것:**
+
+1. 9/20 설명회 접수는 Higgsfield 를 계속 쓸 것인가, `/event` 로 옮길 것인가?
+2. 옮긴다면 이미 배포된 홍보물·QR·광고의 링크는 어떻게 할 것인가?
+3. 두 사이트를 계속 병행한다면 각각의 역할 분담은?
+
+답을 듣기 전에는 **링크를 바꾸지 마세요.** 지금 당장 깨져 있는 것은 없습니다.
 
 ### 🟠 우선순위 2 — 실제 콘텐츠 투입
 
-1. **설명회 데이터 교체** — `app/event/eventData.ts` 의 4건은 **예시 더미**입니다. 실제 일정으로 교체 필요.
-2. **강사진** — `app/teachers/teachersData.ts` 14명 전원 "Coming Soon". 실명·사진·경력 대기 중.
-3. **공지사항** — `porta|clavis/*Data.ts` 의 `notices` / `lectures` 가 더미.
-4. **포르타 히어로 배너** — 슬라이드 3~5번 이미지가 없어 2장만 노출 중.
-   실제 배너가 나오면 `portaData.ts` 의 `heroSlides` 에 항목만 추가하면 됩니다.
+전부 **화면 확인용 더미**입니다. 실제 데이터로 교체해야 오픈할 수 있습니다.
+
+| 대상 | 파일 | 현재 상태 |
+|---|---|---|
+| 설명회 4건 | `app/event/eventData.ts` | 예시. 9/20 실제 설명회부터 반영 필요 |
+| 단과 강좌 6건 | `app/schedule/scheduleData.ts` | 예시. 실제 편성 확정 후 교체 |
+| 강사 14명 | `app/teachers/teachersData.ts` | 전원 "Coming Soon". 실명·사진·경력 대기 |
+| 공지·설명회 | `porta\|clavis/*Data.ts` 의 `notices` `lectures` | 더미 |
+| 시설 사진 | `app/space/spaceData.ts` 의 `facilityItems[].img` | 기존 이미지 임시 재사용 중 |
+| 오시는 길 교통정보 | `app/about/location/page.tsx` 의 `routeCards` | 버스 번호·소요시간 미확정 |
+| 포르타 히어로 | `app/porta/portaData.ts` 의 `heroSlides` | 이미지가 없어 2장만 노출 |
 
 ### 🟡 우선순위 3 — 미완성 링크 정리
 
@@ -305,10 +320,14 @@ grep -rn "dain-edu.higgsfield.app" app/
 
 | 메뉴 | 현재 | 필요한 작업 |
 |---|---|---|
-| 학원소개 → 운영시스템 | `#system` | 페이지 신규 제작 |
-| 콘텐츠 (3개 항목) | `#contents` | 영단어 테스트 등 기능 기획 필요 |
-| 푸터 이용약관 / 개인정보 처리방침 | `#terms` `#privacy` | **법적 필수 문서. 빠르게 채울 것** |
-| 공지사항 "전체보기 +" | `#notice` | 목록 페이지 신규 제작 |
+| 푸터 이용약관 / 개인정보 처리방침 | `#terms` `#privacy` | **법적 필수 문서. 가장 급함** |
+| 학원소개 → 운영시스템 | `/#system` | 페이지 신규 제작 |
+| 콘텐츠 (3개 항목) | `/#contents` | 영단어 테스트 등 기능 기획 필요 |
+| 학원소개 (대분류 자체) | `/#about` | 클릭해도 이동할 곳 없음 |
+| 공지사항 "전체보기 +" | `#notice` `#event` | 목록 페이지 신규 제작 |
+| 포르타·클라비스 선생님 "전체보기 +" | `#teachers` | `/teachers` 로 연결하면 됨 (간단) |
+
+※ `학원소개 → 오시는 길` 은 `/about/location` 으로 **이미 해결됨**.
 
 ### 🟢 우선순위 4 — 개선 과제
 
@@ -323,10 +342,24 @@ grep -rn "dain-edu.higgsfield.app" app/
 
 ## 6. 작업 규칙과 검증 방법
 
+### ⚠️ 먼저 알아둘 것 — iCloud 동기화 폴더입니다
+
+프로젝트가 `~/Desktop` 에 있고 iCloud 동기화 대상이라, **macOS가 파일을 복제하며
+`validator 2.ts` 처럼 이름 뒤에 ` 2` 가 붙은 유령 파일을 만들어냅니다.**
+이것들이 `.next/types/` 에 생기면 **타입 검사가 없는 파일을 찾는다며 실패**합니다.
+
+```bash
+find . -name "* 2.*" -not -path "./node_modules/*"   # 복제본 확인
+rm -rf .next                                         # 타입 검사 전 캐시 정리
+```
+
+`.git/refs/heads/main 2.lock` 같은 복제본이 생기면 git 도 멈춥니다. 보이면 지우세요.
+`node_modules` 도 같은 이유로 오프로딩되어 git 이 멈춘 전례가 있습니다 (`rm -rf node_modules && npm install` 로 복구).
+
 ### 변경 후 반드시 실행할 3가지
 
 ```bash
-# 1) 타입 검사
+# 1) 타입 검사 (실패하면 rm -rf .next 후 재시도)
 npx tsc --noEmit --incremental false
 
 # 2) CSS 중괄호 균형 (globals.css 를 정규식으로 편집했다면 필수)
@@ -367,9 +400,22 @@ git add -A && git commit -m "변경 내용" && git push   # → Vercel 자동 �
 
 ## 7. 첫 작업 제안
 
-가장 먼저 **우선순위 1 (Higgsfield 링크 19곳 → `/event` 교체)** 을 처리하세요.
-현재 사이트에서 **실제로 깨져 있는 유일한 문제**이고, 교체 범위가 명확합니다.
+**지금 당장 깨져 있는 것은 없습니다.** 사이트는 정상 동작 중이고, 남은 일은
+① 판단이 필요한 것과 ② 콘텐츠가 와야 하는 것으로 나뉩니다.
 
-작업 전 `grep -rn "dain-edu.higgsfield.app" app/` 로 전체 목록을 뽑고,
-각 링크가 "설명회 참석 유도"인지 "사전등록"인지 문맥을 보고 목적지를 정한 뒤,
-의뢰인에게 교체 목록을 보여주고 확인받은 다음 반영하는 것을 권합니다.
+**바로 착수 가능한 것 — 이용약관 · 개인정보 처리방침 페이지**
+
+푸터 링크가 `#terms` `#privacy` 로 비어 있습니다. 예약·상담 폼에서 이미 개인정보를 수집하고 있으므로
+**법적으로 반드시 있어야 하는 문서**이고, 다른 사람의 확인을 기다릴 필요 없이 만들 수 있는 유일한 항목입니다.
+`/greeting` 이나 `/event` 페이지 구조를 그대로 본떠 만들면 됩니다.
+실제 수집 항목은 `app/event/reserveModal.ts` 와 `app/consult/page.tsx` 의 동의 문구를 참고하세요.
+
+**그다음 — 작은 것부터**
+
+`#teachers` 전체보기 링크를 `/teachers` 로 연결 (한 줄 수정).
+
+**의뢰인 확인이 먼저 필요한 것**
+
+우선순위 1의 Higgsfield 정책, 그리고 우선순위 2의 실제 데이터 전부.
+**추측으로 채우지 말고 물어보세요.** 특히 강사 이름·경력, 강좌 수강료, 설명회 일정은
+틀리면 바로 신뢰 문제가 되는 정보입니다.

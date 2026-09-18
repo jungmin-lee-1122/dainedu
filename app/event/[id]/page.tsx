@@ -6,12 +6,9 @@ import SiteFooter from "../../SiteFooter";
 import { quickMenuMarkup } from "../../quickMenu";
 import { eventViewScript } from "../eventScript";
 import { reserveModalMarkup } from "../reserveModal";
-import { events, findEvent } from "../eventData";
+import { findEventById } from "@/lib/content";
 
-/** 미리 만들어 둘 주소들 (/event/1, /event/2 …) */
-export function generateStaticParams() {
-  return events.map((e) => ({ id: e.id }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -19,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const ev = findEvent(id);
+  const ev = await findEventById(id);
   if (!ev) return { title: "이벤트 · 설명회 — 다인교육 동탄점" };
   return {
     title: `${ev.title} — 다인교육 동탄점`,
@@ -33,7 +30,7 @@ export default async function EventViewPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const ev = findEvent(id);
+  const ev = await findEventById(id);
   if (!ev) notFound();
 
   const closed = ev.status === "마감";

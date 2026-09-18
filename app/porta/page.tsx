@@ -8,11 +8,14 @@ import {
   heroSlides,
   teacherTabs,
   teachers,
-  notices,
+  notices as seedNotices,
   lectures,
-  clips,
+  clips as seedClips,
   sideBanners,
 } from "./portaData";
+import { getNotices, getClips } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 /** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
 const SHOW_BODY = true;
@@ -25,7 +28,10 @@ export const metadata: Metadata = {
   description: "합격의 문을 짓는 3년의 설계를 담다. 다인교육 동탄점 포르타 고등전문관.",
 };
 
-export default function PortaPage() {
+export default async function PortaPage() {
+  const notices = await getNotices("porta", seedNotices);
+  const clips = await getClips(seedClips);
+
   return (
     <main className="dn-body cv-page">
       <SiteHeader current="porta" />

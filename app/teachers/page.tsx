@@ -5,7 +5,10 @@ import { teachersScript } from "./teachersScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
-import { subjects, teachers } from "./teachersData";
+import { subjects } from "./teachersData";
+import { getTeachers } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "강사진 소개 — 다인교육 동탄점",
@@ -19,6 +22,7 @@ export default async function TeachersPage({
   searchParams: Promise<{ subject?: string }>;
 }) {
   const { subject } = await searchParams;
+  const teachers = await getTeachers();
   const activeSubject = subject && subjects.includes(subject) ? subject : "전체";
   const filtered = activeSubject === "전체"
     ? teachers

@@ -5,8 +5,11 @@ import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
 import { teachersScript } from "../teachers/teachersScript";
-import { subjects, teachers } from "../teachers/teachersData";
-import { courses, scheduleTabs } from "./scheduleData";
+import { subjects } from "../teachers/teachersData";
+import { scheduleTabs } from "./scheduleData";
+import { getTeachers, getCourses } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "단과시간표 — 다인교육 동탄점",
@@ -19,6 +22,8 @@ export default async function SchedulePage({
   searchParams: Promise<{ category?: string; subject?: string }>;
 }) {
   const query = await searchParams;
+  const teachers = await getTeachers();
+  const courses = await getCourses();
   const activeTab = scheduleTabs.find((tab) => tab.label === query.category) ?? scheduleTabs[0];
   const activeSubject = query.subject && subjects.includes(query.subject) ? query.subject : "전체";
   const filtered = courses.filter((course) => {

@@ -6,12 +6,10 @@ import SiteHeader from "../../SiteHeader";
 import SiteFooter from "../../SiteFooter";
 import { quickMenuMarkup } from "../../quickMenu";
 import { teachersScript } from "../../teachers/teachersScript";
-import { teachers } from "../../teachers/teachersData";
-import { courses, scheduleTabs } from "../scheduleData";
+import { scheduleTabs } from "../scheduleData";
+import { getTeachers, getCourses } from "@/lib/content";
 
-export function generateStaticParams() {
-  return courses.map((course) => ({ id: course.id }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -19,6 +17,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
+  const courses = await getCourses();
   const course = courses.find((item) => item.id === id);
   return { title: course ? `${course.title} — 다인교육 동탄점` : "단과시간표 — 다인교육 동탄점" };
 }
@@ -38,6 +37,7 @@ export default async function CourseDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const [courses, teachers] = await Promise.all([getCourses(), getTeachers()]);
   const course = courses.find((item) => item.id === id);
   if (!course) notFound();
 

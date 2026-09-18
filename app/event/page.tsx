@@ -4,7 +4,10 @@ import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
 import { eventListScript } from "./eventScript";
-import { events, statusFilters } from "./eventData";
+import { statusFilters } from "./eventData";
+import { getEvents } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "이벤트 · 설명회 — 다인교육 동탄점",
@@ -12,9 +15,9 @@ export const metadata: Metadata = {
     "다인교육 동탄점 입시설명회 · 공개특강 일정과 사전예약 안내. 선착순으로 마감됩니다.",
 };
 
-const openCount = events.filter((e) => e.status === "접수중").length;
-
-export default function EventListPage() {
+export default async function EventListPage() {
+  const events = await getEvents();
+  const openCount = events.filter((e) => e.status === "접수중").length;
   return (
     <main className="dn-body ev-page">
       <SiteHeader />
