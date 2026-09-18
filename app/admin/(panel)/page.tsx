@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MENU } from "../../components/admin/AdminSidebar";
+import { MENU } from "../../components/admin/menu";
 
 const GUIDE = [
   {
