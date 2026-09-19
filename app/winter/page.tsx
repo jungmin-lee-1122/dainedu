@@ -119,7 +119,21 @@ export default function WinterPage() {
             {sectionNav.map((s) => (
               <a href={s.href} key={s.href}>{s.label}</a>
             ))}
-            <a className="wt-kvnav-cta" href={CONSULT}>접수하기</a>
+            <a className="wt-kvnav-cta" href={BROCHURE} target="_blank" rel="noopener noreferrer">
+              <svg className="wt-pdf-ico" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M13.5 3H7.5A2 2 0 0 0 5.5 5v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V8z"
+                  fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round"
+                />
+                <path d="M13.5 3v5h5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+                <path
+                  d="M12 11v5m0 0-2-2m2 2 2-2"
+                  fill="none" stroke="currentColor" strokeWidth="1.7"
+                  strokeLinecap="round" strokeLinejoin="round"
+                />
+              </svg>
+              모집요강 PDF
+            </a>
           </div>
         </div>
       </section>

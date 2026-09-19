@@ -1703,16 +1703,17 @@ img,video,svg{max-width:100%}
 
 /* 키비주얼 아래 탭바 — 흰 배경 + 골드 밑줄 */
 .wt-kvnav{background:#fff;border-bottom:1px solid #E8EBF1}
-.wt-kvnav-in{display:flex;align-items:stretch;width:min(1160px,calc(100% - 48px));margin:0 auto}
-.wt-kvnav a{flex:1 1 0;padding:17px 8px;text-align:center;font-size:13.5px;font-weight:700;
+.wt-kvnav-in{display:flex;align-items:center;gap:2px;width:min(1160px,calc(100% - 48px));margin:0 auto}
+.wt-kvnav a{flex:0 0 auto;padding:17px 15px;text-align:center;font-size:13.5px;font-weight:700;
   color:var(--w-mut);text-decoration:none;white-space:nowrap;
   border-bottom:2px solid transparent;transition:color .2s ease,border-color .2s ease}
 .wt-kvnav a:hover{color:var(--w-navy)}
 .wt-kvnav a:first-child{color:var(--w-navy);font-weight:800;border-bottom-color:var(--w-gold)}
-.wt-kvnav-cta{flex:0 0 auto !important;min-width:150px;margin:8px 0 8px 12px;border-radius:10px;
-  border-bottom:0 !important;
+.wt-kvnav-cta{display:inline-flex !important;align-items:center;gap:7px;
+  margin-left:auto;padding:11px 18px !important;border-radius:10px;border-bottom:0 !important;
   background:linear-gradient(135deg,#E4CD9A,var(--w-gold)) !important;color:#101A2E !important;font-weight:800 !important}
 .wt-kvnav-cta:hover{filter:brightness(1.04);color:#101A2E !important}
+.wt-pdf-ico{width:17px;height:17px;flex:0 0 auto}
 
 @media(max-width:900px){
   .wt-kv-bg{aspect-ratio:1080/760;min-height:0;max-height:none}
@@ -1721,8 +1722,8 @@ img,video,svg{max-width:100%}
   .wt-kv-in{left:20px;right:20px;top:auto;bottom:22px;transform:none;width:auto;margin:0}
   .wt-kv-in > *{max-width:none}
   .wt-kvnav-in{flex-wrap:wrap;width:calc(100% - 32px)}
-  .wt-kvnav a{flex:1 1 40%;padding:14px 8px;font-size:13px}
-  .wt-kvnav-cta{flex:1 1 100% !important;min-width:0}
+  .wt-kvnav a{flex:1 1 40%;padding:14px 6px;font-size:13px}
+  .wt-kvnav-cta{flex:1 1 100% !important;justify-content:center;margin:6px 0 8px}
 }
 
 /* ═══════ 27-c) 윈터: 헤더 + 세부 탭바 고정 ═══════ */
