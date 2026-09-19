@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { portaScript } from "../porta/portaScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import TeacherStrip from "../TeacherStrip";
 import { quickMenuMarkup } from "../quickMenu";
+import { teacherStripScript } from "../teacherStripScript";
 import {
   heroSlides,
   teacherTabs,
@@ -13,7 +15,7 @@ import {
   clips as seedClips,
   sideBanners,
 } from "./clavisData";
-import { getNotices, getClips } from "@/lib/content";
+import { getNotices, getClips, getTeachers } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
 export default async function ClavisPage() {
   const notices = await getNotices("clavis", seedNotices);
   const clips = await getClips(seedClips);
+  const facultyList = await getTeachers();
 
   return (
     <main className="dn-body cv-page">
@@ -81,6 +84,9 @@ export default async function ClavisPage() {
           </a>
         </div>
       </section>
+
+      {/* ── 3) 선생님 띠 — 자동 슬라이드 ── */}
+      <TeacherStrip teachers={facultyList} />
 
       {/* ── 3) 선생님 — 임시 숨김 (SHOW_TEACHERS 를 true 로 바꾸면 다시 나옵니다) ── */}
       {SHOW_TEACHERS && (
@@ -230,6 +236,11 @@ export default async function ClavisPage() {
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
       <Script id="clavis-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: portaScript }} />
+      <Script
+        id="teacher-strip-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: teacherStripScript }}
+      />
     </main>
   );
 }

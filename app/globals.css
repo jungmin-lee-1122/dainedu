@@ -1209,10 +1209,11 @@ img,video,svg{max-width:100%}
 .wt-bridge-big{margin:0;font-size:clamp(24px,3.4vw,40px);font-weight:900;line-height:1.4;color:#fff;letter-spacing:-.035em}
 .wt-why{background:var(--w-soft)}
 .wt-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.wt-stat{padding:28px 20px;border-radius:16px;background:#fff;text-align:center;
+.wt-stat{padding:30px 18px;border-radius:16px;background:#fff;text-align:center;
   transition:transform .25s ease,box-shadow .25s ease}
 .wt-stat:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(16,25,46,.5)}
-.wt-stat-label{display:block;margin-bottom:14px;font-size:12.5px;line-height:1.5;color:var(--w-mut)}
+.wt-stat-label{display:block;margin-bottom:12px;font-size:clamp(15px,1.6vw,17.5px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.4;color:var(--w-navy);white-space:nowrap}
 .wt-stat-value{display:flex;align-items:baseline;justify-content:center;gap:2px;
   font-size:clamp(28px,3.2vw,40px);font-weight:900;color:var(--w-navy);letter-spacing:-.04em}
 .wt-stat-value i{font-style:normal;font-size:16px;font-weight:800;color:var(--w-gold)}
@@ -3281,4 +3282,51 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .sc-soon-desc{font-size:14px;line-height:1.8}
   .sc-soon-desc br{display:none}
   .sc-soon-btn{padding:12px 20px;font-size:13.5px}
+}
+
+/* 50) 선생님 띠 (포르타 · 클라비스) */
+.ts-sec{padding:clamp(48px,6vw,78px) 0 clamp(52px,6vw,82px);background:var(--dn-cream);overflow:hidden}
+.ts-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px;
+  padding-bottom:16px;border-bottom:1px solid var(--dn-line)}
+.ts-title{margin:0;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:-.04em;color:var(--dn-deep)}
+.ts-tabs{display:flex;align-items:center;gap:4px;flex:1 1 auto;overflow-x:auto;scrollbar-width:none}
+.ts-tabs::-webkit-scrollbar{display:none}
+.ts-tab{flex:0 0 auto;padding:7px 13px;border:0;border-radius:999px;background:transparent;
+  font-size:14.5px;font-weight:700;letter-spacing:-.02em;color:#8A90A0;white-space:nowrap;cursor:pointer;
+  transition:color .2s ease,background .2s ease}
+.ts-tab:hover{color:var(--dn-deep)}
+.ts-tab.is-on{background:var(--dn-navy);color:#fff;font-weight:800}
+.ts-more{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;flex:0 0 auto;
+  border-radius:50%;border:1px solid var(--dn-line);background:#fff;color:#9AA1B0;font-size:17px;
+  text-decoration:none;transition:color .2s ease,border-color .2s ease}
+.ts-more:hover{color:var(--dn-gold);border-color:var(--dn-gold)}
+
+/* 흐르는 카드 */
+.ts-view{position:relative;margin-top:26px;overflow:hidden}
+.ts-track{display:flex;align-items:flex-start;gap:18px;width:max-content;will-change:transform}
+.ts-item{flex:0 0 clamp(228px,22vw,266px)}
+.ts-view.is-empty .ts-track{display:none}
+.ts-empty{margin:0;padding:52px 0;text-align:center;font-size:14px;color:#8A90A0}
+
+/* 좌우 화살표 */
+.ts-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--dn-line);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
+  color:var(--dn-navy);font-size:20px;line-height:1;cursor:pointer;
+  box-shadow:0 10px 24px -14px rgba(16,25,46,.5);transition:border-color .2s ease,color .2s ease}
+.ts-arrow:hover{border-color:var(--dn-gold);color:var(--dn-gold)}
+.ts-arrow-prev{left:max(12px,calc((100% - 1200px)/2 - 6px))}
+.ts-arrow-next{right:max(12px,calc((100% - 1200px)/2 - 6px))}
+.ts-view.is-empty .ts-arrow{display:none}
+
+@media(max-width:900px){
+  .ts-sec{padding:34px 0 40px}
+  .ts-head{gap:10px 14px;padding-bottom:12px}
+  .ts-tabs{order:3;width:100%;flex:1 1 100%}
+  .ts-tab{padding:6px 11px;font-size:13.5px}
+  .ts-more{margin-left:auto}
+  .ts-view{margin-top:18px}
+  .ts-track{gap:12px}
+  .ts-item{flex:0 0 clamp(190px,62vw,230px)}
+  .ts-arrow{display:none}
 }

@@ -21,7 +21,7 @@ export type Teacher = {
 type TeacherSeed = Omit<Teacher, "id" | "tags"> & { tags?: string[] };
 
 /** 과목 필터 순서 */
-export const subjects = ["전체", "국어", "수학", "영어", "사회탐구", "과학탐구", "논술"];
+export const subjects = ["전체", "국어", "수학", "영어", "과학탐구", "사회탐구", "논술"];
 
 const teacherSeeds: TeacherSeed[] = [
   {
