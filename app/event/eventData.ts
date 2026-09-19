@@ -38,6 +38,8 @@ export type DainEvent = {
   speakers?: { name: string; role: string }[];
   /** 유의사항 */
   notice: string[];
+  /** 안내 포스터 이미지 (관리자에서 올립니다 · 없으면 표시 안 함) */
+  poster?: string;
 };
 
 export const events: DainEvent[] = [

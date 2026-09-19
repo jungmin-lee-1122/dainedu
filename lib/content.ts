@@ -121,6 +121,7 @@ export async function getEvents(): Promise<DainEvent[]> {
         return { time: time.trim(), desc: rest.join("|").trim() };
       }),
       notice: lines(d.notice),
+      poster: String(d.poster ?? "") || undefined,
     };
   });
 }

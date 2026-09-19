@@ -1478,9 +1478,8 @@ img,video,svg{max-width:100%}
 .wt-ccard li{position:relative;padding-left:11px;font-size:12.5px;line-height:2;color:var(--w-mut)}
 .wt-ccard li::before{content:"·";position:absolute;left:0;color:var(--w-gold)}
 /* 하루 시간표 — 밝은 배경에 맞춘 톤 */
-.wt-day{margin-top:48px;padding:34px 30px 30px;border-radius:18px;background:var(--w-paper);
+.wt-day{margin:8px 0 30px;padding:28px 26px 24px;border-radius:18px;background:var(--w-paper);
   border:1px solid rgba(17,28,54,.1);box-shadow:0 14px 34px rgba(17,28,54,.06)}
-.wt-day .wt-h3{margin-top:14px}
 .wt-tt-scroll{margin-top:24px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .wt-tt{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}
 .wt-tt th,.wt-tt td{border:1px solid rgba(17,28,54,.12);padding:10px 8px;text-align:center;
@@ -1579,7 +1578,7 @@ img,video,svg{max-width:100%}
   .wt-care{padding:26px 22px 24px;border-radius:16px}
   .wt-care-list li{padding:10px 12px}
   .wt-cur-grid{grid-template-columns:1fr;gap:32px}
-  .wt-day{margin-top:34px;padding:24px 18px 22px;border-radius:14px}
+  .wt-day{margin:4px 0 22px;padding:22px 16px 18px;border-radius:14px}
   .wt-tt-scroll{margin-top:18px}
   .wt-tt{min-width:660px;font-size:12px}
   .wt-tt th,.wt-tt td{padding:8px 6px}

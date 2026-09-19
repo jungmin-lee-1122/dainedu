@@ -112,6 +112,13 @@ export default async function EventViewPage({
       <section className="ev-sec">
         <div className="ev-wrap ev-body-grid">
           <div className="ev-body-main">
+            {ev.poster && (
+              <figure className="ev-poster">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={ev.poster} alt={`${ev.title} 안내 포스터`} />
+              </figure>
+            )}
+
             <div className="ev-block">
               <h2 className="ev-h2">설명회 안내</h2>
               {ev.body.map((p, i) => (
