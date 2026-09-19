@@ -101,9 +101,9 @@ export const reforms = [
  *  운영 방침이 바뀌면 이 값만 고치면 됩니다.
  */
 export const whyStats = [
-  { label: "1:1 수학\n책임담임 코칭", value: "30", unit: "분" },
-  { label: "담임 상담\n실시 주기", value: "1", unit: "회/주" },
-  { label: "등원부터 하원까지\n관리 시간", value: "14", unit: "h" },
+  { label: "1:1 수학 책임담임", value: "30", unit: "분" },
+  { label: "담임 상담", value: "1", unit: "회/주" },
+  { label: "하루 관리 시간", value: "14", unit: "h" },
 ];
 
 /** 4-2) 왜 다인아카데미인가 */

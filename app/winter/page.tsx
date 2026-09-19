@@ -220,11 +220,7 @@ export default function WinterPage() {
           <div className="wt-stats">
             {whyStats.map((s, i) => (
               <div className="wt-stat wt-up" style={{ transitionDelay: `${i * 70}ms` }} key={s.label}>
-                <span className="wt-stat-label">
-                  {s.label.split("\n").map((l, j) => (
-                    <span key={j}>{l}<br /></span>
-                  ))}
-                </span>
+                <span className="wt-stat-label">{s.label}</span>
                 <b className="wt-stat-value">
                   <span className="wt-num" data-num={s.value}>0</span>
                   <i>{s.unit}</i>
