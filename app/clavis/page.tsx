@@ -47,12 +47,12 @@ export default async function ClavisPage() {
             <div className="cv-hero-track cv-hero-track2">
               <div className="cv-hero-strip">
               {heroSlides.map((s, i) => (
-                <a className="cv-hero-slide" href={s.href} key={i}>
+                <div className="cv-hero-slide" key={i}>
                   <picture>
                     <source media="(max-width:900px)" srcSet={s.img.replace(".png", "-m.png")} />
                     <img src={s.img} alt={s.alt} />
                   </picture>
-                </a>
+                </div>
               ))}
               </div>
             </div>
