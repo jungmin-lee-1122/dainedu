@@ -133,6 +133,66 @@ export async function findEventById(id: string): Promise<DainEvent | undefined> 
 
 export type Notice = { tag: string; title: string; date: string; href: string };
 
+/** 공지사항 전체 (공지사항 페이지용) */
+export type NoticeFull = {
+  id: string;
+  tag: string;
+  title: string;
+  date: string;
+  hall: string;
+  content: string[];
+  image: string;
+  href: string;
+  pinned: boolean;
+};
+
+function toNoticeFull(r: { id: string; data: Record<string, unknown> }): NoticeFull {
+  return {
+    id: r.id,
+    tag: String(r.data.tag ?? "공지"),
+    title: String(r.data.title ?? ""),
+    date: String(r.data.date ?? ""),
+    hall: String(r.data.hall ?? "둘 다"),
+    content: lines(r.data.content),
+    image: String(r.data.image ?? ""),
+    href: String(r.data.href ?? ""),
+    pinned: Boolean(r.data.pinned),
+  };
+}
+
+/** 고정 공지를 위로 올려 정렬 */
+function sortNotices(list: NoticeFull[]) {
+  return [...list].sort((a, b) => Number(b.pinned) - Number(a.pinned));
+}
+
+/** 공지사항 전체 목록 — /notices 페이지에서 씁니다. */
+export async function getAllNotices(): Promise<NoticeFull[]> {
+  const rows = await listContents("notices").catch(() => []);
+  if (rows.length === 0) {
+    // DB 가 비어 있으면 포르타 기본 공지를 보여줍니다.
+    const { notices } = await import("@/app/porta/portaData");
+    return sortNotices(
+      notices.map((n, i) => ({
+        id: `seed-${i + 1}`,
+        tag: n.tag,
+        title: n.title,
+        date: n.date,
+        hall: "둘 다",
+        content: [],
+        image: "",
+        href: n.href === "#" ? "" : n.href,
+        pinned: false,
+      }))
+    );
+  }
+  return sortNotices(rows.map(toNoticeFull));
+}
+
+export async function findNotice(id: string): Promise<NoticeFull | undefined> {
+  const list = await getAllNotices();
+  return list.find((n) => n.id === id);
+}
+
 /** hall: "porta" | "clavis" — 해당 관에 표시할 공지만 */
 export async function getNotices(hall: "porta" | "clavis", fallback: Notice[]): Promise<Notice[]> {
   const rows = await listContents("notices").catch(() => []);
@@ -140,17 +200,14 @@ export async function getNotices(hall: "porta" | "clavis", fallback: Notice[]): 
 
   const wanted = hall === "porta" ? "포르타 고등전문관" : "클라비스 N수전문관";
 
-  return rows
-    .filter((r) => {
-      const h = String(r.data.hall ?? "둘 다");
-      return h === "둘 다" || h === wanted;
-    })
-    .sort((a, b) => Number(Boolean(b.data.pinned)) - Number(Boolean(a.data.pinned)))
-    .map((r) => ({
-      tag: String(r.data.tag ?? "공지"),
-      title: String(r.data.title ?? ""),
-      date: String(r.data.date ?? ""),
-      href: String(r.data.href ?? "") || "#",
+  return sortNotices(rows.map(toNoticeFull))
+    .filter((n) => n.hall === "둘 다" || n.hall === wanted)
+    .map((n) => ({
+      tag: n.tag,
+      title: n.title,
+      date: n.date,
+      // 외부 링크가 있으면 그쪽으로, 없으면 사이트 안 상세 페이지로
+      href: n.href || `/notices/${n.id}`,
     }));
 }
 

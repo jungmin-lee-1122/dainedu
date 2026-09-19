@@ -131,7 +131,7 @@ export default async function ClavisPage() {
           <div className="cv-notice cv-anchor" id="notice">
             <div className="cv-sec-head">
               <h2 className="cv-sec-title">공지사항</h2>
-              <a className="cv-more" href="#notice" aria-label="전체보기">+</a>
+              <a className="cv-more" href="/notices" aria-label="전체보기">+</a>
             </div>
             <ul className="cv-notice-list">
               {notices.map((n, i) => (

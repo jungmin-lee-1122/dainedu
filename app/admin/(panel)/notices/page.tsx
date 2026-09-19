@@ -6,7 +6,8 @@ export default function Page() {
     <ResourceManager
       title="공지사항"
       resource="notices"
-      description="포르타 고등전문관(/porta)과 클라비스 N수전문관(/clavis)의 공지사항 목록에 표시됩니다. 어느 관에 보일지는 아래에서 고르세요."
+      thumbKey="image"
+      description="공지사항 페이지(/notices)와 포르타·클라비스의 공지 목록에 함께 표시됩니다. 어느 관에 보일지는 아래에서 고르세요."
       fields={[
         { key: "title", label: "제목", type: "text", placeholder: "예) 2027 정규반 모집 안내" },
         { key: "tag", label: "분류", type: "select", options: ["공지", "모집안내", "입시결과", "공개특강", "안내"] },
@@ -18,11 +19,24 @@ export default function Page() {
         },
         { key: "date", label: "날짜", type: "text", placeholder: "2026.10.01" },
         {
+          key: "content",
+          label: "본문",
+          type: "textarea",
+          placeholder: "공지 내용을 입력하세요.\n엔터로 문단을 나눌 수 있습니다.",
+          help: "공지사항 상세 페이지에 표시됩니다.",
+        },
+        {
+          key: "image",
+          label: "첨부 사진",
+          type: "image",
+          help: "포스터·안내문 등을 올리면 상세 페이지 본문 위에 표시됩니다. (선택)",
+        },
+        {
           key: "href",
-          label: "연결 주소",
+          label: "외부 링크",
           type: "text",
-          placeholder: "비우면 클릭해도 이동하지 않습니다",
-          help: "상세 내용이 있는 페이지 주소를 넣으면 제목이 링크가 됩니다. (선택)",
+          placeholder: "비우면 사이트 안의 상세 페이지로 연결됩니다",
+          help: "다른 사이트로 바로 보내고 싶을 때만 입력하세요. 보통은 비워둡니다. (선택)",
         },
         { key: "pinned", label: "위에 고정", type: "checkbox", help: "켜면 목록 맨 위에 표시됩니다." },
       ]}
@@ -31,6 +45,8 @@ export default function Page() {
         tag: "공지",
         hall: "둘 다",
         date: "",
+        content: "",
+        image: "",
         href: "",
         pinned: false,
       }}

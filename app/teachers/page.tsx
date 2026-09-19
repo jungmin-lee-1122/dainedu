@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { teachersScript } from "./teachersScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { subjects } from "./teachersData";
 import { getTeachers } from "@/lib/content";
@@ -32,21 +33,19 @@ export default async function TeachersPage({
     <main className="dn-body tc-page">
       <SiteHeader />
 
-      <section className="tc-hero">
-        <div className="tc-wrap">
-          <p className="tc-eyebrow">Faculty</p>
-          <h1 className="tc-title">
-            최고의 강사진,<br />
-            <em>여러분과 함께 합니다</em>
-          </h1>
-          <p className="tc-sub">검증된 강의력과 학생을 끝까지 책임지는 선생님을 소개합니다.</p>
-          <div className="tc-counter">
-            <b>{teachers.length} Teachers</b>
-            <span>과목별 강사진</span>
-            <i>강사별 프로필과 개설 강좌를 한곳에서 확인하세요</i>
-          </div>
-        </div>
-      </section>
+      <PageBand
+        eyebrow="Faculty"
+        title="강사진 소개"
+        sub={[
+          "검증된 강의력과 학생을 끝까지 책임지는 선생님을 소개합니다.",
+          "강사별 프로필과 개설 강좌를 한곳에서 확인하세요.",
+        ]}
+        crumb={[{ label: "강사진 소개" }]}
+      >
+        <span className="pb-chip">
+          전체 <b>{teachers.length}</b>명
+        </span>
+      </PageBand>
 
       <section className="tc-sec">
         <div className="tc-wrap">

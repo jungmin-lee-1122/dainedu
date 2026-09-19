@@ -2,6 +2,7 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import SiteHeader from "../../SiteHeader";
 import SiteFooter from "../../SiteFooter";
+import PageBand from "../../PageBand";
 import { quickMenuMarkup } from "../../quickMenu";
 import { locationScript } from "./locationScript";
 
@@ -53,6 +54,13 @@ export default function LocationPage() {
   return (
     <main className="dn-body lc-page">
       <SiteHeader />
+
+      <PageBand
+        eyebrow="Location"
+        title="오시는 길"
+        sub={["경기도 화성시 동탄 메타폴리스로 53, 6층"]}
+        crumb={[{ label: "학원소개" }, { label: "오시는 길" }]}
+      />
 
       <section className="lc-hero">
         <div className="lc-hero-grid" aria-hidden="true" />

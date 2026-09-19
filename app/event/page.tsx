@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { eventListScript } from "./eventScript";
 import { statusFilters } from "./eventData";
@@ -24,35 +25,22 @@ export default async function EventListPage() {
       <SiteHeader />
 
       {/* ── 히어로 ── */}
-      <section className="ev-hero">
-        <div className="ev-wrap">
-          <nav className="ev-crumb" aria-label="현재 위치">
-            <Link href="/">홈</Link>
-            <span aria-hidden="true">›</span>
-            <span>학원생활</span>
-            <span aria-hidden="true">›</span>
-            <b>이벤트 · 설명회</b>
-          </nav>
-
-          <p className="ev-eyebrow">Briefing &amp; Special Lecture</p>
-          <h1 className="ev-title">
-            이벤트 · 설명회
-          </h1>
-          <p className="ev-sub">
-            입시의 흐름이 바뀔 때마다, 가장 먼저 알려드립니다.<br />
-            모든 설명회는 사전예약제로 운영되며 선착순 마감됩니다.
-          </p>
-
-          <div className="ev-hero-meta">
-            <span className="ev-hero-chip">
-              현재 접수중 <b>{openCount}</b>건
-            </span>
-            <span className="ev-hero-tel">
-              문의 <a href="tel:16440224">1644-0224</a>
-            </span>
-          </div>
-        </div>
-      </section>
+      <PageBand
+        eyebrow="Briefing & Special Lecture"
+        title="이벤트 · 설명회"
+        sub={[
+          "입시의 흐름이 바뀔 때마다, 가장 먼저 알려드립니다.",
+          "모든 설명회는 사전예약제로 운영되며 선착순 마감됩니다.",
+        ]}
+        crumb={[{ label: "학원생활" }, { label: "이벤트 · 설명회" }]}
+      >
+        <span className="pb-chip">
+          현재 접수중 <b>{openCount}</b>건
+        </span>
+        <span className="pb-tel">
+          문의 <a href="tel:16440224">1644-0224</a>
+        </span>
+      </PageBand>
 
       {/* ── 필터 + 목록 ── */}
       <section className="ev-sec">

@@ -3,6 +3,7 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { teachersScript } from "../teachers/teachersScript";
 import { subjects } from "../teachers/teachersData";
@@ -36,16 +37,12 @@ export default async function SchedulePage({
     <main className="dn-body sc-page">
       <SiteHeader />
 
-      <section className="sc-hero">
-        <div className="sc-wrap sc-hero-in">
-          <div>
-            <p className="sc-eyebrow">Class Schedule</p>
-            <h1>단과시간표</h1>
-            <p>모집 대상과 과목으로 원하는 강좌를 찾아보세요.</p>
-          </div>
-          <div className="sc-hero-mark" aria-hidden="true">SCHEDULE</div>
-        </div>
-      </section>
+      <PageBand
+        eyebrow="Class Schedule"
+        title="단과시간표"
+        sub={["모집 대상과 과목으로 원하는 강좌를 찾아보세요."]}
+        crumb={[{ label: "모집안내" }, { label: "단과시간표" }]}
+      />
 
       <section className="sc-content">
         <div className="sc-wrap">

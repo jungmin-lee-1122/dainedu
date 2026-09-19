@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { spaceScript } from "./spaceScript";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { intros, halls, facilityItems, facilityPoints, renderings } from "./spaceData";
 
@@ -27,6 +28,13 @@ export default function SpacePage() {
   return (
     <main className="dn-body sp-page">
       <SiteHeader />
+
+      <PageBand
+        eyebrow="The Campus"
+        title="시설 안내"
+        sub={["180평이 어떻게 나뉘고 어떻게 쓰이는지, 공사 전에 먼저 보여드립니다."]}
+        crumb={[{ label: "학원소개" }, { label: "시설 안내" }]}
+      />
 
       {/* ── 히어로 ── */}
       {SHOW_HERO && (
