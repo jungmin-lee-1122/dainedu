@@ -154,10 +154,11 @@ export const spaces = [
 ];
 
 /** 6-2) 학원가가 증명한 강사진
- *  photo: 단체 사진 경로. 비워 두면(""), 사진 영역이 나오지 않습니다.
+ *  photo: 단체 사진 경로 (public/winter/faculty.jpeg).
+ *         사진을 잠시 감추고 싶으면 "" 로 비워두면 됩니다.
  */
 export const faculty = {
-  photo: "",
+  photo: "/winter/faculty.jpeg",
   lead: [
     "대치 · 목동 · 분당 · 평촌 — 대한민국 사교육을 이끌어온 네 학원가에서",
     "오랜 시간 실력으로 증명해온 강사진이, 이번 겨울 다인아카데미 교실에 직접 섭니다.",
