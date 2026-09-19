@@ -2898,8 +2898,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 }
 
 /* 준비 중이라 아직 누를 수 없는 메뉴 항목 */
+/* 아직 페이지가 없어 누를 수만 없는 항목 — 크기·굵기는 다른 메뉴와 동일 */
 .dn-gnb-soon{display:block;padding:9px 14px;border-radius:8px;
-  font-size:14px;color:#B6BCC7;white-space:nowrap;
+  font-size:14px;color:var(--dn-ink);white-space:nowrap;opacity:.45;
   cursor:default;user-select:none;pointer-events:none}
-.dn-mgroup-soon{display:block;padding:12px 22px 12px 32px;font-size:14px;color:#B6BCC7;
+.dn-mgroup-soon{display:block;padding:12px 22px 12px 32px;font-size:14px;color:var(--dn-ink-soft);opacity:.55;
   cursor:default;user-select:none;pointer-events:none}

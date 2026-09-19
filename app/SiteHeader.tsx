@@ -96,11 +96,9 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
                 <a href="/schedule">단과 시간표</a>
               </div>
             ) : current === "clavis" ? (
-              <div className="dn-gnb-sub dn-gnb-sub-grouped">
-                <a href="/winter">2027 윈터스쿨</a>
+              <div className="dn-gnb-sub">
                 {/* 독학재수반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
                 <span className="dn-gnb-soon">독학재수반</span>
-                <span className="dn-gnb-gtitle">N수부 단과</span>
                 <a href="/schedule">단과 시간표</a>
               </div>
             ) : (
@@ -109,6 +107,8 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
                 <a href="/porta">포르타 고등전문관</a>
                 <a href="/clavis">클라비스 N수전문관</a>
                 <a href="/winter">2027 윈터스쿨</a>
+                {/* 독학재수반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
+                <span className="dn-gnb-soon">독학재수반</span>
               </div>
             )}
           </li>
