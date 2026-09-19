@@ -725,7 +725,8 @@ export default function WinterPage() {
       <section className="wt-sec wt-faqsec">
         <div className="wt-wrap">
           <div className="wt-faq" id="wtFaq">
-            <h3 className="wt-faq-head">자주 묻는 질문</h3>
+            <p className="wt-tag">FAQ</p>
+            <h2 className="wt-h2">자주 묻는 질문</h2>
             {faqs.map((f, i) => (
               <div className="wt-faq-item" key={i}>
                 <button className="wt-faq-q" type="button">

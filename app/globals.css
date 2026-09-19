@@ -1524,7 +1524,6 @@ img,video,svg{max-width:100%}
 .wt-process-no{width:28px;height:28px;flex:0 0 auto;border-radius:50%;background:rgba(192,153,79,.2);
   color:var(--w-gold-l);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
 .wt-process b{font-size:14px;font-weight:600;color:rgba(255,255,255,.85)}
-.wt-faq-head{margin:0 0 16px;font-size:19px;font-weight:800;color:var(--w-navy)}
 .wt-faq-item{border-bottom:1px solid #E8EBF1}
 .wt-faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:20px 4px;
   border:0;background:transparent;cursor:pointer;font-family:inherit;text-align:left;
@@ -1704,12 +1703,12 @@ img,video,svg{max-width:100%}
 /* 키비주얼 아래 탭바 — 흰 배경 + 골드 밑줄 */
 .wt-kvnav{background:#fff;border-bottom:1px solid #E8EBF1}
 .wt-kvnav-in{display:flex;align-items:center;gap:2px;width:min(1160px,calc(100% - 48px));margin:0 auto}
-.wt-kvnav a{flex:0 0 auto;padding:13px 15px;text-align:center;font-size:13.5px;font-weight:700;
+.wt-kvnav a{flex:0 0 auto;padding:10px 15px;text-align:center;font-size:13.5px;font-weight:700;
   color:var(--w-mut);text-decoration:none;white-space:nowrap;
   border-bottom:2px solid transparent;transition:color .2s ease,border-color .2s ease}
 .wt-kvnav a:hover{color:var(--w-navy)}
 .wt-kvnav a:first-child{color:var(--w-navy);font-weight:800;border-bottom-color:var(--w-gold)}
-.wt-kvnav-cta{display:inline-flex !important;align-items:center;gap:7px;
+.wt-kvnav-cta{display:inline-flex !important;align-items:center;justify-content:center;align-self:center;gap:7px;line-height:1;
   margin-left:auto;padding:10px 18px !important;border-radius:10px;border-bottom:0 !important;
   background:linear-gradient(135deg,#E4CD9A,var(--w-gold)) !important;color:#101A2E !important;font-weight:800 !important}
 .wt-kvnav-cta:hover{filter:brightness(1.04);color:#101A2E !important}
@@ -1728,7 +1727,7 @@ img,video,svg{max-width:100%}
 
 /* ═══════ 27-c) 윈터: 헤더 + 세부 탭바 고정 ═══════ */
 /* dn-nav 는 fixed(top:42px). 그 바로 아래에 wt-kvnav 를 붙여 함께 고정 */
-.wt .wt-kvnav{position:sticky;top:calc(42px + var(--wt-navh,74px));z-index:65;margin-top:12px;
+.wt .wt-kvnav{position:sticky;top:calc(42px + var(--wt-navh,74px));z-index:65;margin-top:6px;
   border-radius:14px;transition:border-radius .25s ease,box-shadow .25s ease}
 .wt .wt-kvnav.is-stuck{border-radius:0 0 14px 14px;box-shadow:0 12px 28px -18px rgba(8,13,26,.75)}
 /* 앵커 이동 시 고정 영역만큼 여백 확보 */
