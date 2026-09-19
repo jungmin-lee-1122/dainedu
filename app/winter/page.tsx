@@ -56,6 +56,9 @@ const SHOW_MANAGE_TABS = false;
 /** 합격 실적 · 재원생 후기 섹션 — 실제 데이터가 생기면 true */
 const SHOW_RESULT = false;
 
+/** 장학 섹션 — 장학 제도가 확정되면 true */
+const SHOW_SCHOLAR = false;
+
 export default function WinterPage() {
   return (
     <main className="wt">
@@ -564,6 +567,8 @@ export default function WinterPage() {
       </section>
 
       {/* ══ 9) 장학 ══ */}
+      {/* 장학 — 제도가 확정되면 true 로 바꿔 주세요 */}
+      {SHOW_SCHOLAR && (
       <section className="wt-sec wt-scholar">
         <div className="wt-wrap">
           <p className="wt-tag wt-tag-inv">Scholarship</p>
@@ -584,6 +589,7 @@ export default function WinterPage() {
           <p className="wt-note wt-note-inv">※ 장학 세부 기준은 상담 시 안내드립니다.</p>
         </div>
       </section>
+      )}
 
       {/* ══ 10) 모집 안내 + FAQ ══ */}
       <section className="wt-sec wt-adm" id="admission">
