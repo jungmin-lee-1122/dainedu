@@ -60,6 +60,9 @@ const SHOW_RESULT = false;
 /** 장학 섹션 — 장학 제도가 확정되면 true */
 const SHOW_SCHOLAR = false;
 
+/** 등록 혜택 섹션 — 혜택이 확정되면 true */
+const SHOW_BENEFIT = false;
+
 export default function WinterPage() {
   return (
     <main className="wt">
@@ -623,6 +626,8 @@ export default function WinterPage() {
       </section>
 
       {/* ══ 10) 등록 혜택 ══ */}
+      {/* 등록 혜택 — 다시 보이려면 SHOW_BENEFIT 을 true 로 */}
+      {SHOW_BENEFIT && (
       <section className="wt-sec wt-benefit" id="benefit">
         <div className="wt-wrap">
           <p className="wt-tag">Benefit</p>
@@ -674,6 +679,7 @@ export default function WinterPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ══ 11) 자주 묻는 질문 ══ */}
       <section className="wt-sec wt-faqsec">

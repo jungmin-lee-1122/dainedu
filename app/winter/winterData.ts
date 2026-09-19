@@ -12,7 +12,6 @@ export const sectionNav = [
   { label: "학습 공간", href: "#space" },
   { label: "관리 시스템", href: "#system" },
   { label: "모집 안내", href: "#admission" },
-  { label: "등록 혜택", href: "#benefit" },
 ];
 
 /** 1) 히어로 */
