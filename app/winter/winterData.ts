@@ -370,9 +370,10 @@ export type HourGroup = { group: string; cols: HourCol[] };
 
 export const gradeTabs = ["예비 고1", "예비 고2", "예비 고3"];
 
-export const gradeHours: Record<string, { lead: string; blocks: HourGroup[][] }> = {
+export const gradeHours: Record<string, { lead: string; pdf: string; blocks: HourGroup[][] }> = {
   "예비 고1": {
     lead: "학생의 현재 수준에서 가장 필요한 학습을 설계합니다.",
+    pdf: "/winter/curriculum-g1.pdf",
     blocks: [
       [
         {
@@ -429,6 +430,7 @@ export const gradeHours: Record<string, { lead: string; blocks: HourGroup[][] }>
 
   "예비 고2": {
     lead: "학생의 현재 수준에서 가장 필요한 학습을 설계합니다.",
+    pdf: "/winter/curriculum-g2.pdf",
     blocks: [
       [
         {
@@ -487,6 +489,7 @@ export const gradeHours: Record<string, { lead: string; blocks: HourGroup[][] }>
 
   "예비 고3": {
     lead: "학생의 현재 수준에서 가장 필요한 학습을 설계합니다.",
+    pdf: "/winter/curriculum-g3.pdf",
     blocks: [
       [
         {

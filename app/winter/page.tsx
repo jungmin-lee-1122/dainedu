@@ -619,6 +619,29 @@ export default function WinterPage() {
                   <li key={n}>{n}</li>
                 ))}
               </ul>
+
+              {/* 상세 과목별 요강 — 눌러서 펼치면 브로슈어 해당 면이 열립니다 */}
+              <details className="wt-fold">
+                <summary className="wt-fold-head">
+                  <span className="wt-fold-t">
+                    <b>{g}</b> 상세 과목별 요강
+                  </span>
+                  <span className="wt-fold-act">
+                    <i className="wt-fold-ico" aria-hidden="true" />
+                  </span>
+                </summary>
+                <div className="wt-fold-body">
+                  <iframe
+                    className="wt-fold-frame"
+                    data-src={`${gradeHours[g].pdf}#view=FitH&toolbar=0`}
+                    title={`${g} 상세 과목별 요강`}
+                  />
+                  <p className="wt-fold-alt">
+                    <a href={gradeHours[g].pdf} target="_blank" rel="noopener noreferrer">새 창에서 보기 ↗</a>
+                    <a href={gradeHours[g].pdf} download>PDF 내려받기 ↓</a>
+                  </p>
+                </div>
+              </details>
             </div>
           ))}
         </div>

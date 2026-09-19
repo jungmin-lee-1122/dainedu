@@ -145,6 +145,20 @@ export const winterScript = `
 
 /* ── 커리큘럼 탭 ── */
 (function(){
+  /* 상세 요강 — 펼칠 때 PDF 를 불러옵니다 */
+  (function(){
+    var folds=document.querySelectorAll(".wt-fold");
+    for(var i=0;i<folds.length;i++){
+      (function(d){
+        d.addEventListener("toggle",function(){
+          if(!d.open) return;
+          var f=d.querySelector(".wt-fold-frame");
+          if(f && !f.getAttribute("src")) f.setAttribute("src", f.getAttribute("data-src")||"");
+        });
+      })(folds[i]);
+    }
+  })();
+
   /* 학년별 시수표 탭 */
   (function(){
     var gbox=document.getElementById("wtGradeTabs"); if(!gbox) return;

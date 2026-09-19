@@ -3372,3 +3372,44 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .wt-hour{min-width:680px;font-size:12px}
   .wt-hour th,.wt-hour td{padding:8px 6px}
 }
+
+/* 52) 설명회 상세 — 안내 포스터 */
+.ev-poster{margin:0 0 30px;border-radius:16px;overflow:hidden;line-height:0;
+  border:1px solid var(--dn-line);background:var(--dn-cream)}
+.ev-poster img{width:100%;height:auto;display:block}
+@media(max-width:900px){ .ev-poster{margin-bottom:22px;border-radius:12px} }
+
+/* 53) 상세 과목별 요강 — 펼침 */
+.wt-fold{margin-top:18px;border:1px solid rgba(17,28,54,.12);border-radius:14px;background:#fff;overflow:hidden}
+.wt-fold[open]{border-color:rgba(192,153,79,.5)}
+.wt-fold-head{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:17px 20px;cursor:pointer;list-style:none;
+  font-size:15px;color:var(--w-ink);transition:background .2s ease}
+.wt-fold-head::-webkit-details-marker{display:none}
+.wt-fold-head:hover{background:rgba(17,28,54,.03)}
+.wt-fold-t{font-weight:700;letter-spacing:-.025em}
+.wt-fold-t b{margin-right:6px;font-weight:900;color:var(--w-navy)}
+.wt-fold-act{display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;flex:0 0 auto;border-radius:50%;background:rgba(192,153,79,.12)}
+.wt-fold-ico{position:relative;width:11px;height:11px}
+.wt-fold-ico::before,.wt-fold-ico::after{content:"";position:absolute;left:50%;top:50%;
+  background:var(--w-gold);border-radius:1px;transition:transform .25s ease}
+.wt-fold-ico::before{width:11px;height:1.8px;transform:translate(-50%,-50%)}
+.wt-fold-ico::after{width:1.8px;height:11px;transform:translate(-50%,-50%)}
+.wt-fold[open] .wt-fold-ico::after{transform:translate(-50%,-50%) scaleY(0)}
+.wt-fold-body{padding:0 14px 14px}
+.wt-fold-frame{width:100%;height:min(140vh,1180px);border:1px solid rgba(17,28,54,.1);
+  border-radius:10px;background:var(--w-soft);display:block}
+.wt-fold-alt{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 4px 2px;font-size:13px}
+.wt-fold-alt a{color:var(--w-navy);font-weight:800;text-decoration:none}
+.wt-fold-alt a:hover{color:var(--w-gold)}
+@media(max-width:900px){
+  .wt-fold-head{padding:15px 16px;font-size:14px}
+  /* 모바일 브라우저는 PDF 를 안에서 못 여는 경우가 많아 버튼만 보여줍니다 */
+  .wt-fold-frame{display:none}
+  .wt-fold-body{padding:0 16px 16px}
+  .wt-fold-alt{margin-top:0;gap:8px}
+  .wt-fold-alt a{flex:1 1 100%;padding:12px 14px;border-radius:10px;text-align:center;
+    background:var(--w-navy);color:#fff}
+  .wt-fold-alt a:hover{color:#fff}
+}
