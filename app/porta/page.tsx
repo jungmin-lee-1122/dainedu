@@ -227,10 +227,6 @@ export default async function PortaPage() {
               </div>
               <div className="cv-side-ctrl">
                 <div className="cv-dots" id="cvSideDots" />
-                <button className="cv-side-play" type="button" aria-label="자동재생 정지">
-                  <span className="cv-ico-pause">❚❚</span>
-                  <span className="cv-ico-play">▶</span>
-                </button>
               </div>
             </div>
           </div>
