@@ -32,6 +32,13 @@ export default function Page() {
           help: "포스터·안내문 등을 올리면 상세 페이지 본문 위에 표시됩니다. (선택)",
         },
         {
+          key: "imageHref",
+          label: "사진 클릭 시 이동할 주소",
+          type: "text",
+          placeholder: "https://... 또는 /event/1",
+          help: "첨부 사진을 누르면 이 주소로 이동합니다. 비우면 링크가 걸리지 않습니다. (선택)",
+        },
+        {
           key: "href",
           label: "외부 링크",
           type: "text",
@@ -47,6 +54,7 @@ export default function Page() {
         date: "",
         content: "",
         image: "",
+        imageHref: "",
         href: "",
         pinned: false,
       }}

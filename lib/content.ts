@@ -144,6 +144,8 @@ export type NoticeFull = {
   hall: string;
   content: string[];
   image: string;
+  /** 첨부 사진을 눌렀을 때 이동할 주소 (비우면 링크 없음) */
+  imageHref: string;
   href: string;
   pinned: boolean;
 };
@@ -157,6 +159,7 @@ function toNoticeFull(r: { id: string; data: Record<string, unknown> }): NoticeF
     hall: String(r.data.hall ?? "둘 다"),
     content: lines(r.data.content),
     image: String(r.data.image ?? ""),
+    imageHref: String(r.data.imageHref ?? ""),
     href: String(r.data.href ?? ""),
     pinned: Boolean(r.data.pinned),
   };
@@ -182,6 +185,7 @@ export async function getAllNotices(): Promise<NoticeFull[]> {
         hall: "둘 다",
         content: [],
         image: "",
+        imageHref: "",
         href: n.href === "#" ? "" : n.href,
         pinned: false,
       }))

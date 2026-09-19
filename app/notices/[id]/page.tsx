@@ -70,8 +70,21 @@ export default async function NoticeViewPage({
             {notice.image && (
               <figure className="nt-figure">
                 {/* 관리자에서 올린 사진이라 next/image 대신 img 를 씁니다 */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={notice.image} alt={notice.title} />
+                {notice.imageHref ? (
+                  <a
+                    className="nt-figure-link"
+                    href={notice.imageHref}
+                    target={notice.imageHref.startsWith("http") ? "_blank" : undefined}
+                    rel={notice.imageHref.startsWith("http") ? "noopener noreferrer" : undefined}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={notice.image} alt={notice.title} />
+                    <span className="nt-figure-go" aria-hidden="true">자세히 보기 ↗</span>
+                  </a>
+                ) : (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={notice.image} alt={notice.title} />
+                )}
               </figure>
             )}
 
