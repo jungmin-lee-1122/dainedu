@@ -12,6 +12,9 @@ import { getTeachers, getCourses } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
+/** 시간표 공개 여부 — 강좌 편성이 확정되면 true 로 바꾸면 기존 화면이 그대로 나옵니다. */
+const SHOW_SCHEDULE = false;
+
 export const metadata: Metadata = {
   title: "단과시간표 — 다인교육 동탄점",
   description: "모집 대상과 과목별로 다인교육 동탄점의 단과 강좌를 확인하세요.",
@@ -44,6 +47,32 @@ export default async function SchedulePage({
         crumb={[{ label: "모집안내" }, { label: "단과시간표" }]}
       />
 
+      {!SHOW_SCHEDULE && (
+        <section className="sc-soon">
+          <div className="sc-wrap">
+            <div className="sc-soon-card">
+              <span className="sc-soon-mark" aria-hidden="true">
+                <i />
+              </span>
+              <p className="sc-soon-en">Coming Soon</p>
+              <h2 className="sc-soon-title">단과 시간표를 준비하고 있습니다</h2>
+              <p className="sc-soon-desc">
+                2027학년도 강좌 편성과 담당 강사 배정이 마무리되는 대로<br />
+                과목별 시간표를 이곳에 공개해 드리겠습니다.
+              </p>
+              <p className="sc-soon-sub">
+                개설 예정 강좌와 상담은 아래로 문의해 주세요.
+              </p>
+              <div className="sc-soon-act">
+                <a className="sc-soon-btn" href="/consult">입학 상담 신청</a>
+                <a className="sc-soon-btn sc-soon-line" href="tel:16440224">1644-0224</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {SHOW_SCHEDULE && (
       <section className="sc-content">
         <div className="sc-wrap">
           <nav className="sc-category-tabs" aria-label="모집 대상 선택">
@@ -153,6 +182,7 @@ export default async function SchedulePage({
           <p className="sc-sample-note">※ 현재 시간표는 화면 구성을 위한 예시이며, 실제 강좌 편성 확정 후 교체됩니다.</p>
         </div>
       </section>
+      )}
 
       <SiteFooter />
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
