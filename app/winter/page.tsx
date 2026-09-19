@@ -38,6 +38,7 @@ import {
 } from "./winterData";
 import SiteHeader from "../SiteHeader";
 import ReformArt from "./ReformArt";
+import PageBand from "../PageBand";
 import SiteFooter from "../SiteFooter";
 
 const CONSULT = "/consult";
@@ -63,30 +64,39 @@ const SHOW_SCHOLAR = false;
 /** 등록 혜택 섹션 — 혜택이 확정되면 true */
 const SHOW_BENEFIT = false;
 
+/** 흰색 섹션 내비 — 상단 다크 탭바와 중복이라 숨김. 다시 보이려면 true */
+const SHOW_SNAV = false;
+
+/** 키비주얼 배경에 이미지(kv.png)를 쓸지 여부 — 글자 없는 이미지가 준비되면 true */
+const SHOW_KV_IMG = false;
+
 export default function WinterPage() {
   return (
     <main className="wt">
       <SiteHeader />
 
-      {/* ══ 페이지 타이틀 · 경로 ══ */}
-      <div className="wt-head" id="top">
-        <div className="wt-wrap wt-head-in">
-          <h1 className="wt-head-title">2027 윈터스쿨</h1>
-          <nav className="wt-crumb" aria-label="현재 위치">
-            <a href="/">홈</a>
-            <i aria-hidden="true">›</i>
-            <a href="/porta">포르타 고등전문관</a>
-            <i aria-hidden="true">›</i>
-            <span>2027 윈터스쿨</span>
-          </nav>
-        </div>
+      {/* ══ 페이지 타이틀 · 경로 — 다른 상세페이지와 같은 공용 헤더밴드 ══ */}
+      <div id="top">
+        <PageBand
+          eyebrow="Winter School"
+          title="2027 윈터스쿨"
+          crumb={[{ label: "포르타 고등전문관", href: "/porta" }, { label: "2027 윈터스쿨" }]}
+        />
       </div>
 
       {/* ══ 1) 키비주얼 배너 + 세부 탭 ══ */}
       <section className="wt-kv">
         <div className="wt-wrap">
           <div className="wt-kv-box">
-            <img className="wt-kv-img" src="/winter/kv.png" alt="2027 다인교육 윈터스쿨" />
+            {/* 배경 — 글자 없는 그러데이션 (이미지를 쓰려면 SHOW_KV_IMG 를 true 로) */}
+            {SHOW_KV_IMG ? (
+              <img className="wt-kv-img" src="/winter/kv.png" alt="2027 다인교육 윈터스쿨" />
+            ) : (
+              <div className="wt-kv-bg" aria-hidden="true">
+                <span className="wt-kv-beam" />
+                <span className="wt-kv-orb" />
+              </div>
+            )}
             <div className="wt-kv-in">
               <p className="wt-kv-eyebrow">{hero.eyebrow}</p>
               <p className="wt-kv-title">
@@ -103,7 +113,7 @@ export default function WinterPage() {
           </div>
 
           <div className="wt-kvnav">
-            {sectionNav.slice(0, 4).map((s) => (
+            {sectionNav.map((s) => (
               <a href={s.href} key={s.href}>{s.label}</a>
             ))}
             <a className="wt-kvnav-cta" href={CONSULT}>접수하기</a>
@@ -112,6 +122,7 @@ export default function WinterPage() {
       </section>
 
       {/* ══ 섹션 내비 (고정) ══ */}
+      {SHOW_SNAV && (
       <nav className="wt-snav" id="wtSnav" aria-label="섹션 이동">
         <div className="wt-snav-in">
           {sectionNav.map((s) => (
@@ -119,6 +130,7 @@ export default function WinterPage() {
           ))}
         </div>
       </nav>
+      )}
 
       {/* ══ 3) 입시 개편 ══ */}
       <section className="wt-sec wt-reform" id="reform">
