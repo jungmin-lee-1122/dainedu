@@ -1385,8 +1385,11 @@ img,video,svg{max-width:100%}
 .wt-chips span{font-size:12.5px;line-height:1.75;color:var(--w-mut);word-break:keep-all}
 
 /* 마무리 한 줄 */
-.wt-quote{margin:34px 0 0;padding:20px 0 20px 22px;border-left:3px solid var(--w-gold);
-  font-size:clamp(16px,2.1vw,22px);font-weight:900;letter-spacing:-.035em;color:var(--w-navy)}
+.wt-quote{position:relative;margin:56px auto 0;padding:0 12px;max-width:22em;text-align:center;
+  font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-.04em;line-height:1.45;
+  color:var(--w-navy);word-break:keep-all}
+.wt-quote::before{content:"";display:block;width:32px;height:2px;margin:0 auto 22px;border-radius:2px;
+  background:linear-gradient(90deg,var(--w-gold-l),var(--w-gold))}
 .wt-quote-inv{color:#fff}
 
 /* AI 분석 */
@@ -1546,7 +1549,8 @@ img,video,svg{max-width:100%}
   .wt-tab-side .wt-tab-list{grid-template-columns:1fr}
   .wt-report{padding:20px 18px 20px 22px;gap:14px}
   .wt-tab-list li{padding:16px 16px}
-  .wt-quote{margin-top:26px;padding:14px 0 14px 16px}
+  .wt-quote{margin-top:34px;padding:0;font-size:19px}
+  .wt-quote::before{margin-bottom:16px}
   .wt-care-grid{grid-template-columns:1fr;gap:12px}
   .wt-care{padding:26px 22px 24px;border-radius:16px}
   .wt-care-list li{padding:10px 12px}
