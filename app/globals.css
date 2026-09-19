@@ -812,10 +812,13 @@ img,video,svg{max-width:100%}
   .dn-foot-icon{height:42px}
   .dn-foot-name{font-size:15px}
   .dn-foot-tel{font-size:24px !important;padding:9px 15px !important}
-  .dn-foot-tel-menu{min-width:0;width:100%;left:0}
-  .dn-foot-tel-menu a{gap:12px;padding:10px 12px}
-  .dn-tel-label{font-size:12px;white-space:normal}
-  .dn-tel-num{font-size:14px}
+  /* 드롭다운이 버튼 폭에 갇혀 글자가 세로로 쪼개지던 문제 — 한 줄로 */
+  .dn-foot-tel-wrap{display:block;width:100%}
+  .dn-foot-tel-menu{min-width:0;width:100%;left:0;right:0;padding:5px}
+  .dn-foot-tel-menu a{gap:10px;padding:11px 12px}
+  .dn-tel-label{flex:1 1 auto;font-size:12.5px;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .dn-tel-num{flex:0 0 auto;font-size:14px}
   .dn-foot-links{gap:18px;margin-bottom:14px}
   .dn-foot-info{font-size:12px;line-height:1.85}
   .dn-foot-sep{margin:0 6px}
