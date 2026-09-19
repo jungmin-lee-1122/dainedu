@@ -957,7 +957,7 @@ img,video,svg{max-width:100%}
 .cv-bottom-grid>.cv-side .cv-side-slider{flex:1 1 auto;display:flex;flex-direction:column}
 /* 사이드 배너 — 가로형(4:3) 이미지 기준. 세로 가운데 정렬 (이미지 권장 1200x900) */
 .cv-bottom-grid>.cv-side{align-items:center}
-.cv-bottom-grid>.cv-side .cv-side-slider{flex:0 0 auto}
+.cv-bottom-grid>.cv-side .cv-side-slider{flex:0 0 auto;width:100%}
 .cv-bottom-grid>.cv-side .cv-side-track{flex:0 0 auto;aspect-ratio:4/3;min-height:0}
 .cv-bottom .cv-sec-head .cv-dots{margin-left:auto}
 .cv-review-slider{position:relative;overflow:hidden}
