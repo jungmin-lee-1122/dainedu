@@ -10,6 +10,8 @@ import {
   whyStats,
   resultBanner,
   stories,
+  careLead,
+  careCards,
   faculty,
   spaces,
   manageTabs,
@@ -36,6 +38,9 @@ export const metadata: Metadata = {
 
 /** 강사진 섹션의 학원가 4개 카드 표시 여부 — 다시 보이려면 true */
 const SHOW_FACULTY_AREAS = false;
+
+/** 예전 관리 시스템 탭(생활·학습·입시·멘탈) 표시 여부 — 다시 보이려면 true */
+const SHOW_MANAGE_TABS = false;
 
 export default function WinterPage() {
   return (
@@ -268,11 +273,41 @@ export default function WinterPage() {
       {/* ══ 7) 관리 시스템 ══ */}
       <section className="wt-sec wt-manage" id="system">
         <div className="wt-wrap">
-          <p className="wt-tag">관리 시스템</p>
+          <p className="wt-tag">Management</p>
           <h2 className="wt-h2">
-            생활부터 입시까지,<br /><em>하나로 관리합니다</em>
+            완벽한 성장을 위한<br /><em>4대 밀착 케어 시스템</em>
           </h2>
+          <p className="wt-lead wt-dark">
+            {careLead.map((l, i) => (
+              <span className="wt-fc-leadline" key={i}>{l}</span>
+            ))}
+          </p>
 
+          <div className="wt-care-grid">
+            {careCards.map((c, i) => (
+              <article className="wt-care wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={c.no}>
+                <div className="wt-care-head">
+                  <span className="wt-care-no">{c.no}</span>
+                  <span className="wt-care-ttl">
+                    <b>{c.name}</b>
+                    <i>{c.en}</i>
+                  </span>
+                </div>
+                <p className="wt-care-lead">{c.lead}</p>
+                <ul className="wt-care-list">
+                  {c.items.map((it) => (
+                    <li key={it.t}>
+                      <b>{it.t}</b>
+                      {it.d && <span>{it.d}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          {SHOW_MANAGE_TABS && (
+          <>
           <div className="wt-mtabs" id="wtManageTabs">
             {manageTabs.map((t, i) => (
               <button className={`wt-mtab${i === 0 ? " is-on" : ""}`} type="button" data-tab={t} key={t}>
@@ -299,6 +334,8 @@ export default function WinterPage() {
               </div>
             </div>
           ))}
+          </>
+          )}
         </div>
       </section>
 
