@@ -3,8 +3,11 @@
 //  입력 항목 한 칸 — 종류에 따라 알맞은 입력창을 그립니다.
 // ═══════════════════════════════════════════════════════════
 import { useRef, useState } from "react";
+import { upload } from "@vercel/blob/client";
 import type { Field, CourseValue } from "./types";
 import { EMPTY_COURSE } from "./types";
+
+const MAX_IMAGE_BYTES = 25 * 1024 * 1024;
 
 /* ─────────── 사진 업로드 ─────────── */
 function ImageField({
@@ -18,23 +21,41 @@ function ImageField({
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [err, setErr] = useState("");
 
   async function pick(file: File) {
-    setBusy(true);
-    setErr("");
-    const fd = new FormData();
-    fd.append("file", file);
-    fd.append("folder", folder);
-    try {
-      const res = await fetch("/api/upload", { method: "POST", body: fd });
-      const json = await res.json().catch(() => ({}));
-      if (json?.ok && json.url) onChange(json.url);
-      else setErr(json?.message || "업로드에 실패했습니다.");
-    } catch {
-      setErr("업로드 중 오류가 발생했습니다.");
+    if (file.size > MAX_IMAGE_BYTES) {
+      setErr("사진은 25MB 이하로 올려 주세요.");
+      return;
     }
-    setBusy(false);
+
+    setBusy(true);
+    setProgress(0);
+    setErr("");
+    try {
+      const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+      const key = `${folder}/${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+      const blob = await upload(key, file, {
+        access: "public",
+        handleUploadUrl: "/api/upload",
+        multipart: true,
+        onUploadProgress: ({ percentage }) => setProgress(Math.round(percentage)),
+      });
+      onChange(blob.url);
+    } catch (e) {
+      const detail = e instanceof Error ? e.message : "";
+      if (/unauthorized|로그인이 만료/i.test(detail)) {
+        setErr("로그인이 만료되었습니다. 관리자 페이지에 다시 로그인해 주세요.");
+      } else if (/content.?type|image/i.test(detail)) {
+        setErr("JPG, PNG, WEBP, GIF, AVIF 이미지만 올릴 수 있습니다.");
+      } else {
+        setErr(detail ? `업로드에 실패했습니다. ${detail}` : "업로드 중 오류가 발생했습니다.");
+      }
+    } finally {
+      setBusy(false);
+      setProgress(0);
+    }
   }
 
   return (
@@ -63,7 +84,7 @@ function ImageField({
         />
         <button type="button" className="ad-btn ad-btn-line" disabled={busy}
           onClick={() => fileRef.current?.click()}>
-          {busy ? "올리는 중…" : value ? "사진 바꾸기" : "사진 올리기"}
+          {busy ? `올리는 중 ${progress}%` : value ? "사진 바꾸기" : "사진 올리기"}
         </button>
         {value && (
           <button type="button" className="ad-btn ad-btn-ghost" onClick={() => onChange("")}>
