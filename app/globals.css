@@ -1207,9 +1207,9 @@ img,video,svg{max-width:100%}
   background:linear-gradient(180deg,var(--w-deep),var(--w-navy2))}
 .wt-bridge-small{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--w-ice)}
 .wt-bridge-big{margin:0;font-size:clamp(24px,3.4vw,40px);font-weight:900;line-height:1.4;color:#fff;letter-spacing:-.035em}
-.wt-why{background:#fff}
+.wt-why{background:var(--w-soft)}
 .wt-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.wt-stat{padding:28px 20px;border-radius:16px;background:var(--w-soft);text-align:center;
+.wt-stat{padding:28px 20px;border-radius:16px;background:#fff;text-align:center;
   transition:transform .25s ease,box-shadow .25s ease}
 .wt-stat:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(16,25,46,.5)}
 .wt-stat-label{display:block;margin-bottom:14px;font-size:12.5px;line-height:1.5;color:var(--w-mut)}
@@ -1219,7 +1219,7 @@ img,video,svg{max-width:100%}
 
 /* 왜 다인아카데미인가 */
 .wt-why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
-.wt-why-card{position:relative;padding:32px 30px;border-radius:18px;background:#fff;
+.wt-why-card{position:relative;padding:32px 30px;border-radius:18px;background:var(--w-soft);
   border:1px solid rgba(17,28,54,.07);box-shadow:0 14px 34px rgba(17,28,54,.045);
   transition:transform .3s ease,border-color .3s ease}
 .wt-why-card:hover{transform:translateY(-4px);border-color:rgba(192,153,79,.45)}
@@ -1228,7 +1228,7 @@ img,video,svg{max-width:100%}
   letter-spacing:-.04em;color:var(--w-navy);word-break:keep-all}
 .wt-why-d{margin:0;font-size:13.5px;line-height:1.9;color:var(--w-mut);word-break:keep-all}
 
-.wt-result{background:var(--w-soft)}
+.wt-result{background:#fff}
 .wt-rbanner{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center;text-align:center;
   padding:34px 30px;border-radius:20px;margin-bottom:30px;
   background:linear-gradient(120deg,var(--w-navy),var(--w-deep));color:#fff}

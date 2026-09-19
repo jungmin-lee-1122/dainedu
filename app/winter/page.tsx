@@ -149,7 +149,27 @@ export default function WinterPage() {
         </div>
       </section>
 
-      {/* ══ 4) WHY DAIN ══ */}
+      {/* ══ 4) 다인아카데미를 선택하는 이유 ══ */}
+      <section className="wt-sec wt-result" id="result">
+        <div className="wt-wrap">
+          <p className="wt-tag">Why DAIN</p>
+          <h2 className="wt-h2">
+            이번 겨울,<br /><em>다인아카데미를 선택하는 이유</em>
+          </h2>
+
+          <div className="wt-why-grid">
+            {whyReasons.map((r, i) => (
+              <article className="wt-why-card wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={r.no}>
+                <span className="wt-why-no">{r.no}</span>
+                <b className="wt-why-t">{r.t}</b>
+                <p className="wt-why-d">{r.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 4-2) 우리가 지키는 기준 ══ */}
       <section className="wt-sec wt-why" id="why">
         <div className="wt-wrap">
           <p className="wt-tag">WHY DAIN</p>
@@ -177,27 +197,7 @@ export default function WinterPage() {
         </div>
       </section>
 
-      {/* ══ 5) 합격 실적 · 후기 ══ */}
-      <section className="wt-sec wt-result" id="result">
-        <div className="wt-wrap">
-          <p className="wt-tag">Why DAIN</p>
-          <h2 className="wt-h2">
-            이번 겨울,<br /><em>다인아카데미를 선택하는 이유</em>
-          </h2>
-
-          <div className="wt-why-grid">
-            {whyReasons.map((r, i) => (
-              <article className="wt-why-card wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={r.no}>
-                <span className="wt-why-no">{r.no}</span>
-                <b className="wt-why-t">{r.t}</b>
-                <p className="wt-why-d">{r.d}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 합격 실적 · 후기 — 개원 후 실제 데이터가 쌓이면 true 로 바꿔 주세요 */}
+      {/* ══ 5) 합격 실적 · 후기 — 개원 후 실제 데이터가 쌓이면 true 로 바꿔 주세요 */}
       {SHOW_RESULT && (
       <section className="wt-sec wt-result">
         <div className="wt-wrap">
@@ -273,7 +273,7 @@ export default function WinterPage() {
             <span className="wt-fc-shine" aria-hidden="true" />
             <span className="wt-fc-punch-rule" aria-hidden="true" />
             <p className="wt-fc-punch">
-              전과목 <em>학원가 대표 강사</em> 출강
+              전과목 <em>학원가 대표 강사</em> 출강!
             </p>
           </div>
         </div>
