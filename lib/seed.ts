@@ -23,6 +23,7 @@ function teacherRows(): SeedRow[] {
       tags: t.tags ?? [],
       photo: t.photo ?? "",
       copy: t.copy ?? "",
+      school: t.school ?? "",
       career: (t.career ?? []).join("\n"),
       openAt: t.openAt ?? "",
       videoUrl: t.videoUrl ?? "",

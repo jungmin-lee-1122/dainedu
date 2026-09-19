@@ -100,7 +100,7 @@ export default async function TeachersPage({
 
                     <div className="tc-card-overlay">
                       <small>PROFILE</small>
-                      <strong>{teacher.copy}</strong>
+                      <strong>{teacher.school || teacher.copy}</strong>
                       <ul>
                         {teacher.career.map((career) => <li key={career}>{career}</li>)}
                       </ul>

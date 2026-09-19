@@ -41,6 +41,7 @@ export async function getTeachers(): Promise<Teacher[]> {
         tags: arr(d.tags),
         name: revealed ? String(d.name ?? "") : "Coming Soon",
         copy: String(d.copy ?? ""),
+        school: String(d.school ?? "") || undefined,
         career: lines(d.career),
         openAt: String(d.openAt ?? ""),
         revealed,

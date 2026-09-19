@@ -8,7 +8,8 @@ export type Teacher = {
   subject: string;
   tags: string[];         // 카드 상단 대상 태그
   name: string;        // 공개 전에는 "Coming Soon"
-  copy: string;        // 한 줄 소개
+  copy: string;        // 한 줄 소개 (상세 페이지 슬로건)
+  school?: string;     // 출신학교 — 카드 PROFILE 아래에 표시
   career: string[];    // 이력
   openAt: string;      // 공개 예정 시기
   revealed: boolean;   // true 면 실명·사진 공개

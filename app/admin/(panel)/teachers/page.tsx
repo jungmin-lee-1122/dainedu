@@ -24,6 +24,14 @@ export default function Page() {
         },
         { key: "photo", label: "사진", type: "image", help: "세로형 인물 사진을 권장합니다." },
         {
+          key: "school",
+          label: "출신학교",
+          type: "text",
+          maxLength: 60,
+          placeholder: "예) 서울대학교 국어교육과",
+          help: "강사진 목록 카드의 PROFILE 아래에 표시됩니다.",
+        },
+        {
           key: "copy",
           label: "한 줄 소개",
           type: "text",
@@ -75,6 +83,7 @@ export default function Page() {
         subject: SUBJECTS[0] || "수학",
         tags: ["고3", "N수"],
         photo: "",
+        school: "",
         copy: "",
         career: "",
         openAt: "공개 예정",
