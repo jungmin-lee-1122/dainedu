@@ -177,6 +177,77 @@ export const winterScript = `
   }
 })();
 
+/* ── 모바일 학습 공간 자동 슬라이드 ── */
+(function(){
+  var root=document.getElementById("wtSpace"); if(!root) return;
+  var cards=root.querySelectorAll(".wt-space-card"); if(cards.length<2) return;
+  var mobile=window.matchMedia("(max-width: 900px)");
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
+  var pos=0, timer=0, resumeTimer=0, scrollTimer=0, visible=false;
+
+  function active(){
+    for(var i=0;i<cards.length;i++) cards[i].classList.toggle("is-active",i===pos);
+  }
+  function nearest(){
+    var center=root.scrollLeft+(root.clientWidth/2), best=0, dist=Infinity;
+    for(var i=0;i<cards.length;i++){
+      var cardCenter=cards[i].offsetLeft+(cards[i].offsetWidth/2);
+      var nextDist=Math.abs(cardCenter-center);
+      if(nextDist<dist){dist=nextDist;best=i;}
+    }
+    pos=best; active();
+  }
+  function move(){
+    if(!mobile.matches||document.hidden) return;
+    pos=(pos+1)%cards.length;
+    active();
+    var left=cards[pos].offsetLeft-(root.clientWidth-cards[pos].offsetWidth)/2;
+    root.scrollTo({left:left,behavior:"smooth"});
+  }
+  function stop(){
+    if(timer){clearInterval(timer);timer=0;}
+  }
+  function start(){
+    stop();
+    if(!visible||!mobile.matches||reduce.matches) return;
+    timer=setInterval(move,3400);
+  }
+  function pause(){
+    stop();
+    if(resumeTimer){clearTimeout(resumeTimer);resumeTimer=0;}
+  }
+  function resume(){
+    if(resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer=setTimeout(start,4800);
+  }
+  function reset(){
+    pos=0; active();
+    if(!mobile.matches) root.scrollLeft=0;
+    start();
+  }
+
+  root.addEventListener("touchstart",pause,{passive:true});
+  root.addEventListener("touchend",resume,{passive:true});
+  root.addEventListener("pointerenter",pause);
+  root.addEventListener("pointerleave",resume);
+  root.addEventListener("scroll",function(){
+    if(scrollTimer) clearTimeout(scrollTimer);
+    scrollTimer=setTimeout(nearest,120);
+  },{passive:true});
+  document.addEventListener("visibilitychange",function(){ if(document.hidden) stop(); else start(); });
+  window.addEventListener("resize",reset);
+  active();
+  if("IntersectionObserver" in window){
+    var observer=new IntersectionObserver(function(entries){
+      visible=entries[0].isIntersecting;
+      if(visible) start(); else stop();
+    },{threshold:0.28});
+    observer.observe(root);
+  }else{
+    visible=true; start();
+  }
+})();
+
 /* ── 하단 고정 CTA (배너 지나면 등장) ── */
 (function(){
   var bar=document.getElementById("wtFixed"); if(!bar) return;
