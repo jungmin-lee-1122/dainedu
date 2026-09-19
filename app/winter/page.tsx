@@ -210,7 +210,7 @@ export default function WinterPage() {
         <div className="wt-wrap">
           <p className="wt-tag">Why DAIN</p>
           <h2 className="wt-h2">
-            이번 겨울,<br /><em>다인아카데미를 선택하는 이유</em>
+            이번 겨울,<br /><em>다인아카데미를 선택해야 하는 이유</em>
           </h2>
 
           <div className="wt-why-grid">
