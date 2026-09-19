@@ -535,7 +535,7 @@ export default function WinterPage() {
       </section>
 
       {/* ══ 8) 학년별 주당 수업 시수 + 하루 ══ */}
-      <section className="wt-sec wt-cur">
+      <section className="wt-sec wt-cur" id="curriculum">
         <div className="wt-wrap">
           <p className="wt-tag">Winter Curriculum</p>
           <h2 className="wt-h2">

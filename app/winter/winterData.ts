@@ -11,6 +11,7 @@ export const sectionNav = [
   { label: "강사진", href: "#faculty" },
   { label: "학습 공간", href: "#space" },
   { label: "관리 시스템", href: "#system" },
+  { label: "상세 요강", href: "#curriculum" },
   { label: "모집 안내", href: "#admission" },
 ];
 
