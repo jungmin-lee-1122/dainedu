@@ -544,11 +544,12 @@ export default function WinterPage() {
           <p className="wt-lead wt-dark">맞춤선택형 — 학생의 현재 수준에서 가장 필요한 학습을 설계합니다.</p>
 
       {/* 학생 시간표 */}
+      <p className="wt-gpanel-head">
+        <b>학생 시간표</b>
+      </p>
       <section className="wt-day">
-          <p className="wt-gpanel-head">
-            <b>학생 시간표</b>
-            <span>몰입은 의지가 아니라 루틴에서 만들어집니다.</span>
-          </p>
+          <p className="wt-tag">A Day</p>
+          <h3 className="wt-h3">몰입은 의지가 아니라 루틴에서 만들어집니다</h3>
           <p className="wt-scroll-hint wt-table-scroll-hint">
             <span aria-hidden="true">←</span> 표를 좌우로 밀어 시간표를 확인하세요 <span aria-hidden="true">→</span>
           </p>

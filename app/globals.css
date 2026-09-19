@@ -1478,7 +1478,7 @@ img,video,svg{max-width:100%}
 .wt-ccard li{position:relative;padding-left:11px;font-size:12.5px;line-height:2;color:var(--w-mut)}
 .wt-ccard li::before{content:"·";position:absolute;left:0;color:var(--w-gold)}
 /* 하루 시간표 — 밝은 배경에 맞춘 톤 */
-.wt-day{margin:8px 0 30px;padding:28px 26px 24px;border-radius:18px;background:var(--w-paper);
+.wt-day{margin:14px 0 32px;padding:30px 28px 26px;border-radius:18px;background:var(--w-paper);
   border:1px solid rgba(17,28,54,.1);box-shadow:0 14px 34px rgba(17,28,54,.06)}
 .wt-tt-scroll{margin-top:24px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .wt-tt{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}
@@ -3339,7 +3339,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .wt-gtab.is-on{background:var(--w-navy);border-color:var(--w-navy);color:#fff}
 .wt-gpanel{display:none}
 .wt-gpanel.is-on{display:block}
-.wt-gpanel-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:0 0 16px}
+.wt-gpanel-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:0 0 14px}
 .wt-gpanel-head b{position:relative;padding-left:26px;font-size:19px;font-weight:900;
   letter-spacing:-.035em;color:var(--w-deep)}
 .wt-gpanel-head b::before{content:"✓";position:absolute;left:0;top:50%;transform:translateY(-50%);
