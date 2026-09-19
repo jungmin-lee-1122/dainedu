@@ -79,7 +79,7 @@ export const clips = [
 /** 5-2) 우측 사이드 배너 */
 /** img = PC용(600x800 · 3:4) · imgM = 모바일용(1080x540 · 2:1, 없으면 img 사용) */
 export const sideBanners: { img: string; imgM?: string; href: string; alt: string }[] = [
-  { img: "/clavis/side-1.png", href: "https://dain-edu.higgsfield.app/seminar", alt: "입학 상담 신청" },
-  { img: "/clavis/side-2.png", href: "#", alt: "기숙 시설 안내" },
-  { img: "/clavis/side-3.png", href: "#", alt: "윈터스쿨 접수" },
+  { img: "/clavis/side-a.png", href: "/event/1", alt: "다인아카데미 1:1 맞춤 상담 안내" },
+  { img: "/clavis/side-b.png", href: "/space", alt: "DAIN SPACE — 시설 둘러보기" },
+  { img: "/clavis/side-c.png", href: "/consult", alt: "1:1 상담 예약하기" },
 ];
