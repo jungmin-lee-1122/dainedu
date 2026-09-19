@@ -1723,7 +1723,7 @@ img,video,svg{max-width:100%}
   .wt-kv-in > *{max-width:none}
   .wt-kvnav-in{flex-wrap:wrap;width:calc(100% - 32px)}
   .wt-kvnav a{flex:1 1 40%;padding:14px 6px;font-size:13px}
-  .wt-kvnav-cta{flex:1 1 100% !important;justify-content:center;margin:6px 0 8px}
+  .wt-kvnav-cta{flex:0 0 auto !important;justify-content:center;margin:8px auto 10px}
 }
 
 /* ═══════ 27-c) 윈터: 헤더 + 세부 탭바 고정 ═══════ */
