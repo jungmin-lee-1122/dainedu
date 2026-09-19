@@ -412,7 +412,6 @@ export default function WinterPage() {
               <li className="wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={st.no}>
                 <span className="wt-flow-no">{st.no}</span>
                 <b>{st.t}</b>
-                <span className="wt-flow-desc">{st.d}</span>
               </li>
             ))}
           </ol>
@@ -427,10 +426,13 @@ export default function WinterPage() {
               <h3 className="wt-h3 wt-inv">{aiTablet.title}</h3>
               <p className="wt-tab-lead">{aiTablet.lead}</p>
               <ul className="wt-tab-list">
-                {aiTablet.items.map((it) => (
+                {aiTablet.items.map((it, i) => (
                   <li key={it.t}>
-                    <b>{it.t}</b>
-                    <span>{it.d}</span>
+                    <span className="wt-tab-no">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="wt-tab-txt">
+                      <b>{it.t}</b>
+                      <span>{it.d}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -438,7 +440,10 @@ export default function WinterPage() {
           </div>
 
           <div className="wt-report">
-            <b className="wt-report-ttl">하루의 학습이, 매일의 리포트로</b>
+            <span className="wt-report-head">
+              <i className="wt-report-en">Daily Report</i>
+              <b className="wt-report-ttl">하루의 학습이, 매일의 리포트로</b>
+            </span>
             <ul>
               {aiTablet.report.map((r) => (
                 <li key={r}>{r}</li>
