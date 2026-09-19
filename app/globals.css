@@ -955,7 +955,8 @@ img,video,svg{max-width:100%}
 .cv-bottom-grid>.cv-review{display:flex;flex-direction:column}
 .cv-bottom-grid>.cv-side{display:flex}
 .cv-bottom-grid>.cv-side .cv-side-slider{flex:1 1 auto;display:flex;flex-direction:column}
-.cv-bottom-grid>.cv-side .cv-side-track{flex:1 1 auto;aspect-ratio:auto;min-height:0}
+/* 사이드 배너 — PC 3:4 고정 (이미지 권장 600x800) */
+.cv-bottom-grid>.cv-side .cv-side-track{flex:0 0 auto;aspect-ratio:3/4;min-height:0}
 .cv-bottom .cv-sec-head .cv-dots{margin-left:auto}
 .cv-review-slider{position:relative;overflow:hidden}
 .cv-review-track{display:flex;gap:16px;transition:transform .45s cubic-bezier(.22,.7,.3,1)}
@@ -976,7 +977,9 @@ img,video,svg{max-width:100%}
 @media(max-width:1000px){
   .cv-teacher-card{flex:0 0 calc((100% - 36px)/3)}
   .cv-bottom-grid{grid-template-columns:1fr;gap:34px}
-  .cv-side-slider{max-width:420px}
+  .cv-side-slider{max-width:420px;margin:0 auto}
+  /* 모바일 2:1 (이미지 권장 1080x540) */
+  .cv-side-track,.cv-bottom-grid>.cv-side .cv-side-track{aspect-ratio:2/1}
 }
 @media(max-width:900px){
   .cv-main-bn{padding:14px 0 12px}

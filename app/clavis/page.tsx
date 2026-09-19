@@ -25,6 +25,9 @@ const SHOW_BODY = true;
 /** 선생님 섹션 표시 여부 — 임시로 숨김 */
 const SHOW_TEACHERS = false;
 
+/** 공지사항 · 설명회 섹션 표시 여부 — 임시 숨김 */
+const SHOW_BOARD = false;
+
 export const metadata: Metadata = {
   title: "클라비스 N수전문관 — 다인교육 동탄점",
   description: "합격의 문을 열어낼 단 하나의 열쇠를 쥐다. 다인교육 동탄점 클라비스 N수전문관.",
@@ -131,7 +134,8 @@ export default async function ClavisPage() {
 
       )}
 
-      {/* ── 4) 공지사항 · 설명회 ── */}
+      {/* ── 4) 공지사항 · 설명회 — 임시 숨김 (SHOW_BOARD 를 true 로) ── */}
+      {SHOW_BOARD && (
       <section className="cv-board" id="board">
         <div className="cv-wrap cv-board-grid">
           <div className="cv-notice cv-anchor" id="notice">
@@ -178,6 +182,7 @@ export default async function ClavisPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── 5) 성공수기 + 사이드 배너 ── */}
       <section className="cv-bottom" id="review">
@@ -213,7 +218,10 @@ export default async function ClavisPage() {
               <div className="cv-side-track">
                 {sideBanners.map((b, i) => (
                   <a className="cv-side-slide" href={b.href} key={i}>
-                    <img src={b.img} alt={b.alt} />
+                    <picture>
+                      <source media="(max-width:900px)" srcSet={b.imgM || b.img} />
+                      <img src={b.img} alt={b.alt} />
+                    </picture>
                   </a>
                 ))}
               </div>
