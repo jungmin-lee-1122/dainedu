@@ -141,12 +141,15 @@ export const stories = [
 ];
 
 /** 6) 학습 공간 */
+/** 실제 촬영 사진 — 모두 1200x900(4:3)으로 맞춰 두었습니다.
+ *  사진을 바꿀 때도 같은 비율로 올려야 카드 크기가 흐트러지지 않습니다.
+ *  등원 동선 순서(입구 → 강의실 → 자습실 → 휴게실)로 배치했습니다.
+ */
 export const spaces = [
-  { name: "강의실", tags: ["#실전 배치", "#학년별 분반", "#소수 정예"], img: "/winter/space-1.png" },
-  { name: "자습실", tags: ["#1인 1지정석", "#개인 공간 보호", "#집중 조명"], img: "/winter/space-2.png" },
-  { name: "상담실", tags: ["#담임 밀착 상담", "#입시 전략 설계"], img: "/winter/space-3.png" },
-  { name: "라운지", tags: ["#리프레시 공간", "#정수기·냉장고"], img: "/winter/space-4.png" },
-  { name: "교사실", tags: ["#상시 질의응답", "#클리닉 운영"], img: "/winter/space-5.png" },
+  { name: "학생 입구", tags: ["#턴게이트 출입", "#등·하원 자동 기록", "#실시간 알림"], img: "/winter/space-gate.jpg" },
+  { name: "강의실", tags: ["#실전 배치", "#학년별 분반", "#소수 정예"], img: "/winter/space-class.jpg" },
+  { name: "자습실", tags: ["#1인 1지정석", "#칸막이 개인석", "#집중 조명"], img: "/winter/space-study.jpg" },
+  { name: "휴게실", tags: ["#리프레시 공간", "#정수기·냉장고"], img: "/winter/space-lounge.jpg" },
 ];
 
 /** 7) 관리 시스템 — 탭 */
