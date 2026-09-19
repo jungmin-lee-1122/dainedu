@@ -32,7 +32,7 @@ export default async function NoticeListPage() {
           전체 <b>{notices.length}</b>건
         </span>
         <span className="pb-tel">
-          문의 <a href="tel:16440224">1644-0224</a>
+          문의 <a href="tel:16448022">1644-8022</a>
         </span>
       </PageBand>
 
@@ -80,7 +80,7 @@ export default async function NoticeListPage() {
             </ul>
           )}
 
-          <p className="nt-note">※ 문의사항은 대표번호 1644-0224 또는 온라인 상담으로 남겨주세요.</p>
+          <p className="nt-note">※ 문의사항은 대표번호 1644-8022 또는 온라인 상담으로 남겨주세요.</p>
         </div>
       </section>
 

@@ -65,7 +65,7 @@ export default async function SchedulePage({
               </p>
               <div className="sc-soon-act">
                 <a className="sc-soon-btn" href="/consult">입학 상담 신청</a>
-                <a className="sc-soon-btn sc-soon-line" href="tel:16440224">1644-0224</a>
+                <a className="sc-soon-btn sc-soon-line" href="tel:16448022">1644-8022</a>
               </div>
             </div>
           </div>

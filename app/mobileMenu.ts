@@ -20,7 +20,7 @@ export const mobileMenuScript = String.raw`
   /* ── 드로어 ── */
   var wrap=document.createElement("div");
   wrap.className="dn-mmenu";
-  wrap.innerHTML='<div class="dn-mmenu-dim"></div><nav class="dn-mmenu-panel" aria-label="모바일 메뉴"><div class="dn-mmenu-head"><span class="dn-mmenu-title">MENU</span><button type="button" class="dn-mmenu-close" aria-label="메뉴 닫기">&times;</button></div><div class="dn-mmenu-body"></div><div class="dn-mmenu-foot"><a class="dn-mmenu-cta" href="/consult">입학상담 신청</a><a class="dn-mmenu-tel" href="tel:16440224">1644-0224</a></div></nav>';
+  wrap.innerHTML='<div class="dn-mmenu-dim"></div><nav class="dn-mmenu-panel" aria-label="모바일 메뉴"><div class="dn-mmenu-head"><span class="dn-mmenu-title">MENU</span><button type="button" class="dn-mmenu-close" aria-label="메뉴 닫기">&times;</button></div><div class="dn-mmenu-body"></div><div class="dn-mmenu-foot"><a class="dn-mmenu-cta" href="/consult">입학상담 신청</a><a class="dn-mmenu-tel" href="tel:16448022">1644-8022</a></div></nav>';
   document.body.appendChild(wrap);
 
   var body=wrap.querySelector(".dn-mmenu-body");

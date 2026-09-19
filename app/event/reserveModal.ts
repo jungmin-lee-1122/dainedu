@@ -37,7 +37,7 @@ export function reserveModalMarkup(ev: {
       <ul class="rv-guide">
         <li>예약은 선착순으로 진행되며, 예약 상황에 따라 조기 마감될 수 있습니다.</li>
         <li>등록하신 연락처로 설명회 안내 문자를 보내드리니 정확하게 입력해 주세요.</li>
-        <li>예약 취소·변경은 대표번호(1644-0224)로 연락해 주세요.</li>
+        <li>예약 취소·변경은 대표번호(1644-8022)로 연락해 주세요.</li>
       </ul>
 
       <form class="rv-form" id="rvForm" novalidate>

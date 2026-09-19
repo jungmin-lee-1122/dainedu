@@ -95,7 +95,7 @@ export default async function NoticeViewPage({
                 </p>
               ))
             ) : (
-              <p className="nt-p nt-p-empty">자세한 내용은 대표번호(1644-0224)로 문의해 주세요.</p>
+              <p className="nt-p nt-p-empty">자세한 내용은 대표번호(1644-8022)로 문의해 주세요.</p>
             )}
           </div>
 

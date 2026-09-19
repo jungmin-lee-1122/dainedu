@@ -38,13 +38,6 @@ export default function Page() {
           placeholder: "https://... 또는 /event/1",
           help: "첨부 사진을 누르면 이 주소로 이동합니다. 비우면 링크가 걸리지 않습니다. (선택)",
         },
-        {
-          key: "href",
-          label: "외부 링크",
-          type: "text",
-          placeholder: "비우면 사이트 안의 상세 페이지로 연결됩니다",
-          help: "다른 사이트로 바로 보내고 싶을 때만 입력하세요. 보통은 비워둡니다. (선택)",
-        },
         { key: "pinned", label: "위에 고정", type: "checkbox", help: "켜면 목록 맨 위에 표시됩니다." },
       ]}
       defaults={{
@@ -55,7 +48,6 @@ export default function Page() {
         content: "",
         image: "",
         imageHref: "",
-        href: "",
         pinned: false,
       }}
       summary={(item) => (

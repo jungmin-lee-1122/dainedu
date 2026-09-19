@@ -885,7 +885,7 @@ export default function WinterPage() {
           </h2>
           <div className="wt-close-btns">
             <a className="wt-btn wt-btn-primary" href={CONSULT}>입학 상담 신청</a>
-            <a className="wt-btn wt-btn-ghost" href="tel:16440224">전화 문의 1644-0224</a>
+            <a className="wt-btn wt-btn-ghost" href="tel:16448022">전화 문의 1644-8022</a>
           </div>
           <p className="wt-sign">DAIN EDUCATION</p>
         </div>

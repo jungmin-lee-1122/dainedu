@@ -9,7 +9,7 @@ import { locationScript } from "./locationScript";
 const PLACE_NAME = "다인아카데미 동탄점";
 const LOT_ADDRESS = "경기도 화성시 동탄구 반송동 92-7";
 const ROAD_ADDRESS = "경기도 화성시 동탄 메타폴리스로 53, 6층";
-const TEL = "1644-0224";
+const TEL = "1644-8022";
 const MAP_QUERY = `${PLACE_NAME} ${ROAD_ADDRESS}`;
 const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=17&hl=ko&output=embed`;
 const naverMap = `https://map.naver.com/p/search/${encodeURIComponent(ROAD_ADDRESS)}`;

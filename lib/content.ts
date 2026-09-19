@@ -212,8 +212,8 @@ export async function getNotices(hall: "porta" | "clavis", fallback: Notice[]): 
       tag: n.tag,
       title: n.title,
       date: n.date,
-      // 외부 링크가 있으면 그쪽으로, 없으면 사이트 안 상세 페이지로
-      href: n.href || `/notices/${n.id}`,
+      // 글을 누르면 항상 사이트 안의 상세 페이지로 갑니다
+      href: `/notices/${n.id}`,
     }));
 }
 

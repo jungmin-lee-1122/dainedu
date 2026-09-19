@@ -38,7 +38,7 @@ export default async function EventListPage() {
           현재 접수중 <b>{openCount}</b>건
         </span>
         <span className="pb-tel">
-          문의 <a href="tel:16440224">1644-0224</a>
+          문의 <a href="tel:16448022">1644-8022</a>
         </span>
       </PageBand>
 
