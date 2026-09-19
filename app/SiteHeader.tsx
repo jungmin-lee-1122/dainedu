@@ -99,7 +99,6 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
               <div className="dn-gnb-sub">
                 {/* 독학재수반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
                 <span className="dn-gnb-soon">독학재수반</span>
-                <a href="/schedule">단과 시간표</a>
               </div>
             ) : (
               <div className="dn-gnb-sub">
