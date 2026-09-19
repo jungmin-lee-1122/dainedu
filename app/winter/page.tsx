@@ -293,14 +293,6 @@ export default function WinterPage() {
             ))}
           </p>
 
-          <p className="wt-formula wt-up">
-            <b>{careFormula.a}</b>
-            <i aria-hidden="true">+</i>
-            <b>{careFormula.b}</b>
-            <i aria-hidden="true">=</i>
-            <em>{careFormula.result}</em>
-          </p>
-
           <div className="wt-care-grid">
             {careCards.map((c, i) => (
               <article className="wt-care wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={c.no}>
@@ -323,6 +315,14 @@ export default function WinterPage() {
               </article>
             ))}
           </div>
+
+          <p className="wt-formula wt-up">
+            <b>{careFormula.a}</b>
+            <i aria-hidden="true">+</i>
+            <b>{careFormula.b}</b>
+            <i aria-hidden="true">=</i>
+            <em>{careFormula.result}</em>
+          </p>
 
           {SHOW_MANAGE_TABS && (
           <>

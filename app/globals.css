@@ -1355,7 +1355,7 @@ img,video,svg{max-width:100%}
 
 /* 관리 공식 — 프리미엄 강의 + 프리미엄 관리 */
 .wt-formula{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 16px;
-  margin:0 0 34px;padding:22px 20px;border-radius:14px;
+  margin:22px 0 0;padding:22px 20px;border-radius:14px;
   background:rgba(17,28,54,.04);border:1px solid rgba(17,28,54,.07);
   font-size:clamp(15px,1.9vw,20px);font-weight:900;letter-spacing:-.03em;color:var(--w-navy)}
 .wt-formula b{padding-bottom:4px;border-bottom:2px solid var(--w-gold)}
@@ -1516,7 +1516,7 @@ img,video,svg{max-width:100%}
   .wt-rcard-desc{max-width:calc(100% - 92px)}
   .wt-stats{grid-template-columns:repeat(2,1fr)}
   .wt-story{flex:0 0 calc((100% - 16px)/2)}
-  .wt-formula{gap:8px 12px;padding:18px 16px;margin-bottom:26px;font-size:15px}
+  .wt-formula{gap:8px 12px;padding:18px 16px;margin-top:16px;font-size:15px}
   .wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:1fr}
   .wt-rec{padding:24px 20px}
   .wt-flow li + li::before{left:50%;top:-11px;transform:translateX(-50%) rotate(135deg)}
