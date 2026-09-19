@@ -2,7 +2,6 @@ import Script from "next/script";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
-import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { greetingScript } from "./greetingScript";
 import { hero, letter, system, closing } from "./greetingData";
@@ -18,12 +17,6 @@ export default function GreetingPage() {
   return (
     <main className="dn-body gr-page">
       <SiteHeader />
-
-      <PageBand
-        eyebrow="Greetings"
-        title="인사말"
-        crumb={[{ label: "학원소개" }, { label: "인사말" }]}
-      />
 
       {/* ── 히어로 ── */}
       <section className="gr-hero">

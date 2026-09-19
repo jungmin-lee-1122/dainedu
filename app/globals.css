@@ -1192,7 +1192,7 @@ img,video,svg{max-width:100%}
   transition:width .35s ease}
 .wt-rcard:hover::before{width:132px}
 /* 카드 안쪽 일러스트 */
-.wt-rcard-art{position:absolute;right:14px;bottom:8px;width:132px;height:132px;
+.wt-rcard-art{position:absolute;right:10px;bottom:2px;width:150px;height:142px;
   pointer-events:none;opacity:.92;transition:transform .35s ease,opacity .35s ease}
 .wt-rcard:hover .wt-rcard-art{transform:translateY(-4px) scale(1.04);opacity:1}
 .wt-rcard-no{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:12px;font-weight:800;
@@ -1558,7 +1558,7 @@ img,video,svg{max-width:100%}
   .wt-reforms{grid-template-columns:1fr}
   .wt-rcard{padding:26px 22px 26px;min-height:150px}
   .wt-rcard::before{left:22px;width:38px}
-  .wt-rcard-art{right:-6px;bottom:-4px;width:112px;height:112px;opacity:.7}
+  .wt-rcard-art{right:-4px;bottom:-2px;width:118px;height:112px;opacity:.85}
   .wt-rcard-desc{max-width:calc(100% - 92px)}
   .wt-stats{grid-template-columns:repeat(2,1fr)}
   .wt-story{flex:0 0 calc((100% - 16px)/2)}
@@ -1704,13 +1704,13 @@ img,video,svg{max-width:100%}
 /* 키비주얼 아래 탭바 — 흰 배경 + 골드 밑줄 */
 .wt-kvnav{background:#fff;border-bottom:1px solid #E8EBF1}
 .wt-kvnav-in{display:flex;align-items:center;gap:2px;width:min(1160px,calc(100% - 48px));margin:0 auto}
-.wt-kvnav a{flex:0 0 auto;padding:17px 15px;text-align:center;font-size:13.5px;font-weight:700;
+.wt-kvnav a{flex:0 0 auto;padding:13px 15px;text-align:center;font-size:13.5px;font-weight:700;
   color:var(--w-mut);text-decoration:none;white-space:nowrap;
   border-bottom:2px solid transparent;transition:color .2s ease,border-color .2s ease}
 .wt-kvnav a:hover{color:var(--w-navy)}
 .wt-kvnav a:first-child{color:var(--w-navy);font-weight:800;border-bottom-color:var(--w-gold)}
 .wt-kvnav-cta{display:inline-flex !important;align-items:center;gap:7px;
-  margin-left:auto;padding:11px 18px !important;border-radius:10px;border-bottom:0 !important;
+  margin-left:auto;padding:10px 18px !important;border-radius:10px;border-bottom:0 !important;
   background:linear-gradient(135deg,#E4CD9A,var(--w-gold)) !important;color:#101A2E !important;font-weight:800 !important}
 .wt-kvnav-cta:hover{filter:brightness(1.04);color:#101A2E !important}
 .wt-pdf-ico{width:17px;height:17px;flex:0 0 auto}
@@ -2402,7 +2402,7 @@ a.ev-book-btn{text-decoration:none}
 
 /* ═══════ 히어로 ═══════ */
 .gr-hero{position:relative;overflow:hidden;background:#F6F2EA;
-  padding:70px 0 120px;min-height:min(78vh,720px);display:flex;align-items:center}
+  padding:150px 0 120px;min-height:min(78vh,720px);display:flex;align-items:center}
 .gr-hero-photo{position:absolute;inset:0 0 0 38%;z-index:0}
 .gr-hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
 /* 크림색 배경이 사진으로 자연스럽게 녹아드는 층 */
@@ -2503,7 +2503,7 @@ a.ev-book-btn{text-decoration:none}
   .gr-wrap{width:calc(100% - 36px)}
 
   /* 히어로: 사진은 아래쪽 배경으로 */
-  .gr-hero{padding:28px 0 300px;min-height:0;display:block}
+  .gr-hero{padding:34px 0 300px;min-height:0;display:block}
   .gr-hero-photo{inset:auto 0 0 0;height:320px}
   .gr-hero-veil{background:
     linear-gradient(180deg,#F6F2EA 0%,rgba(246,242,234,.9) 18%,rgba(246,242,234,.25) 52%,rgba(246,242,234,0) 100%)}
