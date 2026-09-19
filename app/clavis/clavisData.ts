@@ -80,6 +80,6 @@ export const clips = [
 /** img = PC용(600x800 · 3:4) · imgM = 모바일용(1080x540 · 2:1, 없으면 img 사용) */
 export const sideBanners: { img: string; imgM?: string; href: string; alt: string }[] = [
   { img: "/clavis/banner-a.jpg", href: "/event/1", alt: "다인아카데미 1:1 맞춤 상담 안내" },
-  { img: "/clavis/banner-b.jpg", href: "/space", alt: "DAIN SPACE — 시설 둘러보기" },
+  { img: "/clavis/banner-b2.jpg", href: "/space", alt: "DAIN SPACE — 시설 둘러보기" },
   { img: "/clavis/banner-c.jpg", href: "/consult", alt: "1:1 상담 예약하기" },
 ];

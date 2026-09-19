@@ -173,7 +173,6 @@ export default function WinterPage() {
       {/* ══ 3) 입시 개편 ══ */}
       <section className="wt-sec wt-reform" id="reform">
         <div className="wt-wrap">
-          <p className="wt-tag wt-tag-inv">Admission Reform</p>
           <h2 className="wt-h2 wt-inv">
             2027년, 내신도 수능도<br />
             <em>바뀌는 첫 겨울</em>

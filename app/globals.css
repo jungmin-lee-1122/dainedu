@@ -1188,7 +1188,7 @@ img,video,svg{max-width:100%}
 .wt-bcard-notes{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.12)}
 .wt-bcard-notes li{position:relative;padding-left:12px;font-size:12.5px;line-height:1.95;color:rgba(255,255,255,.5)}
 .wt-bcard-notes li::before{content:"";position:absolute;left:0;top:11px;width:4px;height:4px;border-radius:50%;background:var(--w-gold)}
-.wt-reform{background:var(--w-deep);padding-bottom:clamp(36px,4vw,60px)}
+.wt-reform{background:var(--w-deep);padding-top:clamp(52px,6vw,88px);padding-bottom:clamp(36px,4vw,60px)}
 .wt-reforms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .wt-rcard{position:relative;overflow:hidden;padding:30px 26px 118px;border-radius:18px;
   background:
