@@ -19,6 +19,8 @@ const SHOW_LAYOUT = false;  // 한 층, 네 개의 관
 const SHOW_CTA = false;     // 하단 설명회 예약 배너
 /* 공용 헤더밴드(PageBand)와 내용이 겹쳐서 숨김 — 다시 보이려면 true */
 const SHOW_FACILITIES_HEAD = false;
+/* 공간 미리보기(렌더링 도면) — 실제 사진으로 교체되면 true */
+const SHOW_RENDER = false;
 
 export const metadata: Metadata = {
   title: "시설 안내 — 다인교육 동탄점",
@@ -152,7 +154,8 @@ export default function SpacePage() {
         </div>
       </section>
 
-      {/* ── 공간 미리보기 ── */}
+      {/* ── 공간 미리보기 — 임시 숨김 (SHOW_RENDER 를 true 로) ── */}
+      {SHOW_RENDER && (
       <section className="sp-render">
         <div className="sp-wrap">
           <p className="sp-eyebrow">Renderings</p>
@@ -189,6 +192,7 @@ export default function SpacePage() {
           <p className="sp-note">※ 도면 기준 이미지로 실제 시공 결과와 세부 마감은 달라질 수 있습니다.</p>
         </div>
       </section>
+      )}
 
       {/* ── CTA ── */}
       {SHOW_CTA && (

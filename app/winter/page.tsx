@@ -27,6 +27,9 @@ import {
   spaces,
   manageTabs,
   manageGroups,
+  gradeTabs,
+  gradeHours,
+  gradeHoursNotes,
   curriculumTabs,
   curriculum,
   dayTable,
@@ -69,6 +72,21 @@ const SHOW_SNAV = false;
 
 /** 키비주얼 배경에 이미지(kv.png)를 쓸지 여부 — 글자 없는 이미지가 준비되면 true */
 const SHOW_KV_IMG = false;
+
+/** 과목별 커리큘럼(구 버전) 표시 여부 — 학년별 시수표로 대체 */
+const SHOW_CURRICULUM = false;
+
+/** 표 머리글에서 '권장필수 / 선택' 을 같은 것끼리 묶어 줍니다. */
+function kindRuns(cols: { pick?: boolean }[]) {
+  const out: { pick: boolean; span: number }[] = [];
+  cols.forEach((c) => {
+    const pick = Boolean(c.pick);
+    const last = out[out.length - 1];
+    if (last && last.pick === pick) last.span += 1;
+    else out.push({ pick, span: 1 });
+  });
+  return out;
+}
 
 /** 모집요강 브로슈어 (public/winter 에 있습니다) */
 const BROCHURE = "/winter/2027-winter-brochure.pdf";
@@ -516,8 +534,97 @@ export default function WinterPage() {
         </div>
       </section>
 
-      {/* ══ 8) 커리큘럼 + 하루 ══ */}
+      {/* ══ 8) 학년별 주당 수업 시수 + 하루 ══ */}
       <section className="wt-sec wt-cur">
+        <div className="wt-wrap">
+          <p className="wt-tag">Winter Curriculum</p>
+          <h2 className="wt-h2">
+            학년마다,<br /><em>필요한 준비는 다릅니다</em>
+          </h2>
+          <p className="wt-lead wt-dark">맞춤선택형 — 학생의 현재 수준에서 가장 필요한 학습을 설계합니다.</p>
+
+          <div className="wt-gtabs" id="wtGradeTabs" role="tablist" aria-label="학년 선택">
+            {gradeTabs.map((g, i) => (
+              <button
+                className={`wt-gtab${i === 0 ? " is-on" : ""}`}
+                type="button"
+                data-grade={g}
+                role="tab"
+                aria-selected={i === 0}
+                key={g}
+              >
+                {g}
+              </button>
+            ))}
+          </div>
+
+          {gradeTabs.map((g, i) => (
+            <div className={`wt-gpanel${i === 0 ? " is-on" : ""}`} data-panel={g} key={g}>
+              <p className="wt-gpanel-head">
+                <b>주당 수업 시수</b>
+                <span>{gradeHours[g].lead}</span>
+              </p>
+
+              {gradeHours[g].blocks.map((block, bi) => (
+                <div className="wt-hour-scroll" key={bi}>
+                  <table className="wt-hour">
+                    <thead>
+                      <tr>
+                        {block.map((grp) => (
+                          <th className="wt-hour-grp" colSpan={grp.cols.length} key={grp.group}>
+                            {grp.group}
+                          </th>
+                        ))}
+                      </tr>
+                      <tr>
+                        {block.flatMap((grp) =>
+                          kindRuns(grp.cols).map((r, ri) => (
+                            <th
+                              className={`wt-hour-kind${r.pick ? " is-pick" : ""}`}
+                              colSpan={r.span}
+                              key={`${grp.group}-k${ri}`}
+                            >
+                              {r.pick ? "선택" : "권장필수"}
+                            </th>
+                          )),
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {block.flatMap((grp) =>
+                          grp.cols.map((c, ci) => (
+                            <td className={`wt-hour-name${c.pick ? " is-pick" : ""}`} key={`${grp.group}-n${ci}`}>
+                              {c.name}
+                            </td>
+                          )),
+                        )}
+                      </tr>
+                      <tr>
+                        {block.flatMap((grp) =>
+                          grp.cols.map((c, ci) => (
+                            <td className={`wt-hour-num${c.pick ? " is-pick" : ""}`} key={`${grp.group}-h${ci}`}>
+                              {c.hours}
+                            </td>
+                          )),
+                        )}
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+
+              <ul className="wt-hour-notes">
+                {gradeHoursNotes.map((n) => (
+                  <li key={n}>{n}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+      {/* 과목별 커리큘럼 — 학년별 시수표로 대체해 숨김 */}
+      {SHOW_CURRICULUM && (
         <div className="wt-wrap wt-cur-grid">
           <div>
             <p className="wt-tag">Winter Curriculum</p>
@@ -552,8 +659,8 @@ export default function WinterPage() {
               </div>
             ))}
           </div>
-
         </div>
+      )}
 
         {/* 하루 시간표 */}
         <div className="wt-wrap">

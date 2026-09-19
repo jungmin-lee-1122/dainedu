@@ -4,13 +4,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "다인교육 동탄점",
   description:
-    "동탄에서 끝내는 대치동급. 2026년 9월 19일(토) 다인교육 입시설명회 · 윈터스쿨 설명회 사전등록.",
+    "동탄에서 끝내는 대치동급. 2026년 9월 20일(일) 다인교육 입시설명회 · 윈터스쿨 설명회 사전등록.",
   metadataBase: new URL("https://dain-edu.higgsfield.app"),
   openGraph: {
     type: "website",
     title: "다인교육 동탄점",
     description:
-      "180평 프리미엄 캠퍼스 · 포르타 고등전문관 / 클라비스 N수전문관 / 2027 윈터스쿨 · 9/19(토) 설명회 사전등록",
+      "180평 프리미엄 캠퍼스 · 포르타 고등전문관 / 클라비스 N수전문관 / 2027 윈터스쿨 · 9/20(일) 설명회 사전등록",
     images: [
       "https://d8j0ntlcm91z4.cloudfront.net/user_3H245lb09Vz3JVPmrpcF7BEkl7M/hf_20260728_181140_b01a2213-8aeb-4f61-80e0-0b1a33235b09.png",
     ],

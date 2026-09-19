@@ -361,6 +361,200 @@ export const manageGroups: Record<string, { lead: string; items: { no: string; t
 };
 
 /** 8) 커리큘럼 */
+/** 8) 학년별 주당 수업 시수
+ *  pick: true 면 '선택' 과목(옅은 배경), 없으면 '권장필수'
+ *  블록 하나가 표 한 개입니다. 시수만 바꾸려면 hours 값만 고치세요.
+ */
+export type HourCol = { name: string; hours: string; pick?: boolean };
+export type HourGroup = { group: string; cols: HourCol[] };
+
+export const gradeTabs = ["예비 고1", "예비 고2", "예비 고3"];
+
+export const gradeHours: Record<string, { lead: string; blocks: HourGroup[][] }> = {
+  "예비 고1": {
+    lead: "학생의 현재 수준에서 가장 필요한 학습을 설계합니다.",
+    blocks: [
+      [
+        {
+          group: "국어",
+          cols: [
+            { name: "문학", hours: "2T" },
+            { name: "언어(문법)", hours: "2T" },
+            { name: "독서와 작문", hours: "2T", pick: true },
+          ],
+        },
+        {
+          group: "수학",
+          cols: [
+            { name: "공통수학1", hours: "4T" },
+            { name: "공통수학2", hours: "4T" },
+            { name: "공통수학1\n문제풀이", hours: "2T", pick: true },
+            { name: "대수", hours: "4T", pick: true },
+            { name: "미적분Ⅰ", hours: "4T", pick: true },
+          ],
+        },
+        {
+          group: "영어",
+          cols: [
+            { name: "구문 어법", hours: "2T" },
+            { name: "고등 독해", hours: "2T" },
+            { name: "실전\n모의고사", hours: "2T", pick: true },
+          ],
+        },
+      ],
+      [
+        {
+          group: "탐구",
+          cols: [
+            { name: "통합과학", hours: "3T" },
+            { name: "통합사회", hours: "3T" },
+            { name: "과학탐구", hours: "3T", pick: true },
+            { name: "사회탐구", hours: "3T", pick: true },
+          ],
+        },
+        { group: "한국사", cols: [{ name: "수능 · 내신", hours: "2T", pick: true }] },
+        {
+          group: "TEST",
+          cols: [
+            { name: "Daily First-20\n국수영", hours: "1T" },
+            { name: "영단어 · 국어\n개념어 TEST", hours: "1T" },
+            { name: "Weekly Final-50\n국수영", hours: "3T" },
+          ],
+        },
+        { group: "입시", cols: [{ name: "1:1 윈터\n입시전략 컨설팅", hours: "1T" }] },
+        { group: "케어", cols: [{ name: "1:1 대면\n수학책임담임", hours: "0.5T" }] },
+      ],
+    ],
+  },
+
+  "예비 고2": {
+    lead: "학생의 현재 수준에서 가장 필요한 학습을 설계합니다.",
+    blocks: [
+      [
+        {
+          group: "국어",
+          cols: [
+            { name: "문학", hours: "2T" },
+            { name: "독서와 작문", hours: "2T" },
+            { name: "화법과\n언어(문법)", hours: "2T", pick: true },
+            { name: "실전\n모의고사", hours: "2T", pick: true },
+          ],
+        },
+        {
+          group: "수학",
+          cols: [
+            { name: "대수", hours: "4T" },
+            { name: "미적분Ⅰ", hours: "4T" },
+            { name: "대수\n내신 문풀", hours: "2T", pick: true },
+            { name: "확률과 통계", hours: "4T", pick: true },
+            { name: "미적분Ⅱ", hours: "4T", pick: true },
+            { name: "기하", hours: "4T", pick: true },
+          ],
+        },
+        {
+          group: "영어",
+          cols: [
+            { name: "구문 문법", hours: "2T" },
+            { name: "고등 독해", hours: "2T" },
+            { name: "실전\n모의고사", hours: "2T", pick: true },
+          ],
+        },
+      ],
+      [
+        {
+          group: "탐구",
+          cols: [
+            { name: "사회/과학\n선택1", hours: "3T" },
+            { name: "사회/과학\n선택2", hours: "3T" },
+            { name: "수능\n통합과학", hours: "3T", pick: true },
+            { name: "수능\n통합사회", hours: "3T", pick: true },
+          ],
+        },
+        { group: "한국사", cols: [{ name: "수능", hours: "2T", pick: true }] },
+        {
+          group: "TEST",
+          cols: [
+            { name: "Daily First-20\n국수영", hours: "1T" },
+            { name: "영단어 · 국어\n개념어 TEST", hours: "1T" },
+            { name: "Weekly Final-50\n국수영", hours: "3T" },
+          ],
+        },
+        { group: "입시", cols: [{ name: "1:1 윈터\n입시전략 컨설팅", hours: "1T" }] },
+        { group: "케어", cols: [{ name: "1:1 대면\n수학책임담임", hours: "0.5T" }] },
+      ],
+    ],
+  },
+
+  "예비 고3": {
+    lead: "학생의 현재 수준에서 가장 필요한 학습을 설계합니다.",
+    blocks: [
+      [
+        {
+          group: "국어",
+          cols: [
+            { name: "문학", hours: "2T" },
+            { name: "독서와 작문", hours: "2T" },
+            { name: "화법과\n언어(문법)", hours: "2T", pick: true },
+            { name: "실전\n모의고사", hours: "2T", pick: true },
+          ],
+        },
+        {
+          group: "수학",
+          cols: [
+            { name: "대수", hours: "4T" },
+            { name: "미적분Ⅰ", hours: "4T" },
+            { name: "확률과 통계", hours: "4T", pick: true },
+            { name: "미적분Ⅱ", hours: "4T", pick: true },
+            { name: "미니\n모의고사", hours: "2T", pick: true },
+            { name: "풀\n모의고사", hours: "2T", pick: true },
+          ],
+        },
+        {
+          group: "영어",
+          cols: [
+            { name: "구문 문법", hours: "2T" },
+            { name: "수능 독해", hours: "2T" },
+            { name: "실전\n모의고사", hours: "2T", pick: true },
+          ],
+        },
+      ],
+      [
+        {
+          group: "탐구",
+          cols: [
+            { name: "수능\n통합과학", hours: "3T" },
+            { name: "수능\n통합사회", hours: "3T" },
+          ],
+        },
+        {
+          group: "논술",
+          cols: [
+            { name: "인문논술", hours: "2T", pick: true },
+            { name: "수리논술", hours: "2T", pick: true },
+          ],
+        },
+        { group: "한국사", cols: [{ name: "수능", hours: "2T", pick: true }] },
+        {
+          group: "TEST",
+          cols: [
+            { name: "Daily First-20\n국수영", hours: "1T" },
+            { name: "영단어 · 국어\n개념어 TEST", hours: "1T" },
+            { name: "Weekly Final-50\n국수영", hours: "3T" },
+          ],
+        },
+        { group: "입시", cols: [{ name: "1:1 윈터\n입시전략 컨설팅", hours: "1T" }] },
+        { group: "케어", cols: [{ name: "1:1 대면\n수학책임담임", hours: "0.5T" }] },
+      ],
+    ],
+  },
+};
+
+export const gradeHoursNotes = [
+  "탐구 선택 : 물리학, 화학, 생명과학, 지구과학, 사회와 문화, 현대사회와 윤리 중 선택 가능 (미개설 과목은 인강학습관리 프로그램으로 대체)",
+  "모든 강좌는 신청자가 5인 이상일 때 개강됩니다.",
+];
+
+/** 8-B) 과목별 커리큘럼 — 현재 화면에는 나오지 않습니다 (학년별 시수표로 대체) */
 export const curriculumTabs = ["국어", "수학", "영어", "탐구"];
 export const curriculum: Record<
   string,

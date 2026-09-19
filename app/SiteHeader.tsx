@@ -22,7 +22,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
     <>
       <a className="dn-topbar" href={SEMINAR} aria-label="설명회 사전등록 안내">
         <span className="dn-topbar-mark">※</span>
-        <span className="dn-entry-badge">9/19 SAT</span>
+        <span className="dn-entry-badge">9/20 SUN</span>
         <h3 className="dn-topbar-title">설명회 사전등록</h3>
         <span className="dn-topbar-desc">
           그랜드 오픈 설명회 <b>좌석을 먼저 확보</b>하세요.

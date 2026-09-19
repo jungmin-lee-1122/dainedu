@@ -145,6 +145,29 @@ export const winterScript = `
 
 /* ── 커리큘럼 탭 ── */
 (function(){
+  /* 학년별 시수표 탭 */
+  (function(){
+    var gbox=document.getElementById("wtGradeTabs"); if(!gbox) return;
+    var gtabs=gbox.querySelectorAll(".wt-gtab");
+    var gpanels=document.querySelectorAll(".wt-gpanel");
+    for(var g=0;g<gtabs.length;g++){
+      (function(btn){
+        btn.addEventListener("click",function(){
+          var v=btn.getAttribute("data-grade");
+          for(var k=0;k<gtabs.length;k++){
+            gtabs[k].classList.remove("is-on");
+            gtabs[k].setAttribute("aria-selected","false");
+          }
+          btn.classList.add("is-on");
+          btn.setAttribute("aria-selected","true");
+          for(var p=0;p<gpanels.length;p++){
+            gpanels[p].classList.toggle("is-on",gpanels[p].getAttribute("data-panel")===v);
+          }
+        });
+      })(gtabs[g]);
+    }
+  })();
+
   var box=document.getElementById("wtCurTabs"); if(!box) return;
   var tabs=box.querySelectorAll(".wt-ctab");
   var panels=document.querySelectorAll(".wt-cpanel");

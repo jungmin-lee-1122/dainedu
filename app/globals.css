@@ -3330,3 +3330,45 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ts-item{flex:0 0 clamp(190px,62vw,230px)}
   .ts-arrow{display:none}
 }
+
+/* 51) 학년별 주당 수업 시수 */
+.wt-gtabs{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 26px}
+.wt-gtab{padding:12px 26px;border-radius:12px;border:1px solid rgba(17,28,54,.12);background:#fff;
+  font-size:15px;font-weight:800;letter-spacing:-.025em;color:var(--w-mut);cursor:pointer;
+  transition:all .2s ease}
+.wt-gtab:hover{color:var(--w-navy);border-color:rgba(192,153,79,.5)}
+.wt-gtab.is-on{background:var(--w-navy);border-color:var(--w-navy);color:#fff}
+.wt-gpanel{display:none}
+.wt-gpanel.is-on{display:block}
+.wt-gpanel-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin:0 0 16px}
+.wt-gpanel-head b{position:relative;padding-left:26px;font-size:19px;font-weight:900;
+  letter-spacing:-.035em;color:var(--w-deep)}
+.wt-gpanel-head b::before{content:"✓";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  display:flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:5px;
+  background:var(--w-navy);color:#fff;font-size:11px;font-weight:900}
+.wt-gpanel-head span{font-size:13.5px;color:var(--w-mut)}
+
+.wt-hour-scroll{margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.wt-hour{width:100%;min-width:760px;border-collapse:collapse;font-size:13px;background:#fff}
+.wt-hour th,.wt-hour td{border:1px solid rgba(17,28,54,.14);padding:10px 8px;text-align:center;
+  vertical-align:middle;line-height:1.5;white-space:pre-line;word-break:keep-all}
+.wt-hour-grp{background:var(--w-navy);color:#fff;font-size:13.5px;font-weight:800;letter-spacing:.01em;
+  border-color:rgba(255,255,255,.2)}
+.wt-hour-kind{background:#fff;color:var(--w-ink);font-size:12.5px;font-weight:800}
+.wt-hour-kind.is-pick{background:#EEF0F6;color:var(--w-mut)}
+.wt-hour-name{color:var(--w-ink);font-size:12.5px}
+.wt-hour-name.is-pick{background:#F6F7FB;color:var(--w-mut)}
+.wt-hour-num{font-weight:800;color:var(--w-navy);font-size:13.5px;font-variant-numeric:tabular-nums}
+.wt-hour-num.is-pick{background:#F6F7FB;color:var(--w-mut)}
+.wt-hour-notes{list-style:none;margin:12px 0 0;padding:0}
+.wt-hour-notes li{position:relative;padding-left:14px;font-size:12px;line-height:1.75;color:var(--w-mut);
+  word-break:keep-all}
+.wt-hour-notes li::before{content:"※";position:absolute;left:0;top:0;color:var(--w-gold)}
+
+@media(max-width:900px){
+  .wt-gtabs{gap:6px;margin-bottom:20px}
+  .wt-gtab{flex:1 1 30%;padding:11px 10px;font-size:14px}
+  .wt-gpanel-head b{font-size:17px}
+  .wt-hour{min-width:680px;font-size:12px}
+  .wt-hour th,.wt-hour td{padding:8px 6px}
+}
