@@ -1248,13 +1248,24 @@ img,video,svg{max-width:100%}
   font-size:17px;font-weight:800;letter-spacing:-.02em;color:var(--w-navy)}
 .wt-fc-area::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--w-gold)}
 .wt-fc-desc{margin:0;font-size:13.5px;line-height:1.85;color:var(--w-mut);word-break:keep-all}
-.wt-fc-photo{margin:22px 0 0;border-radius:18px;overflow:hidden;background:var(--w-soft);line-height:0}
+/* 단체 사진 — 가장자리를 배경색으로 부드럽게 흐려 사진 경계를 없앱니다 */
+.wt-fc-photo{position:relative;margin:10px 0 0;line-height:0;background:transparent}
 .wt-fc-photo img{width:100%;height:auto;display:block}
-.wt-fc-note{margin-top:22px;padding:28px 30px;border-radius:16px;
-  background:linear-gradient(140deg,var(--w-navy),var(--w-deep))}
-.wt-fc-note b{display:block;margin-bottom:12px;font-size:16px;font-weight:800;color:var(--w-gold-l)}
-.wt-fc-note p{margin:0;font-size:13.5px;line-height:1.9;color:rgba(255,255,255,.62);word-break:keep-all}
-.wt-fc-note p span{display:block}
+.wt-fc-photo::after{content:"";position:absolute;inset:-1px;pointer-events:none;
+  background:
+    linear-gradient(to bottom,#fff 0,rgba(255,255,255,0) 15%),
+    linear-gradient(to top,#fff 0,rgba(255,255,255,0) 13%),
+    linear-gradient(to right,#fff 0,rgba(255,255,255,0) 14%),
+    linear-gradient(to left,#fff 0,rgba(255,255,255,0) 14%)}
+/* 한 줄 강조 문구 */
+.wt-fc-punch{position:relative;margin:6px 0 0;text-align:center;
+  font-size:clamp(24px,3.6vw,42px);font-weight:900;letter-spacing:-.045em;line-height:1.35;
+  color:var(--w-navy);word-break:keep-all}
+.wt-fc-punch em{font-style:normal;color:var(--w-navy);white-space:nowrap;padding:0 3px;
+  background:linear-gradient(90deg,rgba(192,153,79,.34),rgba(192,153,79,.14)) no-repeat left 88% / 100% .34em}
+.wt-fc-punch i{font-style:normal;color:var(--w-gold)}
+.wt-fc-punch-rule{display:block;width:34px;height:3px;margin:0 auto 22px;border-radius:3px;
+  background:linear-gradient(90deg,var(--w-gold),var(--w-gold-l))}
 
 .wt-space{background:var(--w-navy2);padding-bottom:clamp(60px,7vw,100px)}
 .wt-space-scroll{overflow-x:auto;padding:34px 0 10px;scrollbar-width:none}
@@ -1387,8 +1398,9 @@ img,video,svg{max-width:100%}
   .wt-space-track{padding:0 18px}
   .wt-fc-grid{grid-template-columns:1fr}
   .wt-fc-item{padding:22px 20px}
-  .wt-fc-note{padding:24px 22px}
-  .wt-fc-note p span{display:inline}
+  .wt-fc-punch{font-size:22px}
+  .wt-fc-punch-rule{margin-bottom:16px}
+
 }
 @media(max-width:760px){
   .wt{padding-bottom:80px}

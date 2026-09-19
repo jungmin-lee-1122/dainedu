@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     "기준이 바뀌는 겨울, 준비도 바뀌어야 합니다. 2028 개편 입시를 준비하는 다인교육 2027 윈터스쿨 선착순 모집.",
 };
 
+/** 강사진 섹션의 학원가 4개 카드 표시 여부 — 다시 보이려면 true */
+const SHOW_FACULTY_AREAS = false;
+
 export default function WinterPage() {
   return (
     <main className="wt">
@@ -208,6 +211,7 @@ export default function WinterPage() {
             ))}
           </p>
 
+          {SHOW_FACULTY_AREAS && (
           <div className="wt-fc-grid">
             {faculty.areas.map((a, i) => (
               <article className="wt-fc-item wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={a.name}>
@@ -216,6 +220,7 @@ export default function WinterPage() {
               </article>
             ))}
           </div>
+          )}
 
           {faculty.photo && (
             <figure className="wt-fc-photo wt-up">
@@ -223,14 +228,10 @@ export default function WinterPage() {
             </figure>
           )}
 
-          <div className="wt-fc-note wt-up">
-            <b>{faculty.note.title}</b>
-            <p>
-              {faculty.note.lines.map((l, i) => (
-                <span key={i}>{l}</span>
-              ))}
-            </p>
-          </div>
+          <p className="wt-fc-punch wt-up">
+            <span className="wt-fc-punch-rule" aria-hidden="true" />
+            전과목 <em>학원가 대표 강사</em> 출강<i>!</i>
+          </p>
         </div>
       </section>
 
