@@ -1346,6 +1346,82 @@ img,video,svg{max-width:100%}
 .wt-mitem ul{list-style:none;margin:0;padding:0}
 .wt-mitem li{position:relative;padding-left:11px;font-size:12.5px;line-height:1.95;color:var(--w-mut)}
 .wt-mitem li::before{content:"·";position:absolute;left:0;color:var(--w-gold);font-weight:800}
+
+/* 태블릿 폭에서는 2열로 */
+@media(max-width:1080px){
+  .wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:repeat(2,1fr)}
+  .wt-flow li + li::before{display:none}
+}
+
+/* 관리 공식 — 프리미엄 강의 + 프리미엄 관리 */
+.wt-formula{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 16px;
+  margin:0 0 34px;padding:22px 20px;border-radius:14px;
+  background:rgba(17,28,54,.04);border:1px solid rgba(17,28,54,.07);
+  font-size:clamp(15px,1.9vw,20px);font-weight:900;letter-spacing:-.03em;color:var(--w-navy)}
+.wt-formula b{padding-bottom:4px;border-bottom:2px solid var(--w-gold)}
+.wt-formula i{font-style:normal;font-weight:700;color:var(--w-mut)}
+.wt-formula em{font-style:normal;color:var(--w-gold)}
+
+/* 보이지 않던 공부까지 */
+.wt-record{background:var(--w-soft)}
+.wt-rec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:6px}
+.wt-rec{position:relative;padding:28px 24px;border-radius:16px;background:#fff;
+  border:1px solid rgba(17,28,54,.07);box-shadow:0 12px 30px rgba(17,28,54,.045);
+  transition:transform .3s ease,border-color .3s ease}
+.wt-rec:hover{transform:translateY(-4px);border-color:rgba(192,153,79,.45)}
+.wt-rec-no{position:absolute;top:20px;right:22px;font-size:34px;font-weight:900;line-height:1;
+  color:rgba(17,28,54,.1)}
+.wt-rec-name{display:block;font-size:17px;font-weight:900;letter-spacing:-.035em;color:var(--w-navy)}
+.wt-rec-en{display:block;margin-top:6px;padding-bottom:14px;border-bottom:1px solid rgba(17,28,54,.1);
+  font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--w-gold)}
+.wt-rec-desc{margin:14px 0 0;font-size:13px;line-height:1.85;color:var(--w-mut);word-break:keep-all}
+
+/* 기록 칩 */
+.wt-chips{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 0;padding:0}
+.wt-chips li{padding:18px 18px;border-radius:14px;background:rgba(17,28,54,.045)}
+.wt-chips b{display:block;margin-bottom:7px;font-size:14px;font-weight:900;letter-spacing:-.025em;color:var(--w-navy)}
+.wt-chips b::before{content:"";display:inline-block;width:14px;height:2px;margin-right:8px;
+  vertical-align:middle;border-radius:2px;background:var(--w-gold)}
+.wt-chips span{font-size:12.5px;line-height:1.75;color:var(--w-mut);word-break:keep-all}
+
+/* 마무리 한 줄 */
+.wt-quote{margin:34px 0 0;padding:20px 0 20px 22px;border-left:3px solid var(--w-gold);
+  font-size:clamp(16px,2.1vw,22px);font-weight:900;letter-spacing:-.035em;color:var(--w-navy)}
+.wt-quote-inv{color:#fff}
+
+/* AI 분석 */
+.wt-ai{background:linear-gradient(160deg,var(--w-navy2),var(--w-deep))}
+.wt-flow{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 0;padding:0;
+  counter-reset:flow}
+.wt-flow li{position:relative;padding:26px 22px;border-radius:16px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
+.wt-flow li + li::before{content:"";position:absolute;left:-11px;top:50%;width:8px;height:8px;
+  border-top:1.5px solid rgba(192,153,79,.7);border-right:1.5px solid rgba(192,153,79,.7);
+  transform:translateY(-50%) rotate(45deg)}
+.wt-flow-no{display:block;margin-bottom:12px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--w-ice)}
+.wt-flow b{display:block;margin-bottom:10px;font-size:16px;font-weight:900;letter-spacing:-.03em;color:#fff}
+.wt-flow-desc{display:block;font-size:12.5px;line-height:1.8;color:rgba(255,255,255,.52);word-break:keep-all}
+
+/* 태블릿 관리 */
+/* 사진이 가로로 길어 위쪽에 전체 폭으로 두고, 항목은 아래 2열로 둡니다 */
+.wt-tab-block{margin-top:40px}
+.wt-tab-photo{margin:0 0 28px;border-radius:18px;overflow:hidden;line-height:0}
+.wt-tab-photo img{width:100%;height:auto;display:block}
+.wt-tab-side .wt-tab-list{grid-template-columns:repeat(2,1fr)}
+.wt-tab-lead{margin:0 0 20px;font-size:14px;line-height:1.85;color:rgba(255,255,255,.58);word-break:keep-all}
+.wt-tab-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.wt-tab-list li{padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05)}
+.wt-tab-list b{display:block;margin-bottom:5px;font-size:14px;font-weight:800;letter-spacing:-.025em;color:var(--w-gold-l)}
+.wt-tab-list span{font-size:12.5px;line-height:1.7;color:rgba(255,255,255,.5);word-break:keep-all}
+
+/* 데일리 리포트 */
+.wt-report{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px;margin-top:20px;
+  padding:22px 26px;border-radius:14px;border:1px solid rgba(192,153,79,.3);background:rgba(255,255,255,.03)}
+.wt-report-ttl{font-size:15px;font-weight:900;letter-spacing:-.03em;color:#fff}
+.wt-report ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.wt-report li{padding:7px 14px;border-radius:999px;background:rgba(192,153,79,.14);
+  font-size:12.5px;font-weight:800;color:var(--w-gold-l)}
+
 .wt-cur{background:var(--w-soft)}
 .wt-cur-grid{display:block}
 .wt-ctabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:28px 0 22px}
@@ -1440,6 +1516,15 @@ img,video,svg{max-width:100%}
   .wt-rcard-desc{max-width:calc(100% - 92px)}
   .wt-stats{grid-template-columns:repeat(2,1fr)}
   .wt-story{flex:0 0 calc((100% - 16px)/2)}
+  .wt-formula{gap:8px 12px;padding:18px 16px;margin-bottom:26px;font-size:15px}
+  .wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:1fr}
+  .wt-rec{padding:24px 20px}
+  .wt-flow li + li::before{left:50%;top:-11px;transform:translateX(-50%) rotate(135deg)}
+  .wt-tab-block{margin-top:28px}
+  .wt-tab-photo{margin-bottom:20px}
+  .wt-tab-side .wt-tab-list{grid-template-columns:1fr}
+  .wt-report{padding:20px;gap:12px}
+  .wt-quote{margin-top:26px;padding:14px 0 14px 16px}
   .wt-care-grid{grid-template-columns:1fr;gap:12px}
   .wt-care{padding:26px 22px 24px;border-radius:16px}
   .wt-care-list li{padding:10px 12px}

@@ -11,6 +11,16 @@ import {
   resultBanner,
   stories,
   careLead,
+  careFormula,
+  recordLead,
+  recordCards,
+  recordChips,
+  recordQuote,
+  aiLead,
+  aiSteps,
+  aiPhoto,
+  aiTablet,
+  aiQuote,
   careCards,
   faculty,
   spaces,
@@ -283,6 +293,14 @@ export default function WinterPage() {
             ))}
           </p>
 
+          <p className="wt-formula wt-up">
+            <b>{careFormula.a}</b>
+            <i aria-hidden="true">+</i>
+            <b>{careFormula.b}</b>
+            <i aria-hidden="true">=</i>
+            <em>{careFormula.result}</em>
+          </p>
+
           <div className="wt-care-grid">
             {careCards.map((c, i) => (
               <article className="wt-care wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={c.no}>
@@ -336,6 +354,99 @@ export default function WinterPage() {
           ))}
           </>
           )}
+        </div>
+      </section>
+
+      {/* ══ 7-2) 보이지 않던 공부까지 ══ */}
+      <section className="wt-sec wt-record">
+        <div className="wt-wrap">
+          <p className="wt-tag">Daily Record</p>
+          <h2 className="wt-h2">
+            보이지 않던 공부까지<br /><em>관리합니다</em>
+          </h2>
+          <p className="wt-lead wt-dark">
+            {recordLead.map((l, i) => (
+              <span className="wt-fc-leadline" key={i}>{l}</span>
+            ))}
+          </p>
+
+          <div className="wt-rec-grid">
+            {recordCards.map((c, i) => (
+              <article className="wt-rec wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={c.no}>
+                <span className="wt-rec-no">{c.no}</span>
+                <b className="wt-rec-name">{c.name}</b>
+                <span className="wt-rec-en">{c.en}</span>
+                <p className="wt-rec-desc">{c.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          <ul className="wt-chips">
+            {recordChips.map((c, i) => (
+              <li className="wt-up" style={{ transitionDelay: `${i * 70}ms` }} key={c.t}>
+                <b>{c.t}</b>
+                <span>{c.d}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="wt-quote wt-up">{recordQuote}</p>
+        </div>
+      </section>
+
+      {/* ══ 7-3) AI 분석 + 태블릿 관리 ══ */}
+      <section className="wt-sec wt-ai">
+        <div className="wt-wrap">
+          <p className="wt-tag wt-tag-inv">AI + Teacher</p>
+          <h2 className="wt-h2 wt-inv">
+            AI가 분석하고,<br /><em>선생님이 완성합니다</em>
+          </h2>
+          <p className="wt-lead">
+            {aiLead.map((l, i) => (
+              <span className="wt-fc-leadline" key={i}>{l}</span>
+            ))}
+          </p>
+
+          <ol className="wt-flow">
+            {aiSteps.map((st, i) => (
+              <li className="wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={st.no}>
+                <span className="wt-flow-no">{st.no}</span>
+                <b>{st.t}</b>
+                <span className="wt-flow-desc">{st.d}</span>
+              </li>
+            ))}
+          </ol>
+
+          <div className="wt-tab-block">
+            {aiPhoto && (
+              <figure className="wt-tab-photo wt-up">
+                <img src={aiPhoto} alt="다인에듀 태블릿으로 학습하는 모습" />
+              </figure>
+            )}
+            <div className="wt-tab-side">
+              <h3 className="wt-h3 wt-inv">{aiTablet.title}</h3>
+              <p className="wt-tab-lead">{aiTablet.lead}</p>
+              <ul className="wt-tab-list">
+                {aiTablet.items.map((it) => (
+                  <li key={it.t}>
+                    <b>{it.t}</b>
+                    <span>{it.d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="wt-report">
+            <b className="wt-report-ttl">하루의 학습이, 매일의 리포트로</b>
+            <ul>
+              {aiTablet.report.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="wt-quote wt-quote-inv wt-up">{aiQuote}</p>
         </div>
       </section>
 
