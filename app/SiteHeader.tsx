@@ -86,14 +86,31 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             </div>
           </li>
 
+          {/* 모집안내 — 어느 관에 있느냐에 따라 내용이 달라집니다 */}
           <li className="dn-gnb-item">
             <a href="/#program">모집안내</a>
-            <div className="dn-gnb-sub">
-              <a href="/schedule">단과시간표</a>
-              <a href="/porta">포르타 고등전문관</a>
-              <a href="/clavis">클라비스 N수전문관</a>
-              <a href="/winter">2027 윈터스쿨</a>
-            </div>
+            {current === "porta" ? (
+              <div className="dn-gnb-sub dn-gnb-sub-grouped">
+                <a href="/winter">2027 윈터스쿨</a>
+                <span className="dn-gnb-gtitle">고등부 단과</span>
+                <a href="/schedule">단과 시간표</a>
+              </div>
+            ) : current === "clavis" ? (
+              <div className="dn-gnb-sub dn-gnb-sub-grouped">
+                <a href="/winter">2027 윈터스쿨</a>
+                {/* 독학재수반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
+                <span className="dn-gnb-soon">독학재수반</span>
+                <span className="dn-gnb-gtitle">N수부 단과</span>
+                <a href="/schedule">단과 시간표</a>
+              </div>
+            ) : (
+              <div className="dn-gnb-sub">
+                <a href="/schedule">단과시간표</a>
+                <a href="/porta">포르타 고등전문관</a>
+                <a href="/clavis">클라비스 N수전문관</a>
+                <a href="/winter">2027 윈터스쿨</a>
+              </div>
+            )}
           </li>
 
           {/* ── 설명회 · 입시 ── */}

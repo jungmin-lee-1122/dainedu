@@ -53,6 +53,14 @@ export const mobileMenuScript = String.raw`
           list.appendChild(lab);
           continue;
         }
+        /* 아직 페이지가 없는 항목은 눌리지 않게 */
+        if(a.classList && a.classList.contains("dn-gnb-soon")){
+          var soon=document.createElement("span");
+          soon.className="dn-mgroup-soon";
+          soon.textContent=a.textContent;
+          list.appendChild(soon);
+          continue;
+        }
         var link=document.createElement("a");
         link.href=a.getAttribute("href")||"#";
         link.textContent=a.textContent;
