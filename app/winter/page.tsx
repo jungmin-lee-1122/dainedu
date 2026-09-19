@@ -232,7 +232,7 @@ export default function WinterPage() {
             <span className="wt-fc-shine" aria-hidden="true" />
             <span className="wt-fc-punch-rule" aria-hidden="true" />
             <p className="wt-fc-punch">
-              전과목 <em>학원가 대표 강사</em> 출강<i>!</i>
+              전과목 <em>학원가 대표 강사</em> 출강
             </p>
           </div>
         </div>

@@ -1270,11 +1270,11 @@ img,video,svg{max-width:100%}
 .wt-fc-note::after{right:16px;bottom:16px;border-left:0;border-top:0;border-radius:0 0 9px 0}
 .wt-fc-note.is-in::before,.wt-fc-note.is-in::after{opacity:.55}
 /* 한 번 지나가는 빛 */
-.wt-fc-shine{position:absolute;top:-20%;left:0;width:46%;height:140%;z-index:-1;pointer-events:none;
+.wt-fc-shine{position:absolute;top:-20%;left:0;width:58%;height:140%;z-index:-1;pointer-events:none;
   background:linear-gradient(90deg,rgba(192,153,79,0),rgba(192,153,79,.13),rgba(192,153,79,0));
   transform:translateX(-160%) skewX(-16deg);
-  transition:transform 1.3s cubic-bezier(.38,0,.2,1) .35s}
-.wt-fc-note.is-in .wt-fc-shine{transform:translateX(340%) skewX(-16deg)}
+  transition:transform 2.6s cubic-bezier(.33,0,.25,1) .45s}
+.wt-fc-note.is-in .wt-fc-shine{transform:translateX(280%) skewX(-16deg)}
 /* 짧은 골드 선 — 가운데에서 좌우로 펼쳐집니다 */
 .wt-fc-punch-rule{display:block;width:0;height:2px;margin:0 auto 22px;border-radius:2px;
   background:linear-gradient(90deg,var(--w-gold-l),var(--w-gold),var(--w-gold-l));
