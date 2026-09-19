@@ -191,7 +191,7 @@ middleware.ts   # /admin 보호
 | `/teachers` `/teachers/[id]` | URL 과목 필터·강사 카드·상세 프로필·개설 강좌 연결 | 완료(실제 강사 정보·사진 대기) |
 | `/schedule` `/schedule/[id]` | 모집대상·과목 필터 / PC 표·모바일 카드 / 강좌 상세·계획서 | **현재 '준비 중' 안내로 대체** (`SHOW_SCHEDULE=false`) |
 | `/about/location` | 프리미엄 히어로·지도·지도 앱 바로가기·교통/주차·도착 안내 | 완료 |
-| `/space` | 시설 구성 9개·차별점 3개 + 렌더링 도면 탭 (기존 히어로·영상·4개 관·CTA는 플래그로 숨김) | 완료(시설 실사진 교체 대기) |
+| `/space` | 시설 구성 9개·차별점 3개 + 렌더링 도면 탭 (기존 히어로·영상·4개 관·CTA는 플래그로 숨김) | 완료(시설 실사진 9장 적용) |
 | `/consult` | 상담 폼 → 구글 시트 | **동작 확인됨** |
 | `/event` `/event/[id]` | 설명회 목록·필터 / 상세 + 우측 예약 신청서 | **동작 확인됨** |
 
@@ -232,8 +232,8 @@ middleware.ts   # /admin 보호
 
 - `/space`의 기존 `공간 미리보기` 바로 위에 첨부 레퍼런스를 따른 시설 소개 섹션을 추가했습니다.
 - 상단에는 `시설안내` 제목과 소개 문구, 본문에는 **시설 구성 9개 카드**와 **차별점 Key Point 3개 카드**가 표시됩니다.
-- 내용과 임시 이미지 경로는 `app/space/spaceData.ts`의 `facilityItems`, `facilityPoints`에서 관리합니다.
-- 현재 시설 사진은 예시용으로 기존 `/space`, `/winter` 이미지를 재사용합니다. 실제 사진을 받으면 `facilityItems[].img`만 교체하세요.
+- 내용과 이미지 경로는 `app/space/spaceData.ts`의 `facilityItems`, `facilityPoints`에서 관리합니다.
+- 시설 구성 9개 카드에 실제 촬영 사진을 순서대로 적용했습니다. 웹용 파일은 `public/space/facilities/facility-01.jpg`부터 `facility-09.jpg`까지이며 모두 `1200×675`입니다.
 - 화면은 데스크톱 3열, 태블릿 2열, 모바일 1열로 반응합니다.
 - 관련 JSX는 `app/space/page.tsx`, 스타일은 `globals.css`의 `32) 시설 안내 (/space)` 구역에 있습니다.
 - 기존 `renderings` 탭과 숨김 플래그 섹션은 삭제하지 않고 그대로 유지했습니다.
@@ -439,7 +439,7 @@ Higgsfield 쪽에는 이 저장소에 없는 콘텐츠(윤여정 초청 설명�
 | 설명회 | 관리자 → 설명회 | 예시 데이터 |
 | 공지사항 | 관리자 → 공지사항 | 예시 데이터 |
 | 단과 강좌 | 관리자 → 강사진 → 개설 강좌 | 편성 확정 대기 (`/schedule` 은 준비 중 화면) |
-| 시설 사진 | `app/space/spaceData.ts` | 기존 이미지 임시 재사용 중 (윈터 페이지는 실사진 교체 완료) |
+| 시설 사진 | `app/space/spaceData.ts` | 시설 구성 9장·윈터 학습 공간 모두 실사진 교체 완료 |
 | 오시는 길 교통정보 | `app/about/location/page.tsx` 의 `routeCards` | 버스 번호·소요시간 미확정 |
 | 윈터 KV 배경 | `public/winter/kv.png` | 글자가 박혀 있어 미사용 — 글자 없는 버전 필요 |
 | 윈터 장학·등록 혜택 | `app/winter/winterData.ts` | 제도 미확정으로 섹션 숨김 |

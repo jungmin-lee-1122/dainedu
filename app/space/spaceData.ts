@@ -17,17 +17,17 @@ export const halls = [
   { name: "단과관", desc: "과목별 단과 수업 전용 강의실" },
 ];
 
-/** 시설 구성 — 실제 사진 수급 전까지 기존 렌더링 이미지를 사용합니다. */
+/** 시설 구성 — 실제 촬영 사진, 표시 순서대로 facility-01~09를 사용합니다. */
 export const facilityItems = [
-  { en: "Reception", name: "안내데스크 & 라운지", img: "/space/lounge.jpg" },
-  { en: "Access Control", name: "보안 게이트 출입관리", img: "/space/aerial.jpg" },
-  { en: "Lecture Hall", name: "강의 집중형 강의실", img: "/space/class.jpg" },
-  { en: "Study Zone", name: "독립 자습 공간", img: "/space/study.jpg" },
-  { en: "Study Carrel", name: "1인 프리미엄 지정좌석", img: "/winter/space-2.png" },
-  { en: "Personal Desk", name: "개인 책상 & 수납공간", img: "/winter/space-3.png" },
-  { en: "Consulting Room", name: "1:1 컨설팅룸", img: "/winter/space-4.png" },
-  { en: "Student Lounge", name: "휴게 공간 The Lounge", img: "/space/lounge.jpg" },
-  { en: "CCTV Monitoring", name: "전 구역 CCTV 관제", img: "/space/plan.jpg" },
+  { en: "Reception", name: "안내데스크 & 라운지", img: "/space/facilities/facility-01.jpg" },
+  { en: "Access Control", name: "보안 게이트 출입관리", img: "/space/facilities/facility-02.jpg" },
+  { en: "Lecture Hall", name: "강의 집중형 강의실", img: "/space/facilities/facility-03.jpg" },
+  { en: "Study Zone", name: "독립 자습 공간", img: "/space/facilities/facility-04.jpg" },
+  { en: "Study Carrel", name: "1인 프리미엄 지정좌석", img: "/space/facilities/facility-05.jpg" },
+  { en: "Personal Desk", name: "개인 책상 & 수납공간", img: "/space/facilities/facility-06.jpg" },
+  { en: "Consulting Room", name: "1:1 컨설팅룸", img: "/space/facilities/facility-07.jpg" },
+  { en: "Student Lounge", name: "휴게 공간 The Lounge", img: "/space/facilities/facility-08.jpg" },
+  { en: "CCTV Monitoring", name: "전 구역 CCTV 관제", img: "/space/facilities/facility-09.jpg" },
 ];
 
 /** 시설 차별점 */
