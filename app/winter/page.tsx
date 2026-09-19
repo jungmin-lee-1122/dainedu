@@ -86,33 +86,33 @@ export default function WinterPage() {
 
       {/* ══ 1) 키비주얼 배너 + 세부 탭 ══ */}
       <section className="wt-kv">
-        <div className="wt-wrap">
-          <div className="wt-kv-box">
-            {/* 배경 — 글자 없는 그러데이션 (이미지를 쓰려면 SHOW_KV_IMG 를 true 로) */}
-            {SHOW_KV_IMG ? (
-              <img className="wt-kv-img" src="/winter/kv.png" alt="2027 다인교육 윈터스쿨" />
-            ) : (
-              <div className="wt-kv-bg" aria-hidden="true">
-                <span className="wt-kv-beam" />
-                <span className="wt-kv-orb" />
-              </div>
-            )}
-            <div className="wt-kv-in">
-              <p className="wt-kv-eyebrow">{hero.eyebrow}</p>
-              <p className="wt-kv-title">
-                {hero.title[0]}<br />
-                <em>{hero.title[1]}</em>
-              </p>
-              <p className="wt-kv-sub">{hero.sub}</p>
-              <div className="wt-kv-chips">
-                {hero.chips.map((c) => (
-                  <span className="wt-chip" key={c}>{c}</span>
-                ))}
-              </div>
+        <div className="wt-kv-box">
+          {/* 배경 — 글자 없는 그러데이션 (이미지를 쓰려면 SHOW_KV_IMG 를 true 로) */}
+          {SHOW_KV_IMG ? (
+            <img className="wt-kv-img" src="/winter/kv.png" alt="2027 다인교육 윈터스쿨" />
+          ) : (
+            <div className="wt-kv-bg" aria-hidden="true">
+              <span className="wt-kv-beam" />
+              <span className="wt-kv-orb" />
+            </div>
+          )}
+          <div className="wt-kv-in">
+            <p className="wt-kv-eyebrow">{hero.eyebrow}</p>
+            <p className="wt-kv-title">
+              {hero.title[0]}<br />
+              <em>{hero.title[1]}</em>
+            </p>
+            <p className="wt-kv-sub">{hero.sub}</p>
+            <div className="wt-kv-chips">
+              {hero.chips.map((c) => (
+                <span className="wt-chip" key={c}>{c}</span>
+              ))}
             </div>
           </div>
+        </div>
 
-          <div className="wt-kvnav">
+        <div className="wt-kvnav">
+          <div className="wt-kvnav-in">
             {sectionNav.map((s) => (
               <a href={s.href} key={s.href}>{s.label}</a>
             ))}
