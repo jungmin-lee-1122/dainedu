@@ -8,6 +8,7 @@ import {
   benefitCards,
   reforms,
   whyStats,
+  whyReasons,
   resultBanner,
   stories,
   careLead,
@@ -51,6 +52,9 @@ const SHOW_FACULTY_AREAS = false;
 
 /** 예전 관리 시스템 탭(생활·학습·입시·멘탈) 표시 여부 — 다시 보이려면 true */
 const SHOW_MANAGE_TABS = false;
+
+/** 합격 실적 · 재원생 후기 섹션 — 실제 데이터가 생기면 true */
+const SHOW_RESULT = false;
 
 export default function WinterPage() {
   return (
@@ -150,9 +154,9 @@ export default function WinterPage() {
         <div className="wt-wrap">
           <p className="wt-tag">WHY DAIN</p>
           <h2 className="wt-h2">
-            흔들리지 않는 건,<br /><em>데이터입니다</em>
+            결과를 말하기 전에,<br /><em>기준을 먼저 지킵니다</em>
           </h2>
-          <p className="wt-lead wt-dark">겨울 두 달, 성적이 오른 학생들의 공통 행동 패턴</p>
+          <p className="wt-lead wt-dark">2027 윈터스쿨에서 학생 한 명에게 약속드리는 관리의 기준입니다.</p>
 
           <div className="wt-stats">
             {whyStats.map((s, i) => (
@@ -169,12 +173,33 @@ export default function WinterPage() {
               </div>
             ))}
           </div>
-          <p className="wt-note">※ 2026년 다인교육 동탄점 겨울 프로그램 재원생 기준</p>
+          <p className="wt-note">※ 2027 윈터스쿨 운영 기준이며, 학사 일정에 따라 조정될 수 있습니다.</p>
         </div>
       </section>
 
       {/* ══ 5) 합격 실적 · 후기 ══ */}
       <section className="wt-sec wt-result" id="result">
+        <div className="wt-wrap">
+          <p className="wt-tag">Why DAIN</p>
+          <h2 className="wt-h2">
+            이번 겨울,<br /><em>다인아카데미를 선택하는 이유</em>
+          </h2>
+
+          <div className="wt-why-grid">
+            {whyReasons.map((r, i) => (
+              <article className="wt-why-card wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={r.no}>
+                <span className="wt-why-no">{r.no}</span>
+                <b className="wt-why-t">{r.t}</b>
+                <p className="wt-why-d">{r.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 합격 실적 · 후기 — 개원 후 실제 데이터가 쌓이면 true 로 바꿔 주세요 */}
+      {SHOW_RESULT && (
+      <section className="wt-sec wt-result">
         <div className="wt-wrap">
           <p className="wt-tag">성장 기록</p>
           <h2 className="wt-h2">
@@ -212,6 +237,7 @@ export default function WinterPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ══ 6) 강사진 ══ */}
       <section className="wt-sec wt-faculty" id="faculty">

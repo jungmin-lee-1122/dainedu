@@ -1208,7 +1208,7 @@ img,video,svg{max-width:100%}
 .wt-bridge-small{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--w-ice)}
 .wt-bridge-big{margin:0;font-size:clamp(24px,3.4vw,40px);font-weight:900;line-height:1.4;color:#fff;letter-spacing:-.035em}
 .wt-why{background:#fff}
-.wt-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.wt-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
 .wt-stat{padding:28px 20px;border-radius:16px;background:var(--w-soft);text-align:center;
   transition:transform .25s ease,box-shadow .25s ease}
 .wt-stat:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(16,25,46,.5)}
@@ -1216,6 +1216,18 @@ img,video,svg{max-width:100%}
 .wt-stat-value{display:flex;align-items:baseline;justify-content:center;gap:2px;
   font-size:clamp(28px,3.2vw,40px);font-weight:900;color:var(--w-navy);letter-spacing:-.04em}
 .wt-stat-value i{font-style:normal;font-size:16px;font-weight:800;color:var(--w-gold)}
+
+/* 왜 다인아카데미인가 */
+.wt-why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+.wt-why-card{position:relative;padding:32px 30px;border-radius:18px;background:#fff;
+  border:1px solid rgba(17,28,54,.07);box-shadow:0 14px 34px rgba(17,28,54,.045);
+  transition:transform .3s ease,border-color .3s ease}
+.wt-why-card:hover{transform:translateY(-4px);border-color:rgba(192,153,79,.45)}
+.wt-why-no{display:block;margin-bottom:14px;font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--w-gold)}
+.wt-why-t{display:block;margin-bottom:12px;font-size:clamp(18px,2.1vw,22px);font-weight:900;
+  letter-spacing:-.04em;color:var(--w-navy);word-break:keep-all}
+.wt-why-d{margin:0;font-size:13.5px;line-height:1.9;color:var(--w-mut);word-break:keep-all}
+
 .wt-result{background:var(--w-soft)}
 .wt-rbanner{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center;text-align:center;
   padding:34px 30px;border-radius:20px;margin-bottom:30px;
@@ -1540,6 +1552,8 @@ img,video,svg{max-width:100%}
   .wt-rcard-desc{max-width:calc(100% - 92px)}
   .wt-stats{grid-template-columns:repeat(2,1fr)}
   .wt-story{flex:0 0 calc((100% - 16px)/2)}
+  .wt-why-grid{grid-template-columns:1fr;gap:12px}
+  .wt-why-card{padding:26px 22px}
   .wt-formula{gap:8px 12px;padding:18px 16px;margin-top:16px;font-size:15px}
   .wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:1fr}
   .wt-rec{padding:24px 20px}
