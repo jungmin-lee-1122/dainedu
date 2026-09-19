@@ -36,7 +36,7 @@ export const quickMenuMarkup = String.raw`
     </span>
     <span class="dn-quick-label">설명회 참석</span>
   </a>
-  <a class="dn-quick-item" href="/event">
+  <a class="dn-quick-item" href="/notices/notice-c7">
     <span class="dn-quick-ico">
       <svg viewBox="0 0 32 32" aria-hidden="true">
         <rect x="4" y="13" width="24" height="15" rx="2.5" fill="#24365A"/>
