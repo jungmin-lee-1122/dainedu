@@ -90,59 +90,6 @@ export default function WinterPage() {
         </div>
       </nav>
 
-      {/* ══ 2) 등록 혜택 ══ */}
-      <section className="wt-sec wt-benefit" id="benefit">
-        <div className="wt-wrap">
-          <p className="wt-tag">등록 혜택</p>
-          <h2 className="wt-h2">
-            흔들리지 않으려면,<br />
-            <em>가장 먼저 시작하세요</em>
-          </h2>
-
-          <div className="wt-timeline">
-            {benefitTimeline.map((t) => (
-              <div className="wt-tl-card wt-up" key={t.tag}>
-                <span className="wt-tl-tag">{t.tag}</span>
-                <b className="wt-tl-title">{t.title}</b>
-                <dl className="wt-tl-rows">
-                  {t.rows.map((r) => (
-                    <div key={r.k}>
-                      <dt>{r.k}</dt>
-                      <dd>{r.v}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            ))}
-          </div>
-
-          <div className="wt-bcards">
-            {benefitCards.map((b) => (
-              <article className="wt-bcard wt-up" key={b.badge}>
-                <div className="wt-bcard-head">
-                  <span className="wt-bcard-badge">{b.badge}</span>
-                  <b className="wt-bcard-lead">{b.lead}</b>
-                </div>
-                <div className="wt-bcard-body">
-                  <p className="wt-bcard-when">{b.when}</p>
-                  <p className="wt-bcard-pct">
-                    <span>최대</span>
-                    <b className="wt-num" data-num={b.percent}>0</b>
-                    <i>%</i>
-                    <span>할인</span>
-                  </p>
-                </div>
-                <ul className="wt-bcard-notes">
-                  {b.notes.map((n) => (
-                    <li key={n}>{n}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══ 3) 입시 개편 ══ */}
       <section className="wt-sec wt-reform" id="reform">
         <div className="wt-wrap">
@@ -174,7 +121,7 @@ export default function WinterPage() {
         <div className="wt-wrap">
           <p className="wt-bridge-small wt-up">흔들리는 건 제도입니다</p>
           <p className="wt-bridge-big wt-up">
-            다인교육 학생의 하루는<br />흔들리지 않았습니다
+            다인교육 학생의 하루는<br />흔들리지 않습니다
           </p>
         </div>
       </section>
@@ -441,7 +388,65 @@ export default function WinterPage() {
               ))}
             </ol>
           </div>
+        </div>
+      </section>
 
+      {/* ══ 10) 등록 혜택 ══ */}
+      <section className="wt-sec wt-benefit" id="benefit">
+        <div className="wt-wrap">
+          <p className="wt-tag">등록 혜택</p>
+          <h2 className="wt-h2">
+            흔들리지 않으려면,<br />
+            <em>가장 먼저 시작하세요</em>
+          </h2>
+
+          <div className="wt-timeline">
+            {benefitTimeline.map((t) => (
+              <div className="wt-tl-card wt-up" key={t.tag}>
+                <span className="wt-tl-tag">{t.tag}</span>
+                <b className="wt-tl-title">{t.title}</b>
+                <dl className="wt-tl-rows">
+                  {t.rows.map((r) => (
+                    <div key={r.k}>
+                      <dt>{r.k}</dt>
+                      <dd>{r.v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
+
+          <div className="wt-bcards">
+            {benefitCards.map((b) => (
+              <article className="wt-bcard wt-up" key={b.badge}>
+                <div className="wt-bcard-head">
+                  <span className="wt-bcard-badge">{b.badge}</span>
+                  <b className="wt-bcard-lead">{b.lead}</b>
+                </div>
+                <div className="wt-bcard-body">
+                  <p className="wt-bcard-when">{b.when}</p>
+                  <p className="wt-bcard-pct">
+                    <span>최대</span>
+                    <b className="wt-num" data-num={b.percent}>0</b>
+                    <i>%</i>
+                    <span>할인</span>
+                  </p>
+                </div>
+                <ul className="wt-bcard-notes">
+                  {b.notes.map((n) => (
+                    <li key={n}>{n}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 11) 자주 묻는 질문 ══ */}
+      <section className="wt-sec wt-faqsec">
+        <div className="wt-wrap">
           <div className="wt-faq" id="wtFaq">
             <h3 className="wt-faq-head">자주 묻는 질문</h3>
             {faqs.map((f, i) => (
@@ -459,7 +464,7 @@ export default function WinterPage() {
         </div>
       </section>
 
-      {/* ══ 11) 클로징 ══ */}
+      {/* ══ 12) 클로징 ══ */}
       <section className="wt-close">
         <div className="wt-wrap">
           <p className="wt-close-small">2028학년도 처음 열리는 입시</p>

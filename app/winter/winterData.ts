@@ -5,13 +5,13 @@
 
 /** 섹션 내비게이션 (스크롤 시 상단 고정) */
 export const sectionNav = [
-  { label: "등록 혜택", href: "#benefit" },
   { label: "입시 개편", href: "#reform" },
   { label: "WHY DAIN", href: "#why" },
   { label: "합격 실적", href: "#result" },
   { label: "학습 공간", href: "#space" },
   { label: "관리 시스템", href: "#system" },
   { label: "모집 안내", href: "#admission" },
+  { label: "등록 혜택", href: "#benefit" },
 ];
 
 /** 1) 히어로 */
