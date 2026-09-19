@@ -10,6 +10,7 @@ import {
   whyStats,
   resultBanner,
   stories,
+  faculty,
   spaces,
   manageTabs,
   manageGroups,
@@ -190,6 +191,45 @@ export default function WinterPage() {
               <button className="wt-arrow" type="button" data-dir="prev" aria-label="이전">‹</button>
               <button className="wt-arrow" type="button" data-dir="next" aria-label="다음">›</button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 6) 강사진 ══ */}
+      <section className="wt-sec wt-faculty" id="faculty">
+        <div className="wt-wrap">
+          <p className="wt-tag">Faculty</p>
+          <h2 className="wt-h2">
+            학원가가 증명한<br /><em>강사진</em>
+          </h2>
+          <p className="wt-lead wt-dark">
+            {faculty.lead.map((l, i) => (
+              <span className="wt-fc-leadline" key={i}>{l}</span>
+            ))}
+          </p>
+
+          <div className="wt-fc-grid">
+            {faculty.areas.map((a, i) => (
+              <article className="wt-fc-item wt-up" style={{ transitionDelay: `${i * 80}ms` }} key={a.name}>
+                <b className="wt-fc-area">{a.name}</b>
+                <p className="wt-fc-desc">{a.desc}</p>
+              </article>
+            ))}
+          </div>
+
+          {faculty.photo && (
+            <figure className="wt-fc-photo wt-up">
+              <img src={faculty.photo} alt="다인아카데미 윈터스쿨 강사진" />
+            </figure>
+          )}
+
+          <div className="wt-fc-note wt-up">
+            <b>{faculty.note.title}</b>
+            <p>
+              {faculty.note.lines.map((l, i) => (
+                <span key={i}>{l}</span>
+              ))}
+            </p>
           </div>
         </div>
       </section>

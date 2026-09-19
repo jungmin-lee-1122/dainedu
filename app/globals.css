@@ -1237,6 +1237,25 @@ img,video,svg{max-width:100%}
   color:var(--w-navy);font-size:19px;cursor:pointer;transition:all .2s ease}
 .wt-arrow:hover{background:var(--w-navy);color:#fff;border-color:var(--w-navy)}
 .wt-arrow.is-off{opacity:.35;pointer-events:none}
+/* 6) 학원가가 증명한 강사진 */
+.wt-faculty{background:#fff}
+.wt-fc-leadline{display:block}
+.wt-fc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px}
+.wt-fc-item{padding:26px 24px;border-radius:16px;background:var(--w-soft);
+  border:1px solid rgba(17,28,54,.07);transition:transform .3s ease,border-color .3s ease}
+.wt-fc-item:hover{transform:translateY(-3px);border-color:rgba(192,153,79,.45)}
+.wt-fc-area{display:flex;align-items:center;gap:10px;margin-bottom:10px;
+  font-size:17px;font-weight:800;letter-spacing:-.02em;color:var(--w-navy)}
+.wt-fc-area::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--w-gold)}
+.wt-fc-desc{margin:0;font-size:13.5px;line-height:1.85;color:var(--w-mut);word-break:keep-all}
+.wt-fc-photo{margin:22px 0 0;border-radius:18px;overflow:hidden;background:var(--w-soft);line-height:0}
+.wt-fc-photo img{width:100%;height:auto;display:block}
+.wt-fc-note{margin-top:22px;padding:28px 30px;border-radius:16px;
+  background:linear-gradient(140deg,var(--w-navy),var(--w-deep))}
+.wt-fc-note b{display:block;margin-bottom:12px;font-size:16px;font-weight:800;color:var(--w-gold-l)}
+.wt-fc-note p{margin:0;font-size:13.5px;line-height:1.9;color:rgba(255,255,255,.62);word-break:keep-all}
+.wt-fc-note p span{display:block}
+
 .wt-space{background:var(--w-navy2);padding-bottom:clamp(60px,7vw,100px)}
 .wt-space-scroll{overflow-x:auto;padding:34px 0 10px;scrollbar-width:none}
 .wt-space-scroll::-webkit-scrollbar{display:none}
@@ -1366,6 +1385,10 @@ img,video,svg{max-width:100%}
   .wt-tt th,.wt-tt td{padding:8px 6px}
   .wt-scholar-grid{grid-template-columns:1fr}
   .wt-space-track{padding:0 18px}
+  .wt-fc-grid{grid-template-columns:1fr}
+  .wt-fc-item{padding:22px 20px}
+  .wt-fc-note{padding:24px 22px}
+  .wt-fc-note p span{display:inline}
 }
 @media(max-width:760px){
   .wt{padding-bottom:80px}
