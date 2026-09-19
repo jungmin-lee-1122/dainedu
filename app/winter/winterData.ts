@@ -149,7 +149,9 @@ export const stories = [
 export const spaces = [
   { name: "학생 입구", tags: ["#턴게이트 출입", "#등·하원 자동 기록", "#실시간 알림"], img: "/winter/space-gate.jpg" },
   { name: "강의실", tags: ["#실전 배치", "#학년별 분반", "#소수 정예"], img: "/winter/space-class.jpg" },
-  { name: "자습실", tags: ["#1인 1지정석", "#칸막이 개인석", "#집중 조명"], img: "/winter/space-study.jpg" },
+  { name: "자습실", tags: ["#1인 1지정석", "#상시 감독", "#집중 조명"], img: "/winter/space-hall.jpg" },
+  { name: "자습실 (칸막이형)", tags: ["#개인 공간 보호", "#시야 차단", "#몰입 학습"], img: "/winter/space-study.jpg" },
+  { name: "컨설팅룸", tags: ["#1:1 입시 상담", "#학습 전략 설계"], img: "/winter/space-suite.jpg" },
   { name: "휴게실", tags: ["#리프레시 공간", "#정수기·냉장고"], img: "/winter/space-lounge.jpg" },
 ];
 
