@@ -1600,7 +1600,7 @@ img,video,svg{max-width:100%}
 .sp-hall-desc{margin:0;font-size:13px;line-height:1.8;color:rgba(255,255,255,.55);word-break:keep-all}
 
 /* 시설 구성 · 차별점 */
-.sp-facilities{padding-top:150px;background:#fff}
+.sp-facilities{padding-top:0;background:#fff}
 .sp-facilities-head{padding:48px 0 44px;background:#F3F2F1}
 .sp-facilities-en{margin:0 0 12px;font-size:11px;font-weight:800;letter-spacing:.24em;color:var(--dn-gold)}
 .sp-facilities-title{margin:0 0 18px;font-family:"Noto Serif KR",serif;font-size:clamp(42px,5.4vw,68px);
@@ -1660,7 +1660,7 @@ img,video,svg{max-width:100%}
   .sp-wrap{padding:0 18px}
   .sp-video{width:min(260px,46vw)}
   .sp-layout,.sp-render{padding:56px 0}
-  .sp-facilities{padding-top:34px}
+  .sp-facilities{padding-top:0}
   .sp-facilities-head{padding:38px 0 36px}
   .sp-facilities-body{padding-top:44px;padding-bottom:64px}
   .sp-facility-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 22px}

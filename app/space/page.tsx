@@ -17,6 +17,8 @@ const SHOW_HERO = false;    // 상단 "시설 미리보기" 타이틀
 const SHOW_INTRO = false;   // 다인·다온 인사 영상
 const SHOW_LAYOUT = false;  // 한 층, 네 개의 관
 const SHOW_CTA = false;     // 하단 설명회 예약 배너
+/* 공용 헤더밴드(PageBand)와 내용이 겹쳐서 숨김 — 다시 보이려면 true */
+const SHOW_FACILITIES_HEAD = false;
 
 export const metadata: Metadata = {
   title: "시설 안내 — 다인교육 동탄점",
@@ -103,6 +105,7 @@ export default function SpacePage() {
 
       {/* ── 시설 구성 · 차별점 ── */}
       <section className="sp-facilities">
+        {SHOW_FACILITIES_HEAD && (
         <div className="sp-facilities-head">
           <div className="sp-wrap">
             <p className="sp-facilities-en">DAIN ACADEMY CAMPUS</p>
@@ -113,6 +116,7 @@ export default function SpacePage() {
             </p>
           </div>
         </div>
+        )}
 
         <div className="sp-wrap sp-facilities-body">
           <h2 className="sp-facilities-h2">시설 구성</h2>
