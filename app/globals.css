@@ -1589,6 +1589,9 @@ img,video,svg{max-width:100%}
   .wt-care{padding:26px 22px 24px;border-radius:16px}
   .wt-care-list li{padding:10px 12px}
   .wt-cur-grid{grid-template-columns:1fr;gap:32px}
+  /* 모바일에서는 등록 절차(01~05)를 숨깁니다 */
+  .wt-process{display:none}
+  .wt-adm-grid{grid-template-columns:1fr}
   .wt-day{margin:4px 0 22px;padding:22px 16px 18px;border-radius:14px}
   .wt-tt-scroll{margin-top:18px}
   .wt-tt{min-width:660px;font-size:12px}
