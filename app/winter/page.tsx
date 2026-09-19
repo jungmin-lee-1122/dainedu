@@ -70,6 +70,9 @@ const SHOW_SNAV = false;
 /** 키비주얼 배경에 이미지(kv.png)를 쓸지 여부 — 글자 없는 이미지가 준비되면 true */
 const SHOW_KV_IMG = false;
 
+/** 모집요강 브로슈어 (public/winter 에 있습니다) */
+const BROCHURE = "/winter/2027-winter-brochure.pdf";
+
 export default function WinterPage() {
   return (
     <main className="wt">
@@ -624,6 +627,17 @@ export default function WinterPage() {
                 </div>
               ))}
               <p className="wt-adm-note">{admissionNote}</p>
+
+              <div className="wt-doc">
+                <a className="wt-doc-btn" href={BROCHURE} target="_blank" rel="noopener noreferrer">
+                  모집요강 바로보기
+                  <i aria-hidden="true">↗</i>
+                </a>
+                <a className="wt-doc-btn wt-doc-line" href={BROCHURE} download>
+                  PDF 내려받기
+                  <i aria-hidden="true">↓</i>
+                </a>
+              </div>
             </dl>
             <ol className="wt-process">
               {process.map((p) => (
