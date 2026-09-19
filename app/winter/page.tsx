@@ -32,6 +32,7 @@ import {
   dayTable,
   scholarship,
   admission,
+  admissionNote,
   process,
   faqs,
 } from "./winterData";
@@ -607,6 +608,7 @@ export default function WinterPage() {
                   <dd>{a.v}</dd>
                 </div>
               ))}
+              <p className="wt-adm-note">{admissionNote}</p>
             </dl>
             <ol className="wt-process">
               {process.map((p) => (
@@ -714,8 +716,8 @@ export default function WinterPage() {
       <div className="wt-fixed" id="wtFixed">
         <div className="wt-fixed-in">
           <div className="wt-fixed-info">
-            <span><b>모집기간</b> 2026.10.01(목) ~ 선착순 마감</span>
-            <span><b>입학일</b> 각 학교 방학일로부터 2일 이내</span>
+            <span><b>개강일</b> 2027.01.04(월)</span>
+            <span><b>교육 기간</b> 2027.01.04 ~ 02.19</span>
           </div>
           <a className="wt-fixed-btn" href={CONSULT}>선착순 예약하기</a>
         </div>
