@@ -69,25 +69,31 @@ export const benefitCards = [
   },
 ];
 
-/** 3) 2028 입시 개편 */
+/** 3) 2028 입시 개편
+ *  art — 카드에 들어가는 일러스트 종류 (ReformArt.tsx 참고)
+ *        "grade" 저울 · "exam" 답안지+연필 · "paper" 서류+화살표
+ */
 export const reforms = [
   {
     no: "Change 1.",
     from: "9등급",
     to: "5등급제",
     desc: "한 등급의 무게가 완전히 달라져, 내신만으로는 변별이 어려워집니다.",
+    art: "grade" as const,
   },
   {
     no: "Change 2.",
     from: "",
     to: "통합형 수능 첫 시행",
     desc: "선택과목이 사라지면서 학습 전략을 처음부터 다시 설계해야 합니다.",
+    art: "exam" as const,
   },
   {
     no: "Change 3.",
     from: "",
     to: "학종 · 논술 확대",
     desc: "내신 변별력 약화로 대학이 수시 평가 요소를 강화하는 흐름입니다.",
+    art: "paper" as const,
   },
 ];
 
@@ -230,17 +236,69 @@ export const curriculum: Record<
 };
 
 /** 9) 하루 일과 */
-export const timetable = [
-  { time: "08:30", what: "등원 · 출결 확인" },
-  { time: "09:00", what: "1교시" },
-  { time: "10:30", what: "2교시" },
-  { time: "12:00", what: "점심" },
-  { time: "13:00", what: "오후 수업" },
-  { time: "16:00", what: "자기주도학습" },
-  { time: "18:00", what: "저녁" },
-  { time: "19:00", what: "클리닉 · 질의응답" },
-  { time: "21:30", what: "하원" },
-];
+/** 하루 시간표
+ *  cs = 가로로 합칠 칸 수 (colspan) · rs = 세로로 합칠 칸 수 (rowspan)
+ *  tone: "meal" 식사 줄 · "pick" 선택 참여
+ *  ※ 시간이나 내용만 바꾸려면 아래 값만 고치면 됩니다.
+ */
+export type DayCell = { t: string; cs?: number; rs?: number; tone?: "meal" | "pick" };
+export type DayRow = { label: string; time: string; cells: DayCell[] };
+
+export const dayTable: { head: string[]; rows: DayRow[] } = {
+  head: ["구분", "시간", "월", "화", "수", "목", "금", "토", "일"],
+  rows: [
+    {
+      label: "등원",
+      time: "~07:50",
+      cells: [
+        { t: "등원", cs: 6 },
+        { t: "일요일 · 공휴일\n~08:40 선택등원", rs: 2, tone: "pick" },
+      ],
+    },
+    {
+      label: "0교시",
+      time: "07:50–08:30",
+      cells: [{ t: "담임 조회 · Daily First-30", cs: 5 }, { t: "조회" }],
+    },
+    {
+      label: "1교시",
+      time: "08:40–09:30",
+      cells: [
+        { t: "수업 및 자기주도학습", cs: 5, rs: 4 },
+        { t: "Weekly Final-50", rs: 2 },
+        { t: "[선택]\n자기주도학습", rs: 4, tone: "pick" },
+      ],
+    },
+    { label: "2교시", time: "09:40–10:30", cells: [] },
+    { label: "3교시", time: "10:40–11:30", cells: [{ t: "국·수·영 주간테스트" }] },
+    { label: "4교시", time: "11:40–12:30", cells: [{ t: "자습" }] },
+    { label: "점심", time: "12:30–13:30", cells: [{ t: "중식", cs: 7, tone: "meal" }] },
+    {
+      label: "5교시",
+      time: "13:30–14:20",
+      cells: [
+        { t: "수업 및 자기주도학습", cs: 5, rs: 3 },
+        { t: "종례 · 자기주도학습", rs: 5 },
+        { t: "[선택]\n자기주도학습", rs: 5, tone: "pick" },
+      ],
+    },
+    { label: "6교시", time: "14:30–15:20", cells: [] },
+    { label: "7교시", time: "15:30–16:20", cells: [] },
+    { label: "종례", time: "16:30–16:50", cells: [{ t: "담임 종례", cs: 5 }] },
+    { label: "8교시", time: "17:00–17:50", cells: [{ t: "수업 및 자기주도학습", cs: 5 }] },
+    { label: "저녁", time: "17:50–19:00", cells: [{ t: "석식", cs: 7, tone: "meal" }] },
+    {
+      label: "9교시",
+      time: "19:00–20:20",
+      cells: [
+        { t: "수업 및 자기주도학습", cs: 5, rs: 2 },
+        { t: "[선택]\n자기주도학습", rs: 2, tone: "pick" },
+        { t: "[선택]\n자기주도학습", rs: 2, tone: "pick" },
+      ],
+    },
+    { label: "10교시", time: "20:30–22:00", cells: [] },
+  ],
+};
 
 /** 10) 장학 */
 export const scholarship = [

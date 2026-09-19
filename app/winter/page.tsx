@@ -15,13 +15,14 @@ import {
   manageGroups,
   curriculumTabs,
   curriculum,
-  timetable,
+  dayTable,
   scholarship,
   admission,
   process,
   faqs,
 } from "./winterData";
 import SiteHeader from "../SiteHeader";
+import ReformArt from "./ReformArt";
 import SiteFooter from "../SiteFooter";
 
 const CONSULT = "/consult";
@@ -161,6 +162,7 @@ export default function WinterPage() {
                   <b>{r.to}</b>
                 </p>
                 <p className="wt-rcard-desc">{r.desc}</p>
+                <ReformArt kind={r.art} />
               </article>
             ))}
           </div>
@@ -346,18 +348,48 @@ export default function WinterPage() {
             ))}
           </div>
 
-          <aside className="wt-day">
+        </div>
+
+        {/* 하루 시간표 */}
+        <div className="wt-wrap">
+          <section className="wt-day">
             <p className="wt-tag">A DAY</p>
-            <h3 className="wt-h3">몰입은 의지가 아니라<br />루틴에서 만들어집니다</h3>
-            <ul className="wt-time">
-              {timetable.map((t) => (
-                <li key={t.time}>
-                  <span>{t.time}</span>
-                  <b>{t.what}</b>
-                </li>
-              ))}
-            </ul>
-          </aside>
+            <h3 className="wt-h3">몰입은 의지가 아니라 루틴에서 만들어집니다</h3>
+
+            <div className="wt-tt-scroll">
+              <table className="wt-tt">
+                <thead>
+                  <tr>
+                    {dayTable.head.map((h, i) => (
+                      <th key={h} className={i < 2 ? "wt-tt-hd" : undefined} scope="col">
+                        {i === 0 ? "" : h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {dayTable.rows.map((r) => (
+                    <tr key={r.label}>
+                      <th className="wt-tt-lb" scope="row">{r.label}</th>
+                      <td className="wt-tt-time">{r.time}</td>
+                      {r.cells.map((c, i) => (
+                        <td
+                          key={`${r.label}-${i}`}
+                          colSpan={c.cs}
+                          rowSpan={c.rs}
+                          className={c.tone === "meal" ? "wt-tt-meal" : c.tone === "pick" ? "wt-tt-pick" : undefined}
+                        >
+                          {c.t}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="wt-tt-note">※ 일정은 학사 운영에 따라 조정될 수 있습니다.</p>
+          </section>
         </div>
       </section>
 

@@ -1179,14 +1179,30 @@ img,video,svg{max-width:100%}
 .wt-bcard-notes li::before{content:"";position:absolute;left:0;top:11px;width:4px;height:4px;border-radius:50%;background:var(--w-gold)}
 .wt-reform{background:var(--w-deep)}
 .wt-reforms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.wt-rcard{padding:32px 28px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+.wt-rcard{position:relative;overflow:hidden;padding:32px 28px 124px;border-radius:18px;
+  background:
+    radial-gradient(120% 90% at 100% 100%,rgba(127,180,255,.10),transparent 58%),
+    linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.08);
   transition:transform .3s ease,border-color .3s ease,background .3s ease}
-.wt-rcard:hover{transform:translateY(-4px);border-color:rgba(192,153,79,.45);background:rgba(255,255,255,.07)}
-.wt-rcard-no{display:block;margin-bottom:16px;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--w-ice)}
+.wt-rcard:hover{transform:translateY(-4px);border-color:rgba(192,153,79,.45)}
+/* 카드 위쪽에 스며드는 골드 실선 (마우스를 올리면 길어집니다) */
+.wt-rcard::before{content:"";position:absolute;left:28px;top:0;width:46px;height:2px;border-radius:0 0 2px 2px;
+  background:linear-gradient(90deg,var(--w-gold),rgba(192,153,79,0));
+  transition:width .35s ease}
+.wt-rcard:hover::before{width:132px}
+/* 카드 안쪽 일러스트 */
+.wt-rcard-art{position:absolute;right:14px;bottom:8px;width:132px;height:132px;
+  pointer-events:none;opacity:.92;transition:transform .35s ease,opacity .35s ease}
+.wt-rcard:hover .wt-rcard-art{transform:translateY(-4px) scale(1.04);opacity:1}
+.wt-rcard-no{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:12px;font-weight:800;
+  letter-spacing:.14em;color:var(--w-ice)}
+.wt-rcard-no::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--w-gold);flex:0 0 auto}
 .wt-rcard-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 14px}
 .wt-rcard-title s{font-size:18px;color:rgba(255,255,255,.3)}
 .wt-rcard-title b{font-size:clamp(20px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.03em}
-.wt-rcard-desc{margin:0;font-size:13.5px;line-height:1.85;color:rgba(255,255,255,.5)}
+.wt-rcard-desc{position:relative;z-index:1;margin:0;max-width:22em;
+  font-size:13.5px;line-height:1.85;color:rgba(255,255,255,.55)}
 .wt-bridge{padding:clamp(60px,7vw,100px) 0;text-align:center;
   background:linear-gradient(180deg,var(--w-deep),var(--w-navy2))}
 .wt-bridge-small{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--w-ice)}
@@ -1250,7 +1266,7 @@ img,video,svg{max-width:100%}
 .wt-mitem li{position:relative;padding-left:11px;font-size:12.5px;line-height:1.95;color:var(--w-mut)}
 .wt-mitem li::before{content:"·";position:absolute;left:0;color:var(--w-gold);font-weight:800}
 .wt-cur{background:var(--w-soft)}
-.wt-cur-grid{display:grid;grid-template-columns:1.5fr .85fr;gap:44px;align-items:start}
+.wt-cur-grid{display:block}
 .wt-ctabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:28px 0 22px}
 .wt-ctab{padding:12px;border:1px solid #DCE0E9;border-radius:12px;background:#fff;font-size:14px;
   font-family:inherit;color:var(--w-mut);cursor:pointer;transition:all .2s ease}
@@ -1268,13 +1284,22 @@ img,video,svg{max-width:100%}
 .wt-ccard ul{list-style:none;margin:0;padding:0}
 .wt-ccard li{position:relative;padding-left:11px;font-size:12.5px;line-height:2;color:var(--w-mut)}
 .wt-ccard li::before{content:"·";position:absolute;left:0;color:var(--w-gold)}
-.wt-day{padding:30px 26px;border-radius:18px;background:linear-gradient(160deg,var(--w-navy),var(--w-deep));color:#fff}
-.wt-day .wt-tag{background:rgba(255,255,255,.12);color:var(--w-gold-l)}
-.wt-day .wt-h3{color:#fff}
-.wt-time{list-style:none;margin:20px 0 0;padding:0}
-.wt-time li{display:flex;gap:14px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:13px}
-.wt-time span{flex:0 0 46px;font-weight:800;color:var(--w-gold-l);font-variant-numeric:tabular-nums}
-.wt-time b{font-weight:500;color:rgba(255,255,255,.72)}
+/* 하루 시간표 — 밝은 배경에 맞춘 톤 */
+.wt-day{margin-top:48px;padding:34px 30px 30px;border-radius:18px;background:var(--w-paper);
+  border:1px solid rgba(17,28,54,.1);box-shadow:0 14px 34px rgba(17,28,54,.06)}
+.wt-day .wt-h3{margin-top:14px}
+.wt-tt-scroll{margin-top:24px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.wt-tt{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}
+.wt-tt th,.wt-tt td{border:1px solid rgba(17,28,54,.12);padding:10px 8px;text-align:center;
+  vertical-align:middle;line-height:1.55;white-space:pre-line;color:var(--w-ink)}
+.wt-tt thead th{background:var(--w-navy);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.02em;
+  border-color:rgba(255,255,255,.18)}
+.wt-tt thead th:first-child{background:var(--w-paper);border-color:rgba(17,28,54,.12)}
+.wt-tt-lb{background:rgba(17,28,54,.055);color:var(--w-navy);font-weight:800;white-space:nowrap}
+.wt-tt-time{color:var(--w-mut);font-size:12.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wt-tt-meal{background:var(--w-soft);color:var(--w-mut);font-weight:700}
+.wt-tt-pick{color:var(--w-gold);font-weight:700}
+.wt-tt-note{margin:16px 0 0;font-size:12px;color:var(--w-mut)}
 .wt-scholar{background:linear-gradient(140deg,var(--w-navy2),var(--w-deep));text-align:center}
 .wt-scholar .wt-h2{margin-bottom:40px}
 .wt-scholar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -1327,9 +1352,17 @@ img,video,svg{max-width:100%}
 @media(max-width:1000px){
   .wt-timeline,.wt-bcards,.wt-adm-grid{grid-template-columns:1fr}
   .wt-reforms{grid-template-columns:1fr}
+  .wt-rcard{padding:26px 22px 26px;min-height:150px}
+  .wt-rcard::before{left:22px;width:38px}
+  .wt-rcard-art{right:-6px;bottom:-4px;width:112px;height:112px;opacity:.7}
+  .wt-rcard-desc{max-width:calc(100% - 92px)}
   .wt-stats{grid-template-columns:repeat(2,1fr)}
   .wt-story{flex:0 0 calc((100% - 16px)/2)}
   .wt-cur-grid{grid-template-columns:1fr;gap:32px}
+  .wt-day{margin-top:34px;padding:24px 18px 22px;border-radius:14px}
+  .wt-tt-scroll{margin-top:18px}
+  .wt-tt{min-width:660px;font-size:12px}
+  .wt-tt th,.wt-tt td{padding:8px 6px}
   .wt-scholar-grid{grid-template-columns:1fr}
   .wt-space-track{padding:0 18px}
 }
