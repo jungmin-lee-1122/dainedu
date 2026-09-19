@@ -1600,7 +1600,11 @@ img,video,svg{max-width:100%}
   .wt-h2{font-size:clamp(28px,8vw,34px);margin-bottom:14px}
   .wt-lead{margin-bottom:28px;font-size:14px}
   
-  .wt-stats{grid-template-columns:1fr 1fr}
+  .wt-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .wt-stat{min-width:0;padding:18px 4px;border-radius:13px}
+  .wt-stat-label{margin-bottom:10px;font-size:10.5px;line-height:1.45;word-break:keep-all}
+  .wt-stat-value{font-size:28px}
+  .wt-stat-value i{font-size:12px}
   .wt-story{flex:0 0 100%}
   .wt-ctabs{grid-template-columns:1fr 1fr}
   .wt-cgrid{grid-template-columns:1fr}
