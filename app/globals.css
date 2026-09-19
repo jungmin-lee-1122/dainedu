@@ -1179,7 +1179,7 @@ img,video,svg{max-width:100%}
 .wt-bcard-notes li::before{content:"";position:absolute;left:0;top:11px;width:4px;height:4px;border-radius:50%;background:var(--w-gold)}
 .wt-reform{background:var(--w-deep);padding-bottom:clamp(36px,4vw,60px)}
 .wt-reforms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.wt-rcard{position:relative;overflow:hidden;padding:32px 28px 124px;border-radius:18px;
+.wt-rcard{position:relative;overflow:hidden;padding:30px 26px 118px;border-radius:18px;
   background:
     radial-gradient(120% 90% at 100% 100%,rgba(127,180,255,.10),transparent 58%),
     linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
@@ -1192,7 +1192,7 @@ img,video,svg{max-width:100%}
   transition:width .35s ease}
 .wt-rcard:hover::before{width:132px}
 /* 카드 안쪽 일러스트 */
-.wt-rcard-art{position:absolute;right:10px;bottom:2px;width:150px;height:142px;
+.wt-rcard-art{position:absolute;right:8px;bottom:0;width:146px;height:138px;
   pointer-events:none;opacity:.92;transition:transform .35s ease,opacity .35s ease}
 .wt-rcard:hover .wt-rcard-art{transform:translateY(-4px) scale(1.04);opacity:1}
 .wt-rcard-no{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:12px;font-weight:800;
@@ -1201,7 +1201,7 @@ img,video,svg{max-width:100%}
 .wt-rcard-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 14px}
 .wt-rcard-title s{font-size:18px;color:rgba(255,255,255,.3)}
 .wt-rcard-title b{font-size:clamp(20px,2.2vw,26px);font-weight:900;color:#fff;letter-spacing:-.03em}
-.wt-rcard-desc{position:relative;z-index:1;margin:0;max-width:22em;
+.wt-rcard-desc{position:relative;z-index:1;margin:0;white-space:pre-line;word-break:keep-all;
   font-size:13.5px;line-height:1.85;color:rgba(255,255,255,.55)}
 .wt-bridge{padding:clamp(24px,3vw,44px) 0 clamp(60px,7vw,100px);text-align:center;
   background:linear-gradient(180deg,var(--w-deep),var(--w-navy2))}
@@ -1556,10 +1556,10 @@ img,video,svg{max-width:100%}
 @media(max-width:1000px){
   .wt-timeline,.wt-bcards,.wt-adm-grid{grid-template-columns:1fr}
   .wt-reforms{grid-template-columns:1fr}
-  .wt-rcard{padding:26px 22px 26px;min-height:150px}
+  .wt-rcard{padding:24px 20px 22px;min-height:150px}
   .wt-rcard::before{left:22px;width:38px}
   .wt-rcard-art{right:-4px;bottom:-2px;width:118px;height:112px;opacity:.85}
-  .wt-rcard-desc{max-width:calc(100% - 92px)}
+  .wt-rcard-desc{max-width:calc(100% - 96px);white-space:normal}
   .wt-stats{grid-template-columns:repeat(2,1fr)}
   .wt-story{flex:0 0 calc((100% - 16px)/2)}
   .wt-why-grid{grid-template-columns:1fr;gap:12px}
