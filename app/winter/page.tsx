@@ -116,7 +116,7 @@ export default function WinterPage() {
       {/* ══ 3) 입시 개편 ══ */}
       <section className="wt-sec wt-reform" id="reform">
         <div className="wt-wrap">
-          <p className="wt-tag wt-tag-inv">2028학년도 대입 개편</p>
+          <p className="wt-tag wt-tag-inv">Admission Reform</p>
           <h2 className="wt-h2 wt-inv">
             2027년, 내신도 수능도<br />
             <em>바뀌는 첫 겨울</em>
@@ -172,7 +172,7 @@ export default function WinterPage() {
       {/* ══ 4-2) 우리가 지키는 기준 ══ */}
       <section className="wt-sec wt-why" id="why">
         <div className="wt-wrap">
-          <p className="wt-tag">WHY DAIN</p>
+          <p className="wt-tag">Our Standard</p>
           <h2 className="wt-h2">
             결과를 말하기 전에,<br /><em>기준을 먼저 지킵니다</em>
           </h2>
@@ -201,7 +201,7 @@ export default function WinterPage() {
       {SHOW_RESULT && (
       <section className="wt-sec wt-result">
         <div className="wt-wrap">
-          <p className="wt-tag">성장 기록</p>
+          <p className="wt-tag">Growth Record</p>
           <h2 className="wt-h2">
             겨울의 두 달은<br /><em>결과로 남습니다</em>
           </h2>
@@ -282,7 +282,7 @@ export default function WinterPage() {
       {/* ══ 6) 학습 공간 ══ */}
       <section className="wt-sec wt-space" id="space">
         <div className="wt-wrap">
-          <p className="wt-tag wt-tag-inv">프리미엄 학습 공간</p>
+          <p className="wt-tag wt-tag-inv">Campus</p>
           <h2 className="wt-h2 wt-inv">
             환경이 다르면,<br /><em>집중력도 다릅니다</em>
           </h2>
@@ -485,7 +485,7 @@ export default function WinterPage() {
       <section className="wt-sec wt-cur">
         <div className="wt-wrap wt-cur-grid">
           <div>
-            <p className="wt-tag">WINTER CURRICULUM</p>
+            <p className="wt-tag">Winter Curriculum</p>
             <h2 className="wt-h2">
               과목별로, 학년별로<br /><em>필요한 준비는 다릅니다</em>
             </h2>
@@ -523,7 +523,7 @@ export default function WinterPage() {
         {/* 하루 시간표 */}
         <div className="wt-wrap">
           <section className="wt-day">
-            <p className="wt-tag">A DAY</p>
+            <p className="wt-tag">A Day</p>
             <h3 className="wt-h3">몰입은 의지가 아니라 루틴에서 만들어집니다</h3>
 
             <div className="wt-tt-scroll">
@@ -566,7 +566,7 @@ export default function WinterPage() {
       {/* ══ 9) 장학 ══ */}
       <section className="wt-sec wt-scholar">
         <div className="wt-wrap">
-          <p className="wt-tag wt-tag-inv">다인 장학</p>
+          <p className="wt-tag wt-tag-inv">Scholarship</p>
           <h2 className="wt-h2 wt-inv">
             흔들리지 않을 이유를<br /><em>하나 더 드립니다</em>
           </h2>
@@ -588,7 +588,7 @@ export default function WinterPage() {
       {/* ══ 10) 모집 안내 + FAQ ══ */}
       <section className="wt-sec wt-adm" id="admission">
         <div className="wt-wrap">
-          <p className="wt-tag">모집 안내</p>
+          <p className="wt-tag">Admission</p>
           <h2 className="wt-h2">
             2027 윈터스쿨<br /><em>선착순 모집</em>
           </h2>
@@ -617,7 +617,7 @@ export default function WinterPage() {
       {/* ══ 10) 등록 혜택 ══ */}
       <section className="wt-sec wt-benefit" id="benefit">
         <div className="wt-wrap">
-          <p className="wt-tag">등록 혜택</p>
+          <p className="wt-tag">Benefit</p>
           <h2 className="wt-h2">
             흔들리지 않으려면,<br />
             <em>가장 먼저 시작하세요</em>
