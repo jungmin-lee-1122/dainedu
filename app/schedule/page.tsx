@@ -55,13 +55,13 @@ export default async function SchedulePage({
                 <i />
               </span>
               <p className="sc-soon-en">Coming Soon</p>
-              <h2 className="sc-soon-title">단과 시간표를 준비하고 있습니다</h2>
+              <h2 className="sc-soon-title">2027년 2월 20일 오픈 예정</h2>
               <p className="sc-soon-desc">
-                2027학년도 강좌 편성과 담당 강사 배정이 마무리되는 대로<br />
-                과목별 시간표를 이곳에 공개해 드리겠습니다.
+                다인에듀 대입 단과 강좌는<br />
+                2027 고등부 윈터스쿨 종강 후 시작합니다.
               </p>
               <p className="sc-soon-sub">
-                개설 예정 강좌와 상담은 아래로 문의해 주세요.
+                2027 윈터스쿨 문의는 하단 대표번호로 문의해 주시길 바랍니다.
               </p>
               <div className="sc-soon-act">
                 <a className="sc-soon-btn" href="/consult">입학 상담 신청</a>
