@@ -135,6 +135,9 @@ export default function WinterPage() {
               모집요강 PDF
             </a>
           </div>
+          <p className="wt-scroll-hint wt-kvnav-hint">
+            <span aria-hidden="true">←</span> 좌우로 밀어 메뉴를 확인하세요 <span aria-hidden="true">→</span>
+          </p>
         </div>
       </section>
 
@@ -561,6 +564,9 @@ export default function WinterPage() {
           <section className="wt-day">
             <p className="wt-tag">A Day</p>
             <h3 className="wt-h3">몰입은 의지가 아니라 루틴에서 만들어집니다</h3>
+            <p className="wt-scroll-hint wt-table-scroll-hint">
+              <span aria-hidden="true">←</span> 표를 좌우로 밀어 시간표를 확인하세요 <span aria-hidden="true">→</span>
+            </p>
 
             <div className="wt-tt-scroll">
               <table className="wt-tt">
