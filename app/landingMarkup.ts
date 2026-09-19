@@ -73,7 +73,7 @@ export const landingMarkup = `
         <div class="dn-rolling-row">
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
-              <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slide-open-m.png"/><img src="/slide-open.png" alt="다인교육 10월 중순 그랜드 오픈 — 고등부·N수 프리미엄 캠퍼스"/></picture></div>
+              <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slide-open2-m.png"/><img src="/slide-open2.png" alt="다인교육 2026.10.01 그랜드 오픈 — 고등부·N수 프리미엄 캠퍼스"/></picture></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideB-m.png"/><img src="/slideB.png" alt="최고의 강사진이 동탄에서"/></picture></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideD-m.png"/><img src="/slideD.png" alt="새로운 입시의 기준을 세우다"/></picture></div>
