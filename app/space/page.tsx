@@ -36,7 +36,7 @@ export default function SpacePage() {
       <PageBand
         eyebrow="The Campus"
         title="시설 안내"
-        sub={["180평이 어떻게 나뉘고 어떻게 쓰이는지, 공사 전에 먼저 보여드립니다."]}
+        sub={["집중과 성장을 위한 쾌적한 학습 공간을 소개합니다."]}
         crumb={[{ label: "학원소개" }, { label: "시설 안내" }]}
       />
 
