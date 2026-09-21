@@ -6,7 +6,7 @@
 /** 섹션 내비게이션 (스크롤 시 상단 고정) */
 export const sectionNav = [
   { label: "입시 개편", href: "#reform" },
-  { label: "선택 이유", href: "#result" },
+  { label: "왜 다인인가?", href: "#result" },
   { label: "관리 기준", href: "#why" },
   { label: "강사진", href: "#faculty" },
   { label: "학습 공간", href: "#space" },
