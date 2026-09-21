@@ -6,12 +6,15 @@
 
 /** 1) 메인 롤링 배너 (탭 + 자동재생) */
 export const heroSlides = [
+  /* 2027 특별 입시설명회 배너는 잠시 내려두었습니다.
+     다시 올리려면 아래 주석을 풀어주세요.
   {
     tab: "2027 특별 입시설명회",
     img: "/clavis/hero-1.png",
     href: "https://dain-edu.higgsfield.app/seminar",
     alt: "2027 입시설명회 — 2026.09.20(일) 14:00 롯데백화점 동탄점 7F 수퍼플렉스관",
   },
+  */
   {
     tab: "독학재수반 모집",
     img: "/clavis/hero-2.png",
