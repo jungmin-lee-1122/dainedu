@@ -20,7 +20,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
 
   return (
     <>
-      <a className="dn-topbar" href="/event/1" aria-label="2027 윈터스쿨 사전 예약 안내">
+      <a className="dn-topbar" href="https://dainedu.co.kr/event/1" aria-label="2027 윈터스쿨 사전 예약 안내">
         <span className="dn-topbar-mark">※</span>
         <span className="dn-entry-badge">선착순 모집</span>
         <h3 className="dn-topbar-title">2027 윈터스쿨 사전 예약</h3>

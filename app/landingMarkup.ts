@@ -2,7 +2,7 @@
 import { quickMenuMarkup } from "./quickMenu";
 export const landingMarkup = `
 <main class="dn-body">
-  <a class="dn-topbar" href="/event/1" aria-label="2027 윈터스쿨 사전 예약 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">선착순 모집</span><h3 class="dn-topbar-title">2027 윈터스쿨 사전 예약</h3><span class="dn-topbar-desc">1월 4일 개강 · 예비 고1·고2·고3 <b>상담 접수 중</b>입니다.</span></a>
+  <a class="dn-topbar" href="https://dainedu.co.kr/event/1" aria-label="2027 윈터스쿨 사전 예약 안내"><span class="dn-topbar-mark">※</span><span class="dn-entry-badge">선착순 모집</span><h3 class="dn-topbar-title">2027 윈터스쿨 사전 예약</h3><span class="dn-topbar-desc">1월 4일 개강 · 예비 고1·고2·고3 <b>상담 접수 중</b>입니다.</span></a>
   <nav class="dn-nav" aria-label="주 메뉴">
     <a class="dn-nav-brand" href="#top"><img src="/dain-icon.png" alt="다인교육" class="dn-nav-icon"/><span class="dn-nav-brandtext"><b class="dn-nav-name">DAIN EDU</b><span class="dn-nav-line"></span><span class="dn-nav-clock js-clock" id="dnClock">00:00:00</span></span></a>
     <ul class="dn-gnb">
@@ -84,7 +84,7 @@ export const landingMarkup = `
               <span class="dn-slider-count"><b class="dn-cur">01</b><span class="dn-line"><i class="dn-line-fill"></i></span><span class="dn-total">03</span></span>
             </div>
           </div>
-          <a class="dn-poster" href="/event/1"><picture><source media="(max-width:900px)" srcset="/winter-poster-m.jpg"/><img src="/winter-poster.jpg" alt="2027 다인 윈터스쿨 — 2027.01.04(월) 개강 · 01.04~02.19 · 예비 고1·고2·고3 선착순 모집"/></picture></a>
+          <a class="dn-poster" href="https://dainedu.co.kr/event/1"><picture><source media="(max-width:900px)" srcset="/winter-poster-m.jpg"/><img src="/winter-poster.jpg" alt="2027 다인 윈터스쿨 — 2027.01.04(월) 개강 · 01.04~02.19 · 예비 고1·고2·고3 선착순 모집"/></picture></a>
         </div>
       </div>
     </section>

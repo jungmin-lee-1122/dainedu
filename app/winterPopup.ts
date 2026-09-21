@@ -11,7 +11,7 @@ export const winterPopupMarkup = `
   <div class="wp-box" role="dialog" aria-modal="true" aria-labelledby="wpTitle">
     <button class="wp-close" type="button" aria-label="팝업 닫기">&times;</button>
 
-    <a class="wp-poster" href="/event/1">
+    <a class="wp-poster" href="https://dainedu.co.kr/event/1">
       <picture>
         <source media="(max-width:900px)" srcset="/winter-poster-m.jpg"/>
         <img src="/winter-poster.jpg" alt="2027 다인 윈터스쿨 — 2027.01.04(월) 개강 · 선착순 모집"/>
