@@ -1729,7 +1729,8 @@ img,video,svg{max-width:100%}
 
 .wt-kv{padding:0;background:#fff}
 .wt-kv-box{position:relative;overflow:hidden;line-height:0}
-.wt-kv-img{width:100%;height:auto;display:block;aspect-ratio:2040/566;max-height:520px;object-fit:cover;
+.wt-kv-pic{display:block;width:100%}
+.wt-kv-img{width:100%;height:auto;display:block;aspect-ratio:1344/520;max-height:560px;object-fit:cover;object-position:center;
   animation:wtKv 18s ease-out forwards}
 @keyframes wtKv{from{transform:scale(1.06)}to{transform:scale(1)}}
 /* 글자 없는 키비주얼 배경 (이미지 대체) */

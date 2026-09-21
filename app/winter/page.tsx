@@ -70,8 +70,8 @@ const SHOW_BENEFIT = false;
 /** 흰색 섹션 내비 — 상단 다크 탭바와 중복이라 숨김. 다시 보이려면 true */
 const SHOW_SNAV = false;
 
-/** 키비주얼 배경에 이미지(kv.png)를 쓸지 여부 — 글자 없는 이미지가 준비되면 true */
-const SHOW_KV_IMG = false;
+/** 키비주얼 배경 이미지 사용 여부 (public/winter/kv-room.jpg · 모바일 kv-room-m2.jpg) */
+const SHOW_KV_IMG = true;
 
 /** 과목별 커리큘럼(구 버전) 표시 여부 — 학년별 시수표로 대체 */
 const SHOW_CURRICULUM = false;
@@ -110,7 +110,11 @@ export default function WinterPage() {
         <div className="wt-kv-box">
           {/* 배경 — 글자 없는 그러데이션 (이미지를 쓰려면 SHOW_KV_IMG 를 true 로) */}
           {SHOW_KV_IMG ? (
-            <img className="wt-kv-img" src="/winter/kv.png" alt="2027 다인교육 윈터스쿨" />
+            <picture className="wt-kv-pic">
+              <source media="(max-width:900px)" srcSet="/winter/kv-room-m2.jpg" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="wt-kv-img" src="/winter/kv-room.jpg" alt="2027 다인교육 윈터스쿨" />
+            </picture>
           ) : (
             <div className="wt-kv-bg" aria-hidden="true">
               <span className="wt-kv-beam" />
