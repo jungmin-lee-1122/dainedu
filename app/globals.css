@@ -1374,6 +1374,7 @@ img,video,svg{max-width:100%}
 @media(max-width:1080px){
   .wt-care-grid,.wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:repeat(2,1fr)}
   .wt-flow li + li::before{display:none}
+  .wt-flow-line{display:none}
 }
 
 /* 관리 공식 — 프리미엄 강의 + 프리미엄 관리 */
@@ -1417,16 +1418,37 @@ img,video,svg{max-width:100%}
 
 /* AI 분석 */
 .wt-ai{background:linear-gradient(160deg,var(--w-navy2),var(--w-deep))}
-.wt-flow{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 0;padding:0;
-  counter-reset:flow}
-.wt-flow li{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:12px;min-height:128px;padding:28px 20px;border-radius:16px;text-align:center;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
-.wt-flow li + li::before{content:"";position:absolute;left:-11px;top:50%;width:8px;height:8px;
-  border-top:1.5px solid rgba(192,153,79,.7);border-right:1.5px solid rgba(192,153,79,.7);
+.wt-flow{position:relative;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  margin:6px 0 0;padding:0}
+/* 카드 뒤를 관통하는 골드 실선 */
+.wt-flow-line{position:absolute;left:8%;right:8%;top:74px;height:1px;z-index:0;
+  background:linear-gradient(90deg,rgba(192,153,79,0),rgba(192,153,79,.5) 12%,rgba(192,153,79,.5) 88%,rgba(192,153,79,0))}
+.wt-flow li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;
+  gap:18px;padding:32px 20px 28px;border-radius:18px;text-align:center;
+  background:
+    radial-gradient(120% 80% at 50% 0%,rgba(127,180,255,.10),transparent 62%),
+    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.028));
+  border:1px solid rgba(255,255,255,.09);
+  transition:transform .3s ease,border-color .3s ease}
+.wt-flow li:hover{transform:translateY(-5px);border-color:rgba(192,153,79,.5)}
+/* 단계를 잇는 화살표 */
+.wt-flow li + li::before{content:"";position:absolute;left:-12px;top:74px;width:9px;height:9px;
+  border-top:1.6px solid rgba(192,153,79,.8);border-right:1.6px solid rgba(192,153,79,.8);
   transform:translateY(-50%) rotate(45deg)}
-.wt-flow-no{display:block;margin:0;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--w-ice)}
-.wt-flow b{display:block;margin:0;font-size:clamp(17px,1.9vw,22px);font-weight:900;letter-spacing:-.035em;
+/* 아이콘 + 번호 배지 */
+.wt-flow-badge{position:relative;display:flex;align-items:center;justify-content:center;
+  width:84px;height:84px;border-radius:50%;
+  background:radial-gradient(circle at 50% 35%,rgba(127,180,255,.16),rgba(8,13,26,.9));
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 0 0 8px rgba(127,180,255,.045);
+  transition:border-color .3s ease,box-shadow .3s ease}
+.wt-flow li:hover .wt-flow-badge{border-color:rgba(192,153,79,.55);box-shadow:0 0 0 10px rgba(192,153,79,.07)}
+.wt-flow-ico{width:40px;height:40px;display:block}
+.wt-flow-badge i{position:absolute;right:-6px;bottom:-4px;display:flex;align-items:center;justify-content:center;
+  min-width:26px;height:22px;padding:0 6px;border-radius:999px;
+  background:linear-gradient(135deg,#E4CD9A,var(--w-gold));
+  font-style:normal;font-size:11px;font-weight:900;letter-spacing:.02em;color:#101A2E}
+.wt-flow b{display:block;margin:0;font-size:clamp(16px,1.8vw,20px);font-weight:900;letter-spacing:-.035em;
   line-height:1.4;color:#fff;word-break:keep-all}
 
 /* 태블릿 관리 */
@@ -1577,7 +1599,9 @@ img,video,svg{max-width:100%}
   .wt-formula{gap:8px 12px;padding:18px 16px;margin-top:16px;font-size:15px}
   .wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:1fr}
   .wt-rec{padding:24px 20px}
-  .wt-flow li + li::before{left:50%;top:-11px;transform:translateX(-50%) rotate(135deg)}
+  .wt-flow li{padding:26px 16px 22px;gap:14px}
+  .wt-flow-badge{width:70px;height:70px}
+  .wt-flow-ico{width:34px;height:34px}
   .wt-tab-block{margin-top:28px}
   .wt-tab-photo{margin-bottom:20px}
   .wt-tab-side .wt-tab-list{grid-template-columns:1fr}

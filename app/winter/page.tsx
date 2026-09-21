@@ -41,6 +41,7 @@ import {
 } from "./winterData";
 import SiteHeader from "../SiteHeader";
 import ReformArt from "./ReformArt";
+import FlowIcon from "./FlowIcon";
 import PageBand from "../PageBand";
 import SiteFooter from "../SiteFooter";
 
@@ -490,9 +491,13 @@ export default function WinterPage() {
           </p>
 
           <ol className="wt-flow">
+            <span className="wt-flow-line" aria-hidden="true" />
             {aiSteps.map((st, i) => (
               <li className="wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={st.no}>
-                <span className="wt-flow-no">{st.no}</span>
+                <span className="wt-flow-badge">
+                  <FlowIcon kind={st.icon} />
+                  <i>{st.no}</i>
+                </span>
                 <b>{st.t}</b>
               </li>
             ))}
