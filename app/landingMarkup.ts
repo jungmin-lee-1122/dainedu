@@ -84,7 +84,7 @@ export const landingMarkup = `
               <span class="dn-slider-count"><b class="dn-cur">01</b><span class="dn-line"><i class="dn-line-fill"></i></span><span class="dn-total">03</span></span>
             </div>
           </div>
-          <a class="dn-poster" href="/event/1"><picture><source media="(max-width:900px)" srcset="/poster-dain3-m.png"/><img src="/poster-dain3.png" alt="다인교육 그랜드 오픈 설명회 — 2026.09.20(일) 14:00~16:00 롯데백화점 동탄점 7층 롯데시네마 수퍼플렉스관"/></picture></a>
+          <a class="dn-poster" href="/event/1"><picture><source media="(max-width:900px)" srcset="/winter-poster-m.jpg"/><img src="/winter-poster.jpg" alt="2027 다인 윈터스쿨 — 2027.01.04(월) 개강 · 01.04~02.19 · 예비 고1·고2·고3 선착순 모집"/></picture></a>
         </div>
       </div>
     </section>
