@@ -491,7 +491,6 @@ export default function WinterPage() {
           </p>
 
           <ol className="wt-flow">
-            <span className="wt-flow-line" aria-hidden="true" />
             {aiSteps.map((st, i) => (
               <li className="wt-up" style={{ transitionDelay: `${i * 90}ms` }} key={st.no}>
                 <span className="wt-flow-badge">

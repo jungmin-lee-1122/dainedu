@@ -1373,8 +1373,6 @@ img,video,svg{max-width:100%}
 /* 태블릿 폭에서는 2열로 */
 @media(max-width:1080px){
   .wt-care-grid,.wt-rec-grid,.wt-chips,.wt-flow{grid-template-columns:repeat(2,1fr)}
-  .wt-flow li + li::before{display:none}
-  .wt-flow-line{display:none}
 }
 
 /* 관리 공식 — 프리미엄 강의 + 프리미엄 관리 */
@@ -1420,9 +1418,6 @@ img,video,svg{max-width:100%}
 .wt-ai{background:linear-gradient(160deg,var(--w-navy2),var(--w-deep))}
 .wt-flow{position:relative;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
   margin:6px 0 0;padding:0}
-/* 카드 뒤를 관통하는 골드 실선 */
-.wt-flow-line{position:absolute;left:8%;right:8%;top:74px;height:1px;z-index:0;
-  background:linear-gradient(90deg,rgba(192,153,79,0),rgba(192,153,79,.5) 12%,rgba(192,153,79,.5) 88%,rgba(192,153,79,0))}
 .wt-flow li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;
   gap:18px;padding:32px 20px 28px;border-radius:18px;text-align:center;
   background:
@@ -1431,10 +1426,6 @@ img,video,svg{max-width:100%}
   border:1px solid rgba(255,255,255,.09);
   transition:transform .3s ease,border-color .3s ease}
 .wt-flow li:hover{transform:translateY(-5px);border-color:rgba(192,153,79,.5)}
-/* 단계를 잇는 화살표 */
-.wt-flow li + li::before{content:"";position:absolute;left:-12px;top:74px;width:9px;height:9px;
-  border-top:1.6px solid rgba(192,153,79,.8);border-right:1.6px solid rgba(192,153,79,.8);
-  transform:translateY(-50%) rotate(45deg)}
 /* 아이콘 + 번호 배지 */
 .wt-flow-badge{position:relative;display:flex;align-items:center;justify-content:center;
   width:84px;height:84px;border-radius:50%;
@@ -1675,7 +1666,6 @@ img,video,svg{max-width:100%}
   .wt-rbanner{flex-direction:column;gap:12px;padding:26px 20px}
   .wt-flow{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
   .wt-flow li{min-height:104px;gap:8px;padding:14px 4px;border-radius:12px}
-  .wt-flow li + li::before{display:none}
   .wt-flow-no{font-size:10.5px}
   .wt-flow b{font-size:11.5px;line-height:1.4}
   .wt-fixed-in{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:9px 10px;gap:8px}
