@@ -18,7 +18,7 @@ export const heroSlides = [
   {
     tab: "독학재수반 모집",
     img: "/clavis/hero-2.png",
-    href: "/consult",
+    href: "",
     alt: "독학재수반 오픈 한정 혜택",
   },
 ];

@@ -52,14 +52,20 @@ export default async function ClavisPage() {
           <div className="cv-hero" id="cvHero">
             <div className="cv-hero-track cv-hero-track2">
               <div className="cv-hero-strip">
-              {heroSlides.map((s, i) => (
-                <div className="cv-hero-slide" key={i}>
+              {heroSlides.map((s, i) => {
+                const inner = (
                   <picture>
                     <source media="(max-width:900px)" srcSet={s.img.replace(".png", "-m.png")} />
                     <img src={s.img} alt={s.alt} />
                   </picture>
-                </div>
-              ))}
+                );
+                /* href 가 비어 있으면 클릭되지 않는 이미지로만 보여줍니다 */
+                return s.href ? (
+                  <a className="cv-hero-slide" href={s.href} key={i}>{inner}</a>
+                ) : (
+                  <div className="cv-hero-slide" key={i}>{inner}</div>
+                );
+              })}
               </div>
             </div>
             <div className="dn-slider-ctrl">
