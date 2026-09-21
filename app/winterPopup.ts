@@ -2,7 +2,7 @@
 //  메인 페이지 윈터스쿨 팝업
 //  · 처음 들어오면 자동으로 열립니다.
 //  · "오늘 하루 보지 않기" 를 누르면 그날 자정까지 다시 열리지 않습니다.
-//  · 신청 내용은 설명회 예약과 같은 구글 시트로 들어갑니다. (/api/reserve)
+//  · 신청하기 버튼은 설명회 상세 페이지로 이동합니다.
 //
 //  문구·일정은 아래 HTML 에서 바로 고치시면 됩니다.
 // ═══════════════════════════════════════════════════════════
@@ -39,61 +39,7 @@ export const winterPopupMarkup = `
         <li>1:1 입시전략 컨설팅으로 겨울 계획 설계</li>
       </ul>
 
-      <form class="wp-form" id="wpForm" novalidate>
-        <div class="wp-row">
-          <label class="wp-field">
-            <span>학생 이름 <i>*</i></span>
-            <input name="name" type="text" maxlength="30" placeholder="예) 김다인" required/>
-          </label>
-          <label class="wp-field">
-            <span>학부모 연락처 <i>*</i></span>
-            <input name="phone" type="tel" inputmode="numeric" placeholder="010-0000-0000" required/>
-          </label>
-        </div>
-
-        <div class="wp-row">
-          <label class="wp-field">
-            <span>학교명 <i>*</i></span>
-            <input name="school" type="text" maxlength="30" placeholder="예) 동탄고등학교" required/>
-          </label>
-          <label class="wp-field">
-            <span>학년 <i>*</i></span>
-            <select name="grade" required>
-              <option value="">선택</option>
-              <option>중3 (예비 고1)</option>
-              <option>고1 (예비 고2)</option>
-              <option>고2 (예비 고3)</option>
-              <option>고3</option>
-              <option>재수 / N수</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="wp-field">
-          <span>희망 상담 방식 <i>*</i></span>
-          <div class="wp-choices">
-            <label><input type="radio" name="way" value="방문 상담" required/><b>방문 상담</b></label>
-            <label><input type="radio" name="way" value="전화 상담"/><b>전화 상담</b></label>
-          </div>
-        </div>
-
-        <label class="wp-field">
-          <span>희망 시간대 · 문의</span>
-          <input name="memo" type="text" maxlength="60" placeholder="예) 평일 저녁 7시 이후 통화 희망"/>
-        </label>
-
-        <label class="wp-agree">
-          <input type="checkbox" name="agree" required/>
-          <span>
-            <b>(필수) 개인정보 수집·이용에 동의합니다.</b>
-            <em>목적: 윈터스쿨 사전 예약 및 상담 안내 / 항목: 이름·연락처·학교·학년·상담 희망 /
-            상담 종료 후 1년 보관 후 파기</em>
-          </span>
-        </label>
-
-        <p class="wp-msg" id="wpMsg" role="status"></p>
-        <button class="wp-submit" type="submit">신청 완료</button>
-      </form>
+      <a class="wp-submit" href="https://dainedu.co.kr/event/1">신청하기</a>
 
       <div class="wp-foot">
         <button class="wp-today" type="button">오늘 하루 보지 않기</button>
