@@ -1730,7 +1730,7 @@ img,video,svg{max-width:100%}
 .wt-kv{padding:0;background:#fff}
 .wt-kv-box{position:relative;overflow:hidden;line-height:0}
 .wt-kv-pic{display:block;width:100%}
-.wt-kv-img{width:100%;height:auto;display:block;aspect-ratio:1344/520;max-height:560px;object-fit:cover;object-position:center;
+.wt-kv-img{width:100%;height:auto;display:block;aspect-ratio:1344/560;max-height:620px;object-fit:cover;object-position:center;
   animation:wtKv 18s ease-out forwards}
 @keyframes wtKv{from{transform:scale(1.06)}to{transform:scale(1)}}
 /* 글자 없는 키비주얼 배경 (이미지 대체) */
@@ -1752,16 +1752,17 @@ img,video,svg{max-width:100%}
   background:linear-gradient(100deg,rgba(8,13,26,.82) 0%,rgba(8,13,26,.5) 46%,rgba(8,13,26,.08) 100%)}
 .wt-kv-in{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:2;
   width:min(1160px,calc(100% - 48px));margin:0 auto;line-height:1.4}
-.wt-kv-in > *{max-width:min(620px,60%)}
-.wt-kv-eyebrow{margin:0 0 14px;font-size:clamp(11px,1.1vw,13px);font-weight:800;letter-spacing:.22em;
+.wt-kv-in > *{max-width:min(680px,62%)}
+.wt-kv-eyebrow{margin:0 0 20px;font-size:clamp(12px,1.25vw,15px);font-weight:800;letter-spacing:.24em;
   color:var(--w-gold-l);animation:wtIn .8s ease both}
-.wt-kv-title{margin:0 0 14px;font-size:clamp(20px,3.2vw,42px);font-weight:900;line-height:1.28;color:#fff;
+.wt-kv-title{margin:0 0 20px;font-size:clamp(26px,4vw,54px);font-weight:900;line-height:1.26;color:#fff;
   letter-spacing:-.04em;animation:wtIn .9s .1s ease both}
 .wt-kv-title em{font-style:normal;background:linear-gradient(100deg,#fff 5%,var(--w-gold-l) 50%,var(--w-gold));
   -webkit-background-clip:text;background-clip:text;color:transparent}
-.wt-kv-sub{margin:0 0 18px;font-size:clamp(12px,1.3vw,16px);color:rgba(255,255,255,.68);animation:wtIn .9s .2s ease both}
-.wt-kv-chips{display:flex;gap:7px;flex-wrap:wrap;animation:wtIn .9s .3s ease both}
-.wt-kv-chips .wt-chip{padding:6px 14px;font-size:12px}
+.wt-kv-sub{margin:0 0 26px;font-size:clamp(14px,1.5vw,19px);line-height:1.6;color:rgba(255,255,255,.76);
+  animation:wtIn .9s .2s ease both}
+.wt-kv-chips{display:flex;gap:9px;flex-wrap:wrap;animation:wtIn .9s .3s ease both}
+.wt-kv-chips .wt-chip{padding:9px 18px;font-size:13.5px;font-weight:700}
 
 /* 키비주얼 아래 탭바 — 흰 배경 + 골드 밑줄 */
 .wt-kvnav{background:#fff;border-bottom:1px solid #E8EBF1}
@@ -1784,10 +1785,10 @@ img,video,svg{max-width:100%}
   .wt-kv-box::after{background:linear-gradient(180deg,rgba(8,13,26,.5),rgba(8,13,26,.88))}
   .wt-kv-in{left:20px;right:20px;top:50%;bottom:auto;transform:translateY(-50%);width:auto;margin:0}
   .wt-kv-in > *{max-width:none}
-  .wt-kv-eyebrow{margin-bottom:18px;font-size:11.5px}
-  .wt-kv-title{margin-bottom:16px;font-size:clamp(30px,8.2vw,40px);line-height:1.23}
-  .wt-kv-sub{margin-bottom:22px;font-size:14px;line-height:1.65}
-  .wt-kv-chips{gap:8px}.wt-kv-chips .wt-chip{padding:8px 15px;font-size:12px}
+  .wt-kv-eyebrow{margin-bottom:16px;font-size:12.5px;letter-spacing:.2em}
+  .wt-kv-title{margin-bottom:18px;font-size:clamp(32px,8.8vw,44px);line-height:1.24}
+  .wt-kv-sub{margin-bottom:24px;font-size:15.5px;line-height:1.65}
+  .wt-kv-chips{gap:8px}.wt-kv-chips .wt-chip{padding:9px 16px;font-size:13px;font-weight:700}
   .wt-kvnav{overflow:hidden}
   .wt-kvnav-in{flex-wrap:nowrap;width:100%;padding:0 14px;gap:4px;overflow-x:auto;overscroll-behavior-x:contain;
     scrollbar-width:none;-webkit-overflow-scrolling:touch}
