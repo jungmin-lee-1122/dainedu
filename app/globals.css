@@ -544,9 +544,22 @@ img,video,svg{max-width:100%}
 .dn-topbar-title{color:#fff;font-size:15px;font-weight:800;letter-spacing:-.01em;margin:0}
 .dn-topbar-desc{color:rgba(247,244,236,.85);font-size:14px}
 .dn-topbar-desc b{color:var(--dn-gold-soft);font-weight:800}
+/* 좁은 화면에서 띠가 두 줄로 늘어나 내비게이션과 겹치지 않도록 */
+@media(max-width:900px){
+  .dn-topbar{gap:8px;padding:7px 12px}
+  .dn-topbar-title{font-size:13.5px}
+  .dn-topbar-desc{font-size:12.5px}
+}
+@media(max-width:640px){
+  .dn-topbar-mark,.dn-topbar-desc{display:none}
+  .dn-topbar-title{font-size:13px}
+  .dn-topbar .dn-entry-badge{font-size:10.5px;padding:2px 8px}
+}
 
-/* 공지바 높이만큼 내비게이션을 아래로 */
-.dn-nav{top:42px}
+/* 공지바가 실제로 있을 때만 내비게이션을 그 높이만큼 내립니다.
+   (띠가 없는 화면에서 42px 빈칸이 생기던 문제 해결) */
+.dn-nav{top:0}
+.dn-topbar + .dn-nav{top:42px}
 
 /* ─── 2) 밝은 테마 — 내비게이션 ─── */
 .dn-nav{
