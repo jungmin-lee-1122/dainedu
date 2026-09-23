@@ -61,7 +61,7 @@ export const landingMarkup = `
         <div class="dn-gnb-sub">
           <a href="/notices">공지사항</a>
           <a href="/event">이벤트/설명회</a>
-          <a href="/consult">상담문의</a>
+          <a href="https://dainedu.co.kr/event/1#apply">상담문의</a>
         </div>
       </li>
     </ul>

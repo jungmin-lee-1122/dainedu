@@ -84,5 +84,5 @@ export const clips = [
 export const sideBanners: { img: string; imgM?: string; href: string; alt: string }[] = [
   { img: "/clavis/banner-a2.jpg", href: "/event/1", alt: "다인아카데미 1:1 맞춤 상담 안내" },
   { img: "/clavis/banner-b2.jpg", href: "/space", alt: "DAIN SPACE — 시설 둘러보기" },
-  { img: "/clavis/banner-c2.jpg", href: "/consult", alt: "1:1 상담 예약하기" },
+  { img: "/clavis/banner-c2.jpg", href: "https://dainedu.co.kr/event/1#apply", alt: "1:1 상담 예약하기" },
 ];
