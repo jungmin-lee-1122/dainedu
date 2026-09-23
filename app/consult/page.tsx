@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const COURSES = ["2027 윈터스쿨", "고등부 단과", "N수 독학재수반"];
 
 /** 학년 선택지 */
-const GRADES = ["중3", "고1", "고2", "고3", "재수 / N수"];
+const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3", "재수 / N수"];
 
 /** 지역 선택지 — 서울 25개 구 */
 const SEOUL = [
@@ -108,21 +108,26 @@ export default function ConsultPage() {
               </div>
             </div>
 
-            <div className="cs-row">
-              <div className="cs-field">
-                <label className="cs-label" htmlFor="csEmail">이메일 <i>필수</i></label>
-                <input id="csEmail" name="email" type="email" inputMode="email" placeholder="example@dain.com" />
-                <span className="cs-hint">답변은 입력하신 이메일로 보내드립니다.</span>
+            <div className="cs-field">
+              <label className="cs-label" htmlFor="csEmail">이메일 <i>필수</i></label>
+              <input id="csEmail" name="email" type="email" inputMode="email" placeholder="example@dain.com" />
+              <span className="cs-hint">답변은 입력하신 이메일로 보내드립니다.</span>
+            </div>
+
+            <div className="cs-field">
+              <span className="cs-label">학년 <i>필수</i></span>
+              <div className="cs-grade">
+                {GRADES.map((g) => (
+                  <label
+                    className={g === "고1" ? "cs-grade-item cs-grade-wrap" : "cs-grade-item"}
+                    key={g}
+                  >
+                    <input type="radio" name="grade" value={g} />
+                    <span>{g}</span>
+                  </label>
+                ))}
               </div>
-              <div className="cs-field">
-                <label className="cs-label" htmlFor="csGrade">학년 <i>필수</i></label>
-                <select id="csGrade" name="grade" defaultValue="">
-                  <option value="" disabled>학년을 선택해 주세요.</option>
-                  {GRADES.map((g) => (
-                    <option key={g} value={g}>{g}</option>
-                  ))}
-                </select>
-              </div>
+              <span className="cs-hint">예시) 현재 예비 고3의 경우 ‘고2’ 체크</span>
             </div>
 
             <div className="cs-row">

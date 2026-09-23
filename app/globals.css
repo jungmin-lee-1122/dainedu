@@ -1069,6 +1069,26 @@ img,video,svg{max-width:100%}
   font-size:14.5px;font-family:inherit;color:var(--dn-ink-soft);cursor:pointer;transition:all .18s ease}
 .cs-choice:hover{border-color:var(--dn-gold);color:var(--dn-navy);background:#fff}
 .cs-choice.is-on{border-color:transparent;background:linear-gradient(150deg,#2E4470,var(--dn-navy) 55%,#182742);color:#fff;font-weight:700}
+/* 학년 — 라디오 버튼 묶음 (한 박스 안에 4열로 배치) */
+.cs-grade{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 10px;
+  padding:18px 20px;border:1px solid #DDD8CC;border-radius:14px;background:#FCFBF8}
+.cs-grade-item{display:flex;align-items:center;gap:9px;cursor:pointer;
+  font-size:15px;color:var(--dn-ink);min-width:0}
+.cs-grade-item input[type="radio"]{
+  appearance:none;-webkit-appearance:none;
+  flex:0 0 auto;width:19px;height:19px;margin:0;padding:0;
+  border:1.5px solid #C8C2B4;border-radius:50%;background:#fff;
+  cursor:pointer;transition:border-color .16s ease,box-shadow .16s ease}
+.cs-grade-item:hover input[type="radio"]{border-color:var(--dn-gold)}
+.cs-grade-item input[type="radio"]:checked{
+  border-color:var(--dn-navy);border-width:5.5px}
+.cs-grade-item input[type="radio"]:focus-visible{
+  outline:none;box-shadow:0 0 0 3px rgba(192,153,79,.25)}
+.cs-grade-item span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs-grade-item input[type="radio"]:checked + span{font-weight:700;color:var(--dn-navy)}
+/* 중등 / 고등 줄을 나눠 배치 */
+.cs-grade-wrap{grid-column-start:1}
+
 .cs-addr{display:flex;gap:8px}
 .cs-addr input{flex:1 1 auto;min-width:0;cursor:pointer;background:#F7F5EF}
 .cs-addr-btn{flex:0 0 auto;padding:0 18px;border:0;border-radius:10px;cursor:pointer;
@@ -1111,6 +1131,8 @@ img,video,svg{max-width:100%}
   .cs-wrap{padding:0 16px}
   .cs-title{font-size:25px}
   .cs-row{grid-template-columns:1fr;gap:0}
+  .cs-grade{grid-template-columns:repeat(3,1fr);padding:16px 14px;gap:14px 6px}
+  .cs-grade-item{font-size:14.5px;gap:7px}
   .cs-submit{width:100%}
 }
 /* ▲▲▲ 커스텀 끝 ▲▲▲ */
