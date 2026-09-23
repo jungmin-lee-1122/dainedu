@@ -64,7 +64,7 @@ export default async function SchedulePage({
                 2027 윈터스쿨 문의는 하단 대표번호로 문의해 주시길 바랍니다.
               </p>
               <div className="sc-soon-act">
-                <a className="sc-soon-btn" href="/consult">입학 상담 신청</a>
+                <a className="sc-soon-btn" href="https://dainedu.co.kr/event/1#apply">입학 상담 신청</a>
                 <a className="sc-soon-btn sc-soon-line" href="tel:16448022">1644-8022</a>
               </div>
             </div>

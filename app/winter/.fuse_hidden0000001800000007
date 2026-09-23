@@ -45,7 +45,7 @@ import FlowIcon from "./FlowIcon";
 import PageBand from "../PageBand";
 import SiteFooter from "../SiteFooter";
 
-const CONSULT = "/consult";
+const CONSULT = "https://dainedu.co.kr/event/1#apply";
 
 export const metadata: Metadata = {
   title: "2027 윈터스쿨 — 다인교육 동탄점",

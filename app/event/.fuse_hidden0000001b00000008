@@ -130,7 +130,7 @@ export default async function EventListPage() {
               온라인 상담을 남겨주시면 담당 선생님이 개별 상담 일정을 잡아드립니다.
             </p>
           </div>
-          <a className="ev-cta-btn" href="/consult">온라인 상담 신청</a>
+          <a className="ev-cta-btn" href="https://dainedu.co.kr/event/1#apply">온라인 상담 신청</a>
         </div>
       </section>
 
