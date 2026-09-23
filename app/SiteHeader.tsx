@@ -3,7 +3,9 @@
 //  모든 세부 페이지에서 <SiteHeader /> 로 불러 씁니다.
 //  카테고리를 바꾸려면 이 파일만 수정하면 전체 페이지에 반영됩니다.
 // ═══════════════════════════════════════════════════════════
+import Script from "next/script";
 import { subjects } from "./teachers/teachersData";
+import { topbarScript } from "./topbarScript";
 
 const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
 
@@ -20,6 +22,12 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
 
   return (
     <>
+      <Script
+        id="dain-topbar-height"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: topbarScript }}
+      />
+
       {/* 상단 안내 띠 — 링크 없이 안내 문구만 노출합니다 */}
       <div className="dn-topbar" role="note" aria-label="2027 윈터스쿨 사전 예약 안내">
         <span className="dn-topbar-mark">※</span>
