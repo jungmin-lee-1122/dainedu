@@ -113,8 +113,6 @@ export default async function TeachersPage({
           ) : (
             <p className="tc-empty">등록된 {activeSubject} 강사진이 없습니다.</p>
           )}
-
-          <p className="tc-note">※ 강사진 정보는 계약 및 출강 사실이 확인된 내용만 게시합니다.</p>
         </div>
       </section>
 

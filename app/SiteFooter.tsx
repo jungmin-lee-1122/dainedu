@@ -70,8 +70,7 @@ export default function SiteFooter() {
               <span className="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층
             </p>
             <p>
-              사업자등록번호 139-81-47864<span className="dn-foot-sep">|</span>
-              학원설립·운영등록번호: 제0000호 다인아카데미
+              사업자등록번호 139-81-47864
               <span className="dn-foot-badge">교습비 안내</span>
             </p>
           </div>
