@@ -16,6 +16,10 @@ export const metadata: Metadata = {
     ],
   },
   twitter: { card: "summary_large_image" },
+  // 네이버 서치어드바이저 사이트 소유확인
+  verification: {
+    other: { "naver-site-verification": "9aa76a45bc6e12a7e4ea5296c334bf72db432932" },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
