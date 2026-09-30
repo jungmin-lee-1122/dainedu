@@ -18,6 +18,10 @@ export const teacherStripScript = String.raw`
   function speed(){ return window.innerWidth<900 ? 0.30 : 0.42; }
 
   function build(){
+    /* 이전 상태의 배치가 폭 계산을 방해하지 않도록 먼저 초기화합니다.
+       (과목 탭 → 전체 로 돌아올 때 그리드로 굳던 문제) */
+    view.classList.remove("is-still");
+    still=false;
     track.style.transform="translateX(0px)";
     x=0; target=null;
     while(track.firstChild) track.removeChild(track.firstChild);
@@ -37,10 +41,18 @@ export const teacherStripScript = String.raw`
     view.classList.remove("is-empty");
 
     list.forEach(function(n){ track.appendChild(n); });
-    setW=track.scrollWidth;                 /* 한 바퀴 길이 */
+
+    /* 카드 실제 폭의 합으로 한 바퀴 길이를 냅니다.
+       (scrollWidth 는 직전 배치 상태에 영향을 받아 부정확할 수 있습니다) */
+    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||"18")||18;
+    setW=0;
+    for(var n=0;n<track.children.length;n++){
+      setW += track.children[n].getBoundingClientRect().width + gap;
+    }
+    setW=Math.round(setW);
 
     /* 선생님 수가 적어 화면을 다 못 채우면 (예: 영어 2명)
-       복제해서 A·B·A·B 로 반복시키지 않고 가운데에 그대로 세워 둡니다. */
+       복제해서 A·B·A·B 로 반복시키지 않고 그대로 세워 둡니다. */
     still = setW <= view.clientWidth;
     view.classList.toggle("is-still", still);
     if(still){ track.style.transform="translateX(0px)"; return; }

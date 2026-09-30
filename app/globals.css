@@ -3384,10 +3384,11 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .ts-arrow-prev{left:max(12px,calc((100% - 1200px)/2 - 6px))}
 .ts-arrow-next{right:max(12px,calc((100% - 1200px)/2 - 6px))}
 .ts-view.is-empty .ts-arrow{display:none}
-/* 선생님이 적어 한 화면에 다 들어오면: 슬라이드 없이 가운데 정렬 */
-.ts-view.is-still{overflow:visible}
-.ts-view.is-still .ts-track{width:100%;justify-content:center;transform:none !important;flex-wrap:wrap;gap:18px}
-.ts-view.is-still .ts-arrow{display:none}
+/* 선생님이 적어 한 화면에 다 들어오면: 슬라이드 없이 그대로 세워 둡니다.
+   위 탭바(.cv-wrap)의 왼쪽 끝선에 맞춰 좌측 정렬합니다. */
+.ts-view.is-still .ts-track{
+  transform:none !important;
+  padding-left:max(24px,calc((100% - 1200px)/2 + 24px))}
 
 @media(max-width:900px){
   .ts-sec{padding:34px 0 40px}
@@ -3397,6 +3398,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ts-more{margin-left:auto}
   .ts-view{margin-top:18px}
   .ts-track{gap:12px}
+  .ts-view.is-still .ts-track{padding-left:16px}
   .ts-item{flex:0 0 clamp(190px,62vw,230px)}
   .ts-arrow{display:none}
 }
