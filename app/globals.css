@@ -3384,6 +3384,10 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .ts-arrow-prev{left:max(12px,calc((100% - 1200px)/2 - 6px))}
 .ts-arrow-next{right:max(12px,calc((100% - 1200px)/2 - 6px))}
 .ts-view.is-empty .ts-arrow{display:none}
+/* 선생님이 적어 한 화면에 다 들어오면: 슬라이드 없이 가운데 정렬 */
+.ts-view.is-still{overflow:visible}
+.ts-view.is-still .ts-track{width:100%;justify-content:center;transform:none !important;flex-wrap:wrap;gap:18px}
+.ts-view.is-still .ts-arrow{display:none}
 
 @media(max-width:900px){
   .ts-sec{padding:34px 0 40px}

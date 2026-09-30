@@ -13,6 +13,7 @@ export const teacherStripScript = String.raw`
   var origin=[].slice.call(track.children);   /* 원본 카드 */
   var cur="전체";
   var x=0, setW=0, paused=false, target=null, raf=0;
+  var still=false;   /* 카드가 화면을 못 채우면 슬라이드를 멈추고 가운데 정렬 */
 
   function speed(){ return window.innerWidth<900 ? 0.30 : 0.42; }
 
@@ -28,7 +29,8 @@ export const teacherStripScript = String.raw`
     if(!list.length){
       if(empty) empty.hidden=false;
       view.classList.add("is-empty");
-      setW=0;
+      view.classList.remove("is-still");
+      still=true; setW=0;
       return;
     }
     if(empty) empty.hidden=true;
@@ -36,6 +38,12 @@ export const teacherStripScript = String.raw`
 
     list.forEach(function(n){ track.appendChild(n); });
     setW=track.scrollWidth;                 /* 한 바퀴 길이 */
+
+    /* 선생님 수가 적어 화면을 다 못 채우면 (예: 영어 2명)
+       복제해서 A·B·A·B 로 반복시키지 않고 가운데에 그대로 세워 둡니다. */
+    still = setW <= view.clientWidth;
+    view.classList.toggle("is-still", still);
+    if(still){ track.style.transform="translateX(0px)"; return; }
 
     /* 화면을 채우고도 남을 만큼 복제해 끊김 없이 이어지게 */
     var guard=0;
@@ -51,7 +59,7 @@ export const teacherStripScript = String.raw`
   }
 
   function step(){
-    if(setW>0){
+    if(setW>0 && !still){
       if(target!==null){
         var d=target-x;
         if(Math.abs(d)<0.6){ x=target; target=null; }
@@ -85,6 +93,7 @@ export const teacherStripScript = String.raw`
   for(var a=0;a<arrows.length;a++){
     (function(btn){
       btn.addEventListener("click",function(){
+        if(still) return;
         var card=track.querySelector(".ts-item");
         var stepW=card?card.getBoundingClientRect().width+18:280;
         var base=(target===null?x:target);
