@@ -13,7 +13,6 @@ import { useEffect, useState, type ReactNode } from "react";
 const ACADEMY = "다인에듀";
 const TEL = "1644-8022";
 const ADDRESS = "경기도 화성시 동탄 메타폴리스로 53, 6층";
-const EMAIL = "help@dain-edu.com";
 const EFFECTIVE = "2026년 10월 1일";
 
 type Kind = "terms" | "privacy" | null;
@@ -558,7 +557,7 @@ function PrivacyBody() {
           요구할 수 있으며, 수집·이용·제공에 대한 동의를 철회할 수 있습니다.
         </p>
         <p>
-          ② 권리 행사는 학원에 대해 서면, 전화, 전자우편 등을 통하여 하실 수 있으며, 학원은 이에 대해
+          ② 권리 행사는 학원에 대해 서면, 전화, 방문 등을 통하여 하실 수 있으며, 학원은 이에 대해
           지체 없이 조치합니다.
         </p>
         <p>
@@ -609,7 +608,6 @@ function PrivacyBody() {
         <div className="lg-card">
           <p><b>개인정보 보호책임자</b><span>{ACADEMY}</span></p>
           <p><b>대표번호</b><span>{TEL}</span></p>
-          <p><b>이메일</b><span>{EMAIL}</span></p>
           <p><b>주소</b><span>{ADDRESS}</span></p>
         </div>
       </Section>

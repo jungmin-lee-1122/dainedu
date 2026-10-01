@@ -63,7 +63,8 @@ export default function SiteFooter() {
           <div className="dn-foot-info">
             <p>
               다인아카데미<span className="dn-foot-sep">|</span>대표 (주)다인교육
-              </p>
+              <span className="dn-foot-sep">|</span>e-mail: help@dain-edu.com
+            </p>
             <p>
               개인정보보호책임자: 다인에듀<span className="dn-foot-sep">|</span>대표번호 1644-8022
               <span className="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층

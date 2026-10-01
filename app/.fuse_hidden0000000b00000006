@@ -136,7 +136,7 @@ export const landingMarkup = `
           <a href="#privacy">개인정보 처리방침</a>
         </nav>
         <div class="dn-foot-info">
-          <p>다인아카데미<span class="dn-foot-sep">|</span>대표 (주)다인교육</p>
+          <p>다인아카데미<span class="dn-foot-sep">|</span>대표 (주)다인교육<span class="dn-foot-sep">|</span>e-mail: help@dain-edu.com</p>
           <p>개인정보보호책임자: 다인에듀<span class="dn-foot-sep">|</span>대표번호 1644-8022<span class="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층</p>
           <p>사업자등록번호 139-81-47864<span class="dn-foot-badge">교습비 안내</span></p>
         </div>
