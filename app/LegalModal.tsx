@@ -461,28 +461,32 @@ function PrivacyBody() {
           다만, 관계 법령에 따라 일정 기간 보관해야 하는 경우에는 그 기간 동안 보관 후 파기합니다.
         </p>
         <div className="lg-table-wrap">
-          <table className="lg-table">
+          <table className="lg-table lg-table-keep">
             <thead>
               <tr>
                 <th>보관 항목</th>
                 <th>보유기간</th>
-                <th>근거 법령</th>
               </tr>
             </thead>
             <tbody>
+              <tr className="lg-tr-group">
+                <td colSpan={2}>학원의 설립·운영 및 과외교습에 관한 법률</td>
+              </tr>
               <tr>
                 <td>영수증 원본(성명, 생년월일)</td>
                 <td>5년</td>
-                <td rowSpan={2}>학원의 설립·운영 및 과외교습에 관한 법률</td>
               </tr>
               <tr>
                 <td>수강생 대장(성명, 주소, 연락처)</td>
                 <td>3년</td>
               </tr>
+
+              <tr className="lg-tr-group">
+                <td colSpan={2}>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+              </tr>
               <tr>
                 <td>계약 또는 청약철회 등에 관한 기록</td>
                 <td>5년</td>
-                <td rowSpan={3}>전자상거래 등에서의 소비자 보호에 관한 법률</td>
               </tr>
               <tr>
                 <td>대금결제 및 재화 등의 공급에 관한 기록</td>
@@ -492,10 +496,13 @@ function PrivacyBody() {
                 <td>소비자의 불만 또는 분쟁 처리에 관한 기록</td>
                 <td>3년</td>
               </tr>
+
+              <tr className="lg-tr-group">
+                <td colSpan={2}>통신비밀보호법</td>
+              </tr>
               <tr>
                 <td>서비스 방문(접속) 기록</td>
                 <td>3개월</td>
-                <td>통신비밀보호법</td>
               </tr>
             </tbody>
           </table>
