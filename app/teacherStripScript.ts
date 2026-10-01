@@ -97,14 +97,11 @@ export const teacherStripScript = String.raw`
       btn.addEventListener("click",function(){
         var w=stepW()||280, max=maxScroll();
         if(max<=4) return;
-        var next;
-        if(btn.getAttribute("data-dir")==="next"){
-          next=scroller.scrollLeft+w;
-          if(next>max-2) next=0;
-        }else{
-          next=scroller.scrollLeft-w;
-          if(next<2) next=max;
-        }
+        /* 화살표는 한 칸씩만 움직이고, 끝에서는 멈춥니다.
+           (끝에서 반대쪽으로 쭉 넘어가 버리지 않도록) */
+        var next=scroller.scrollLeft+(btn.getAttribute("data-dir")==="next"?w:-w);
+        if(next<0) next=0;
+        if(next>max) next=max;
         go(next);
         hold(6000);
       });

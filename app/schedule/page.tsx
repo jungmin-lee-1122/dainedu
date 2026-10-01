@@ -26,8 +26,7 @@ export default async function SchedulePage({
   searchParams: Promise<{ category?: string; subject?: string }>;
 }) {
   const query = await searchParams;
-  const teachers = await getTeachers();
-  const courses = await getCourses();
+  const [teachers, courses] = await Promise.all([getTeachers(), getCourses()]);
   const activeTab = scheduleTabs.find((tab) => tab.label === query.category) ?? scheduleTabs[0];
   const activeSubject = query.subject && subjects.includes(query.subject) ? query.subject : "전체";
   const filtered = courses.filter((course) => {

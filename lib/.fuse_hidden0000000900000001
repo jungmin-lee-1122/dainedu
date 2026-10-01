@@ -4,7 +4,7 @@
 //  규칙: DB 에 내용이 있으면 그것을 쓰고, 없으면 기존 *Data.ts 를 그대로 씁니다.
 //  → 관리자 페이지를 아직 안 쓰더라도 사이트는 지금과 똑같이 보입니다.
 // ═══════════════════════════════════════════════════════════
-import { listContentsCached as listContents } from "./cache";
+import { listContents } from "./db";
 import { subjects, teachers as seedTeachers, type Teacher } from "@/app/teachers/teachersData";
 import { courses as seedCourses, scheduleTabs, type Course } from "@/app/schedule/scheduleData";
 import { events as seedEvents, type DainEvent } from "@/app/event/eventData";

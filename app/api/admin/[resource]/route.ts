@@ -16,6 +16,7 @@ import {
   hasDb,
 } from "@/lib/db";
 import { seedFor } from "@/lib/seed";
+import { clearContentCache } from "@/lib/cache";
 
 export const dynamic = "force-dynamic";
 
@@ -79,6 +80,7 @@ export async function POST(
   const sort = found >= 0 ? existing[found].sort : existing.length;
 
   const row = await saveContent(resource, id, data, sort);
+  clearContentCache(resource);   /* 고친 내용이 사이트에 바로 보이도록 */
   return NextResponse.json({ ok: true, item: { id: row.id, ...row.data } });
 }
 
@@ -94,6 +96,7 @@ export async function DELETE(
   if (!id) return NextResponse.json({ ok: false, error: "no_id" }, { status: 400 });
 
   await deleteContent(resource, id);
+  clearContentCache(resource);
   return NextResponse.json({ ok: true });
 }
 
@@ -121,6 +124,7 @@ export async function PUT(
   for (let i = 0; i < rows.length; i++) {
     await saveContent(resource, rows[i].id, rows[i].data, i);
   }
+  clearContentCache(resource);
   return NextResponse.json({ ok: true, count: rows.length });
 }
 
@@ -139,5 +143,6 @@ export async function PATCH(
   }
 
   await reorderContents(resource, ids.map(String));
+  clearContentCache(resource);
   return NextResponse.json({ ok: true });
 }

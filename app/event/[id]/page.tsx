@@ -9,7 +9,8 @@ import { eventViewScript } from "../eventScript";
 import { reserveModalMarkup } from "../reserveModal";
 import { findEventById } from "@/lib/content";
 
-export const dynamic = "force-dynamic";
+// 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
+export const revalidate = 60;
 
 export async function generateMetadata({
   params,
