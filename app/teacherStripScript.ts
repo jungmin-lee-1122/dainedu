@@ -56,10 +56,16 @@ export const teacherStripScript = String.raw`
     sync();
   }
 
-  /* 넘길 것이 없으면 화살표를 흐리게 */
+  /* 넘길 것이 없으면 화살표를 숨기고, 양 끝에서는 흐리게 */
   function sync(){
-    var can=maxScroll()>4;
-    view.classList.toggle("is-static", !can);
+    var max=maxScroll();
+    view.classList.toggle("is-static", max<=4);
+    var x=scroller.scrollLeft;
+    for(var k=0;k<arrows.length;k++){
+      var isNext=arrows[k].getAttribute("data-dir")==="next";
+      var end = isNext ? x>=max-2 : x<=2;
+      arrows[k].classList.toggle("is-end", max>4 && end);
+    }
   }
 
   function tick(){
@@ -115,6 +121,9 @@ export const teacherStripScript = String.raw`
   view.addEventListener("focusout",function(){ holdUntil=Date.now()+1200; });
   scroller.addEventListener("touchstart",function(){ hold(8000); },{passive:true});
   scroller.addEventListener("wheel",function(){ hold(6000); },{passive:true});
+
+  var st;
+  scroller.addEventListener("scroll",function(){ clearTimeout(st); st=setTimeout(sync,120); },{passive:true});
 
   var rt;
   window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(sync,200); });

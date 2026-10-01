@@ -3400,6 +3400,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .ts-arrow-next{right:0}
 .ts-view.is-empty .ts-arrow,
 .ts-view.is-static .ts-arrow{display:none}
+/* 더 갈 곳이 없는 쪽은 흐리게 */
+.ts-arrow.is-end{opacity:.32;cursor:default}
+.ts-arrow.is-end:hover{background:rgba(250,248,243,.94);border-color:var(--dn-line);color:var(--dn-navy)}
 
 @media(max-width:900px){
   .ts-sec{padding:34px 0 40px}
