@@ -3367,28 +3367,36 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   text-decoration:none;transition:color .2s ease,border-color .2s ease}
 .ts-more:hover{color:var(--dn-gold);border-color:var(--dn-gold)}
 
-/* 흐르는 카드 */
-.ts-view{position:relative;margin-top:26px;overflow:hidden}
-.ts-track{display:flex;align-items:flex-start;gap:18px;width:max-content;will-change:transform}
+/* 흐르는 카드 — 가로 스크롤 방식 */
+.ts-view{position:relative;margin-top:26px}
+.ts-scroll{
+  overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;
+  scrollbar-width:none;-ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.ts-scroll::-webkit-scrollbar{display:none}
+.ts-track{
+  display:flex;align-items:flex-start;gap:18px;width:max-content;
+  /* 첫 카드를 위 탭바(.cv-wrap)의 왼쪽 끝선에 맞춥니다 */
+  padding:2px max(24px,calc((100% - 1200px)/2 + 24px)) 8px}
 .ts-item{flex:0 0 clamp(228px,22vw,266px)}
-.ts-view.is-empty .ts-track{display:none}
+.ts-view.is-empty .ts-scroll{display:none}
 .ts-empty{margin:0;padding:52px 0;text-align:center;font-size:14px;color:#8A90A0}
 
-/* 좌우 화살표 */
-.ts-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;
-  width:40px;height:40px;border-radius:50%;border:1px solid var(--dn-line);
-  background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
-  color:var(--dn-navy);font-size:20px;line-height:1;cursor:pointer;
-  box-shadow:0 10px 24px -14px rgba(16,25,46,.5);transition:border-color .2s ease,color .2s ease}
-.ts-arrow:hover{border-color:var(--dn-gold);color:var(--dn-gold)}
-.ts-arrow-prev{left:max(12px,calc((100% - 1200px)/2 - 6px))}
-.ts-arrow-next{right:max(12px,calc((100% - 1200px)/2 - 6px))}
-.ts-view.is-empty .ts-arrow{display:none}
-/* 선생님이 적어 한 화면에 다 들어오면: 슬라이드 없이 그대로 세워 둡니다.
-   위 탭바(.cv-wrap)의 왼쪽 끝선에 맞춰 좌측 정렬합니다. */
-.ts-view.is-still .ts-track{
-  transform:none !important;
-  padding-left:max(24px,calc((100% - 1200px)/2 + 24px))}
+/* 좌우 화살표 — 얇은 세로 막대 */
+.ts-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  display:flex;align-items:center;justify-content:center;
+  width:32px;height:56px;padding:0;
+  border:0;border-radius:4px;cursor:pointer;
+  background:rgba(36,54,90,.55);backdrop-filter:blur(3px);
+  color:#fff;line-height:0;
+  transition:background .2s ease,color .2s ease,opacity .2s ease}
+.ts-arrow:hover{background:var(--dn-gold);color:var(--dn-deep)}
+.ts-arrow:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(217,190,140,.5)}
+.ts-arrow-prev{left:max(10px,calc((100% - 1200px)/2 - 10px))}
+.ts-arrow-next{right:max(10px,calc((100% - 1200px)/2 - 10px))}
+.ts-view.is-empty .ts-arrow,
+.ts-view.is-static .ts-arrow{display:none}
 
 @media(max-width:900px){
   .ts-sec{padding:34px 0 40px}
@@ -3397,8 +3405,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ts-tab{padding:6px 11px;font-size:13.5px}
   .ts-more{margin-left:auto}
   .ts-view{margin-top:18px}
-  .ts-track{gap:12px}
-  .ts-view.is-still .ts-track{padding-left:16px}
+  .ts-track{gap:12px;padding:2px 16px 8px}
   .ts-item{flex:0 0 clamp(190px,62vw,230px)}
   .ts-arrow{display:none}
 }

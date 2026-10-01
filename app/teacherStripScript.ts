@@ -1,29 +1,42 @@
-// 선생님 띠 — 과목 탭 + 끊김 없는 자동 슬라이드
-// 마우스를 올리면 멈추고, 화살표로 한 장씩 넘길 수 있습니다.
+// ═══════════════════════════════════════════════════════════
+//  선생님 띠 — 과목 탭 + 가로 스크롤 슬라이드
+//
+//  · 3초마다 카드 한 장씩 부드럽게 넘어갑니다.
+//  · 끝까지 가면 처음으로 되돌아옵니다.
+//  · 좌우 화살표로 한 장씩 넘길 수 있고, 손가락/트랙패드로 밀어도 됩니다.
+//  · 마우스를 올리거나 직접 스크롤하면 잠시 멈춥니다.
+//  · 선생님이 적어 한 화면에 다 들어오면 아무것도 움직이지 않습니다.
+// ═══════════════════════════════════════════════════════════
 export const teacherStripScript = String.raw`
 (function(){
   var view=document.getElementById("dnTeacherStrip"); if(!view) return;
+  var scroller=view.querySelector(".ts-scroll");
   var track=view.querySelector(".ts-track");
   var empty=view.querySelector(".ts-empty");
   var sec=view.closest(".ts-sec");
   var tabs=sec?sec.querySelectorAll(".ts-tab"):[];
   var arrows=view.querySelectorAll(".ts-arrow");
-  if(!track) return;
+  if(!scroller||!track) return;
 
   var origin=[].slice.call(track.children);   /* 원본 카드 */
   var cur="전체";
-  var x=0, setW=0, paused=false, target=null, raf=0;
-  var still=false;   /* 카드가 화면을 못 채우면 슬라이드를 멈추고 가운데 정렬 */
+  var timer=null, holdUntil=0;
+  var STEP_MS=3000;
 
-  function speed(){ return window.innerWidth<900 ? 0.30 : 0.42; }
+  /* 카드 한 장 + 간격 */
+  function stepW(){
+    var card=track.querySelector(".ts-item");
+    if(!card) return 0;
+    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||"18")||18;
+    return Math.round(card.getBoundingClientRect().width+gap);
+  }
+  function maxScroll(){ return Math.max(0, scroller.scrollWidth-scroller.clientWidth); }
+  function go(left){
+    try{ scroller.scrollTo({left:left,behavior:"smooth"}); }
+    catch(e){ scroller.scrollLeft=left; }
+  }
 
   function build(){
-    /* 이전 상태의 배치가 폭 계산을 방해하지 않도록 먼저 초기화합니다.
-       (과목 탭 → 전체 로 돌아올 때 그리드로 굳던 문제) */
-    view.classList.remove("is-still");
-    still=false;
-    track.style.transform="translateX(0px)";
-    x=0; target=null;
     while(track.firstChild) track.removeChild(track.firstChild);
 
     var list=origin.filter(function(n){
@@ -33,60 +46,35 @@ export const teacherStripScript = String.raw`
     if(!list.length){
       if(empty) empty.hidden=false;
       view.classList.add("is-empty");
-      view.classList.remove("is-still");
-      still=true; setW=0;
       return;
     }
     if(empty) empty.hidden=true;
     view.classList.remove("is-empty");
 
     list.forEach(function(n){ track.appendChild(n); });
-
-    /* 카드 실제 폭의 합으로 한 바퀴 길이를 냅니다.
-       (scrollWidth 는 직전 배치 상태에 영향을 받아 부정확할 수 있습니다) */
-    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||"18")||18;
-    setW=0;
-    for(var n=0;n<track.children.length;n++){
-      setW += track.children[n].getBoundingClientRect().width + gap;
-    }
-    setW=Math.round(setW);
-
-    /* 선생님 수가 적어 화면을 다 못 채우면 (예: 영어 2명)
-       복제해서 A·B·A·B 로 반복시키지 않고 그대로 세워 둡니다. */
-    still = setW <= view.clientWidth;
-    view.classList.toggle("is-still", still);
-    if(still){ track.style.transform="translateX(0px)"; return; }
-
-    /* 화면을 채우고도 남을 만큼 복제해 끊김 없이 이어지게 */
-    var guard=0;
-    while(track.scrollWidth < setW + view.clientWidth + 320 && guard<30){
-      list.forEach(function(n){
-        var c=n.cloneNode(true);
-        c.setAttribute("aria-hidden","true");
-        var link=c.querySelector("a"); if(link) link.setAttribute("tabindex","-1");
-        track.appendChild(c);
-      });
-      guard++;
-    }
+    scroller.scrollLeft=0;
+    sync();
   }
 
-  function step(){
-    if(setW>0 && !still){
-      if(target!==null){
-        var d=target-x;
-        if(Math.abs(d)<0.6){ x=target; target=null; }
-        else x+=d*0.14;
-      }else if(!paused){
-        x-=speed();
-      }
-      /* 한 바퀴를 넘어가면 자연스럽게 되감기 */
-      if(x<=-setW){ x+=setW; if(target!==null) target+=setW; }
-      if(x>0){ x-=setW; if(target!==null) target-=setW; }
-      track.style.transform="translateX("+x+"px)";
-    }
-    raf=requestAnimationFrame(step);
+  /* 넘길 것이 없으면 화살표를 흐리게 */
+  function sync(){
+    var can=maxScroll()>4;
+    view.classList.toggle("is-static", !can);
   }
 
+  function tick(){
+    if(Date.now()<holdUntil) return;
+    var max=maxScroll();
+    if(max<=4) return;                       /* 한 화면에 다 들어옴 */
+    var w=stepW(); if(!w) return;
+    var next=scroller.scrollLeft+w;
+    if(next>max-2) next=0;                   /* 끝에 닿으면 처음으로 */
+    go(next);
+  }
+
+  function hold(ms){ holdUntil=Date.now()+(ms||4000); }
+
+  /* 과목 탭 */
   for(var i=0;i<tabs.length;i++){
     (function(btn){
       btn.addEventListener("click",function(){
@@ -98,37 +86,46 @@ export const teacherStripScript = String.raw`
         btn.setAttribute("aria-selected","true");
         cur=btn.getAttribute("data-subject")||"전체";
         build();
+        hold(5000);
       });
     })(tabs[i]);
   }
 
+  /* 좌우 화살표 */
   for(var a=0;a<arrows.length;a++){
     (function(btn){
       btn.addEventListener("click",function(){
-        if(still) return;
-        var card=track.querySelector(".ts-item");
-        var stepW=card?card.getBoundingClientRect().width+18:280;
-        var base=(target===null?x:target);
-        target=base+(btn.getAttribute("data-dir")==="next"?-stepW:stepW);
+        var w=stepW()||280, max=maxScroll();
+        if(max<=4) return;
+        var next;
+        if(btn.getAttribute("data-dir")==="next"){
+          next=scroller.scrollLeft+w;
+          if(next>max-2) next=0;
+        }else{
+          next=scroller.scrollLeft-w;
+          if(next<2) next=max;
+        }
+        go(next);
+        hold(6000);
       });
     })(arrows[a]);
   }
 
-  view.addEventListener("mouseenter",function(){ paused=true; });
-  view.addEventListener("mouseleave",function(){ paused=false; });
-  view.addEventListener("focusin",function(){ paused=true; });
-  view.addEventListener("focusout",function(){ paused=false; });
-  document.addEventListener("visibilitychange",function(){ paused=document.hidden; });
+  /* 사람이 보고 있으면 잠시 멈춤 */
+  view.addEventListener("mouseenter",function(){ hold(1e9); });
+  view.addEventListener("mouseleave",function(){ holdUntil=Date.now()+1200; });
+  view.addEventListener("focusin",function(){ hold(1e9); });
+  view.addEventListener("focusout",function(){ holdUntil=Date.now()+1200; });
+  scroller.addEventListener("touchstart",function(){ hold(8000); },{passive:true});
+  scroller.addEventListener("wheel",function(){ hold(6000); },{passive:true});
 
   var rt;
-  window.addEventListener("resize",function(){
-    clearTimeout(rt); rt=setTimeout(build,200);
-  });
+  window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(sync,200); });
+  document.addEventListener("visibilitychange",function(){ if(document.hidden) hold(1e9); else holdUntil=0; });
 
   build();
-  if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-    paused=true;
+  if(!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)){
+    timer=setInterval(tick,STEP_MS);
   }
-  raf=requestAnimationFrame(step);
 })();
 `;

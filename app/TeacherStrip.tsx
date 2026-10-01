@@ -40,6 +40,7 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
       </div>
 
       <div className="ts-view" id="dnTeacherStrip">
+        <div className="ts-scroll">
         <div className="ts-track">
           {teachers.map((t) => (
             <div className="ts-item" data-subject={t.subject} key={t.id}>
@@ -78,8 +79,20 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
           ))}
         </div>
 
-        <button className="ts-arrow ts-arrow-prev" type="button" data-dir="prev" aria-label="이전 선생님">‹</button>
-        <button className="ts-arrow ts-arrow-next" type="button" data-dir="next" aria-label="다음 선생님">›</button>
+        </div>
+
+        <button className="ts-arrow ts-arrow-prev" type="button" data-dir="prev" aria-label="이전 선생님">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" />
+          </svg>
+        </button>
+        <button className="ts-arrow ts-arrow-next" type="button" data-dir="next" aria-label="다음 선생님">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
         <p className="ts-empty" hidden>해당 과목의 선생님이 아직 등록되지 않았습니다.</p>
       </div>
     </section>
