@@ -3367,8 +3367,10 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   text-decoration:none;transition:color .2s ease,border-color .2s ease}
 .ts-more:hover{color:var(--dn-gold);border-color:var(--dn-gold)}
 
-/* 흐르는 카드 — 가로 스크롤 방식 */
-.ts-view{position:relative;margin-top:26px}
+/* 흐르는 카드 — 가로 스크롤 방식 (섹션 폭 안에서만 움직입니다) */
+.ts-view{
+  position:relative;margin:26px auto 0;
+  max-width:1200px;padding:0 24px}
 .ts-scroll{
   overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;
   scrollbar-width:none;-ms-overflow-style:none;
@@ -3376,25 +3378,25 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .ts-scroll::-webkit-scrollbar{display:none}
 .ts-track{
   display:flex;align-items:flex-start;gap:18px;width:max-content;
-  /* 첫 카드를 위 탭바(.cv-wrap)의 왼쪽 끝선에 맞춥니다 */
-  padding:2px max(24px,calc((100% - 1200px)/2 + 24px)) 8px}
+  padding:2px 0 8px}
 .ts-item{flex:0 0 clamp(228px,22vw,266px)}
 .ts-view.is-empty .ts-scroll{display:none}
 .ts-empty{margin:0;padding:52px 0;text-align:center;font-size:14px;color:#8A90A0}
 
-/* 좌우 화살표 — 얇은 세로 막대 */
+/* 좌우 화살표 — 카드 바깥 끝선에 붙는 얇은 세로 막대 */
 .ts-arrow{
   position:absolute;top:50%;transform:translateY(-50%);z-index:5;
   display:flex;align-items:center;justify-content:center;
-  width:32px;height:56px;padding:0;
-  border:0;border-radius:4px;cursor:pointer;
-  background:rgba(36,54,90,.55);backdrop-filter:blur(3px);
-  color:#fff;line-height:0;
-  transition:background .2s ease,color .2s ease,opacity .2s ease}
-.ts-arrow:hover{background:var(--dn-gold);color:var(--dn-deep)}
+  width:30px;height:58px;padding:0;
+  border:1px solid var(--dn-line);border-radius:5px;cursor:pointer;
+  background:rgba(250,248,243,.94);backdrop-filter:blur(3px);
+  color:var(--dn-navy);line-height:0;
+  box-shadow:0 10px 24px -16px rgba(16,25,46,.55);
+  transition:background .2s ease,color .2s ease,border-color .2s ease}
+.ts-arrow:hover{background:var(--dn-gold);border-color:transparent;color:var(--dn-deep)}
 .ts-arrow:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(217,190,140,.5)}
-.ts-arrow-prev{left:max(10px,calc((100% - 1200px)/2 - 10px))}
-.ts-arrow-next{right:max(10px,calc((100% - 1200px)/2 - 10px))}
+.ts-arrow-prev{left:2px}
+.ts-arrow-next{right:2px}
 .ts-view.is-empty .ts-arrow,
 .ts-view.is-static .ts-arrow{display:none}
 
@@ -3405,7 +3407,8 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ts-tab{padding:6px 11px;font-size:13.5px}
   .ts-more{margin-left:auto}
   .ts-view{margin-top:18px}
-  .ts-track{gap:12px;padding:2px 16px 8px}
+  .ts-view{padding:0 16px}
+  .ts-track{gap:12px;padding:2px 0 8px}
   .ts-item{flex:0 0 clamp(190px,62vw,230px)}
   .ts-arrow{display:none}
 }

@@ -39,6 +39,7 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
         </div>
       </div>
 
+      <div className="cv-wrap">
       <div className="ts-view" id="dnTeacherStrip">
         <div className="ts-scroll">
         <div className="ts-track">
@@ -94,6 +95,7 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
           </svg>
         </button>
         <p className="ts-empty" hidden>해당 과목의 선생님이 아직 등록되지 않았습니다.</p>
+      </div>
       </div>
     </section>
   );
