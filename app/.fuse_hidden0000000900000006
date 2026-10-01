@@ -21,7 +21,7 @@ export default function SiteFooter() {
       <div className="dn-wrap dn-foot">
         <div className="dn-foot-left">
           <div className="dn-foot-brand">
-            <img src="/dain-foot-icon2.png" alt="다인교육" className="dn-foot-icon" />
+            <img src="/dain-foot-icon.png" alt="다인교육" className="dn-foot-icon" />
             <span className="dn-foot-brandtext">
               <b className="dn-foot-name">DAIN EDU</b>
               <span className="dn-foot-brandline" />

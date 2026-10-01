@@ -17,7 +17,9 @@ import {
 } from "./clavisData";
 import { getNotices, getClips, getTeachers } from "@/lib/content";
 
-export const dynamic = "force-dynamic";
+// 60초마다 새로 만들어 둡니다. 관리자에서 고친 내용은 1분 안에 반영됩니다.
+// (매 방문마다 DB 를 조회하던 force-dynamic 을 걷어내 첫 화면이 훨씬 빨라집니다)
+export const revalidate = 60;
 
 /** 본문 표시 여부 — 임시로 숨겨둠. true 로 바꾸면 다시 나옵니다. */
 const SHOW_BODY = true;
@@ -34,9 +36,12 @@ export const metadata: Metadata = {
 };
 
 export default async function ClavisPage() {
-  const notices = await getNotices("clavis", seedNotices);
-  const clips = await getClips(seedClips);
-  const facultyList = await getTeachers();
+  // 세 가지를 동시에 불러옵니다 (하나씩 기다리면 그만큼 느려집니다)
+  const [notices, clips, facultyList] = await Promise.all([
+    getNotices("clavis", seedNotices),
+    getClips(seedClips),
+    getTeachers(),
+  ]);
 
   return (
     <main className="dn-body cv-page">

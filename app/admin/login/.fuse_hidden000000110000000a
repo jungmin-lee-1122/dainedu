@@ -31,7 +31,7 @@ export default function AdminLoginPage() {
     <div className="ad-login">
       <form className="ad-login-card" onSubmit={submit}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/dain-icon2.png" alt="" className="ad-login-icon" />
+        <img src="/dain-icon.png" alt="" className="ad-login-icon" />
         <h1 className="ad-login-title">다인교육 동탄점</h1>
         <p className="ad-login-sub">관리자 페이지</p>
 

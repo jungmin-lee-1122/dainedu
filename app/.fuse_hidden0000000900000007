@@ -37,7 +37,7 @@ export default function PageBand({
     <section className="pb-band">
       {/* 오른쪽 로고 워터마크 */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="pb-mark" src="/dain-icon2.png" alt="" aria-hidden="true" />
+      <img className="pb-mark" src="/dain-icon.png" alt="" aria-hidden="true" />
 
       <div className="pb-wrap">
         <nav className="pb-crumb" aria-label="현재 위치">
