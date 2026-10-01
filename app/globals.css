@@ -727,6 +727,8 @@ img,video,svg{max-width:100%}
 .dn-foot-info p{margin:0}
 .dn-foot-sep{margin:0 9px;color:rgba(255,255,255,.22)}
 .dn-foot-badge{display:inline-block;margin-left:8px;padding:2px 10px;border-radius:6px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.82);font-size:11.5px;font-weight:700;cursor:pointer;vertical-align:middle}
+/* 교습비 안내 배지 — 우선 숨김 (다시 보이려면 이 줄을 지우세요) */
+.dn-foot-badge{display:none !important}
 .dn-foot-copy{margin:24px 0 0;font-size:12.5px;color:rgba(255,255,255,.35)}
 .dn-foot-sns{display:flex;gap:11px;align-items:center}
 .dn-sns{width:42px;height:42px;flex:0 0 auto;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease;background:rgba(255,255,255,.12)}
