@@ -3370,7 +3370,10 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 /* 흐르는 카드 — 가로 스크롤 방식 (섹션 폭 안에서만 움직입니다) */
 .ts-view{
   position:relative;margin:26px auto 0;
-  max-width:1200px;padding:0 24px}
+  max-width:1200px;
+  /* 위 탭바(.cv-wrap)와 똑같은 좌우 여백 — 끝선이 정확히 맞습니다 */
+  --ts-gutter:24px;
+  padding:0 var(--ts-gutter)}
 .ts-scroll{
   overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;
   scrollbar-width:none;-ms-overflow-style:none;
@@ -3395,8 +3398,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   transition:background .2s ease,color .2s ease,border-color .2s ease}
 .ts-arrow:hover{background:var(--dn-gold);border-color:transparent;color:var(--dn-deep)}
 .ts-arrow:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(217,190,140,.5)}
-.ts-arrow-prev{left:2px}
-.ts-arrow-next{right:2px}
+/* 카드 끝선에 딱 붙입니다 */
+.ts-arrow-prev{left:var(--ts-gutter)}
+.ts-arrow-next{right:var(--ts-gutter)}
 .ts-view.is-empty .ts-arrow,
 .ts-view.is-static .ts-arrow{display:none}
 
@@ -3407,7 +3411,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ts-tab{padding:6px 11px;font-size:13.5px}
   .ts-more{margin-left:auto}
   .ts-view{margin-top:18px}
-  .ts-view{padding:0 16px}
+  .ts-view{--ts-gutter:16px}
   .ts-track{gap:12px;padding:2px 0 8px}
   .ts-item{flex:0 0 clamp(190px,62vw,230px)}
   .ts-arrow{display:none}
