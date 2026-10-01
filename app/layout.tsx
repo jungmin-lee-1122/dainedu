@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LegalModal from "./LegalModal";
 
 export const metadata: Metadata = {
   title: "다인교육 동탄점",
@@ -41,7 +42,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Noto+Serif+KR:wght@600;700;900&display=swap"
         />
       </head>
-      <body className="dn-page">{children}</body>
+      <body className="dn-page">
+        {children}
+        <LegalModal />
+      </body>
     </html>
   );
 }

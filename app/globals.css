@@ -3584,3 +3584,154 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .wp-row{grid-template-columns:1fr}
   .wp-close{right:10px;top:10px;width:32px;height:32px;font-size:20px}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   56) 이용약관 · 개인정보 처리방침 팝업  (app/LegalModal.tsx)
+   ═══════════════════════════════════════════════════════════ */
+.lg-dim{
+  position:fixed;inset:0;z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(12px,3vw,40px);
+  background:rgba(10,16,32,.62);backdrop-filter:blur(6px);
+  animation:lgFade .22s ease both;
+  font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  letter-spacing:-.01em
+}
+@keyframes lgFade{from{opacity:0}to{opacity:1}}
+
+.lg-box{
+  position:relative;display:flex;flex-direction:column;
+  width:100%;max-width:880px;
+  max-height:88vh;max-height:88dvh;
+  background:#fff;border-radius:22px;overflow:hidden;
+  box-shadow:0 40px 100px -30px rgba(8,13,26,.6),0 0 0 1px rgba(192,153,79,.18);
+  animation:lgIn .34s cubic-bezier(.22,.7,.3,1) both
+}
+@keyframes lgIn{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:none}}
+
+/* ── 헤더 ── */
+.lg-head{
+  position:relative;flex:0 0 auto;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:26px clamp(20px,3.4vw,38px) 22px;
+  background:linear-gradient(150deg,#1B2A4C 0%,var(--dn-navy) 52%,#16233E 100%);
+  color:#fff
+}
+.lg-head::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(192,153,79,.55) 20%,var(--dn-gold-soft) 50%,rgba(192,153,79,.55) 80%,transparent)
+}
+.lg-eyebrow{
+  margin:0 0 9px;font-size:10.5px;font-weight:700;letter-spacing:.34em;
+  color:var(--dn-gold-soft);text-transform:uppercase
+}
+.lg-title{
+  margin:0;font-family:"Noto Serif KR",serif;font-weight:700;
+  font-size:clamp(21px,2.6vw,27px);letter-spacing:-.02em;color:#fff
+}
+.lg-x{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;margin-top:2px;
+  border:1px solid rgba(255,255,255,.22);border-radius:50%;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.82);
+  cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease
+}
+.lg-x:hover{background:var(--dn-gold);border-color:transparent;color:var(--dn-deep);transform:rotate(90deg)}
+.lg-x:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(217,190,140,.45)}
+
+/* ── 본문 ── */
+.lg-body{
+  flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;
+  padding:clamp(22px,3vw,34px) clamp(20px,3.4vw,38px) clamp(30px,4vw,44px);
+  font-size:14px;line-height:1.78;color:var(--dn-ink)
+}
+.lg-body::-webkit-scrollbar{width:10px}
+.lg-body::-webkit-scrollbar-thumb{background:#DCD6C8;border:3px solid #fff;border-radius:999px}
+.lg-body::-webkit-scrollbar-thumb:hover{background:var(--dn-gold-soft)}
+
+.lg-lead{
+  margin:0 0 6px;padding:18px 20px;
+  background:linear-gradient(150deg,#FAF8F3,#F4F1E8);
+  border:1px solid var(--dn-line);border-left:3px solid var(--dn-gold);
+  border-radius:4px 14px 14px 4px;
+  font-size:13.5px;line-height:1.75;color:var(--dn-ink-soft)
+}
+
+.lg-art{margin-top:32px}
+.lg-art-t{
+  display:flex;align-items:baseline;gap:10px;
+  margin:0 0 12px;padding-bottom:11px;
+  border-bottom:1px solid var(--dn-line);
+  font-size:16px;font-weight:700;color:var(--dn-navy);letter-spacing:-.02em
+}
+.lg-art-no{
+  flex:0 0 auto;font-family:"Noto Serif KR",serif;font-weight:700;
+  font-size:12px;letter-spacing:.06em;color:var(--dn-gold)
+}
+.lg-art-b>p{margin:0 0 7px}
+.lg-art-b>p:last-child{margin-bottom:0}
+
+.lg-list{margin:10px 0 0;padding:0;list-style:none}
+.lg-list li{
+  position:relative;padding:0 0 0 17px;margin-bottom:5px;
+  font-size:13.5px;color:var(--dn-ink-soft)
+}
+.lg-list li::before{
+  content:"";position:absolute;left:3px;top:.72em;
+  width:4px;height:4px;border-radius:50%;background:var(--dn-gold-soft)
+}
+
+/* ── 표 ── */
+.lg-table-wrap{margin:16px 0 0;overflow-x:auto;border-radius:12px;border:1px solid var(--dn-line)}
+.lg-table{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.6}
+.lg-table th{
+  padding:12px 13px;text-align:left;font-weight:700;white-space:nowrap;
+  background:#F4F1E8;color:var(--dn-navy);
+  border-bottom:1px solid var(--dn-line);border-right:1px solid var(--dn-line)
+}
+.lg-table td{
+  padding:12px 13px;vertical-align:top;color:var(--dn-ink-soft);
+  border-bottom:1px solid #EFEBE0;border-right:1px solid #EFEBE0
+}
+.lg-table th:last-child,.lg-table td:last-child{border-right:0}
+.lg-table tbody tr:last-child td{border-bottom:0}
+.lg-table td em{
+  display:block;margin-top:3px;font-style:normal;
+  font-size:11.5px;color:var(--dn-gold)
+}
+.lg-table-refund{min-width:560px}
+.lg-table-items{min-width:680px}
+
+.lg-note{margin:10px 0 14px;font-size:12px;color:#A29A8B;line-height:1.65}
+
+.lg-card{
+  margin-top:14px;padding:18px 20px;
+  background:#FAF8F3;border:1px solid var(--dn-line);border-radius:14px
+}
+.lg-card p{display:flex;gap:14px;margin:0 0 7px;font-size:13.5px}
+.lg-card p:last-child{margin-bottom:0}
+.lg-card b{flex:0 0 108px;font-weight:700;color:var(--dn-navy)}
+.lg-card span{color:var(--dn-ink-soft)}
+
+.lg-foot{
+  margin:38px 0 0;padding-top:18px;
+  border-top:1px solid var(--dn-line);
+  font-size:12.5px;color:#A29A8B;text-align:center;letter-spacing:.01em
+}
+
+@media(max-width:640px){
+  .lg-dim{padding:0}
+  .lg-box{
+    max-width:none;border-radius:18px 18px 0 0;
+    max-height:92vh;max-height:92dvh;margin-top:auto;
+    animation:lgUp .3s cubic-bezier(.22,.7,.3,1) both
+  }
+  @keyframes lgUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  .lg-head{padding:20px 18px 17px}
+  .lg-x{width:36px;height:36px}
+  .lg-body{padding:20px 18px calc(28px + env(safe-area-inset-bottom));font-size:13.5px}
+  .lg-art{margin-top:26px}
+  .lg-art-t{font-size:15px}
+  .lg-card p{flex-direction:column;gap:2px}
+  .lg-card b{flex:none}
+}
