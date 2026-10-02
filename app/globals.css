@@ -2733,6 +2733,13 @@ a.ev-book-btn{text-decoration:none}
 .td-profile h2 small{font-size:.46em;font-weight:700;color:#8A8F98}
 .td-slogan{margin:14px 0 0;font-family:"Noto Serif KR",serif;font-size:clamp(18px,2vw,23px);font-weight:700;
   line-height:1.5;color:var(--dn-navy);word-break:keep-all}
+/* 출신학교 */
+.td-school{display:flex;align-items:center;gap:9px;margin:12px 0 0;
+  font-size:14.5px;font-weight:600;color:var(--dn-ink)}
+.td-school em{flex:0 0 auto;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  color:var(--dn-gold);padding:3px 8px;border:1px solid rgba(192,153,79,.45);border-radius:999px}
+@media(max-width:900px){.td-school{font-size:13.5px;gap:7px}}
+
 .td-rule{width:42px;height:2px;margin:18px 0;background:var(--dn-gold)}
 .td-career{margin:0;padding:0;list-style:none}.td-career li{position:relative;padding-left:13px;font-size:13px;line-height:1.9;color:#5F6672}
 .td-career li::before{content:"·";position:absolute;left:0;font-weight:900;color:var(--dn-gold)}

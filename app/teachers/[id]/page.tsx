@@ -101,6 +101,12 @@ export default async function TeacherDetailPage({
               </div>
               <p className="td-subject">{current.subject}</p>
               <h2>{current.name} <small>선생님</small></h2>
+              {current.school && (
+                <p className="td-school">
+                  <em>출신</em>
+                  {current.school}
+                </p>
+              )}
               <p className="td-slogan">{current.copy}</p>
               <div className="td-rule" aria-hidden="true" />
               <ul className="td-career">
