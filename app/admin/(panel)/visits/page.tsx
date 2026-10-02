@@ -4,6 +4,7 @@
 //  IP 주소는 저장하지 않습니다. 도시·지역만 남깁니다.
 // ═══════════════════════════════════════════════════════════
 import { listVisits, visitSummary, hasDb } from "@/lib/visits";
+import { koCity, koRegion } from "@/lib/koreanPlace";
 
 export const dynamic = "force-dynamic";
 
@@ -31,8 +32,9 @@ function place(city: string, region: string, country: string) {
   const nation = COUNTRY[country] || country;
   // 도시를 모르면 나라만이라도 보여줍니다.
   if (!city && !region) return nation || "알 수 없음";
+  // 해외는 한글로 바꾸지 않고 영문 그대로 둡니다.
   if (country && country !== "KR") return [city, nation].filter(Boolean).join(" · ");
-  return [region, city].filter(Boolean).join(" ");
+  return [koRegion(region), koCity(city)].filter(Boolean).join(" ");
 }
 
 export default async function VisitsPage() {
@@ -69,9 +71,9 @@ export default async function VisitsPage() {
           ) : (
             <ul className="vs-rank">
               {sum.topCities.map((c, i) => (
-                <li key={c.name}>
+                <li key={c.name + c.region}>
                   <i>{i + 1}</i>
-                  <b>{c.name}</b>
+                  <b>{[koRegion(c.region), koCity(c.name)].filter(Boolean).join(" ") || c.name}</b>
                   <span>{c.count.toLocaleString()}건</span>
                 </li>
               ))}
@@ -98,10 +100,11 @@ export default async function VisitsPage() {
       </div>
 
       <p className="ad-notice">
-        현재 도시까지는 알 수 없고 <b>나라 단위</b>로만 기록됩니다. 홈페이지 앞단의 중계 서버가 도시 정보를
-        넘겨주지 않기 때문입니다. 설정이 보완되면 시·구까지 자동으로 표시됩니다.{" "}
+        지역은 접속 IP로 <b>추정</b>한 값입니다. 유선 인터넷은 시·군까지 대체로 맞지만, 휴대폰 데이터로
+        접속하면 통신사 장비 위치가 잡혀 실제와 다를 수 있습니다. 한 건씩 보기보다 <b>전체 흐름</b>으로
+        봐주세요.{" "}
         <a href="/api/visit/debug" target="_blank" rel="noopener noreferrer">
-          지역 정보 진단 열기 ↗
+          지역 정보 진단 ↗
         </a>
       </p>
 

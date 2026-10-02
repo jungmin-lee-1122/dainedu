@@ -100,7 +100,7 @@ export type VisitSummary = {
   today: number;
   week: number;
   total: number;
-  topCities: { name: string; count: number }[];
+  topCities: { name: string; region: string; count: number }[];
   topPaths: { name: string; count: number }[];
 };
 
@@ -121,8 +121,9 @@ export async function visitSummary(): Promise<VisitSummary> {
     ` as Promise<Record<string, unknown>[]>,
     q`
       SELECT COALESCE(NULLIF(city, ''), NULLIF(country, ''), '(알 수 없음)') AS name,
+             COALESCE(NULLIF(region, ''), '') AS region,
              COUNT(*) AS count
-      FROM visits GROUP BY 1 ORDER BY count DESC LIMIT 10
+      FROM visits GROUP BY 1, 2 ORDER BY count DESC LIMIT 10
     ` as Promise<Record<string, unknown>[]>,
     q`
       SELECT path AS name, COUNT(*) AS count
@@ -135,7 +136,11 @@ export async function visitSummary(): Promise<VisitSummary> {
     today: Number(c.today ?? 0),
     week: Number(c.week ?? 0),
     total: Number(c.total ?? 0),
-    topCities: cities.map((r) => ({ name: String(r.name), count: Number(r.count) })),
+    topCities: cities.map((r) => ({
+      name: String(r.name),
+      region: String(r.region ?? ""),
+      count: Number(r.count),
+    })),
     topPaths: paths.map((r) => ({ name: String(r.name), count: Number(r.count) })),
   };
 }
