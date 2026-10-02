@@ -8,6 +8,7 @@ import PageBand from "../../PageBand";
 import { quickMenuMarkup } from "../../quickMenu";
 import { noticeScript } from "../noticeScript";
 import { findNotice, getAllNotices } from "@/lib/content";
+import { photo, photoSet } from "@/lib/img";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -79,12 +80,14 @@ export default async function NoticeViewPage({
                     rel={notice.imageHref.startsWith("http") ? "noopener noreferrer" : undefined}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={notice.image} alt={notice.title} />
+                    <img src={photo(notice.image, 1000)} srcSet={photoSet(notice.image, 1000)}
+                         alt={notice.title} loading="lazy" decoding="async" />
                     <span className="nt-figure-go" aria-hidden="true">자세히 보기 ↗</span>
                   </a>
                 ) : (
                   /* eslint-disable-next-line @next/next/no-img-element */
-                  <img src={notice.image} alt={notice.title} />
+                  <img src={photo(notice.image, 1000)} srcSet={photoSet(notice.image, 1000)}
+                       alt={notice.title} loading="lazy" decoding="async" />
                 )}
               </figure>
             )}

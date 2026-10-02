@@ -9,6 +9,7 @@ import { teachersScript } from "../teachers/teachersScript";
 import { subjects } from "../teachers/teachersData";
 import { scheduleTabs } from "./scheduleData";
 import { getTeachers, getCourses } from "@/lib/content";
+import { photo, photoSet } from "@/lib/img";
 
 export const dynamic = "force-dynamic";
 
@@ -127,7 +128,8 @@ export default async function SchedulePage({
                             <Link className="sc-teacher" href={`/teachers/${course.teacherId}`}>
                               <span>
                                 {teacher?.revealed && teacher.photo
-                                  ? <img src={teacher.photo} alt="" />
+                                  ? <img src={photo(teacher.photo, 120)} srcSet={photoSet(teacher.photo, 120)}
+                                         alt="" loading="lazy" decoding="async" />
                                   : <b aria-hidden="true">?</b>}
                               </span>
                               {teacher?.name ?? "강사 공개 예정"}
@@ -157,7 +159,7 @@ export default async function SchedulePage({
                       <Link href={`/schedule/${course.id}`}>
                         <div className="sc-mobile-top">
                           <span className="sc-mobile-face">
-                            {teacher?.revealed && teacher.photo ? <img src={teacher.photo} alt="" /> : <b>?</b>}
+                            {teacher?.revealed && teacher.photo ? <img src={photo(teacher.photo, 120)} srcSet={photoSet(teacher.photo, 120)} alt="" loading="lazy" decoding="async" /> : <b>?</b>}
                           </span>
                           <span>{teacher?.name ?? "강사 공개 예정"}</span>
                           <div>{course.tags.map((tag) => <i key={tag}>{tag}</i>)}</div>

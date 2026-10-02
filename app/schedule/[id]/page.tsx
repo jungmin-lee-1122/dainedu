@@ -8,6 +8,7 @@ import { quickMenuMarkup } from "../../quickMenu";
 import { teachersScript } from "../../teachers/teachersScript";
 import { scheduleTabs } from "../scheduleData";
 import { getTeachers, getCourses } from "@/lib/content";
+import { photo, photoSet } from "@/lib/img";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -62,7 +63,8 @@ export default async function CourseDetailPage({
           <article className="sc-detail-card">
             <div className="sc-detail-teacher">
               {teacher?.revealed && teacher.photo ? (
-                <img src={teacher.photo} alt={`${teacher.name} 선생님`} />
+                <img src={photo(teacher.photo, 220)} srcSet={photoSet(teacher.photo, 220)}
+                     alt={`${teacher.name} 선생님`} loading="lazy" decoding="async" />
               ) : (
                 <div className="sc-detail-placeholder">
                   <b>?</b>

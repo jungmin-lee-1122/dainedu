@@ -9,6 +9,7 @@ import { quickMenuMarkup } from "../quickMenu";
 import { subjects } from "./teachersData";
 import { getTeachers } from "@/lib/content";
 import { shortSchool } from "@/lib/schoolLabel";
+import { photo, photoSet } from "@/lib/img";
 
 export const dynamic = "force-dynamic";
 
@@ -87,7 +88,13 @@ export default async function TeachersPage({
 
                     <div className="tc-card-profile" aria-hidden={!teacher.revealed}>
                       {teacher.revealed && teacher.photo ? (
-                        <img src={teacher.photo} alt={`${teacher.name} 선생님`} />
+                        <img
+                          src={photo(teacher.photo, 300)}
+                          srcSet={photoSet(teacher.photo, 300)}
+                          alt={`${teacher.name} 선생님`}
+                          loading="lazy"
+                          decoding="async"
+                        />
                       ) : (
                         <span>?</span>
                       )}
@@ -132,7 +139,7 @@ export default async function TeachersPage({
           <p className="tc-eyebrow">Class Schedule</p>
           <h2 className="tc-h2">선생님의 수업이 궁금하다면</h2>
           <p className="tc-cta-desc">모집 대상과 과목별로 현재 편성된 강좌를 확인하세요.</p>
-          <a className="tc-cta-btn" href="/schedule">단과시간표 확인하기</a>
+          <Link className="tc-cta-btn" href="/schedule">단과시간표 확인하기</Link>
         </div>
       </section>
 

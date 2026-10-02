@@ -9,6 +9,7 @@ import Link from "next/link";
 import type { Teacher } from "./teachers/teachersData";
 import { subjects } from "./teachers/teachersData";
 import { shortSchool } from "@/lib/schoolLabel";
+import { photo, photoSet } from "@/lib/img";
 
 export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
   if (!teachers.length) return null;
@@ -64,7 +65,13 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
                 <div className="tc-card-profile" aria-hidden={!t.revealed}>
                   {t.revealed && t.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={t.photo} alt={`${t.name} 선생님`} />
+                    <img
+                      src={photo(t.photo, 300)}
+                      srcSet={photoSet(t.photo, 300)}
+                      alt={`${t.name} 선생님`}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   ) : (
                     <span>?</span>
                   )}

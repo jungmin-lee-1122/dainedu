@@ -8,6 +8,7 @@ import { quickMenuMarkup } from "../../quickMenu";
 import { teachersScript } from "../teachersScript";
 import { subjects } from "../teachersData";
 import { getTeachers, getCourses } from "@/lib/content";
+import { photo, photoSet } from "@/lib/img";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -89,7 +90,8 @@ export default async function TeacherDetailPage({
               >
                 <span className="td-mini-face">
                   {teacher.revealed && teacher.photo
-                    ? <img src={teacher.photo} alt="" />
+                    ? <img src={photo(teacher.photo, 96)} srcSet={photoSet(teacher.photo, 96)}
+                           alt="" loading="lazy" decoding="async" />
                     : <b aria-hidden="true">?</b>}
                 </span>
                 <span>{teacher.name}</span>
@@ -120,7 +122,8 @@ export default async function TeacherDetailPage({
             <div className="td-profile-photo">
               <span className="td-photo-ring" aria-hidden="true" />
               {current.revealed && current.photo ? (
-                <img src={current.photo} alt={`${current.name} 선생님`} />
+                <img src={photo(current.photo, 440)} srcSet={photoSet(current.photo, 440)}
+                     alt={`${current.name} 선생님`} decoding="async" />
               ) : (
                 <div className="td-profile-placeholder">
                   <b>?</b>
@@ -151,7 +154,9 @@ export default async function TeacherDetailPage({
           <div className="td-tab-panel">
             {activeView === "intro" ? (
               current.introPoster ? (
-                <img className="td-intro-poster" src={current.introPoster} alt={`${current.name} 수업 소개`} />
+                <img className="td-intro-poster" src={photo(current.introPoster, 1000)}
+                     srcSet={photoSet(current.introPoster, 1000)}
+                     alt={`${current.name} 수업 소개`} loading="lazy" decoding="async" />
               ) : (
                 <div className="td-ready">
                   <b>수업 소개 준비 중</b>

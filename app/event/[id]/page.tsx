@@ -8,6 +8,7 @@ import { quickMenuMarkup } from "../../quickMenu";
 import { eventViewScript } from "../eventScript";
 import { reserveModalMarkup } from "../reserveModal";
 import { findEventById } from "@/lib/content";
+import { photo, photoSet } from "@/lib/img";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -116,7 +117,8 @@ export default async function EventViewPage({
             {ev.poster && (
               <figure className="ev-poster">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ev.poster} alt={`${ev.title} 안내 포스터`} />
+                <img src={photo(ev.poster, 1000)} srcSet={photoSet(ev.poster, 1000)}
+                     alt={`${ev.title} 안내 포스터`} loading="lazy" decoding="async" />
               </figure>
             )}
 
