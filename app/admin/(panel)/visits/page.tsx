@@ -21,9 +21,17 @@ function when(iso: string) {
   }).format(d);
 }
 
+const COUNTRY: Record<string, string> = {
+  KR: "대한민국", JP: "일본", US: "미국", CN: "중국", TW: "대만",
+  VN: "베트남", SG: "싱가포르", HK: "홍콩", GB: "영국", CA: "캐나다",
+  AU: "호주", DE: "독일", FR: "프랑스", PH: "필리핀", TH: "태국",
+};
+
 function place(city: string, region: string, country: string) {
-  if (!city && !region) return country === "KR" || !country ? "알 수 없음" : country;
-  if (country && country !== "KR") return [city, country].filter(Boolean).join(" · ");
+  const nation = COUNTRY[country] || country;
+  // 도시를 모르면 나라만이라도 보여줍니다.
+  if (!city && !region) return nation || "알 수 없음";
+  if (country && country !== "KR") return [city, nation].filter(Boolean).join(" · ");
   return [region, city].filter(Boolean).join(" ");
 }
 
@@ -89,15 +97,13 @@ export default async function VisitsPage() {
         </section>
       </div>
 
-      {sum.total > 0 && sum.topCities.every((c) => c.name === "(알 수 없음)" || /^(도쿄|Tokyo|Osaka)/i.test(c.name)) && (
-        <p className="ad-notice">
-          지역이 &lsquo;도쿄&rsquo; 또는 &lsquo;알 수 없음&rsquo;으로만 나오면, 방문자가 아니라 중계 서버의
-          위치가 찍히고 있는 것입니다.{" "}
-          <a href="/api/visit/debug" target="_blank" rel="noopener noreferrer">
-            지역 정보 진단 열기 ↗
-          </a>
-        </p>
-      )}
+      <p className="ad-notice">
+        현재 도시까지는 알 수 없고 <b>나라 단위</b>로만 기록됩니다. 홈페이지 앞단의 중계 서버가 도시 정보를
+        넘겨주지 않기 때문입니다. 설정이 보완되면 시·구까지 자동으로 표시됩니다.{" "}
+        <a href="/api/visit/debug" target="_blank" rel="noopener noreferrer">
+          지역 정보 진단 열기 ↗
+        </a>
+      </p>
 
       <h2 className="ad-h2">최근 방문</h2>
       {rows.length === 0 ? (

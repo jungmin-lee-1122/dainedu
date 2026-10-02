@@ -120,7 +120,8 @@ export async function visitSummary(): Promise<VisitSummary> {
       FROM visits
     ` as Promise<Record<string, unknown>[]>,
     q`
-      SELECT COALESCE(NULLIF(city, ''), '(알 수 없음)') AS name, COUNT(*) AS count
+      SELECT COALESCE(NULLIF(city, ''), NULLIF(country, ''), '(알 수 없음)') AS name,
+             COUNT(*) AS count
       FROM visits GROUP BY 1 ORDER BY count DESC LIMIT 10
     ` as Promise<Record<string, unknown>[]>,
     q`
