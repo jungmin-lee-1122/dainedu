@@ -12,6 +12,9 @@ import { getTeachers, getCourses } from "@/lib/content";
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
 
+/** 수업 소개 · 개설 강좌 탭 — 내용이 준비되면 true 로 바꾸세요. */
+const SHOW_TABS = false;
+
 export async function generateMetadata({
   params,
 }: {
@@ -127,13 +130,14 @@ export default async function TeacherDetailPage({
             </div>
           </article>
 
+          {SHOW_TABS && (<>
           <div className="td-tabs" role="navigation" aria-label="강사 상세 메뉴">
             <Link
               className={activeView === "intro" ? "is-on" : ""}
               href={`/teachers/${current.id}?subject=${encodeURIComponent(activeSubject)}&view=intro`}
               scroll={false}
             >
-              강사 소개
+              수업 소개
             </Link>
             <Link
               className={activeView === "courses" ? "is-on" : ""}
@@ -147,10 +151,10 @@ export default async function TeacherDetailPage({
           <div className="td-tab-panel">
             {activeView === "intro" ? (
               current.introPoster ? (
-                <img className="td-intro-poster" src={current.introPoster} alt={`${current.name} 강사 소개`} />
+                <img className="td-intro-poster" src={current.introPoster} alt={`${current.name} 수업 소개`} />
               ) : (
                 <div className="td-ready">
-                  <b>강사 소개 준비 중</b>
+                  <b>수업 소개 준비 중</b>
                   <p>상세 프로필과 소개 자료는 강사진 공개 일정에 맞춰 업데이트됩니다.</p>
                 </div>
               )
@@ -175,6 +179,7 @@ export default async function TeacherDetailPage({
               </div>
             )}
           </div>
+          </>)}
         </div>
       </section>
 
