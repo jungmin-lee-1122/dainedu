@@ -11,6 +11,15 @@ import { readGeo } from "@/lib/geo";
 
 export const dynamic = "force-dynamic";
 
+/** 검색 로봇·크롤러인지 (구글·네이버·다음·빙 등) */
+const BOT =
+  /bot|crawler|crawl|spider|slurp|archiver|facebookexternalhit|lighthouse|headless|preview|monitor|uptime|curl|wget|python-requests|axios|node-fetch|yeti|daum|naver|googleother|adsbot|mediapartners|bingpreview|petalbot|semrush|ahrefs|mj12/i;
+
+function isBot(ua: string) {
+  if (!ua) return true; // 브라우저라면 보통 값이 있습니다
+  return BOT.test(ua);
+}
+
 /** 헤더 값은 한글 도시명이 퍼센트 인코딩되어 올 수 있어 되돌립니다. */
 function decode(v: string | null) {
   if (!v) return "";
@@ -34,6 +43,10 @@ export async function POST(request: Request) {
   if (path.startsWith("/admin")) return NextResponse.json({ ok: true, skipped: true });
 
   const ua = h.get("user-agent") ?? "";
+
+  // 검색 로봇·크롤러는 방문자가 아니므로 기록하지 않습니다.
+  if (isBot(ua)) return NextResponse.json({ ok: true, skipped: "bot" });
+
   const device = /Mobi|Android|iPhone|iPad|iPod/i.test(ua) ? "모바일" : "PC";
 
   // 우리 사이트 안에서 이동한 경우는 유입 경로로 치지 않습니다.
