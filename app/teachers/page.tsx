@@ -8,6 +8,7 @@ import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { subjects } from "./teachersData";
 import { getTeachers } from "@/lib/content";
+import { shortSchool } from "@/lib/schoolLabel";
 
 export const dynamic = "force-dynamic";
 
@@ -67,10 +68,6 @@ export default async function TeachersPage({
             })}
           </nav>
 
-          <div className="tc-result-head">
-            <p><b>{activeSubject}</b> 강사진</p>
-            <span>총 {filtered.length}명</span>
-          </div>
 
           {filtered.length > 0 ? (
             <ul className="tc-grid">
@@ -86,7 +83,7 @@ export default async function TeachersPage({
                         {teacher.tags.map((tag) => <span key={tag}>{tag}</span>)}
                       </div>
                       {teacher.school
-                        ? <span className="tc-card-school">{teacher.school}</span>
+                        ? <span className="tc-card-school">{shortSchool(teacher.school)}</span>
                         : <span className="tc-open">{teacher.openAt}</span>}
                     </div>
                     <p className="tc-card-subject">{teacher.subject}</p>

@@ -8,6 +8,7 @@
 import Link from "next/link";
 import type { Teacher } from "./teachers/teachersData";
 import { subjects } from "./teachers/teachersData";
+import { shortSchool } from "@/lib/schoolLabel";
 
 export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
   if (!teachers.length) return null;
@@ -54,7 +55,7 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
                     {t.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
                   {t.school
-                    ? <span className="tc-card-school">{t.school}</span>
+                    ? <span className="tc-card-school">{shortSchool(t.school)}</span>
                     : <span className="tc-open">{t.openAt}</span>}
                 </div>
                 <p className="tc-card-subject">{t.subject}</p>
