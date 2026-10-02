@@ -3761,3 +3761,40 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .lg-card p{flex-direction:column;gap:2px}
   .lg-card b{flex:none}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   57) 관리자 — 방문 기록 (/admin/visits)
+   ═══════════════════════════════════════════════════════════ */
+.vs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:4px 0 30px}
+.vs-stat{padding:18px 20px;border:1px solid var(--dn-line);border-radius:14px;background:#fff}
+.vs-stat em{display:block;font-style:normal;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--dn-ink-soft)}
+.vs-stat b{font-size:28px;font-weight:800;color:var(--dn-navy);letter-spacing:-.02em}
+.vs-stat span{margin-left:4px;font-size:13px;color:var(--dn-ink-soft)}
+
+.vs-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:12px}
+.vs-col{min-width:0}
+.vs-rank{margin:0;padding:0;list-style:none;border:1px solid var(--dn-line);border-radius:14px;background:#fff;overflow:hidden}
+.vs-rank li{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid #F0ECE2;font-size:13.5px}
+.vs-rank li:last-child{border-bottom:0}
+.vs-rank i{flex:0 0 20px;font-style:normal;font-size:11.5px;font-weight:800;color:var(--dn-gold);text-align:center}
+.vs-rank b{flex:1 1 auto;min-width:0;font-weight:600;color:var(--dn-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vs-rank span{flex:0 0 auto;font-size:12.5px;color:var(--dn-ink-soft)}
+
+.vs-table-wrap{overflow-x:auto;border:1px solid var(--dn-line);border-radius:14px;background:#fff}
+.vs-table{width:100%;min-width:680px;border-collapse:collapse;font-size:13px}
+.vs-table th{
+  padding:12px 14px;text-align:left;white-space:nowrap;font-weight:700;
+  background:#FAF8F3;color:var(--dn-navy);border-bottom:1px solid var(--dn-line)}
+.vs-table td{padding:11px 14px;border-bottom:1px solid #F3F0E8;color:var(--dn-ink-soft);vertical-align:middle}
+.vs-table tbody tr:last-child td{border-bottom:0}
+.vs-table td b{font-weight:600;color:var(--dn-ink)}
+.vs-when{white-space:nowrap;color:var(--dn-ink)}
+.vs-path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--dn-navy)}
+.vs-ref{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+@media(max-width:900px){
+  .vs-stats{grid-template-columns:1fr;gap:10px}
+  .vs-stat{padding:14px 16px}
+  .vs-stat b{font-size:24px}
+  .vs-cols{grid-template-columns:1fr;gap:16px}
+}

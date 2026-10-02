@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import LegalModal from "./LegalModal";
 import { Analytics } from "@vercel/analytics/next";
+import VisitLogger from "./VisitLogger";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "다인교육 동탄점",
@@ -48,6 +50,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LegalModal />
         {/* Vercel 방문자 통계 */}
         <Analytics />
+        {/* 관리자용 방문 기록 (도시 · 페이지) */}
+        <Suspense fallback={null}>
+          <VisitLogger />
+        </Suspense>
       </body>
     </html>
   );
