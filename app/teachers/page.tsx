@@ -42,11 +42,7 @@ export default async function TeachersPage({
           "강사별 프로필과 개설 강좌를 한곳에서 확인하세요.",
         ]}
         crumb={[{ label: "강사진 소개" }]}
-      >
-        <span className="pb-chip">
-          전체 <b>{teachers.length}</b>명
-        </span>
-      </PageBand>
+      />
 
       <section className="tc-sec">
         <div className="tc-wrap">
