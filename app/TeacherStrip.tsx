@@ -53,11 +53,12 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
                   <div className="tc-tags">
                     {t.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
-                  <span className="tc-open">{t.openAt}</span>
+                  {t.school
+                    ? <span className="tc-card-school">{t.school}</span>
+                    : <span className="tc-open">{t.openAt}</span>}
                 </div>
                 <p className="tc-card-subject">{t.subject}</p>
                 <h3 className="tc-card-name">{t.name}</h3>
-                {t.school && <p className="tc-card-school">{t.school}</p>}
 
                 <div className="tc-card-profile" aria-hidden={!t.revealed}>
                   {t.revealed && t.photo ? (
