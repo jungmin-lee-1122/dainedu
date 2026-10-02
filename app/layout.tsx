@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import LegalModal from "./LegalModal";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "다인교육 동탄점",
@@ -45,6 +46,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="dn-page">
         {children}
         <LegalModal />
+        {/* Vercel 방문자 통계 */}
+        <Analytics />
       </body>
     </html>
   );
