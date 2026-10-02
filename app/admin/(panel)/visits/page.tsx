@@ -89,6 +89,16 @@ export default async function VisitsPage() {
         </section>
       </div>
 
+      {sum.total > 0 && sum.topCities.every((c) => c.name === "(알 수 없음)" || /^(도쿄|Tokyo|Osaka)/i.test(c.name)) && (
+        <p className="ad-notice">
+          지역이 &lsquo;도쿄&rsquo; 또는 &lsquo;알 수 없음&rsquo;으로만 나오면, 방문자가 아니라 중계 서버의
+          위치가 찍히고 있는 것입니다.{" "}
+          <a href="/api/visit/debug" target="_blank" rel="noopener noreferrer">
+            지역 정보 진단 열기 ↗
+          </a>
+        </p>
+      )}
+
       <h2 className="ad-h2">최근 방문</h2>
       {rows.length === 0 ? (
         <p className="ad-empty">

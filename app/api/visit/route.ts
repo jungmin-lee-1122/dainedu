@@ -7,6 +7,7 @@
 // ═══════════════════════════════════════════════════════════
 import { NextResponse } from "next/server";
 import { logVisit } from "@/lib/visits";
+import { readGeo } from "@/lib/geo";
 
 export const dynamic = "force-dynamic";
 
@@ -44,11 +45,13 @@ export async function POST(request: Request) {
     /* 주소 형식이 아니면 그대로 둡니다 */
   }
 
+  const geo = readGeo(h);
+
   await logVisit({
     path,
-    city: decode(h.get("x-vercel-ip-city")),
-    region: decode(h.get("x-vercel-ip-country-region")),
-    country: decode(h.get("x-vercel-ip-country")),
+    city: geo.city,
+    region: geo.region,
+    country: geo.country,
     device,
     referrer,
   }).catch(() => {
