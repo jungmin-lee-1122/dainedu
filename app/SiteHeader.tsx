@@ -76,7 +76,6 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
               <a href="/greeting">인사말</a>
               <a href="/space">시설 안내</a>
               <a href="/about/location">오시는 길</a>
-              <a href="/#system">운영시스템</a>
             </div>
           </li>
 
@@ -146,7 +145,6 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             <a href={`${base}#notice`}>학원생활</a>
             <div className="dn-gnb-sub">
               <a href="/notices">공지사항</a>
-              <a href="/event">이벤트/설명회</a>
               <a href="/consult">상담문의</a>
             </div>
           </li>
