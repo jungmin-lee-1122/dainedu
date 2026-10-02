@@ -57,6 +57,7 @@ export default function TeacherStrip({ teachers }: { teachers: Teacher[] }) {
                 </div>
                 <p className="tc-card-subject">{t.subject}</p>
                 <h3 className="tc-card-name">{t.name}</h3>
+                {t.school && <p className="tc-card-school">{t.school}</p>}
 
                 <div className="tc-card-profile" aria-hidden={!t.revealed}>
                   {t.revealed && t.photo ? (

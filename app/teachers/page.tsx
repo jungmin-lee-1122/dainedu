@@ -89,6 +89,7 @@ export default async function TeachersPage({
                     </div>
                     <p className="tc-card-subject">{teacher.subject}</p>
                     <h2 className="tc-card-name">{teacher.name}</h2>
+                    {teacher.school && <p className="tc-card-school">{teacher.school}</p>}
 
                     <div className="tc-card-profile" aria-hidden={!teacher.revealed}>
                       {teacher.revealed && teacher.photo ? (
