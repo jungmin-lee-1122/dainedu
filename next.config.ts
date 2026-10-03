@@ -7,7 +7,8 @@ const nextConfig: NextConfig = {
   // 원본은 1440px PNG 라도, 화면에 필요한 크기로 줄이고 webp 로 바꿔 내보냅니다.
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
+      { protocol: "https", hostname: "2o7ptnu7htga8hug.public.blob.vercel-storage.com" },
+      { protocol: "https", hostname: "**.public.blob.vercel-storage.com" },
     ],
     formats: ["image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
