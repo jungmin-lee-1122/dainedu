@@ -3430,8 +3430,21 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .ts-more{margin-left:auto}
   .ts-view{margin-top:18px}
   .ts-track{gap:12px;padding:2px 0 8px}
-  .ts-item{flex:0 0 clamp(190px,62vw,230px)}
+  /* 한 화면에 2장 남짓 보이도록 — 아이폰 393px 기준 약 2.3장 */
+  .ts-item{flex:0 0 clamp(140px,38vw,196px)}
   .ts-arrow{display:none}
+
+  /* 카드가 좁아진 만큼 내용도 함께 줄입니다 */
+  .ts-sec .tc-card .tc-card-top{padding:12px 12px 0;flex-wrap:wrap;gap:6px}
+  .ts-sec .tc-tags{gap:4px}
+  .ts-sec .tc-tags span{padding:3px 6px;font-size:9px;border-radius:3px}
+  .ts-sec .tc-card-subject{margin:12px 12px 2px;font-size:10.5px}
+  .ts-sec .tc-card-name{margin:0 12px;font-size:17px}
+  /* 출신학교는 태그 아래 줄로 내려 한 줄만 보여줍니다 */
+  .ts-sec .tc-card-school{
+    order:3;flex:1 0 100%;max-width:none;
+    text-align:left;font-size:9.5px;line-height:1.4;
+    -webkit-line-clamp:1;white-space:nowrap;text-overflow:ellipsis;display:block;overflow:hidden}
 }
 
 /* 51) 학년별 주당 수업 시수 */
