@@ -16,7 +16,7 @@ const naverMap = `https://map.naver.com/p/search/${encodeURIComponent(ROAD_ADDRE
 const kakaoMap = `https://map.kakao.com/link/search/${encodeURIComponent(ROAD_ADDRESS)}`;
 
 export const metadata: Metadata = {
-  title: "오시는 길 — 다인에듀 동탄점",
+  title: "오시는 길 — 다인교육 동탄점",
   description: `${PLACE_NAME} 오시는 길. ${LOT_ADDRESS}, ${ROAD_ADDRESS}. 대표전화 ${TEL}.`,
 };
 

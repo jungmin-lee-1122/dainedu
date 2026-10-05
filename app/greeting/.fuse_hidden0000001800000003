@@ -8,7 +8,7 @@ import { hero, letter, system, closing } from "./greetingData";
 import PillarArt from "./PillarArt";
 
 export const metadata: Metadata = {
-  title: "인사말 — 다인에듀 동탄점",
+  title: "인사말 — 다인교육 동탄점",
   description:
     "프리미엄 강의, 프리미엄 관리. 두 축이 완성하는 겨울. 다인아카데미는 2026년 10월 문을 엽니다.",
 };

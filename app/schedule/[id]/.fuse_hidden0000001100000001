@@ -21,7 +21,7 @@ export async function generateMetadata({
   const { id } = await params;
   const courses = await getCourses();
   const course = courses.find((item) => item.id === id);
-  return { title: course ? `${course.title} — 다인에듀 동탄점` : "단과시간표 — 다인에듀 동탄점" };
+  return { title: course ? `${course.title} — 다인교육 동탄점` : "단과시간표 — 다인교육 동탄점" };
 }
 
 function InfoRow({ label, value }: { label: string; value: string }) {

@@ -59,7 +59,7 @@ export default function Page() {
         lead: "",
         targets: ["학부모"],
         date: "",
-        place: "다인에듀 동탄점",
+        place: "다인교육 동탄점",
         placeDetail: "",
         capacity: "선착순 80석",
         body: "",

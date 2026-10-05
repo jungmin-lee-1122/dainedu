@@ -12,8 +12,8 @@ import { getAllNotices } from "@/lib/content";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "공지사항 — 다인에듀 동탄점",
-  description: "다인에듀 동탄점의 모집 안내, 학사 일정, 입시 소식을 전해드립니다.",
+  title: "공지사항 — 다인교육 동탄점",
+  description: "다인교육 동탄점의 모집 안내, 학사 일정, 입시 소식을 전해드립니다.",
 };
 
 export default async function NoticeListPage() {

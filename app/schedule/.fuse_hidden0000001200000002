@@ -17,8 +17,8 @@ export const dynamic = "force-dynamic";
 const SHOW_SCHEDULE = false;
 
 export const metadata: Metadata = {
-  title: "단과시간표 — 다인에듀 동탄점",
-  description: "모집 대상과 과목별로 다인에듀 동탄점의 단과 강좌를 확인하세요.",
+  title: "단과시간표 — 다인교육 동탄점",
+  description: "모집 대상과 과목별로 다인교육 동탄점의 단과 강좌를 확인하세요.",
 };
 
 export default async function SchedulePage({

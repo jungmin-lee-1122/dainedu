@@ -14,9 +14,9 @@ import { photo, photoSet } from "@/lib/img";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "강사진 소개 — 다인에듀 동탄점",
+  title: "강사진 소개 — 다인교육 동탄점",
   description:
-    "대치·목동·분당·평촌에서 검증된 다인에듀 동탄점의 과목별 강사진과 개설 강좌를 확인하세요.",
+    "대치·목동·분당·평촌에서 검증된 다인교육 동탄점의 과목별 강사진과 개설 강좌를 확인하세요.",
 };
 
 export default async function TeachersPage({

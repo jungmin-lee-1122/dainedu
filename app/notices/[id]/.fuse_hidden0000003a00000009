@@ -20,9 +20,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const n = await findNotice(id);
-  if (!n) return { title: "공지사항 — 다인에듀 동탄점" };
+  if (!n) return { title: "공지사항 — 다인교육 동탄점" };
   return {
-    title: `${n.title} — 다인에듀 동탄점`,
+    title: `${n.title} — 다인교육 동탄점`,
     description: n.content[0] ?? `${n.tag} · ${n.date}`,
   };
 }

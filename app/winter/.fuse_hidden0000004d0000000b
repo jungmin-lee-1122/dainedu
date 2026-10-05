@@ -48,7 +48,7 @@ import SiteFooter from "../SiteFooter";
 const CONSULT = "/consult";
 
 export const metadata: Metadata = {
-  title: "2027 윈터스쿨 — 다인에듀 동탄점",
+  title: "2027 윈터스쿨 — 다인교육 동탄점",
   description:
     "기준이 바뀌는 겨울, 준비도 바뀌어야 합니다. 2028 개편 입시를 준비하는 다인교육 2027 윈터스쿨 선착순 모집.",
 };

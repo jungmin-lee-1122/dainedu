@@ -20,9 +20,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const ev = await findEventById(id);
-  if (!ev) return { title: "이벤트 · 설명회 — 다인에듀 동탄점" };
+  if (!ev) return { title: "이벤트 · 설명회 — 다인교육 동탄점" };
   return {
-    title: `${ev.title} — 다인에듀 동탄점`,
+    title: `${ev.title} — 다인교육 동탄점`,
     description: `${ev.lead} · ${ev.date} · ${ev.place}`,
   };
 }
