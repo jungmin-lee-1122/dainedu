@@ -9,6 +9,7 @@ import { teachersScript } from "../teachersScript";
 import { subjects } from "../teachersData";
 import { getTeachers, getCourses } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
+import { facultyVideo } from "@/lib/facultyVideo";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -49,6 +50,7 @@ export default async function TeacherDetailPage({
     ? teachers
     : teachers.filter((teacher) => teacher.subject === activeSubject);
   const teacherCourses = courses.filter((course) => course.teacherId === current.id);
+  const clipSrc = facultyVideo(current.name);
 
   return (
     <main className="dn-body td-page">
@@ -121,7 +123,23 @@ export default async function TeacherDetailPage({
 
             <div className="td-profile-photo">
               <span className="td-photo-ring" aria-hidden="true" />
-              {current.revealed && current.photo ? (
+              {current.revealed && clipSrc ? (
+                /* 소개 영상 — 사진이 먼저 보이고 금색 베일이 걷히며 영상이 재생됩니다 */
+                <div className="td-clip">
+                  <video
+                    className="td-clip-video"
+                    src={clipSrc}
+                    poster={current.photo ? photo(current.photo, 440) : undefined}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={`${current.name} 선생님 소개 영상`}
+                  />
+                  <span className="td-clip-veil" aria-hidden="true" />
+                </div>
+              ) : current.revealed && current.photo ? (
                 <img src={photo(current.photo, 440)} srcSet={photoSet(current.photo, 440)}
                      alt={`${current.name} 선생님`} decoding="async" />
               ) : (

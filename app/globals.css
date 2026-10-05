@@ -2763,6 +2763,7 @@ a.ev-book-btn{text-decoration:none}
 .td-profile-photo{position:relative;z-index:1;min-height:0;display:flex;align-items:flex-end;justify-content:center}
 .td-profile-photo>img{position:relative;z-index:2;width:auto;max-width:100%;height:auto;max-height:330px;
   object-fit:contain;object-position:center bottom}
+.td-profile-photo:has(.td-clip) .td-photo-ring{opacity:.45}
 .td-photo-ring{position:absolute;left:50%;bottom:22px;width:222px;height:222px;transform:translateX(-50%);border-radius:50%;
   border:1px solid rgba(192,153,79,.35);box-shadow:0 0 0 36px rgba(192,153,79,.05)}
 .td-profile-placeholder{position:relative;z-index:2;display:flex;height:100%;min-height:300px;flex-direction:column;align-items:center;justify-content:center;gap:14px}
@@ -3912,3 +3913,47 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .ar-page .ar-card{background:#fff;border-color:#E9E6DC}
 .ar-page .ar-head{border-bottom-color:#ECE8DD}
 .ar-empty{margin:0;padding:64px 0;text-align:center;font-size:14.5px;color:var(--dn-ink-soft)}
+
+/* ═══════════════════════════════════════════════════════════
+   59) 강사 상세 — 소개 영상 (Behind the veil)
+   사진이 먼저 보이고(poster) 금색 베일이 걷히며 영상이 재생됩니다.
+   ═══════════════════════════════════════════════════════════ */
+.td-clip{
+  position:relative;z-index:2;
+  width:min(100%,286px);aspect-ratio:3/4;
+  border-radius:16px;overflow:hidden;
+  background:linear-gradient(160deg,#EEF2F8,#DCE3EE);
+  box-shadow:0 30px 60px -34px rgba(16,25,46,.55);
+  isolation:isolate}
+.td-clip-video{
+  width:100%;height:100%;object-fit:cover;object-position:center top;display:block;
+  animation:tdClipIn .9s .35s ease both}
+@keyframes tdClipIn{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+
+/* 금색 베일이 위에서 아래로 걷힙니다 */
+.td-clip-veil{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(180deg,rgba(192,153,79,.92),rgba(16,25,46,.9));
+  transform-origin:top;
+  animation:tdVeil 1.15s .15s cubic-bezier(.76,0,.24,1) both}
+@keyframes tdVeil{
+  0%{transform:scaleY(1)}
+  100%{transform:scaleY(0)}
+}
+/* 베일 끝선의 금색 실선 */
+.td-clip-veil::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--dn-gold-soft),transparent)}
+
+@media(prefers-reduced-motion:reduce){
+  .td-clip-video{animation:none}
+  .td-clip-veil{display:none}
+}
+
+@media(max-width:900px){
+  .td-clip{width:min(100%,240px);border-radius:14px}
+}
+@media(max-width:640px){
+  /* 모바일에서는 프로필 카드가 세로로 쌓이므로 가운데에 적당한 크기로 */
+  .td-clip{width:min(74%,230px);margin:0 auto 4px;aspect-ratio:3/4}
+}
