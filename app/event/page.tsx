@@ -65,7 +65,8 @@ export default async function EventListPage() {
           <ul className="ev-list" id="evList">
             {events.map((e) => (
               <li className="ev-item" data-status={e.status} key={e.id}>
-                <a className="ev-card" href={`/event/${e.id}`}>
+                {/* /event/1 은 중계 서버가 가로채므로 /events/… 로 엽니다 */}
+                <a className="ev-card" href={`/events/${e.id}`}>
                   <div className="ev-card-side">
                     <span className={`ev-state ev-state-${e.status === "접수중" ? "open" : e.status === "접수예정" ? "soon" : "closed"}`}>
                       {e.status}
