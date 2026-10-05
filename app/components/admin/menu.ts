@@ -13,5 +13,6 @@ export const MENU: AdminMenu[] = [
   { href: "/admin/events", label: "이벤트 · 설명회", desc: "설명회 일정과 예약 안내" },
   { href: "/admin/notices", label: "공지사항", desc: "공지사항 페이지 · 포르타 · 클라비스" },
   { href: "/admin/media", label: "사진 · 영상", desc: "시설 사진, 유튜브 클립" },
+  { href: "/admin/blog", label: "입시자료 · 블로그", desc: "네이버 블로그 글 연동 · 숨기기" },
   { href: "/admin/visits", label: "방문 기록", desc: "언제 어느 도시에서 접속했는지" },
 ];
