@@ -237,8 +237,12 @@ export const winterScript = `
   function move(){
     if(!mobile.matches||document.hidden) return;
     pos=(pos+1)%cards.length;
+    /* 카드 한 장씩 왼쪽 기준으로 넘기고, 끝에 닿으면 처음으로 돌아갑니다.
+       (한 화면에 두 장 남짓 보이므로 가운데 정렬은 쓰지 않습니다) */
+    var max=root.scrollWidth-root.clientWidth;
+    var left=cards[pos].offsetLeft-cards[0].offsetLeft;
+    if(left>max-2){ pos=0; left=0; }
     active();
-    var left=cards[pos].offsetLeft-(root.clientWidth-cards[pos].offsetWidth)/2;
     root.scrollTo({left:left,behavior:"smooth"});
   }
   function stop(){
