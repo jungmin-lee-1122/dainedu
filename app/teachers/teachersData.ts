@@ -21,7 +21,14 @@ export type Teacher = {
 type TeacherSeed = Omit<Teacher, "id" | "tags"> & { tags?: string[] };
 
 /** 과목 필터 순서 */
-export const subjects = ["전체", "국어", "수학", "영어", "과학탐구", "사회탐구", "논술"];
+/** 전체 과목 — 관리자에서 강사를 등록할 때 쓰는 목록 */
+export const subjectsAll = ["전체", "국어", "수학", "영어", "과학탐구", "사회탐구", "논술"];
+
+/** 사이트 화면에서 숨길 과목 — 강사가 생기면 이 배열에서 빼주세요. */
+const HIDDEN_SUBJECTS = ["논술"];
+
+/** 화면(탭·메뉴)에 보이는 과목 */
+export const subjects = subjectsAll.filter((s) => !HIDDEN_SUBJECTS.includes(s));
 
 const teacherSeeds: TeacherSeed[] = [
   {

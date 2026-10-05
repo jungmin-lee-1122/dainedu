@@ -1,9 +1,9 @@
 "use client";
 import ResourceManager from "../../../components/admin/ResourceManager";
-import { subjects } from "../../../teachers/teachersData";
+import { subjectsAll } from "../../../teachers/teachersData";
 
 /** 과목 목록 — teachersData.ts 의 subjects 에서 "전체"만 뺀 것 */
-const SUBJECTS = subjects.filter((s) => s !== "전체");
+const SUBJECTS = subjectsAll.filter((s) => s !== "전체");
 
 export default function Page() {
   return (
