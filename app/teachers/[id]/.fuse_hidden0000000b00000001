@@ -139,7 +139,7 @@ export default async function TeacherDetailPage({
                         preload="metadata"
                         aria-label={`${current.name} 선생님 소개 영상`}
                       />
-                      <span className="td-clip-cap">DAIN EDU</span>
+                      <span className="td-clip-cap">{current.subject}</span>
                       <span className="td-clip-veil" aria-hidden="true" />
                     </div>
                   </div>
