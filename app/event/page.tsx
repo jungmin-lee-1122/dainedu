@@ -8,7 +8,6 @@ import { quickMenuMarkup } from "../quickMenu";
 import { eventListScript } from "./eventScript";
 import { statusFilters } from "./eventData";
 import { getEvents } from "@/lib/content";
-import { getVisiblePosts, BLOG_URL } from "@/lib/blog";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default async function EventListPage() {
-  const [events, posts] = await Promise.all([getEvents(), getVisiblePosts(6)]);
+  const events = await getEvents();
   const openCount = events.filter((e) => e.status === "접수중").length;
   return (
     <main className="dn-body ev-page">
@@ -122,46 +121,6 @@ export default async function EventListPage() {
           </p>
         </div>
       </section>
-
-      {/* ── 입시자료 (네이버 블로그 연동) ── */}
-      {posts.length > 0 && (
-        <section className="ar-sec" id="archive">
-          <div className="ev-wrap">
-            <div className="ar-head">
-              <div>
-                <p className="ev-eyebrow">Archive</p>
-                <h2 className="ar-title">입시자료</h2>
-                <p className="ar-desc">다인에듀가 정리한 입시 소식과 학습 자료입니다.</p>
-              </div>
-              <a className="ar-more" href={BLOG_URL} target="_blank" rel="noopener noreferrer">
-                블로그에서 더 보기 ↗
-              </a>
-            </div>
-
-            <ul className="ar-grid">
-              {posts.map((p) => (
-                <li key={p.id}>
-                  <a className="ar-card" href={p.link} target="_blank" rel="noopener noreferrer">
-                    <div className="ar-thumb">
-                      {p.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={p.image} alt="" loading="lazy" decoding="async" />
-                      ) : (
-                        <span aria-hidden="true">DAIN</span>
-                      )}
-                    </div>
-                    <div className="ar-body">
-                      <span className="ar-date">{p.date}</span>
-                      <h3 className="ar-card-title">{p.title}</h3>
-                      {p.summary && <p className="ar-sum">{p.summary}</p>}
-                    </div>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
 
       {/* ── 하단 안내 ── */}
       <section className="ev-cta">

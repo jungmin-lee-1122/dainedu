@@ -126,7 +126,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
               <span className="dn-gnb-gtitle">설명회</span>
               <a href="/event">설명회 신청</a>
               <span className="dn-gnb-gtitle">입시</span>
-              <a href="/event#archive">입시자료</a>
+              <a href="/archive">입시자료</a>
             </div>
           </li>
 

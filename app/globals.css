@@ -3906,3 +3906,5 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .bl-thumb{flex:0 0 52px;height:42px}
   .bl-main{flex:1 1 60%}
 }
+.ar-page .ar-sec{border-top:0}
+.ar-empty{margin:0;padding:64px 0;text-align:center;font-size:14.5px;color:var(--dn-ink-soft)}

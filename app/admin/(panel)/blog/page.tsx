@@ -61,7 +61,7 @@ export default function BlogAdminPage() {
     load();
   }
 
-  const shown = items.filter((i) => !i.hidden).slice(0, 6);
+  const shown = items.filter((i) => !i.hidden);
 
   return (
     <div>
@@ -72,7 +72,8 @@ export default function BlogAdminPage() {
       </p>
 
       <p className="ad-notice">
-        홈페이지에는 숨기지 않은 글 중 <b>최신 6개</b>가 표시됩니다. 현재 {shown.length}개 노출 중.
+        입시자료 페이지(<a href="/archive" target="_blank" rel="noopener noreferrer">/archive</a>)에
+        숨기지 않은 글이 최신순으로 모두 표시됩니다. 현재 <b>{shown.length}개</b> 노출 중.
         {blogUrl && (
           <>
             {" "}
@@ -97,8 +98,7 @@ export default function BlogAdminPage() {
       {state === "ok" && items.length > 0 && (
         <ul className="bl-list">
           {items.map((it, i) => {
-            const order = items.filter((p, k) => !p.hidden && k <= i).length;
-            const onSite = !it.hidden && order <= 6;
+            const onSite = !it.hidden;
             return (
               <li className={`bl-row${it.hidden ? " is-hidden" : ""}`} key={it.id}>
                 <div className="bl-thumb">
@@ -114,10 +114,8 @@ export default function BlogAdminPage() {
                   <div className="bl-badges">
                     {onSite ? (
                       <b className="bl-on">홈페이지 노출</b>
-                    ) : it.hidden ? (
-                      <b className="bl-off">숨김</b>
                     ) : (
-                      <b className="bl-wait">대기 (7번째 이후)</b>
+                      <b className="bl-off">숨김</b>
                     )}
                     {it.category && <span className="bl-cat">{it.category}</span>}
                     <span className="bl-date">{it.date}</span>
