@@ -2732,14 +2732,16 @@ a.ev-book-btn{text-decoration:none}
 .td-head>div>p:last-child{margin:0;font-size:14.5px;color:var(--dn-ink-soft)}
 .td-body{padding:42px 0 90px}
 .td-subjects{margin-bottom:22px}
-/* 모바일: 과목 탭을 줄바꿈 없이 한 줄로 두고 옆으로 밀어서 봅니다 */
+/* 모바일: 과목 탭을 줄바꿈 없이 한 줄로 두고 옆으로 밀어서 봅니다
+   (강사진 목록 /teachers 과 상세 페이지 모두 적용) */
 @media(max-width:900px){
-  .td-subjects{
+  .tc-filter{
     flex-wrap:nowrap;overflow-x:auto;scroll-behavior:smooth;
     scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;
-    gap:7px;margin-bottom:18px;padding-bottom:2px}
-  .td-subjects::-webkit-scrollbar{display:none}
-  .td-subjects .tc-filter-btn{flex:0 0 auto;padding:8px 15px;font-size:13.5px;white-space:nowrap}
+    gap:7px;margin-bottom:20px;padding-bottom:2px}
+  .tc-filter::-webkit-scrollbar{display:none}
+  .tc-filter .tc-filter-btn{flex:0 0 auto;padding:8px 15px;font-size:13.5px;white-space:nowrap}
+  .td-subjects{margin-bottom:18px}
 }
 .td-teacher-strip{display:flex;gap:12px;margin:0 0 30px;padding:2px 0 10px;overflow-x:auto;scrollbar-width:none}
 .td-teacher-strip::-webkit-scrollbar{display:none}
