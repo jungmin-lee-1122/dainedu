@@ -2967,7 +2967,7 @@ a.ev-book-btn{text-decoration:none}
   .lc-cta-in{align-items:flex-start;flex-direction:column}.lc-cta a{width:100%}
 }
 @media(max-width:560px){
-  .lc-hero{padding:34px 0 68px}.lc-hero-copy h1{font-size:46px}.lc-hero-sub{margin-top:22px;font-size:14px}
+  .lc-hero{padding:62px 0 68px}.lc-hero-copy h1{font-size:46px}.lc-hero-sub{margin-top:22px;font-size:14px}
   .lc-address-card{padding:30px 24px}.lc-address-card h2{font-size:23px}.lc-map-section,.lc-route-section{padding:56px 0}
   .lc-map-shell{padding:7px}.lc-map-frame{height:390px}.lc-map-panel{position:relative;right:auto;bottom:auto;width:auto;padding:24px}
   .lc-map-panel h3{font-size:30px}.lc-map-actions{gap:8px}.lc-map-btn{padding:13px}
