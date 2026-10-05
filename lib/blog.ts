@@ -53,9 +53,8 @@ function stripTags(v: string) {
 function firstImage(v: string) {
   const m = v.match(/<img[^>]+src=["']([^"']+)["']/i);
   if (!m) return "";
-  let url = m[1].replace(/^http:/, "https:");
-  // 썸네일 주소는 아주 작게 오는 경우가 있어 큰 크기로 바꿔 요청합니다
-  url = url.replace(/\?type=[^&]*/i, "?type=w966");
+  // 주소를 그대로 씁니다. type 값을 바꾸면 네이버가 거부합니다.
+  const url = m[1].replace(/^http:/, "https:");
   // 네이버 이미지는 외부에서 직접 못 불러오므로 우리 서버를 거칩니다
   if (/(^|\.)(pstatic\.net|naver\.net|naver\.com)$/i.test(hostOf(url))) {
     return `/api/blog-image?u=${encodeURIComponent(url)}`;

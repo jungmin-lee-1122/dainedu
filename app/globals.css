@@ -3906,5 +3906,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .bl-thumb{flex:0 0 52px;height:42px}
   .bl-main{flex:1 1 60%}
 }
-.ar-page .ar-sec{border-top:0}
+/* 입시자료 전용 페이지 — 배경을 흰색으로 */
+.ar-page{background:#fff}
+.ar-page .ar-sec{border-top:0;background:#fff}
+.ar-page .ar-card{background:#fff;border-color:#E9E6DC}
+.ar-page .ar-head{border-bottom-color:#ECE8DD}
 .ar-empty{margin:0;padding:64px 0;text-align:center;font-size:14.5px;color:var(--dn-ink-soft)}
