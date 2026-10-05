@@ -52,7 +52,23 @@ function stripTags(v: string) {
 
 function firstImage(v: string) {
   const m = v.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return m ? m[1] : "";
+  if (!m) return "";
+  let url = m[1].replace(/^http:/, "https:");
+  // 썸네일 주소는 아주 작게 오는 경우가 있어 큰 크기로 바꿔 요청합니다
+  url = url.replace(/\?type=[^&]*/i, "?type=w966");
+  // 네이버 이미지는 외부에서 직접 못 불러오므로 우리 서버를 거칩니다
+  if (/(^|\.)(pstatic\.net|naver\.net|naver\.com)$/i.test(hostOf(url))) {
+    return `/api/blog-image?u=${encodeURIComponent(url)}`;
+  }
+  return url;
+}
+
+function hostOf(u: string) {
+  try {
+    return new URL(u).hostname;
+  } catch {
+    return "";
+  }
 }
 
 /** 글 주소 끝의 숫자(logNo)를 고유 번호로 씁니다. */
