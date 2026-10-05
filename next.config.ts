@@ -14,6 +14,17 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
 
+  // ── /events/1 → 우리 설명회 상세 화면 ──
+  // /event/1 은 홈페이지 앞단의 중계 서버가 가로채므로,
+  // 복수형 주소로 들어오면 내부적으로 같은 화면을 보여줍니다.
+  async rewrites() {
+    return {
+      beforeFiles: [{ source: "/events/:id", destination: "/event/:id" }],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
+
   // ── 예전 주소 자동 이동 ──
   // 개편 전에 공유된 링크(/aurum)로 들어와도 새 주소(/clavis)로 보내줍니다.
   async redirects() {
