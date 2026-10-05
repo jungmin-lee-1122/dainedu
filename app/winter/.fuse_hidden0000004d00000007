@@ -50,7 +50,7 @@ const CONSULT = "/consult";
 export const metadata: Metadata = {
   title: "2027 윈터스쿨 — 다인에듀 동탄점",
   description:
-    "기준이 바뀌는 겨울, 준비도 바뀌어야 합니다. 2028 개편 입시를 준비하는 다인에듀 2027 윈터스쿨 선착순 모집.",
+    "기준이 바뀌는 겨울, 준비도 바뀌어야 합니다. 2028 개편 입시를 준비하는 다인교육 2027 윈터스쿨 선착순 모집.",
 };
 
 /** 강사진 섹션의 학원가 4개 카드 표시 여부 — 다시 보이려면 true */
@@ -114,7 +114,7 @@ export default function WinterPage() {
             <picture className="wt-kv-pic">
               <source media="(max-width:900px)" srcSet="/winter/kv-room-m2.jpg" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="wt-kv-img" src="/winter/kv-room.jpg" alt="2027 다인에듀 윈터스쿨" />
+              <img className="wt-kv-img" src="/winter/kv-room.jpg" alt="2027 다인교육 윈터스쿨" />
             </picture>
           ) : (
             <div className="wt-kv-bg" aria-hidden="true">
@@ -205,12 +205,12 @@ export default function WinterPage() {
         <div className="wt-wrap">
           <p className="wt-bridge-small wt-up">흔들리는 건 제도입니다</p>
           <p className="wt-bridge-big wt-up">
-            다인에듀 학생의 하루는<br />흔들리지 않습니다
+            다인교육 학생의 하루는<br />흔들리지 않습니다
           </p>
         </div>
       </section>
 
-      {/* ══ 4) 다인에듀를 선택하는 이유 ══ */}
+      {/* ══ 4) 다인아카데미를 선택하는 이유 ══ */}
       <section className="wt-sec wt-result" id="result">
         <div className="wt-wrap">
           <p className="wt-tag">Why DAIN</p>
@@ -322,7 +322,7 @@ export default function WinterPage() {
 
           {faculty.photo && (
             <figure className="wt-fc-photo wt-up">
-              <img src={faculty.photo} alt="다인에듀 윈터스쿨 강사진" />
+              <img src={faculty.photo} alt="다인아카데미 윈터스쿨 강사진" />
             </figure>
           )}
 
@@ -889,7 +889,7 @@ export default function WinterPage() {
         <div className="wt-wrap">
           <p className="wt-close-small">2028학년도 처음 열리는 입시</p>
           <h2 className="wt-close-big">
-            흔들릴 시간 없이,<br /><em>이번 겨울 다인에듀에서</em>
+            흔들릴 시간 없이,<br /><em>이번 겨울 다인교육에서</em>
           </h2>
           <div className="wt-close-btns">
             <a className="wt-btn wt-btn-primary" href={CONSULT}>입학 상담 신청</a>

@@ -168,7 +168,7 @@ export default function ConsultPage() {
               <div className="cs-field">
                 <label className="cs-label" htmlFor="csSource">유입경로 <i>필수</i></label>
                 <select id="csSource" name="source" defaultValue="">
-                  <option value="" disabled>다인에듀을 어떻게 알게 되셨나요?</option>
+                  <option value="" disabled>다인교육을 어떻게 알게 되셨나요?</option>
                   {SOURCES.map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))}
