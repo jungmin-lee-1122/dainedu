@@ -802,7 +802,7 @@ img,video,svg{max-width:100%}
   .dn-rolling-row .dn-slide picture{display:block;line-height:0}
   .dn-rolling-row .dn-slide img{width:100%;height:auto;aspect-ratio:1080/600;object-fit:cover}
   .dn-slider{border-radius:14px}
-  .dn-poster{flex:1 1 auto;max-width:none;width:100%;aspect-ratio:1285/1512;border-radius:14px}
+  .dn-poster{flex:1 1 auto;max-width:none;width:100%;aspect-ratio:1588/2246;border-radius:14px}
   .dn-poster img{position:absolute;inset:0}
 
   /* 슬라이더 컨트롤: 작게 */
@@ -2151,7 +2151,7 @@ img,video,svg{max-width:100%}
 /* 포스터 칸의 가로세로 비율을 이미지와 똑같이 맞춰, 어느 화면에서도
    포스터가 잘리지 않고 전체가 보이도록 합니다. (모바일은 기존 규칙 유지) */
 @media(min-width:901px){
-  .dn-poster{flex:0 0 auto;width:auto;height:100%;aspect-ratio:1285/1512;max-width:40%}
+  .dn-poster{flex:0 0 auto;width:auto;height:100%;aspect-ratio:1588/2246;max-width:40%}
   .dn-poster img{object-fit:contain}
 }
 
@@ -2943,18 +2943,18 @@ a.ev-book-btn{text-decoration:none}
 .lc-map-btn-naver>b{background:#03C75A}.lc-map-btn-kakao>b{background:#FEE500;color:#161616}.lc-map-btn-call>b{background:var(--dn-navy)}
 .lc-map-btn-call>i{font-weight:800;color:var(--dn-gold)}
 
-.lc-route-section{padding:104px 0;background:linear-gradient(145deg,#152542,#0D172B);color:#fff}
+.lc-route-section{padding:86px 0;background:linear-gradient(145deg,#152542,#0D172B);color:#fff}
 .lc-section-head-light h2{color:#fff}.lc-section-head-light>p{color:rgba(255,255,255,.5)}
 .lc-route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.lc-route-card{position:relative;min-height:330px;padding:34px 30px;border:1px solid rgba(255,255,255,.12);overflow:hidden;
+.lc-route-card{position:relative;min-height:0;padding:28px 26px 26px;border:1px solid rgba(255,255,255,.12);overflow:hidden;
   background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,.02));transition:transform .3s ease,border-color .3s ease,background .3s ease}
 .lc-route-card:hover{transform:translateY(-6px);border-color:rgba(217,190,140,.45);background:linear-gradient(155deg,rgba(255,255,255,.105),rgba(255,255,255,.035))}
-.lc-route-card::after{content:"";position:absolute;right:-60px;bottom:-80px;width:190px;height:190px;border:1px solid rgba(217,190,140,.12);border-radius:50%}
-.lc-route-no{position:absolute;right:24px;top:20px;font-family:"Noto Serif KR",serif;font-size:52px;font-style:italic;color:rgba(255,255,255,.07)}
-.lc-route-icon{display:flex;width:54px;height:54px;margin-bottom:52px;border:1px solid rgba(217,190,140,.35);align-items:center;justify-content:center;color:var(--dn-gold-soft)}
-.lc-route-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.lc-route-card::after{content:"";position:absolute;right:-56px;bottom:-72px;width:160px;height:160px;border:1px solid rgba(217,190,140,.12);border-radius:50%}
+.lc-route-no{position:absolute;right:20px;top:16px;font-family:"Noto Serif KR",serif;font-size:42px;font-style:italic;color:rgba(255,255,255,.07)}
+.lc-route-icon{display:flex;width:46px;height:46px;margin-bottom:26px;border:1px solid rgba(217,190,140,.35);align-items:center;justify-content:center;color:var(--dn-gold-soft)}
+.lc-route-icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .lc-route-card>p{margin:0 0 9px;font-size:9.5px;font-weight:800;letter-spacing:.2em;color:var(--dn-gold-soft)}
-.lc-route-card h3{margin:0 0 17px;font-size:21px;letter-spacing:-.035em;color:#fff}
+.lc-route-card h3{margin:0 0 12px;font-size:19.5px;letter-spacing:-.035em;color:#fff}
 .lc-route-card>span:last-child{display:block;font-size:13px;line-height:1.75;color:rgba(255,255,255,.57);word-break:keep-all}
 .lc-arrival{display:grid;grid-template-columns:240px 1fr;align-items:center;gap:40px;margin-top:72px;padding:34px 38px;border-top:1px solid rgba(255,255,255,.13);border-bottom:1px solid rgba(255,255,255,.13)}
 .lc-arrival-title h2{margin:0;font-size:27px}.lc-arrival ol{display:grid;grid-template-columns:repeat(3,1fr);margin:0;padding:0;list-style:none}
@@ -2974,7 +2974,7 @@ a.ev-book-btn{text-decoration:none}
   .lc-address-card{max-width:560px}.lc-scroll-mark{display:none}.lc-map-section,.lc-route-section{padding:68px 0}
   .lc-section-head{align-items:flex-start;flex-direction:column;gap:14px}.lc-section-head>p{margin-right:0;text-align:left}
   .lc-map-frame{height:480px}.lc-map-panel{right:26px;bottom:26px}.lc-map-actions{grid-template-columns:1fr}
-  .lc-route-grid{grid-template-columns:1fr}.lc-route-card{min-height:260px}.lc-route-icon{margin-bottom:38px}
+  .lc-route-grid{grid-template-columns:1fr;gap:12px}.lc-route-card{min-height:0}.lc-route-icon{margin-bottom:20px}
   .lc-arrival{grid-template-columns:1fr}.lc-arrival ol{border-top:1px solid rgba(255,255,255,.12);padding-top:22px}
   .lc-cta-in{align-items:flex-start;flex-direction:column}.lc-cta a{width:100%}
 }
@@ -2983,7 +2983,7 @@ a.ev-book-btn{text-decoration:none}
   .lc-address-card{padding:30px 24px}.lc-address-card h2{font-size:23px}.lc-map-section,.lc-route-section{padding:56px 0}
   .lc-map-shell{padding:7px}.lc-map-frame{height:390px}.lc-map-panel{position:relative;right:auto;bottom:auto;width:auto;padding:24px}
   .lc-map-panel h3{font-size:30px}.lc-map-actions{gap:8px}.lc-map-btn{padding:13px}
-  .lc-route-card{padding:28px 24px}.lc-arrival{padding:28px 0}.lc-arrival ol{grid-template-columns:1fr;gap:18px}
+  .lc-arrival{padding:28px 0}.lc-arrival ol{grid-template-columns:1fr;gap:18px}
   .lc-arrival li{border-left:0;padding:0}.lc-cta{padding:58px 0}.lc-cta a{min-width:0}.lc-cta a b{font-size:22px}
 }
 
@@ -4059,4 +4059,37 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .lc-bus-row{flex-direction:column;gap:7px}
   .lc-bus-kind{flex:none;padding-top:0}
   .lc-bus{padding:5px 10px;font-size:12.5px}
+}
+
+
+/* ── 오시는 길: 모바일에서 01·02·03 을 한눈에 ── */
+@media(max-width:700px){
+  .lc-route-section{padding:56px 0}
+  .lc-route-grid{gap:10px}
+  /* 번호 배지 | 글  — 한 줄짜리 가로형 카드 */
+  .lc-route-card{
+    display:grid;
+    grid-template-columns:38px 1fr;
+    grid-template-areas:"no label" "no title" "no desc";
+    align-items:start;column-gap:14px;
+    padding:18px 18px 18px 16px;min-height:0}
+  .lc-route-card::after{display:none}
+  .lc-route-card:hover{transform:none}
+
+  .lc-route-no{
+    grid-area:no;position:static;
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;margin-top:2px;border-radius:50%;
+    border:1px solid rgba(217,190,140,.4);
+    background:rgba(217,190,140,.1);
+    font-family:"Pretendard Variable",Pretendard,sans-serif;
+    font-size:13px;font-style:normal;font-weight:800;line-height:1;
+    color:var(--dn-gold-soft)}
+
+  /* 아이콘은 생략 — 번호가 그 역할을 합니다 */
+  .lc-route-icon{display:none}
+
+  .lc-route-card>p{grid-area:label;margin:0 0 3px;font-size:9px;letter-spacing:.18em}
+  .lc-route-card h3{grid-area:title;margin:0 0 6px;font-size:17px}
+  .lc-route-card>span:last-child{grid-area:desc;font-size:12.5px;line-height:1.65}
 }
