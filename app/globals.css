@@ -942,7 +942,7 @@ img,video,svg{max-width:100%}
 .cv-teacher-photo{width:100%;height:auto;display:block;position:relative;z-index:1}
 
 /* ── 4) 공지 · 설명회 ── */
-.cv-board{padding:34px 0;background:#fff}
+.cv-board{padding:34px 0 20px;background:#fff}
 .cv-board-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
 .cv-notice-list{list-style:none;margin:0;padding:0}
 .cv-notice-list li{border-bottom:1px solid var(--dn-line)}
@@ -966,7 +966,7 @@ img,video,svg{max-width:100%}
 .cv-lecture-item:hover .cv-lecture-btn{background:var(--dn-navy);color:#fff}
 
 /* ── 5) 성공수기 + 사이드 배너 ── */
-.cv-bottom{padding:34px 0 80px;background:#fff}
+.cv-bottom{padding:20px 0 80px;background:#fff}
 .cv-bottom-grid{display:grid;grid-template-columns:1fr 300px;gap:44px;align-items:stretch}
 .cv-bottom-grid>.cv-review{display:flex;flex-direction:column}
 .cv-bottom-grid>.cv-side{display:flex}
