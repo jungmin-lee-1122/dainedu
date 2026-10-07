@@ -17,9 +17,9 @@ export const heroSlides = [
   */
   {
     tab: "수학 설명회",
-    img: "/porta/banner-math.jpg",
+    img: "/porta/hero-math.jpg",
     href: "/events/event-muy3rsg1ajvr",
-    alt: "다인에듀 수학 설명회 — 10월 18일(일) 오후 2시 · 다인에듀 6층 본관",
+    alt: "다인에듀 수학 설명회 — 10월 18일(일) 오후 2시 · 다인에듀 6층 본관 · 예비 고1·고2·고3 학부모 및 학생",
   },
   {
     tab: "2027 윈터스쿨",
