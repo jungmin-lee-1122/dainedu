@@ -11,7 +11,7 @@ export const heroSlides = [
   {
     tab: "2027 특별 입시설명회",
     img: "/porta/hero-1.png",
-    href: "https://dain-edu.higgsfield.app/seminar",
+    href: "/events/event-muy3rsg1ajvr",
     alt: "2027 입시설명회 — 2026.09.20(일) 14:00 롯데백화점 동탄점 7F 수퍼플렉스관",
   },
   */
@@ -79,7 +79,7 @@ export const lectures = [
     date: "2026. 09. 19(토) 오후 1시",
     place: "CGV 동탄 4관",
     status: "접수중",
-    href: "https://dain-edu.higgsfield.app/seminar",
+    href: "/events/event-muy3rsg1ajvr",
   },
 ];
 

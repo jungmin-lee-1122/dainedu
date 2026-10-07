@@ -7,7 +7,7 @@ import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { intros, halls, facilityItems, facilityPoints, renderings } from "./spaceData";
 
-const SEMINAR = "https://dain-edu.higgsfield.app/seminar";
+const SEMINAR = "/events/event-muy3rsg1ajvr";
 
 /* ─────────────────────────────────────────────────────────
    섹션 표시 여부 — 다시 보이게 하려면 true 로 바꾸면 됩니다.

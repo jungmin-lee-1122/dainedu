@@ -40,7 +40,7 @@ export const landingMarkup = `
         <a href="/event">설명회 · 입시</a>
         <div class="dn-gnb-sub dn-gnb-sub-grouped">
           <span class="dn-gnb-gtitle">설명회</span>
-          <a href="/event">설명회 신청</a>
+          <a href="/events/event-muy3rsg1ajvr">설명회 신청</a>
           <span class="dn-gnb-gtitle">입시</span>
           <a href="/archive">입시자료</a>
         </div>
@@ -87,7 +87,7 @@ export const landingMarkup = `
       </div>
     </section>
     <!-- dn-banner 숨김 (복원하려면 이 줄과 아래 닫는 주석만 지우세요) -->
-    <!--<section class="dn-banner"><div class="dn-wrap"><a class="dn-banner-link" href="https://dain-edu.higgsfield.app/seminar"><img src="/grand-open.png" alt="다인에듀 그랜드 오픈 입시 히어로, 그들이 왔다" class="dn-banner-img"/></a></div></section>-->
+    <!--<section class="dn-banner"><div class="dn-wrap"><a class="dn-banner-link" href="/events/event-muy3rsg1ajvr"><img src="/grand-open.png" alt="다인에듀 그랜드 오픈 입시 히어로, 그들이 왔다" class="dn-banner-img"/></a></div></section>-->
     <section class="dn-halls">
       <div class="dn-wrap">
         <div class="dn-halls-grid">
