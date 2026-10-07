@@ -16,6 +16,11 @@ import {
 } from "./clavisData";
 import { getNotices, getClips, getTeachers, getEvents } from "@/lib/content";
 
+/** 대상 배지를 짧게 — "예비 고1(현 중3)" → "예비 고1" */
+function shortTarget(v: string) {
+  return v.replace(/\s*\([^)]*\)\s*/g, "").trim() || v;
+}
+
 // 60초마다 새로 만들어 둡니다. 관리자에서 고친 내용은 1분 안에 반영됩니다.
 // (매 방문마다 DB 를 조회하던 force-dynamic 을 걷어내 첫 화면이 훨씬 빨라집니다)
 export const revalidate = 60;
@@ -183,12 +188,14 @@ export default async function ClavisPage() {
                 lectures.map((l) => (
                   <a className="cv-lecture-item" href={`/events/${l.id}`} key={l.id}>
                     <div className="cv-lecture-main">
-                      <div className="cv-lecture-top">
-                        {l.targets.slice(0, 2).map((b) => (
-                          <span className="cv-badge" key={b}>{b}</span>
-                        ))}
-                        <b className="cv-lecture-title">{l.title}</b>
-                      </div>
+                      <b className="cv-lecture-title">{l.title}</b>
+                      {l.targets.length > 0 && (
+                        <div className="cv-lecture-top">
+                          {l.targets.map((b) => (
+                            <span className="cv-badge" key={b}>{shortTarget(b)}</span>
+                          ))}
+                        </div>
+                      )}
                       <div className="cv-lecture-meta">
                         <span>· 일시 <b>{l.date}</b></span>
                         <span>· 장소 <b>{l.place}</b></span>

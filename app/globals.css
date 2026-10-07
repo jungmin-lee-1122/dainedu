@@ -953,10 +953,11 @@ img,video,svg{max-width:100%}
 .cv-notice-title{flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cv-notice-date{flex:0 0 auto;color:var(--dn-ink-soft);font-size:13px}
 .cv-lecture-list{display:flex;flex-direction:column;gap:12px}
-.cv-lecture-item{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--dn-line);border-radius:14px;background:#FAFBFD;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+.cv-lecture-item{display:flex;align-items:center;gap:16px;padding:20px 22px;border:1px solid var(--dn-line);border-radius:14px;background:#FAFBFD;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
 .cv-lecture-item:hover{border-color:#c0994f66;transform:translateY(-2px)}
 .cv-lecture-main{flex:1 1 auto;min-width:0}
-.cv-lecture-top{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:9px}
+.cv-lecture-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 9px}
+.cv-lecture-main>.cv-lecture-title{display:block;margin-bottom:9px;line-height:1.4;word-break:keep-all}
 .cv-badge{padding:3px 9px;border-radius:6px;background:rgba(36,54,90,.1);font-size:11px;font-weight:700;color:var(--dn-navy)}
 .cv-lecture-title{font-size:16px;font-weight:800;color:var(--dn-navy)}
 .cv-lecture-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--dn-ink-soft)}
