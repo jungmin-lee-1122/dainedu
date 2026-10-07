@@ -11,11 +11,10 @@ import {
   teacherTabs,
   teachers,
   notices as seedNotices,
-  lectures,
   clips as seedClips,
   sideBanners,
 } from "./clavisData";
-import { getNotices, getClips, getTeachers } from "@/lib/content";
+import { getNotices, getClips, getTeachers, getEvents } from "@/lib/content";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고친 내용은 1분 안에 반영됩니다.
 // (매 방문마다 DB 를 조회하던 force-dynamic 을 걷어내 첫 화면이 훨씬 빨라집니다)
@@ -37,11 +36,17 @@ export const metadata: Metadata = {
 
 export default async function ClavisPage() {
   // 세 가지를 동시에 불러옵니다 (하나씩 기다리면 그만큼 느려집니다)
-  const [notices, clips, facultyList] = await Promise.all([
+  const [allNotices, clips, facultyList, events] = await Promise.all([
     getNotices("clavis", seedNotices),
     getClips(seedClips),
     getTeachers(),
+    getEvents(),
   ]);
+  /* 공지사항은 2개, 설명회는 가장 가까운 1개만 보여줍니다. */
+  const notices = allNotices.slice(0, 2);
+  const lectures = events
+    .filter((e) => e.status !== "마감")
+    .slice(0, 1);
 
   return (
     <main className="dn-body cv-page">
@@ -169,26 +174,30 @@ export default async function ClavisPage() {
           <div className="cv-lecture cv-anchor" id="event">
             <div className="cv-sec-head">
               <h2 className="cv-sec-title">이벤트 · 설명회</h2>
-              <a className="cv-more" href="#event" aria-label="전체보기">+</a>
+              <a className="cv-more" href="/event" aria-label="전체보기">+</a>
             </div>
             <div className="cv-lecture-list">
-              {lectures.map((l, i) => (
-                <a className="cv-lecture-item" href={l.href} key={i}>
-                  <div className="cv-lecture-main">
-                    <div className="cv-lecture-top">
-                      {l.badges.map((b, j) => (
-                        <span className="cv-badge" key={j}>{b}</span>
-                      ))}
-                      <b className="cv-lecture-title">{l.title}</b>
+              {lectures.length === 0 ? (
+                <p className="cv-lecture-empty">예정된 설명회가 공개되면 안내해 드리겠습니다.</p>
+              ) : (
+                lectures.map((l) => (
+                  <a className="cv-lecture-item" href={`/events/${l.id}`} key={l.id}>
+                    <div className="cv-lecture-main">
+                      <div className="cv-lecture-top">
+                        {l.targets.slice(0, 2).map((b) => (
+                          <span className="cv-badge" key={b}>{b}</span>
+                        ))}
+                        <b className="cv-lecture-title">{l.title}</b>
+                      </div>
+                      <div className="cv-lecture-meta">
+                        <span>· 일시 <b>{l.date}</b></span>
+                        <span>· 장소 <b>{l.place}</b></span>
+                      </div>
                     </div>
-                    <div className="cv-lecture-meta">
-                      <span>· 일시 <b>{l.date}</b></span>
-                      <span>· 장소 <b>{l.place}</b></span>
-                    </div>
-                  </div>
-                  <span className="cv-lecture-btn">{l.status}</span>
-                </a>
-              ))}
+                    <span className="cv-lecture-btn">{l.status}</span>
+                  </a>
+                ))
+              )}
             </div>
           </div>
         </div>

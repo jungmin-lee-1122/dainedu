@@ -4093,3 +4093,4 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .lc-route-card h3{grid-area:title;margin:0 0 6px;font-size:17px}
   .lc-route-card>span:last-child{grid-area:desc;font-size:12.5px;line-height:1.65}
 }
+.cv-lecture-empty{margin:0;padding:34px 4px;text-align:center;font-size:14px;color:var(--dn-ink-soft)}
