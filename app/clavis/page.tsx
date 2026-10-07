@@ -70,7 +70,7 @@ export default async function ClavisPage() {
               {heroSlides.map((s, i) => {
                 const inner = (
                   <picture>
-                    <source media="(max-width:900px)" srcSet={s.img.replace(".png", "-m.png")} />
+                    <source media="(max-width:900px)" srcSet={s.img.replace(/\.(png|jpg|jpeg|webp)$/i, "-m.$1")} />
                     <img src={s.img} alt={s.alt} />
                   </picture>
                 );
