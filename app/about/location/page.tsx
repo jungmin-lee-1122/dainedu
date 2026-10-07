@@ -25,7 +25,7 @@ const routeCards = [
     no: "01",
     label: "PUBLIC TRANSIT",
     title: "대중교통으로 오실 때",
-    desc: "동탄역 또는 인근 정류장에서 출발 전 지도 앱의 실시간 추천 경로를 확인해 주세요.",
+    desc: "‘남광장’ 또는 ‘동탄복합문화센터’ 정류장에서 하차 후 도보로 이동합니다.",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="4"/><path d="M5 11h14M8 21l2-3m6 3-2-3"/><circle cx="8.5" cy="14" r=".7"/><circle cx="15.5" cy="14" r=".7"/></svg>
     ),
@@ -43,11 +43,17 @@ const routeCards = [
     no: "03",
     label: "PARKING",
     title: "주차 안내",
-    desc: "건물 주차 이용과 지원 시간은 방문 일정에 따라 달라질 수 있으니 학원으로 먼저 문의해 주세요.",
+    desc: "건물 지하 주차장(지하 1~3층) 2시간 무료 이용하실 수 있습니다.",
     icon: (
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
     ),
   },
+];
+
+/** 인근 정류장에 서는 버스 — 노선이 바뀌면 여기만 고치면 됩니다. */
+const busLines = [
+  { kind: "시내 · 마을", items: ["9", "13-5", "70-2", "708", "73", "116-3"] },
+  { kind: "직행 · 광역", items: ["1551", "4108", "8501", "M4403"] },
 ];
 
 export default function LocationPage() {
@@ -155,6 +161,67 @@ export default function LocationPage() {
                 <span>{card.desc}</span>
               </article>
             ))}
+          </div>
+
+          <div className="lc-detail">
+            <article className="lc-detail-card">
+              <p className="lc-eyebrow">Public Transit</p>
+              <h3>대중교통 이용 안내</h3>
+
+              <div className="lc-detail-block">
+                <b className="lc-detail-label">정류장</b>
+                <p>남광장 · 동탄복합문화센터</p>
+              </div>
+
+              <div className="lc-detail-block">
+                <b className="lc-detail-label">버스 노선</b>
+                {busLines.map((g) => (
+                  <div className="lc-bus-row" key={g.kind}>
+                    <span className="lc-bus-kind">{g.kind}</span>
+                    <div className="lc-bus-list">
+                      {g.items.map((n) => (
+                        <span className="lc-bus" key={n}>{n}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="lc-detail-block">
+                <b className="lc-detail-label">하차 후 도보</b>
+                <ol className="lc-walk">
+                  <li>‘남광장’ 또는 ‘동탄복합문화센터’ 정류장에서 하차</li>
+                  <li>남광장 중심상가 보행자 도로(광장) 방향으로 진입</li>
+                  <li>메타폴리스로 53 건물 6층</li>
+                </ol>
+              </div>
+            </article>
+
+            <article className="lc-detail-card">
+              <p className="lc-eyebrow">By Car &amp; Parking</p>
+              <h3>자가용 · 주차 안내</h3>
+
+              <div className="lc-detail-block">
+                <b className="lc-detail-label">내비게이션 검색</b>
+                <p className="lc-addr-line">경기도 화성시 메타폴리스로 53</p>
+                <p className="lc-addr-line">또는 반송동 92-7</p>
+              </div>
+
+              <div className="lc-detail-block">
+                <b className="lc-detail-label">건물 주차장</b>
+                <p>
+                  지하 1층 ~ 지하 3층 <b className="lc-free">2시간 무료</b>
+                </p>
+              </div>
+
+              <div className="lc-detail-block">
+                <b className="lc-detail-label">인근 공영주차장</b>
+                <p>
+                  남광장 공영주차장(동탄중심상가1길 인근)이 가까워, 지하 주차장이 혼잡할 때
+                  편리하게 이용하실 수 있습니다.
+                </p>
+              </div>
+            </article>
           </div>
 
           <div className="lc-arrival">
