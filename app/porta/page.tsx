@@ -27,8 +27,8 @@ const SHOW_BODY = true;
 /** 선생님 섹션 표시 여부 — 임시로 숨김 */
 const SHOW_TEACHERS = false;
 
-/** 공지사항 · 설명회 섹션 표시 여부 — 임시 숨김 */
-const SHOW_BOARD = false;
+/** 공지사항 · 설명회 섹션 표시 여부 */
+const SHOW_BOARD = true;
 
 export const metadata: Metadata = {
   title: "포르타 고등전문관 — 다인에듀 동탄점",
@@ -145,7 +145,7 @@ export default async function PortaPage() {
 
       )}
 
-      {/* ── 4) 공지사항 · 설명회 — 임시 숨김 (SHOW_BOARD 를 true 로) ── */}
+      {/* ── 4) 공지사항 · 설명회 (숨기려면 위쪽 SHOW_BOARD 를 false 로) ── */}
       {SHOW_BOARD && (
       <section className="cv-board" id="board">
         <div className="cv-wrap cv-board-grid">
