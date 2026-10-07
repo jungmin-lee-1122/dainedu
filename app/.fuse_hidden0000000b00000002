@@ -82,7 +82,7 @@ export const landingMarkup = `
               <span class="dn-slider-count"><b class="dn-cur">01</b><span class="dn-line"><i class="dn-line-fill"></i></span><span class="dn-total">03</span></span>
             </div>
           </div>
-          <div class="dn-poster"><picture><source media="(max-width:900px)" srcset="/poster-math3-m.jpg"/><img src="/poster-math3.jpg" alt="다인에듀 수학 설명회 — 10월 18일(일) 오후 2시 · 예비 고1·고2·고3 학부모 및 학생"/></picture></div>
+          <div class="dn-poster"><picture><source media="(max-width:900px)" srcset="/poster-math2-m.jpg"/><img src="/poster-math2.jpg" alt="다인에듀 수학 설명회 — 10월 18일(일) 오후 2시 · 예비 고1·고2·고3 학부모 및 학생"/></picture></div>
         </div>
       </div>
     </section>
