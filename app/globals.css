@@ -1015,8 +1015,11 @@ img,video,svg{max-width:100%}
   .cv-arrow-next{right:2px}
   .cv-review-card{flex:0 0 100%}
   .cv-notice-date{display:none}
-  .cv-lecture-item{padding:14px 16px;gap:12px}
-  .cv-lecture-btn{width:50px;height:50px;font-size:12px}
+  .cv-lecture-item{padding:20px 20px;gap:14px}
+  .cv-lecture-btn{width:52px;height:52px;font-size:12px}
+  .cv-lecture-main>.cv-lecture-title{margin-bottom:10px;font-size:15.5px}
+  .cv-lecture-top{margin-bottom:10px}
+  .cv-lecture-meta{gap:4px 14px;line-height:1.7}
 }
 @media(max-width:520px){
   .cv-teacher-card{flex:0 0 100%}
