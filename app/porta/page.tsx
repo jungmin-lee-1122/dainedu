@@ -6,6 +6,7 @@ import SiteFooter from "../SiteFooter";
 import TeacherStrip from "../TeacherStrip";
 import { quickMenuMarkup } from "../quickMenu";
 import { teacherStripScript } from "../teacherStripScript";
+import { archiveStripScript } from "../archiveStripScript";
 import {
   heroSlides,
   teacherTabs,
@@ -305,6 +306,7 @@ export default async function PortaPage() {
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
       <Script id="porta-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: portaScript }} />
+      <Script id="porta-archive-strip" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: archiveStripScript }} />
       <Script
         id="teacher-strip-script"
         strategy="afterInteractive"

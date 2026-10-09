@@ -6,6 +6,7 @@ import SiteFooter from "../SiteFooter";
 import TeacherStrip from "../TeacherStrip";
 import { quickMenuMarkup } from "../quickMenu";
 import { teacherStripScript } from "../teacherStripScript";
+import { archiveStripScript } from "../archiveStripScript";
 import {
   heroSlides,
   teacherTabs,
@@ -305,6 +306,7 @@ export default async function ClavisPage() {
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
       <Script id="clavis-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: portaScript }} />
+      <Script id="clavis-archive-strip" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: archiveStripScript }} />
       <Script
         id="teacher-strip-script"
         strategy="afterInteractive"
