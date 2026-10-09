@@ -966,7 +966,7 @@ img,video,svg{max-width:100%}
 .cv-lecture-item:hover .cv-lecture-btn{background:var(--dn-navy);color:#fff}
 
 /* ── 5) 성공수기 + 사이드 배너 ── */
-.cv-bottom{padding:20px 0 80px;background:#fff}
+.cv-bottom{padding:44px 0 80px;background:#fff}
 .cv-bottom-grid{display:grid;grid-template-columns:1fr 300px;gap:44px;align-items:stretch}
 .cv-bottom-grid>.cv-review{display:flex;flex-direction:column}
 .cv-bottom-grid>.cv-side{display:flex}
@@ -4103,7 +4103,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
    61) 포르타 · 클라비스 — 입시자료 · 소식 (네이버 블로그 연동)
    PC: 선으로 나뉜 목록 / 모바일: 옆으로 미는 카드
    ═══════════════════════════════════════════════════════════ */
-.cv-arc{padding:52px 0 64px;background:var(--dn-cream);border-top:1px solid var(--dn-line)}
+.cv-arc{padding:52px 0 72px;background:var(--dn-cream);border-top:1px solid var(--dn-line)}
 .cv-arc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}
 .cv-arc-eyebrow{margin:0;font-size:11px;font-weight:800;letter-spacing:.28em;color:var(--dn-gold);text-transform:uppercase}
 .cv-arc-head .cv-sec-title{margin:6px 0 0}
@@ -4132,7 +4132,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 
 /* ── 모바일 : 옆으로 미는 흰 카드 ── */
 @media(max-width:900px){
-  .cv-arc{padding:38px 0 44px}
+  .cv-arc{padding:38px 0 50px}
   .cv-arc-head{align-items:center;margin-bottom:18px}
   .cv-arc-list{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;
     -webkit-overflow-scrolling:touch;padding-bottom:4px}
