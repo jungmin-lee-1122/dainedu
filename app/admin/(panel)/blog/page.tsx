@@ -65,14 +65,14 @@ export default function BlogAdminPage() {
 
   return (
     <div>
-      <h1 className="ad-h1">입시자료 · 블로그 연동</h1>
+      <h1 className="ad-h1">입시자료 · 소식</h1>
       <p className="ad-desc">
         네이버 블로그에 글을 올리면 홈페이지 입시자료에 자동으로 나타납니다. 글쓰기·수정·삭제는 블로그에서
         하시고, 여기서는 <b>홈페이지에만 안 보이게</b> 숨길 수 있습니다. (네이버 원글은 그대로 남습니다)
       </p>
 
       <p className="ad-notice">
-        입시자료 페이지(<a href="/archive" target="_blank" rel="noopener noreferrer">/archive</a>)에
+        입시자료 · 소식 페이지(<a href="/archive" target="_blank" rel="noopener noreferrer">/archive</a>)에
         숨기지 않은 글이 최신순으로 모두 표시됩니다. 현재 <b>{shown.length}개</b> 노출 중.
         {blogUrl && (
           <>

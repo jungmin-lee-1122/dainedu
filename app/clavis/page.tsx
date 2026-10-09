@@ -15,6 +15,7 @@ import {
   sideBanners,
 } from "./clavisData";
 import { getNotices, getClips, getTeachers, getEvents } from "@/lib/content";
+import { getVisiblePosts } from "@/lib/blog";
 
 /** 대상 배지를 짧게 — "예비 고1(현 중3)" → "예비 고1" */
 function shortTarget(v: string) {
@@ -41,11 +42,12 @@ export const metadata: Metadata = {
 
 export default async function ClavisPage() {
   // 세 가지를 동시에 불러옵니다 (하나씩 기다리면 그만큼 느려집니다)
-  const [allNotices, clips, facultyList, events] = await Promise.all([
+  const [allNotices, clips, facultyList, events, posts] = await Promise.all([
     getNotices("clavis", seedNotices),
     getClips(seedClips),
     getTeachers(),
     getEvents(),
+    getVisiblePosts(3),
   ]);
   /* 공지사항은 2개, 설명회는 가장 가까운 1개만 보여줍니다. */
   const notices = allNotices.slice(0, 2);
@@ -209,6 +211,42 @@ export default async function ClavisPage() {
           </div>
         </div>
       </section>
+      )}
+
+      {/* ── 4-2) 입시자료 · 소식 (네이버 블로그 연동) ── */}
+      {posts.length > 0 && (
+        <section className="cv-arc" id="archive">
+          <div className="cv-wrap">
+            <div className="cv-arc-head">
+              <div>
+                <p className="cv-arc-eyebrow">Archive</p>
+                <h2 className="cv-sec-title">입시자료 · 소식</h2>
+              </div>
+              <a className="cv-arc-more" href="/archive">전체 보기 →</a>
+            </div>
+
+            <ul className="cv-arc-list">
+              {posts.map((p) => (
+                <li key={p.id}>
+                  <a className="cv-arc-row" href={p.link} target="_blank" rel="noopener noreferrer">
+                    <div className="cv-arc-th">
+                      {p.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={p.image} alt="" loading="lazy" decoding="async" />
+                      ) : null}
+                    </div>
+                    <div className="cv-arc-txt">
+                      <span className="cv-arc-d-m">{p.date}</span>
+                      <h3 className="cv-arc-t">{p.title}</h3>
+                      {p.summary && <p className="cv-arc-s">{p.summary}</p>}
+                    </div>
+                    <span className="cv-arc-d">{p.date}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       )}
 
       {/* ── 5) 성공수기 + 사이드 배너 ── */}

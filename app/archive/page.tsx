@@ -17,7 +17,7 @@ import { getVisiblePosts, BLOG_URL } from "@/lib/blog";
 export const revalidate = 900;
 
 export const metadata: Metadata = {
-  title: "입시자료 — 다인에듀 동탄점",
+  title: "입시자료 · 소식 — 다인에듀 동탄점",
   description:
     "다인에듀가 정리한 입시 소식과 학습 자료. 수능·내신·수시 전략을 꾸준히 전해드립니다.",
 };
@@ -31,12 +31,12 @@ export default async function ArchivePage() {
 
       <PageBand
         eyebrow="Archive"
-        title="입시자료"
+        title="입시자료 · 소식"
         sub={[
           "입시의 흐름과 공부의 기준을 정리해 전해드립니다.",
           "다인에듀가 직접 쓰는 글입니다.",
         ]}
-        crumb={[{ label: "설명회 · 입시" }, { label: "입시자료" }]}
+        crumb={[{ label: "설명회 · 입시" }, { label: "입시자료 · 소식" }]}
       />
 
       <section className="ar-sec">

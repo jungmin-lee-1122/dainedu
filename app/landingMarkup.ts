@@ -42,7 +42,7 @@ export const landingMarkup = `
           <span class="dn-gnb-gtitle">설명회</span>
           <a href="/events/event-muy3rsg1ajvr">설명회 신청</a>
           <span class="dn-gnb-gtitle">입시</span>
-          <a href="/archive">입시자료</a>
+          <a href="/archive">입시자료 · 소식</a>
         </div>
       </li>
       <!-- 콘텐츠 메뉴 숨김: 다시 보이려면 아래 주석만 풀어주세요
