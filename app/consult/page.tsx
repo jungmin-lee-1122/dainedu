@@ -117,7 +117,7 @@ export default function ConsultPage() {
             <div className="cs-field">
               <span className="cs-label">
                 학년 <i>필수</i>
-                <b className="cs-label-note">예시) 현재 예비 고3이면 ‘고2’ 를 선택해 주세요</b>
+                <b className="cs-label-note">신청일 기준 현재 학년을 선택해 주세요</b>
               </span>
               <div className="cs-grade">
                 {GRADES.map((g) => (
