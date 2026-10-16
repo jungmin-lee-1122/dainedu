@@ -7,7 +7,7 @@ import Script from "next/script";
 import { subjects } from "./teachers/teachersData";
 import { topbarScript } from "./topbarScript";
 
-const SEMINAR = "/events/event-muy3rsg1ajvr";
+const SEMINAR = "/event";
 
 /** current: 로고 옆 과정 토글에서 현재 켜둘 값
  *  "porta"  = 포르타 고등전문관 (/porta)
@@ -124,7 +124,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             <a href="/event">설명회 · 입시</a>
             <div className="dn-gnb-sub dn-gnb-sub-grouped">
               <span className="dn-gnb-gtitle">설명회</span>
-              <a href="/events/event-muy3rsg1ajvr">설명회 신청</a>
+              <a href="/event">설명회 신청</a>
               <span className="dn-gnb-gtitle">입시</span>
               <a href="/archive">입시자료 · 소식</a>
             </div>
