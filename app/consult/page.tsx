@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const COURSES = ["2027 윈터스쿨", "고등부 단과", "2028 재수종합반"];
 
 /** 학년 선택지 */
-const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3", "재수 / N수"];
+const GRADES = ["중3", "고1", "고2", "고3", "재수 / N수"];
 
 /** 지역 선택지 — 서울 25개 구 */
 const SEOUL = [
@@ -115,19 +115,18 @@ export default function ConsultPage() {
             </div>
 
             <div className="cs-field">
-              <span className="cs-label">학년 <i>필수</i></span>
+              <span className="cs-label">
+                학년 <i>필수</i>
+                <b className="cs-label-note">예시) 현재 예비 고3이면 ‘고2’ 를 선택해 주세요</b>
+              </span>
               <div className="cs-grade">
                 {GRADES.map((g) => (
-                  <label
-                    className={g === "고1" ? "cs-grade-item cs-grade-wrap" : "cs-grade-item"}
-                    key={g}
-                  >
+                  <label className="cs-grade-item" key={g}>
                     <input type="radio" name="grade" value={g} />
                     <span>{g}</span>
                   </label>
                 ))}
               </div>
-              <span className="cs-hint">예시) 현재 예비 고3의 경우 ‘고2’ 체크</span>
             </div>
 
             <div className="cs-row">
