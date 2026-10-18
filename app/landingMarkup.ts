@@ -40,7 +40,7 @@ export const landingMarkup = `
         <a href="/event">설명회 · 입시</a>
         <div class="dn-gnb-sub dn-gnb-sub-grouped">
           <span class="dn-gnb-gtitle">설명회</span>
-          <a href="/event">설명회 신청</a>
+          <a href="/event">설명회 안내</a>
           <span class="dn-gnb-gtitle">입시</span>
           <a href="/archive">입시자료 · 소식</a>
         </div>

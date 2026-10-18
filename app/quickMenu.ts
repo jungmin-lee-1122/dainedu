@@ -1,4 +1,4 @@
-// 우측 고정 퀵메뉴 (입학상담 · 커리큘럼 · 설명회 참석 · 이벤트)
+// 우측 고정 퀵메뉴 (온라인상담 · 커리큘럼 · 설명회 참석 · 이벤트)
 // 홈 / 사전등록 / 포르타 · 클라비스 페이지에서 공통으로 사용합니다.
 export const quickMenuMarkup = String.raw`
 <aside class="dn-quick" aria-label="빠른 메뉴">
@@ -12,7 +12,7 @@ export const quickMenuMarkup = String.raw`
         <path d="M22 20.5c3 1 5 2.6 5 4.4 0 2.3-3.4 4.1-7.5 4.1S12 27.2 12 24.9" fill="none" stroke="#C0994F" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </span>
-    <span class="dn-quick-label">입학상담</span>
+    <span class="dn-quick-label">온라인상담</span>
   </a>
   <a class="dn-quick-item" href="/winter">
     <span class="dn-quick-ico">
