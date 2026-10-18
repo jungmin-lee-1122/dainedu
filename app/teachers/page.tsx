@@ -79,12 +79,13 @@ export default async function TeachersPage({
                       <div className="tc-tags">
                         {teacher.tags.map((tag) => <span key={tag}>{tag}</span>)}
                       </div>
-                      {teacher.school
-                        ? <span className="tc-card-school">{shortSchool(teacher.school)}</span>
-                        : <span className="tc-open">{teacher.openAt}</span>}
+                      {!teacher.school && <span className="tc-open">{teacher.openAt}</span>}
                     </div>
                     <p className="tc-card-subject">{teacher.subject}</p>
                     <h2 className="tc-card-name">{teacher.name}</h2>
+                    {teacher.school && (
+                      <p className="tc-card-school">{shortSchool(teacher.school)}</p>
+                    )}
 
                     <div className="tc-card-profile" aria-hidden={!teacher.revealed}>
                       {teacher.revealed && teacher.photo ? (

@@ -25,8 +25,12 @@ export async function generateMetadata({
   const { id } = await params;
   const teachers = await getTeachers();
   const teacher = teachers.find((item) => item.id === id);
+  if (!teacher) return { title: "강사진 — 다인에듀 동탄점" };
   return {
-    title: teacher ? `${teacher.name} ${teacher.subject} 강사 — 다인에듀 동탄점` : "강사진 — 다인에듀 동탄점",
+    title: `${teacher.name} ${teacher.subject} 강사 — 다인에듀 동탄점`,
+    description: `다인에듀 동탄점 ${teacher.subject} ${teacher.name} 선생님.${
+      teacher.school ? ` ${teacher.school}.` : ""
+    } 약력과 개설 강좌를 확인하세요.`,
   };
 }
 
