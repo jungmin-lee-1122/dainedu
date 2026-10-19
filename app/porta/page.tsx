@@ -52,9 +52,10 @@ export default async function PortaPage() {
   ]);
   /* 공지사항은 2개, 설명회는 가장 가까운 1개만 보여줍니다. */
   const notices = allNotices.slice(0, 2);
-  const lectures = events
-    .filter((e) => e.status !== "마감")
-    .slice(0, 1);
+  /* 접수 가능한 설명회를 먼저, 없으면 가장 최근 설명회(마감 포함)를 보여줍니다. */
+  const openOnes = events.filter((e) => e.status !== "마감");
+  const latest = [...events].sort((a, b) => (b.startAt || "").localeCompare(a.startAt || ""));
+  const lectures = (openOnes.length > 0 ? openOnes : latest).slice(0, 1);
 
   return (
     <main className="dn-body cv-page">
