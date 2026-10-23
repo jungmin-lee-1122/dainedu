@@ -179,7 +179,10 @@ export default async function ClavisPage() {
                       </div>
 
                       <span className="cv-sem-btn">
-                        {l.status === "마감" ? "내용 보기" : "예약하기"} <i aria-hidden="true">→</i>
+                        <em className="cv-sem-btn-t">
+                          {l.status === "마감" ? "내용 보기" : "예약하기"}
+                        </em>
+                        <i aria-hidden="true">→</i>
                       </span>
                     </a>
                   </li>

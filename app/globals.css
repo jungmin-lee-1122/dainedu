@@ -4210,25 +4210,38 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   margin:0 24px;padding:13px 22px;border-radius:999px;
   background:var(--dn-navy);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;
   transition:background .2s ease,gap .2s ease}
+.cv-sem-btn-t{font-style:normal}
 .cv-sem-btn i{font-style:normal;font-size:15px}
 .cv-sem-item:hover .cv-sem-btn{background:var(--dn-gold);color:var(--dn-deep);gap:12px}
 
 @media(max-width:900px){
   .cv-sem{padding:40px 0 44px}
-  .cv-sem-item{grid-template-columns:118px minmax(0,1fr)}
-  .cv-sem-date{padding:20px 10px}
-  .cv-sem-date b{font-size:31px}
-  .cv-sem-date span{font-size:12px}
-  .cv-sem-main{padding:16px 18px}
-  .cv-sem-title{font-size:16px}
-  .cv-sem-meta{font-size:12.5px;gap:4px 14px}
-  /* 버튼은 아래 줄 전체로 */
-  .cv-sem-btn{grid-column:1 / -1;justify-content:center;margin:0 18px 18px;padding:12px 20px}
+  .cv-sem-item{grid-template-columns:112px minmax(0,1fr) auto}
+  .cv-sem-date{padding:20px 8px}
+  .cv-sem-date b{font-size:30px}
+  .cv-sem-date span{font-size:11.5px}
+  .cv-sem-main{padding:15px 14px}
+  .cv-sem-title{font-size:15.5px;margin-bottom:7px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cv-sem-meta{font-size:12px;gap:3px 12px}
+  .cv-sem-tags{gap:5px;margin-bottom:7px}
+  .cv-sem-status,.cv-sem-target{font-size:10.5px;padding:3px 8px}
+  /* 버튼 — 오른쪽 원형 */
+  .cv-sem-btn{
+    width:46px;height:46px;padding:0;margin:0 13px 0 0;
+    border-radius:50%;justify-content:center;gap:0;flex:0 0 auto}
+  .cv-sem-btn-t{display:none}
+  .cv-sem-btn i{font-size:17px}
+  .cv-sem-item:hover .cv-sem-btn{gap:0}
 }
 @media(max-width:560px){
-  .cv-sem-item{grid-template-columns:102px minmax(0,1fr)}
-  .cv-sem-date b{font-size:27px}
-  .cv-sem-main{padding:14px 14px}
-  .cv-sem-tags{gap:5px;margin-bottom:7px}
-  .cv-sem-title{font-size:15px}
+  .cv-sem-item{grid-template-columns:92px minmax(0,1fr) auto}
+  .cv-sem-date{padding:18px 6px}
+  .cv-sem-date b{font-size:26px}
+  .cv-sem-date span{font-size:10.5px}
+  .cv-sem-main{padding:13px 11px}
+  .cv-sem-title{font-size:14.5px}
+  .cv-sem-meta{font-size:11.5px}
+  .cv-sem-btn{width:42px;height:42px;margin:0 10px 0 0}
+  .cv-sem-btn i{font-size:16px}
 }
