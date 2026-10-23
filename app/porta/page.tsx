@@ -17,14 +17,32 @@ import {
 import { getClips, getTeachers, getEvents } from "@/lib/content";
 import { getVisiblePosts } from "@/lib/blog";
 
-/** "2026-10-31 11:00" → { md:"10.31", sub:"토요일 · 11:00" } */
+/** 여러 형태의 날짜 문구에서 "월.일 / 요일 · 시각" 을 뽑아냅니다.
+ *  예) "2026.11.15 오전 11:00"  "2026-10-31 11:00"  "2026. 10. 18 (일) 오후 2시" */
 function semDate(startAt?: string, fallback?: string) {
-  const m = String(startAt ?? "").match(/(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
-  if (!m) return { md: "", sub: fallback ?? "" };
-  const [, y, mo, da, hh, mi] = m;
+  const raw = String(startAt || fallback || "").trim();
+  const ymd = raw.match(/(\d{4})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})/);
+  if (!ymd) return { md: "", sub: raw };
+
+  const [, y, mo, da] = ymd;
   const dt = new Date(Number(y), Number(mo) - 1, Number(da));
   const dow = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"][dt.getDay()];
-  return { md: `${mo}.${da}`, sub: hh ? `${dow} · ${hh}:${mi}` : dow };
+
+  /* 시각 — 오전/오후, "2시", "14:00" 모두 처리 */
+  const t = raw.replace(ymd[0], "").match(/(오전|오후)?\s*(\d{1,2})\s*(?::|시)\s*(\d{1,2})?/);
+  let time = "";
+  if (t) {
+    let hh = Number(t[2]);
+    const mi = t[3] ? t[3].padStart(2, "0") : "00";
+    if (t[1] === "오후" && hh < 12) hh += 12;
+    if (t[1] === "오전" && hh === 12) hh = 0;
+    time = `${String(hh).padStart(2, "0")}:${mi}`;
+  }
+
+  return {
+    md: `${mo.padStart(2, "0")}.${da.padStart(2, "0")}`,
+    sub: time ? `${dow} · ${time}` : dow,
+  };
 }
 
 /** 대상 배지를 짧게 — "예비 고1(현 중3)" → "예비 고1" */

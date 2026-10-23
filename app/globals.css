@@ -4166,7 +4166,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .cv-sem-list{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;list-style:none}
 
 .cv-sem-item{
-  display:grid;grid-template-columns:132px minmax(0,1fr) auto;align-items:stretch;
+  display:grid;grid-template-columns:148px minmax(0,1fr) auto;align-items:stretch;
   overflow:hidden;background:#fff;border:1px solid var(--dn-line);border-radius:16px;
   text-decoration:none;color:inherit;
   transition:transform .26s cubic-bezier(.22,.7,.3,1),box-shadow .26s ease,border-color .26s ease}
@@ -4175,13 +4175,21 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 
 /* 왼쪽 날짜 블록 — 남색 바탕에 금색 실선 */
 .cv-sem-date{
-  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  padding:26px 14px;
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
+  padding:26px 12px;
   background:linear-gradient(155deg,#223457 0%,var(--dn-navy) 55%,#16233E 100%);color:#fff}
 .cv-sem-date::after{content:"";position:absolute;right:0;top:16px;bottom:16px;width:1px;
   background:linear-gradient(180deg,transparent,rgba(217,190,140,.6),transparent)}
-.cv-sem-date b{font-size:31px;font-weight:800;letter-spacing:-.04em;line-height:1}
-.cv-sem-date span{font-size:11.5px;font-weight:600;color:rgba(247,244,236,.72);letter-spacing:-.01em}
+/* 날짜 — 크게, 크림→금색 그라데이션 */
+.cv-sem-date b{
+  font-size:38px;font-weight:800;letter-spacing:-.045em;line-height:1;
+  background:linear-gradient(140deg,#FFFFFF 0%,#F4EBDA 46%,var(--dn-gold-soft) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent}
+.cv-sem-date span{font-size:13px;font-weight:600;color:rgba(247,244,236,.78);letter-spacing:-.01em;white-space:nowrap}
+/* 날짜를 못 읽었을 때(원문 그대로)는 작게 감싸서 보여줍니다 */
+.cv-sem-date b:empty{display:none}
+.cv-sem-date b:empty + span{font-size:12px;white-space:normal;text-align:center;line-height:1.5}
 
 .cv-sem-main{min-width:0;padding:20px 24px}
 .cv-sem-tags{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:9px}
@@ -4207,10 +4215,10 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 
 @media(max-width:900px){
   .cv-sem{padding:40px 0 44px}
-  .cv-sem-item{grid-template-columns:96px minmax(0,1fr)}
+  .cv-sem-item{grid-template-columns:118px minmax(0,1fr)}
   .cv-sem-date{padding:20px 10px}
-  .cv-sem-date b{font-size:25px}
-  .cv-sem-date span{font-size:10.5px}
+  .cv-sem-date b{font-size:31px}
+  .cv-sem-date span{font-size:12px}
   .cv-sem-main{padding:16px 18px}
   .cv-sem-title{font-size:16px}
   .cv-sem-meta{font-size:12.5px;gap:4px 14px}
@@ -4218,8 +4226,8 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .cv-sem-btn{grid-column:1 / -1;justify-content:center;margin:0 18px 18px;padding:12px 20px}
 }
 @media(max-width:560px){
-  .cv-sem-item{grid-template-columns:78px minmax(0,1fr)}
-  .cv-sem-date b{font-size:22px}
+  .cv-sem-item{grid-template-columns:102px minmax(0,1fr)}
+  .cv-sem-date b{font-size:27px}
   .cv-sem-main{padding:14px 14px}
   .cv-sem-tags{gap:5px;margin-bottom:7px}
   .cv-sem-title{font-size:15px}
