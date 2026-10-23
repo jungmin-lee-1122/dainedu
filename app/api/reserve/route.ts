@@ -41,7 +41,6 @@ export async function GET(request: Request) {
     phone: "010-0000-0000",
     school: "테스트고등학교",
     grade: "고3",
-    track: "인문",
     companion: "본인만 참석",
     source: "기타",
     agreeMarketing: "미동의",
@@ -92,7 +91,6 @@ export async function POST(request: Request) {
     const phone = String(data?.phone || "").trim();
     const school = String(data?.school || "").trim();
     const grade = String(data?.grade || "").trim();
-    const track = String(data?.track || "").trim();
     const companion = String(data?.companion || "").trim();
     const source = String(data?.source || "").trim();
 
@@ -102,7 +100,6 @@ export async function POST(request: Request) {
       !name ||
       !school ||
       !grade ||
-      !track ||
       !companion ||
       !source ||
       !/^01[0-9]-[0-9]{3,4}-[0-9]{4}$/.test(phone)

@@ -212,7 +212,6 @@ var form=document.getElementById("rvForm");
       phone: val("phone"),
       school: val("school"),
       grade: val("grade"),
-      track: val("track"),
       companion: val("companion"),
       source: val("source"),
       agreeMarketing: form.querySelector('[name="agreeMarketing"]').checked ? "동의" : "미동의"
@@ -223,7 +222,6 @@ var form=document.getElementById("rvForm");
     if(!/^01[0-9]-[0-9]{3,4}-[0-9]{4}$/.test(data.phone)){ showErr("phone",1); bad=bad||"#rvPhone"; }
     if(!data.school){ showErr("school",1); bad=bad||"#rvSchool"; }
     if(!data.grade){ showErr("grade",1); bad=bad||"#rvGrade"; }
-    if(!data.track){ showErr("track",1); bad=bad||"#rvTrack"; }
     if(!data.companion){ showErr("companion",1); bad=bad||"#rvCompanion"; }
     if(!data.source){ showErr("source",1); bad=bad||"#rvSource"; }
     if(!form.querySelector('[name="agreeRequired"]').checked){ showErr("agreeRequired",1); bad=bad||null; }

@@ -2,7 +2,7 @@
 //  예약 신청서 마크업 (상세 페이지 우측 칸에 들어갑니다)
 //  ※ 입력 항목을 바꾸려면 아래 HTML 과 eventData.ts 의 선택지를 함께 수정하세요.
 // ═══════════════════════════════════════════════════════════
-import { FORM_GRADES, FORM_TRACKS, FORM_COMPANIONS, FORM_SOURCES } from "./eventData";
+import { FORM_GRADES, FORM_COMPANIONS, FORM_SOURCES } from "./eventData";
 
 const opts = (list: string[]) =>
   list.map((v) => `<option value="${v}">${v}</option>`).join("");
@@ -92,16 +92,6 @@ export function reserveModalMarkup(ev: {
           <p class="rv-err" data-err="grade">학년을 선택해 주세요.</p>
         </div>
 
-        <!-- 계열 -->
-        <div class="rv-field">
-          <label class="rv-label" for="rvTrack">계열 <i>필수</i></label>
-          <select id="rvTrack" name="track">
-            <option value="">선택해 주세요</option>
-            ${opts(FORM_TRACKS)}
-          </select>
-          <p class="rv-err" data-err="track">계열을 선택해 주세요.</p>
-        </div>
-
         <!-- 동반인 수 -->
         <div class="rv-field">
           <label class="rv-label" for="rvCompanion">동반인 수 <i>필수</i></label>
@@ -140,7 +130,7 @@ export function reserveModalMarkup(ev: {
             <button class="rv-agree-toggle" type="button" aria-expanded="false" aria-label="약관 펼치기">˅</button>
             <div class="rv-agree-detail" hidden>
               <p><b>수집 목적</b> — 설명회 사전예약 및 예약 확인 문자 발송, 입시정보 제공</p>
-              <p><b>수집 항목</b> — 예약자 구분, 이름, 휴대전화번호, 학교명, 학년, 계열, 동반인 수, 유입경로</p>
+              <p><b>수집 항목</b> — 예약자 구분, 이름, 휴대전화번호, 학교명, 학년, 동반인 수, 유입경로</p>
               <p><b>보유 기간</b> — 설명회 종료 후 1년간 보관 후 파기</p>
               <p class="rv-agree-warn">동의를 거부하실 수 있으나, 거부 시 설명회 예약이 제한됩니다.</p>
             </div>
