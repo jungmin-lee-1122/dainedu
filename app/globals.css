@@ -3396,7 +3396,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 }
 
 /* 50) 선생님 띠 (포르타 · 클라비스) */
-.ts-sec{padding:clamp(48px,6vw,78px) 0 clamp(52px,6vw,82px);background:var(--dn-cream);overflow:hidden}
+.ts-sec{padding:clamp(48px,6vw,78px) 0 clamp(52px,6vw,82px);background:#fff;overflow:hidden}
 .ts-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px;
   padding-bottom:16px;border-bottom:1px solid var(--dn-line)}
 .ts-title{margin:0;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:-.04em;color:var(--dn-deep)}
@@ -4157,4 +4157,70 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .cv-arc-t{font-size:15px;white-space:normal;line-height:1.45;
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .cv-arc-s{display:none}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   62) 포르타 · 클라비스 — 입시설명회 (날짜 블록 + 예약 버튼)
+   ═══════════════════════════════════════════════════════════ */
+.cv-sem{padding:58px 0 62px;background:var(--dn-cream);border-top:1px solid var(--dn-line)}
+.cv-sem-list{display:flex;flex-direction:column;gap:14px;margin:0;padding:0;list-style:none}
+
+.cv-sem-item{
+  display:grid;grid-template-columns:132px minmax(0,1fr) auto;align-items:stretch;
+  overflow:hidden;background:#fff;border:1px solid var(--dn-line);border-radius:16px;
+  text-decoration:none;color:inherit;
+  transition:transform .26s cubic-bezier(.22,.7,.3,1),box-shadow .26s ease,border-color .26s ease}
+.cv-sem-item:hover{transform:translateY(-3px);border-color:#c0994f66;
+  box-shadow:0 26px 54px -32px rgba(16,25,46,.45)}
+
+/* 왼쪽 날짜 블록 — 남색 바탕에 금색 실선 */
+.cv-sem-date{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  padding:26px 14px;
+  background:linear-gradient(155deg,#223457 0%,var(--dn-navy) 55%,#16233E 100%);color:#fff}
+.cv-sem-date::after{content:"";position:absolute;right:0;top:16px;bottom:16px;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(217,190,140,.6),transparent)}
+.cv-sem-date b{font-size:31px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.cv-sem-date span{font-size:11.5px;font-weight:600;color:rgba(247,244,236,.72);letter-spacing:-.01em}
+
+.cv-sem-main{min-width:0;padding:20px 24px}
+.cv-sem-tags{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.cv-sem-status{padding:4px 10px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:-.01em}
+.cv-sem-status.is-open{background:rgba(192,153,79,.16);color:#8A6E34;border:1px solid rgba(192,153,79,.38)}
+.cv-sem-status.is-closed{background:rgba(23,26,34,.07);color:#8A8F98;border:1px solid rgba(23,26,34,.12)}
+.cv-sem-target{padding:4px 9px;border:1px solid rgba(36,54,90,.14);border-radius:5px;
+  background:#FAFBFD;font-size:11px;font-weight:700;color:#6B7485}
+.cv-sem-title{margin:0 0 9px;font-size:17.5px;font-weight:800;line-height:1.4;
+  color:var(--dn-navy);letter-spacing:-.025em;word-break:keep-all}
+.cv-sem-meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:var(--dn-ink)}
+.cv-sem-meta em{margin-right:7px;font-style:normal;font-size:11.5px;font-weight:800;
+  letter-spacing:.04em;color:#A79C88}
+
+/* 오른쪽 버튼 */
+.cv-sem-btn{
+  display:inline-flex;align-items:center;gap:8px;align-self:center;
+  margin:0 24px;padding:13px 22px;border-radius:999px;
+  background:var(--dn-navy);color:#fff;font-size:14px;font-weight:700;white-space:nowrap;
+  transition:background .2s ease,gap .2s ease}
+.cv-sem-btn i{font-style:normal;font-size:15px}
+.cv-sem-item:hover .cv-sem-btn{background:var(--dn-gold);color:var(--dn-deep);gap:12px}
+
+@media(max-width:900px){
+  .cv-sem{padding:40px 0 44px}
+  .cv-sem-item{grid-template-columns:96px minmax(0,1fr)}
+  .cv-sem-date{padding:20px 10px}
+  .cv-sem-date b{font-size:25px}
+  .cv-sem-date span{font-size:10.5px}
+  .cv-sem-main{padding:16px 18px}
+  .cv-sem-title{font-size:16px}
+  .cv-sem-meta{font-size:12.5px;gap:4px 14px}
+  /* 버튼은 아래 줄 전체로 */
+  .cv-sem-btn{grid-column:1 / -1;justify-content:center;margin:0 18px 18px;padding:12px 20px}
+}
+@media(max-width:560px){
+  .cv-sem-item{grid-template-columns:78px minmax(0,1fr)}
+  .cv-sem-date b{font-size:22px}
+  .cv-sem-main{padding:14px 14px}
+  .cv-sem-tags{gap:5px;margin-bottom:7px}
+  .cv-sem-title{font-size:15px}
 }

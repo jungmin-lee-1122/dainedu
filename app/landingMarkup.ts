@@ -56,7 +56,7 @@ export const landingMarkup = `
       </li>
       -->
       <li class="dn-gnb-item">
-        <a href="/porta#notice">학원생활</a>
+        <a href="/notices">학원생활</a>
         <div class="dn-gnb-sub">
           <a href="/notices">공지사항</a>
           <a href="/consult">상담문의</a>

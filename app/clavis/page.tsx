@@ -11,12 +11,21 @@ import {
   heroSlides,
   teacherTabs,
   teachers,
-  notices as seedNotices,
   clips as seedClips,
   sideBanners,
 } from "./clavisData";
-import { getNotices, getClips, getTeachers, getEvents } from "@/lib/content";
+import { getClips, getTeachers, getEvents } from "@/lib/content";
 import { getVisiblePosts } from "@/lib/blog";
+
+/** "2026-10-31 11:00" → { md:"10.31", sub:"토요일 · 11:00" } */
+function semDate(startAt?: string, fallback?: string) {
+  const m = String(startAt ?? "").match(/(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+  if (!m) return { md: "", sub: fallback ?? "" };
+  const [, y, mo, da, hh, mi] = m;
+  const dt = new Date(Number(y), Number(mo) - 1, Number(da));
+  const dow = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"][dt.getDay()];
+  return { md: `${mo}.${da}`, sub: hh ? `${dow} · ${hh}:${mi}` : dow };
+}
 
 /** 대상 배지를 짧게 — "예비 고1(현 중3)" → "예비 고1" */
 function shortTarget(v: string) {
@@ -43,19 +52,15 @@ export const metadata: Metadata = {
 
 export default async function ClavisPage() {
   // 세 가지를 동시에 불러옵니다 (하나씩 기다리면 그만큼 느려집니다)
-  const [allNotices, clips, facultyList, events, posts] = await Promise.all([
-    getNotices("clavis", seedNotices),
+  const [clips, facultyList, events, posts] = await Promise.all([
     getClips(seedClips),
     getTeachers(),
     getEvents(),
     getVisiblePosts(3),
   ]);
-  /* 공지사항은 2개, 설명회는 가장 가까운 1개만 보여줍니다. */
-  const notices = allNotices.slice(0, 2);
-  /* 접수 가능한 설명회를 먼저, 없으면 가장 최근 설명회(마감 포함)를 보여줍니다. */
-  const openOnes = events.filter((e) => e.status !== "마감");
-  const latest = [...events].sort((a, b) => (b.startAt || "").localeCompare(a.startAt || ""));
-  const lectures = (openOnes.length > 0 ? openOnes : latest).slice(0, 1);
+  /* 이벤트·설명회 페이지(/event) 맨 위 2개를 그대로 가져옵니다.
+     순서를 바꾸려면 관리자 → 이벤트·설명회에서 항목 순서를 조정하세요. */
+  const lectures = events.slice(0, 2);
 
   return (
     <main className="dn-body cv-page">
@@ -113,6 +118,54 @@ export default async function ClavisPage() {
         </div>
       </section>
 
+      {/* ── 3) 입시설명회 (숨기려면 위쪽 SHOW_BOARD 를 false 로) ── */}
+      {SHOW_BOARD && lectures.length > 0 && (
+        <section className="cv-sem" id="event">
+          <div className="cv-wrap">
+            <div className="cv-sec-head">
+              <h2 className="cv-sec-title">입시설명회</h2>
+              <a className="cv-more" href="/event" aria-label="전체보기">+</a>
+            </div>
+
+            <ul className="cv-sem-list">
+              {lectures.map((l) => {
+                const d = semDate(l.startAt, l.date);
+                return (
+                  <li key={l.id}>
+                    <a className="cv-sem-item" href={`/events/${l.id}`}>
+                      <div className="cv-sem-date">
+                        <b>{d.md}</b>
+                        <span>{d.sub}</span>
+                      </div>
+
+                      <div className="cv-sem-main">
+                        <div className="cv-sem-tags">
+                          <span className={`cv-sem-status is-${l.status === "마감" ? "closed" : "open"}`}>
+                            {l.status}
+                          </span>
+                          {l.targets.map((t) => (
+                            <span className="cv-sem-target" key={t}>{shortTarget(t)}</span>
+                          ))}
+                        </div>
+                        <h3 className="cv-sem-title">{l.title}</h3>
+                        <div className="cv-sem-meta">
+                          <span><em>일시</em> {l.date}</span>
+                          <span><em>장소</em> {l.place}</span>
+                        </div>
+                      </div>
+
+                      <span className="cv-sem-btn">
+                        {l.status === "마감" ? "내용 보기" : "예약하기"} <i aria-hidden="true">→</i>
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* ── 3) 선생님 띠 — 자동 슬라이드 ── */}
       <TeacherStrip teachers={facultyList} />
 
@@ -157,62 +210,6 @@ export default async function ClavisPage() {
         </div>
       </section>
 
-      )}
-
-      {/* ── 4) 공지사항 · 설명회 (숨기려면 위쪽 SHOW_BOARD 를 false 로) ── */}
-      {SHOW_BOARD && (
-      <section className="cv-board" id="board">
-        <div className="cv-wrap cv-board-grid">
-          <div className="cv-notice cv-anchor" id="notice">
-            <div className="cv-sec-head">
-              <h2 className="cv-sec-title">공지사항</h2>
-              <a className="cv-more" href="/notices" aria-label="전체보기">+</a>
-            </div>
-            <ul className="cv-notice-list">
-              {notices.map((n, i) => (
-                <li key={i}>
-                  <a href={n.href}>
-                    <span className="cv-notice-tag">【{n.tag}】</span>
-                    <span className="cv-notice-title">{n.title}</span>
-                    <span className="cv-notice-date">{n.date}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="cv-lecture cv-anchor" id="event">
-            <div className="cv-sec-head">
-              <h2 className="cv-sec-title">이벤트 · 설명회</h2>
-              <a className="cv-more" href="/event" aria-label="전체보기">+</a>
-            </div>
-            <div className="cv-lecture-list">
-              {lectures.length === 0 ? (
-                <p className="cv-lecture-empty">예정된 설명회가 공개되면 안내해 드리겠습니다.</p>
-              ) : (
-                lectures.map((l) => (
-                  <a className="cv-lecture-item" href={`/events/${l.id}`} key={l.id}>
-                    <div className="cv-lecture-main">
-                      <b className="cv-lecture-title">{l.title}</b>
-                      {l.targets.length > 0 && (
-                        <div className="cv-lecture-top">
-                          {l.targets.map((b) => (
-                            <span className="cv-badge" key={b}>{shortTarget(b)}</span>
-                          ))}
-                        </div>
-                      )}
-                      <div className="cv-lecture-meta">
-                        <span>· 일시 <b>{l.date}</b></span>
-                        <span>· 장소 <b>{l.place}</b></span>
-                      </div>
-                    </div>
-                    <span className="cv-lecture-btn">{l.status}</span>
-                  </a>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
       )}
 
       {/* ── 4-2) 입시자료 · 소식 (네이버 블로그 연동) ── */}
