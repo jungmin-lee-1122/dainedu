@@ -82,7 +82,12 @@ export const landingMarkup = `
               <span class="dn-slider-count"><b class="dn-cur">01</b><span class="dn-line"><i class="dn-line-fill"></i></span><span class="dn-total">03</span></span>
             </div>
           </div>
-          <a class="dn-poster" href="/events/event-muy3rsg1ajvr"><picture><source media="(max-width:900px)" srcset="/poster-math5-m.jpg"/><img src="/poster-math5.jpg" alt="다인에듀 수학 설명회 — 10월 18일(일) 오후 2시 · 예비 고1·고2·고3 학부모 및 학생"/></picture></a>
+          <!-- 포스터 — 설명회 2장이 번갈아 돌아갑니다. 바꾸려면 아래 <a> 두 줄의 주소와 이미지만 고치세요. -->
+          <div class="dn-poster dn-poster-roll" id="dnPosterRoll">
+            <a class="dn-poster-sl is-on" href="/events/event-mvkq1sai0bkt"><picture><source media="(max-width:900px)" srcset="/poster-sem1-m.jpg"/><img src="/poster-sem1.jpg" alt="고교 선택 전략 &amp; 예비고1 대입 성공 로드맵 설명회 — 다인에듀 동탄점"/></picture></a>
+            <a class="dn-poster-sl" href="/events/event-mvkq3sx6rfv1"><picture><source media="(max-width:900px)" srcset="/poster-sem2-m.jpg"/><img src="/poster-sem2.jpg" alt="예비 고2·고3 대입 전략 설명회 — 다인에듀 동탄점"/></picture></a>
+            <span class="dn-poster-dots" aria-hidden="true"><i class="is-on"></i><i></i></span>
+          </div>
         </div>
       </div>
     </section>

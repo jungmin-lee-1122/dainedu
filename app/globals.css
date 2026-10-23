@@ -694,6 +694,14 @@ img,video,svg{max-width:100%}
 .dn-poster{flex:0 0 30%;max-width:340px;position:relative;overflow:hidden;border-radius:22px;box-shadow:0 20px 48px -24px rgba(16,25,46,.42);transition:transform .25s ease,box-shadow .25s ease}
 .dn-poster:hover{transform:translateY(-3px);box-shadow:0 26px 58px -22px rgba(16,25,46,.5)}
 .dn-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+/* ── 포스터 슬라이드 (설명회 2장 교차) ── */
+.dn-poster-sl{position:absolute;inset:0;display:block;opacity:0;pointer-events:none;transition:opacity .9s ease}
+.dn-poster-sl.is-on{opacity:1;pointer-events:auto}
+.dn-poster-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:7px;z-index:3;padding:5px 9px;border-radius:999px;background:rgba(16,25,46,.3);backdrop-filter:blur(4px)}
+.dn-poster-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s ease,width .3s ease}
+.dn-poster-dots i.is-on{width:16px;border-radius:999px;background:#fff}
+
 @media(max-width:760px){
   .dn-rolling-row{flex-direction:column}
   .dn-poster{flex:1 1 auto;max-width:none;aspect-ratio:16/8}

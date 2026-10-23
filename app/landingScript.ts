@@ -146,6 +146,26 @@ export const landingScript = `/* ===============================================
 (function(){var w=document.querySelector(".dn-foot-tel-wrap");if(!w)return;var btn=w.querySelector(".dn-foot-tel");btn.addEventListener("click",function(e){e.stopPropagation();var open=w.classList.toggle("is-open");btn.setAttribute("aria-expanded",open?"true":"false");});document.addEventListener("click",function(e){if(!w.contains(e.target)){w.classList.remove("is-open");btn.setAttribute("aria-expanded","false");}});})();
 (function(){var t=document.querySelector(".dn-quick-top");if(!t)return;t.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
 
+/* ═══════ 포스터 슬라이드 — 5초마다 교차 ═══════ */
+(function(){
+  var box=document.getElementById("dnPosterRoll"); if(!box) return;
+  var sl=box.querySelectorAll(".dn-poster-sl");
+  var dots=box.querySelectorAll(".dn-poster-dots i");
+  if(sl.length<2) return;
+  var i=0, timer=null;
+  function go(n){
+    i=(n+sl.length)%sl.length;
+    for(var k=0;k<sl.length;k++) sl[k].classList.toggle("is-on",k===i);
+    for(var d=0;d<dots.length;d++) dots[d].classList.toggle("is-on",d===i);
+  }
+  function play(){ stop(); timer=setInterval(function(){ go(i+1); },5000); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  box.addEventListener("mouseenter",stop);
+  box.addEventListener("mouseleave",play);
+  document.addEventListener("visibilitychange",function(){ document.hidden?stop():play(); });
+  play();
+})();
+
 ${mobileMenuScript}
 
 ${topbarScript}

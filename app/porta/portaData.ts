@@ -16,10 +16,16 @@ export const heroSlides = [
   },
   */
   {
-    tab: "수학 설명회",
-    img: "/porta/hero-math.jpg",
-    href: "/events/event-muy3rsg1ajvr",
-    alt: "다인에듀 수학 설명회 — 10월 18일(일) 오후 2시 · 다인에듀 6층 본관 · 예비 고1·고2·고3 학부모 및 학생",
+    tab: "예비고1 설명회",
+    img: "/porta/sem-go1.jpg",
+    href: "/events/event-mvkq1sai0bkt",
+    alt: "고교선택전략 & 대입 로드맵 설명회 — 2026.11.15(일) 오전 11:00 · 롯데시네마 동탄점 3관 · 예비고1(현 중3) 학생 및 학부모",
+  },
+  {
+    tab: "예비고2·고3 설명회",
+    img: "/porta/sem-go23.jpg",
+    href: "/events/event-mvkq3sx6rfv1",
+    alt: "대입개편 전략 & 학년별 맞춤전략 설명회 — 2026.11.15(일) 오후 2:00 · 롯데시네마 동탄점 3관 · 예비 고2·고3 학생 및 학부모",
   },
   {
     tab: "2027 윈터스쿨",
