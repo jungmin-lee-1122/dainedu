@@ -55,7 +55,12 @@ function firstImage(v: string) {
   if (!m) return "";
   // 주소를 그대로 씁니다. type 값을 바꾸면 네이버가 거부합니다.
   const url = m[1].replace(/^http:/, "https:");
-  // 네이버 이미지는 외부에서 직접 못 불러오므로 우리 서버를 거칩니다
+  return proxied(url);
+}
+
+/** 네이버 이미지는 외부에서 직접 못 불러오므로 우리 서버를 거칩니다 */
+function proxied(url: string) {
+  if (!url) return "";
   if (/(^|\.)(pstatic\.net|naver\.net|naver\.com)$/i.test(hostOf(url))) {
     return `/api/blog-image?u=${encodeURIComponent(url)}`;
   }
@@ -91,6 +96,31 @@ function ymd(v: string) {
 
 /* ───────── 블로그에서 받아오기 ───────── */
 
+
+/** 글 본문 페이지에서 대표 이미지(og:image)를 읽어옵니다.
+ *  RSS 썸네일은 임시 주소라 "존재하지 않는 이미지" 가 뜨는 경우가 있어,
+ *  대표 이미지를 우선으로 쓰고 실패하면 썸네일로 돌아갑니다. */
+async function ogImage(logNo: string): Promise<string> {
+  try {
+    const res = await fetch(`https://m.blog.naver.com/${BLOG_ID}/${logNo}`, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile Safari/604.1",
+      },
+      cache: "no-store",
+      signal: AbortSignal.timeout(6000),
+    });
+    if (!res.ok) return "";
+    const html = await res.text();
+    const m =
+      html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
+      html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i);
+    return m ? m[1].replace(/&amp;/g, "&").replace(/^http:/, "https:") : "";
+  } catch {
+    return "";
+  }
+}
+
 async function fetchFeed(): Promise<BlogPost[]> {
   const res = await fetch(RSS_URL, {
     headers: { "User-Agent": "Mozilla/5.0 (compatible; DainEduSite/1.0)" },
@@ -120,7 +150,16 @@ async function fetchFeed(): Promise<BlogPost[]> {
     });
   }
 
-  return posts.sort((a, b) => b.at - a.at);
+  const sorted = posts.sort((a, b) => b.at - a.at);
+
+  /* 대표 이미지를 한 번에 가져와 교체합니다. (15분에 한 번만 실행됩니다) */
+  const ogs = await Promise.all(sorted.slice(0, 30).map((p) => ogImage(p.id)));
+  sorted.forEach((p, i) => {
+    const og = ogs[i];
+    if (og) p.image = proxied(og);
+  });
+
+  return sorted;
 }
 
 /** 15분간 기억해 둡니다. (블로그에 매번 묻지 않도록) */
