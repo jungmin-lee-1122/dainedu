@@ -28,7 +28,7 @@ export default function Page() {
         { key: "date", label: "일시", type: "text", placeholder: "2026. 09. 20(일) 오후 2:00 ~ 4:00" },
         { key: "place", label: "장소", type: "text", placeholder: "롯데백화점 동탄점" },
         { key: "placeDetail", label: "장소 상세", type: "text", placeholder: "7층 롯데시네마 수퍼플렉스관 (선택)" },
-        { key: "capacity", label: "정원", type: "text", placeholder: "선착순 300석" },
+        { key: "capacity", label: "정원", type: "text", placeholder: "197석" },
         {
           key: "body",
           label: "설명회 안내",
@@ -47,7 +47,7 @@ export default function Page() {
           key: "notice",
           label: "유의사항",
           type: "textarea",
-          placeholder: "사전예약은 선착순으로 진행되며 조기 마감될 수 있습니다.",
+          placeholder: "사전 예약제이며, 정원이 차면 접수가 마감됩니다.",
           help: "한 줄에 하나씩 입력하세요.",
         },
         { key: "poster", label: "안내 포스터", type: "image", help: "상세 페이지에 표시됩니다. (선택)" },
@@ -61,10 +61,10 @@ export default function Page() {
         date: "",
         place: "다인에듀 동탄점",
         placeDetail: "",
-        capacity: "선착순 80석",
+        capacity: "197석",
         body: "",
         program: "",
-        notice: "사전예약은 선착순으로 진행되며 조기 마감될 수 있습니다.\n예약 후 취소를 원하시면 대표번호(1644-8022)로 연락해 주세요.",
+        notice: "사전 예약제이며, 정원이 차면 접수가 마감됩니다.\n예약 후 취소를 원하시면 대표번호(1644-8022)로 연락해 주세요.",
         poster: "",
       }}
       summary={(item) => (

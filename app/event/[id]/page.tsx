@@ -103,7 +103,7 @@ export default async function EventViewPage({
               <p className="ev-summary-help">
                 {closed
                   ? "다음 일정은 공지사항으로 안내드립니다."
-                  : "선착순 마감 · 예약 후 안내 문자를 보내드립니다."}
+                  : "정원이 차면 접수가 마감됩니다 · 예약 후 안내 문자를 보내드립니다."}
               </p>
             </div>
           </div>

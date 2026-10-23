@@ -15,7 +15,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "이벤트 · 설명회 — 다인에듀 동탄점",
   description:
-    "다인에듀 동탄점 입시설명회 · 공개특강 일정과 사전예약 안내. 선착순으로 마감됩니다.",
+    "다인에듀 동탄점 입시설명회 · 공개특강 일정과 사전 예약 안내. 정원이 차면 접수가 마감됩니다.",
 };
 
 export default async function EventListPage() {
@@ -31,7 +31,7 @@ export default async function EventListPage() {
         title="이벤트 · 설명회"
         sub={[
           "입시의 흐름이 바뀔 때마다, 가장 먼저 알려드립니다.",
-          "모든 설명회는 사전예약제로 운영되며 선착순 마감됩니다.",
+          "모든 설명회는 사전 예약제로 운영되며, 정원이 차면 접수가 마감됩니다.",
         ]}
         crumb={[{ label: "학원생활" }, { label: "이벤트 · 설명회" }]}
       >

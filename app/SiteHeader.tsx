@@ -31,7 +31,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
       {/* 상단 안내 띠 — 링크 없이 안내 문구만 노출합니다 */}
       <div className="dn-topbar" role="note" aria-label="2027 윈터스쿨 사전 예약 안내">
         <span className="dn-topbar-mark">※</span>
-        <span className="dn-entry-badge">선착순 모집</span>
+        <span className="dn-entry-badge">사전 예약제</span>
         <h3 className="dn-topbar-title">2027 윈터스쿨 사전 예약</h3>
         <span className="dn-topbar-desc">
           1월 4일 개강 · 예비 고1·고2·고3 <b>상담 접수 중</b>입니다.
