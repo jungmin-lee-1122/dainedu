@@ -45,9 +45,15 @@ function semDate(startAt?: string, fallback?: string) {
   };
 }
 
-/** 대상 배지를 짧게 — "예비 고1(현 중3)" → "예비 고1" */
+/** 대상 배지를 짧게 — "예비고1(현 중3) 학생 및 학부모" → "예비고1 학생 및 학부모"
+ *  괄호만 지우고 앞뒤 띄어쓰기는 살립니다. */
 function shortTarget(v: string) {
-  return v.replace(/\s*\([^)]*\)\s*/g, "").trim() || v;
+  return (
+    v
+      .replace(/\s*\([^)]*\)\s*/g, " ") // 괄호 자리를 한 칸으로
+      .replace(/\s{2,}/g, " ")
+      .trim() || v
+  );
 }
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고친 내용은 1분 안에 반영됩니다.
