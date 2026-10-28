@@ -4278,9 +4278,27 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   --cx-ref:540;     /* 기준 얼굴 가로 중심 */
 }
 
-/* 인물이 카드 바닥에 서도록 사진 칸을 비웁니다 */
-.td-profile-anim .td-profile-photo{display:block;min-height:clamp(340px,34vw,430px);padding:0}
+/* ── 인물을 크게 세우는 히어로 ──
+   학부모님께 보여 드리는 화면이라 인물이 주인공입니다.
+   카드 테두리·색감은 그대로 두고, 높이와 인물 칸만 키웠습니다.
+   더 크게/작게 하려면 아래 min-height 의 clamp 숫자만 만지면 됩니다. */
+.td-profile-anim{min-height:clamp(430px,46vw,610px);
+  grid-template-columns:minmax(0,1fr) minmax(300px,53%);
+  background:radial-gradient(120% 86% at 78% 104%,#fff 0%,rgba(255,255,255,0) 58%),
+             linear-gradient(135deg,#FCFBF8,#EDF1F7)}
+.td-profile-anim .td-profile-copy{align-self:center;padding:34px 16px 34px 40px}
+.td-profile-anim .td-profile-photo{display:block;min-height:inherit;padding:0}
 .td-profile-anim .td-photo-ring{display:none}
+
+/* 발밑 그림자 — 인물이 바닥에 서 있는 느낌을 줍니다 */
+.td-profile-anim .td-profile-photo::after{content:"";position:absolute;z-index:0;
+  left:50%;bottom:-16px;width:56%;height:52px;translate:-50% 0;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(36,54,90,.16),rgba(36,54,90,0) 70%);
+  pointer-events:none}
+
+/* 인물이 커진 만큼 이름도 함께 키웁니다 */
+.td-profile-anim h2{font-size:clamp(32px,3.9vw,50px)}
+.td-profile-anim .td-subject{font-size:16px;letter-spacing:.02em}
 
 /* 정사각 무대 — 카드 바닥에 딱 붙습니다 */
 .hx-stage{position:absolute;right:-2%;bottom:0;height:100%;aspect-ratio:1/1;
@@ -4307,9 +4325,19 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .hx-still{display:block}
 }
 
+/* 태블릿 — 글 칸이 좁아지지 않게 인물 칸을 조금 줄입니다 */
+@media (max-width:900px){
+  .td-profile-anim{grid-template-columns:minmax(0,1fr) minmax(260px,48%);
+    min-height:clamp(400px,52vw,520px)}
+  .td-profile-anim .td-profile-copy{padding:28px 12px 28px 28px}
+}
+
 /* 모바일 — 인물이 위, 글이 아래 */
 @media (max-width:640px){
-  .td-profile-anim .td-profile-photo{min-height:min(96vw,420px);order:-1}
-  .td-profile-anim{display:flex;flex-direction:column}
+  .td-profile-anim{display:flex;flex-direction:column;min-height:0}
+  .td-profile-anim .td-profile-photo{min-height:min(104vw,470px);order:-1}
+  .td-profile-anim .td-profile-copy{padding:4px 22px 28px}
+  .td-profile-anim h2{font-size:clamp(28px,8vw,36px)}
+  .td-profile-anim .td-profile-photo::after{width:66%;height:40px;bottom:-12px}
   .hx-stage{right:auto;left:50%;transform:translateX(-50%)}
 }
