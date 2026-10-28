@@ -4286,7 +4286,21 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   grid-template-columns:minmax(0,1fr) minmax(300px,53%);
   background:radial-gradient(120% 86% at 78% 104%,#fff 0%,rgba(255,255,255,0) 58%),
              linear-gradient(135deg,#FCFBF8,#EDF1F7)}
-.td-profile-anim .td-profile-copy{align-self:center;padding:34px 16px 34px 40px}
+/* 글 칸 — 가운데로 뭉치지 않게 위(태그)·가운데(이름)·아래(약력)로 펼칩니다 */
+.td-profile-anim .td-profile-copy{align-self:stretch;display:flex;flex-direction:column;
+  justify-content:flex-start;
+  padding:clamp(38px,5vw,58px) 20px clamp(38px,5vw,58px) clamp(40px,4.6vw,62px)}
+.td-profile-anim .tc-tags{margin-bottom:clamp(20px,2.6vw,30px)}
+.td-profile-anim .tc-tags span{padding:6px 11px;font-size:11.5px}
+.td-profile-anim .td-subject{margin:0 0 6px}
+.td-profile-anim .td-school{margin-top:14px;font-size:clamp(15px,1.35vw,17.5px);line-height:1.6}
+.td-profile-anim .td-slogan{margin-top:16px;font-size:clamp(19px,1.9vw,25px)}
+/* 금색 선 + 약력을 한 덩어리로 아래쪽에 붙입니다 */
+.td-profile-anim .td-rule{margin:auto 0 22px;width:64px}
+/* 약력은 아래쪽에 붙여서 위아래 빈 공간을 없앱니다 */
+.td-profile-anim .td-career{margin:0}
+.td-profile-anim .td-career li{font-size:clamp(14px,1.2vw,16px);line-height:1.95}
+.td-profile-anim .td-video-link{margin-top:18px;align-self:flex-start}
 .td-profile-anim .td-profile-photo{display:block;min-height:inherit;padding:0}
 .td-profile-anim .td-photo-ring{display:none}
 
