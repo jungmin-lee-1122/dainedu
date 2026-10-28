@@ -31,6 +31,9 @@ export type Pose = {
   faceTo?: number;
   eyeTo?: number;
   fadeR?: boolean;
+  /** true 면 반복하지 않고 1회 재생 후 마지막 장면에서 멈춥니다.
+   *  (옛 영상은 시작 장면과 끝 장면이 달라 반복하면 툭 튑니다) */
+  once?: boolean;
 };
 
 /** 강사별 얼굴 위치값 — 현재 17명 + 신규 2명 */
@@ -43,20 +46,24 @@ const POSE_BY_NAME: Record<string, Pose> = {
   양철훈: { face: 419, eye: 445, cx: 518, faceTo: 333, eyeTo: 576, fadeR: true },
   허진우: { face: 253, eye: 332, cx: 526, faceTo: 246 },
 
-  /* ── 사진 분석값 ── */
-  최규백: { face: 240, eye: 360, cx: 550 },
-  최나영: { face: 281, eye: 371, cx: 567 },
-  조아람: { face: 280, eye: 375, cx: 564 },
-  김민우: { face: 279, eye: 377, cx: 561 },
-  임종희: { face: 285, eye: 361, cx: 558 },
-  김은혁: { face: 295, eye: 336, cx: 575 },
-  김도윤: { face: 227, eye: 298, cx: 506 },
-  김기수: { face: 256, eye: 362, cx: 515 },
-  김수진: { face: 267, eye: 330, cx: 582 },
-  정희정: { face: 284, eye: 354, cx: 677 },
-  정선혜: { face: 296, eye: 335, cx: 582 },
-  이진주: { face: 277, eye: 381, cx: 482 },
-  권지현: { face: 285, eye: 361, cx: 554 },
+  /* ── 2차 패키지 실측 (2026-10-28, 14명) ── */
+  /* 10/28 신규 8명 — 5초 무이음 루프 */
+  최나영: { face: 250, eye: 402, cx: 517, faceTo: 268 },
+  조아람: { face: 273, eye: 401, cx: 524, eyeTo: 359 },
+  서지연: { face: 294, eye: 326, cx: 514 },
+  김도윤: { face: 295, eye: 363, cx: 544, eyeTo: 376 },
+  정선혜: { face: 286, eye: 358, cx: 551 },
+  이진주: { face: 284, eye: 398, cx: 492, eyeTo: 384 },
+  정희정: { face: 263, eye: 362, cx: 619 },
+  권지현: { face: 303, eye: 387, cx: 538, eyeTo: 417 },
+
+  /* 옛 랜딩 영상 재사용 6명 — 1회 재생 후 정지 (once: true) */
+  최규백: { face: 258, eye: 424, cx: 540, once: true },
+  김민우: { face: 259, eye: 391, cx: 539, once: true },
+  임종희: { face: 279, eye: 383, cx: 520, eyeTo: 356, once: true },
+  김은혁: { face: 266, eye: 396, cx: 528, faceTo: 283, once: true },
+  김수진: { face: 299, eye: 418, cx: 542, eyeTo: 438, once: true },
+  김기수: { face: 271, eye: 386, cx: 551, once: true },
 };
 
 /** 배경이 투명한 애니메이션을 가진 강사 — 이름 → 폴더 */
@@ -67,6 +74,22 @@ const ANIM_DIR_BY_NAME: Record<string, string> = {
   이승훈: "leeseunghoon",
   양철훈: "yangcheolhun",
   허진우: "heojinwoo",
+
+  /* ── 2차 패키지 (14명) ── */
+  최규백: "choegyubaek",
+  최나영: "choenayeong",
+  조아람: "joaram",
+  서지연: "seojiyeon",
+  김민우: "kimminwoo",
+  임종희: "imjonghui",
+  김은혁: "kimeunhyeok",
+  김도윤: "kimdoyun",
+  김기수: "kimgisu",
+  김수진: "kimsujin",
+  정선혜: "jeongseonhye",
+  이진주: "leejinju",
+  정희정: "jeonghuijeong",
+  권지현: "kwonjihyun",
 };
 
 function key(name?: string) {

@@ -152,7 +152,9 @@ export default async function TeacherDetailPage({
                         poster={animPath(animDir, "poster.webp")}
                         autoPlay
                         muted
-                        loop
+                        /* 옛 영상 6명은 시작·끝 장면이 달라 반복하면 툭 튑니다.
+                           그분들만 loop 없이 1회 재생 후 마지막 장면에서 멈춥니다. */
+                        loop={!hero.once}
                         playsInline
                         preload="auto"
                         aria-label={`${current.name} 선생님`}
