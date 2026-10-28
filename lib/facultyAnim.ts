@@ -48,17 +48,17 @@ const POSE_BY_NAME: Record<string, Pose> = {
   허진우: { face: 253, eye: 332, cx: 526 },
 
   /* ── 2차 패키지 실측 (2026-10-28, 14명) ── */
-  /* 10/28 신규 8명 — 5초 무이음 루프 */
+  /* 10/28 신규 7명 — 5초 무이음 루프 */
   최나영: { face: 250, eye: 402, cx: 517 },
   조아람: { face: 273, eye: 401, cx: 524, eyeTo: 359 },
   서지연: { face: 294, eye: 326, cx: 514 },
-  김도윤: { face: 295, eye: 363, cx: 544, eyeTo: 376 },
   정선혜: { face: 286, eye: 358, cx: 551 },
   이진주: { face: 284, eye: 398, cx: 492, eyeTo: 384 },
   정희정: { face: 263, eye: 362, cx: 619 },
   권지현: { face: 303, eye: 387, cx: 538, eyeTo: 417 },
 
-  /* 옛 랜딩 영상 재사용 6명 — 1회 재생 후 정지 (once: true) */
+  /* 옛 랜딩 영상 재사용 7명 — 1회 재생 후 정지 (once: true) */
+  김도윤: { face: 273, eye: 524, cx: 530, eyeTo: 490, once: true },  /* 2026-10-28 옛 영상으로 교체 */
   최규백: { face: 258, eye: 424, cx: 540, once: true },
   김민우: { face: 259, eye: 391, cx: 539, once: true },
   임종희: { face: 279, eye: 383, cx: 520, eyeTo: 356, once: true },
