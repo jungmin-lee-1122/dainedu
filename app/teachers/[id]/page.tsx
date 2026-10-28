@@ -149,7 +149,7 @@ export default async function TeacherDetailPage({
                     {animDir && (
                       <video
                         className="hx-figure"
-                        poster={animPath(animDir, "poster.webp")}
+                        poster={animPath(animDir, "poster.webp", hero.v)}
                         autoPlay
                         muted
                         /* 옛 영상 6명은 시작·끝 장면이 달라 반복하면 툭 튑니다.
@@ -161,13 +161,13 @@ export default async function TeacherDetailPage({
                         disablePictureInPicture
                         disableRemotePlayback
                       >
-                        <source src={animPath(animDir, "anim.mov")} type='video/quicktime; codecs="hvc1"' />
-                        <source src={animPath(animDir, "anim.webm")} type="video/webm" />
+                        <source src={animPath(animDir, "anim.mov", hero.v)} type='video/quicktime; codecs="hvc1"' />
+                        <source src={animPath(animDir, "anim.webm", hero.v)} type="video/webm" />
                       </video>
                     )}
                     <img
                       className="hx-still"
-                      src={animDir ? animPath(animDir, "poster.webp") : photo(current.photo!, 600)}
+                      src={animDir ? animPath(animDir, "poster.webp", hero.v) : photo(current.photo!, 600)}
                       srcSet={animDir ? undefined : photoSet(current.photo!, 600)}
                       alt={`${current.name} 선생님`}
                       decoding="async"

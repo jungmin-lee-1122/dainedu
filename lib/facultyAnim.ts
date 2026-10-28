@@ -18,7 +18,8 @@
 //  【값의 출처】
 //    · 전원 제작사 실측값입니다. 2026-10-28 2차 전달에서 얼굴 크기를
 //      김관우 선생님 기준(290)으로 통일했습니다.
-//      양철훈 선생님만 예외로 원본 배율을 그대로 씁니다(2026-10-28 요청).
+//      원본 사진 구도 때문에 얼굴 크기·머리 높이·발이 바닥에 닿기를
+//      동시에 맞출 수 없는 양철훈(350)·김도윤(330) 두 분만 예외입니다.
 //
 //  사진을 바꾸면 그분 값도 다시 재야 합니다. 얼굴이 유독 크거나 작아
 //  보이면 face 값을 ±20 정도 조정해 보세요 (값을 키우면 작게 보입니다).
@@ -31,6 +32,10 @@ export type Pose = {
   faceTo?: number;
   eyeTo?: number;
   fadeR?: boolean;
+  /** 영상을 같은 이름으로 교체했을 때 올려 주는 번호.
+   *  주소 뒤에 ?v=2 가 붙어 브라우저가 옛 영상을 다시 쓰지 않습니다.
+   *  교체할 때마다 1씩 올리면 됩니다. */
+  v?: number;
   /** true 면 반복하지 않고 1회 재생 후 마지막 장면에서 멈춥니다.
    *  (옛 영상은 시작 장면과 끝 장면이 달라 반복하면 툭 튑니다) */
   once?: boolean;
@@ -45,7 +50,7 @@ const POSE_BY_NAME: Record<string, Pose> = {
   이승훈: { face: 274, eye: 397, cx: 557, eyeTo: 358 },
   /* 얼굴 290 통일의 유일한 예외 — 원본 배율 그대로 둡니다.
      face-to = face, eye-to = eye 라 크기·높이가 원본과 같아집니다. */
-  양철훈: { face: 419, eye: 445, cx: 518, faceTo: 419, eyeTo: 445, fadeR: true },
+  양철훈: { face: 419, eye: 445, cx: 518, faceTo: 350, eyeTo: 550, fadeR: true },
   허진우: { face: 253, eye: 332, cx: 526 },
 
   /* ── 2차 패키지 실측 (2026-10-28, 14명) ── */
@@ -59,7 +64,9 @@ const POSE_BY_NAME: Record<string, Pose> = {
   권지현: { face: 303, eye: 387, cx: 538, eyeTo: 417 },
 
   /* 옛 랜딩 영상 재사용 7명 — 1회 재생 후 정지 (once: true) */
-  김도윤: { face: 273, eye: 524, cx: 530, eyeTo: 490, once: true },  /* 2026-10-28 옛 영상으로 교체 */
+  /* 제작사 값은 face-to 290 / eye-to 490 이었으나 머리가 77px 내려가 보여
+     얼굴을 330 으로 키우고 발이 바닥에 닿는 눈높이 408 로 맞췄습니다. */
+  김도윤: { face: 273, eye: 524, cx: 530, faceTo: 330, eyeTo: 408, once: true, v: 2 },
   최규백: { face: 258, eye: 424, cx: 540, once: true },
   김민우: { face: 259, eye: 391, cx: 539, once: true },
   임종희: { face: 279, eye: 383, cx: 520, eyeTo: 356, once: true },
@@ -108,9 +115,9 @@ export function facultyAnimDir(name?: string): string | null {
   return ANIM_DIR_BY_NAME[key(name)] ?? null;
 }
 
-/** 애니메이션 파일 주소 */
-export function animPath(dir: string, file: string) {
-  return `/faculty/anim/${dir}/${file}`;
+/** 애니메이션 파일 주소 — 교체본은 ?v= 가 붙습니다 */
+export function animPath(dir: string, file: string, v?: number) {
+  return `/faculty/anim/${dir}/${file}${v && v > 1 ? `?v=${v}` : ""}`;
 }
 
 /** style 속성에 넣을 CSS 변수 */
