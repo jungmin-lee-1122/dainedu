@@ -4265,3 +4265,51 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .cv-sem-btn{width:42px;height:42px;margin:0 10px 0 0}
   .cv-sem-btn i{font-size:16px}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   63) 강사 애니메이션 (배경 투명 영상) — 상세 페이지
+   · 제작사 전달 문서 4-2절 기준.
+   · face / eye / cx 는 강사마다 다른 값이 style 속성으로 들어옵니다.
+     (lib/facultyAnim.ts 참고 — 임의로 바꾸면 얼굴 크기가 어긋납니다)
+   ═══════════════════════════════════════════════════════════ */
+:root{
+  --face-ref:290;   /* 기준 얼굴 높이 */
+  --eye-ref:353;    /* 기준 눈높이 */
+  --cx-ref:540;     /* 기준 얼굴 가로 중심 */
+}
+
+/* 인물이 카드 바닥에 서도록 사진 칸을 비웁니다 */
+.td-profile-anim .td-profile-photo{display:block;min-height:clamp(340px,34vw,430px);padding:0}
+.td-profile-anim .td-photo-ring{display:none}
+
+/* 정사각 무대 — 카드 바닥에 딱 붙습니다 */
+.hx-stage{position:absolute;right:-2%;bottom:0;height:100%;aspect-ratio:1/1;
+  clip-path:inset(-100% -100% 0 -100%)}   /* 바닥 아래로 내려간 몸만 자릅니다 */
+
+/* 얼굴 맞춤 — 눈을 기준점으로 크기를 맞추고(scale) 눈높이를 옮깁니다(translate) */
+.hx-norm{position:absolute;inset:0;
+  transform-origin:calc(var(--cx, var(--cx-ref)) / 1080 * 100%) calc(var(--eye, var(--eye-ref)) / 1080 * 100%);
+  transform:translate(calc((var(--cx-ref) - var(--cx, var(--cx-ref))) / 1080 * 100%),
+                      calc((var(--eye-to, var(--eye-ref)) - var(--eye, var(--eye-ref))) / 1080 * 100%))
+            scale(calc(var(--face-to, var(--face-ref)) / var(--face, var(--face-ref))))}
+
+.hx-figure{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+
+/* 양철훈 전용 — 원본에서 세로로 잘린 오른쪽 어깨선만 흐립니다 */
+.hx-norm.hx-fade-r{-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 7%);
+                           mask-image:linear-gradient(270deg,transparent 0,#000 7%)}
+
+/* 움직임 줄이기 설정일 때는 영상 대신 정지 사진 */
+.hx-still{display:none;position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;object-position:center bottom}
+@media (prefers-reduced-motion:reduce){
+  .hx-figure{display:none}
+  .hx-still{display:block}
+}
+
+/* 모바일 — 인물이 위, 글이 아래 */
+@media (max-width:640px){
+  .td-profile-anim .td-profile-photo{min-height:min(96vw,420px);order:-1}
+  .td-profile-anim{display:flex;flex-direction:column}
+  .hx-stage{right:auto;left:50%;transform:translateX(-50%)}
+}

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import type { Metadata } from "next";
@@ -10,6 +11,7 @@ import { subjects } from "../teachersData";
 import { getTeachers, getCourses } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
 import { facultyVideo } from "@/lib/facultyVideo";
+import { facultyAnim, animPath, animVars } from "@/lib/facultyAnim";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -55,6 +57,8 @@ export default async function TeacherDetailPage({
     : teachers.filter((teacher) => teacher.subject === activeSubject);
   const teacherCourses = courses.filter((course) => course.teacherId === current.id);
   const clipSrc = facultyVideo(current.name);
+  /* 배경이 투명한 새 애니메이션이 있으면 그것을 우선으로 씁니다 */
+  const anim = current.revealed ? facultyAnim(current.name) : null;
 
   return (
     <main className="dn-body td-page">
@@ -105,7 +109,7 @@ export default async function TeacherDetailPage({
             ))}
           </div>
 
-          <article className="td-profile">
+          <article className={`td-profile${anim ? " td-profile-anim" : ""}`}>
             <div className="td-profile-copy">
               <div className="tc-tags">
                 {current.tags.map((tag) => <span key={tag}>{tag}</span>)}
@@ -127,7 +131,38 @@ export default async function TeacherDetailPage({
 
             <div className="td-profile-photo">
               <span className="td-photo-ring" aria-hidden="true" />
-              {current.revealed && clipSrc ? (
+              {anim ? (
+                /* 배경이 투명한 애니메이션 — 인물만 카드 바닥에 서 있습니다.
+                   source 순서는 반드시 mov → webm (사파리가 webm 투명을 못 그립니다) */
+                <div className="hx-stage">
+                  <div
+                    className={`hx-norm${anim.fadeR ? " hx-fade-r" : ""}`}
+                    style={animVars(anim) as CSSProperties}
+                  >
+                    <video
+                      className="hx-figure"
+                      poster={animPath(anim, "poster.webp")}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="auto"
+                      aria-label={`${current.name} 선생님`}
+                      disablePictureInPicture
+                      disableRemotePlayback
+                    >
+                      <source src={animPath(anim, "anim.mov")} type='video/quicktime; codecs="hvc1"' />
+                      <source src={animPath(anim, "anim.webm")} type="video/webm" />
+                    </video>
+                    <img
+                      className="hx-still"
+                      src={animPath(anim, "poster.webp")}
+                      alt={`${current.name} 선생님`}
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              ) : current.revealed && clipSrc ? (
                 /* 소개 영상 — 사진이 먼저 보이고 금색 베일이 걷히며 영상이 재생됩니다 */
                 <div className="td-clip-wrap">
                   <div className="td-clip">
