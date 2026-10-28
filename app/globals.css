@@ -4351,11 +4351,22 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 /* 모바일 — 인물이 위, 글이 아래 */
 @media (max-width:640px){
   .td-profile-anim{display:flex;flex-direction:column;min-height:0}
-  .td-profile-anim .td-profile-photo{min-height:min(104vw,470px);order:-1}
-  .td-profile-anim .td-profile-copy{padding:4px 22px 28px}
-  .td-profile-anim h2{font-size:clamp(28px,8vw,36px)}
-  .td-profile-anim .td-profile-photo::after{width:66%;height:40px;bottom:-12px}
+  .td-profile-anim .td-profile-photo{min-height:min(98vw,440px);order:-1}
   .hx-stage{right:auto;left:50%;transform:translateX(-50%)}
+  .td-profile-anim .td-profile-photo::after{width:66%;height:36px;bottom:-10px}
+
+  /* 글 칸 — PC 의 위아래 붙이기를 풀고 위에서부터 차곡차곡 쌓습니다 */
+  .td-profile-anim .td-profile-copy{display:block;padding:20px 22px 30px}
+  .td-profile-anim .tc-tags{margin-bottom:14px}
+  .td-profile-anim .tc-tags span{padding:5px 9px;font-size:10.5px}
+  .td-profile-anim .td-subject{margin:0 0 3px;font-size:13.5px}
+  .td-profile-anim h2{font-size:clamp(27px,7.6vw,34px);line-height:1.2}
+  .td-profile-anim h2 small{font-size:.44em}
+  .td-profile-anim .td-school{margin-top:9px;font-size:13.5px;line-height:1.55}
+  .td-profile-anim .td-slogan{margin-top:12px;font-size:17px;line-height:1.55}
+  .td-profile-anim .td-rule{margin:18px 0 16px;width:48px}
+  .td-profile-anim .td-career li{font-size:13.5px;line-height:1.8}
+  .td-profile-anim .td-video-link{margin-top:16px}
 }
 
 /* ── 옛 소개 영상(흉상·크림 배경)을 큰 히어로 안에서 쓸 때 ──
@@ -4374,3 +4385,8 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .td-profile-anim .td-profile-photo:has(.td-clip-wrap)::after{display:none}
 }
 .td-profile-anim .td-profile-photo:has(.td-clip-wrap)::after{display:none}
+
+/* 강사 상세 — 들어오면 인물 박스가 화면에 오도록 내려갈 때의 윗 여백.
+   헤더에 가리지 않을 만큼만 띄웁니다. 숫자를 키우면 더 위에서 멈춥니다. */
+#tdProfile{scroll-margin-top:96px}
+@media(max-width:640px){ #tdProfile{scroll-margin-top:72px} }

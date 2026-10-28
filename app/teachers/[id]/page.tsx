@@ -7,6 +7,7 @@ import SiteHeader from "../../SiteHeader";
 import SiteFooter from "../../SiteFooter";
 import { quickMenuMarkup } from "../../quickMenu";
 import { teachersScript } from "../teachersScript";
+import { focusProfileScript } from "../focusProfileScript";
 import { subjects } from "../teachersData";
 import { getTeachers, getCourses } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
@@ -99,7 +100,7 @@ export default async function TeacherDetailPage({
             {group.map((teacher) => (
               <Link
                 className={`td-mini${teacher.id === current.id ? " is-on" : ""}`}
-                href={`/teachers/${teacher.id}?subject=${encodeURIComponent(activeSubject)}`}
+                href={`/teachers/${teacher.id}?subject=${encodeURIComponent(activeSubject)}#tdProfile`}
                 key={teacher.id}
               >
                 <span className="td-mini-face">
@@ -113,7 +114,8 @@ export default async function TeacherDetailPage({
             ))}
           </div>
 
-          <article className={`td-profile${hero ? " td-profile-anim" : ""}`}>
+          <article id="tdProfile"
+            className={`td-profile${hero ? " td-profile-anim" : ""}`}>
             <div className="td-profile-copy">
               <div className="tc-tags">
                 {current.tags.map((tag) => <span key={tag}>{tag}</span>)}
@@ -270,6 +272,7 @@ export default async function TeacherDetailPage({
       <SiteFooter />
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
       <Script id="teacher-detail-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: teachersScript }} />
+      <Script id="teacher-focus-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: focusProfileScript }} />
     </main>
   );
 }
