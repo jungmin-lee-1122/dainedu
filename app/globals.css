@@ -4313,39 +4313,3 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .td-profile-anim{display:flex;flex-direction:column}
   .hx-stage{right:auto;left:50%;transform:translateX(-50%)}
 }
-
-/* ═══════════════════════════════════════════════════════════
-   64) 강사진 목록 A안 — 상자를 없애고 인물이 바닥선 위에 섭니다
-   · /teachers 페이지(.tc-page)에만 적용합니다.
-     포르타·클라비스의 선생님 띠(.ts-sec)는 지금 카드 모양 그대로입니다.
-   ═══════════════════════════════════════════════════════════ */
-.tc-page .tc-card{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
-.tc-page .tc-card:hover{transform:none;box-shadow:none}
-
-/* 바닥선 — 양 끝이 옅게 사라지는 가는 선 */
-.tc-page .tc-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--dn-line) 12%,var(--dn-line) 88%,transparent)}
-
-/* 인물 자리 — 가운데 정렬, 바닥 아래로 내려간 부분만 자릅니다 */
-.tc-page .tc-card-profile{left:0;right:0;width:auto;height:86%;overflow:visible;
-  clip-path:inset(-100% -100% 0 -100%)}
-.tc-page .tc-card-profile img{object-position:center bottom}
-
-/* 애니메이션이 있는 강사 — 정사각 상자를 가운데 세웁니다 */
-.tc-page .tc-card-profile .hx-norm{position:absolute;inset:auto;left:50%;bottom:0;
-  height:100%;aspect-ratio:1/1;translate:-50% 0;
-  transition:scale .4s cubic-bezier(.22,.7,.3,1)}
-.tc-page .tc-card:hover .tc-card-profile .hx-norm{scale:1.03}
-.tc-page .tc-card-profile .hx-still{position:absolute;inset:0;display:block;
-  width:100%;height:100%;object-fit:contain;object-position:center bottom}
-/* 영상이 만들어지면 포스터 사진은 숨깁니다 (겹쳐 보이지 않도록) */
-.tc-page .tc-card-profile .hx-norm:has(.hx-figure) .hx-still{display:none}
-
-/* 남색 덮개는 인물을 가려서 뺍니다 */
-.tc-page .tc-card-overlay{display:none}
-
-/* 글자가 인물 위로 오도록 */
-.tc-page .tc-card-top,
-.tc-page .tc-card-subject,
-.tc-page .tc-card-name,
-.tc-page .tc-card-school{position:relative;z-index:3}

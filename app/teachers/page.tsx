@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import type { Metadata } from "next";
@@ -11,8 +10,6 @@ import { subjects } from "./teachersData";
 import { getTeachers } from "@/lib/content";
 import { shortSchool } from "@/lib/schoolLabel";
 import { photo, photoSet } from "@/lib/img";
-import { facultyAnim, animPath, animVars } from "@/lib/facultyAnim";
-import { teacherAnimScript } from "./teacherAnimScript";
 
 export const dynamic = "force-dynamic";
 
@@ -91,41 +88,17 @@ export default async function TeachersPage({
                     )}
 
                     <div className="tc-card-profile" aria-hidden={!teacher.revealed}>
-                      {(() => {
-                        const a = teacher.revealed ? facultyAnim(teacher.name) : null;
-                        if (a) {
-                          /* 포스터만 먼저 띄우고, 화면에 들어오면 영상을 만들어 재생합니다
-                             (실제 재생은 app/teachers/teacherAnimScript.ts) */
-                          return (
-                            <div
-                              className={`hx-norm${a.fadeR ? " hx-fade-r" : ""}`}
-                              style={animVars(a) as CSSProperties}
-                              data-anim=""
-                              data-mov={animPath(a, "anim.mov")}
-                              data-webm={animPath(a, "anim.webm")}
-                            >
-                              <img
-                                className="hx-still"
-                                src={animPath(a, "poster.webp")}
-                                alt={`${teacher.name} 선생님`}
-                                loading="lazy"
-                                decoding="async"
-                              />
-                            </div>
-                          );
-                        }
-                        return teacher.revealed && teacher.photo ? (
-                          <img
-                            src={photo(teacher.photo, 300)}
-                            srcSet={photoSet(teacher.photo, 300)}
-                            alt={`${teacher.name} 선생님`}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : (
-                          <span>?</span>
-                        );
-                      })()}
+                      {teacher.revealed && teacher.photo ? (
+                        <img
+                          src={photo(teacher.photo, 300)}
+                          srcSet={photoSet(teacher.photo, 300)}
+                          alt={`${teacher.name} 선생님`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <span>?</span>
+                      )}
                     </div>
 
                     <div className="tc-card-overlay">
@@ -174,7 +147,6 @@ export default async function TeachersPage({
       <SiteFooter />
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
       <Script id="teachers-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: teachersScript }} />
-      <Script id="teacher-anim-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: teacherAnimScript }} />
     </main>
   );
 }
