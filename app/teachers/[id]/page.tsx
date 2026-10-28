@@ -11,7 +11,7 @@ import { subjects } from "../teachersData";
 import { getTeachers, getCourses } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
 import { facultyVideo } from "@/lib/facultyVideo";
-import { facultyAnim, animPath, animVars } from "@/lib/facultyAnim";
+import { facultyPose, facultyAnimDir, animPath, poseVars } from "@/lib/facultyAnim";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -58,7 +58,11 @@ export default async function TeacherDetailPage({
   const teacherCourses = courses.filter((course) => course.teacherId === current.id);
   const clipSrc = facultyVideo(current.name);
   /* 배경이 투명한 새 애니메이션이 있으면 그것을 우선으로 씁니다 */
-  const anim = current.revealed ? facultyAnim(current.name) : null;
+  /* 얼굴 위치값은 17명 전원에게 있습니다. 영상은 6명만 있습니다. */
+  const pose = current.revealed ? facultyPose(current.name) : null;
+  const animDir = current.revealed ? facultyAnimDir(current.name) : null;
+  /* 사진도 영상도 없으면 히어로를 쓰지 않습니다 */
+  const hero = pose && (animDir || current.photo) ? pose : null;
 
   return (
     <main className="dn-body td-page">
@@ -109,7 +113,7 @@ export default async function TeacherDetailPage({
             ))}
           </div>
 
-          <article className={`td-profile${anim ? " td-profile-anim" : ""}`}>
+          <article className={`td-profile${hero ? " td-profile-anim" : ""}`}>
             <div className="td-profile-copy">
               <div className="tc-tags">
                 {current.tags.map((tag) => <span key={tag}>{tag}</span>)}
@@ -131,32 +135,36 @@ export default async function TeacherDetailPage({
 
             <div className="td-profile-photo">
               <span className="td-photo-ring" aria-hidden="true" />
-              {anim ? (
-                /* 배경이 투명한 애니메이션 — 인물만 카드 바닥에 서 있습니다.
+              {hero ? (
+                /* 인물 히어로 — 얼굴 크기·눈높이를 맞춰 카드 바닥에 세웁니다.
+                   영상이 있는 분은 영상, 없는 분은 사진이 같은 자리에 섭니다.
                    source 순서는 반드시 mov → webm (사파리가 webm 투명을 못 그립니다) */
                 <div className="hx-stage">
                   <div
-                    className={`hx-norm${anim.fadeR ? " hx-fade-r" : ""}`}
-                    style={animVars(anim) as CSSProperties}
+                    className={`hx-norm${hero.fadeR ? " hx-fade-r" : ""}`}
+                    style={poseVars(hero) as CSSProperties}
                   >
-                    <video
-                      className="hx-figure"
-                      poster={animPath(anim, "poster.webp")}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="auto"
-                      aria-label={`${current.name} 선생님`}
-                      disablePictureInPicture
-                      disableRemotePlayback
-                    >
-                      <source src={animPath(anim, "anim.mov")} type='video/quicktime; codecs="hvc1"' />
-                      <source src={animPath(anim, "anim.webm")} type="video/webm" />
-                    </video>
+                    {animDir && (
+                      <video
+                        className="hx-figure"
+                        poster={animPath(animDir, "poster.webp")}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        aria-label={`${current.name} 선생님`}
+                        disablePictureInPicture
+                        disableRemotePlayback
+                      >
+                        <source src={animPath(animDir, "anim.mov")} type='video/quicktime; codecs="hvc1"' />
+                        <source src={animPath(animDir, "anim.webm")} type="video/webm" />
+                      </video>
+                    )}
                     <img
                       className="hx-still"
-                      src={animPath(anim, "poster.webp")}
+                      src={animDir ? animPath(animDir, "poster.webp") : photo(current.photo!, 600)}
+                      srcSet={animDir ? undefined : photoSet(current.photo!, 600)}
                       alt={`${current.name} 선생님`}
                       decoding="async"
                     />
