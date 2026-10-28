@@ -135,7 +135,7 @@ export default async function TeacherDetailPage({
 
             <div className="td-profile-photo">
               <span className="td-photo-ring" aria-hidden="true" />
-              {hero ? (
+              {hero && animDir ? (
                 /* 인물 히어로 — 얼굴 크기·눈높이를 맞춰 카드 바닥에 세웁니다.
                    영상이 있는 분은 영상, 없는 분은 사진이 같은 자리에 섭니다.
                    source 순서는 반드시 mov → webm (사파리가 webm 투명을 못 그립니다) */
@@ -189,6 +189,15 @@ export default async function TeacherDetailPage({
                       <span className="td-clip-cap">DAIN EDU</span>
                       <span className="td-clip-veil" aria-hidden="true" />
                     </div>
+                  </div>
+                </div>
+              ) : hero && current.photo ? (
+                /* 영상이 아직 없는 분 — 사진을 같은 자리·같은 얼굴 크기로 세웁니다 */
+                <div className="hx-stage">
+                  <div className="hx-norm" style={poseVars(hero) as CSSProperties}>
+                    <img className="hx-still" src={photo(current.photo, 600)}
+                         srcSet={photoSet(current.photo, 600)}
+                         alt={`${current.name} 선생님`} decoding="async" />
                   </div>
                 </div>
               ) : current.revealed && current.photo ? (

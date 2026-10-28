@@ -4343,3 +4343,20 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .td-profile-anim .td-profile-photo::after{width:66%;height:40px;bottom:-12px}
   .hx-stage{right:auto;left:50%;transform:translateX(-50%)}
 }
+
+/* ── 옛 소개 영상(흉상·크림 배경)을 큰 히어로 안에서 쓸 때 ──
+   투명 영상이 아직 없는 선생님은 기존 액자 영상을 키워서 보여 줍니다.
+   새 투명 영상이 도착하면 이 분기는 저절로 쓰이지 않습니다. */
+.td-profile-anim .td-clip-wrap{height:100%;padding:22px 0 0}
+.td-profile-anim .td-clip{width:min(92%,330px)}
+.td-profile-anim .td-clip-wrap::before{width:380px;height:380px}
+@media(max-width:900px){
+  .td-profile-anim .td-clip{width:min(92%,280px)}
+}
+@media(max-width:640px){
+  .td-profile-anim .td-clip-wrap{height:auto;padding:18px 0 0}
+  .td-profile-anim .td-clip{width:min(74%,250px)}
+  /* 흉상 영상은 발밑 그림자가 어울리지 않습니다 */
+  .td-profile-anim .td-profile-photo:has(.td-clip-wrap)::after{display:none}
+}
+.td-profile-anim .td-profile-photo:has(.td-clip-wrap)::after{display:none}
