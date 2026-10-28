@@ -16,7 +16,8 @@
 //    · 팔짱 우선 — 허진우 선생님은 팔짱이 잘리지 않도록 얼굴을 조금 작게.
 //
 //  【값의 출처】
-//    · 정재홍·김관우·송지승·이승훈·양철훈·허진우 → 제작사가 직접 잰 값
+//    · 전원 제작사 실측값입니다. 2026-10-28 2차 전달에서 얼굴 크기를
+//      김관우 선생님 기준(290)으로 통일해, --face-to 예외는 모두 없앴습니다.
 //    · 나머지 11명 → 프로필 사진(투명 PNG)을 분석해 같은 기준으로 환산
 //      (제작사 정답값 4명으로 검증: 눈높이 오차 0~15px, 얼굴 크기 ±6%)
 //
@@ -43,12 +44,12 @@ const POSE_BY_NAME: Record<string, Pose> = {
   김관우: { face: 283, eye: 340, cx: 497 },
   송지승: { face: 312, eye: 338, cx: 542, eyeTo: 391 },
   이승훈: { face: 274, eye: 397, cx: 557, eyeTo: 358 },
-  양철훈: { face: 419, eye: 445, cx: 518, faceTo: 333, eyeTo: 576, fadeR: true },
-  허진우: { face: 253, eye: 332, cx: 526, faceTo: 246 },
+  양철훈: { face: 419, eye: 445, cx: 518, eyeTo: 641, fadeR: true },
+  허진우: { face: 253, eye: 332, cx: 526 },
 
   /* ── 2차 패키지 실측 (2026-10-28, 14명) ── */
   /* 10/28 신규 8명 — 5초 무이음 루프 */
-  최나영: { face: 250, eye: 402, cx: 517, faceTo: 268 },
+  최나영: { face: 250, eye: 402, cx: 517 },
   조아람: { face: 273, eye: 401, cx: 524, eyeTo: 359 },
   서지연: { face: 294, eye: 326, cx: 514 },
   김도윤: { face: 295, eye: 363, cx: 544, eyeTo: 376 },
@@ -61,7 +62,7 @@ const POSE_BY_NAME: Record<string, Pose> = {
   최규백: { face: 258, eye: 424, cx: 540, once: true },
   김민우: { face: 259, eye: 391, cx: 539, once: true },
   임종희: { face: 279, eye: 383, cx: 520, eyeTo: 356, once: true },
-  김은혁: { face: 266, eye: 396, cx: 528, faceTo: 283, once: true },
+  김은혁: { face: 266, eye: 396, cx: 528, once: true },
   김수진: { face: 299, eye: 418, cx: 542, eyeTo: 438, once: true },
   김기수: { face: 271, eye: 386, cx: 551, once: true },
 };
