@@ -11,7 +11,7 @@ import { subjects } from "../teachersData";
 import { getTeachers, getCourses } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
 import { facultyVideo } from "@/lib/facultyVideo";
-import { facultyAnim, animPath, animVars } from "@/lib/facultyAnim";
+import { facultyPose, facultyAnimDir, animPath, poseVars } from "@/lib/facultyAnim";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -58,7 +58,9 @@ export default async function TeacherDetailPage({
   const teacherCourses = courses.filter((course) => course.teacherId === current.id);
   const clipSrc = facultyVideo(current.name);
   /* 배경이 투명한 새 애니메이션이 있으면 그것을 우선으로 씁니다 */
-  const anim = current.revealed ? facultyAnim(current.name) : null;
+  const pose = current.revealed ? facultyPose(current.name) : null;
+  const animDir = current.revealed ? facultyAnimDir(current.name) : null;
+  const anim = pose && animDir ? { pose, dir: animDir } : null;
 
   return (
     <main className="dn-body td-page">
@@ -136,12 +138,12 @@ export default async function TeacherDetailPage({
                    source 순서는 반드시 mov → webm (사파리가 webm 투명을 못 그립니다) */
                 <div className="hx-stage">
                   <div
-                    className={`hx-norm${anim.fadeR ? " hx-fade-r" : ""}`}
-                    style={animVars(anim) as CSSProperties}
+                    className={`hx-norm${anim.pose.fadeR ? " hx-fade-r" : ""}`}
+                    style={poseVars(anim.pose) as CSSProperties}
                   >
                     <video
                       className="hx-figure"
-                      poster={animPath(anim, "poster.webp")}
+                      poster={animPath(anim.dir, "poster.webp")}
                       autoPlay
                       muted
                       loop
@@ -151,12 +153,12 @@ export default async function TeacherDetailPage({
                       disablePictureInPicture
                       disableRemotePlayback
                     >
-                      <source src={animPath(anim, "anim.mov")} type='video/quicktime; codecs="hvc1"' />
-                      <source src={animPath(anim, "anim.webm")} type="video/webm" />
+                      <source src={animPath(anim.dir, "anim.mov")} type='video/quicktime; codecs="hvc1"' />
+                      <source src={animPath(anim.dir, "anim.webm")} type="video/webm" />
                     </video>
                     <img
                       className="hx-still"
-                      src={animPath(anim, "poster.webp")}
+                      src={animPath(anim.dir, "poster.webp")}
                       alt={`${current.name} 선생님`}
                       decoding="async"
                     />
