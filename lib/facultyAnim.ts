@@ -75,7 +75,9 @@ const POSE_BY_NAME: Record<string, Pose> = {
   김민우: { face: 259, eye: 391, cx: 539, once: true },
   임종희: { face: 279, eye: 383, cx: 520, eyeTo: 356, once: true },
   김은혁: { face: 266, eye: 396, cx: 528, once: true },
-  김수진: { face: 299, eye: 418, cx: 542, eyeTo: 438, once: true },
+  /* 제작사 값은 290/438 이었으나 머리가 48px 낮아 작아 보여 조금 키웠습니다.
+     330 으로 올리면 머리 높이가 다른 분들과 정확히 맞습니다(얼굴 +14%). */
+  김수진: { face: 299, eye: 418, cx: 542, faceTo: 320, eyeTo: 372, once: true },
   김기수: { face: 271, eye: 386, cx: 551, once: true },
 };
 
