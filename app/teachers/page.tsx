@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import type { Metadata } from "next";
@@ -11,8 +10,6 @@ import { subjects } from "./teachersData";
 import { getTeachers } from "@/lib/content";
 import { shortSchool } from "@/lib/schoolLabel";
 import { photo, photoSet } from "@/lib/img";
-import { facultyPose, facultyAnimDir, animPath, poseVars } from "@/lib/facultyAnim";
-import { teacherAnimScript } from "./teacherAnimScript";
 
 export const dynamic = "force-dynamic";
 
@@ -91,35 +88,17 @@ export default async function TeachersPage({
                     )}
 
                     <div className="tc-card-profile" aria-hidden={!teacher.revealed}>
-                      {(() => {
-                        if (!teacher.revealed || !teacher.photo) return <span>?</span>;
-                        const pose = facultyPose(teacher.name);
-                        const dir = facultyAnimDir(teacher.name);
-                        /* 얼굴 위치값이 없으면 보정 없이 사진만 보여줍니다 */
-                        const face = (
-                          <img
-                            className="hx-still"
-                            src={dir ? animPath(dir, "poster.webp") : photo(teacher.photo, 300)}
-                            srcSet={dir ? undefined : photoSet(teacher.photo, 300)}
-                            alt={`${teacher.name} 선생님`}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        );
-                        if (!pose) return face;
-                        return (
-                          <div
-                            className={`hx-norm${pose.fadeR ? " hx-fade-r" : ""}`}
-                            style={poseVars(pose) as CSSProperties}
-                            /* 영상이 있는 분만 — 화면에 들어오면 그때 영상을 만듭니다 */
-                            data-anim={dir ? "" : undefined}
-                            data-mov={dir ? animPath(dir, "anim.mov") : undefined}
-                            data-webm={dir ? animPath(dir, "anim.webm") : undefined}
-                          >
-                            {face}
-                          </div>
-                        );
-                      })()}
+                      {teacher.revealed && teacher.photo ? (
+                        <img
+                          src={photo(teacher.photo, 300)}
+                          srcSet={photoSet(teacher.photo, 300)}
+                          alt={`${teacher.name} 선생님`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <span>?</span>
+                      )}
                     </div>
 
                     <div className="tc-card-overlay">
@@ -168,7 +147,6 @@ export default async function TeachersPage({
       <SiteFooter />
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
       <Script id="teachers-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: teachersScript }} />
-      <Script id="teacher-anim-script" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: teacherAnimScript }} />
     </main>
   );
 }
