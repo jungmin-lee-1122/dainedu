@@ -30,13 +30,13 @@ export const heroSlides = [
   {
     tab: "PRE 윈터스쿨",
     img: "/porta/pre-go1.jpg",
-    href: "",
+    href: "/pre-winter",
     alt: "예비고1을 위한 PRE WINTER SCHOOL — 2026.12.1(화) ~ 12.31(목) · 공통수학 1·2 · 대수 · 통합과학",
   },
   {
     tab: "수능실전 딥다이브",
     img: "/porta/pre-go23.jpg",
-    href: "",
+    href: "/pre-winter",
     alt: "수능실전 딥다이브 수학특강 — 2026.12.12(토) ~ 2027.1.2(토) · 매주 토요일 총 4회 · 대수 · 미적분Ⅰ",
   },
   {

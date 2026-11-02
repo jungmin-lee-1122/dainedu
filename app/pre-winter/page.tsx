@@ -27,7 +27,8 @@ import {
   fixedBar,
 } from "./preWinterData";
 
-const CONSULT = "/consult";
+/** 사전 예약 신청서 (구글폼) — 폼이 바뀌면 이 주소만 고치면 됩니다 */
+const APPLY = "https://forms.gle/GTCsgYUkgcTRagkN7";
 
 /** 시간표 칸 색 — 내용에 따라 자동으로 정합니다 */
 function cellKind(v: string) {
@@ -401,7 +402,7 @@ export default function PreWinterPage() {
           </div>
 
           <div className="wt-close-btns">
-            <a className="wt-btn wt-btn-primary" href={CONSULT}>사전 예약 신청</a>
+            <a className="wt-btn wt-btn-primary" href={APPLY} target="_blank" rel="noopener noreferrer">사전 예약 신청</a>
             <a className="wt-btn wt-btn-ghost" href="tel:16448022">전화 문의 1644-8022</a>
           </div>
           <p className="wt-sign">DAIN EDUCATION</p>
@@ -420,7 +421,7 @@ export default function PreWinterPage() {
               </span>
             ))}
           </div>
-          <a className="wt-fixed-btn" href={CONSULT}>{fixedBar.cta}</a>
+          <a className="wt-fixed-btn" href={APPLY} target="_blank" rel="noopener noreferrer">{fixedBar.cta}</a>
         </div>
       </div>
 
