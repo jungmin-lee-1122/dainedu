@@ -4481,8 +4481,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .pw-kv-row{flex-direction:column;gap:7px}
   .pw-kv-k{flex:0 0 auto;align-self:flex-start;padding:5px 13px;font-size:12px}
   .pw-kv-v{padding-top:0;font-size:14px;gap:6px}
-  .pw-kv-line{flex-direction:column;align-items:flex-start;gap:3px;font-size:13.5px}
-  .pw-kv-tag{font-size:11px}
+  /* 학년 태그와 기간을 한 줄에 — 태그 폭을 맞춰 두 줄이 나란히 읽힙니다 */
+  .pw-kv-line{flex-direction:row;align-items:baseline;gap:8px;font-size:12.5px}
+  .pw-kv-tag{flex:0 0 76px;text-align:center;padding:2px 0;font-size:10.5px}
 }
 
 /* ── 두 과정을 소개하는 문단 (카드가 아닌 글) ── */
