@@ -4465,6 +4465,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .pw-page .wt-kv-sub{max-width:min(1040px,96%);margin-bottom:18px;
   font-size:clamp(14px,1.28vw,16.5px);line-height:1.55}
 
+/* 모바일에서만 줄을 바꾸는 <br> — PC 에서는 한 줄로 이어집니다 */
+.pw-mbr{display:none}
+
 /* ── 히어로 모집 정보 — 라벨 박스 + 값 ── */
 .pw-kv{display:flex;flex-direction:column;gap:12px;margin:22px 0 0;max-width:720px}
 .pw-kv-row{display:flex;align-items:flex-start;gap:16px}
@@ -4489,8 +4492,9 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   .pw-kv-k{flex:0 0 auto;align-self:flex-start;padding:5px 13px;font-size:12px}
   .pw-kv-v{padding-top:0;font-size:14px;gap:6px}
   /* 학년 태그와 기간을 한 줄에 — 태그 폭을 맞춰 두 줄이 나란히 읽힙니다 */
-  .pw-kv-line{flex-direction:row;align-items:baseline;gap:8px;font-size:12.5px}
-  .pw-kv-tag{flex:0 0 76px;text-align:center;padding:2px 0;font-size:10.5px}
+  /* 기간은 한 줄로 — 날짜 중간에서 끊기면 읽기 어렵습니다 */
+  .pw-kv-line{flex-direction:row;align-items:baseline;gap:7px;font-size:11.5px;white-space:nowrap}
+  .pw-kv-tag{flex:0 0 66px;text-align:center;padding:2px 0;font-size:10px;letter-spacing:-.03em}
 }
 
 /* ── 두 과정을 소개하는 문단 (카드가 아닌 글) ── */
@@ -4555,7 +4559,8 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
   width:12px;height:12px;margin-top:-6px;
   border-top:2px solid rgba(255,255,255,.3);border-right:2px solid rgba(255,255,255,.3);
   transform:rotate(45deg)}
-.pw-flow-in{position:relative;display:flex;flex-direction:column;gap:5px;height:100%;padding:22px 44px 22px 20px;
+.pw-flow-in{position:relative;display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:5px;height:100%;padding:22px 20px;
   border:1px solid rgba(255,255,255,.14);border-radius:16px;
   background:rgba(255,255,255,.05);text-decoration:none;
   transition:background .25s ease,border-color .25s ease,transform .25s ease}
@@ -4563,7 +4568,7 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .pw-flow-tag{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--w-ice)}
 .pw-flow-title{font-size:18px;font-weight:900;letter-spacing:-.03em;color:#fff}
 .pw-flow-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,.52);word-break:keep-all}
-.pw-flow-go{position:absolute;right:18px;top:50%;margin-top:-13px;
+.pw-flow-go{position:absolute;right:14px;top:50%;margin-top:-13px;
   font-size:22px;line-height:1;color:rgba(255,255,255,.4)}
 /* 지금 보고 있는 과정 */
 .pw-flow-step.is-now .pw-flow-in{border-color:rgba(192,153,79,.55);
@@ -4573,7 +4578,11 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 @media(max-width:900px){
   /* 모바일에서도 PC 처럼 두 과정을 나란히 — 비교해서 고르는 자리라 */
   .pw-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:20px}
-  .pw-note-block{gap:13px;margin-top:22px;padding-bottom:20px}
+  .pw-mbr{display:inline}
+  .pw-page .wt-h2{margin-bottom:12px}
+  .pw-page .wt-lead{margin-bottom:0;font-size:13.5px;line-height:1.7}
+  /* 제목 아래가 허해 보이지 않게 */
+  .pw-note-block{gap:13px;margin-top:14px;padding-bottom:18px}
   .pw-note-ico{width:38px;height:38px;border-radius:10px}
   .pw-note-ico svg{width:20px;height:20px}
   .pw-note-t{font-size:15.5px;margin-bottom:5px}
@@ -4594,7 +4603,7 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .pw-flow-step{flex:1 1 0;min-width:0}
   .pw-flow-step+.pw-flow-step{padding-left:18px}
   .pw-flow-step+.pw-flow-step::before{left:2px;width:9px;height:9px;margin-top:-5px}
-  .pw-flow-in{padding:14px 12px;border-radius:13px;text-align:left}
+  .pw-flow-in{padding:14px 10px;border-radius:13px;text-align:center;align-items:center}
   .pw-flow-tag{font-size:10.5px;letter-spacing:.08em}
   .pw-flow-title{font-size:14.5px}
   .pw-flow-desc{font-size:11.5px;line-height:1.5}
@@ -4733,10 +4742,12 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .pw-wk-wcard>b{font-size:13px}
   .pw-wk-wtime{font-size:11.5px}
   .pw-wk-wlabel{font-size:12px}
-  .pw-cls-tabs{gap:7px;margin-top:16px}
-  .pw-cls-tab{padding:9px 14px;border-radius:11px}
-  .pw-cls-tab b{font-size:13.5px}
-  .pw-cls-tab span{font-size:11px}
+  /* 반 선택 — 두 버튼을 한 줄에 나란히 (설명은 숨겨 폭을 아낍니다) */
+  .pw-cls-tabs{flex-wrap:nowrap;gap:7px;margin-top:16px}
+  .pw-cls-tab{flex:1 1 0;min-width:0;align-items:center;text-align:center;
+    padding:10px 8px;border-radius:11px}
+  .pw-cls-tab b{font-size:13px;white-space:nowrap}
+  .pw-cls-tab span{display:none}
   .pw-wk{min-width:600px}
   .pw-wk th,.pw-wk td{padding:9px 6px}
   .pw-wk-head-p{width:58px}

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 export default function PreWinterPage() {
   return (
     <main className="wt pw-page">
-      <SiteHeader current="porta" />
+      <SiteHeader />
 
       <div id="top">
         <PageBand
@@ -78,7 +78,7 @@ export default function PreWinterPage() {
               <br />
               <em>{hero.titleBottom}</em>
             </p>
-            <p className="wt-kv-sub">{hero.sub}</p>
+            <p className="wt-kv-sub">{hero.sub[0]}<br className="pw-mbr" />{hero.sub[1]}</p>
             {/* 모집 정보 — 라벨 박스 + 값 */}
             <dl className="pw-kv">
               {hero.info.map((row) => (
@@ -109,7 +109,7 @@ export default function PreWinterPage() {
             <br />
             <em>{intro.titleEm}</em>
           </h2>
-          <p className="wt-lead">{intro.lead}</p>
+          <p className="wt-lead wt-dark">{intro.lead}</p>
 
           {/* 아래 두 과정을 소개하는 문단 */}
           <div className="pw-note-block wt-up">
@@ -158,7 +158,7 @@ export default function PreWinterPage() {
             <br />
             <em>{warmup.bigEm}</em>
           </h2>
-          <p className="pw-warm-desc">{warmup.desc}</p>
+          <p className="pw-warm-desc">{warmup.desc[0]}<br className="pw-mbr" />{warmup.desc[1]}</p>
 
           <ol className="pw-flow">
             {warmup.steps.map((st, i) => {
