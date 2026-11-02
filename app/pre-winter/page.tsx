@@ -12,10 +12,12 @@ import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
+import PwIcon from "./PwIcon";
 import { winterScript } from "../winter/winterScript";
 import {
   hero,
   intro,
+  warmup,
   facts,
   refund,
   factNote,
@@ -91,19 +93,63 @@ export default function PreWinterPage() {
           </h2>
           <p className="wt-lead">{intro.lead}</p>
 
-          <div className="wt-why-grid">
+          <div className="pw-cards">
             {intro.points.map((p, i) => (
               <article
-                className="wt-why-card wt-up"
-                style={{ transitionDelay: `${i * 80}ms` }}
+                className="pw-card wt-up"
+                style={{ transitionDelay: `${i * 140}ms` }}
                 key={p.no}
               >
-                <span className="wt-why-no">{p.no}</span>
-                <b className="wt-why-t">{p.t}</b>
-                <p className="wt-why-d">{p.d}</p>
+                <span className="pw-card-ico" aria-hidden="true">
+                  <PwIcon name={p.icon} />
+                </span>
+                <span className="pw-card-no">{p.no}</span>
+                <b className="pw-card-t">{p.t}</b>
+                <p className="pw-card-d">{p.d}</p>
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ══ 2-1) 윈터스쿨로 이어지는 흐름 ══ */}
+      <section className="pw-warm">
+        <div className="wt-wrap">
+          <p className="pw-warm-small">{warmup.small}</p>
+          <h2 className="pw-warm-big">
+            {warmup.big}
+            <br />
+            <em>{warmup.bigEm}</em>
+          </h2>
+          <p className="pw-warm-desc">{warmup.desc}</p>
+
+          <ol className="pw-flow">
+            {warmup.steps.map((st, i) => {
+              const inner = (
+                <>
+                  <span className="pw-flow-tag">{st.tag}</span>
+                  <b className="pw-flow-title">{st.title}</b>
+                  <span className="pw-flow-desc">{st.desc}</span>
+                </>
+              );
+              return (
+                <li
+                  className={`pw-flow-step wt-up${st.now ? " is-now" : ""}`}
+                  style={{ transitionDelay: `${i * 160}ms` }}
+                  key={st.tag}
+                >
+                  {st.href ? (
+                    <a className="pw-flow-in" href={st.href}>
+                      {inner}
+                      <span className="pw-flow-go" aria-hidden="true">›</span>
+                    </a>
+                  ) : (
+                    <div className="pw-flow-in">{inner}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </section>
 

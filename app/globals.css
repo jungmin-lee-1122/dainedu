@@ -754,7 +754,9 @@ img,video,svg{max-width:100%}
 .dn-foot-biz b{display:inline-flex;align-self:flex-start;align-items:center;
   margin-bottom:8px;padding:4px 11px;border-radius:7px;
   background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.16);
-  font-size:12.5px;font-weight:800;letter-spacing:-.02em;color:#fff}
+  font-size:12.5px;font-weight:800;letter-spacing:-.02em;
+  /* 614줄의 .dn-footer b{color:navy !important} 를 눌러야 해서 important 를 씁니다 */
+  color:#fff !important}
 .dn-foot-biz span{font-size:12px;line-height:1.7;color:rgba(255,255,255,.44);word-break:keep-all}
 .dn-foot-biz-tag{flex:0 0 auto;padding:1px 7px;border-radius:5px;
   background:rgba(255,255,255,.1);font-size:10.5px;font-weight:700;
@@ -4426,6 +4428,78 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
      이 구역은 이 페이지에만 있는 표 두 개뿐입니다.
    ═══════════════════════════════════════════════════════════ */
 .pw-h2-sub{margin-left:12px;font-size:.42em;font-weight:700;letter-spacing:0;color:var(--w-mut)}
+
+/* ── 왜 한 달 먼저인가 — 카드 3장 ── */
+.pw-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:34px}
+.pw-card{position:relative;display:flex;flex-direction:column;padding:30px 26px 28px;
+  border:1px solid rgba(17,28,54,.08);border-radius:20px;
+  background:linear-gradient(170deg,#fff 0%,#F6F8FC 100%);
+  transition:transform .3s cubic-bezier(.22,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.pw-card:hover{transform:translateY(-6px);border-color:rgba(192,153,79,.34);
+  box-shadow:0 26px 46px -28px rgba(16,25,46,.42)}
+
+.pw-card-ico{display:inline-flex;align-items:center;justify-content:center;
+  width:52px;height:52px;margin-bottom:20px;border-radius:15px;
+  background:linear-gradient(145deg,var(--w-navy),var(--w-navy2));color:var(--w-gold-l);
+  box-shadow:0 12px 22px -14px rgba(16,25,46,.7)}
+.pw-card-ico svg{width:26px;height:26px}
+.pw-card-no{position:absolute;top:26px;right:26px;
+  font-size:12px;font-weight:800;letter-spacing:.18em;color:rgba(192,153,79,.6)}
+.pw-card-t{display:block;margin-bottom:10px;font-size:17.5px;font-weight:800;
+  letter-spacing:-.03em;line-height:1.45;color:var(--w-ink);word-break:keep-all}
+.pw-card-d{margin:0;font-size:14px;line-height:1.75;color:var(--w-mut);word-break:keep-all}
+
+/* ── 윈터스쿨로 이어지는 흐름 ── */
+.pw-warm{padding:clamp(56px,7vw,96px) 0;text-align:center;
+  background:linear-gradient(180deg,var(--w-deep),var(--w-navy2))}
+.pw-warm-small{margin:0 0 14px;font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--w-ice)}
+.pw-warm-big{margin:0;font-size:clamp(23px,3.2vw,38px);font-weight:900;line-height:1.42;
+  letter-spacing:-.035em;color:#fff}
+.pw-warm-big em{font-style:normal;color:var(--w-gold-l)}
+.pw-warm-desc{margin:16px 0 0;font-size:15px;line-height:1.75;color:rgba(255,255,255,.58);word-break:keep-all}
+
+.pw-flow{display:flex;align-items:stretch;justify-content:center;gap:14px;
+  margin:38px 0 0;padding:0;list-style:none}
+.pw-flow-step{flex:0 1 300px;min-width:0}
+/* 단계 사이 화살표 */
+.pw-flow-step+.pw-flow-step{position:relative;padding-left:26px}
+.pw-flow-step+.pw-flow-step::before{content:"";position:absolute;left:4px;top:50%;
+  width:12px;height:12px;margin-top:-6px;
+  border-top:2px solid rgba(255,255,255,.3);border-right:2px solid rgba(255,255,255,.3);
+  transform:rotate(45deg)}
+.pw-flow-in{position:relative;display:flex;flex-direction:column;gap:5px;height:100%;padding:22px 44px 22px 20px;
+  border:1px solid rgba(255,255,255,.14);border-radius:16px;
+  background:rgba(255,255,255,.05);text-decoration:none;
+  transition:background .25s ease,border-color .25s ease,transform .25s ease}
+a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,.5);transform:translateY(-3px)}
+.pw-flow-tag{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--w-ice)}
+.pw-flow-title{font-size:18px;font-weight:900;letter-spacing:-.03em;color:#fff}
+.pw-flow-desc{font-size:13px;line-height:1.65;color:rgba(255,255,255,.52);word-break:keep-all}
+.pw-flow-go{position:absolute;right:18px;top:50%;margin-top:-13px;
+  font-size:22px;line-height:1;color:rgba(255,255,255,.4)}
+/* 지금 보고 있는 과정 */
+.pw-flow-step.is-now .pw-flow-in{border-color:rgba(192,153,79,.55);
+  background:linear-gradient(160deg,rgba(192,153,79,.18),rgba(255,255,255,.04))}
+.pw-flow-step.is-now .pw-flow-tag{color:var(--w-gold-l)}
+
+@media(max-width:900px){
+  .pw-cards{grid-template-columns:1fr;gap:12px}
+  .pw-card{padding:24px 22px}
+  .pw-card-ico{width:46px;height:46px;margin-bottom:16px;border-radius:13px}
+  .pw-card-ico svg{width:23px;height:23px}
+  .pw-card-no{top:22px;right:22px;font-size:11px}
+  .pw-card-t{font-size:16px}
+  .pw-card-d{font-size:13.5px}
+
+  .pw-flow{flex-direction:column;gap:10px;align-items:stretch}
+  .pw-flow-step{flex:1 1 auto}
+  /* 세로로 쌓일 때는 화살표를 아래 방향으로 */
+  .pw-flow-step+.pw-flow-step{padding-left:0;padding-top:24px}
+  .pw-flow-step+.pw-flow-step::before{left:50%;top:6px;margin:0 0 0 -6px;transform:rotate(135deg)}
+  .pw-flow-in{text-align:left;padding:18px 18px}
+  .pw-flow-go{display:none}
+  .pw-warm-desc{font-size:14px}
+}
 
 /* ── 한눈에 보는 과정 ── */
 .pw-facts-sec{background:#fff}
