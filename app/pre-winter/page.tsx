@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   title: "PRE 윈터스쿨 — 다인에듀 동탄점",
   description:
     "예비 고1(현 중3) 대상 PRE 윈터스쿨. 윈터스쿨보다 한 달 먼저 공통수학 1·2 와 통합과학을 시작합니다.",
+  /* 내용이 확정될 때까지 검색에 잡히지 않게 합니다.
+     공개할 때 이 robots 줄을 지우고, SiteHeader 의 SHOW_PRE_WINTER 를 true 로 바꾸세요. */
+  robots: { index: false, follow: false },
 };
 
 export default function PreWinterPage() {

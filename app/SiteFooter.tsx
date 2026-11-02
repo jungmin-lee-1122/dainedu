@@ -73,17 +73,17 @@ export default function SiteFooter() {
 
             <ul className="dn-foot-biz">
               <li>
-                <b>다인아카데미학원<span className="dn-foot-biz-tag">601호</span></b>
+                <b>다인아카데미학원</b>
                 <span>사업자등록번호 628-85-03457</span>
                 <span>학원설립·운영등록번호 제5475호</span>
                 <a className="dn-foot-badge" href="#tuition">교습비 안내</a>
               </li>
               <li>
-                <b>주식회사 다인교육<span className="dn-foot-biz-tag">603호</span></b>
+                <b>주식회사 다인교육</b>
                 <span>사업자등록번호 139-81-47864</span>
               </li>
               <li>
-                <b>다인서점<span className="dn-foot-biz-tag">603호</span></b>
+                <b>다인서점</b>
                 <span>사업자등록번호 641-85-03445</span>
               </li>
             </ul>

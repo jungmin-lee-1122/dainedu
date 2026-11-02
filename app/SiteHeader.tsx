@@ -13,6 +13,10 @@ const SEMINAR = "/event";
  *  "porta"  = 포르타 고등전문관 (/porta)
  *  "clavis" = 클라비스 N수전문관 (/clavis)
  */
+/** PRE 윈터스쿨 메뉴 표시 여부 — 수강료 등 숫자가 확정되면 true 로 바꾸세요.
+ *  (페이지 자체는 /pre-winter 주소로 그대로 열립니다) */
+const SHOW_PRE_WINTER = false;
+
 /** 콘텐츠 메뉴 표시 여부 — 다시 보이려면 true 로 바꾸세요. */
 const SHOW_CONTENTS = false;
 
@@ -99,7 +103,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             <a href="/#program">모집안내</a>
             {current === "porta" ? (
               <div className="dn-gnb-sub dn-gnb-sub-grouped">
-                <a href="/pre-winter">PRE 윈터스쿨</a>
+                {SHOW_PRE_WINTER && <a href="/pre-winter">PRE 윈터스쿨</a>}
                 <a href="/winter">2027 윈터스쿨</a>
                 <span className="dn-gnb-gtitle">고등부 단과</span>
                 <a href="/schedule">단과 시간표</a>
@@ -111,7 +115,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
               </div>
             ) : (
               <div className="dn-gnb-sub dn-gnb-sub-grouped">
-                <a href="/pre-winter">PRE 윈터스쿨</a>
+                {SHOW_PRE_WINTER && <a href="/pre-winter">PRE 윈터스쿨</a>}
                 <a href="/winter">2027 윈터스쿨</a>
                 {/* 2028 재수종합반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
                 <span className="dn-gnb-soon">2028 재수종합반</span>
