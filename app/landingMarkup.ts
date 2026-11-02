@@ -90,8 +90,8 @@ export const landingMarkup = `
           <div class="dn-poster dn-poster-roll" id="dnPosterRoll">
             <a class="dn-poster-sl is-on" href="/events/event-mvkq1sai0bkt"><picture><source media="(max-width:900px)" srcset="/poster-sem1-m.jpg"/><img src="/poster-sem1.jpg" alt="고교 선택 전략 &amp; 예비고1 대입 성공 로드맵 설명회 — 다인에듀 동탄점"/></picture></a>
             <a class="dn-poster-sl" href="/events/event-mvkq3sx6rfv1"><picture><source media="(max-width:900px)" srcset="/poster-sem2-m.jpg"/><img src="/poster-sem2.jpg" alt="예비 고2·고3 대입 전략 설명회 — 다인에듀 동탄점"/></picture></a>
-            <div class="dn-poster-sl"><picture><source media="(max-width:900px)" srcset="/poster-pre-go1-m.jpg"/><img src="/poster-pre-go1.jpg" alt="예비고1을 위한 PRE WINTER SCHOOL — 다인에듀 동탄점"/></picture></div>
-            <div class="dn-poster-sl"><picture><source media="(max-width:900px)" srcset="/poster-pre-go23-m.jpg"/><img src="/poster-pre-go23.jpg" alt="수능실전 딥다이브 수학특강 — 예비 고2·고3"/></picture></div>
+            <a class="dn-poster-sl" href="/pre-winter"><picture><source media="(max-width:900px)" srcset="/poster-pre-go1-m.jpg"/><img src="/poster-pre-go1.jpg" alt="예비고1을 위한 PRE WINTER SCHOOL — 다인에듀 동탄점"/></picture></a>
+            <a class="dn-poster-sl" href="/pre-winter"><picture><source media="(max-width:900px)" srcset="/poster-pre-go23-m.jpg"/><img src="/poster-pre-go23.jpg" alt="수능실전 딥다이브 수학특강 — 예비 고2·고3"/></picture></a>
 
             <!-- 리모콘 — 화살표로 넘기고, 점을 눌러 바로 이동합니다 -->
             <div class="dn-poster-ctrl">
