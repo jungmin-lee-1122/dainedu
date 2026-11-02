@@ -36,7 +36,7 @@ export const hero = {
  *  카드 2·3번은 학년별 과정 소개를 겸합니다.
  *  target 을 적으면 작은 뱃지가 붙고, href 를 적으면 해당 탭으로 이동합니다. */
 export const intro = {
-  tag: "Why PRE",
+  tag: "Why PRE Winter",
   title: "겨울의 속도는",
   titleEm: "12월에 정해집니다.",
   lead:
