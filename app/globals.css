@@ -4432,9 +4432,15 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 /* ── PRE 윈터스쿨 히어로 — 내용이 길어 높이를 내용에 맞춥니다 ──
    윈터스쿨 키비주얼은 높이가 520px 로 고정이라 모집 정보가 잘렸습니다.
    이 페이지에서만 배경을 깔개로 돌리고 높이는 글이 정하게 합니다. */
-.pw-page .wt-kv-box{line-height:1.4}
-.pw-page .wt-kv-bg{position:absolute;inset:0;width:auto;height:auto;
-  max-height:none;min-height:0;aspect-ratio:auto}
+.pw-page .wt-kv-box{line-height:1.4;background:#0A1122}
+.pw-kv-pic{position:absolute;inset:0;display:block;z-index:0}
+.pw-kv-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  animation:wtKv 18s ease-out forwards}
+/* 오른쪽 위 금빛 줄기 — 윈터스쿨 키비주얼과 같은 결 */
+.pw-kv-beam{position:absolute;right:7%;top:-40%;z-index:1;
+  width:clamp(90px,10vw,150px);height:180%;pointer-events:none;
+  background:linear-gradient(180deg,rgba(228,205,154,.26),rgba(228,205,154,0));
+  transform:rotate(16deg);filter:blur(26px)}
 .pw-page .wt-kv-in{position:relative;top:auto;transform:none;
   padding:clamp(54px,6.4vw,86px) 0}
 .pw-page .wt-kv-in > *{max-width:min(760px,72%)}

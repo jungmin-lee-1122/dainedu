@@ -66,10 +66,13 @@ export default function PreWinterPage() {
       {/* ══ 1) 인트로 — 키비주얼 ══ */}
       <section className="wt-kv">
         <div className="wt-kv-box">
-          <div className="wt-kv-bg" aria-hidden="true">
-            <span className="wt-kv-beam" />
-            <span className="wt-kv-orb" />
-          </div>
+          {/* 배경 — 자습실 사진을 남색으로 물들인 전용 이미지 */}
+          <picture className="pw-kv-pic" aria-hidden="true">
+            <source media="(max-width:900px)" srcSet={hero.imageMobile} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="pw-kv-img" src={hero.image} alt="" />
+          </picture>
+          <span className="pw-kv-beam" aria-hidden="true" />
           <div className="wt-kv-in">
             <p className="wt-kv-eyebrow">{hero.eyebrow}</p>
             <p className="wt-kv-title">

@@ -26,10 +26,10 @@ export const hero = {
     },
     { k: "접수방법", v: "사전 예약제 · 정원 마감 시 조기 종료" },
   ] as { k: string; v?: string; rows?: { tag: string; v: string }[] }[],
-  /* 배경 사진 — public/winter/kv-room.jpg 를 함께 씁니다.
-     전용 사진이 생기면 아래 경로만 바꾸세요. */
-  image: "/winter/kv-room.jpg",
-  imageMobile: "/winter/kv-room-m.jpg",
+  /* 배경 사진 — 우리 자습실 사진을 남색으로 물들여 만든 전용 배경입니다.
+     바꾸려면 public/pre-winter/ 에 같은 이름으로 덮어쓰면 됩니다. */
+  image: "/pre-winter/kv.jpg",
+  imageMobile: "/pre-winter/kv-m.jpg",
 };
 
 /** 왜 한 달 먼저 시작하는가 — 인트로
