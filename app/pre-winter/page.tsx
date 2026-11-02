@@ -68,11 +68,23 @@ export default function PreWinterPage() {
               <em>{hero.titleBottom}</em>
             </p>
             <p className="wt-kv-sub">{hero.sub}</p>
-            <div className="wt-kv-chips">
-              {hero.chips.map((c) => (
-                <span className="wt-chip" key={c}>{c}</span>
+            {/* 모집 정보 — 라벨 박스 + 값 */}
+            <dl className="pw-kv">
+              {hero.info.map((row) => (
+                <div className="pw-kv-row" key={row.k}>
+                  <dt className="pw-kv-k">{row.k}</dt>
+                  <dd className="pw-kv-v">
+                    {row.v}
+                    {row.rows?.map((r) => (
+                      <span className="pw-kv-line" key={r.tag}>
+                        <i className="pw-kv-tag">{r.tag}</i>
+                        {r.v}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
               ))}
-            </div>
+            </dl>
           </div>
         </div>
       </section>
