@@ -110,10 +110,21 @@ export default function PreWinterPage() {
           </h2>
           <p className="wt-lead">{intro.lead}</p>
 
+          {/* 아래 두 과정을 소개하는 문단 */}
+          <div className="pw-note-block wt-up">
+            <span className="pw-note-ico" aria-hidden="true">
+              <PwIcon name="gap" />
+            </span>
+            <div>
+              <b className="pw-note-t">{intro.note.t}</b>
+              <p className="pw-note-d">{intro.note.d}</p>
+            </div>
+          </div>
+
           <div className="pw-cards">
             {intro.points.map((p, i) => (
               <article
-                className={`pw-card wt-up${"target" in p && p.target ? "" : " is-lead"}`}
+                className="pw-card wt-up"
                 style={{ transitionDelay: `${i * 140}ms` }}
                 key={p.no}
               >

@@ -59,12 +59,35 @@ export const trackScript = `
     })(cls[i]);
   }
 
+  /* ── "과정 자세히 보기" 같은 링크 ──
+     탭을 바꾼 뒤 과정 안내 섹션으로 부드럽게 내려갑니다. */
+  var jumps = document.querySelectorAll('a[href="#go1"], a[href="#go23"]');
+  for(var i=0;i<jumps.length;i++){
+    (function(a){
+      a.addEventListener("click", function(e){
+        e.preventDefault();
+        var id = a.getAttribute("href").replace("#","");
+        show(id);
+        var sec = document.getElementById("info");
+        if(sec){
+          var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          sec.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+        }
+        if(history.replaceState) history.replaceState(null, "", "#" + id);
+      });
+    })(jumps[i]);
+  }
+
   /* 주소에 #go1 / #go23 이 있으면 그 과정으로 시작합니다 */
   var want = (location.hash || "").replace("#","");
   var found = false;
   for(var i=0;i<tabs.length;i++){
     if(tabs[i].getAttribute("data-track-tab") === want) found = true;
   }
-  if(found) show(want);
+  if(found){
+    show(want);
+    var sec = document.getElementById("info");
+    if(sec) setTimeout(function(){ sec.scrollIntoView({ block: "start" }); }, 80);
+  }
 })();
 `;
