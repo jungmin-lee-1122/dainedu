@@ -29,6 +29,7 @@ export const landingMarkup = `
       <li class="dn-gnb-item">
         <a href="#program">모집안내</a>
         <div class="dn-gnb-sub dn-gnb-sub-grouped">
+          <a href="/pre-winter">2027 PRE 윈터스쿨</a>
           <a href="/winter">2027 윈터스쿨</a>
           <!-- 2028 재수종합반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 -->
           <span class="dn-gnb-soon">2028 재수종합반</span>
