@@ -14,23 +14,17 @@ import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import PwIcon from "./PwIcon";
 import { winterScript } from "../winter/winterScript";
+import { trackScript } from "./trackScript";
 import {
   hero,
   intro,
   warmup,
-  facts,
+  tracks,
   refund,
   benefit,
-  factNote,
-  timetable,
-  timetableNote,
-  dayPhotos,
   closing,
   fixedBar,
 } from "./preWinterData";
-
-/** 하루 모습 사진 — 전용 사진이 준비되면 true 로 바꾸세요. */
-const SHOW_DAY_PHOTOS = false;
 
 const CONSULT = "/consult";
 
@@ -154,36 +148,108 @@ export default function PreWinterPage() {
         </div>
       </section>
 
-      {/* ══ 3) 한눈에 보는 과정 ══ */}
+      {/* ══ 3) 과정 안내 — 대상별 탭 ══ */}
       <section className="wt-sec pw-facts-sec" id="info">
         <div className="wt-wrap">
           <p className="wt-tag">Course</p>
-          <h2 className="wt-h2">한눈에 보는 과정</h2>
+          <h2 className="wt-h2">대상별 과정 안내</h2>
 
-          <dl className="pw-facts wt-up">
-            {facts.map((f) => (
-              <div className={`pw-fact${f.accent ? " is-accent" : ""}${f.wide ? " is-wide" : ""}`} key={f.k}>
-                <dt>{f.k}</dt>
-                <dd>
-                  <b>{f.v}</b>
-                  {f.sub && <span className="pw-fact-sub">{f.sub}</span>}
-                </dd>
-              </div>
+          {/* 탭 — 누르면 아래 내용이 바뀝니다 */}
+          <div className="pw-tabs" role="tablist" aria-label="대상 선택">
+            {tracks.map((t, i) => (
+              <button
+                className={`pw-tab${i === 0 ? " is-on" : ""}`}
+                type="button"
+                role="tab"
+                aria-selected={i === 0}
+                data-track-tab={t.id}
+                key={t.id}
+              >
+                <b>{t.tab}</b>
+                <span>{t.target}</span>
+              </button>
             ))}
+          </div>
 
-            <div className="pw-fact pw-fact-refund">
-              <dt>환불 규정</dt>
-              <dd>
-                <b>{refund}</b>
-              </dd>
+          {tracks.map((t, i) => (
+            <div
+              className="pw-panel"
+              data-track-panel={t.id}
+              hidden={i !== 0}
+              role="tabpanel"
+              key={t.id}
+            >
+              <div className="pw-panel-head">
+                <h3 className="pw-panel-title">
+                  {t.title} <em>{t.titleEm}</em>
+                </h3>
+                <p className="pw-panel-lead">{t.lead}</p>
+                <div className="pw-panel-chips">
+                  {t.chips.map((c) => (
+                    <span className="pw-chip" key={c}>{c}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* 한눈에 보는 과정 */}
+              <dl className="pw-facts">
+                {t.facts.map((f) => (
+                  <div
+                    className={`pw-fact${f.accent ? " is-accent" : ""}${f.wide ? " is-wide" : ""}`}
+                    key={f.k}
+                  >
+                    <dt>{f.k}</dt>
+                    <dd>
+                      <b>{f.v}</b>
+                      {f.sub && <span className="pw-fact-sub">{f.sub}</span>}
+                    </dd>
+                  </div>
+                ))}
+                <div className="pw-fact pw-fact-refund">
+                  <dt>환불 규정</dt>
+                  <dd><b>{refund}</b></dd>
+                </div>
+              </dl>
+
+              {/* 시간표 */}
+              <div className="pw-tt-head">
+                <b>시간표 및 일과</b>
+                <span>{t.timetableCap}</span>
+              </div>
+              <div className="pw-day">
+                <table className="pw-tt">
+                  <thead>
+                    <tr>
+                      <th>{t.id === "go23" ? "회차" : "교시"}</th>
+                      <th>{t.id === "go23" ? "날짜" : "시간"}</th>
+                      <th>수업</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {t.timetable.map((r) => (
+                      <tr key={r.period + r.title}>
+                        <th scope="row">{r.period}</th>
+                        <td className="pw-tt-time">{r.time}</td>
+                        <td>
+                          <b>{r.title}</b>
+                          {r.desc && <span>{r.desc}</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <ul className="pw-note pw-note-list">
+                {t.timetableNote.map((n) => <li key={n}>{n}</li>)}
+                <li>모집정원이 충원되면 조기 마감됩니다. (수강료 납부 또는 예약금 납부자만 모집정원으로 포함)</li>
+              </ul>
             </div>
-          </dl>
-
-          <p className="pw-note">{factNote}</p>
+          ))}
         </div>
       </section>
 
-      {/* ══ 3-1) 수강 혜택 ══ */}
+      {/* ══ 4) 수강 혜택 — 두 과정 공통 ══ */}
       <section className="wt-sec pw-benefit-sec" id="benefit">
         <div className="wt-wrap">
           <p className="wt-tag wt-tag-inv">{benefit.tag}</p>
@@ -212,62 +278,7 @@ export default function PreWinterPage() {
           </div>
 
           <ul className="pw-tier-notes">
-            {benefit.notes.map((n) => (
-              <li key={n}>{n}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ══ 4) 시간표 및 일과 ══ */}
-      <section className="wt-sec pw-day-sec" id="timetable">
-        <div className="wt-wrap">
-          <p className="wt-tag">Daily</p>
-          <h2 className="wt-h2">
-            시간표 및 일과 <small className="pw-h2-sub">월요일 – 금요일</small>
-          </h2>
-
-          <div className={`pw-day${SHOW_DAY_PHOTOS ? " has-photos" : ""}`}>
-            <table className="pw-tt wt-up">
-              <thead>
-                <tr>
-                  <th>교시</th>
-                  <th>시간</th>
-                  <th>수업</th>
-                </tr>
-              </thead>
-              <tbody>
-                {timetable.map((t) => (
-                  <tr key={t.period + t.title}>
-                    <th scope="row">{t.period}</th>
-                    <td className="pw-tt-time">{t.time}</td>
-                    <td>
-                      <b>{t.title}</b>
-                      {t.desc && <span>{t.desc}</span>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {SHOW_DAY_PHOTOS && (
-              <div className="pw-shots">
-                {dayPhotos.map((p) => (
-                  <figure className="pw-shot wt-up" key={p.no}>
-                    <span className="pw-shot-no">{p.no}</span>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={p.img} alt={p.cap} loading="lazy" decoding="async" />
-                    <figcaption>{p.cap}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <ul className="pw-note pw-note-list">
-            {timetableNote.map((n) => (
-              <li key={n}>{n}</li>
-            ))}
+            {benefit.notes.map((n) => <li key={n}>{n}</li>)}
           </ul>
         </div>
       </section>
@@ -308,6 +319,11 @@ export default function PreWinterPage() {
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
       {/* 윈터스쿨과 같은 스크립트 — 등장 애니메이션·고정 띠를 함께 씁니다 */}
+      <Script
+        id="pre-winter-track-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: trackScript }}
+      />
       <Script
         id="pre-winter-script"
         strategy="afterInteractive"
