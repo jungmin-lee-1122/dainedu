@@ -4832,19 +4832,25 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   /* 좁은 화면 — 표 테두리를 걷고 "작은 라벨 + 값" 목록으로 바꿉니다.
      항목마다 남색 띠가 꽉 차면 줄무늬처럼 보여 읽기 어렵습니다. */
   .pw-facts{grid-template-columns:1fr;gap:0;margin-top:22px;
+    /* PC 의 "행 높이 통일"을 풀어야 합니다.
+       한 칸짜리로 쌓이면 모든 줄이 가장 긴 줄 높이로 늘어나 빈칸이 생깁니다. */
+    grid-auto-rows:auto;
     border:0;border-radius:0;background:none;overflow:visible}
-  .pw-fact{display:flex;flex-direction:column;align-items:flex-start;
-    padding:14px 0;background:none;border-bottom:1px solid rgba(17,28,54,.1)}
+  .pw-fact{display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+    padding:13px 0;background:none;border-bottom:1px solid rgba(17,28,54,.1)}
+  .pw-fact:first-child{padding-top:0}
   .pw-fact:last-child{border-bottom:0;padding-bottom:0}
-  .pw-fact>dt{align-self:flex-start;width:auto;margin-bottom:8px;padding:4px 11px;
+  .pw-fact>dt{align-self:flex-start;width:auto;margin:0;padding:4px 11px;
     border-radius:5px;background:#DED6C4;color:var(--w-navy);font-size:12px}
-  .pw-fact>dd{padding:0;gap:4px}
-  .pw-fact>dd>b{font-size:14.5px}
+  .pw-fact>dd{padding:0;gap:3px}
+  .pw-fact>dd>b{font-size:14.5px;line-height:1.5}
   .pw-fact.is-accent>dd>b{font-size:16px}
+  /* 환불 규정은 길어서 단어 단위로 줄바꿈되게 둡니다 */
+  .pw-fact-refund>dd>b{word-break:break-word}
 }
 @media(max-width:640px){
-  .pw-fact{padding:12px 0}
-  .pw-fact>dt{font-size:11.5px;padding:3px 10px;margin-bottom:7px}
+  .pw-fact{padding:12px 0;gap:5px}
+  .pw-fact>dt{font-size:11.5px;padding:3px 10px}
   .pw-fact>dd>b{font-size:14px}
   .pw-fact.is-accent>dd>b{font-size:15.5px}
   .pw-fact-sub{font-size:11.5px}
