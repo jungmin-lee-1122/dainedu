@@ -695,12 +695,26 @@ img,video,svg{max-width:100%}
 .dn-poster:hover{transform:translateY(-3px);box-shadow:0 26px 58px -22px rgba(16,25,46,.5)}
 .dn-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 
-/* ── 포스터 슬라이드 (설명회 2장 교차) ── */
+/* ── 포스터 슬라이드 (4장 교차) ── */
 .dn-poster-sl{position:absolute;inset:0;display:block;opacity:0;pointer-events:none;transition:opacity .9s ease}
 .dn-poster-sl.is-on{opacity:1;pointer-events:auto}
-.dn-poster-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:7px;z-index:3;padding:5px 9px;border-radius:999px;background:rgba(16,25,46,.3);backdrop-filter:blur(4px)}
-.dn-poster-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s ease,width .3s ease}
-.dn-poster-dots i.is-on{width:16px;border-radius:999px;background:#fff}
+
+/* 리모콘 — 화살표 + 점 */
+.dn-poster-ctrl{position:absolute;left:50%;bottom:14px;z-index:4;
+  display:flex;align-items:center;gap:6px;translate:-50% 0;
+  padding:5px 6px;border-radius:999px;
+  background:rgba(16,25,46,.46);backdrop-filter:blur(6px);
+  box-shadow:0 6px 18px -10px rgba(16,25,46,.7)}
+.dn-poster-arrow{display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.14);color:#fff;transition:background .2s ease}
+.dn-poster-arrow:hover{background:rgba(255,255,255,.3)}
+.dn-poster-arrow svg{width:16px;height:16px}
+.dn-poster-dots{display:flex;align-items:center;gap:6px;padding:0 3px}
+.dn-poster-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.42);transition:background .3s ease,width .3s ease}
+.dn-poster-dots button:hover{background:rgba(255,255,255,.75)}
+.dn-poster-dots button.is-on{width:18px;border-radius:999px;background:#fff}
 
 @media(max-width:760px){
   .dn-rolling-row{flex-direction:column}
@@ -4825,4 +4839,14 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .pw-tt td>span{font-size:11px}
   .pw-note{font-size:11.5px}
   .pw-h2-sub{display:block;margin:6px 0 0;font-size:13px}
+}
+
+/* 포스터 리모콘 — 모바일에서는 손가락으로 누르기 좋게 키웁니다 */
+@media(max-width:760px){
+  .dn-poster-ctrl{bottom:10px;gap:5px;padding:5px}
+  .dn-poster-arrow{width:34px;height:34px}
+  .dn-poster-arrow svg{width:17px;height:17px}
+  .dn-poster-dots{gap:7px}
+  .dn-poster-dots button{width:8px;height:8px}
+  .dn-poster-dots button.is-on{width:20px}
 }

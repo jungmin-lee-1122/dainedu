@@ -83,10 +83,30 @@ export const landingMarkup = `
             </div>
           </div>
           <!-- 포스터 — 설명회 2장이 번갈아 돌아갑니다. 바꾸려면 아래 <a> 두 줄의 주소와 이미지만 고치세요. -->
+          <!-- 포스터 — 4장이 번갈아 돌아갑니다.
+               바꾸려면 아래 슬라이드의 이미지 경로만 고치세요.
+               링크를 걸 때는 <div class="dn-poster-sl"> 를 <a href="..."> 로 바꾸면 됩니다. -->
           <div class="dn-poster dn-poster-roll" id="dnPosterRoll">
             <a class="dn-poster-sl is-on" href="/events/event-mvkq1sai0bkt"><picture><source media="(max-width:900px)" srcset="/poster-sem1-m.jpg"/><img src="/poster-sem1.jpg" alt="고교 선택 전략 &amp; 예비고1 대입 성공 로드맵 설명회 — 다인에듀 동탄점"/></picture></a>
             <a class="dn-poster-sl" href="/events/event-mvkq3sx6rfv1"><picture><source media="(max-width:900px)" srcset="/poster-sem2-m.jpg"/><img src="/poster-sem2.jpg" alt="예비 고2·고3 대입 전략 설명회 — 다인에듀 동탄점"/></picture></a>
-            <span class="dn-poster-dots" aria-hidden="true"><i class="is-on"></i><i></i></span>
+            <div class="dn-poster-sl"><picture><source media="(max-width:900px)" srcset="/poster-pre-go1-m.jpg"/><img src="/poster-pre-go1.jpg" alt="예비고1을 위한 PRE WINTER SCHOOL — 다인에듀 동탄점"/></picture></div>
+            <div class="dn-poster-sl"><picture><source media="(max-width:900px)" srcset="/poster-pre-go23-m.jpg"/><img src="/poster-pre-go23.jpg" alt="수능실전 딥다이브 수학특강 — 예비 고2·고3"/></picture></div>
+
+            <!-- 리모콘 — 화살표로 넘기고, 점을 눌러 바로 이동합니다 -->
+            <div class="dn-poster-ctrl">
+              <button class="dn-poster-arrow" type="button" data-dir="prev" aria-label="이전 포스터">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <span class="dn-poster-dots">
+                <button class="is-on" type="button" data-go="0" aria-label="1번 포스터"></button>
+                <button type="button" data-go="1" aria-label="2번 포스터"></button>
+                <button type="button" data-go="2" aria-label="3번 포스터"></button>
+                <button type="button" data-go="3" aria-label="4번 포스터"></button>
+              </span>
+              <button class="dn-poster-arrow" type="button" data-dir="next" aria-label="다음 포스터">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -146,20 +146,45 @@ export const landingScript = `/* ===============================================
 (function(){var w=document.querySelector(".dn-foot-tel-wrap");if(!w)return;var btn=w.querySelector(".dn-foot-tel");btn.addEventListener("click",function(e){e.stopPropagation();var open=w.classList.toggle("is-open");btn.setAttribute("aria-expanded",open?"true":"false");});document.addEventListener("click",function(e){if(!w.contains(e.target)){w.classList.remove("is-open");btn.setAttribute("aria-expanded","false");}});})();
 (function(){var t=document.querySelector(".dn-quick-top");if(!t)return;t.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
 
-/* ═══════ 포스터 슬라이드 — 5초마다 교차 ═══════ */
+/* ═══════ 포스터 슬라이드 — 5초마다 교차 + 리모콘 ═══════ */
 (function(){
   var box=document.getElementById("dnPosterRoll"); if(!box) return;
   var sl=box.querySelectorAll(".dn-poster-sl");
-  var dots=box.querySelectorAll(".dn-poster-dots i");
+  var dots=box.querySelectorAll(".dn-poster-dots button");
+  var arrows=box.querySelectorAll(".dn-poster-arrow");
   if(sl.length<2) return;
   var i=0, timer=null;
+
   function go(n){
     i=(n+sl.length)%sl.length;
     for(var k=0;k<sl.length;k++) sl[k].classList.toggle("is-on",k===i);
-    for(var d=0;d<dots.length;d++) dots[d].classList.toggle("is-on",d===i);
+    for(var d=0;d<dots.length;d++){
+      dots[d].classList.toggle("is-on",d===i);
+      dots[d].setAttribute("aria-current", d===i ? "true" : "false");
+    }
   }
   function play(){ stop(); timer=setInterval(function(){ go(i+1); },5000); }
   function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  /* 눌러서 넘긴 뒤에는 잠깐 멈췄다가 다시 돕니다 */
+  function nudge(n){ go(n); stop(); setTimeout(play,8000); }
+
+  for(var a=0;a<arrows.length;a++){
+    (function(btn){
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        nudge(btn.getAttribute("data-dir")==="prev" ? i-1 : i+1);
+      });
+    })(arrows[a]);
+  }
+  for(var d=0;d<dots.length;d++){
+    (function(btn){
+      btn.addEventListener("click",function(e){
+        e.preventDefault();
+        nudge(parseInt(btn.getAttribute("data-go"),10)||0);
+      });
+    })(dots[d]);
+  }
+
   box.addEventListener("mouseenter",stop);
   box.addEventListener("mouseleave",play);
   document.addEventListener("visibilitychange",function(){ document.hidden?stop():play(); });
