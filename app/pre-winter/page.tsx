@@ -20,6 +20,7 @@ import {
   warmup,
   facts,
   refund,
+  benefit,
   factNote,
   timetable,
   timetableNote,
@@ -179,6 +180,42 @@ export default function PreWinterPage() {
           </dl>
 
           <p className="pw-note">{factNote}</p>
+        </div>
+      </section>
+
+      {/* ══ 3-1) 수강 혜택 ══ */}
+      <section className="wt-sec pw-benefit-sec" id="benefit">
+        <div className="wt-wrap">
+          <p className="wt-tag wt-tag-inv">{benefit.tag}</p>
+          <h2 className="wt-h2 wt-inv">
+            {benefit.title}
+            <br />
+            <em>{benefit.titleEm}</em>
+          </h2>
+          <p className="pw-benefit-lead">{benefit.lead}</p>
+
+          <div className="pw-tiers">
+            {benefit.tiers.map((t, i) => (
+              <article
+                className="pw-tier wt-up"
+                style={{ transitionDelay: `${i * 130}ms` }}
+                key={t.count}
+              >
+                <span className="pw-tier-count">{t.count} 신청</span>
+                <p className="pw-tier-pct">
+                  <b className="wt-num" data-num={t.percent}>0</b>
+                  <i>%</i>
+                </p>
+                <span className="pw-tier-cap">할인</span>
+              </article>
+            ))}
+          </div>
+
+          <ul className="pw-tier-notes">
+            {benefit.notes.map((n) => (
+              <li key={n}>{n}</li>
+            ))}
+          </ul>
         </div>
       </section>
 

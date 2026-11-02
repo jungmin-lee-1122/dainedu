@@ -82,6 +82,26 @@ export const refund =
 export const factNote =
   "※ 모집정원이 충원되면 조기 마감됩니다. (수강료 납부 또는 예약금 납부자만 모집정원으로 포함)";
 
+/** 수강 혜택 — 윈터스쿨 사전 등록생 대상 할인
+ *  ⚠️ 조건 문구는 광고 표시 기준에 걸리는 부분이라 임의로 줄이지 마세요. */
+export const benefit = {
+  tag: "Benefit",
+  title: "윈터스쿨 사전 등록생",
+  titleEm: "수강 과목 수만큼 할인",
+  lead:
+    "2027 윈터스쿨에 사전 등록한 학생이 PRE 윈터스쿨을 함께 수강하면, 신청 과목 수에 따라 PRE 윈터스쿨 수강료가 할인됩니다.",
+  tiers: [
+    { count: "1과목", percent: 5 },
+    { count: "2과목", percent: 10 },
+    { count: "3과목", percent: 15 },
+  ],
+  notes: [
+    "2027 윈터스쿨 사전 등록을 마친 학생에 한해 적용됩니다.",
+    "할인은 PRE 윈터스쿨 수강료에 적용되며, 교재비·컨텐츠비·급식비는 제외됩니다.",
+    "다른 할인과 중복 적용되지 않습니다.",
+  ],
+};
+
 /** 하루 일과 — 월요일~금요일 */
 export const timetable: { period: string; time: string; title: string; desc?: string }[] = [
   { period: "석식", time: "17:30 - 18:00", title: "선택 급식", desc: "구내식당" },
