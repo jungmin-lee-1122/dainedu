@@ -11,6 +11,7 @@ const SITE = "https://dainedu.co.kr";
 /** [주소, 중요도(0~1), 갱신 주기] */
 const PAGES: [string, number, "daily" | "weekly" | "monthly"][] = [
   ["/", 1.0, "daily"],
+  ["/pre-winter", 0.9, "weekly"],
   ["/winter", 0.9, "weekly"],
   ["/porta", 0.9, "weekly"],
   ["/clavis", 0.9, "weekly"],
