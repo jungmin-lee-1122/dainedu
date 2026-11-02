@@ -99,8 +99,16 @@ export default function PreWinterPage() {
                   <PwIcon name={p.icon} />
                 </span>
                 <span className="pw-card-no">{p.no}</span>
+                {"target" in p && p.target && (
+                  <span className="pw-card-target">{p.target}</span>
+                )}
                 <b className="pw-card-t">{p.t}</b>
                 <p className="pw-card-d">{p.d}</p>
+                {"href" in p && p.href && (
+                  <a className="pw-card-go" href={p.href}>
+                    과정 자세히 보기 <i aria-hidden="true">›</i>
+                  </a>
+                )}
               </article>
             ))}
           </div>

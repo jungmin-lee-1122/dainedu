@@ -51,6 +51,19 @@ export default function PwIcon({ name }: { name?: string }) {
     );
   }
 
+  /* 수능 실전 — 과녁에 꽂힌 화살 */
+  if (name === "aim") {
+    return (
+      <svg {...common}>
+        <circle cx="15" cy="17" r="11" />
+        <circle cx="15" cy="17" r="6.2" />
+        <circle cx="15" cy="17" r="1.6" />
+        <path d="M15 17 27 5" />
+        <path d="M22.4 5h4.6v4.6" />
+      </svg>
+    );
+  }
+
   /* 이름이 없거나 모르는 값일 때 — 작은 별 */
   return (
     <svg {...common}>
