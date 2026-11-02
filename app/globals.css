@@ -699,22 +699,25 @@ img,video,svg{max-width:100%}
 .dn-poster-sl{position:absolute;inset:0;display:block;opacity:0;pointer-events:none;transition:opacity .9s ease}
 .dn-poster-sl.is-on{opacity:1;pointer-events:auto}
 
-/* 리모콘 — 화살표 + 점 */
-.dn-poster-ctrl{position:absolute;left:50%;bottom:14px;z-index:4;
-  display:flex;align-items:center;gap:6px;translate:-50% 0;
-  padding:5px 6px;border-radius:999px;
-  background:rgba(16,25,46,.46);backdrop-filter:blur(6px);
-  box-shadow:0 6px 18px -10px rgba(16,25,46,.7)}
+/* 리모콘 — 포스터를 가리지 않게 작고 옅게 */
+.dn-poster-ctrl{position:absolute;left:50%;bottom:11px;z-index:4;
+  display:flex;align-items:center;gap:2px;translate:-50% 0;
+  padding:3px 4px;border-radius:999px;
+  background:rgba(16,25,46,.34);backdrop-filter:blur(5px);
+  opacity:.72;transition:opacity .25s ease}
+.dn-poster-roll:hover .dn-poster-ctrl{opacity:1}
 .dn-poster-arrow{display:inline-flex;align-items:center;justify-content:center;
-  width:30px;height:30px;padding:0;border:0;border-radius:50%;cursor:pointer;
-  background:rgba(255,255,255,.14);color:#fff;transition:background .2s ease}
-.dn-poster-arrow:hover{background:rgba(255,255,255,.3)}
-.dn-poster-arrow svg{width:16px;height:16px}
-.dn-poster-dots{display:flex;align-items:center;gap:6px;padding:0 3px}
-.dn-poster-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;cursor:pointer;
-  background:rgba(255,255,255,.42);transition:background .3s ease,width .3s ease}
-.dn-poster-dots button:hover{background:rgba(255,255,255,.75)}
-.dn-poster-dots button.is-on{width:18px;border-radius:999px;background:#fff}
+  width:22px;height:22px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:none;color:rgba(255,255,255,.8);transition:color .2s ease}
+.dn-poster-arrow:hover{color:#fff}
+.dn-poster-arrow svg{width:13px;height:13px}
+.dn-poster-arrow:focus-visible{outline:1px solid rgba(255,255,255,.6);outline-offset:1px}
+.dn-poster-dots{display:flex;align-items:center;gap:5px;padding:0 4px}
+.dn-poster-dots button{width:5px;height:5px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.45);transition:background .3s ease,width .3s ease}
+.dn-poster-dots button:hover{background:rgba(255,255,255,.8)}
+.dn-poster-dots button.is-on{width:13px;border-radius:999px;background:#fff}
+.dn-poster-dots button:focus-visible{outline:1px solid rgba(255,255,255,.6);outline-offset:2px}
 
 @media(max-width:760px){
   .dn-rolling-row{flex-direction:column}
@@ -4750,10 +4753,12 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .pw-close-track span{font-size:13px;font-weight:600;color:rgba(255,255,255,.66)}
 
 @media(max-width:640px){
-  .pw-close-tracks{flex-direction:column;gap:8px;margin:20px 0 24px}
-  .pw-close-track{padding:12px 18px;border-radius:12px}
-  .pw-close-track b{font-size:13px}
-  .pw-close-track span{font-size:12.5px}
+  /* 모바일에서도 PC 처럼 가로로 나란히 */
+  .pw-close-tracks{flex-wrap:nowrap;gap:8px;margin:20px 0 24px}
+  .pw-close-track{flex:1 1 0;min-width:0;align-items:center;text-align:center;
+    padding:12px 10px;border-radius:12px}
+  .pw-close-track b{font-size:12.5px}
+  .pw-close-track span{font-size:11.5px;line-height:1.45;word-break:keep-all}
 }
 
 /* ── 수강 혜택 (윈터스쿨 사전 등록생 할인) ── */
@@ -4869,10 +4874,10 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 
 /* 포스터 리모콘 — 모바일에서는 손가락으로 누르기 좋게 키웁니다 */
 @media(max-width:760px){
-  .dn-poster-ctrl{bottom:10px;gap:5px;padding:5px}
-  .dn-poster-arrow{width:34px;height:34px}
-  .dn-poster-arrow svg{width:17px;height:17px}
-  .dn-poster-dots{gap:7px}
-  .dn-poster-dots button{width:8px;height:8px}
-  .dn-poster-dots button.is-on{width:20px}
+  .dn-poster-ctrl{bottom:9px;gap:2px;padding:3px 4px;opacity:.85}
+  .dn-poster-arrow{width:26px;height:26px}
+  .dn-poster-arrow svg{width:14px;height:14px}
+  .dn-poster-dots{gap:6px;padding:0 3px}
+  .dn-poster-dots button{width:6px;height:6px}
+  .dn-poster-dots button.is-on{width:15px}
 }
