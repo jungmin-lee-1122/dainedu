@@ -91,7 +91,7 @@ export default function PreWinterPage() {
           <div className="pw-cards">
             {intro.points.map((p, i) => (
               <article
-                className="pw-card wt-up"
+                className={`pw-card wt-up${"target" in p && p.target ? "" : " is-lead"}`}
                 style={{ transitionDelay: `${i * 140}ms` }}
                 key={p.no}
               >

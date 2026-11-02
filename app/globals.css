@@ -4430,7 +4430,24 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 .pw-h2-sub{margin-left:12px;font-size:.42em;font-weight:700;letter-spacing:0;color:var(--w-mut)}
 
 /* ── 왜 한 달 먼저인가 — 카드 3장 ── */
-.pw-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:34px}
+/* 첫 카드는 위에 한 줄로 넓게, 학년별 두 카드는 그 아래 나란히 */
+.pw-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px}
+.pw-card.is-lead{grid-column:1/-1;display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:26px;row-gap:4px;
+  padding:26px 30px;
+  background:linear-gradient(110deg,var(--w-navy) 0%,var(--w-navy2) 100%);border-color:transparent}
+.pw-card.is-lead .pw-card-ico{grid-column:1;grid-row:1/3}
+.pw-card.is-lead .pw-card-t{grid-column:2;grid-row:1}
+.pw-card.is-lead .pw-card-d{grid-column:2;grid-row:2}
+.pw-card.is-lead .pw-card-no{grid-column:3;grid-row:1/3}
+.pw-card.is-lead:hover{transform:none;border-color:transparent;
+  box-shadow:0 22px 40px -28px rgba(16,25,46,.5)}
+.pw-card.is-lead .pw-card-ico{margin:0;flex:0 0 auto;
+  background:rgba(255,255,255,.1);color:var(--w-gold-l);box-shadow:none}
+.pw-card.is-lead .pw-card-no{position:static;font-size:13px;color:rgba(255,255,255,.3)}
+.pw-card.is-lead .pw-card-t{margin-bottom:5px;color:#fff}
+.pw-card.is-lead .pw-card-d{color:rgba(255,255,255,.58)}
+
 .pw-card{position:relative;display:flex;flex-direction:column;padding:30px 26px 28px;
   border:1px solid rgba(17,28,54,.08);border-radius:20px;
   background:linear-gradient(170deg,#fff 0%,#F6F8FC 100%);
@@ -4493,6 +4510,10 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 
 @media(max-width:900px){
   .pw-cards{grid-template-columns:1fr;gap:12px}
+  /* 모바일 — 첫 카드도 세로로 */
+  .pw-card.is-lead{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:24px 22px}
+  .pw-card.is-lead .pw-card-ico{margin-bottom:16px}
+  .pw-card.is-lead .pw-card-no{position:absolute;top:22px;right:22px;margin:0}
   .pw-card{padding:24px 22px}
   .pw-card-ico{width:46px;height:46px;margin-bottom:16px;border-radius:13px}
   .pw-card-ico svg{width:23px;height:23px}
