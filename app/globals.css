@@ -4784,18 +4784,26 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 
 @media(max-width:900px){
   .pw-day.has-photos{grid-template-columns:1fr}
-  .pw-facts{grid-template-columns:1fr}
+  /* 좁은 화면 — 표 테두리를 걷고 "작은 라벨 + 값" 목록으로 바꿉니다.
+     항목마다 남색 띠가 꽉 차면 줄무늬처럼 보여 읽기 어렵습니다. */
+  .pw-facts{grid-template-columns:1fr;gap:0;margin-top:22px;
+    border:0;border-radius:0;background:none;overflow:visible}
+  .pw-fact{display:flex;flex-direction:column;align-items:flex-start;
+    padding:14px 0;background:none;border-bottom:1px solid rgba(17,28,54,.1)}
+  .pw-fact:last-child{border-bottom:0;padding-bottom:0}
+  .pw-fact>dt{align-self:flex-start;width:auto;margin-bottom:8px;padding:4px 11px;
+    border-radius:5px;background:#DED6C4;color:var(--w-navy);font-size:12px}
+  .pw-fact>dd{padding:0;gap:4px}
+  .pw-fact>dd>b{font-size:14.5px}
+  .pw-fact.is-accent>dd>b{font-size:16px}
 }
 @media(max-width:640px){
-  /* 모바일 — 항목과 내용을 위아래로 쌓고 글자를 한 단계 줄입니다 */
-  .pw-facts{margin-top:22px;border-radius:14px}
-  .pw-fact{grid-template-columns:1fr}
-  .pw-fact>dt{padding:8px 14px;font-size:12px}
-  .pw-fact>dd{padding:11px 14px}
-  .pw-fact>dd>b{font-size:13.5px}
-  .pw-fact.is-accent>dd>b{font-size:15px}
+  .pw-fact{padding:12px 0}
+  .pw-fact>dt{font-size:11.5px;padding:3px 10px;margin-bottom:7px}
+  .pw-fact>dd>b{font-size:14px}
+  .pw-fact.is-accent>dd>b{font-size:15.5px}
   .pw-fact-sub{font-size:11.5px}
-  .pw-fact-refund>dd>b{font-size:12px}
+  .pw-fact-refund>dd>b{font-size:12px;line-height:1.75}
 
   .pw-tabs{gap:8px;margin-top:22px}
   .pw-tab{padding:11px 8px;border-radius:12px}
