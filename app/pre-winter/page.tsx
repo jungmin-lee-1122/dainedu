@@ -161,7 +161,7 @@ export default function PreWinterPage() {
 
           <dl className="pw-facts wt-up">
             {facts.map((f) => (
-              <div className={`pw-fact${f.accent ? " is-accent" : ""}`} key={f.k}>
+              <div className={`pw-fact${f.accent ? " is-accent" : ""}${f.wide ? " is-wide" : ""}`} key={f.k}>
                 <dt>{f.k}</dt>
                 <dd>
                   <b>{f.v}</b>
