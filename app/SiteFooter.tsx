@@ -60,18 +60,33 @@ export default function SiteFooter() {
             <a href="#privacy">개인정보 처리방침</a>
           </nav>
 
+          {/* ── 회사 정보 ──
+              세 법인이 같은 건물에 있어 주소는 한 번만 적습니다.
+              법인이 늘면 아래 dn-foot-biz 에 <li> 하나만 더하면 됩니다. */}
           <div className="dn-foot-info">
             <p>
-              다인아카데미<span className="dn-foot-sep">|</span>대표 (주)다인교육
-              </p>
-            <p>
-              개인정보보호책임자: 다인에듀<span className="dn-foot-sep">|</span>대표번호 1644-8022
-              <span className="dn-foot-sep">|</span>주소: 경기도 화성시 동탄 메타폴리스로 53, 6층
+              대표 송지승<span className="dn-foot-sep">|</span>
+              개인정보보호책임자 다인에듀<span className="dn-foot-sep">|</span>
+              대표번호 1644-8022
             </p>
-            <p>
-              사업자등록번호 139-81-47864
-              <span className="dn-foot-badge">교습비 안내</span>
-            </p>
+            <p>경기도 화성시 동탄구 메타폴리스로 53, 스타프라자 6층 (반송동)</p>
+
+            <ul className="dn-foot-biz">
+              <li>
+                <b>다인아카데미학원<span className="dn-foot-biz-tag">601호</span></b>
+                <span>사업자등록번호 628-85-03457</span>
+                <span>학원설립·운영등록번호 제5475호</span>
+                <a className="dn-foot-badge" href="#tuition">교습비 안내</a>
+              </li>
+              <li>
+                <b>주식회사 다인교육<span className="dn-foot-biz-tag">603호</span></b>
+                <span>사업자등록번호 139-81-47864</span>
+              </li>
+              <li>
+                <b>다인서점<span className="dn-foot-biz-tag">603호</span></b>
+                <span>사업자등록번호 641-85-03445</span>
+              </li>
+            </ul>
           </div>
 
           <p className="dn-foot-copy">Copyright © DAIN EDU. All Rights Reserved.</p>
