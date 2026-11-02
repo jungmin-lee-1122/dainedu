@@ -38,6 +38,27 @@ export const trackScript = `
     })(tabs[i]);
   }
 
+  /* ── 예비 고1 반 선택 (시작반 / 응용·심화반) ── */
+  var cls = document.querySelectorAll("[data-cls-tab]");
+  var clsPanels = document.querySelectorAll("[data-cls-panel]");
+  function showCls(id){
+    for(var i=0;i<cls.length;i++){
+      var on = cls[i].getAttribute("data-cls-tab") === id;
+      cls[i].classList.toggle("is-on", on);
+      cls[i].setAttribute("aria-selected", on ? "true" : "false");
+    }
+    for(var j=0;j<clsPanels.length;j++){
+      clsPanels[j].hidden = clsPanels[j].getAttribute("data-cls-panel") !== id;
+    }
+  }
+  for(var i=0;i<cls.length;i++){
+    (function(btn){
+      btn.addEventListener("click", function(){
+        showCls(btn.getAttribute("data-cls-tab"));
+      });
+    })(cls[i]);
+  }
+
   /* 주소에 #go1 / #go23 이 있으면 그 과정으로 시작합니다 */
   var want = (location.hash || "").replace("#","");
   var found = false;

@@ -20,6 +20,7 @@ import {
   intro,
   warmup,
   tracks,
+  go1Weekly,
   refund,
   benefit,
   closing,
@@ -27,6 +28,15 @@ import {
 } from "./preWinterData";
 
 const CONSULT = "/consult";
+
+/** 시간표 칸 색 — 내용에 따라 자동으로 정합니다 */
+function cellKind(v: string) {
+  if (v.includes("공통수학1")) return "is-m1";
+  if (v.includes("공통수학2")) return "is-m2";
+  if (v.includes("통합과학")) return "is-sci";
+  if (v.includes("클리닉")) return "is-clinic";
+  return "";
+}
 
 export const metadata: Metadata = {
   title: "PRE 윈터스쿨 — 다인에듀 동탄점",
@@ -236,29 +246,95 @@ export default function PreWinterPage() {
                 <b>시간표 및 일과</b>
                 <span>{t.timetableCap}</span>
               </div>
-              <div className="pw-day">
-                <table className="pw-tt">
-                  <thead>
-                    <tr>
-                      <th>{t.id === "go23" ? "회차" : "교시"}</th>
-                      <th>{t.id === "go23" ? "날짜" : "시간"}</th>
-                      <th>수업</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {t.timetable.map((r) => (
-                      <tr key={r.period + r.title}>
-                        <th scope="row">{r.period}</th>
-                        <td className="pw-tt-time">{r.time}</td>
-                        <td>
-                          <b>{r.title}</b>
-                          {r.desc && <span>{r.desc}</span>}
-                        </td>
-                      </tr>
+
+              {t.id === "go1" ? (
+                <>
+                  {/* 주말 자기주도학습 */}
+                  <div className="pw-wk-weekend">
+                    {go1Weekly.weekend.map((w) => (
+                      <div className="pw-wk-wcard" key={w.day}>
+                        <b>{w.day}</b>
+                        <span className="pw-wk-wtime">{w.time}</span>
+                        <span className="pw-wk-wlabel">
+                          {w.pick && <i>선택</i>}
+                          {w.label}
+                        </span>
+                      </div>
                     ))}
-                  </tbody>
-                </table>
-              </div>
+                  </div>
+
+                  {/* 반 선택 */}
+                  <div className="pw-cls-tabs" role="tablist" aria-label="반 선택">
+                    {go1Weekly.classes.map((c, ci) => (
+                      <button
+                        className={`pw-cls-tab${ci === 0 ? " is-on" : ""}`}
+                        type="button"
+                        role="tab"
+                        aria-selected={ci === 0}
+                        data-cls-tab={c.id}
+                        key={c.id}
+                      >
+                        <b>{c.label}</b>
+                        <span>{c.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {go1Weekly.classes.map((c, ci) => (
+                    <div className="pw-wk-wrap" data-cls-panel={c.id} hidden={ci !== 0} key={c.id}>
+                      <div className="pw-wk-scroll">
+                        <table className="pw-wk">
+                          <thead>
+                            <tr>
+                              <th className="pw-wk-head-p">교시</th>
+                              <th className="pw-wk-head-t">시간</th>
+                              {go1Weekly.days.map((dy) => <th key={dy}>{dy}</th>)}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {c.rows.map((r) => (
+                              <tr key={r.p}>
+                                <th scope="row">{r.p}</th>
+                                <td className="pw-wk-time">{r.t}</td>
+                                {r.d.map((cell, k) => (
+                                  <td className={`pw-wk-cell ${cellKind(cell)}`} key={k}>{cell}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="pw-wk-hint">
+                        <span aria-hidden="true">←</span> 좌우로 밀어 전체 요일을 확인하세요 <span aria-hidden="true">→</span>
+                      </p>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className="pw-day">
+                  <table className="pw-tt">
+                    <thead>
+                      <tr>
+                        <th>회차</th>
+                        <th>날짜</th>
+                        <th>수업</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {t.timetable.map((r) => (
+                        <tr key={r.period + r.title}>
+                          <th scope="row">{r.period}</th>
+                          <td className="pw-tt-time">{r.time}</td>
+                          <td>
+                            <b>{r.title}</b>
+                            {r.desc && <span>{r.desc}</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
 
               <ul className="pw-note pw-note-list">
                 {t.timetableNote.map((n) => <li key={n}>{n}</li>)}
@@ -312,6 +388,16 @@ export default function PreWinterPage() {
             <br />
             <em>{closing.bigEm}</em>
           </h2>
+          {/* 과정별 개강 안내 */}
+          <div className="pw-close-tracks">
+            {closing.tracks.map((c) => (
+              <a className="pw-close-track" href={c.href} key={c.tab}>
+                <b>{c.tab}</b>
+                <span>{c.v}</span>
+              </a>
+            ))}
+          </div>
+
           <div className="wt-close-btns">
             <a className="wt-btn wt-btn-primary" href={CONSULT}>사전 예약 신청</a>
             <a className="wt-btn wt-btn-ghost" href="tel:16448022">전화 문의 1644-8022</a>
