@@ -322,29 +322,20 @@ export default function PreWinterPage() {
                   ))}
                 </>
               ) : (
-                <div className="pw-day">
-                  <table className="pw-tt">
-                    <thead>
-                      <tr>
-                        <th>회차</th>
-                        <th>날짜</th>
-                        <th>수업</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {t.timetable.map((r) => (
-                        <tr key={r.period + r.title}>
-                          <th scope="row">{r.period}</th>
-                          <td className="pw-tt-time">{r.time}</td>
-                          <td>
-                            <b>{r.title}</b>
-                            {r.desc && <span>{r.desc}</span>}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                /* 회차 일정 — 주제가 정해지면 카드에 한 줄 더 들어갑니다 */
+                <ol className="pw-rounds">
+                  {t.timetable.map((r, ri) => (
+                    <li
+                      className="pw-round wt-up"
+                      style={{ transitionDelay: `${ri * 90}ms` }}
+                      key={r.period}
+                    >
+                      <b className="pw-round-no">{r.period}</b>
+                      <span className="pw-round-date">{r.time}</span>
+                      {r.title && <span className="pw-round-title">{r.title}</span>}
+                    </li>
+                  ))}
+                </ol>
               )}
 
               <ul className="pw-note pw-note-list">

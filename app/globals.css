@@ -4563,28 +4563,33 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .pw-flow-step.is-now .pw-flow-tag{color:var(--w-gold-l)}
 
 @media(max-width:900px){
-  .pw-cards{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  /* 모바일에서도 PC 처럼 두 과정을 나란히 — 비교해서 고르는 자리라 */
+  .pw-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:20px}
   .pw-note-block{gap:13px;margin-top:22px;padding-bottom:20px}
   .pw-note-ico{width:38px;height:38px;border-radius:10px}
   .pw-note-ico svg{width:20px;height:20px}
   .pw-note-t{font-size:15.5px;margin-bottom:5px}
   .pw-note-d{font-size:13.5px}
   #info{scroll-margin-top:70px}
-  .pw-card{padding:24px 22px}
-  .pw-card-ico{width:46px;height:46px;margin-bottom:16px;border-radius:13px}
-  .pw-card-ico svg{width:23px;height:23px}
-  .pw-card-no{top:22px;right:22px;font-size:11px}
-  .pw-card-t{font-size:16px}
-  .pw-card-d{font-size:13.5px}
-  .pw-card-target{font-size:11px;margin-bottom:8px}
-  .pw-card-go{font-size:12.5px;padding-top:13px}
+  .pw-card{padding:18px 14px}
+  .pw-card-ico{width:38px;height:38px;margin-bottom:12px;border-radius:11px}
+  .pw-card-ico svg{width:20px;height:20px}
+  .pw-card-no{top:15px;right:14px;font-size:10px}
+  .pw-card-t{font-size:14px;line-height:1.4}
+  .pw-card-d{font-size:12px;line-height:1.65}
+  .pw-card-target{font-size:10.5px;padding:3px 9px;margin-bottom:7px}
+  .pw-card-go{font-size:11.5px;padding-top:11px;gap:3px}
+  .pw-card-go i{font-size:14px}
 
-  .pw-flow{flex-direction:column;gap:10px;align-items:stretch}
-  .pw-flow-step{flex:1 1 auto}
-  /* 세로로 쌓일 때는 화살표를 아래 방향으로 */
-  .pw-flow-step+.pw-flow-step{padding-left:0;padding-top:24px}
-  .pw-flow-step+.pw-flow-step::before{left:50%;top:6px;margin:0 0 0 -6px;transform:rotate(135deg)}
-  .pw-flow-in{text-align:left;padding:18px 18px}
+  /* 모바일에서도 PC 처럼 가로로 나란히 — 흐름이 한눈에 읽힙니다 */
+  .pw-flow{gap:0}
+  .pw-flow-step{flex:1 1 0;min-width:0}
+  .pw-flow-step+.pw-flow-step{padding-left:18px}
+  .pw-flow-step+.pw-flow-step::before{left:2px;width:9px;height:9px;margin-top:-5px}
+  .pw-flow-in{padding:14px 12px;border-radius:13px;text-align:left}
+  .pw-flow-tag{font-size:10.5px;letter-spacing:.08em}
+  .pw-flow-title{font-size:14.5px}
+  .pw-flow-desc{font-size:11.5px;line-height:1.5}
   .pw-flow-go{display:none}
   .pw-warm-desc{font-size:14px}
 }
@@ -4625,6 +4630,8 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .pw-facts-sec{background:#fff}
 /* PC 에서는 두 칸씩 — 세로로 길게 늘어지지 않게 합니다 */
 .pw-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  /* 모든 줄의 높이를 같게 — 설명이 붙은 줄만 길어지면 지저분해 보입니다 */
+  grid-auto-rows:1fr;
   margin:24px 0 0;
   border:1px solid rgba(17,28,54,.1);border-radius:16px;overflow:hidden;background:rgba(17,28,54,.1)}
 .pw-fact{display:grid;grid-template-columns:132px minmax(0,1fr);background:#fff}
@@ -4641,6 +4648,24 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .pw-note{margin:12px 0 0;font-size:12px;line-height:1.7;color:var(--w-mut);word-break:keep-all}
 .pw-note-list{padding-left:16px;list-style:disc}
 .pw-note-list li{margin-top:2px}
+
+/* ── 예비 고2·고3 회차 일정 ── */
+.pw-rounds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;
+  margin:14px 0 0;padding:0;list-style:none}
+.pw-round{display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:18px 12px;border:1px solid rgba(17,28,54,.1);border-radius:14px;background:#fff;
+  transition:transform .25s ease,border-color .25s ease}
+.pw-round:hover{transform:translateY(-3px);border-color:rgba(192,153,79,.45)}
+.pw-round-no{font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--w-gold)}
+.pw-round-date{font-size:14.5px;font-weight:800;letter-spacing:-.03em;color:var(--w-ink)}
+.pw-round-title{font-size:12.5px;line-height:1.55;color:var(--w-mut);text-align:center;word-break:keep-all}
+
+@media(max-width:640px){
+  .pw-rounds{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .pw-round{padding:14px 10px;border-radius:12px}
+  .pw-round-no{font-size:11px}
+  .pw-round-date{font-size:13.5px}
+}
 
 /* ── 예비 고1 주간 시간표 ── */
 /* 주말 자기주도학습 */
