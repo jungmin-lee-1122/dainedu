@@ -30,7 +30,7 @@ export type Route = {
   area: string;
   desc: string;
   go: Stop[];      // 등원
-  back: Stop[];    // 귀가
+  back: Stop[];    // 하원
 };
 
 export const routes: Route[] = [

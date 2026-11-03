@@ -142,7 +142,7 @@ export default function ShuttlePage() {
               <div className="sh-cols">
                 {[
                   { k: "등원", t: "학원으로", list: r.go },
-                  { k: "귀가", t: "집으로", list: r.back },
+                  { k: "하원", t: "집으로", list: r.back },
                 ].map((col) => (
                   <div className="sh-col" key={col.k}>
                     <div className="sh-col-head">
