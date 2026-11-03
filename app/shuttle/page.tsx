@@ -12,7 +12,7 @@ import SiteFooter from "../SiteFooter";
 import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
 import { shuttleScript } from "./shuttleScript";
-import { hero, summary, routes, notes, routeNote, contact } from "./shuttleData";
+import { hero, summary, routes, notes, routeNote } from "./shuttleData";
 
 /** 노선이 확정되기 전까지 true — 검색에 잡히지 않게 합니다 */
 const IS_DRAFT = true;
@@ -189,19 +189,6 @@ export default function ShuttlePage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* ══ 4) 문의 ══ */}
-      <section className="sh-cta">
-        <div className="sh-wrap sh-cta-in">
-          <div>
-            <h2 className="sh-cta-title">{contact.title}</h2>
-            <p className="sh-cta-desc">{contact.desc}</p>
-          </div>
-          <a className="sh-cta-btn" href={`tel:${contact.tel.replace(/-/g, "")}`}>
-            전화 문의 {contact.tel}
-          </a>
         </div>
       </section>
 
