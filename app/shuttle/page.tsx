@@ -85,6 +85,7 @@ export default function ShuttlePage() {
       {/* ══ 1) 요약 ══ */}
       <section className="sh-sec sh-sum-sec">
         <div className="sh-wrap">
+          <p className="sh-tag">Shuttle</p>
           <h2 className="sh-h2">{hero.title}</h2>
 
           <ul className="sh-sum">
