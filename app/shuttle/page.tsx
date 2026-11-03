@@ -69,7 +69,7 @@ export default function ShuttlePage() {
       <PageBand
         eyebrow={hero.eyebrow}
         title="셔틀버스 안내"
-        sub={[hero.sub]}
+        sub={hero.sub}
         crumb={[{ label: "학원소개" }, { label: "셔틀버스 안내" }]}
       />
 
@@ -85,9 +85,7 @@ export default function ShuttlePage() {
       {/* ══ 1) 요약 ══ */}
       <section className="sh-sec sh-sum-sec">
         <div className="sh-wrap">
-          <h2 className="sh-h2">
-            {hero.title} <em>{hero.titleEm}</em>
-          </h2>
+          <h2 className="sh-h2">{hero.title}</h2>
 
           <ul className="sh-sum">
             {summary.map((s) => (
@@ -137,8 +135,6 @@ export default function ShuttlePage() {
               style={{ ["--sh-c" as string]: r.color }}
               key={r.id}
             >
-              <p className="sh-panel-desc">{r.desc}</p>
-
               <div className="sh-cols">
                 {[
                   { k: "등원", t: "학원으로", list: r.go },

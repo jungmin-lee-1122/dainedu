@@ -10,16 +10,21 @@
 
 export const hero = {
   eyebrow: "Shuttle Service",
-  title: "오는 길이 편해야",
-  titleEm: "공부가 이어집니다.",
-  sub: "다인에듀 동탄점은 동탄1·2신도시 전 지역으로 셔틀을 운행합니다. 가까운 정류장에서 타고 내리세요.",
+  title: "셔틀 운영 안내",
+  titleEm: "",
+  /* 줄 단위로 나눠 두면 PC·모바일 모두 같은 자리에서 줄이 바뀝니다 */
+  sub: [
+    "다인에듀 동탄점은 학생들의 안전하고 편리한 등·하원을 위해",
+    "동탄1·2신도시 주요 지역에 셔틀버스를 운행하고 있습니다.",
+    "이용을 희망하시는 경우 아래 노선 및 운행 시간을 확인해 주시기 바랍니다.",
+  ],
 };
 
 /** 상단 요약 — 아이콘 3개 */
 export const summary = [
-  { icon: "bus", k: "운행 지역", v: "동탄1신도시 · 동탄2신도시 (4개 노선)" },
-  { icon: "clock", k: "운행 시간", v: "등원 07:40 도착 · 하원 22:10 출발" },
-  { icon: "card", k: "이용 요금", v: "학원으로 문의" },
+  { icon: "bus", k: "운행 지역", v: "동탄1·2신도시 주요 지역 / 총 4개 노선" },
+  { icon: "clock", k: "운행 시간", v: "등원 오전 7:40 도착 / 하원 오후 10:10 출발" },
+  { icon: "card", k: "이용 요금", v: "노선 및 이용 방식에 따라 별도 안내" },
 ];
 
 export type Stop = { time: string; name: string; note?: string };
@@ -28,7 +33,6 @@ export type Route = {
   tab: string;
   color: string;
   area: string;
-  desc: string;
   go: Stop[];      // 등원
   back: Stop[];    // 하원
 };
@@ -39,7 +43,6 @@ export const routes: Route[] = [
     tab: "1호차",
     color: "#2F5FA8",
     area: "동탄1 · 반송동",
-    desc: "시범단지와 센트럴파크 일대를 돕니다.",
     go: [
       { time: "06:52", name: "나루마을 정문" },
       { time: "06:58", name: "솔빛마을 삼거리" },
@@ -64,7 +67,6 @@ export const routes: Route[] = [
     tab: "2호차",
     color: "#B4553F",
     area: "동탄1 · 능동 · 석우동",
-    desc: "능동과 석우동, 한빛마을 일대를 돕니다.",
     go: [
       { time: "06:50", name: "한빛마을 1단지" },
       { time: "06:57", name: "능동 푸른마을 입구" },
@@ -89,7 +91,6 @@ export const routes: Route[] = [
     tab: "3호차",
     color: "#3A7A60",
     area: "동탄2 · 청계동 · 영천동",
-    desc: "동탄역과 청계동, 영천동 일대를 돕니다.",
     go: [
       { time: "06:51", name: "영천동 더샵 센트럴시티" },
       { time: "06:58", name: "영천동 린스트라우스" },
@@ -114,7 +115,6 @@ export const routes: Route[] = [
     tab: "4호차",
     color: "#6B5BA8",
     area: "동탄2 · 호수공원 · 중동",
-    desc: "동탄호수공원과 산척동, 중동, 장지동 일대를 돕니다.",
     go: [
       { time: "06:48", name: "산척동 레이크자이 정문" },
       { time: "06:55", name: "동탄호수공원 북측" },
