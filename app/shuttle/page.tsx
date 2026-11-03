@@ -14,8 +14,10 @@ import { quickMenuMarkup } from "../quickMenu";
 import { shuttleScript } from "./shuttleScript";
 import { hero, summary, routes, notes, routeNote, contact } from "./shuttleData";
 
-/** 노선이 확정되기 전까지 true 로 둡니다 */
+/** 노선이 확정되기 전까지 true — 검색에 잡히지 않게 합니다 */
 const IS_DRAFT = true;
+/** 화면 맨 위 "준비 중" 띠 표시 여부 */
+const SHOW_DRAFT_BANNER = false;
 
 export const metadata: Metadata = {
   title: "셔틀버스 안내 — 다인에듀 동탄점",
@@ -71,12 +73,11 @@ export default function ShuttlePage() {
         crumb={[{ label: "학원소개" }, { label: "셔틀버스 안내" }]}
       />
 
-      {IS_DRAFT && (
+      {SHOW_DRAFT_BANNER && (
         <div className="sh-draft" role="status">
           <b>노선 준비 중</b>
           <span>
             아래 노선과 시간은 <em>예시</em>입니다. 확정되는 대로 안내드립니다.
-            정확한 탑승 정보는 1644-8022 로 문의해 주세요.
           </span>
         </div>
       )}
