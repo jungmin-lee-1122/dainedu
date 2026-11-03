@@ -43,8 +43,6 @@ export const intro = {
   tag: "Why PRE Winter",
   title: "겨울의 속도는",
   titleEm: "12월에 정해집니다.",
-  lead:
-    "1월에 시작하면 적응에만 2주가 걸립니다. 한 달 먼저 시작한 학생은 윈터스쿨 첫날부터 전력으로 달립니다. 학년에 따라 필요한 준비가 달라, 두 과정으로 나누어 운영합니다.",
   /* 아래 두 카드를 소개하는 문단 */
   note: {
     t: "비어 있는 한 달을 출발선으로",
@@ -56,7 +54,7 @@ export const intro = {
       icon: "math",
       target: "예비 고1",
       href: "#go1",
-      t: "공통수학 1·2 와 통합과학을 먼저",
+      t: ["공통수학 1·2 와 ", "통합과학을 먼저"],
       d: "다항식·방정식과 부등식·경우의 수, 도형의 방정식·함수. 여기에 통합과학까지. 고1 1학기 내신의 뼈대를 미리 세웁니다.",
     },
     {
@@ -64,7 +62,7 @@ export const intro = {
       icon: "aim",
       target: "예비 고2·고3",
       href: "#go23",
-      t: "대수·미적분 I 을 수능 관점으로",
+      t: ["대수·미적분 I 을 ", "수능 관점으로"],
       d: "개념은 알겠는데 모의고사에서 막히는 학생을 위한 과정. 매주 토요일 4회, 수능 실전 개념으로 다시 세웁니다.",
     },
   ],
@@ -94,7 +92,7 @@ export type Track = {
   target: string;
   title: string;
   titleEm: string;
-  lead: string;
+  lead: string[];
   chips: string[];
   facts: { k: string; v: string; sub?: string; accent?: boolean; wide?: boolean }[];
   timetable: { period: string; time: string; title: string; desc?: string }[];
@@ -110,7 +108,7 @@ export const tracks: Track[] = [
     target: "현 중3",
     title: "고등 수학과 과학의",
     titleEm: "첫 단추를 미리.",
-    lead: "중3 2학기가 끝나고 윈터스쿨 개강까지 비는 한 달. 이 시간을 고등 과정의 출발선으로 바꿉니다.",
+    lead: ["중3 2학기가 끝나고 윈터스쿨 개강까지 비는 한 달. ", "이 시간을 고등 과정의 출발선으로 바꿉니다."],
     chips: ["공통수학 1", "공통수학 2", "통합과학"],
     facts: [
       { k: "교육 기간", v: "2026. 12. 1(화) ~ 12. 31(목)", sub: "12. 25(금) 크리스마스 휴강", accent: true },
@@ -136,7 +134,7 @@ export const tracks: Track[] = [
     target: "현 고1 · 고2",
     title: "개념은 끝났다.",
     titleEm: "이제 수능 실전이다.",
-    lead: "개념은 알겠는데 모의고사 문제에서 막히는 학생을 위한 과정. 대수·미적분 I 을 수능 관점에서 다시 세웁니다.",
+    lead: ["개념은 알겠는데 모의고사 문제에서 막히는 학생을 위한 과정. ", "대수·미적분 I 을 수능 관점에서 다시 세웁니다."],
     chips: ["대수", "미적분 I", "수능수학"],
     facts: [
       { k: "교육 기간", v: "2026. 12. 12(토) ~ 2027. 1. 2(토)", accent: true },
@@ -211,8 +209,11 @@ export const benefit = {
   tag: "Benefit",
   title: "윈터스쿨 사전 등록생",
   titleEm: "수강 과목 수만큼 할인",
-  lead:
-    "2027 윈터스쿨에 사전 등록한 학생이 PRE 윈터스쿨을 함께 수강하면, 신청 과목 수에 따라 PRE 윈터스쿨 수강료가 할인됩니다. 두 과정 모두 적용됩니다.",
+  lead: [
+    "2027 윈터스쿨에 사전 등록한 학생이 PRE 윈터스쿨을 함께 수강하면, ",
+    "신청 과목 수에 따라 PRE 윈터스쿨 수강료가 할인됩니다. ",
+    "두 과정 모두 적용됩니다.",
+  ],
   tiers: [
     { count: "1과목", percent: 5 },
     { count: "2과목", percent: 10 },
@@ -220,7 +221,7 @@ export const benefit = {
   ],
   notes: [
     "2027 윈터스쿨 사전 등록을 마친 학생에 한해 적용됩니다.",
-    "할인은 PRE 윈터스쿨 수강료에 적용되며, 교재비·컨텐츠비·급식비는 제외됩니다.",
+    "할인은 PRE 윈터스쿨 수강료에 적용되며, 교재비는 제외됩니다.",
     "다른 할인과 중복 적용되지 않습니다.",
   ],
 };

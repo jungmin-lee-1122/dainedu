@@ -109,7 +109,6 @@ export default function PreWinterPage() {
             <br />
             <em>{intro.titleEm}</em>
           </h2>
-          <p className="wt-lead wt-dark">{intro.lead}</p>
 
           {/* 아래 두 과정을 소개하는 문단 */}
           <div className="pw-note-block wt-up">
@@ -136,7 +135,7 @@ export default function PreWinterPage() {
                 {"target" in p && p.target && (
                   <span className="pw-card-target">{p.target}</span>
                 )}
-                <b className="pw-card-t">{p.t}</b>
+                <b className="pw-card-t">{p.t[0]}<br className="pw-mbr" />{p.t[1]}</b>
                 <p className="pw-card-d">{p.d}</p>
                 {"href" in p && p.href && (
                   <a className="pw-card-go" href={p.href}>
@@ -225,7 +224,7 @@ export default function PreWinterPage() {
                 <h3 className="pw-panel-title">
                   {t.title} <em>{t.titleEm}</em>
                 </h3>
-                <p className="pw-panel-lead">{t.lead}</p>
+                <p className="pw-panel-lead">{t.lead[0]}<br className="pw-mbr" />{t.lead[1]}</p>
                 <div className="pw-panel-chips">
                   {t.chips.map((c) => (
                     <span className="pw-chip" key={c}>{c}</span>
@@ -357,7 +356,11 @@ export default function PreWinterPage() {
             <br />
             <em>{benefit.titleEm}</em>
           </h2>
-          <p className="pw-benefit-lead">{benefit.lead}</p>
+          <p className="pw-benefit-lead">
+            {benefit.lead[0]}<br className="pw-mbr" />
+            {benefit.lead[1]}<br className="pw-mbr" />
+            {benefit.lead[2]}
+          </p>
 
           <div className="pw-tiers">
             {benefit.tiers.map((t, i) => (

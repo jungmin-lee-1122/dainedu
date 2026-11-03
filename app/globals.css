@@ -4498,7 +4498,7 @@ select.ad-input{appearance:none;-webkit-appearance:none;cursor:pointer;padding-r
 }
 
 /* ── 두 과정을 소개하는 문단 (카드가 아닌 글) ── */
-.pw-note-block{display:flex;gap:18px;align-items:flex-start;margin:30px 0 0;
+.pw-note-block{display:flex;gap:18px;align-items:flex-start;margin:22px 0 0;
   padding:0 0 26px;border-bottom:1px solid rgba(17,28,54,.1)}
 .pw-note-ico{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:12px;
@@ -4579,10 +4579,9 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   /* 모바일에서도 PC 처럼 두 과정을 나란히 — 비교해서 고르는 자리라 */
   .pw-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:20px}
   .pw-mbr{display:inline}
-  .pw-page .wt-h2{margin-bottom:12px}
-  .pw-page .wt-lead{margin-bottom:0;font-size:13.5px;line-height:1.7}
+  .pw-page .wt-h2{margin-bottom:0}
   /* 제목 아래가 허해 보이지 않게 */
-  .pw-note-block{gap:13px;margin-top:14px;padding-bottom:18px}
+  .pw-note-block{gap:13px;margin-top:18px;padding-bottom:18px}
   .pw-note-ico{width:38px;height:38px;border-radius:10px}
   .pw-note-ico svg{width:20px;height:20px}
   .pw-note-t{font-size:15.5px;margin-bottom:5px}
