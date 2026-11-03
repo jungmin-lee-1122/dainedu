@@ -167,9 +167,21 @@ export default function ShuttlePage() {
             </div>
           ))}
 
-          <p className="sh-route-note">
-            <span aria-hidden="true">※</span> {routeNote}
-          </p>
+          <ul className="sh-route-note">
+            {routeNote.map((lines) => (
+              <li key={lines[0]}>
+                <span aria-hidden="true">*</span>
+                <span className="sh-route-note-t">
+                  {lines.map((t, i) => (
+                    <span key={t}>
+                      {i > 0 && <br />}
+                      {t}
+                    </span>
+                  ))}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

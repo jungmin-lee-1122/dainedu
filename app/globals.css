@@ -4991,10 +4991,13 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .sh-stop.is-hub .sh-stop-time{color:var(--dn-deep);font-weight:800}
 
 /* 노선 아래 변경 안내 */
-.sh-route-note{display:flex;gap:7px;margin:20px 0 0;padding:14px 18px;
-  border-radius:12px;background:rgba(17,28,54,.04);
+.sh-route-note{margin:20px 0 0;padding:14px 18px;list-style:none;
+  border-radius:12px;background:rgba(17,28,54,.04)}
+.sh-route-note li{display:flex;gap:7px;
   font-size:13px;line-height:1.75;color:#6B7280;word-break:keep-all}
-.sh-route-note>span{flex:0 0 auto;color:var(--dn-gold);font-weight:800}
+.sh-route-note li+li{margin-top:5px}
+.sh-route-note li>span:first-child{flex:0 0 auto;color:var(--dn-gold);font-weight:800}
+.sh-route-note-t{min-width:0}
 
 /* ── 이용 안내 ── */
 /* 한 칸 목록 — 두 칸으로 나누면 글 길이가 달라 줄 높이가 들쭉날쭉해집니다 */
