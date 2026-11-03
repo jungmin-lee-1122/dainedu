@@ -4998,6 +4998,8 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .sh-route-note li+li{margin-top:5px}
 .sh-route-note li>span:first-child{flex:0 0 auto;color:var(--dn-gold);font-weight:800}
 .sh-route-note-t{min-width:0}
+/* 지정한 줄바꿈은 넓은 화면에서만 — 좁은 화면에서는 자연스럽게 흐르게 둡니다 */
+.sh-pcbr{display:inline}
 
 /* ── 이용 안내 ── */
 /* 한 칸 목록 — 두 칸으로 나누면 글 길이가 달라 줄 높이가 들쭉날쭉해집니다 */
@@ -5060,7 +5062,9 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .sh-stop-name{padding-left:9px;font-size:13px}
   .sh-stop-name i{font-size:10px;padding:1px 6px;margin-left:5px}
 
-  .sh-route-note{margin-top:16px;padding:12px 14px;font-size:12px;line-height:1.7}
+  .sh-pcbr{display:none}
+  .sh-route-note{margin-top:16px;padding:12px 14px}
+  .sh-route-note li{font-size:12px;line-height:1.7}
   .sh-notes{margin-top:20px}
   .sh-notes li{grid-template-columns:28px minmax(0,1fr);gap:0 8px;padding:13px 2px}
   .sh-notes span{font-size:12.5px;line-height:1.7}

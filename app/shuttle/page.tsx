@@ -174,7 +174,7 @@ export default function ShuttlePage() {
                 <span className="sh-route-note-t">
                   {lines.map((t, i) => (
                     <span key={t}>
-                      {i > 0 && <br />}
+                      {i > 0 && <br className="sh-pcbr" />}
                       {t}
                     </span>
                   ))}
