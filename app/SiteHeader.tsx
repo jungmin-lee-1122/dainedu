@@ -79,6 +79,7 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
             <div className="dn-gnb-sub">
               <a href="/greeting">인사말</a>
               <a href="/space">시설 안내</a>
+              <a href="/shuttle">셔틀버스 안내</a>
               <a href="/about/location">오시는 길</a>
             </div>
           </li>
