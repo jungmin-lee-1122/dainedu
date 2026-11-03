@@ -4902,3 +4902,162 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .dn-poster-dots button{width:6px;height:6px}
   .dn-poster-dots button.is-on{width:15px}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   66) 셔틀버스 안내 (/shuttle)
+   · 사이트 공통 색(--dn-*)을 그대로 씁니다.
+   · 노선 색은 각 노선의 --sh-c 변수로 들어옵니다.
+   ═══════════════════════════════════════════════════════════ */
+.sh-wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.sh-sec{padding:clamp(48px,6vw,80px) 0}
+.sh-sum-sec{background:#fff}
+.sh-route-sec{background:#FAF8F3}
+.sh-note-sec{background:#fff}
+.sh-tag{display:inline-block;margin:0 0 12px;padding:5px 13px;border-radius:999px;
+  background:rgba(17,28,54,.07);font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--dn-navy)}
+.sh-h2{margin:0;font-size:clamp(24px,3.2vw,38px);font-weight:900;
+  letter-spacing:-.04em;line-height:1.35;color:var(--dn-deep)}
+.sh-h2 em{font-style:normal;color:var(--dn-gold)}
+
+/* ── 준비 중 띠 ── */
+.sh-draft{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  max-width:1160px;margin:22px auto 0;padding:14px 20px;
+  border:1px solid rgba(180,85,63,.3);border-left:4px solid #B4553F;border-radius:12px;
+  background:rgba(180,85,63,.06)}
+.sh-draft b{flex:0 0 auto;font-size:13.5px;font-weight:800;color:#B4553F}
+.sh-draft span{font-size:13px;line-height:1.7;color:#7D5247;word-break:keep-all}
+.sh-draft em{font-style:normal;font-weight:800}
+
+/* ── 요약 3칸 ── */
+.sh-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
+  margin:28px 0 0;padding:0;list-style:none}
+.sh-sum-item{display:flex;align-items:center;gap:15px;padding:20px 22px;
+  border:1px solid var(--dn-line);border-radius:16px;
+  background:linear-gradient(150deg,#fff,#F6F8FC)}
+.sh-sum-ico{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;border-radius:13px;
+  background:var(--dn-navy);color:var(--dn-gold-soft)}
+.sh-sum-ico svg{width:23px;height:23px}
+.sh-sum-item>div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sh-sum-item b{font-size:12.5px;font-weight:800;color:var(--dn-gold)}
+.sh-sum-item>div>span{font-size:14.5px;font-weight:700;letter-spacing:-.03em;
+  color:var(--dn-deep);word-break:keep-all}
+
+/* ── 노선 탭 ── */
+.sh-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 0}
+.sh-tab{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;
+  border:1px solid var(--dn-line);border-radius:999px;background:#fff;cursor:pointer;
+  transition:all .25s ease}
+.sh-tab i{width:9px;height:9px;border-radius:50%;background:var(--sh-c,#2F5FA8)}
+.sh-tab b{font-size:14.5px;font-weight:800;letter-spacing:-.03em;color:var(--dn-deep)}
+.sh-tab span{font-size:12.5px;font-weight:600;color:#7A818E}
+.sh-tab:hover{border-color:rgba(192,153,79,.5)}
+.sh-tab.is-on{background:var(--dn-navy);border-color:var(--dn-navy)}
+.sh-tab.is-on b{color:#fff}
+.sh-tab.is-on span{color:var(--dn-gold-soft)}
+.sh-tab.is-on i{background:#fff}
+
+.sh-panel-desc{margin:22px 0 0;font-size:14.5px;line-height:1.7;color:#6B7280}
+
+/* ── 등원 / 귀가 두 칸 ── */
+.sh-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+.sh-col{padding:22px 24px 10px;border:1px solid var(--dn-line);border-radius:18px;background:#fff}
+.sh-col-head{display:flex;align-items:baseline;gap:9px;
+  padding-bottom:14px;border-bottom:1px solid var(--dn-line)}
+.sh-col-head b{font-size:15.5px;font-weight:800;letter-spacing:-.03em;color:var(--dn-deep)}
+.sh-col-head span{font-size:12.5px;color:#8A8F98}
+
+/* ── 정류장 타임라인 ── */
+.sh-stops{position:relative;margin:0;padding:16px 0 0;list-style:none}
+.sh-stop{position:relative;display:grid;grid-template-columns:52px 18px minmax(0,1fr);
+  align-items:center;min-height:40px}
+/* 점을 잇는 세로선 */
+.sh-stop::before{content:"";position:absolute;left:60px;top:50%;bottom:-40px;
+  width:2px;background:rgba(17,28,54,.1)}
+.sh-stop:last-child::before{display:none}
+.sh-stop-time{font-size:12.5px;font-weight:700;color:#8A8F98;font-variant-numeric:tabular-nums}
+.sh-stop-dot{position:relative;z-index:1;justify-self:center;
+  width:9px;height:9px;border-radius:50%;background:#fff;
+  box-shadow:0 0 0 2px var(--sh-c,#2F5FA8)}
+.sh-stop-name{padding-left:12px;font-size:14px;font-weight:600;
+  letter-spacing:-.02em;color:var(--dn-deep);word-break:keep-all}
+.sh-stop-name i{display:inline-block;margin-left:7px;padding:2px 8px;border-radius:5px;
+  background:rgba(17,28,54,.06);font-style:normal;font-size:11px;font-weight:800;color:#6B7280}
+/* 학원(기점) 강조 */
+.sh-stop.is-hub .sh-stop-dot{width:13px;height:13px;background:var(--sh-c,#2F5FA8);
+  box-shadow:0 0 0 3px rgba(255,255,255,1),0 0 0 5px var(--sh-c,#2F5FA8)}
+.sh-stop.is-hub .sh-stop-name{font-weight:800;color:var(--sh-c,#2F5FA8)}
+.sh-stop.is-hub .sh-stop-time{color:var(--dn-deep);font-weight:800}
+
+/* 노선 아래 변경 안내 */
+.sh-route-note{display:flex;gap:7px;margin:20px 0 0;padding:14px 18px;
+  border-radius:12px;background:rgba(17,28,54,.04);
+  font-size:13px;line-height:1.75;color:#6B7280;word-break:keep-all}
+.sh-route-note>span{flex:0 0 auto;color:var(--dn-gold);font-weight:800}
+
+/* ── 이용 안내 ── */
+.sh-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 26px;
+  margin:26px 0 0;padding:0;list-style:none}
+.sh-notes li{display:flex;gap:12px;align-items:flex-start;
+  padding:14px 0;border-top:1px solid var(--dn-line)}
+.sh-notes b{flex:0 0 auto;font-size:12px;font-weight:800;color:var(--dn-gold);padding-top:2px}
+.sh-notes span{font-size:13.5px;line-height:1.75;color:#5F6673;word-break:keep-all}
+
+/* ── 문의 ── */
+.sh-cta{padding:clamp(40px,5vw,64px) 0;background:var(--dn-navy)}
+.sh-cta-in{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+.sh-cta-title{margin:0;font-size:clamp(19px,2.3vw,27px);font-weight:900;
+  letter-spacing:-.035em;color:#fff}
+.sh-cta-desc{margin:8px 0 0;font-size:14px;line-height:1.7;color:rgba(255,255,255,.62);word-break:keep-all}
+.sh-cta-btn{flex:0 0 auto;display:inline-flex;align-items:center;padding:14px 26px;
+  border-radius:999px;background:var(--dn-gold);color:#15203A;
+  font-size:14.5px;font-weight:800;letter-spacing:-.02em;text-decoration:none;
+  transition:transform .2s ease,box-shadow .2s ease}
+.sh-cta-btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px -16px rgba(0,0,0,.6)}
+
+/* ── 태블릿 ── */
+@media(max-width:900px){
+  .sh-sum{grid-template-columns:1fr;gap:10px}
+  .sh-cols{grid-template-columns:1fr}
+  .sh-notes{grid-template-columns:1fr;gap:0}
+}
+
+/* ── 모바일 ── */
+@media(max-width:640px){
+  .sh-wrap{padding:0 18px}
+  .sh-sec{padding:38px 0}
+  .sh-h2{font-size:21px}
+  .sh-draft{margin:16px 18px 0;padding:12px 15px;gap:7px;border-radius:10px}
+  .sh-draft b{font-size:12.5px}
+  .sh-draft span{font-size:12px;line-height:1.65}
+
+  .sh-sum-item{padding:14px 16px;gap:12px;border-radius:14px}
+  .sh-sum-ico{width:38px;height:38px;border-radius:11px}
+  .sh-sum-ico svg{width:19px;height:19px}
+  .sh-sum-item b{font-size:11.5px}
+  .sh-sum-item>div>span{font-size:13.5px}
+
+  /* 노선 탭 — 두 개가 한 줄에 */
+  .sh-tabs{flex-wrap:nowrap;gap:7px;margin-top:20px}
+  .sh-tab{flex:1 1 0;min-width:0;justify-content:center;gap:6px;padding:11px 8px}
+  .sh-tab b{font-size:13.5px;white-space:nowrap}
+  .sh-tab span{display:none}
+  .sh-panel-desc{margin-top:16px;font-size:13px}
+
+  .sh-cols{gap:10px;margin-top:14px}
+  .sh-col{padding:16px 16px 6px;border-radius:14px}
+  .sh-col-head b{font-size:14.5px}
+  .sh-col-head span{font-size:11.5px}
+  .sh-stop{grid-template-columns:46px 16px minmax(0,1fr);min-height:36px}
+  .sh-stop::before{left:53px;bottom:-36px}
+  .sh-stop-time{font-size:11.5px}
+  .sh-stop-name{padding-left:9px;font-size:13px}
+  .sh-stop-name i{font-size:10px;padding:1px 6px;margin-left:5px}
+
+  .sh-route-note{margin-top:16px;padding:12px 14px;font-size:12px;line-height:1.7}
+  .sh-notes li{padding:12px 0;gap:10px}
+  .sh-notes span{font-size:12.5px;line-height:1.7}
+
+  .sh-cta-in{flex-direction:column;align-items:flex-start;gap:16px}
+  .sh-cta-btn{width:100%;justify-content:center;padding:14px 20px}
+}
