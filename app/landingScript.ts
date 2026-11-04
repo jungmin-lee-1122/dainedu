@@ -137,7 +137,78 @@ export const landingScript = `/* ===============================================
     });
   });
 })();
-(function(){var s=document.getElementById("dnSlider");if(!s)return;var track=s.querySelector(".dn-slides");var slides=s.querySelectorAll(".dn-slide");var cur=s.querySelector(".dn-cur");var tot=s.querySelector(".dn-total");var fill=s.querySelector(".dn-line-fill");var n=slides.length,i=0,timer;function pad(x){return ("0"+x).slice(-2);}if(tot)tot.textContent=pad(n);function go(idx){i=(idx+n)%n;track.style.transform="translateX("+(-i*100)+"%)";if(cur)cur.textContent=pad(i+1);if(fill)fill.style.width=((i+1)/n*100)+"%";}function restart(){clearInterval(timer);timer=setInterval(function(){go(i+1);},4500);}s.addEventListener("click",function(e){var b=e.target.closest?e.target.closest(".dn-slider-btn"):null;if(!b)return;e.preventDefault();go(i+(b.getAttribute("data-dir")==="next"?1:-1));restart();});go(0);restart();})();
+/* ═══════ 롤링 슬라이드 ═══════
+   · 보통 슬라이드는 4.5초마다 넘어갑니다.
+   · 영상이 들어 있는 슬라이드는 "영상이 끝날 때까지" 머물렀다가 넘어갑니다.
+     (영상 길이를 몰라도 되고, 영상을 바꿔도 코드를 고칠 필요가 없습니다) */
+(function(){
+  var s = document.getElementById("dnSlider"); if(!s) return;
+  var track  = s.querySelector(".dn-slides");
+  var slides = s.querySelectorAll(".dn-slide");
+  var cur    = s.querySelector(".dn-cur");
+  var tot    = s.querySelector(".dn-total");
+  var fill   = s.querySelector(".dn-line-fill");
+  var n = slides.length, i = 0, timer = null;
+  var STEP = 4500;
+
+  function pad(x){ return ("0"+x).slice(-2); }
+  if(tot) tot.textContent = pad(n);
+
+  function videoOf(idx){ return slides[idx] ? slides[idx].querySelector("video") : null; }
+
+  function stop(){ if(timer){ clearTimeout(timer); timer = null; } }
+
+  /* 지금 슬라이드에 맞춰 다음 넘김을 예약합니다 */
+  function schedule(){
+    stop();
+    var v = videoOf(i);
+    if(v){
+      /* 영상 슬라이드 — 끝나면 넘깁니다 */
+      try{ v.currentTime = 0; }catch(e){}
+      var p = v.play();
+      if(p && p.catch) p.catch(function(){
+        /* 자동재생이 막히면 포스터만 보이므로 보통 속도로 넘깁니다 */
+        timer = setTimeout(function(){ go(i+1); }, STEP);
+      });
+    }else{
+      timer = setTimeout(function(){ go(i+1); }, STEP);
+    }
+  }
+
+  function go(idx){
+    var prev = videoOf(i);
+    if(prev){ try{ prev.pause(); }catch(e){} }
+    i = (idx + n) % n;
+    track.style.transform = "translateX(" + (-i*100) + "%)";
+    if(cur)  cur.textContent = pad(i+1);
+    if(fill) fill.style.width = ((i+1)/n*100) + "%";
+    schedule();
+  }
+
+  /* 영상이 끝나면 다음으로 */
+  for(var k=0;k<slides.length;k++){
+    (function(idx){
+      var v = videoOf(idx);
+      if(!v) return;
+      v.addEventListener("ended", function(){ if(i === idx) go(i+1); });
+    })(k);
+  }
+
+  s.addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest(".dn-slider-btn") : null;
+    if(!b) return;
+    e.preventDefault();
+    go(i + (b.getAttribute("data-dir") === "next" ? 1 : -1));
+  });
+
+  /* 다른 탭에 가 있을 때는 멈춥니다 */
+  document.addEventListener("visibilitychange", function(){
+    if(document.hidden){ stop(); var v = videoOf(i); if(v){ try{ v.pause(); }catch(e){} } }
+    else schedule();
+  });
+
+  go(0);
+})();
 
 (function(){var num=document.getElementById("dnDdayNum");if(!num)return;var cap=document.getElementById("dnDdayCap");/* ===== 매년 여기 수능 날짜만 수정하세요 (연, 월-1, 일) ===== */var SUNEUNG=new Date(2026,10,19);/* 예) 2027년이면 new Date(2027,10,18) 처럼 변경 */SUNEUNG.setHours(0,0,0,0);var now=new Date();now.setHours(0,0,0,0);var d=Math.round((SUNEUNG-now)/86400000);num.textContent=d>0?("D-"+d):(d===0?"D-DAY":("D+"+(-d)));if(cap)cap.textContent=(SUNEUNG.getFullYear()+1)+"학년도 수능";})();
 
