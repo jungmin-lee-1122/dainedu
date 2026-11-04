@@ -647,16 +647,18 @@ img,video,svg{max-width:100%}
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   border-radius:inherit;
   background:
-    radial-gradient(240px circle at var(--mx,50%) var(--my,50%),
-      rgba(192,153,79,.16) 0%,
-      rgba(192,153,79,.07) 38%,
-      transparent 68%),
-    radial-gradient(520px circle at var(--mx,50%) var(--my,50%),
-      rgba(27,42,74,.07) 0%, transparent 72%);
+    /* 가까이 — 흰 바탕에서 뜨지 않는 서늘한 남청빛 */
+    radial-gradient(230px circle at var(--mx,50%) var(--my,50%),
+      rgba(46,82,150,.14) 0%,
+      rgba(46,82,150,.06) 40%,
+      transparent 70%),
+    /* 멀리 — 넓고 아주 옅게 깔리는 그림자 */
+    radial-gradient(560px circle at var(--mx,50%) var(--my,50%),
+      rgba(16,25,46,.06) 0%, transparent 74%);
   opacity:0;transition:opacity .4s ease}
 .dn-hall-card.is-lit::after{opacity:1}
 /* 테두리도 마우스 쪽만 은은하게 밝아집니다 */
-.dn-hall-card.is-lit{border-color:rgba(192,153,79,.45)}
+.dn-hall-card.is-lit{border-color:rgba(46,82,150,.32)}
 
 .dn-hall-text{position:relative;z-index:2}
 .dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--dn-gold);margin-bottom:12px}
