@@ -646,28 +646,32 @@ img,video,svg{max-width:100%}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
 /* 제목은 명조로 — 고딕 900 은 두껍기만 하고 격이 안 삽니다.
    사이트 다른 곳(출신학교·슬로건)에서 쓰는 글꼴과 같은 계열입니다. */
-.dn-hall-title{font-family:"Noto Serif KR",serif;font-size:31px;font-weight:800;
-  margin:0;letter-spacing:-.025em;line-height:1.3;
-  /* 남색 바탕에 금빛 띠 하나 — 그 띠가 글자 위를 한 번 훑고 지나갑니다 */
-  background:linear-gradient(100deg,
-      #1B2A4A 0%, #1B2A4A 38%,
-      #C0994F 46%, #EFE0BC 50%, #C0994F 54%,
-      #1B2A4A 62%, #1B2A4A 100%);
-  background-size:280% 100%;
-  background-position:-60% 0;
+.dn-hall-title{font-family:"Noto Serif KR",serif;font-size:33px;font-weight:700;
+  margin:0;letter-spacing:-.008em;line-height:1.28;
+  /* 남색 → 조금 밝은 남색 → 아주 옅은 샴페인빛 띠 → 다시 남색.
+     중간 단계를 둬서 경계가 뚝 끊기지 않게 합니다. */
+  background:linear-gradient(104deg,
+      #16203A 0%,  #16203A 30%,
+      #2B3C60 40%, #5A6B90 46%,
+      #CFC2A4 50%,
+      #5A6B90 54%, #2B3C60 60%,
+      #16203A 70%, #16203A 100%);
+  background-size:300% 100%;
+  background-position:-80% 0;
   -webkit-background-clip:text;background-clip:text;
   color:transparent;-webkit-text-fill-color:transparent;
-  animation:dnHallShine 6.5s ease-in-out infinite}
-/* 한 번 훑고 한참 쉽니다 — 계속 번쩍이면 피로합니다 */
+  animation:dnHallShine 9s cubic-bezier(.4,0,.2,1) infinite}
+
+/* 한 번 천천히 훑고 오래 쉽니다 */
 @keyframes dnHallShine{
-  0%{background-position:170% 0}
-  22%{background-position:-60% 0}
-  100%{background-position:-60% 0}
+  0%{background-position:180% 0}
+  30%{background-position:-80% 0}
+  100%{background-position:-80% 0}
 }
-/* 마우스를 올리면 한 번 더 */
-.dn-hall-card:hover .dn-hall-title{animation:dnHallShine 1.5s ease-in-out}
+.dn-hall-card:hover .dn-hall-title{animation:dnHallShine 3s cubic-bezier(.4,0,.2,1)}
+
 @media(prefers-reduced-motion:reduce){
-  .dn-hall-title{animation:none;background-position:-60% 0}
+  .dn-hall-title{animation:none;background-position:-80% 0}
   .dn-hall-card:hover .dn-hall-title{animation:none}
 }
 .dn-hall-play{
