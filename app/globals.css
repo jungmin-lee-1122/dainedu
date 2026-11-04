@@ -704,8 +704,30 @@ img,video,svg{max-width:100%}
 .dn-hall-title{display:flex;align-items:baseline;
   font-family:"Noto Serif KR",serif;margin:0;line-height:1.24}
 /* 관 이름 — 크고 진하게 */
-.dn-hall-name{font-style:normal;font-size:37px;font-weight:700;
-  letter-spacing:-.02em;color:var(--dn-navy)}
+.dn-hall-name{position:relative;display:inline-block;isolation:isolate;
+  font-style:normal;font-size:37px;font-weight:900;
+  letter-spacing:-.025em;color:var(--dn-navy)}
+/* 이름 위만 슥 스치는 유리 반사.
+   글자는 그대로 두고 같은 모양의 "빛 한 줄"만 옆으로 미끄러집니다. */
+.dn-hall-name::after{
+  content:attr(data-t);
+  position:absolute;left:0;top:0;white-space:nowrap;pointer-events:none;
+  background:linear-gradient(104deg,
+    transparent 40%,
+    rgba(156,186,238,.55) 47%,
+    rgba(238,245,255,.95) 50%,
+    rgba(156,186,238,.55) 53%,
+    transparent 60%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  will-change:transform;
+  animation:dnNameSheen 7.5s ease-in-out infinite}
+@keyframes dnNameSheen{
+  0%{transform:translateX(-125%)}
+  24%{transform:translateX(125%)}
+  100%{transform:translateX(125%)}
+}
+@media(prefers-reduced-motion:reduce){ .dn-hall-name::after{display:none} }
 /* 어떤 관인지 — 한 단계 작고 연하게 */
 .dn-hall-kind{font-size:23px;font-weight:600;letter-spacing:-.01em;color:#5B6680}
 .dn-hall-play{
