@@ -704,30 +704,8 @@ img,video,svg{max-width:100%}
 .dn-hall-title{display:flex;align-items:baseline;
   font-family:"Noto Serif KR",serif;margin:0;line-height:1.24}
 /* 관 이름 — 크고 진하게 */
-.dn-hall-name{position:relative;display:inline-block;isolation:isolate;
-  font-style:normal;font-size:37px;font-weight:900;
+.dn-hall-name{font-style:normal;font-size:37px;font-weight:900;
   letter-spacing:-.025em;color:var(--dn-navy)}
-/* 이름 위만 슥 스치는 유리 반사.
-   글자는 그대로 두고 같은 모양의 "빛 한 줄"만 옆으로 미끄러집니다. */
-.dn-hall-name::after{
-  content:attr(data-t);
-  position:absolute;left:0;top:0;white-space:nowrap;pointer-events:none;
-  background:linear-gradient(104deg,
-    transparent 40%,
-    rgba(156,186,238,.55) 47%,
-    rgba(238,245,255,.95) 50%,
-    rgba(156,186,238,.55) 53%,
-    transparent 60%);
-  -webkit-background-clip:text;background-clip:text;
-  color:transparent;-webkit-text-fill-color:transparent;
-  will-change:transform;
-  animation:dnNameSheen 7.5s ease-in-out infinite}
-@keyframes dnNameSheen{
-  0%{transform:translateX(-125%)}
-  24%{transform:translateX(125%)}
-  100%{transform:translateX(125%)}
-}
-@media(prefers-reduced-motion:reduce){ .dn-hall-name::after{display:none} }
 /* 어떤 관인지 — 한 단계 작고 연하게 */
 .dn-hall-kind{font-size:23px;font-weight:600;letter-spacing:-.01em;color:#5B6680}
 .dn-hall-play{
@@ -765,7 +743,7 @@ img,video,svg{max-width:100%}
    아무리 색을 맞춰도 경계선이 보입니다. */
 .dn-oneview{position:relative;overflow:clip;
   /* 바탕은 맑게 — 회색이 섞이면 탁해 보입니다 */
-  background:linear-gradient(172deg,#F8FBFF 0%,#FDFBF7 50%,#F5F8FE 100%)}
+  background:linear-gradient(172deg,#FBF8F1 0%,#FCFAF5 38%,#F7F8FA 72%,#F3F6FC 100%)}
 .dn-oneview>*{position:relative;z-index:1}
 
 /* 바탕 위를 아주 천천히 떠다니는 빛 두 덩이.
@@ -774,12 +752,12 @@ img,video,svg{max-width:100%}
   content:"";position:absolute;z-index:0;pointer-events:none;
   border-radius:50%;filter:blur(90px);will-change:transform}
 .dn-oneview::before{
-  left:-14%;top:-18%;width:68%;height:78%;
-  background:radial-gradient(circle,rgba(86,128,214,.30),rgba(86,128,214,0) 68%);
+  left:-16%;top:18%;width:70%;height:80%;
+  background:radial-gradient(circle,rgba(86,128,214,.24),rgba(86,128,214,0) 68%);
   animation:dnAuroraA 26s ease-in-out infinite alternate}
 .dn-oneview::after{
-  right:-16%;top:6%;width:72%;height:86%;
-  background:radial-gradient(circle,rgba(210,176,110,.26),rgba(210,176,110,0) 68%);
+  right:-14%;top:-12%;width:76%;height:82%;
+  background:radial-gradient(circle,rgba(214,170,98,.34),rgba(214,170,98,0) 68%);
   animation:dnAuroraB 32s ease-in-out infinite alternate}
 
 @keyframes dnAuroraA{
@@ -798,7 +776,10 @@ img,video,svg{max-width:100%}
 
 .dn-rolling{position:relative;padding:calc(96px + var(--dn-topbarh,0px)) 0 8px;
   background:transparent}
-.dn-slider{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 20px 48px -24px rgba(16,25,46,.42);background:#EAEDFB}
+/* 어두운 영상이 밝은 바탕 위에 떠 보이지 않도록 그림자를 따뜻하고 깊게 */
+.dn-slider{position:relative;border-radius:22px;overflow:hidden;background:#EAEDFB;
+  box-shadow:0 26px 60px -28px rgba(62,46,24,.45),
+             0 8px 22px -14px rgba(16,25,46,.28)}
 .dn-slides{display:flex;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
 .dn-slide{flex:0 0 100%;display:block;line-height:0}
 .dn-slide img{width:100%;height:auto;display:block;aspect-ratio:1000/380;object-fit:cover}
