@@ -670,30 +670,29 @@ img,video,svg{max-width:100%}
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);
   opacity:.9;pointer-events:none}
 
-/* ── 테두리를 한 바퀴 도는 빛 ──
-   페이지가 뜰 때 시계방향으로 한 번 훑고 사라집니다.
-   원뿔 그라데이션을 테두리 두께만큼만 오려서 보여 줍니다. */
+/* ── 테두리를 도는 빛 ──
+   처음엔 빠르게 한 바퀴 훑고, 그 뒤로는 아주 느리게 계속 돕니다.
+   멈춰 버리면 밋밋해지고, 계속 빠르면 정신없습니다. */
 @property --dn-ring{syntax:"<angle>";initial-value:0deg;inherits:false}
 .dn-hall-ring{position:absolute;inset:0;z-index:2;pointer-events:none;
   border-radius:inherit;padding:2.5px;
   background:conic-gradient(from var(--dn-ring),
     rgba(192,153,79,0) 0deg,
-    rgba(192,153,79,0) 236deg,
-    rgba(192,153,79,.5) 294deg,
-    rgba(246,232,200,.92) 326deg,
-    rgba(110,150,220,.55) 344deg,
+    rgba(192,153,79,0) 214deg,
+    rgba(192,153,79,.42) 282deg,
+    rgba(246,232,200,.92) 322deg,
+    rgba(120,158,224,.5) 344deg,
     rgba(192,153,79,0) 360deg);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
           mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;mask-composite:exclude;
-  animation:dnRingSpin 2.8s cubic-bezier(.3,.6,.25,1) .4s both}
-@keyframes dnRingSpin{
-  0%{--dn-ring:0deg;opacity:0}
-  8%{opacity:1}
-  84%{opacity:1}
-  100%{--dn-ring:360deg;opacity:0}
-}
-@media(prefers-reduced-motion:reduce){ .dn-hall-ring{animation:none;opacity:0} }
+  opacity:.5;transition:opacity .4s ease;
+  animation:dnRingTurn 2.6s cubic-bezier(.25,.62,.25,1) .4s both,
+            dnRingTurn 18s linear 3s infinite}
+/* 마우스를 올리면 또렷해집니다 */
+.dn-hall-card:hover .dn-hall-ring{opacity:1}
+@keyframes dnRingTurn{ from{--dn-ring:0deg} to{--dn-ring:360deg} }
+@media(prefers-reduced-motion:reduce){ .dn-hall-ring{animation:none;opacity:.35} }
 
 /* 마우스를 따라 느릿하게 흘러오는 빛 — 좌표는 app/hallGlowScript.ts 가 넣습니다 */
 .dn-hall-flow{position:absolute;z-index:0;left:0;top:0;
