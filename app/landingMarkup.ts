@@ -73,7 +73,6 @@ export const landingMarkup = `
         <div class="dn-rolling-row">
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
-              <div class="dn-slide dn-slide-video"><video src="/slide-theater-full.mp4" muted playsinline preload="metadata" poster="/slide-theater-poster.jpg" aria-label="다인에듀 입시설명회" disablepictureinpicture disableremoteplayback></video></div>
               <div class="dn-slide dn-slide-video"><video src="/slide-main2-hd.mp4" autoplay muted loop playsinline preload="auto" poster="/slideB.png" aria-label="다인에듀 소개 영상" disablepictureinpicture disableremoteplayback></video></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slide-open2-m.png"/><img src="/slide-open2.png" alt="다인에듀 2026.10.01 그랜드 오픈 — 고등부·N수 프리미엄 캠퍼스"/></picture></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></div>
