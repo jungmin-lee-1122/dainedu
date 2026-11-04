@@ -641,10 +641,13 @@ img,video,svg{max-width:100%}
 .dn-hall-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--dn-gold) 20%,#F2E3C4 50%,var(--dn-gold) 80%,transparent);opacity:0;transition:opacity .28s ease}
 .dn-hall-card:hover::before{opacity:1}
 .dn-hall-text{position:relative;z-index:2}
-.dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dn-gold);margin-bottom:10px}
-.dn-hall-label-sub{color:var(--dn-gold);letter-spacing:-.01em;font-weight:700}
+.dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--dn-gold);margin-bottom:12px}
+.dn-hall-label-sub{color:var(--dn-gold);letter-spacing:.01em;font-weight:600}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
-.dn-hall-title{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:32px;font-weight:900;color:var(--dn-navy);margin:0;letter-spacing:-.02em}
+/* 제목은 명조로 — 고딕 900 은 두껍기만 하고 격이 안 삽니다.
+   사이트 다른 곳(출신학교·슬로건)에서 쓰는 글꼴과 같은 계열입니다. */
+.dn-hall-title{font-family:"Noto Serif KR",serif;font-size:31px;font-weight:700;
+  color:var(--dn-navy);margin:0;letter-spacing:-.025em;line-height:1.3}
 .dn-hall-play{
   display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
   border-radius:50%;background:linear-gradient(135deg,#E7CE9A,var(--dn-gold));
@@ -803,7 +806,8 @@ img,video,svg{max-width:100%}
   .dn-foot-tel{font-size:28px}
 }
 /* ─── 19) 브랜드: 아이콘 + DAIN EDU + 골드라인 + 실시간 시계 ─── */
-.dn-nav-icon{height:44px;width:auto;display:block;flex:0 0 auto}
+/* 로고 높이 = 옆 글자 블록 높이(이름+금색선+시계)와 같게 맞춥니다 */
+.dn-nav-icon{height:38px;width:auto;display:block;flex:0 0 auto}
 .dn-nav-brandtext{display:flex;flex-direction:column;gap:3px;line-height:1.05}
 .dn-nav-name{font-size:16px;font-weight:800;letter-spacing:.1em;color:var(--dn-navy)}
 .dn-nav-line{display:block;height:2px;width:100%;min-width:80px;background:linear-gradient(90deg,var(--dn-gold),var(--dn-gold-soft));border-radius:2px}
@@ -913,7 +917,7 @@ img,video,svg{max-width:100%}
 /* 아주 좁은 화면(~420px) 미세 조정 */
 @media(max-width:420px){
   .dn-topbar-desc{font-size:12px}
-  .dn-nav-icon{height:30px}
+  .dn-nav-icon{height:32px}
   .dn-hall-title{font-size:21px}
   .dn-hall-books{width:54px}
   .dn-foot-tel{font-size:21px !important}
