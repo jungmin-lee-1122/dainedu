@@ -55,6 +55,9 @@ const POSE_BY_NAME: Record<string, Pose> = {
      (상체를 더 그려 넣은 사진을 받으면 290 / 353 으로 바꿀 수 있습니다) */
   양철훈: { face: 419, eye: 445, cx: 518, faceTo: 350, eyeTo: 550, fadeR: true },
   허진우: { face: 253, eye: 332, cx: 526 },
+  /* 2026-11-03 신규 — 끝 장면이 미소라 반복하지 않고 1회 재생 후 멈춥니다.
+     오른팔이 캔버스 오른쪽 끝에 닿아 fadeR 처리합니다. */
+  송문용: { face: 304, eye: 352, cx: 536, eyeTo: 385, fadeR: true, once: true },
 
   /* ── 2차 패키지 실측 (2026-10-28, 14명) ── */
   /* 10/28 신규 7명 — 5초 무이음 루프 */
@@ -88,6 +91,7 @@ const ANIM_DIR_BY_NAME: Record<string, string> = {
   이승훈: "leeseunghoon",
   양철훈: "yangcheolhun",
   허진우: "heojinwoo",
+  송문용: "songmunyong",
 
   /* ── 2차 패키지 (14명) ── */
   최규백: "choegyubaek",
