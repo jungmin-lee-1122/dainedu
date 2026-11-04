@@ -1,7 +1,6 @@
 // 히어로 스크롤 영상 + 네비 + 사전등록 폼 스크립트 (원본 그대로)
 import { mobileMenuScript } from "./mobileMenu";
 import { topbarScript } from "./topbarScript";
-import { hallGlowScript } from "./hallGlowScript";
 export const landingScript = `/* ============================================================
    1) 스크롤 스크럽 히어로 (스크롤 위치 = 영상 재생 위치)
    - .scroll-scrub__stage 가 sticky 로 고정되고,
@@ -263,7 +262,6 @@ export const landingScript = `/* ===============================================
   play();
 })();
 
-${hallGlowScript}
 
 ${mobileMenuScript}
 

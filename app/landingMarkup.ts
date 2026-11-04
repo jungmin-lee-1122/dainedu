@@ -119,24 +119,20 @@ export const landingMarkup = `
       <div class="dn-wrap">
         <div class="dn-halls-grid">
           <a class="dn-hall-card" href="/porta">
-            <span class="dn-hall-ring" aria-hidden="true"></span>
-            <span class="dn-hall-flow" aria-hidden="true"></span>
             <div class="dn-hall-text">
               <span class="dn-hall-label">PORTA H<span class="dn-hall-label-sub"> | 합격의 문을 짓는 3년의 설계를 담다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title"><em class="dn-hall-name">포르타</em><span class="dn-hall-div" aria-hidden="true"></span><span class="dn-hall-kind">고등전문관</span></h3>
+                <h3 class="dn-hall-title">포르타<span class="dn-hall-div" aria-hidden="true"></span>고등전문관</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
             <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="bkF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E4470"/><stop offset="1" stop-color="#16233E"/></linearGradient><linearGradient id="bkT" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#55709F"/><stop offset="1" stop-color="#36507E"/></linearGradient><linearGradient id="bkS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A2840"/><stop offset="1" stop-color="#0E1728"/></linearGradient><linearGradient id="bkG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0DCB4"/><stop offset=".5" stop-color="#C0994F"/><stop offset="1" stop-color="#9A7735"/></linearGradient><linearGradient id="bkGl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".45"/><stop offset=".42" stop-color="#ffffff" stop-opacity=".07"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient><radialGradient id="bkSh"><stop offset="0" stop-color="#16233E" stop-opacity=".32"/><stop offset="1" stop-color="#16233E" stop-opacity="0"/></radialGradient></defs><ellipse cx="68" cy="108" rx="54" ry="8" fill="url(#bkSh)"/><path d="M14 86 L28 77 L124 77 L110 86 Z" fill="url(#bkT)"/><path d="M110 86 L124 77 L124 93 L110 102 Z" fill="url(#bkS)"/><rect x="14" y="86" width="96" height="16" rx="2.5" fill="url(#bkF)"/><rect x="14" y="86" width="13" height="16" rx="2.5" fill="url(#bkG)"/><rect x="14" y="86" width="96" height="16" rx="2.5" fill="url(#bkGl)"/><path d="M20 68 L34 59 L126 59 L112 68 Z" fill="url(#bkT)"/><path d="M112 68 L126 59 L126 75 L112 84 Z" fill="url(#bkS)"/><rect x="20" y="68" width="92" height="16" rx="2.5" fill="url(#bkF)"/><rect x="20" y="68" width="13" height="16" rx="2.5" fill="url(#bkG)"/><rect x="20" y="68" width="92" height="16" rx="2.5" fill="url(#bkGl)"/><path d="M10 50 L24 41 L118 41 L104 50 Z" fill="url(#bkT)"/><path d="M104 50 L118 41 L118 57 L104 66 Z" fill="url(#bkS)"/><rect x="10" y="50" width="94" height="16" rx="2.5" fill="url(#bkF)"/><rect x="10" y="50" width="13" height="16" rx="2.5" fill="url(#bkG)"/><rect x="10" y="50" width="94" height="16" rx="2.5" fill="url(#bkGl)"/><path d="M86 41 v23 l-6.5 -5.5 -6.5 5.5 v-23 z" fill="url(#bkG)"/><path d="M86 41 v23 l-3 -2.6 v-20.4 z" fill="#ffffff" fill-opacity=".24"/></svg>
           </a>
           <a class="dn-hall-card" href="/clavis">
-            <span class="dn-hall-ring" aria-hidden="true"></span>
-            <span class="dn-hall-flow" aria-hidden="true"></span>
             <div class="dn-hall-text">
               <span class="dn-hall-label">CLAVIS N<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title"><em class="dn-hall-name">클라비스</em><span class="dn-hall-div" aria-hidden="true"></span><span class="dn-hall-kind">N수전문관</span></h3>
+                <h3 class="dn-hall-title">클라비스<span class="dn-hall-div" aria-hidden="true"></span>N수전문관</h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>

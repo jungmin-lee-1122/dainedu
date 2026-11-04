@@ -627,127 +627,44 @@ img,video,svg{max-width:100%}
 .dn-banner-img{width:100%;height:auto;display:block}
 
 /* ─── 7) N수관 · 고등관 진입 카드 ─── */
-/* ═══ 포르타 · 클라비스 카드 — 유리 느낌 ═══
-   흐린 유리는 "뒤에 뭔가 있어야" 효과가 보입니다.
-   그래서 섹션 배경에 옅은 색 덩어리를 깔고, 카드를 반투명 유리로 올립니다. */
-.dn-halls{position:relative;padding:30px 0 64px;background:transparent}
-.dn-halls>.dn-wrap{position:relative;z-index:1}
-.dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-
+/* 2026-11-05 — 처음 디자인으로 되돌렸습니다.
+   (유리 질감·테두리 회전 빛·마우스 따라오는 빛은 모두 제거,
+    3D 유리 오브제 아이콘(.dn-hall-books SVG)만 그대로 둡니다) */
+.dn-halls{padding:10px 0 50px;background:#fff}
+.dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .dn-hall-card{
   position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  overflow:hidden;padding:26px 30px;min-height:0;isolation:isolate;
-  /* ── 흰 바탕에서도 유리로 보이게 ──
-     뒤를 비추는 대신, 유리판의 성질을 카드 안에 직접 그립니다.
-       · 비스듬한 광택 (왼위 밝음 → 가운데 살짝 가라앉음 → 오른아래 다시 밝음)
-       · 윗 모서리의 가는 반사선
-       · 아랫쪽 안으로 지는 그림자 = 유리의 두께 */
-  background:linear-gradient(138deg,
-    rgba(255,255,255,.98) 0%,
-    rgba(246,249,253,.86) 34%,
-    rgba(240,244,251,.82) 56%,
-    rgba(252,253,255,.96) 100%);
-  border:1px solid rgba(255,255,255,.95);border-radius:26px;text-decoration:none;
-  box-shadow:0 22px 52px -30px rgba(16,25,46,.3),
-             0 2px 6px -3px rgba(16,25,46,.07),
-             inset 0 1px 0 rgba(255,255,255,1),
-             inset 0 -18px 30px -24px rgba(32,48,86,.22),
-             inset 0 0 0 1px rgba(146,166,204,.16);
-  transition:transform .4s cubic-bezier(.22,.7,.3,1),
-             box-shadow .4s ease,border-color .4s ease,background .4s ease}
-.dn-hall-card:hover{transform:translateY(-4px);
-  background:linear-gradient(138deg,
-    rgba(255,255,255,1) 0%,
-    rgba(249,251,255,.92) 34%,
-    rgba(244,248,254,.9) 56%,
-    rgba(255,255,255,1) 100%);
-  border-color:#fff;
-  box-shadow:0 30px 64px -28px rgba(16,25,46,.4),
-             inset 0 1px 0 rgba(255,255,255,1)}
-
-/* 윗면에 걸린 가는 빛 — 유리의 모서리 반사 */
-.dn-hall-card::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;z-index:3;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);
-  opacity:.9;pointer-events:none}
-
-/* ── 테두리를 도는 빛 ──
-   처음엔 빠르게 한 바퀴 훑고, 그 뒤로는 아주 느리게 계속 돕니다.
-   멈춰 버리면 밋밋해지고, 계속 빠르면 정신없습니다. */
-@property --dn-ring{syntax:"<angle>";initial-value:0deg;inherits:false}
-.dn-hall-ring{position:absolute;inset:0;z-index:2;pointer-events:none;
-  border-radius:inherit;padding:2.5px;
-  background:conic-gradient(from var(--dn-ring),
-    rgba(192,153,79,0) 0deg,
-    rgba(192,153,79,0) 214deg,
-    rgba(192,153,79,.42) 282deg,
-    rgba(246,232,200,.92) 322deg,
-    rgba(120,158,224,.5) 344deg,
-    rgba(192,153,79,0) 360deg);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  opacity:.5;transition:opacity .4s ease;
-  animation:dnRingTurn 2.6s cubic-bezier(.25,.62,.25,1) .4s both,
-            dnRingTurn 18s linear 3s infinite}
-/* 마우스를 올리면 또렷해집니다 */
-.dn-hall-card:hover .dn-hall-ring{opacity:1}
-@keyframes dnRingTurn{ from{--dn-ring:0deg} to{--dn-ring:360deg} }
-@media(prefers-reduced-motion:reduce){ .dn-hall-ring{animation:none;opacity:.35} }
-
-/* 마우스를 따라 느릿하게 흘러오는 빛 — 좌표는 app/hallGlowScript.ts 가 넣습니다 */
-.dn-hall-flow{position:absolute;z-index:0;left:0;top:0;
-  width:380px;height:380px;margin:-190px 0 0 -190px;pointer-events:none;
-  background:radial-gradient(circle,
-    rgba(255,255,255,.95) 0%,
-    rgba(214,228,255,.55) 32%,
-    rgba(192,153,79,.14) 58%,
-    transparent 72%);
-  filter:blur(18px);
-  opacity:0;
-  transform:translate3d(var(--mx,50%),var(--my,50%),0);
-  transition:transform .55s cubic-bezier(.18,.74,.26,1),opacity .45s ease}
-.dn-hall-card.is-lit .dn-hall-flow{opacity:.85}
-
+  overflow:hidden;padding:22px 28px;min-height:0;
+  background:linear-gradient(158deg,#FFFFFF 0%,#F5F8FD 100%);
+  border:1px solid var(--dn-line);border-radius:22px;text-decoration:none;
+  box-shadow:0 16px 40px -24px rgba(16,25,46,.32);
+  transition:transform .28s cubic-bezier(.22,.7,.3,1),box-shadow .28s ease,border-color .28s ease
+}
+.dn-hall-card:hover{transform:translateY(-5px);border-color:#c0994f66;box-shadow:0 30px 62px -26px rgba(16,25,46,.42)}
+.dn-hall-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--dn-gold) 20%,#F2E3C4 50%,var(--dn-gold) 80%,transparent);opacity:0;transition:opacity .28s ease}
+.dn-hall-card:hover::before{opacity:1}
 .dn-hall-text{position:relative;z-index:2}
-.dn-hall-label{display:inline-block;margin-bottom:13px;
-  font-size:10.5px;font-weight:700;letter-spacing:.22em;color:var(--dn-gold)}
-.dn-hall-label-sub{color:#7E8699;letter-spacing:.01em;font-weight:600}
-/* 화살표는 글자 아랫선에 맞춥니다.
-   가운데 정렬로 두면 큰 글자(포르타) 기준으로 가운데가 잡혀 위로 떠 보입니다. */
-.dn-hall-title-row{display:flex;align-items:flex-end;gap:12px}
-.dn-hall-title{display:flex;align-items:baseline;
-  font-family:"Noto Serif KR",serif;margin:0;line-height:1.24}
-/* 관 이름 — 크고 진하게 */
-.dn-hall-name{font-style:normal;font-size:37px;font-weight:900;
-  letter-spacing:-.025em;color:var(--dn-navy)}
-/* 어떤 관인지 — 한 단계 작고 연하게 */
-.dn-hall-kind{font-size:23px;font-weight:600;letter-spacing:-.01em;color:#5B6680}
+.dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dn-gold);margin-bottom:10px}
+.dn-hall-label-sub{color:var(--dn-gold);letter-spacing:-.01em;font-weight:700}
+.dn-hall-title-row{display:flex;align-items:center;gap:12px}
+.dn-hall-title{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:32px;font-weight:900;color:var(--dn-navy);margin:0;letter-spacing:-.02em}
 .dn-hall-play{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:30px;height:30px;flex:0 0 auto;border-radius:50%;
-  margin-bottom:2px;
-  background:rgba(255,255,255,.7);border:1px solid rgba(192,153,79,.5);
-  color:var(--dn-gold);font-size:17px;line-height:1;
-  transition:transform .3s ease,background .3s ease}
-.dn-hall-card:hover .dn-hall-play{transform:translateX(4px);background:rgba(255,255,255,.95)}
-.dn-hall-desc{margin:14px 0 0;font-size:14.5px;color:#6B7280;line-height:1.65;max-width:22ch;word-break:keep-all}
-.dn-hall-books{width:84px;height:auto;flex:0 0 auto;position:relative;z-index:2;filter:drop-shadow(0 10px 16px rgba(16,25,46,.18))}
+  display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:50%;background:linear-gradient(135deg,#E7CE9A,var(--dn-gold));
+  color:#10192E;font-size:20px;font-weight:700;line-height:1;
+  box-shadow:0 6px 16px -6px rgba(192,153,79,.6);transition:transform .25s ease
+}
+.dn-hall-card:hover .dn-hall-play{transform:translateX(4px)}
+.dn-hall-desc{margin:14px 0 0;font-size:15px;color:var(--dn-ink-soft);line-height:1.6;max-width:22ch;word-break:keep-all}
+.dn-hall-books{width:84px;height:auto;flex:0 0 auto;position:relative;z-index:1;filter:drop-shadow(0 10px 14px rgba(16,25,46,.16))}
 @media(max-width:840px){
-  .dn-halls{padding:34px 0 46px}
-  .dn-halls-grid{grid-template-columns:1fr;gap:14px}
-  /* 손가락 기기에서는 유리 흐림을 끕니다 — 느려지고 글자도 흐려 보입니다 */
-  .dn-hall-card{-webkit-backdrop-filter:none;backdrop-filter:none;
-    background:rgba(255,255,255,.86)}
-  .dn-hall-flow{display:none}
-  .dn-hall-name{font-size:29px}
-  .dn-hall-kind{font-size:19px}
-  .dn-hall-card{padding:22px 24px;border-radius:22px}
+  .dn-halls-grid{grid-template-columns:1fr}
+  .dn-hall-card{padding:20px 24px}
   .dn-hall-books{width:74px}
 }
 @media(max-width:420px){
   .dn-hall-books{display:none}
-  .dn-hall-name{font-size:32px}
-  .dn-hall-kind{font-size:21px}
+  .dn-hall-title{font-size:28px}
 }
 /* ─── 8) 롤링 배너 (박스형 슬라이더) ─── */
 /* 상단 고정 내비 + (있으면) 공지 띠 높이만큼만 띄웁니다 */
@@ -757,8 +674,7 @@ img,video,svg{max-width:100%}
    아무리 색을 맞춰도 경계선이 보입니다. */
 .dn-oneview{position:relative;background:#fff}
 
-.dn-rolling{position:relative;padding:calc(96px + var(--dn-topbarh,0px)) 0 8px;
-  background:transparent}
+.dn-rolling{position:relative;padding:calc(96px + var(--dn-topbarh,0px)) 0 8px;background:#fff}
 /* 어두운 영상이 밝은 바탕 위에 떠 보이지 않도록 그림자를 따뜻하고 깊게 */
 .dn-slider{position:relative;border-radius:22px;overflow:hidden;background:#EAEDFB;
   box-shadow:0 28px 64px -30px rgba(14,22,42,.5),
@@ -996,13 +912,11 @@ img,video,svg{max-width:100%}
   /* 진입 카드: 1열 */
   .dn-halls{padding:10px 0 30px}
   .dn-halls-grid{grid-template-columns:1fr;gap:12px}
-  .dn-hall-card{padding:20px 20px;border-radius:20px}
-  .dn-hall-name{font-size:27px}
-  .dn-hall-kind{font-size:18px}
+  .dn-hall-card{padding:18px 20px;border-radius:16px}
+  .dn-hall-title{font-size:24px}
   .dn-hall-label{font-size:10px;letter-spacing:.12em}
   .dn-hall-label-sub{display:block;margin-top:4px;letter-spacing:0}
   .dn-hall-books{width:64px}
-  .dn-hall-play{width:28px;height:28px;font-size:17px}
 
   /* 푸터: 세로 스택 */
   .dn-footer{padding:38px 0 40px !important}
@@ -1038,8 +952,7 @@ img,video,svg{max-width:100%}
 @media(max-width:420px){
   .dn-topbar-desc{font-size:12px}
   .dn-nav-icon{height:32px}
-  .dn-hall-name{font-size:24px}
-  .dn-hall-kind{font-size:16px}
+  .dn-hall-title{font-size:21px}
   .dn-hall-books{width:54px}
   .dn-foot-tel{font-size:21px !important}
 }
