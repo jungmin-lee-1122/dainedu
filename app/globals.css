@@ -743,7 +743,7 @@ img,video,svg{max-width:100%}
    아무리 색을 맞춰도 경계선이 보입니다. */
 .dn-oneview{position:relative;overflow:clip;
   /* 바탕은 맑게 — 회색이 섞이면 탁해 보입니다 */
-  background:linear-gradient(172deg,#FBF8F1 0%,#FCFAF5 38%,#F7F8FA 72%,#F3F6FC 100%)}
+  background:linear-gradient(176deg,#FBFCFE 0%,#F7F9FD 44%,#F1F4FA 100%)}
 .dn-oneview>*{position:relative;z-index:1}
 
 /* 바탕 위를 아주 천천히 떠다니는 빛 두 덩이.
@@ -753,11 +753,11 @@ img,video,svg{max-width:100%}
   border-radius:50%;filter:blur(90px);will-change:transform}
 .dn-oneview::before{
   left:-16%;top:18%;width:70%;height:80%;
-  background:radial-gradient(circle,rgba(86,128,214,.24),rgba(86,128,214,0) 68%);
+  background:radial-gradient(circle,rgba(64,104,190,.22),rgba(64,104,190,0) 68%);
   animation:dnAuroraA 26s ease-in-out infinite alternate}
 .dn-oneview::after{
-  right:-14%;top:-12%;width:76%;height:82%;
-  background:radial-gradient(circle,rgba(214,170,98,.34),rgba(214,170,98,0) 68%);
+  right:-14%;top:-10%;width:76%;height:82%;
+  background:radial-gradient(circle,rgba(118,146,198,.26),rgba(118,146,198,0) 68%);
   animation:dnAuroraB 32s ease-in-out infinite alternate}
 
 @keyframes dnAuroraA{
@@ -778,8 +778,8 @@ img,video,svg{max-width:100%}
   background:transparent}
 /* 어두운 영상이 밝은 바탕 위에 떠 보이지 않도록 그림자를 따뜻하고 깊게 */
 .dn-slider{position:relative;border-radius:22px;overflow:hidden;background:#EAEDFB;
-  box-shadow:0 26px 60px -28px rgba(62,46,24,.45),
-             0 8px 22px -14px rgba(16,25,46,.28)}
+  box-shadow:0 28px 64px -30px rgba(14,22,42,.5),
+             0 8px 22px -14px rgba(14,22,42,.26)}
 .dn-slides{display:flex;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
 .dn-slide{flex:0 0 100%;display:block;line-height:0}
 .dn-slide img{width:100%;height:auto;display:block;aspect-ratio:1000/380;object-fit:cover}
