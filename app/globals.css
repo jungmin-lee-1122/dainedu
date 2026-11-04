@@ -630,14 +630,11 @@ img,video,svg{max-width:100%}
 /* ═══ 포르타 · 클라비스 카드 — 유리 느낌 ═══
    흐린 유리는 "뒤에 뭔가 있어야" 효과가 보입니다.
    그래서 섹션 배경에 옅은 색 덩어리를 깔고, 카드를 반투명 유리로 올립니다. */
-.dn-halls{position:relative;overflow:hidden;padding:46px 0 64px;
-  background:linear-gradient(160deg,#F1F5FC 0%,#FAF7F0 54%,#EDF2FB 100%)}
-.dn-halls::before,.dn-halls::after{content:"";position:absolute;z-index:0;
-  border-radius:50%;pointer-events:none;filter:blur(60px)}
-.dn-halls::before{left:-140px;top:-170px;width:520px;height:520px;
-  background:radial-gradient(circle,rgba(70,112,196,.24),transparent 70%)}
-.dn-halls::after{right:-120px;bottom:-200px;width:560px;height:560px;
-  background:radial-gradient(circle,rgba(192,153,79,.2),transparent 70%)}
+.dn-halls{position:relative;overflow:hidden;padding:30px 0 64px;
+  background:
+    radial-gradient(760px 520px at 86% 30%, rgba(192,153,79,.12), transparent 66%),
+    radial-gradient(720px 520px at 8% 70%, rgba(70,112,196,.12), transparent 68%),
+    linear-gradient(176deg,#F4F3EE 0%,#F7F5F0 40%,#EFF2F9 100%)}
 .dn-halls>.dn-wrap{position:relative;z-index:1}
 .dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 
@@ -709,7 +706,13 @@ img,video,svg{max-width:100%}
 }
 /* ─── 8) 롤링 배너 (박스형 슬라이더) ─── */
 /* 상단 고정 내비 + (있으면) 공지 띠 높이만큼만 띄웁니다 */
-.dn-rolling{padding:calc(96px + var(--dn-topbarh,0px)) 0 8px;background:#fff}
+/* 롤링창 + 포스터부터 카드 섹션까지 하나의 바탕으로 이어집니다.
+   중간에 흰 배경이 끼면 띠처럼 잘려 보입니다. */
+.dn-rolling{position:relative;padding:calc(96px + var(--dn-topbarh,0px)) 0 8px;
+  background:
+    radial-gradient(900px 620px at 10% -6%, rgba(70,112,196,.11), transparent 62%),
+    radial-gradient(820px 560px at 94% 18%, rgba(192,153,79,.09), transparent 64%),
+    linear-gradient(170deg,#F4F7FC 0%,#F8F6F1 62%,#F4F3EE 100%)}
 .dn-slider{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 20px 48px -24px rgba(16,25,46,.42);background:#EAEDFB}
 .dn-slides{display:flex;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
 .dn-slide{flex:0 0 100%;display:block;line-height:0}
