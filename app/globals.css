@@ -630,14 +630,15 @@ img,video,svg{max-width:100%}
 /* ═══ 포르타 · 클라비스 카드 — 유리 느낌 ═══
    흐린 유리는 "뒤에 뭔가 있어야" 효과가 보입니다.
    그래서 섹션 배경에 옅은 색 덩어리를 깔고, 카드를 반투명 유리로 올립니다. */
-.dn-halls{position:relative;overflow:hidden;padding:46px 0 64px;
-  background:linear-gradient(160deg,#F1F5FC 0%,#FAF7F0 54%,#EDF2FB 100%)}
-.dn-halls::before,.dn-halls::after{content:"";position:absolute;z-index:0;
-  border-radius:50%;pointer-events:none;filter:blur(60px)}
-.dn-halls::before{left:-140px;top:-170px;width:520px;height:520px;
-  background:radial-gradient(circle,rgba(70,112,196,.24),transparent 70%)}
-.dn-halls::after{right:-120px;bottom:-200px;width:560px;height:560px;
-  background:radial-gradient(circle,rgba(192,153,79,.2),transparent 70%)}
+/* 페이지 전체 바탕 — 헤더 아래 본문에 은은한 그라데이션을 깝니다.
+   유리 카드가 뒤를 비추려면 바탕에 색이 있어야 합니다. */
+.dn-landing{position:relative;background:
+  radial-gradient(900px 620px at 12% 4%, rgba(70,112,196,.10), transparent 62%),
+  radial-gradient(820px 600px at 92% 26%, rgba(192,153,79,.09), transparent 64%),
+  radial-gradient(760px 560px at 50% 86%, rgba(70,112,196,.07), transparent 66%),
+  linear-gradient(170deg,#F4F7FC 0%,#FBF8F2 48%,#F1F5FC 100%) !important}
+
+.dn-halls{position:relative;padding:46px 0 64px;background:transparent}
 .dn-halls>.dn-wrap{position:relative;z-index:1}
 .dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 
@@ -647,20 +648,47 @@ img,video,svg{max-width:100%}
   background:rgba(255,255,255,.52);
   -webkit-backdrop-filter:blur(22px) saturate(165%);
           backdrop-filter:blur(22px) saturate(165%);
-  border:1px solid rgba(255,255,255,.72);border-radius:26px;text-decoration:none;
+  border:1px solid rgba(192,153,79,.26);border-radius:26px;text-decoration:none;
   box-shadow:0 20px 48px -28px rgba(16,25,46,.34),
              inset 0 1px 0 rgba(255,255,255,.92);
   transition:transform .4s cubic-bezier(.22,.7,.3,1),
              box-shadow .4s ease,border-color .4s ease,background .4s ease}
 .dn-hall-card:hover{transform:translateY(-4px);
-  background:rgba(255,255,255,.64);border-color:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.64);border-color:rgba(192,153,79,.45);
   box-shadow:0 30px 64px -28px rgba(16,25,46,.4),
              inset 0 1px 0 rgba(255,255,255,1)}
 
 /* 윗면에 걸린 가는 빛 — 유리의 모서리 반사 */
-.dn-hall-card::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;z-index:2;
+.dn-hall-card::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;z-index:3;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);
   opacity:.9;pointer-events:none}
+
+/* ── 테두리를 한 바퀴 도는 빛 ──
+   페이지가 뜰 때 시계방향으로 한 번 훑고, 옅은 테두리만 남습니다.
+   원뿔 그라데이션을 테두리 두께만큼만 오려서 보여 줍니다. */
+@property --dn-ring{syntax:"<angle>";initial-value:0deg;inherits:false}
+.dn-hall-ring{position:absolute;inset:0;z-index:2;pointer-events:none;
+  border-radius:inherit;padding:1.5px;
+  background:conic-gradient(from var(--dn-ring),
+    rgba(192,153,79,0) 0deg,
+    rgba(192,153,79,0) 232deg,
+    rgba(192,153,79,.55) 292deg,
+    rgba(246,232,200,.95) 326deg,
+    rgba(110,150,220,.6) 344deg,
+    rgba(192,153,79,0) 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:dnRingSpin 2.8s cubic-bezier(.3,.6,.25,1) .35s both}
+@keyframes dnRingSpin{
+  0%{--dn-ring:0deg;opacity:0}
+  8%{opacity:1}
+  86%{opacity:1}
+  100%{--dn-ring:360deg;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .dn-hall-ring{animation:none;opacity:0}
+}
 
 /* 마우스를 따라 느릿하게 흘러오는 빛 — 좌표는 app/hallGlowScript.ts 가 넣습니다 */
 .dn-hall-flow{position:absolute;z-index:0;left:0;top:0;
@@ -681,8 +709,14 @@ img,video,svg{max-width:100%}
   font-size:10.5px;font-weight:700;letter-spacing:.22em;color:var(--dn-gold)}
 .dn-hall-label-sub{color:#7E8699;letter-spacing:.01em;font-weight:600}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
-.dn-hall-title{font-family:"Noto Serif KR",serif;font-size:32px;font-weight:700;
-  margin:0;letter-spacing:-.01em;line-height:1.28;color:var(--dn-navy)}
+.dn-hall-title{display:flex;align-items:baseline;gap:0;
+  font-family:"Noto Serif KR",serif;margin:0;line-height:1.24}
+/* 관 이름 — 크고 진하게 */
+.dn-hall-name{font-style:normal;font-size:37px;font-weight:700;
+  letter-spacing:-.02em;color:var(--dn-navy)}
+/* 무엇을 하는 관인지 — 한 단계 작고 연하게 */
+.dn-hall-kind{font-size:23px;font-weight:600;
+  letter-spacing:-.01em;color:#5B6680}
 .dn-hall-play{
   display:inline-flex;align-items:center;justify-content:center;
   width:30px;height:30px;flex:0 0 auto;border-radius:50%;
@@ -699,13 +733,15 @@ img,video,svg{max-width:100%}
   .dn-hall-card{-webkit-backdrop-filter:none;backdrop-filter:none;
     background:rgba(255,255,255,.86)}
   .dn-hall-flow{display:none}
-  .dn-hall-title{font-size:26px}
+  .dn-hall-name{font-size:29px}
+  .dn-hall-kind{font-size:19px}
   .dn-hall-card{padding:22px 24px;border-radius:22px}
   .dn-hall-books{width:74px}
 }
 @media(max-width:420px){
   .dn-hall-books{display:none}
-  .dn-hall-title{font-size:28px}
+  .dn-hall-name{font-size:32px}
+  .dn-hall-kind{font-size:21px}
 }
 /* ─── 8) 롤링 배너 (박스형 슬라이더) ─── */
 /* 상단 고정 내비 + (있으면) 공지 띠 높이만큼만 띄웁니다 */
@@ -919,7 +955,8 @@ img,video,svg{max-width:100%}
   .dn-halls{padding:10px 0 30px}
   .dn-halls-grid{grid-template-columns:1fr;gap:12px}
   .dn-hall-card{padding:20px 20px;border-radius:20px}
-  .dn-hall-title{font-size:24px}
+  .dn-hall-name{font-size:27px}
+  .dn-hall-kind{font-size:18px}
   .dn-hall-label{font-size:10px;letter-spacing:.12em}
   .dn-hall-label-sub{display:block;margin-top:4px;letter-spacing:0}
   .dn-hall-books{width:64px}
@@ -959,7 +996,8 @@ img,video,svg{max-width:100%}
 @media(max-width:420px){
   .dn-topbar-desc{font-size:12px}
   .dn-nav-icon{height:32px}
-  .dn-hall-title{font-size:21px}
+  .dn-hall-name{font-size:24px}
+  .dn-hall-kind{font-size:16px}
   .dn-hall-books{width:54px}
   .dn-foot-tel{font-size:21px !important}
 }
