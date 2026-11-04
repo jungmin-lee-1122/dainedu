@@ -698,7 +698,9 @@ img,video,svg{max-width:100%}
 .dn-hall-label{display:inline-block;margin-bottom:13px;
   font-size:10.5px;font-weight:700;letter-spacing:.22em;color:var(--dn-gold)}
 .dn-hall-label-sub{color:#7E8699;letter-spacing:.01em;font-weight:600}
-.dn-hall-title-row{display:flex;align-items:center;gap:12px}
+/* 화살표는 글자 아랫선에 맞춥니다.
+   가운데 정렬로 두면 큰 글자(포르타) 기준으로 가운데가 잡혀 위로 떠 보입니다. */
+.dn-hall-title-row{display:flex;align-items:flex-end;gap:12px}
 .dn-hall-title{display:flex;align-items:baseline;
   font-family:"Noto Serif KR",serif;margin:0;line-height:1.24}
 /* 관 이름 — 크고 진하게 */
@@ -709,6 +711,7 @@ img,video,svg{max-width:100%}
 .dn-hall-play{
   display:inline-flex;align-items:center;justify-content:center;
   width:30px;height:30px;flex:0 0 auto;border-radius:50%;
+  margin-bottom:2px;
   background:rgba(255,255,255,.7);border:1px solid rgba(192,153,79,.5);
   color:var(--dn-gold);font-size:17px;line-height:1;
   transition:transform .3s ease,background .3s ease}
