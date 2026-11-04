@@ -656,24 +656,23 @@ img,video,svg{max-width:100%}
       #CFC2A4 50%,
       #5A6B90 54%, #2B3C60 60%,
       #16203A 70%, #16203A 100%);
-  background-size:300% 100%;
+  background-size:220% 100%;
   /* 끝나는 자리는 그라데이션 바깥 — 남색만 남고 빛은 안 보입니다 */
-  background-position:-100% 0;
+  background-position:-120% 0;
   -webkit-background-clip:text;background-clip:text;
   color:transparent;-webkit-text-fill-color:transparent;
-  animation:dnHallShine 9s cubic-bezier(.4,0,.2,1) infinite}
+  will-change:background-position;
+  animation:dnHallShine 9s linear infinite}
 
 /* 한 번 천천히 훑고 오래 쉽니다 */
 @keyframes dnHallShine{
-  0%{background-position:200% 0}
-  30%{background-position:-100% 0}
-  100%{background-position:-100% 0}
+  0%{background-position:220% 0}
+  28%{background-position:-120% 0}
+  100%{background-position:-120% 0}
 }
-.dn-hall-card:hover .dn-hall-title{animation:dnHallShine 3s cubic-bezier(.4,0,.2,1)}
 
 @media(prefers-reduced-motion:reduce){
-  .dn-hall-title{animation:none;background-position:-100% 0}
-  .dn-hall-card:hover .dn-hall-title{animation:none}
+  .dn-hall-title{animation:none;background-position:-120% 0}
 }
 .dn-hall-play{
   display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
