@@ -632,12 +632,15 @@ img,video,svg{max-width:100%}
    그래서 섹션 배경에 옅은 색 덩어리를 깔고, 카드를 반투명 유리로 올립니다. */
 .dn-halls{position:relative;padding:30px 0 64px;background:transparent}
 /* 카드 뒤에 깔리는 색 — 유리가 흐릴 "대상"이 있어야 유리처럼 보입니다 */
+/* 카드 "안쪽"에만 머무는 색 — 유리 너머로 비칠 대상입니다.
+   카드 밖으로 새어 나가지 않게 크기와 위치를 카드에 맞춰 두었습니다. */
 .dn-halls::before,.dn-halls::after{content:"";position:absolute;z-index:0;
-  border-radius:50%;pointer-events:none;filter:blur(70px)}
-.dn-halls::before{left:4%;top:4%;width:46%;height:92%;
-  background:radial-gradient(circle,rgba(70,112,196,.26),transparent 68%)}
-.dn-halls::after{right:4%;top:10%;width:46%;height:88%;
-  background:radial-gradient(circle,rgba(198,162,96,.24),transparent 68%)}
+  top:22%;height:46%;width:34%;border-radius:50%;
+  pointer-events:none;filter:blur(52px)}
+.dn-halls::before{left:10%;
+  background:radial-gradient(circle,rgba(70,112,196,.34),transparent 70%)}
+.dn-halls::after{right:10%;
+  background:radial-gradient(circle,rgba(198,162,96,.30),transparent 70%)}
 .dn-halls>.dn-wrap{position:relative;z-index:1}
 .dn-halls-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 
@@ -758,38 +761,7 @@ img,video,svg{max-width:100%}
    그라데이션은 여기서 "한 번만" 그립니다.
    섹션마다 따로 그리면 섹션이 바뀌는 지점에서 색 계산이 처음부터 다시 되어
    아무리 색을 맞춰도 경계선이 보입니다. */
-.dn-oneview{position:relative;overflow:clip;
-  /* 바탕은 맑게 — 회색이 섞이면 탁해 보입니다 */
-  background:linear-gradient(176deg,#FBFCFE 0%,#F7F9FD 44%,#F1F4FA 100%)}
-.dn-oneview>*{position:relative;z-index:1}
-
-/* 바탕 위를 아주 천천히 떠다니는 빛 두 덩이.
-   움직임이 느려서 눈에 띄지 않고 화면이 살아 있는 느낌만 남습니다. */
-.dn-oneview::before,.dn-oneview::after{
-  content:"";position:absolute;z-index:0;pointer-events:none;
-  border-radius:50%;filter:blur(90px);will-change:transform}
-.dn-oneview::before{
-  left:-16%;top:18%;width:70%;height:80%;
-  background:radial-gradient(circle,rgba(64,104,190,.22),rgba(64,104,190,0) 68%);
-  animation:dnAuroraA 26s ease-in-out infinite alternate}
-.dn-oneview::after{
-  right:-14%;top:-10%;width:76%;height:82%;
-  background:radial-gradient(circle,rgba(118,146,198,.26),rgba(118,146,198,0) 68%);
-  animation:dnAuroraB 32s ease-in-out infinite alternate}
-
-@keyframes dnAuroraA{
-  0%{transform:translate3d(0,0,0) scale(1)}
-  50%{transform:translate3d(9%,7%,0) scale(1.1)}
-  100%{transform:translate3d(3%,16%,0) scale(1.02)}
-}
-@keyframes dnAuroraB{
-  0%{transform:translate3d(0,0,0) scale(1.04)}
-  50%{transform:translate3d(-8%,10%,0) scale(.96)}
-  100%{transform:translate3d(-3%,20%,0) scale(1.08)}
-}
-@media(prefers-reduced-motion:reduce){
-  .dn-oneview::before,.dn-oneview::after{animation:none}
-}
+.dn-oneview{position:relative;background:#fff}
 
 .dn-rolling{position:relative;padding:calc(96px + var(--dn-topbarh,0px)) 0 8px;
   background:transparent}
