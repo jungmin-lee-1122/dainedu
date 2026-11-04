@@ -640,20 +640,45 @@ img,video,svg{max-width:100%}
   background:rgba(255,255,255,.52);
   -webkit-backdrop-filter:blur(22px) saturate(165%);
           backdrop-filter:blur(22px) saturate(165%);
-  border:1px solid rgba(255,255,255,.72);border-radius:26px;text-decoration:none;
+  border:1px solid rgba(192,153,79,.26);border-radius:26px;text-decoration:none;
   box-shadow:0 20px 48px -28px rgba(16,25,46,.34),
              inset 0 1px 0 rgba(255,255,255,.92);
   transition:transform .4s cubic-bezier(.22,.7,.3,1),
              box-shadow .4s ease,border-color .4s ease,background .4s ease}
 .dn-hall-card:hover{transform:translateY(-4px);
-  background:rgba(255,255,255,.64);border-color:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.64);border-color:rgba(192,153,79,.45);
   box-shadow:0 30px 64px -28px rgba(16,25,46,.4),
              inset 0 1px 0 rgba(255,255,255,1)}
 
 /* 윗면에 걸린 가는 빛 — 유리의 모서리 반사 */
-.dn-hall-card::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;z-index:2;
+.dn-hall-card::before{content:"";position:absolute;top:0;left:12%;right:12%;height:1px;z-index:3;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);
   opacity:.9;pointer-events:none}
+
+/* ── 테두리를 한 바퀴 도는 빛 ──
+   페이지가 뜰 때 시계방향으로 한 번 훑고 사라집니다.
+   원뿔 그라데이션을 테두리 두께만큼만 오려서 보여 줍니다. */
+@property --dn-ring{syntax:"<angle>";initial-value:0deg;inherits:false}
+.dn-hall-ring{position:absolute;inset:0;z-index:2;pointer-events:none;
+  border-radius:inherit;padding:1.5px;
+  background:conic-gradient(from var(--dn-ring),
+    rgba(192,153,79,0) 0deg,
+    rgba(192,153,79,0) 236deg,
+    rgba(192,153,79,.5) 294deg,
+    rgba(246,232,200,.92) 326deg,
+    rgba(110,150,220,.55) 344deg,
+    rgba(192,153,79,0) 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:dnRingSpin 2.8s cubic-bezier(.3,.6,.25,1) .4s both}
+@keyframes dnRingSpin{
+  0%{--dn-ring:0deg;opacity:0}
+  8%{opacity:1}
+  84%{opacity:1}
+  100%{--dn-ring:360deg;opacity:0}
+}
+@media(prefers-reduced-motion:reduce){ .dn-hall-ring{animation:none;opacity:0} }
 
 /* 마우스를 따라 느릿하게 흘러오는 빛 — 좌표는 app/hallGlowScript.ts 가 넣습니다 */
 .dn-hall-flow{position:absolute;z-index:0;left:0;top:0;
@@ -674,8 +699,13 @@ img,video,svg{max-width:100%}
   font-size:10.5px;font-weight:700;letter-spacing:.22em;color:var(--dn-gold)}
 .dn-hall-label-sub{color:#7E8699;letter-spacing:.01em;font-weight:600}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
-.dn-hall-title{font-family:"Noto Serif KR",serif;font-size:32px;font-weight:700;
-  margin:0;letter-spacing:-.01em;line-height:1.28;color:var(--dn-navy)}
+.dn-hall-title{display:flex;align-items:baseline;
+  font-family:"Noto Serif KR",serif;margin:0;line-height:1.24}
+/* 관 이름 — 크고 진하게 */
+.dn-hall-name{font-style:normal;font-size:37px;font-weight:700;
+  letter-spacing:-.02em;color:var(--dn-navy)}
+/* 어떤 관인지 — 한 단계 작고 연하게 */
+.dn-hall-kind{font-size:23px;font-weight:600;letter-spacing:-.01em;color:#5B6680}
 .dn-hall-play{
   display:inline-flex;align-items:center;justify-content:center;
   width:30px;height:30px;flex:0 0 auto;border-radius:50%;
@@ -692,13 +722,15 @@ img,video,svg{max-width:100%}
   .dn-hall-card{-webkit-backdrop-filter:none;backdrop-filter:none;
     background:rgba(255,255,255,.86)}
   .dn-hall-flow{display:none}
-  .dn-hall-title{font-size:26px}
+  .dn-hall-name{font-size:29px}
+  .dn-hall-kind{font-size:19px}
   .dn-hall-card{padding:22px 24px;border-radius:22px}
   .dn-hall-books{width:74px}
 }
 @media(max-width:420px){
   .dn-hall-books{display:none}
-  .dn-hall-title{font-size:28px}
+  .dn-hall-name{font-size:32px}
+  .dn-hall-kind{font-size:21px}
 }
 /* ─── 8) 롤링 배너 (박스형 슬라이더) ─── */
 /* 상단 고정 내비 + (있으면) 공지 띠 높이만큼만 띄웁니다 */
@@ -745,6 +777,8 @@ img,video,svg{max-width:100%}
 .dn-slides{display:flex;transition:transform .55s cubic-bezier(.22,.7,.3,1)}
 .dn-slide{flex:0 0 100%;display:block;line-height:0}
 .dn-slide img{width:100%;height:auto;display:block;aspect-ratio:1000/380;object-fit:cover}
+/* 영상 슬라이드 — 사진 슬라이드와 똑같은 크기·비율로 맞춥니다 */
+.dn-slide-video video{width:100%;height:auto;display:block;aspect-ratio:1000/380;object-fit:cover}
 .dn-slider-ctrl{position:absolute;left:clamp(16px,4vw,44px);bottom:clamp(16px,4vw,34px);display:flex;align-items:center;gap:10px;z-index:3}
 .dn-slider-btn{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;background:rgba(16,25,46,.82);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease,transform .2s ease}
 .dn-slider-btn:hover{background:var(--dn-navy);transform:translateY(-1px)}
@@ -804,7 +838,8 @@ img,video,svg{max-width:100%}
   .dn-rolling-row{height:clamp(390px,40vw,440px)}
   .dn-rolling-row .dn-slides,.dn-rolling-row .dn-slide,.dn-rolling-row .dn-slide picture{height:100%}
   .dn-rolling-row .dn-slide picture{display:block}
-  .dn-rolling-row .dn-slide img{height:100%;width:100%;aspect-ratio:auto;object-fit:cover}
+  .dn-rolling-row .dn-slide img,
+  .dn-rolling-row .dn-slide-video video{height:100%;width:100%;aspect-ratio:auto;object-fit:cover}
 }
 /* ─── 16) 로고·D-day 버튼을 본문(dn-wrap 1200) 좌우 끝선에 맞춤 (메뉴는 가운데) ─── */
 @media(min-width:768px){
@@ -935,7 +970,8 @@ img,video,svg{max-width:100%}
   .dn-rolling-row .dn-slider{width:100%}
   .dn-rolling-row .dn-slides,.dn-rolling-row .dn-slide{height:auto}
   .dn-rolling-row .dn-slide picture{display:block;line-height:0}
-  .dn-rolling-row .dn-slide img{width:100%;height:auto;aspect-ratio:1080/600;object-fit:cover}
+  .dn-rolling-row .dn-slide img,
+  .dn-rolling-row .dn-slide-video video{width:100%;height:auto;aspect-ratio:1080/600;object-fit:cover}
   .dn-slider{border-radius:14px}
   .dn-poster{flex:1 1 auto;max-width:none;width:100%;aspect-ratio:1588/2246;border-radius:14px}
   .dn-poster img{position:absolute;inset:0}
@@ -950,7 +986,8 @@ img,video,svg{max-width:100%}
   .dn-halls{padding:10px 0 30px}
   .dn-halls-grid{grid-template-columns:1fr;gap:12px}
   .dn-hall-card{padding:20px 20px;border-radius:20px}
-  .dn-hall-title{font-size:24px}
+  .dn-hall-name{font-size:27px}
+  .dn-hall-kind{font-size:18px}
   .dn-hall-label{font-size:10px;letter-spacing:.12em}
   .dn-hall-label-sub{display:block;margin-top:4px;letter-spacing:0}
   .dn-hall-books{width:64px}
@@ -990,7 +1027,8 @@ img,video,svg{max-width:100%}
 @media(max-width:420px){
   .dn-topbar-desc{font-size:12px}
   .dn-nav-icon{height:32px}
-  .dn-hall-title{font-size:21px}
+  .dn-hall-name{font-size:24px}
+  .dn-hall-kind{font-size:16px}
   .dn-hall-books{width:54px}
   .dn-foot-tel{font-size:21px !important}
 }

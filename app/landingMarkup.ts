@@ -74,7 +74,7 @@ export const landingMarkup = `
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slide-open2-m.png"/><img src="/slide-open2.png" alt="다인에듀 2026.10.01 그랜드 오픈 — 고등부·N수 프리미엄 캠퍼스"/></picture></div>
-              <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideB-m.png"/><img src="/slideB.png" alt="최고의 강사진이 동탄에서"/></picture></div>
+              <div class="dn-slide dn-slide-video"><video src="/slide-main2.mp4" autoplay muted loop playsinline preload="auto" poster="/slideB.png" aria-label="다인에듀 소개 영상" disablepictureinpicture disableremoteplayback></video></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideD-m.png"/><img src="/slideD.png" alt="새로운 입시의 기준을 세우다"/></picture></div>
             </div>
@@ -119,22 +119,24 @@ export const landingMarkup = `
       <div class="dn-wrap">
         <div class="dn-halls-grid">
           <a class="dn-hall-card" href="/porta">
+            <span class="dn-hall-ring" aria-hidden="true"></span>
             <span class="dn-hall-flow" aria-hidden="true"></span>
             <div class="dn-hall-text">
               <span class="dn-hall-label">PORTA H<span class="dn-hall-label-sub"> | 합격의 문을 짓는 3년의 설계를 담다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">포르타<span class="dn-hall-div" aria-hidden="true"></span>고등전문관</h3>
+                <h3 class="dn-hall-title"><em class="dn-hall-name">포르타</em><span class="dn-hall-div" aria-hidden="true"></span><span class="dn-hall-kind">고등전문관</span></h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
             <svg class="dn-hall-books" viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="18" y="80" width="106" height="20" rx="4" fill="#24365A"/><rect x="18" y="80" width="14" height="20" rx="4" fill="#C0994F"/><rect x="26" y="57" width="98" height="20" rx="4" fill="#2E4470"/><rect x="26" y="57" width="14" height="20" rx="4" fill="#D9BE8C"/><rect x="12" y="34" width="102" height="20" rx="4" fill="#10192E"/><rect x="12" y="34" width="14" height="20" rx="4" fill="#C0994F"/><path d="M92 34 v24 l-7 -6 -7 6 v-24 z" fill="#C0994F"/></svg>
           </a>
           <a class="dn-hall-card" href="/clavis">
+            <span class="dn-hall-ring" aria-hidden="true"></span>
             <span class="dn-hall-flow" aria-hidden="true"></span>
             <div class="dn-hall-text">
               <span class="dn-hall-label">CLAVIS N<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">클라비스<span class="dn-hall-div" aria-hidden="true"></span>N수전문관</h3>
+                <h3 class="dn-hall-title"><em class="dn-hall-name">클라비스</em><span class="dn-hall-div" aria-hidden="true"></span><span class="dn-hall-kind">N수전문관</span></h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
