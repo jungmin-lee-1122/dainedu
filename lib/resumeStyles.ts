@@ -110,8 +110,16 @@ export const resumeStyles = `
   .rs-hero{display:flex;flex-direction:column;border-radius:20px;margin-top:14px;
     background:radial-gradient(120% 60% at 50% 34%,#fff 0%,rgba(255,255,255,0) 62%),
                linear-gradient(135deg,#FCFBF8,#EDF1F7)}
-  .rs-figure{order:-1;min-height:min(92vw,400px)}
-  .rs-figure::after{width:62%;height:36px;bottom:-8px}
+  /* 인물이 허공에 뜨지 않도록, 카드 안에 액자를 한 겹 더 두고 그 안에 세웁니다 */
+  .rs-figure{order:-1;min-height:min(86vw,380px);
+    margin:18px 18px 4px;overflow:hidden;
+    border:1px solid var(--dn-line);border-radius:18px;
+    background:linear-gradient(168deg,#FFFFFF 0%,#F4F7FC 62%,#E9EEF6 100%);
+    box-shadow:inset 0 -26px 44px -30px rgba(36,54,90,.3),
+               inset 0 1px 0 rgba(255,255,255,.9)}
+  /* 액자 바닥에 깔리는 그림자 — 발이 바닥에 닿아 보이게 */
+  .rs-figure::after{width:56%;height:30px;bottom:-4px;
+    background:radial-gradient(50% 50% at 50% 50%,rgba(36,54,90,.22),rgba(36,54,90,0) 70%)}
   .rs-info{padding:0 22px 28px}
   .rs-rule{margin:18px 0}
   .rs-name{font-size:clamp(28px,8vw,38px)}
