@@ -49,20 +49,7 @@ export const planDocStyles = `
   letter-spacing:-.035em;color:var(--pl-deep)}
 .pl-lead{margin:0 0 24px;font-size:13.5px;line-height:1.8;color:var(--pl-mut);word-break:keep-all}
 
-/* ── ② 강사 소개 ── */
-.pl-prof{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.pl-prof-box{padding:22px 24px;border:1px solid var(--pl-line);border-radius:16px;background:var(--pl-soft)}
-.pl-prof-box h4{margin:0 0 13px;padding-bottom:11px;border-bottom:1px solid var(--pl-line);
-  font-size:13px;font-weight:800;color:var(--pl-navy);letter-spacing:-.01em}
-.pl-prof-box ul{margin:0;padding:0;list-style:none}
-.pl-prof-box li{position:relative;padding:5px 0 5px 13px;font-size:14px;line-height:1.7;color:#3C4454}
-.pl-prof-box li::before{content:"";position:absolute;left:0;top:14px;
-  width:4px;height:4px;border-radius:50%;background:var(--pl-gold)}
-.pl-prof-box li.is-past{color:#99A0AE}
-.pl-prof-box li.is-past::before{background:#C7CCD6}
-.pl-prof-div{margin:12px 0 2px;font-size:11px;font-weight:800;letter-spacing:.1em;color:#A8AEBA}
-
-/* ── ③ 연간 로드맵 ── */
+/* ── ① 연간 로드맵 ── */
 .pl-road{overflow-x:auto;border:1px solid var(--pl-line);border-radius:16px;background:#fff;
   scrollbar-width:thin}
 .pl-road-in{min-width:760px;padding:4px}
@@ -81,7 +68,7 @@ export const planDocStyles = `
 .pl-road-bar.is-line{background:#fff;border:1.5px solid var(--pl-gold);color:#8A6F30}
 .pl-road-hint{margin:10px 0 0;font-size:11.5px;color:#9AA1AE}
 
-/* ── ④ 단계별 과정 ── */
+/* ── ② 단계별 과정 ── */
 .pl-steps{display:flex;flex-direction:column;gap:12px}
 .pl-step{display:grid;grid-template-columns:190px 1fr;gap:0;
   overflow:hidden;border:1px solid var(--pl-line);border-radius:16px;background:#fff}
@@ -99,7 +86,7 @@ export const planDocStyles = `
 .pl-books li{padding:5px 11px;border-radius:7px;background:var(--pl-soft);
   border:1px solid var(--pl-line);font-size:12px;font-weight:700;color:#4A5266}
 
-/* ── ⑤ 주간 운영 ── */
+/* ── ③ 주간 운영 ── */
 .pl-weekly{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .pl-week{padding:20px 20px;border:1px solid var(--pl-line);border-radius:14px;
   background:linear-gradient(165deg,#fff,var(--pl-soft))}
@@ -108,7 +95,7 @@ export const planDocStyles = `
   letter-spacing:-.035em;color:var(--pl-deep)}
 .pl-week p{margin:0;font-size:12.5px;line-height:1.7;color:var(--pl-mut);word-break:keep-all}
 
-/* ── ⑥ 관리·피드백 ── */
+/* ── ④ 관리·피드백 ── */
 .pl-care{margin:0;padding:0;list-style:none;overflow:hidden;
   border:1px solid var(--pl-line);border-radius:16px}
 .pl-care li{display:grid;grid-template-columns:150px 1fr;gap:18px;
@@ -118,7 +105,7 @@ export const planDocStyles = `
 .pl-care b{font-size:13.5px;font-weight:800;color:var(--pl-navy);letter-spacing:-.02em}
 .pl-care span{font-size:13.5px;line-height:1.8;color:#5A6273;word-break:keep-all}
 
-/* ── ⑦ 안내 ── */
+/* ── ⑤ 안내 ── */
 .pl-notes{margin:0;padding:22px 24px;list-style:none;
   border:1px solid var(--pl-line);border-left:3px solid var(--pl-gold);border-radius:12px;
   background:#FAF8F3}
@@ -130,7 +117,6 @@ export const planDocStyles = `
 
 /* ── 모바일 ── */
 @media(max-width:860px){
-  .pl-prof{grid-template-columns:1fr;gap:12px}
   .pl-step{grid-template-columns:1fr}
   .pl-step-side{flex-direction:row;align-items:baseline;gap:9px;padding:15px 18px;flex-wrap:wrap}
   .pl-step-period{margin-top:0}

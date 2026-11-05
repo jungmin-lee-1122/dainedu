@@ -2,8 +2,10 @@
 //  연간 계획서 — 다인에듀 공통 서식 (화면)
 //
 //  선생님마다 서식이 제각각이라, 받은 자료에서 겹치는 항목만 추려
-//  여섯 칸(강사소개 / 연간로드맵 / 단계별과정 / 주간운영 /
-//  관리·피드백 / 안내)으로 통일했습니다. 내용은 lib/planDoc.ts 에.
+//  다섯 칸(연간로드맵 / 단계별과정 / 주간운영 / 관리·피드백 / 안내)으로
+//  통일했습니다. 내용은 lib/planDoc.ts 에.
+//
+//  ※ 학력·약력은 바로 위 프로필 카드에 이미 나오므로 여기서는 빼 둡니다.
 //
 //  쓰는 곳
 //   · 강사 상세페이지 (/teachers/[id]) — 큰 애니메이션 바로 아래
@@ -42,43 +44,9 @@ export default function PlanSection({
         </div>
       )}
 
-      {/* ── 01 강사 소개 ── */}
+      {/* ── 01 연간 로드맵 ── */}
       <section className="pl-sec">
         <p className="pl-sec-no">01</p>
-        <h3 className="pl-h2">강사 소개</h3>
-        <p className="pl-lead">학력과 출강 이력입니다.</p>
-
-        <div className="pl-prof">
-          {doc.edu && doc.edu.length > 0 && (
-            <div className="pl-prof-box">
-              <h4>학력</h4>
-              <ul>
-                {doc.edu.map((v) => <li key={v}>{v}</li>)}
-              </ul>
-            </div>
-          )}
-          <div className="pl-prof-box">
-            <h4>약력</h4>
-            <ul>
-              {doc.careerNow.map((v) => <li key={v}>{v}</li>)}
-            </ul>
-            {doc.careerPast && doc.careerPast.length > 0 && (
-              <>
-                <p className="pl-prof-div">PREVIOUS</p>
-                <ul>
-                  {doc.careerPast.map((v) => (
-                    <li className="is-past" key={v}>{v}</li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 02 연간 로드맵 ── */}
-      <section className="pl-sec">
-        <p className="pl-sec-no">02</p>
         <h3 className="pl-h2">연간 로드맵</h3>
         <p className="pl-lead">
           한 해 동안 어떤 과정이 언제 진행되는지 한눈에 보는 표입니다.
@@ -129,9 +97,9 @@ export default function PlanSection({
         <p className="pl-road-hint">※ 화면이 좁으면 표를 옆으로 밀어서 보실 수 있습니다.</p>
       </section>
 
-      {/* ── 03 단계별 과정 ── */}
+      {/* ── 02 단계별 과정 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">03</p>
+        <p className="pl-sec-no">02</p>
         <h3 className="pl-h2">단계별 과정</h3>
         <p className="pl-lead">각 단계의 기간과 사용 교재, 도달 목표입니다.</p>
 
@@ -157,9 +125,9 @@ export default function PlanSection({
         </div>
       </section>
 
-      {/* ── 04 주간 운영 ── */}
+      {/* ── 03 주간 운영 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">04</p>
+        <p className="pl-sec-no">03</p>
         <h3 className="pl-h2">한 주는 이렇게 돌아갑니다</h3>
         <p className="pl-lead">수업 · 테스트 · 과제의 주 단위 운영 방식입니다.</p>
 
@@ -174,9 +142,9 @@ export default function PlanSection({
         </div>
       </section>
 
-      {/* ── 05 관리 · 피드백 ── */}
+      {/* ── 04 관리 · 피드백 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">05</p>
+        <p className="pl-sec-no">04</p>
         <h3 className="pl-h2">관리 · 피드백</h3>
         <p className="pl-lead">결석 보강부터 상담까지, 수업 밖에서 챙기는 것들입니다.</p>
 
@@ -190,9 +158,9 @@ export default function PlanSection({
         </ul>
       </section>
 
-      {/* ── 06 안내 ── */}
+      {/* ── 05 안내 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">06</p>
+        <p className="pl-sec-no">05</p>
         <h3 className="pl-h2">안내 사항</h3>
         <ul className="pl-notes">
           {doc.notes.map((n) => <li key={n}>{n}</li>)}
