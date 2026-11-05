@@ -16,6 +16,7 @@ import { facultyPose, facultyAnimDir, animPath, poseVars } from "@/lib/facultyAn
 import { teacherPlan, planPage } from "@/lib/teacherPlan";
 import { planDocByName } from "@/lib/planDoc";
 import { planDocStyles } from "@/lib/planDocStyles";
+import { resumeStyles } from "@/lib/resumeStyles";
 import PlanSection from "../../PlanSection";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
@@ -76,7 +77,8 @@ export default async function TeacherDetailPage({
   const hero = pose && (animDir || current.photo) ? pose : null;
 
   return (
-    <main className="dn-body td-page">
+    <main className="dn-body td-page rs pl">
+      <style dangerouslySetInnerHTML={{ __html: resumeStyles + planDocStyles }} />
       <SiteHeader />
 
       <section className="td-head">
@@ -124,32 +126,16 @@ export default async function TeacherDetailPage({
             ))}
           </div>
 
-          <article id="tdProfile"
-            className={`td-profile${hero ? " td-profile-anim" : ""}`}>
-            <div className="td-profile-copy">
-              <div className="tc-tags">
-                {current.tags.map((tag) => <span key={tag}>{tag}</span>)}
-              </div>
-              <p className="td-subject">{current.subject}</p>
-              <h2>{current.name} <small>선생님</small></h2>
-              {current.school && (
-                <p className="td-school">{current.school}</p>
-              )}
-              <p className="td-slogan">{current.copy}</p>
-              <div className="td-rule" aria-hidden="true" />
-              <ul className="td-career">
-                {current.career.map((career) => <li key={career}>{career}</li>)}
-              </ul>
-              {current.videoUrl && (
-                <a className="td-video-link" href={current.videoUrl} target="_blank" rel="noreferrer">소개 영상 보기 ↗</a>
-              )}
-            </div>
-
-            <div className="td-profile-photo">
-              <span className="td-photo-ring" aria-hidden="true" />
-              {hero && animDir ? (
-                /* 인물 히어로 — 얼굴 크기·눈높이를 맞춰 카드 바닥에 세웁니다.
-                   영상이 있는 분은 영상, 없는 분은 사진이 같은 자리에 섭니다.
+          {/* ── 강사 프로필 (이력서형) ──
+              왼쪽에 인물, 오른쪽에 학력·약력. 그 아래로 연간 계획서가 이어집니다.
+              학력은 연간 계획서 자료가 있는 분만 나옵니다. */}
+          <section className="rs-hero" id="tdProfile">
+            <div
+              className="rs-figure"
+              style={{ "--rs-zoom": planDoc?.heroZoom ?? 1 } as CSSProperties}
+            >
+              {hero ? (
+                /* 인물 히어로 — 얼굴 크기·눈높이를 맞춰 바닥에 세웁니다.
                    source 순서는 반드시 mov → webm (사파리가 webm 투명을 못 그립니다) */
                 <div className="hx-stage">
                   <div
@@ -162,8 +148,7 @@ export default async function TeacherDetailPage({
                         poster={animPath(animDir, "poster.webp", hero.v)}
                         autoPlay
                         muted
-                        /* 옛 영상 6명은 시작·끝 장면이 달라 반복하면 툭 튑니다.
-                           그분들만 loop 없이 1회 재생 후 마지막 장면에서 멈춥니다. */
+                        /* 옛 영상은 시작·끝 장면이 달라 반복하면 툭 튑니다 */
                         loop={!hero.once}
                         playsInline
                         preload="auto"
@@ -185,46 +170,91 @@ export default async function TeacherDetailPage({
                   </div>
                 </div>
               ) : current.revealed && clipSrc ? (
-                /* 소개 영상 — 사진이 먼저 보이고 금색 베일이 걷히며 영상이 재생됩니다 */
-                <div className="td-clip-wrap">
-                  <div className="td-clip">
-                    <div className="td-clip-inner">
-                      <video
-                        className="td-clip-video"
-                        src={clipSrc}
-                        poster={current.photo ? photo(current.photo, 440) : undefined}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        aria-label={`${current.name} 선생님 소개 영상`}
-                      />
-                      <span className="td-clip-cap">DAIN EDU</span>
-                      <span className="td-clip-veil" aria-hidden="true" />
-                    </div>
-                  </div>
-                </div>
-              ) : hero && current.photo ? (
-                /* 영상이 아직 없는 분 — 사진을 같은 자리·같은 얼굴 크기로 세웁니다 */
-                <div className="hx-stage">
-                  <div className="hx-norm" style={poseVars(hero) as CSSProperties}>
-                    <img className="hx-still" src={photo(current.photo, 600)}
-                         srcSet={photoSet(current.photo, 600)}
-                         alt={`${current.name} 선생님`} decoding="async" />
-                  </div>
+                /* 소개 영상만 있는 분 */
+                <div className="rs-clip">
+                  <video
+                    src={clipSrc}
+                    poster={current.photo ? photo(current.photo, 440) : undefined}
+                    autoPlay muted loop playsInline preload="metadata"
+                    aria-label={`${current.name} 선생님 소개 영상`}
+                  />
                 </div>
               ) : current.revealed && current.photo ? (
-                <img src={photo(current.photo, 440)} srcSet={photoSet(current.photo, 440)}
-                     alt={`${current.name} 선생님`} decoding="async" />
+                <div className="rs-clip">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={photo(current.photo, 600)} srcSet={photoSet(current.photo, 600)}
+                       alt={`${current.name} 선생님`} decoding="async" />
+                </div>
               ) : (
-                <div className="td-profile-placeholder">
-                  <b>?</b>
+                /* 아직 공개 전 */
+                <div className="rs-soon">
+                  <b aria-hidden="true">?</b>
                   <span>{current.openAt}</span>
                 </div>
               )}
             </div>
-          </article>
+
+            <div className="rs-info">
+              {current.tags.length > 0 && (
+                <div className="rs-tags">
+                  {current.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                </div>
+              )}
+
+              <p className="rs-subject">{current.subject}</p>
+              <h2 className="rs-name">
+                {current.name} <small>선생님</small>
+              </h2>
+              {current.school && <p className="rs-school">{current.school}</p>}
+              {current.copy && <p className="rs-slogan">{current.copy}</p>}
+
+              <div className="rs-rule" aria-hidden="true" />
+
+              <div className="rs-cols">
+                {planDoc?.edu && planDoc.edu.length > 0 && (
+                  <div className="rs-col">
+                    <h3>EDUCATION</h3>
+                    <ul>
+                      {planDoc.edu.map((v) => <li key={v}>{v}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {(planDoc?.careerNow?.length || current.career.length) > 0 && (
+                  <div className="rs-col">
+                    <h3>CAREER</h3>
+                    <ul>
+                      {(planDoc?.careerNow?.length ? planDoc.careerNow : current.career)
+                        .map((v) => <li key={v}>{v}</li>)}
+                    </ul>
+                    {planDoc?.careerPast && planDoc.careerPast.length > 0 && (
+                      <>
+                        <p className="rs-col-div">PREVIOUS</p>
+                        <ul>
+                          {planDoc.careerPast.map((v) => (
+                            <li className="is-past" key={v}>{v}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div className="rs-acts">
+                <Link
+                  className="rs-link"
+                  href={`/schedule?subject=${encodeURIComponent(current.subject)}`}
+                >
+                  단과시간표 보기 ↗
+                </Link>
+                {current.videoUrl && (
+                  <a className="rs-link is-ghost" href={current.videoUrl} target="_blank" rel="noreferrer">
+                    소개 영상 보기 ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          </section>
 
           {/* ── 연간 계획서 ── 큰 애니메이션 바로 아래에 붙습니다.
               공통 서식(HTML)을 먼저 보여 주고, 선생님이 주신 원본 PDF 이미지는

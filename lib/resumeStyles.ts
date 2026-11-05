@@ -79,13 +79,34 @@ export const resumeStyles = `
 
 /* 버튼 — 기존 카드의 '소개 영상 보기' 와 같은 모양 */
 .rs-link{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;
-  margin-top:18px;padding:10px 16px;border-radius:999px;
+  margin-top:0;padding:10px 16px;border-radius:999px;
   border:1px solid var(--dn-line);background:#fff;
   font-size:12.5px;font-weight:800;color:var(--dn-navy);text-decoration:none;
   transition:border-color .2s ease,transform .2s ease}
 .rs-link:hover{border-color:#c0994f66;transform:translateY(-1px)}
+.rs-acts{margin-top:18px}
+/* 미리보기 페이지처럼 버튼이 혼자 있을 때도 간격 유지 */
+.rs-info > .rs-link{margin-top:18px}
 .rs-link-note{margin:9px 0 0;font-size:11.5px;line-height:1.6;color:#9AA1AC;word-break:keep-all}
 .rs-link-note b{color:var(--dn-navy);font-weight:800}
+
+/* 영상만 있거나 사진만 있는 분 — 액자 안에 담습니다 */
+.rs-clip{position:absolute;left:50%;bottom:0;width:min(84%,380px);
+  transform:translateX(-50%);overflow:hidden;border-radius:16px 16px 0 0;
+  box-shadow:0 -2px 40px -18px rgba(16,25,46,.5)}
+.rs-clip video,.rs-clip img{display:block;width:100%;height:auto}
+
+/* 아직 공개 전 */
+.rs-soon{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;color:#A8AEBA}
+.rs-soon b{font-family:"Noto Serif KR",serif;font-size:86px;font-weight:900;
+  line-height:1;color:rgba(36,54,90,.14)}
+.rs-soon span{font-size:13px;font-weight:700;color:var(--rs-gold)}
+
+/* 버튼 줄 */
+.rs-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rs-link.is-ghost{background:transparent;color:#6B7384}
+.rs-link.is-ghost:hover{color:var(--dn-navy)}
 
 /* ── 아래 연간 계획서 ── */
 .rs-plan{padding:clamp(34px,4vw,58px) 0 0}

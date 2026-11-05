@@ -14,24 +14,31 @@ export const vortexStyles = `
   --vx-deep:#080D1A; --vx-navy:#111C36; --vx-gold:#C0994F; --vx-gold-l:#E4CD9A;
   --vx-mut:#6B7488;
   font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  /* 페이지는 흰 바탕 그대로 둡니다.
+     윈터 상세페이지의 "학원가가 증명한 강사진"은 흰 섹션이고 바로 뒤가
+     딥네이비 섹션이라, 전체를 어둡게 하면 어두운 블록이 연달아 붙습니다.
+     어두운 바탕은 둥근 무대 패널 "안쪽"에만 둡니다. */
   background:#fff;color:#14192B;letter-spacing:-.02em;overflow-x:clip
 }
 
-/* ── 머리말 (무대 위에 겹쳐 올립니다) ── */
-.vxl-head{position:relative;z-index:40;max-width:1160px;margin:0 auto;
-  padding:clamp(22px,3vw,40px) 24px 0;pointer-events:none}
+/* ── 머리말 (흰 섹션 위, 무대 패널 바깥) ── */
+.vxl-head{position:relative;z-index:40;max-width:1208px;margin:0 auto;
+  padding:clamp(28px,4vw,56px) 24px clamp(18px,2.4vw,26px)}
 .vxl-tag{display:inline-block;margin:0 0 12px;padding:6px 14px;border-radius:999px;
-  background:rgba(17,28,54,.07);color:var(--vx-navy);font-size:12px;font-weight:800}
+  background:rgba(17,28,54,.07);color:var(--vx-navy);
+  font-size:12px;font-weight:800;letter-spacing:.04em}
 .vxl-h2{font-size:clamp(26px,3.6vw,44px);font-weight:800;line-height:1.3;
-  margin:0;letter-spacing:-.035em}
+  margin:0;letter-spacing:-.035em;color:var(--vx-deep)}
 .vxl-h2 em{font-style:normal;color:var(--vx-gold)}
 
 /* ── 무대 ── */
 .vx-stage{
   position:relative;overflow:hidden;
-  height:clamp(540px,84vh,980px);
-  margin:calc(-1 * clamp(52px,7vw,92px)) auto 0;
-  background:#fff;
+  height:clamp(500px,76vh,860px);
+  max-width:1160px;margin:0 auto;
+  border-radius:clamp(16px,2vw,26px);
+  background:#0D1526;
+  box-shadow:0 40px 90px -56px rgba(8,13,26,.8);
   cursor:grab;
   /* 위아래로 쓸면 갤러리가 돌고, 좌우는 브라우저에 맡깁니다 */
   touch-action:pan-x;
@@ -41,50 +48,45 @@ export const vortexStyles = `
 /* 원통이 들어앉는 공간 — perspective 값은 스크립트가 화면 높이로 계산합니다 */
 .vx-world{position:absolute;inset:0;z-index:2;transform-style:preserve-3d}
 
-/* ══ 뒷배경의 빛 ══
-   흰 바탕을 지키면서 "뒤에서 은은하게 비친다" 정도만 냅니다.
-   blur 필터 대신 radial-gradient 를 씁니다(필터는 매 프레임 비싸집니다).
+/* ══ 뒷배경 ══
+   빛살(해바라기)이나 색색 번짐을 깔면 바로 촌스러워집니다.
+   전시장처럼 "위에서 내려오는 조명 하나 + 가장자리 어둠"만 둡니다.
    움직이는 것은 transform 뿐이라 GPU 가 알아서 처리합니다. */
 .vx-aura{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.vx-aura span{position:absolute;display:block;will-change:transform}
+.vx-aura span{position:absolute;display:block}
 
-/* 뒤에서 아주 느리게 도는 빛살 — 중심은 비우고 바깥으로 갈수록 옅어집니다 */
-.vx-rays{left:50%;top:50%;width:170vmax;height:170vmax;margin:-85vmax 0 0 -85vmax;
-  background:repeating-conic-gradient(from 0deg,
-    rgba(36,54,90,.020) 0deg 1.4deg,
-    rgba(36,54,90,0) 1.4deg 24deg);
-  -webkit-mask:radial-gradient(closest-side,transparent 14%,#000 40%,transparent 66%);
-          mask:radial-gradient(closest-side,transparent 14%,#000 40%,transparent 66%);
-  animation:vxSpin 180s linear infinite}
-@keyframes vxSpin{to{transform:rotate(360deg)}}
+/* 위에서 내려오는 조명 — 아주 천천히 숨 쉽니다 */
+.vx-glow1{left:50%;top:-30%;width:150vmax;height:120vmax;margin-left:-75vmax;
+  background:radial-gradient(closest-side at 50% 36%,
+    rgba(150,178,228,.17) 0%,
+    rgba(120,150,205,.07) 36%,
+    rgba(90,120,180,0) 68%);
+  will-change:transform;
+  animation:vxBreathe 22s ease-in-out infinite}
 
-.vx-glow1{left:50%;top:50%;width:100vmax;height:100vmax;margin:-50vmax 0 0 -50vmax;
+/* 가장자리 어둠 — 가운데로 시선을 모읍니다 */
+.vx-glow2{inset:0;width:auto;height:auto;
+  background:radial-gradient(120% 86% at 50% 44%,
+    rgba(13,21,38,0) 38%, rgba(7,12,22,.55) 78%, rgba(5,9,17,.8) 100%)}
+
+/* 바닥에 깔리는 아주 옅은 금빛 — 브랜드 색을 한 방울만 */
+.vx-glow3{left:50%;bottom:-26%;width:110vmax;height:60vmax;margin-left:-55vmax;
   background:radial-gradient(closest-side,
-    rgba(127,180,255,.10) 0%, rgba(127,180,255,.04) 40%, rgba(127,180,255,0) 70%);
-  animation:vxBreathe 18s ease-in-out infinite}
-.vx-glow2{left:6%;top:-16%;width:70vmax;height:70vmax;
-  background:radial-gradient(closest-side,
-    rgba(36,54,90,.085) 0%, rgba(36,54,90,.03) 46%, rgba(36,54,90,0) 72%);
-  animation:vxFloatA 26s ease-in-out infinite}
-.vx-glow3{right:0%;bottom:-22%;width:62vmax;height:62vmax;
-  background:radial-gradient(closest-side,
-    rgba(192,153,79,.085) 0%, rgba(192,153,79,.03) 48%, rgba(192,153,79,0) 74%);
-  animation:vxFloatB 32s ease-in-out infinite}
-@keyframes vxBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
-@keyframes vxFloatA{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(6vw,4vh,0)}}
-@keyframes vxFloatB{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-7vw,-5vh,0)}}
+    rgba(192,153,79,.085) 0%, rgba(192,153,79,.025) 44%, rgba(192,153,79,0) 72%)}
+
+@keyframes vxBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 
 /* 펼쳐지는 순간 한 번 터지는 빛 */
 .vx-flare{position:absolute;z-index:1;left:50%;top:50%;
   width:120vmax;height:120vmax;margin:-60vmax 0 0 -60vmax;
   background:radial-gradient(closest-side,
-    rgba(255,255,255,.95) 0%, rgba(228,205,154,.5) 22%,
-    rgba(127,180,255,.22) 44%, rgba(255,255,255,0) 68%);
+    rgba(226,236,255,.6) 0%, rgba(176,198,238,.22) 30%,
+    rgba(140,170,220,0) 64%);
   opacity:0;transform:scale(.18);pointer-events:none}
 .vx-stage.is-intro .vx-flare{animation:vxFlare 1.9s cubic-bezier(.16,.84,.3,1) forwards}
 @keyframes vxFlare{
   0%{opacity:0;transform:scale(.14)}
-  14%{opacity:.85}
+  14%{opacity:.6}
   100%{opacity:0;transform:scale(1.25)}
 }
 
@@ -95,8 +97,12 @@ export const vortexStyles = `
 /* ── 벽에 붙은 사진 한 장 ── */
 .vx-tile{
   position:absolute;left:50%;top:50%;
-  display:block;overflow:hidden;border-radius:4px;
-  background:#EEF1F6;text-decoration:none;color:inherit;
+  display:block;overflow:hidden;border-radius:7px;
+  /* 선생님 사진은 배경을 딴 누끼입니다. 타일에 밝은 바탕을 깔아야
+     어두운 무대 위에서 인물이 카드에 올라선 것처럼 보입니다. */
+  background:linear-gradient(176deg,#FAFBFD 0%,#EDF1F7 62%,#E2E8F2 100%);
+  text-decoration:none;color:inherit;
+  box-shadow:0 16px 30px -18px rgba(0,0,0,.65);
   transform-style:preserve-3d;
   will-change:transform}
 .vx-tile.is-off{display:none}
@@ -143,11 +149,11 @@ export const vortexStyles = `
   font-size:10.5px;font-weight:600;line-height:1.45;color:rgba(255,255,255,.66);
   word-break:keep-all}
 
-/* 가장자리를 하얗게 녹여 "끝"을 감춥니다 */
+/* 가장자리를 바탕색으로 녹여 "끝"을 감춥니다 */
 .vx-fade{position:absolute;inset:0;z-index:30;pointer-events:none;
   background:
-    linear-gradient(180deg,#fff 0%,rgba(255,255,255,0) 17%,rgba(255,255,255,0) 86%,#fff 100%),
-    linear-gradient(90deg,#fff 0%,rgba(255,255,255,0) 9%,rgba(255,255,255,0) 91%,#fff 100%)}
+    linear-gradient(180deg,#0D1526 0%,rgba(13,21,38,0) 15%,rgba(13,21,38,0) 88%,#0D1526 100%),
+    linear-gradient(90deg,#0D1526 0%,rgba(13,21,38,0) 8%,rgba(13,21,38,0) 92%,#0D1526 100%)}
 
 .vx-hint{position:absolute;z-index:31;left:50%;bottom:18px;transform:translateX(-50%);
   margin:0;padding:7px 15px;border-radius:999px;
@@ -163,7 +169,9 @@ export const vortexStyles = `
 .vxl-foot b{color:var(--vx-navy)}
 
 @media(max-width:900px){
-  .vx-stage{height:clamp(440px,68vh,620px)}
+  .vxl-head{padding-left:18px;padding-right:18px}
+  .vx-stage{height:clamp(420px,62vh,560px);border-radius:16px;
+    margin-left:18px;margin-right:18px}
   .vx-tile-txt{padding:22px 8px 7px}
   .vx-tile-txt i{font-size:8.5px;margin-bottom:1px}
   .vx-tile-txt b{font-size:12px}

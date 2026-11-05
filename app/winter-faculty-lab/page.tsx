@@ -89,7 +89,6 @@ export default async function WinterFacultyLabPage() {
       <div className="vx-stage" id="vxStage" data-count={list.length}>
         {/* 뒷배경의 빛 — 느리게 도는 빛살 + 떠다니는 은은한 번짐 */}
         <div className="vx-aura" aria-hidden="true">
-          <span className="vx-rays" />
           <span className="vx-glow1" />
           <span className="vx-glow2" />
           <span className="vx-glow3" />
