@@ -35,7 +35,10 @@ export const resumeStyles = `
   left:50%;bottom:-16px;width:56%;height:52px;translate:-50% 0;
   background:radial-gradient(50% 50% at 50% 50%,rgba(36,54,90,.16),rgba(36,54,90,0) 70%);
   pointer-events:none}
-.rs-figure .hx-stage{right:auto;left:50%;transform:translateX(-50%);z-index:1}
+/* 인물 배율 — 발이 바닥에 붙은 채로 커지도록 기준점을 아래 가운데에 둡니다 */
+.rs-figure .hx-stage{right:auto;left:50%;z-index:1;
+  transform-origin:center bottom;
+  transform:translateX(-50%) scale(var(--rs-zoom,1))}
 
 /* 글 칸 */
 .rs-info{position:relative;z-index:2;display:flex;flex-direction:column;

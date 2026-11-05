@@ -75,7 +75,10 @@ export default async function ProfileLabPage({
 
         {/* ── 상단: 이력서형 ── */}
         <section className="rs-hero">
-          <div className="rs-figure">
+          <div
+            className="rs-figure"
+            style={{ "--rs-zoom": doc.heroZoom ?? 1 } as CSSProperties}
+          >
             {hero && (
               /* 인물 히어로 — 얼굴 크기·눈높이 보정은 globals 의 .hx-* 가 합니다.
                  source 순서는 반드시 mov → webm (사파리가 webm 투명을 못 그립니다) */
