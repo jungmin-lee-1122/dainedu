@@ -14,6 +14,9 @@ import { photo, photoSet } from "@/lib/img";
 import { facultyVideo } from "@/lib/facultyVideo";
 import { facultyPose, facultyAnimDir, animPath, poseVars } from "@/lib/facultyAnim";
 import { teacherPlan, planPage } from "@/lib/teacherPlan";
+import { planDocByName } from "@/lib/planDoc";
+import { planDocStyles } from "@/lib/planDocStyles";
+import PlanSection from "../../PlanSection";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -54,7 +57,11 @@ export default async function TeacherDetailPage({
     ? query.subject
     : current.subject;
   const activeView = query.view === "courses" ? "courses" : "intro";
-  /* 선생님이 주신 연간 계획서 — 없으면 섹션이 통째로 빠집니다 */
+  /* 연간 계획서
+     planDoc   = 다인에듀 공통 서식으로 정리한 내용 (우선)
+     planPages = 선생님이 주신 원본 PDF 를 쪽마다 이미지로 뜬 것 (접어 둡니다)
+     둘 다 없으면 섹션이 통째로 빠집니다. */
+  const planDoc = planDocByName(current.name);
   const plan = teacherPlan(current.name);
   const group = activeSubject === "전체"
     ? teachers
@@ -219,44 +226,53 @@ export default async function TeacherDetailPage({
             </div>
           </article>
 
-          {/* ── 연간 계획서 ── 선생님이 주신 자료를 쪽마다 그대로 보여 줍니다.
-              휴대폰에서는 표 글씨가 작으니 눌러서 원본 크기로 열 수 있게 했습니다. */}
-          {plan && (
-            <section className="td-plan" id="plan">
-              <div className="td-plan-head">
-                <p className="td-plan-tag">Annual Plan</p>
-                <h3 className="td-plan-title">{plan.title}</h3>
-                {plan.desc && <p className="td-plan-desc">{plan.desc}</p>}
-              </div>
+          {/* ── 연간 계획서 ── 큰 애니메이션 바로 아래에 붙습니다.
+              공통 서식(HTML)을 먼저 보여 주고, 선생님이 주신 원본 PDF 이미지는
+              아래에 접어 둡니다. 원하는 분만 펼쳐 보면 됩니다. */}
+          {(planDoc || plan) && (
+            <section className="td-plan pl" id="plan">
+              <style dangerouslySetInnerHTML={{ __html: planDocStyles }} />
 
-              <div className="td-plan-pages">
-                {Array.from({ length: plan.pages }, (_, i) => (
-                  <a
-                    className="td-plan-page"
-                    href={planPage(plan.dir, i + 1)}
-                    target="_blank"
-                    rel="noreferrer"
-                    key={i}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={planPage(plan.dir, i + 1)}
-                      alt={`${current.name} 선생님 연간 계획서 ${i + 1}쪽`}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="td-plan-zoom" aria-hidden="true">
-                      크게 보기 ↗
-                    </span>
-                  </a>
-                ))}
-              </div>
+              {planDoc && <PlanSection doc={planDoc} showTitle />}
 
-              <p className="td-plan-foot">
-                상기 일정은 학사 일정에 따라 변동될 수 있으며, 변동 시 사전에 안내해 드립니다.
-                <br />
-                과정별 교재 · 주간지 · 모의고사 비용은 교습비와 별도이며 자세한 내용은 학원으로 문의해 주세요.
-              </p>
+              {plan && (
+                <details className="td-plan-raw">
+                  <summary>
+                    {planDoc ? "선생님이 주신 원본 계획서 보기" : plan.title}
+                    <i aria-hidden="true">＋</i>
+                  </summary>
+                  <div className="td-plan-pages">
+                    {Array.from({ length: plan.pages }, (_, i) => (
+                      <a
+                        className="td-plan-page"
+                        href={planPage(plan.dir, i + 1)}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={i}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={planPage(plan.dir, i + 1)}
+                          alt={`${current.name} 선생님 연간 계획서 ${i + 1}쪽`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span className="td-plan-zoom" aria-hidden="true">
+                          크게 보기 ↗
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              )}
+
+              {!planDoc && plan && (
+                <p className="td-plan-foot">
+                  상기 일정은 학사 일정에 따라 변동될 수 있으며, 변동 시 사전에 안내해 드립니다.
+                  <br />
+                  과정별 교재 · 주간지 · 모의고사 비용은 교습비와 별도이며 자세한 내용은 학원으로 문의해 주세요.
+                </p>
+              )}
             </section>
           )}
 

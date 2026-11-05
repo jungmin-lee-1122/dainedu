@@ -5129,23 +5129,29 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 /* 마지막 수정 2026-11-04 18:49 — 배포 갱신용 */
 
 /* ═══════════════════════════════════════════════════════════
-   67) 강사 연간 계획서 (/teachers/[id] — lib/teacherPlan.ts)
-   선생님이 주신 PDF 를 쪽마다 그대로 보여 줍니다.
-   휴대폰에서는 A4 표 글씨가 작아, 눌러서 원본 크기로 열 수 있게 합니다.
+   67) 강사 연간 계획서 (/teachers/[id])
+   큰 애니메이션 바로 아래에 붙습니다.
+   · 공통 서식(HTML) 쪽 모양은 lib/planDocStyles.ts 에 있습니다.
+   · 여기에는 "원본 계획서 보기" 접이식과 쪽 이미지만 둡니다.
    ═══════════════════════════════════════════════════════════ */
 .td-plan{margin:46px 0 0;padding:34px 0 0;border-top:1px solid var(--dn-line)}
-.td-plan-head{margin-bottom:22px}
-.td-plan-tag{display:inline-block;margin:0 0 10px;padding:5px 12px;border-radius:999px;
-  background:rgba(36,54,90,.07);color:var(--dn-navy);
-  font-size:11px;font-weight:800;letter-spacing:.1em}
-.td-plan-title{margin:0;font-size:clamp(20px,2.4vw,26px);font-weight:900;
-  letter-spacing:-.035em;color:var(--dn-deep)}
-.td-plan-desc{margin:9px 0 0;font-size:14px;line-height:1.75;
-  color:var(--dn-ink-soft);word-break:keep-all}
 
-.td-plan-pages{display:flex;flex-direction:column;gap:16px}
+/* 원본 PDF 쪽 이미지 — 평소에는 접어 둡니다 */
+.td-plan-raw{margin-top:34px;border:1px solid var(--dn-line);border-radius:14px;
+  background:#FCFDFE;overflow:hidden}
+.td-plan-raw>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:17px 20px;cursor:pointer;list-style:none;
+  font-size:14px;font-weight:800;color:var(--dn-navy);letter-spacing:-.02em}
+.td-plan-raw>summary::-webkit-details-marker{display:none}
+.td-plan-raw>summary:hover{background:#F6F8FC}
+.td-plan-raw>summary i{flex:0 0 auto;font-style:normal;font-size:15px;color:var(--dn-gold);
+  transition:transform .25s ease}
+.td-plan-raw[open]>summary{border-bottom:1px solid var(--dn-line)}
+.td-plan-raw[open]>summary i{transform:rotate(45deg)}
+
+.td-plan-pages{display:flex;flex-direction:column;gap:16px;padding:16px}
 .td-plan-page{position:relative;display:block;overflow:hidden;
-  border:1px solid var(--dn-line);border-radius:14px;background:#fff;
+  border:1px solid var(--dn-line);border-radius:12px;background:#fff;
   box-shadow:0 14px 34px -26px rgba(16,25,46,.45);
   transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
 .td-plan-page:hover{transform:translateY(-2px);border-color:#c0994f66;
@@ -5167,8 +5173,9 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 
 @media(max-width:900px){
   .td-plan{margin-top:34px;padding-top:26px}
-  .td-plan-pages{gap:12px}
-  .td-plan-page{border-radius:11px}
+  .td-plan-raw>summary{padding:15px 16px;font-size:13px}
+  .td-plan-pages{gap:12px;padding:12px}
+  .td-plan-page{border-radius:10px}
   /* 손가락 기기에서는 호버가 없으니 안내를 늘 보이게 둡니다 */
   .td-plan-zoom{right:9px;bottom:9px;padding:6px 12px;font-size:11px;opacity:.82}
   .td-plan-foot{font-size:11.5px}
