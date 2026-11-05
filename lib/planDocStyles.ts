@@ -76,44 +76,41 @@ export const planDocStyles = `
 @media(prefers-reduced-motion:reduce){ .pl-road-ring{animation:none;opacity:.35} }
 
 .pl-road{overflow-x:auto;border-radius:inherit;background:transparent;scrollbar-width:thin}
-.pl-road-in{min-width:760px;padding:22px 24px 20px}
-.pl-road-row{display:grid;align-items:stretch;gap:0}
+.pl-road-in{min-width:760px;padding:14px}
+.pl-road-row{display:grid;align-items:stretch;gap:5px;padding:2.5px 0}
 
-/* 머리줄 — 월. 바탕색 없이 글자만, 아래에 가는 선 하나 */
-.pl-road-row.is-head{margin-bottom:6px;border-bottom:1px solid rgba(36,54,90,.14)}
-.pl-road-corner{min-height:30px}
+/* 머리줄 — 월. 첫 행은 짙은 남색 칸, 글자는 가운데 정렬 */
+.pl-road-corner{min-height:38px}
 .pl-road-month{display:flex;align-items:center;justify-content:center;
-  min-height:30px;padding-bottom:7px;
-  font-size:11.5px;font-weight:700;letter-spacing:.01em;color:#78819A;
+  min-height:38px;border-radius:8px;
+  background:linear-gradient(180deg,#2B3B5E,#22304E);
+  font-size:12px;font-weight:800;letter-spacing:-.01em;color:#fff;
   font-variant-numeric:tabular-nums}
 
-/* 첫 열 — 과정 이름. 칩을 없애고 글자와 세로 괘선만 */
-.pl-road-label{position:relative;display:flex;align-items:center;
-  padding:0 18px 0 2px;min-height:44px;
-  border-right:1px solid rgba(36,54,90,.14);
-  font-size:12.5px;font-weight:800;letter-spacing:-.025em;color:var(--pl-deep);
-  word-break:keep-all;line-height:1.3}
+/* 첫 열 — 과정 이름. 남색 칸 */
+.pl-road-label{display:flex;align-items:center;justify-content:center;
+  padding:0 10px;min-height:46px;border-radius:8px;
+  background:linear-gradient(145deg,#33497A,var(--pl-navy));
+  color:#fff;font-size:12px;font-weight:800;letter-spacing:-.025em;
+  text-align:center;word-break:keep-all;line-height:1.3}
 
-/* 본문 칸 — 바탕 없이 가는 세로 괘선만 */
-.pl-road-cell{position:relative;min-height:44px;
-  box-shadow:inset -1px 0 0 rgba(36,54,90,.05)}
-.pl-road-row:not(.is-head){box-shadow:inset 0 -1px 0 rgba(36,54,90,.055)}
-.pl-road-row:last-child{box-shadow:none}
+/* 본문 빈 칸 */
+.pl-road-cell{position:relative;min-height:46px;border-radius:8px;background:#F1F3F8}
 
-/* 진행 띠 — 칸 안에 살짝 떠 있게 */
+/* 진행 띠 */
 .pl-road-bar{display:flex;align-items:center;justify-content:center;
-  margin:4px 3px;padding:6px 12px;border-radius:7px;min-height:36px;
+  padding:7px 12px;border-radius:8px;min-height:46px;
   background:linear-gradient(135deg,#2C4169,#1A294A);
-  color:#fff;font-size:11.5px;font-weight:700;line-height:1.35;
+  color:#fff;font-size:12px;font-weight:700;line-height:1.35;
   letter-spacing:-.02em;text-align:center;word-break:keep-all;
   transform-origin:left center}
 /* 수업 없이 과제로 가는 과정 — 선만 */
 .pl-road-bar.is-line{background:#fff;color:#9A7B37;
-  box-shadow:inset 0 0 0 1px rgba(192,153,79,.5)}
+  box-shadow:inset 0 0 0 1.5px rgba(192,153,79,.55)}
 
 /* ── 화면에 들어오면 띠가 차례로 차오릅니다 ──
    is-armed 는 스크립트가 붙입니다. 스크립트가 없으면 그냥 다 보입니다. */
-.pl-road-frame.is-armed .pl-road-bar{opacity:0}
+.pl-road-frame.is-armed:not(.is-in) .pl-road-bar{opacity:0}
 .pl-road-frame.is-armed.is-in .pl-road-bar{
   animation:plBarIn .66s cubic-bezier(.2,1.12,.34,1) backwards;
   animation-delay:calc(var(--d,0) * 46ms)}
@@ -123,7 +120,7 @@ export const planDocStyles = `
   100%{opacity:1;transform:none}
 }
 /* 과정 이름도 아주 살짝 따라 올라옵니다 */
-.pl-road-frame.is-armed .pl-road-label{opacity:0}
+.pl-road-frame.is-armed:not(.is-in) .pl-road-label{opacity:0}
 .pl-road-frame.is-armed.is-in .pl-road-label{
   animation:plLabelIn .5s ease backwards;
   animation-delay:calc(var(--r,0) * 46ms)}
