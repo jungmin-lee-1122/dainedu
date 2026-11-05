@@ -49,23 +49,86 @@ export const planDocStyles = `
   letter-spacing:-.035em;color:var(--pl-deep)}
 .pl-lead{margin:0 0 24px;font-size:13.5px;line-height:1.8;color:var(--pl-mut);word-break:keep-all}
 
-/* ── ① 연간 로드맵 ── */
-.pl-road{overflow-x:auto;border:1px solid var(--pl-line);border-radius:16px;background:#fff;
-  scrollbar-width:thin}
-.pl-road-in{min-width:760px;padding:4px}
-.pl-road-row{display:grid;align-items:stretch;gap:4px;padding:3px 4px}
-.pl-road-row:first-child .pl-road-cell{background:var(--pl-deep);color:#fff;
-  font-size:11.5px;font-weight:800;border-radius:7px;padding:8px 0;text-align:center}
-.pl-road-label{display:flex;align-items:center;justify-content:center;
-  padding:0 10px;border-radius:7px;background:var(--pl-navy);color:#fff;
-  font-size:12px;font-weight:800;text-align:center;letter-spacing:-.02em;min-height:44px}
-.pl-road-cell{position:relative;background:#F1F3F8;border-radius:7px;min-height:44px}
+/* ── ① 연간 로드맵 ──
+   칸마다 회색 상자를 깔면 보드게임판처럼 보입니다.
+   바탕은 흰 종이로 두고 가는 괘선만 긋습니다. 띠만 떠 있는 편집물 느낌. */
+@property --pl-ring{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes plRingTurn{ from{--pl-ring:0deg} to{--pl-ring:360deg} }
+
+.pl-road-frame{position:relative;border-radius:16px;background:#fff;
+  box-shadow:0 24px 56px -42px rgba(16,25,46,.4),
+             inset 0 0 0 1px rgba(36,54,90,.09)}
+/* 처음엔 한 바퀴 훑고, 그 뒤로는 아주 느리게 계속 돕니다 */
+.pl-road-ring{position:absolute;inset:0;z-index:4;pointer-events:none;
+  border-radius:inherit;padding:1.4px;
+  background:conic-gradient(from var(--pl-ring),
+    rgba(192,153,79,0) 0deg,
+    rgba(192,153,79,0) 214deg,
+    rgba(192,153,79,.32) 284deg,
+    rgba(240,226,197,.85) 322deg,
+    rgba(127,180,255,.4) 346deg,
+    rgba(192,153,79,0) 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:plRingTurn 2.4s cubic-bezier(.25,.62,.25,1) .3s both,
+            plRingTurn 24s linear 2.8s infinite}
+@media(prefers-reduced-motion:reduce){ .pl-road-ring{animation:none;opacity:.35} }
+
+.pl-road{overflow-x:auto;border-radius:inherit;background:transparent;scrollbar-width:thin}
+.pl-road-in{min-width:760px;padding:22px 24px 20px}
+.pl-road-row{display:grid;align-items:stretch;gap:0}
+
+/* 머리줄 — 월. 바탕색 없이 글자만, 아래에 가는 선 하나 */
+.pl-road-row.is-head{margin-bottom:6px;border-bottom:1px solid rgba(36,54,90,.14)}
+.pl-road-corner{min-height:30px}
+.pl-road-month{display:flex;align-items:center;justify-content:center;
+  min-height:30px;padding-bottom:7px;
+  font-size:11.5px;font-weight:700;letter-spacing:.01em;color:#78819A;
+  font-variant-numeric:tabular-nums}
+
+/* 첫 열 — 과정 이름. 칩을 없애고 글자와 세로 괘선만 */
+.pl-road-label{position:relative;display:flex;align-items:center;
+  padding:0 18px 0 2px;min-height:44px;
+  border-right:1px solid rgba(36,54,90,.14);
+  font-size:12.5px;font-weight:800;letter-spacing:-.025em;color:var(--pl-deep);
+  word-break:keep-all;line-height:1.3}
+
+/* 본문 칸 — 바탕 없이 가는 세로 괘선만 */
+.pl-road-cell{position:relative;min-height:44px;
+  box-shadow:inset -1px 0 0 rgba(36,54,90,.05)}
+.pl-road-row:not(.is-head){box-shadow:inset 0 -1px 0 rgba(36,54,90,.055)}
+.pl-road-row:last-child{box-shadow:none}
+
+/* 진행 띠 — 칸 안에 살짝 떠 있게 */
 .pl-road-bar{display:flex;align-items:center;justify-content:center;
-  padding:6px 10px;border-radius:7px;min-height:44px;
-  background:linear-gradient(135deg,#2E4470,var(--pl-navy));
+  margin:4px 3px;padding:6px 12px;border-radius:7px;min-height:36px;
+  background:linear-gradient(135deg,#2C4169,#1A294A);
   color:#fff;font-size:11.5px;font-weight:700;line-height:1.35;
-  text-align:center;word-break:keep-all}
-.pl-road-bar.is-line{background:#fff;border:1.5px solid var(--pl-gold);color:#8A6F30}
+  letter-spacing:-.02em;text-align:center;word-break:keep-all;
+  transform-origin:left center}
+/* 수업 없이 과제로 가는 과정 — 선만 */
+.pl-road-bar.is-line{background:#fff;color:#9A7B37;
+  box-shadow:inset 0 0 0 1px rgba(192,153,79,.5)}
+
+/* ── 화면에 들어오면 띠가 차례로 차오릅니다 ──
+   is-armed 는 스크립트가 붙입니다. 스크립트가 없으면 그냥 다 보입니다. */
+.pl-road-frame.is-armed .pl-road-bar{opacity:0}
+.pl-road-frame.is-armed.is-in .pl-road-bar{
+  animation:plBarIn .66s cubic-bezier(.2,1.12,.34,1) backwards;
+  animation-delay:calc(var(--d,0) * 46ms)}
+@keyframes plBarIn{
+  0%  {opacity:0;transform:translateY(7px) scaleX(.45) scaleY(.72)}
+  58% {opacity:1;transform:translateY(0)   scaleX(1.03) scaleY(1.05)}
+  100%{opacity:1;transform:none}
+}
+/* 과정 이름도 아주 살짝 따라 올라옵니다 */
+.pl-road-frame.is-armed .pl-road-label{opacity:0}
+.pl-road-frame.is-armed.is-in .pl-road-label{
+  animation:plLabelIn .5s ease backwards;
+  animation-delay:calc(var(--r,0) * 46ms)}
+@keyframes plLabelIn{ from{opacity:0;transform:translateX(-6px)} to{opacity:1;transform:none} }
+
 .pl-road-hint{margin:10px 0 0;font-size:11.5px;color:#9AA1AE}
 
 /* ── ② 단계별 과정 ── */

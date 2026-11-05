@@ -14,7 +14,10 @@
 //  ※ 스타일은 lib/planDocStyles.ts 안에만 있습니다(globals.css 무관).
 //    바깥에 .pl 클래스를 한 번 걸어 주면 그 안에서만 적용됩니다.
 // ═══════════════════════════════════════════════════════════
+import type { CSSProperties } from "react";
+import Script from "next/script";
 import type { PlanDoc } from "@/lib/planDoc";
+import { planRevealScript } from "@/lib/planRevealScript";
 
 export default function PlanSection({
   doc,
@@ -53,16 +56,20 @@ export default function PlanSection({
           테두리만 있는 칸은 수업 없이 과제로 진행되거나 병행되는 과정입니다.
         </p>
 
-        <div className="pl-road">
-          <div className="pl-road-in">
-            <div className="pl-road-row" style={grid}>
-              <div className="pl-road-cell" aria-hidden="true" />
+        {/* 테두리를 도는 빛은 바깥 틀에 둡니다 — 안쪽은 옆으로 밀리는 칸이라
+            여기에 두면 빛이 같이 밀려 버립니다 */}
+        <div className="pl-road-frame">
+          <span className="pl-road-ring" aria-hidden="true" />
+          <div className="pl-road">
+            <div className="pl-road-in">
+            <div className="pl-road-row is-head" style={grid}>
+              <div className="pl-road-corner" aria-hidden="true" />
               {doc.roadmap.months.map((m) => (
-                <div className="pl-road-cell" key={m}>{m}</div>
+                <div className="pl-road-month" key={m}>{m}</div>
               ))}
             </div>
 
-            {doc.roadmap.rows.map((row) => {
+            {doc.roadmap.rows.map((row, ri) => {
               /* 달마다 무엇이 들어가는지 미리 칸을 채워 둡니다 */
               const slots: (null | { bar: (typeof row.bars)[number]; span: number })[] =
                 Array(cols).fill(null);
@@ -74,7 +81,13 @@ export default function PlanSection({
 
               return (
                 <div className="pl-road-row" style={grid} key={row.label}>
-                  <div className="pl-road-label">{row.label}</div>
+                  {/* --r / --d 는 차례로 차오르는 순서입니다 (왼쪽 → 오른쪽, 위 → 아래) */}
+                  <div
+                    className="pl-road-label"
+                    style={{ "--r": ri } as CSSProperties}
+                  >
+                    {row.label}
+                  </div>
                   {Array.from({ length: cols }, (_, i) => {
                     if (skip.has(i)) return null;
                     const s = slots[i];
@@ -82,7 +95,10 @@ export default function PlanSection({
                     return (
                       <div
                         className={`pl-road-bar${s.bar.tone === "line" ? " is-line" : ""}`}
-                        style={{ gridColumn: `span ${s.span}` }}
+                        style={{
+                          gridColumn: `span ${s.span}`,
+                          "--d": ri * 1.6 + i,
+                        } as CSSProperties}
                         key={i}
                       >
                         {s.bar.text}
@@ -91,7 +107,8 @@ export default function PlanSection({
                   })}
                 </div>
               );
-            })}
+              })}
+            </div>
           </div>
         </div>
         <p className="pl-road-hint">※ 화면이 좁으면 표를 옆으로 밀어서 보실 수 있습니다.</p>
@@ -157,6 +174,11 @@ export default function PlanSection({
           ))}
         </ul>
       </section>
+
+      {/* 스크롤해서 보이면 띠가 차례로 차오릅니다 */}
+      <Script id="plan-reveal" strategy="afterInteractive">
+        {planRevealScript}
+      </Script>
 
       {/* ── 05 안내 ── */}
       <section className="pl-sec">
