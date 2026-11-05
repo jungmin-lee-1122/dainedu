@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 /** 원통 한 층에 몇 장 / 몇 층 — 원본(15장 × 여러 층)과 같은 간격입니다 */
 const PER_RING = 15;
-const LEVELS = 6;
+const LEVELS = 5;
 const TOTAL = PER_RING * LEVELS;
 
 export default async function WinterFacultyLabPage() {
@@ -116,38 +116,55 @@ export default async function WinterFacultyLabPage() {
             </a>
           ))}
 
-          {/* 한가운데 크게 떠 있는 카드 — 흐름에 맞춰 선생님이 바뀝니다 */}
+          {/* 한가운데 크게 떠 있는 카드 — 흐름에 맞춰 선생님이 바뀝니다.
+              선생님 수만큼 쌓아 두면 무거워서, 앞뒤 두 장만 두고
+              스크립트가 번갈아 내용을 바꿔 끼웁니다. */}
           <div className="vx-focus" id="vxFocus">
-            {list.map((t, i) => (
-              <div
-                className={`vx-focus-img${i === 0 ? " is-on" : ""}`}
-                data-fi={i}
-                key={t.id}
-              >
-                {t.photo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
+            {[0, 1].map((slotIndex) => {
+              const t = slotIndex === 0 ? list[0] : undefined;
+              return (
+                <div
+                  className={`vx-focus-face${slotIndex === 0 ? " is-on" : ""}`}
+                  key={slotIndex}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={photo(t.photo, 640)}
-                    srcSet={photoSet(t.photo, 640)}
-                    alt={`${t.name} 선생님`}
+                    src={t?.photo ? photo(t.photo, 512) : ""}
+                    alt={t ? `${t.name} 선생님` : ""}
                     decoding="async"
                     draggable={false}
                   />
-                ) : null}
-                <span className="vx-focus-txt">
-                  <span className="vx-focus-sub">{t.subject}</span>
-                  <span className="vx-focus-name">{t.name}</span>
-                  {t.school && (
-                    <span className="vx-focus-school">{shortSchool(t.school)}</span>
-                  )}
-                </span>
-              </div>
-            ))}
+                  <span className="vx-focus-txt">
+                    <span className="vx-focus-sub">{t?.subject ?? ""}</span>
+                    <span className="vx-focus-name">{t?.name ?? ""}</span>
+                    <span className="vx-focus-school">
+                      {t?.school ? shortSchool(t.school) : ""}
+                    </span>
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         <div className="vx-fade" aria-hidden="true" />
         <p className="vx-hint">휠을 굴리거나 위아래로 끌어 보세요</p>
+
+        {/* 한가운데 카드가 바꿔 끼울 선생님 목록 */}
+        <script
+          type="application/json"
+          id="vxData"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              list.map((t) => ({
+                name: t.name,
+                subject: t.subject,
+                school: t.school ? shortSchool(t.school) : "",
+                photo: t.photo ? photo(t.photo, 512) : "",
+              })),
+            ).replace(/</g, "\\u003c"),
+          }}
+        />
       </div>
 
       <p className="vxl-foot">

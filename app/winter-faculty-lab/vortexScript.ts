@@ -55,27 +55,57 @@ export const vortexScript = `
   /* ── 펼쳐지며 등장 ──
      스크롤해서 이 섹션이 보이면, 사진들이 한가운데에서 바깥으로
      차례차례 날아가 원통 벽에 붙습니다. */
-  var IN_STAGGER = 0.95;  /* 첫 장과 마지막 장 사이의 시간차(초) */
-  var IN_DUR     = 1.15;  /* 한 장이 제자리를 찾는 데 걸리는 시간(초) */
-  var IN_SPIN    = 2.1;   /* 날아오면서 함께 돌아가는 각도(라디안) */
+  var IN_STAGGER = 1.25;  /* 첫 장과 마지막 장 사이의 시간차(초) */
+  var IN_DUR     = 1.35;  /* 한 장이 제자리를 찾는 데 걸리는 시간(초) */
+  var IN_SPIN    = 0.55;  /* 날아오면서 함께 돌아가는 각도(라디안) */
+  var IN_FROM    = 0.34;  /* 처음 반지름 (1 = 제자리). 0 이면 한 점에 뭉쳐 어지럽습니다 */
 
   var intro = { armed:false, t0:0, done:false };
 
-  function easeOut(x){ var k = 1 - x; return 1 - k*k*k; }
-  /* 벽에 닿을 때 살짝 지나쳤다가 제자리로 — 탄력 있는 느낌 */
-  function backOut(x){ var k = x - 1; return 1 + 2.0*k*k*k + 1.1*k*k; }
+  /* 끝에서 아주 부드럽게 멎습니다. 튕기는 맛(backOut)을 쓰면
+     90장이 동시에 출렁여서 정신이 없었습니다. */
+  function easeOut(x){ var k = 1 - x; return 1 - k*k*k*k*k; }
 
-  var H=0, P=0;
+  var H=0, W=0, P=0;
   var pos = { target:0, current:0, speedTarget:0, speedCurrent:0, dir:1 };
-  var focusCount = parseInt(stage.getAttribute("data-count"), 10) || 1;
-  var shownFocus = -1;
   var dragging=false, lastY=0, moved=0;
+
+  /* ── 한가운데 카드 ──
+     선생님 수만큼 사진을 겹쳐 두면(20장이면 20장) 전부 메모리에 올라가
+     프레임이 끊깁니다. 앞뒤 두 장만 두고 번갈아 바꿔 끼웁니다.
+     사진 주소는 타일과 같아서 이미 받아 둔 것을 다시 씁니다. */
+  var people = [];
+  try {
+    var box = document.getElementById("vxData");
+    if(box) people = JSON.parse(box.textContent || "[]");
+  } catch(err) { people = []; }
+
+  var faces = focus ? focus.querySelectorAll(".vx-focus-face") : [];
+  var slot = 0, shownFocus = 0, lastSwap = 0;
+
+  function swapFocus(i){
+    var p = people[i];
+    if(!p) return;
+    shownFocus = i;
+    var next = faces[1 - slot];
+    var img = next.querySelector("img");
+    if(img && img.getAttribute("src") !== p.photo){
+      img.setAttribute("src", p.photo);
+      img.setAttribute("alt", p.name + " 선생님");
+    }
+    next.querySelector(".vx-focus-sub").textContent = p.subject || "";
+    next.querySelector(".vx-focus-name").textContent = p.name || "";
+    next.querySelector(".vx-focus-school").textContent = p.school || "";
+    next.classList.add("is-on");
+    faces[slot].classList.remove("is-on");
+    slot = 1 - slot;
+  }
 
   function mod(a,b){ return ((a % b) + b) % b; }
 
   function measure(){
     var r = stage.getBoundingClientRect();
-    H = r.height;
+    H = r.height; W = r.width;
     /* three.js PerspectiveCamera 와 같은 원근: P = (화면높이/2) / tan(화각/2) */
     P = (H/2) / Math.tan(FOV/2 * Math.PI/180);
     stage.style.perspective = P.toFixed(1) + "px";
@@ -120,9 +150,9 @@ export const vortexScript = `
           continue;
         }
       }
-      var pe = easeOut(p);          /* 높이·투명도 */
-      var pr = backOut(p);          /* 반지름 — 살짝 지나쳤다 돌아옵니다 */
-      var radius = RADIUS * pr;
+      var pe = easeOut(p);
+      /* 한 점이 아니라 작은 고리에서 시작해 부드럽게 벌어집니다 */
+      var radius = RADIUS * (IN_FROM + (1 - IN_FROM) * pe);
 
       /* 원본과 같은 나선 배치: 각도는 전체 개수로 고르게, 높이는 층으로 */
       var theta = (d / TOTAL) * Math.PI * 2 + twist * levelSpeed[L]
@@ -138,8 +168,19 @@ export const vortexScript = `
       /* 카메라에서 얼마나 멀리 있나 (카메라는 +Z 쪽 CAM_Z 에서 -Z 를 봅니다) */
       var dist = CAM_Z - wz;
 
-      /* 카메라 뒤 또는 코앞은 그리지 않습니다 */
-      if(dist < 1.2){
+      /* ── 안 보이는 것은 아예 그리지 않습니다 ──
+         원통은 한 바퀴가 다 있지만, 실제로 화면에 걸리는 건 1/3 남짓입니다.
+         나머지까지 매 프레임 그리면 끊깁니다. */
+      var hide = dist < 1.2;
+      if(!hide){
+        var sx = wx * P / dist;                       /* 화면 중앙 기준 가로 위치 */
+        var sy = -wy * P / dist;                      /* 세로 위치 */
+        var hw = CARD_W * P / (2 * dist);             /* 화면에 찍히는 반쪽 너비 */
+        var hh = (CARD_W / ASPECT) * P / (2 * dist);
+        if(sx > W/2 + hw || sx < -W/2 - hw ||
+           sy > H/2 + hh || sy < -H/2 - hh) hide = true;
+      }
+      if(hide){
         if(!t._off){ t.style.display = "none"; t._off = 1; }
         continue;
       }
@@ -165,15 +206,13 @@ export const vortexScript = `
       intro.done = true;
     }
 
-    /* 한가운데 카드에 보일 선생님 바꾸기 — 겹쳐 두고 서서히 바뀝니다 */
-    if(focus && focusCount > 1){
-      var idx = Math.abs(Math.floor(pos.speedTarget % focusCount));
-      if(idx !== shownFocus){
-        shownFocus = idx;
-        var src = focus.querySelectorAll("[data-fi]");
-        for(var k=0;k<src.length;k++){
-          src[k].classList.toggle("is-on", +src[k].getAttribute("data-fi") === idx);
-        }
+    /* 한가운데 카드에 보일 선생님 바꾸기 */
+    if(faces.length === 2 && people.length > 1){
+      var idx = Math.abs(Math.floor(pos.speedTarget % people.length));
+      /* 빠르게 끌면 번호가 마구 튀어 깜박거립니다 — 최소 간격을 둡니다 */
+      if(idx !== shownFocus && now - lastSwap > 900){
+        lastSwap = now;
+        swapFocus(idx);
       }
     }
   }

@@ -127,10 +127,11 @@ export const vortexStyles = `
   text-decoration:none;color:inherit;
   transform-style:preserve-3d}
 /* 선생님이 바뀔 때 깜박이지 않도록 겹쳐 두고 서서히 바꿉니다 */
-.vx-focus-img{position:absolute;inset:0;opacity:0;pointer-events:none;
+.vx-focus-face{position:absolute;inset:0;opacity:0;pointer-events:none;
   transition:opacity 1s cubic-bezier(.4,0,.2,1)}
-.vx-focus-img.is-on{opacity:1;pointer-events:auto}
-.vx-focus-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.vx-focus-face.is-on{opacity:1;pointer-events:auto}
+.vx-focus-face>img{position:absolute;inset:0}
+.vx-focus-face img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .vx-focus-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;
   padding:44px 16px 15px;
   background:linear-gradient(180deg,rgba(8,13,26,0),rgba(8,13,26,.9) 55%,rgba(8,13,26,.97));
