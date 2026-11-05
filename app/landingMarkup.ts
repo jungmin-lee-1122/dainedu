@@ -182,7 +182,7 @@ export const landingMarkup = `
     </div>
   </footer>
   ${quickMenuMarkup}
-  <audio id="bgm" src="/bgm.m4a" loop preload="auto"></audio>
+  <audio id="bgm" src="/bgm-logo.mp3" loop preload="auto"></audio>
   <button class="dn-bgm" id="bgmBtn" type="button" aria-label="배경음악 켜기/끄기"><svg class="dn-bgm-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 8.5a4.5 4.5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="dn-bgm-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </main>
 `;

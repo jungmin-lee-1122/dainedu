@@ -213,7 +213,42 @@ export const landingScript = `/* ===============================================
 
 (function(){/* ===== 화면 폭에 비례해 전체 배율 조정 (기준 1440px = 맥북에어) ===== */function fit(){var el=document.documentElement,w=window.innerWidth;if(w<1024){el.style.zoom="";return;}var z=w/1440;z=Math.max(1,Math.min(z,2));el.style.zoom=z;}fit();window.addEventListener("resize",fit);})();
 (function(){var els=document.querySelectorAll(".js-clock");if(!els.length)return;function p(x){return (x<10?"0":"")+x;}function tick(){var d=new Date();var t=p(d.getHours())+":"+p(d.getMinutes())+":"+p(d.getSeconds());for(var i=0;i<els.length;i++)els[i].textContent=t;}tick();setInterval(tick,1000);})();
-(function(){var a=document.getElementById("bgm"),b=document.getElementById("bgmBtn");if(!a||!b)return;a.volume=0.35;var stopped=false;function play(){b.classList.remove("is-off");var pr=a.play();if(pr&&pr.catch)pr.catch(function(){});}function stop(){b.classList.add("is-off");a.pause();}b.addEventListener("click",function(){if(a.paused){stopped=false;play();}else{stopped=true;stop();}});function kick(){if(!stopped&&a.paused)play();document.removeEventListener("pointerdown",kick);}document.addEventListener("pointerdown",kick,{once:true});play();})();
+/* ── 배경음악 (로고송) ──
+   · 잔잔하게 깔리도록 볼륨을 아주 낮게 두고, 켜질 때 2초에 걸쳐 서서히 올립니다.
+     (갑자기 터져 나오면 놀랍니다)
+   · 브라우저는 사용자가 한 번 누르기 전에는 소리를 막습니다.
+     그래서 첫 클릭·터치 때 한 번 더 시도합니다.
+   · 볼륨을 바꾸려면 VOL 숫자만 고치면 됩니다. (0 ~ 1) */
+(function(){
+  var a=document.getElementById("bgm"), b=document.getElementById("bgmBtn");
+  if(!a||!b) return;
+  var VOL=0.1, FADE=2000, stopped=false, timer=null;
+
+  function fadeTo(target){
+    clearInterval(timer);
+    var from=a.volume, t0=Date.now();
+    timer=setInterval(function(){
+      var k=Math.min(1,(Date.now()-t0)/FADE);
+      a.volume=from+(target-from)*k;
+      if(k>=1) clearInterval(timer);
+    },50);
+  }
+  function play(){
+    b.classList.remove("is-off");
+    a.volume=0;
+    var pr=a.play();
+    if(pr&&pr.catch) pr.catch(function(){});
+    fadeTo(VOL);
+  }
+  function stop(){ b.classList.add("is-off"); clearInterval(timer); a.pause(); }
+
+  b.addEventListener("click",function(){
+    if(a.paused){ stopped=false; play(); } else { stopped=true; stop(); }
+  });
+  function kick(){ if(!stopped&&a.paused) play(); document.removeEventListener("pointerdown",kick); }
+  document.addEventListener("pointerdown",kick,{once:true});
+  play();
+})();
 (function(){var w=document.querySelector(".dn-foot-tel-wrap");if(!w)return;var btn=w.querySelector(".dn-foot-tel");btn.addEventListener("click",function(e){e.stopPropagation();var open=w.classList.toggle("is-open");btn.setAttribute("aria-expanded",open?"true":"false");});document.addEventListener("click",function(e){if(!w.contains(e.target)){w.classList.remove("is-open");btn.setAttribute("aria-expanded","false");}});})();
 (function(){var t=document.querySelector(".dn-quick-top");if(!t)return;t.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});})();
 
