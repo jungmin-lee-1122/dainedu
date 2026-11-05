@@ -63,7 +63,10 @@ export const vortexStyles = `
   box-shadow:0 30px 80px -40px rgba(8,13,26,.75), 0 0 0 1px rgba(16,25,46,.07);
   text-decoration:none;color:inherit;
   transform-style:preserve-3d}
-.vx-focus-img{position:absolute;inset:0}
+/* 선생님이 바뀔 때 깜박이지 않도록 겹쳐 두고 서서히 바꿉니다 */
+.vx-focus-img{position:absolute;inset:0;opacity:0;pointer-events:none;
+  transition:opacity .75s ease}
+.vx-focus-img.is-on{opacity:1;pointer-events:auto}
 .vx-focus-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .vx-focus-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;
   padding:44px 16px 15px;

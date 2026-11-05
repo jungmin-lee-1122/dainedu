@@ -33,8 +33,10 @@ export const vortexScript = `
   var ASPECT   = 0.72;    /* 사진 가로/세로 */
   var PER_RING = 15;      /* 한 층에 몇 장 */
   var SPACING  = 3;       /* 층 간격 */
-  var AUTO     = 0.015;   /* 가만히 둘 때 저절로 흐르는 양(프레임당) */
-  var TWIST    = 0.4;     /* 속도가 비틀림으로 바뀌는 비율 */
+  /* 원본은 0.015 / 0.4 인데 우리 화면에서는 어지러워서 절반 이하로 낮췄습니다.
+     더 느리게 하려면 AUTO 를, 비틀림을 줄이려면 TWIST 를 내리세요. */
+  var AUTO     = 0.006;   /* 가만히 둘 때 저절로 흐르는 양(프레임당) */
+  var TWIST    = 0.28;    /* 속도가 비틀림으로 바뀌는 비율 */
   var EASE     = 0.1;     /* 따라오는 부드러움 */
   var FOCUS_W  = 1.7, FOCUS_H = 2.3;  /* 한가운데 카드 크기 */
 
@@ -123,14 +125,14 @@ export const vortexScript = `
         " rotateY(" + rot.toFixed(2) + "deg)";
     }
 
-    /* 한가운데 카드에 보일 선생님 바꾸기 */
+    /* 한가운데 카드에 보일 선생님 바꾸기 — 겹쳐 두고 서서히 바뀝니다 */
     if(focus && focusCount > 1){
       var idx = Math.abs(Math.floor(pos.speedTarget % focusCount));
       if(idx !== shownFocus){
         shownFocus = idx;
         var src = focus.querySelectorAll("[data-fi]");
         for(var k=0;k<src.length;k++){
-          src[k].style.display = (+src[k].getAttribute("data-fi") === idx) ? "" : "none";
+          src[k].classList.toggle("is-on", +src[k].getAttribute("data-fi") === idx);
         }
       }
     }

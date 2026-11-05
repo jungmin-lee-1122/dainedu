@@ -50,8 +50,29 @@ export default async function WinterFacultyLabPage() {
     );
   }
 
-  /* 원통 벽에 붙일 순서 — 바로 옆자리에 같은 분이 겹치지 않도록 건너뜁니다 */
-  const wall = Array.from({ length: TOTAL }, (_, d) => list[(d * 7) % list.length]);
+  /* 원통 벽에 붙일 순서 — 무작위로 섞습니다.
+     규칙적으로 건너뛰면 같은 선생님이 세로로 줄을 서 버립니다.
+     한 바퀴(= 선생님 전원)를 섞어서 쓰고, 다 쓰면 다시 섞습니다.
+     그래야 한 분만 자주 나오는 일 없이 고르게 퍼집니다. */
+  const wall: typeof list = [];
+  while (wall.length < TOTAL) {
+    const bag = [...list];
+    for (let i = bag.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [bag[i], bag[j]] = [bag[j], bag[i]];
+    }
+    wall.push(...bag);
+  }
+  wall.length = TOTAL;
+
+  /* 같은 층에서 바로 옆자리(= LEVELS 칸 차이)에 같은 분이 붙으면 한 칸 미룹니다 */
+  for (let d = LEVELS; d < TOTAL; d++) {
+    if (wall[d].id !== wall[d - LEVELS].id) continue;
+    const swap = wall.findIndex(
+      (t, k) => k > d && t.id !== wall[d - LEVELS].id,
+    );
+    if (swap > -1) [wall[d], wall[swap]] = [wall[swap], wall[d]];
+  }
 
   return (
     <main className="dn-body vxl">
@@ -88,9 +109,8 @@ export default async function WinterFacultyLabPage() {
           <div className="vx-focus" id="vxFocus">
             {list.map((t, i) => (
               <div
-                className="vx-focus-img"
+                className={`vx-focus-img${i === 0 ? " is-on" : ""}`}
                 data-fi={i}
-                style={i === 0 ? undefined : { display: "none" }}
                 key={t.id}
               >
                 {t.photo ? (
