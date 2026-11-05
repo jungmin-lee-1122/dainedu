@@ -47,76 +47,80 @@ export default function PlanSection({
         </div>
       )}
 
-      {/* ── 01 연간 로드맵 ── */}
+      {/* ── 01 연간 로드맵 ──
+          간트 차트: 과정마다 "시작 달 → 끝 달" 을 하나로 이어진 바로 그립니다.
+          머리줄(월) · 세로 가이드 · 바가 모두 같은 grid 를 쓰므로 정확히 맞습니다.
+          데이터(lib/planDoc.ts)는 그대로이고 보여 주는 방식만 바꿨습니다. */}
       <section className="pl-sec">
-        <p className="pl-sec-no">01</p>
-        <h3 className="pl-h2">연간 로드맵</h3>
+        <p className="pl-sec-no"><b>01</b><s aria-hidden="true" />CURRICULUM ROADMAP</p>
+        <h3 className="pl-h2">연간 학습 로드맵</h3>
         <p className="pl-lead">
-          한 해 동안 어떤 과정이 언제 진행되는지 한눈에 보는 표입니다.
-          테두리만 있는 칸은 수업 없이 과제로 진행되거나 병행되는 과정입니다.
+          기초부터 실전까지, 단계적으로 완성하는 1년의 학습 과정입니다.
         </p>
 
-        {/* 테두리를 도는 빛은 바깥 틀에 둡니다 — 안쪽은 옆으로 밀리는 칸이라
-            여기에 두면 빛이 같이 밀려 버립니다 */}
-        <div className="pl-road-frame">
-          <span className="pl-road-ring" aria-hidden="true" />
-          <div className="pl-road">
-            <div className="pl-road-in">
-            <div className="pl-road-row is-head" style={grid}>
-              <div className="pl-road-corner" aria-hidden="true" />
-              {doc.roadmap.months.map((m) => (
-                <div className="pl-road-month" key={m}>{m}</div>
-              ))}
-            </div>
-
-            {doc.roadmap.rows.map((row, ri) => {
-              /* 달마다 무엇이 들어가는지 미리 칸을 채워 둡니다 */
-              const slots: (null | { bar: (typeof row.bars)[number]; span: number })[] =
-                Array(cols).fill(null);
-              const skip = new Set<number>();
-              row.bars.forEach((b) => {
-                slots[b.from] = { bar: b, span: b.to - b.from + 1 };
-                for (let i = b.from + 1; i <= b.to; i++) skip.add(i);
-              });
-
-              return (
-                <div className="pl-road-row" style={grid} key={row.label}>
-                  {/* --r / --d 는 차례로 차오르는 순서입니다 (왼쪽 → 오른쪽, 위 → 아래) */}
-                  <div
-                    className="pl-road-label"
-                    style={{ "--r": ri } as CSSProperties}
-                  >
-                    {row.label}
-                  </div>
-                  {Array.from({ length: cols }, (_, i) => {
-                    if (skip.has(i)) return null;
-                    const s = slots[i];
-                    if (!s) return <div className="pl-road-cell" key={i} />;
-                    return (
-                      <div
-                        className={`pl-road-bar${s.bar.tone === "line" ? " is-line" : ""}`}
-                        style={{
-                          gridColumn: `span ${s.span}`,
-                          "--d": ri * 1.6 + i,
-                        } as CSSProperties}
-                        key={i}
-                      >
-                        {s.bar.text}
-                      </div>
-                    );
-                  })}
+        <div className="rm" style={{ "--cols": cols } as CSSProperties}>
+          <div className="rm-scroll">
+            <div className="rm-grid">
+              {/* 머리줄 — 월 */}
+              <div className="rm-head">
+                <div className="rm-head-label">COURSE</div>
+                <div className="rm-head-track">
+                  {doc.roadmap.months.map((m) => (
+                    <span className="rm-month" key={m}>{m}</span>
+                  ))}
                 </div>
-              );
-              })}
+              </div>
+
+              <div className="rm-body">
+                {/* 세로 가이드라인 — 한 겹만 깔립니다 */}
+                <div className="rm-guides" aria-hidden="true">
+                  {Array.from({ length: cols }, (_, i) => <i key={i} />)}
+                </div>
+
+                {doc.roadmap.rows.map((row, ri) => (
+                  <div className="rm-row" key={row.label}>
+                    <div className="rm-label">{row.label}</div>
+                    <div className="rm-track">
+                      {row.bars.map((b, bi) => {
+                        const span = b.to - b.from + 1;
+                        return (
+                          <div
+                            className={
+                              "rm-bar" +
+                              (b.tone === "line" ? " is-line" : "") +
+                              (span === 1 ? " is-short" : "")
+                            }
+                            style={{
+                              "--from": b.from,
+                              "--span": span,
+                              /* 왼쪽 → 오른쪽, 위 → 아래 순서로 열립니다 */
+                              "--d": ri * 1.5 + b.from,
+                            } as CSSProperties}
+                            title={b.text}
+                            key={bi}
+                          >
+                            {b.text}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+
+          <p className="rm-foot">
+            <span className="rm-key"><i aria-hidden="true" />정규 수업 과정</span>
+            <span className="rm-key is-line"><i aria-hidden="true" />병행 · 대비 구간</span>
+            <span className="rm-hint">화면이 좁으면 표를 옆으로 밀어서 보실 수 있습니다.</span>
+          </p>
         </div>
-        <p className="pl-road-hint">※ 화면이 좁으면 표를 옆으로 밀어서 보실 수 있습니다.</p>
       </section>
 
       {/* ── 02 단계별 과정 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">02</p>
+        <p className="pl-sec-no"><b>02</b><s aria-hidden="true" />PROGRAM BY STAGE</p>
         <h3 className="pl-h2">단계별 과정</h3>
         <p className="pl-lead">각 단계의 기간과 사용 교재, 도달 목표입니다.</p>
 
@@ -144,7 +148,7 @@ export default function PlanSection({
 
       {/* ── 03 주간 운영 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">03</p>
+        <p className="pl-sec-no"><b>03</b><s aria-hidden="true" />WEEKLY OPERATION</p>
         <h3 className="pl-h2">한 주는 이렇게 돌아갑니다</h3>
         <p className="pl-lead">수업 · 테스트 · 과제의 주 단위 운영 방식입니다.</p>
 
@@ -161,7 +165,7 @@ export default function PlanSection({
 
       {/* ── 04 관리 · 피드백 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">04</p>
+        <p className="pl-sec-no"><b>04</b><s aria-hidden="true" />CARE & FEEDBACK</p>
         <h3 className="pl-h2">관리 · 피드백</h3>
         <p className="pl-lead">결석 보강부터 상담까지, 수업 밖에서 챙기는 것들입니다.</p>
 
@@ -182,7 +186,7 @@ export default function PlanSection({
 
       {/* ── 05 안내 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no">05</p>
+        <p className="pl-sec-no"><b>05</b><s aria-hidden="true" />NOTICE</p>
         <h3 className="pl-h2">안내 사항</h3>
         <ul className="pl-notes">
           {doc.notes.map((n) => <li key={n}>{n}</li>)}

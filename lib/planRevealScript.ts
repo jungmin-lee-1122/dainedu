@@ -10,7 +10,7 @@
 // ═══════════════════════════════════════════════════════════
 export const planRevealScript = `
 (function(){
-  var frames = Array.prototype.slice.call(document.querySelectorAll(".pl-road-frame"));
+  var frames = Array.prototype.slice.call(document.querySelectorAll(".rm"));
   if(!frames.length) return;
 
   var slow = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
