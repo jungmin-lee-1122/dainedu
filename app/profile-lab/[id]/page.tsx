@@ -160,10 +160,17 @@ export default async function ProfileLabPage({
               </div>
             </div>
 
+            {/* 테스트에서는 비교용으로 기존 상세페이지로 보냅니다.
+                실제 상세페이지에 적용할 때는 이 자리가 '단과시간표 보기' 가 됩니다. */}
             {teacher && (
-              <Link className="rs-link" href={`/teachers/${teacher.id}`}>
-                기존 상세페이지로 보기 ↗
-              </Link>
+              <>
+                <Link className="rs-link" href={`/teachers/${teacher.id}`}>
+                  기존 상세페이지로 보기 ↗
+                </Link>
+                <p className="rs-link-note">
+                  ※ 실제 상세페이지에 적용되면 이 버튼은 <b>단과시간표 보기</b> 로 바뀝니다.
+                </p>
+              </>
             )}
           </div>
         </section>
