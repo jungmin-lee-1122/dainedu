@@ -58,6 +58,13 @@ export default function PlanSection({
           기초부터 실전까지, 단계적으로 완성하는 1년의 학습 과정입니다.
         </p>
 
+        {/* 범례 — 표 위, 리드 문장 바로 아래 */}
+        <p className="rm-foot">
+          <span className="rm-key"><i aria-hidden="true" />정규 수업 과정</span>
+          <span className="rm-key is-line"><i aria-hidden="true" />병행 · 대비 구간</span>
+          <span className="rm-hint">화면이 좁으면 표를 옆으로 밀어서 보실 수 있습니다.</span>
+        </p>
+
         <div className="rm" style={{ "--cols": cols } as CSSProperties}>
           <div className="rm-scroll">
             <div className="rm-grid">
@@ -109,12 +116,6 @@ export default function PlanSection({
               </div>
             </div>
           </div>
-
-          <p className="rm-foot">
-            <span className="rm-key"><i aria-hidden="true" />정규 수업 과정</span>
-            <span className="rm-key is-line"><i aria-hidden="true" />병행 · 대비 구간</span>
-            <span className="rm-hint">화면이 좁으면 표를 옆으로 밀어서 보실 수 있습니다.</span>
-          </p>
         </div>
       </section>
 

@@ -57,10 +57,12 @@ export const planDocStyles = `
    · 월 구분은 얇은 세로 가이드라인 한 겹으로만 (빈 달에 회색 카드를 깔지 않습니다)
    · 머리줄·가이드·바 모두 같은 grid 를 써서 1px 어긋남 없이 맞습니다
    · 장식(그림자·그라데이션·과한 라운드)은 쓰지 않습니다 */
-.rm{
+/* 색은 .pl 에 둡니다 — 범례(.rm-foot)가 표 바깥에 있어도 같은 값을 씁니다 */
+.pl{
   --rm-navy:#24375C; --rm-deep:#1B2946; --rm-warm:#FAF9F6;
-  --rm-gold:#B89555; --rm-border:#E7E9EE; --rm-mut:#747D8C;
-  --rm-labelw:140px; --rm-rowh:46px;
+  --rm-gold:#B89555; --rm-border:#E7E9EE; --rm-mut:#747D8C}
+.rm{
+  --rm-labelw:140px; --rm-rowh:46px; --rm-headh:44px;
   border-top:1px solid var(--rm-deep);
   border-bottom:1px solid var(--rm-border)}
 /* 좁은 화면에서는 옆으로 밀어서 봅니다 */
@@ -70,11 +72,13 @@ export const planDocStyles = `
 /* 머리줄 — 월. 버튼이 아니라 글자와 선으로만 */
 .rm-head{display:grid;grid-template-columns:var(--rm-labelw) minmax(0,1fr);
   border-bottom:1px solid var(--rm-border)}
-.rm-head-label{display:flex;align-items:flex-end;padding:0 14px 10px 0;
+.rm-head-label{display:flex;align-items:center;justify-content:center;
+  min-height:var(--rm-headh);padding:0 14px 0 0;
   font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--rm-mut)}
 .rm-head-track{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr))}
-.rm-month{display:flex;align-items:flex-end;justify-content:center;
-  padding:0 0 10px;font-size:11.5px;font-weight:600;letter-spacing:.02em;
+.rm-month{display:flex;align-items:center;justify-content:center;
+  min-height:var(--rm-headh);
+  font-size:12px;font-weight:600;letter-spacing:.02em;
   color:var(--rm-mut);font-variant-numeric:tabular-nums}
 
 /* 본문 */
@@ -119,7 +123,7 @@ export const planDocStyles = `
 .rm-bar.is-short{justify-content:center;padding:6px 6px}
 
 .rm-foot{display:flex;flex-wrap:wrap;align-items:center;gap:18px;
-  margin:14px 0 0;font-size:11.5px;color:var(--rm-mut)}
+  margin:0 0 14px;font-size:11.5px;color:var(--rm-mut)}
 .rm-key{display:inline-flex;align-items:center;gap:7px}
 .rm-key i{display:block;width:18px;height:9px;border-radius:3px;background:var(--rm-navy)}
 .rm-key.is-line i{background:transparent;box-shadow:inset 0 0 0 1px var(--rm-gold)}
@@ -142,7 +146,7 @@ export const planDocStyles = `
 }
 
 @media(max-width:720px){
-  .rm{--rm-labelw:108px;--rm-rowh:44px}
+  .rm{--rm-labelw:108px;--rm-rowh:44px;--rm-headh:40px}
   .rm-grid{min-width:780px}
   .rm-label{font-size:12px;padding-right:12px}
   .rm-bar{font-size:11.5px;padding:6px 9px;min-height:30px}
