@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 /** 원통 한 층에 몇 장 / 몇 층 — 원본(15장 × 여러 층)과 같은 간격입니다 */
 const PER_RING = 15;
-const LEVELS = 8;
+const LEVELS = 6;
 const TOTAL = PER_RING * LEVELS;
 
 export default async function WinterFacultyLabPage() {
@@ -93,15 +93,17 @@ export default async function WinterFacultyLabPage() {
               {t.photo ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={photo(t.photo, 300)}
-                  srcSet={photoSet(t.photo, 300)}
+                  src={photo(t.photo, 256)}
+                  srcSet={photoSet(t.photo, 256)}
                   alt={`${t.name} 선생님`}
-                  loading="lazy"
                   decoding="async"
                   draggable={false}
                 />
               ) : null}
-              <b>{t.name}</b>
+              <span className="vx-tile-txt">
+                <i>{t.subject}</i>
+                <b>{t.name}</b>
+              </span>
             </a>
           ))}
 

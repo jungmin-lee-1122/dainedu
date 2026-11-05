@@ -50,10 +50,20 @@ export const vortexStyles = `
   will-change:transform}
 .vx-tile.is-off{display:none}
 .vx-tile img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.vx-tile>b{position:absolute;left:0;right:0;bottom:0;
-  padding:26px 8px 7px;
-  background:linear-gradient(180deg,rgba(8,13,26,0),rgba(8,13,26,.88));
-  color:#fff;font-size:13px;font-weight:800;letter-spacing:-.03em;text-align:center}
+
+/* 사진이 한 장씩 뚝뚝 나타나지 않도록, 다 받아 놓고 한 번에 떠오릅니다 */
+.vx-stage .vx-tile,.vx-stage .vx-focus{opacity:0;transition:opacity .9s ease}
+.vx-stage.is-ready .vx-tile,.vx-stage.is-ready .vx-focus{opacity:1}
+
+/* 타일 글씨 — 가운데 카드와 같은 모양(과목 / 이름) */
+.vx-tile-txt{position:absolute;left:0;right:0;bottom:0;
+  padding:32px 11px 10px;
+  background:linear-gradient(180deg,rgba(8,13,26,0),rgba(8,13,26,.86) 58%,rgba(8,13,26,.95));
+  color:#fff}
+.vx-tile-txt i{display:block;margin-bottom:2px;font-style:normal;
+  font-size:10px;font-weight:800;letter-spacing:.02em;color:var(--vx-gold-l)}
+.vx-tile-txt b{display:block;font-size:15px;font-weight:900;
+  letter-spacing:-.04em;line-height:1.15}
 
 /* ── 한가운데 떠 있는 강사 카드 ── */
 .vx-focus{
@@ -65,7 +75,7 @@ export const vortexStyles = `
   transform-style:preserve-3d}
 /* 선생님이 바뀔 때 깜박이지 않도록 겹쳐 두고 서서히 바꿉니다 */
 .vx-focus-img{position:absolute;inset:0;opacity:0;pointer-events:none;
-  transition:opacity .75s ease}
+  transition:opacity 1s cubic-bezier(.4,0,.2,1)}
 .vx-focus-img.is-on{opacity:1;pointer-events:auto}
 .vx-focus-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .vx-focus-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;
@@ -100,7 +110,9 @@ export const vortexStyles = `
 
 @media(max-width:900px){
   .vx-stage{height:clamp(440px,68vh,620px)}
-  .vx-tile>b{padding:18px 5px 5px;font-size:10.5px}
+  .vx-tile-txt{padding:22px 8px 7px}
+  .vx-tile-txt i{font-size:8.5px;margin-bottom:1px}
+  .vx-tile-txt b{font-size:12px}
   .vx-focus-txt{padding:34px 12px 11px}
   .vx-focus-name{font-size:17px}
   .vx-focus-sub{font-size:10px}

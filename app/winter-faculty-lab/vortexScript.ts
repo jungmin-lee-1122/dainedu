@@ -188,6 +188,23 @@ export const vortexScript = `
     clearTimeout(rt); rt = setTimeout(function(){ measure(); draw(); }, 120);
   });
 
+  /* ── 사진이 한 장씩 뚝뚝 뜨지 않도록, 다 받은 뒤 한 번에 떠오르게 ──
+     같은 선생님 사진을 여러 타일이 함께 쓰므로 실제로 받는 장수는 적습니다. */
+  function reveal(){ stage.classList.add("is-ready"); }
+  (function waitImages(){
+    var imgs = stage.querySelectorAll("img");
+    var left = imgs.length;
+    if(!left){ reveal(); return; }
+    var done = false;
+    function one(){ if(--left <= 0 && !done){ done = true; reveal(); } }
+    for(var i=0;i<imgs.length;i++){
+      if(imgs[i].complete){ one(); }
+      else { imgs[i].addEventListener("load", one); imgs[i].addEventListener("error", one); }
+    }
+    /* 혹시 한 장이 끝내 안 오더라도 2.5초 뒤에는 보여 줍니다 */
+    setTimeout(function(){ if(!done){ done = true; reveal(); } }, 2500);
+  })();
+
   measure();
   draw();
   requestAnimationFrame(tick);
