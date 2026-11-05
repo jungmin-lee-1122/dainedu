@@ -222,7 +222,7 @@ export const landingScript = `/* ===============================================
 (function(){
   var a=document.getElementById("bgm"), b=document.getElementById("bgmBtn");
   if(!a||!b) return;
-  var VOL=0.1, FADE=2000, stopped=false, timer=null;
+  var VOL=0.06, FADE=2000, stopped=false, timer=null;
 
   function fadeTo(target){
     clearInterval(timer);
