@@ -87,6 +87,15 @@ export default async function WinterFacultyLabPage() {
       </div>
 
       <div className="vx-stage" id="vxStage" data-count={list.length}>
+        {/* 뒷배경의 빛 — 느리게 도는 빛살 + 떠다니는 은은한 번짐 */}
+        <div className="vx-aura" aria-hidden="true">
+          <span className="vx-rays" />
+          <span className="vx-glow1" />
+          <span className="vx-glow2" />
+          <span className="vx-glow3" />
+        </div>
+        <span className="vx-flare" aria-hidden="true" />
+
         <div className="vx-world" id="vxWorld">
           {wall.map((t, d) => (
             <a className="vx-tile" href={`/teachers/${t.id}`} key={d}>

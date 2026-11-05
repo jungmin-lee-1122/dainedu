@@ -39,7 +39,58 @@ export const vortexStyles = `
 .vx-stage.is-drag{cursor:grabbing}
 
 /* 원통이 들어앉는 공간 — perspective 값은 스크립트가 화면 높이로 계산합니다 */
-.vx-world{position:absolute;inset:0;transform-style:preserve-3d}
+.vx-world{position:absolute;inset:0;z-index:2;transform-style:preserve-3d}
+
+/* ══ 뒷배경의 빛 ══
+   흰 바탕을 지키면서 "뒤에서 은은하게 비친다" 정도만 냅니다.
+   blur 필터 대신 radial-gradient 를 씁니다(필터는 매 프레임 비싸집니다).
+   움직이는 것은 transform 뿐이라 GPU 가 알아서 처리합니다. */
+.vx-aura{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.vx-aura span{position:absolute;display:block;will-change:transform}
+
+/* 뒤에서 아주 느리게 도는 빛살 — 중심은 비우고 바깥으로 갈수록 옅어집니다 */
+.vx-rays{left:50%;top:50%;width:170vmax;height:170vmax;margin:-85vmax 0 0 -85vmax;
+  background:repeating-conic-gradient(from 0deg,
+    rgba(36,54,90,.020) 0deg 1.4deg,
+    rgba(36,54,90,0) 1.4deg 24deg);
+  -webkit-mask:radial-gradient(closest-side,transparent 14%,#000 40%,transparent 66%);
+          mask:radial-gradient(closest-side,transparent 14%,#000 40%,transparent 66%);
+  animation:vxSpin 180s linear infinite}
+@keyframes vxSpin{to{transform:rotate(360deg)}}
+
+.vx-glow1{left:50%;top:50%;width:100vmax;height:100vmax;margin:-50vmax 0 0 -50vmax;
+  background:radial-gradient(closest-side,
+    rgba(127,180,255,.10) 0%, rgba(127,180,255,.04) 40%, rgba(127,180,255,0) 70%);
+  animation:vxBreathe 18s ease-in-out infinite}
+.vx-glow2{left:6%;top:-16%;width:70vmax;height:70vmax;
+  background:radial-gradient(closest-side,
+    rgba(36,54,90,.085) 0%, rgba(36,54,90,.03) 46%, rgba(36,54,90,0) 72%);
+  animation:vxFloatA 26s ease-in-out infinite}
+.vx-glow3{right:0%;bottom:-22%;width:62vmax;height:62vmax;
+  background:radial-gradient(closest-side,
+    rgba(192,153,79,.085) 0%, rgba(192,153,79,.03) 48%, rgba(192,153,79,0) 74%);
+  animation:vxFloatB 32s ease-in-out infinite}
+@keyframes vxBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes vxFloatA{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(6vw,4vh,0)}}
+@keyframes vxFloatB{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-7vw,-5vh,0)}}
+
+/* 펼쳐지는 순간 한 번 터지는 빛 */
+.vx-flare{position:absolute;z-index:1;left:50%;top:50%;
+  width:120vmax;height:120vmax;margin:-60vmax 0 0 -60vmax;
+  background:radial-gradient(closest-side,
+    rgba(255,255,255,.95) 0%, rgba(228,205,154,.5) 22%,
+    rgba(127,180,255,.22) 44%, rgba(255,255,255,0) 68%);
+  opacity:0;transform:scale(.18);pointer-events:none}
+.vx-stage.is-intro .vx-flare{animation:vxFlare 1.9s cubic-bezier(.16,.84,.3,1) forwards}
+@keyframes vxFlare{
+  0%{opacity:0;transform:scale(.14)}
+  14%{opacity:.85}
+  100%{opacity:0;transform:scale(1.25)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .vx-rays,.vx-glow1,.vx-glow2,.vx-glow3,.vx-flare{animation:none}
+}
 
 /* ── 벽에 붙은 사진 한 장 ── */
 .vx-tile{
@@ -51,9 +102,11 @@ export const vortexStyles = `
 .vx-tile.is-off{display:none}
 .vx-tile img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 
-/* 사진이 한 장씩 뚝뚝 나타나지 않도록, 다 받아 놓고 한 번에 떠오릅니다 */
-.vx-stage .vx-tile,.vx-stage .vx-focus{opacity:0;transition:opacity .9s ease}
-.vx-stage.is-ready .vx-tile,.vx-stage.is-ready .vx-focus{opacity:1}
+/* 타일의 투명도는 펼쳐지는 동안 스크립트가 직접 넣습니다.
+   가운데 카드만 펼침이 끝날 때쯤 떠오르게 CSS 로 다룹니다. */
+.vx-focus{opacity:0;transform-origin:50% 50%;
+  transition:opacity .9s ease .55s}
+.vx-stage.is-intro .vx-focus{opacity:1}
 
 /* 타일 글씨 — 가운데 카드와 같은 모양(과목 / 이름) */
 .vx-tile-txt{position:absolute;left:0;right:0;bottom:0;
