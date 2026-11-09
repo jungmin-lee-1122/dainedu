@@ -132,10 +132,11 @@ export default async function PortaPage() {
       {/* ── 그랜드 오픈 배너 ── */}
       <section className="cv-stats-sec">
         <div className="cv-wrap">
-          <a className="cv-statsbn" href="/event" aria-label="다인에듀 동탄점 09.21 그랜드 오픈">
+          <a className="cv-statsbn" href="/winter" aria-label="2027 다인에듀 윈터스쿨 안내">
             <picture>
-              <source media="(max-width:900px)" srcSet="/porta/stats-banner-m.png" />
-              <img src="/porta/stats-banner.png" alt="다인에듀 동탄점 09.21 GRAND OPEN" />
+              <source media="(max-width:900px)" srcSet="/porta/winter-banner-m.jpg" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/porta/winter-banner.jpg" alt="2027 다인에듀 윈터스쿨 — 교육기간 2027.01.04~02.19, 모집대상 예비 고1·고2·고3" />
             </picture>
             <span className="cv-statsbn-sheen" aria-hidden="true" />
           </a>
