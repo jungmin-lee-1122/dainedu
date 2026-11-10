@@ -93,7 +93,7 @@ export const landingMarkup = `
             <a class="dn-poster-sl" href="/events/event-mvkq3sx6rfv1"><picture><source media="(max-width:900px)" srcset="/poster-sem2-m.jpg"/><img src="/poster-sem2.jpg" alt="예비 고2·고3 대입 전략 설명회 — 다인에듀 동탄점"/></picture></a>
             <a class="dn-poster-sl" href="/pre-winter"><picture><source media="(max-width:900px)" srcset="/poster-pre-go1-m.jpg"/><img src="/poster-pre-go1.jpg" alt="예비고1을 위한 PRE WINTER SCHOOL — 다인에듀 동탄점"/></picture></a>
             <a class="dn-poster-sl" href="/pre-winter"><picture><source media="(max-width:900px)" srcset="/poster-pre-go23-m.jpg"/><img src="/poster-pre-go23.jpg" alt="수능실전 딥다이브 수학특강 — 예비 고2·고3"/></picture></a>
-            <a class="dn-poster-sl" href="/events/event-mwacxlpxjs77"><picture><source media="(max-width:900px)" srcset="/poster-pre-sem2-m.jpg"/><img src="/poster-pre-sem2.jpg" alt="2027 프리윈터스쿨 학습설명회 — 11월 21일(토) 오후 6시 30분 · 다인에듀 본관 스타프라자 6층 · 예비 고1·고2·고3 학생 및 학부모 대상 · 강연 임종희 부원장"/></picture></a>
+            <a class="dn-poster-sl" href="/events/event-mwacxlpxjs77"><picture><source media="(max-width:900px)" srcset="/poster-pre-sem3-m.jpg"/><img src="/poster-pre-sem3.jpg" alt="2027 프리윈터스쿨 &amp; 수학 설명회 — 11월 21일(토) 오후 6시 30분 · 다인에듀 본관 스타프라자 6층 · 예비 고1·고2·고3 학생 및 학부모 대상 · 강연 임종희 부원장"/></picture></a>
 
             <!-- 리모콘 — 화살표로 넘기고, 점을 눌러 바로 이동합니다 -->
             <div class="dn-poster-ctrl">
