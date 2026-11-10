@@ -993,31 +993,38 @@ img,video,svg{max-width:100%}
 /* ── 그랜드 오픈 배너 (광택 + 발광) ── */
 .cv-stats-sec{padding:10px 0 30px;background:#fff}
 .cv-statsbn{position:relative;display:block;border-radius:14px;overflow:hidden;line-height:0;
-  box-shadow:0 10px 30px -14px rgba(16,25,46,.55);
-  animation:cvGlowPulse 3.2s ease-in-out infinite;
-  transition:transform .25s ease}
-.cv-statsbn:hover{transform:translateY(-2px)}
+  isolation:isolate;                      /* 빛이 배너 안에서만 섞이게 */
+  box-shadow:0 10px 30px -14px rgba(16,25,46,.55),
+             inset 0 0 0 1px rgba(192,153,79,.16);
+  transition:transform .3s cubic-bezier(.22,.7,.3,1),box-shadow .3s ease}
+.cv-statsbn:hover{transform:translateY(-2px);
+  box-shadow:0 18px 44px -18px rgba(16,25,46,.62),
+             inset 0 0 0 1px rgba(192,153,79,.34)}
 .cv-statsbn picture{display:block;line-height:0}
 .cv-statsbn img{width:100%;height:auto;display:block}
-/* 대각선 광택이 주기적으로 지나감 */
-.cv-statsbn-sheen{position:absolute;top:-60%;bottom:-60%;left:-40%;width:26%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),rgba(255,246,214,.35),transparent);
-  transform:skewX(-18deg);pointer-events:none;
-  animation:cvSheen 3.2s ease-in-out infinite}
+
+/* ── 배너 위를 지나가는 빛 한 줄기 ──
+   · 흰 막대를 칠하는 대신 screen 으로 "빛"을 더합니다. 번쩍이지 않습니다.
+   · 가운데만 가늘게 밝고 양옆으로 길게 사라집니다.
+   · 7.5초에 한 번, 2초 동안만 지나가고 나머지는 쉽니다.
+   · left 대신 transform 을 움직여 레이아웃 계산이 없습니다. */
+.cv-statsbn-sheen{position:absolute;top:-30%;bottom:-30%;left:0;width:34%;
+  pointer-events:none;mix-blend-mode:screen;will-change:transform;
+  background:linear-gradient(104deg,
+    rgba(255,255,255,0)    0%,
+    rgba(255,255,255,.04) 36%,
+    rgba(255,249,231,.26) 49%,
+    rgba(255,255,255,.04) 62%,
+    rgba(255,255,255,0)  100%);
+  transform:translateX(-200%) skewX(-14deg);
+  animation:cvSheen 7.5s cubic-bezier(.32,.04,.22,1) 1.4s infinite}
 @keyframes cvSheen{
-  0%{left:-40%;opacity:0}
-  12%{opacity:1}
-  55%{left:120%;opacity:1}
-  60%{opacity:0}
-  100%{left:120%;opacity:0}
-}
-@keyframes cvGlowPulse{
-  0%,100%{box-shadow:0 10px 30px -14px rgba(16,25,46,.55),0 0 0 rgba(192,153,79,0)}
-  50%{box-shadow:0 10px 30px -14px rgba(16,25,46,.55),0 0 26px rgba(217,190,140,.45)}
+  0%        {transform:translateX(-200%) skewX(-14deg)}
+  27%,100%  {transform:translateX(430%)  skewX(-14deg)}
 }
 @media(prefers-reduced-motion:reduce){
-  .cv-statsbn{animation:none}
   .cv-statsbn-sheen{animation:none;opacity:0}
+  .cv-statsbn{transition:none}
 }
 
 /* ── 3) 선생님 ── */
