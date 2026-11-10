@@ -45,6 +45,12 @@ export const heroSlides = [
     href: "/winter",
     alt: "2027 WINTER SCHOOL — 승부를 바꾸는 겨울, 시작부터 다르게",
   },
+  {
+    tab: "프리윈터 학습설명회",
+    img: "/porta/sem-pre.jpg",
+    href: "/events/event-mwacxlpxjs77",
+    alt: "2027 프리윈터스쿨 학습설명회 — 11월 21일(토) 오후 6시 30분 · 다인에듀 본관 스타프라자 6층 · 예비 고1·고2·고3 학생 및 학부모 대상 · 강연 임종희 부원장",
+  },
 ];
 
 /** 2) 중간 프로모 배너 (여러 장 흐르는 슬라이더) */
