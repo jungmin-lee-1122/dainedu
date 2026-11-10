@@ -6,6 +6,13 @@
 
 /** 1) 메인 롤링 배너 (탭 + 자동재생) */
 export const heroSlides = [
+  {
+    tab: "프리윈터 · 수학 설명회",
+    img: "/porta/sem-pre2.jpg",
+    href: "/events/event-mwacxlpxjs77",
+    alt: "2027 프리윈터스쿨 & 수학 설명회 — 11월 21일(토) 오후 6시 30분 · 다인에듀 동탄 본관 · 예비고1(현 중3), 예비고2(현 고1), 예비고3(현 고2) 학부모 및 학생 대상 · 강연 임종희 부원장",
+  },
+
   /* 2027 특별 입시설명회 배너는 잠시 내려두었습니다.
      다시 올리려면 아래 주석을 풀어주세요.
   {
@@ -44,12 +51,6 @@ export const heroSlides = [
     img: "/porta/hero-2.png",
     href: "/winter",
     alt: "2027 WINTER SCHOOL — 승부를 바꾸는 겨울, 시작부터 다르게",
-  },
-  {
-    tab: "프리윈터 · 수학 설명회",
-    img: "/porta/sem-pre2.jpg",
-    href: "/events/event-mwacxlpxjs77",
-    alt: "2027 프리윈터스쿨 & 수학 설명회 — 11월 21일(토) 오후 6시 30분 · 다인에듀 동탄 본관 · 예비고1(현 중3), 예비고2(현 고1), 예비고3(현 고2) 학부모 및 학생 대상 · 강연 임종희 부원장",
   },
 ];
 
