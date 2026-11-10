@@ -5180,3 +5180,42 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .td-plan-zoom{right:9px;bottom:9px;padding:6px 12px;font-size:11px;opacity:.82}
   .td-plan-foot{font-size:11.5px}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   68) PRE 윈터스쿨 맺음 — 학습설명회 안내 줄
+   버튼을 셋으로 늘리면 위계가 흐려져서, 날짜가 있는 설명회는
+   상담/전화 버튼 위에 한 줄 띠로 올립니다. 줄 전체가 링크입니다.
+   ═══════════════════════════════════════════════════════════ */
+.pw-close-sem{
+  display:flex;align-items:center;gap:clamp(14px,2vw,22px);
+  width:min(700px,100%);margin:0 auto clamp(20px,2.6vw,28px);
+  padding:16px clamp(18px,2.2vw,24px);
+  border:1px solid rgba(192,153,79,.42);border-radius:14px;
+  background:linear-gradient(120deg,rgba(192,153,79,.12),rgba(192,153,79,.04));
+  text-align:left;text-decoration:none;
+  transition:border-color .22s ease,background .22s ease,transform .22s ease}
+.pw-close-sem:hover{border-color:rgba(192,153,79,.8);
+  background:linear-gradient(120deg,rgba(192,153,79,.2),rgba(192,153,79,.07));
+  transform:translateY(-2px)}
+.pw-close-sem-tag{flex:0 0 auto;padding:6px 12px;border-radius:999px;
+  background:var(--w-gold);color:#101A2E;
+  font-size:11.5px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.pw-close-sem-txt{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:3px}
+.pw-close-sem-txt b{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.pw-close-sem-txt i{font-style:normal;font-size:12.5px;line-height:1.5;
+  color:rgba(255,255,255,.58);word-break:keep-all}
+.pw-close-sem-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
+  font-size:13.5px;font-weight:800;color:var(--w-gold-l);white-space:nowrap}
+.pw-close-sem-go em{font-style:normal;transition:transform .22s ease}
+.pw-close-sem:hover .pw-close-sem-go em{transform:translateX(4px)}
+
+@media(max-width:720px){
+  .pw-close-sem{flex-direction:column;align-items:center;text-align:center;
+    gap:11px;padding:18px 18px 16px;border-radius:16px}
+  .pw-close-sem-txt{align-items:center}
+  .pw-close-sem-txt b{font-size:15.5px}
+  .pw-close-sem-txt i{font-size:12px}
+  .pw-close-sem-go{width:min(260px,100%);justify-content:center;
+    margin-top:3px;padding:11px 18px;border-radius:999px;
+    border:1px solid rgba(192,153,79,.5);background:rgba(192,153,79,.1)}
+}

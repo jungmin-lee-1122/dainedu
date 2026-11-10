@@ -32,6 +32,8 @@ import {
 const APPLY = "https://forms.gle/GTCsgYUkgcTRagkN7";
 /** 상담 신청 페이지 */
 const CONSULT = "/consult";
+/** 프리윈터스쿨 & 수학 설명회 안내 */
+const SEMINAR = "/events/event-mwacxlpxjs77";
 
 /** 시간표 칸 색 — 내용에 따라 자동으로 정합니다 */
 function cellKind(v: string) {
@@ -406,6 +408,19 @@ export default function PreWinterPage() {
               </a>
             ))}
           </div>
+
+          {/* 학습설명회 — 날짜가 있는 안내라 버튼 셋을 나란히 두지 않고
+              위에 한 줄 띠로 올립니다. 줄 전체가 링크입니다. */}
+          <a className="pw-close-sem" href={SEMINAR}>
+            <span className="pw-close-sem-tag">학습설명회</span>
+            <span className="pw-close-sem-txt">
+              <b>11.21(토) 오후 6시 30분</b>
+              <i>다인에듀 동탄 본관 · 예비 고1·고2·고3 학부모 및 학생</i>
+            </span>
+            <span className="pw-close-sem-go">
+              설명회 신청하기 <em aria-hidden="true">→</em>
+            </span>
+          </a>
 
           <div className="wt-close-btns">
             <a className="wt-btn wt-btn-primary" href={CONSULT}>상담 신청</a>
