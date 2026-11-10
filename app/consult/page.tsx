@@ -6,12 +6,12 @@ import SiteFooter from "../SiteFooter";
 import { quickMenuMarkup } from "../quickMenu";
 
 export const metadata: Metadata = {
-  title: "온라인 상담 — 다인에듀 동탄점",
-  description: "다인에듀 동탄점 온라인 입학상담 신청. 답변이 등록되면 알려드립니다.",
+  title: "온라인 상담신청 — 다인에듀 동탄점",
+  description: "다인에듀 동탄점 온라인 입학상담 신청. 신청해 주시면 입력하신 연락처로 전화드립니다.",
 };
 
 /** 관심 과정 (반 문의) 선택지 — 모집안내 카테고리와 동일하게 유지 */
-const COURSES = ["2027 윈터스쿨", "고등부 단과", "2028 재수종합반"];
+const COURSES = ["2027 PRE 윈터스쿨", "2027 윈터스쿨", "고등부 단과", "2028 재수종합반"];
 
 /** 학년 선택지 */
 const GRADES = ["중3", "고1", "고2", "고3", "재수 / N수"];
@@ -52,8 +52,8 @@ export default function ConsultPage() {
       <section className="cs-sec">
         <div className="cs-wrap">
           <header className="cs-head">
-            <h1 className="cs-title">온라인 상담</h1>
-            <p className="cs-desc">답변이 등록되면 입력하신 이메일로 알려드려요.</p>
+            <h1 className="cs-title">온라인 상담신청</h1>
+            <p className="cs-desc">신청해 주시면 입력하신 연락처로 전화드립니다.</p>
           </header>
 
           <form id="csForm" noValidate>
@@ -111,7 +111,7 @@ export default function ConsultPage() {
             <div className="cs-field">
               <label className="cs-label" htmlFor="csEmail">이메일 <i>필수</i></label>
               <input id="csEmail" name="email" type="email" inputMode="email" placeholder="example@dain.com" />
-              <span className="cs-hint">답변은 입력하신 이메일로 보내드립니다.</span>
+              <span className="cs-hint">답변은 전화로 드립니다. 이메일은 상담 기록용으로만 사용합니다.</span>
             </div>
 
             <div className="cs-field">
