@@ -652,7 +652,7 @@ img,video,svg{max-width:100%}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
 /* 포르타 · 고등전문관 · 클라비스 · N수전문관 — 명조(Noto Serif KR) 아주 굵게 */
 .dn-hall-title{font-family:"Noto Serif KR","KoPubWorld Batang",serif;font-size:32px;font-weight:900;
-  color:var(--dn-navy);margin:0;letter-spacing:-.035em;-webkit-text-stroke:1.1px currentColor}
+  color:var(--dn-navy);margin:0;letter-spacing:-.035em;-webkit-text-stroke:.7px currentColor}
 .dn-hall-play{
   /* 화살표는 원래 글씨체 그대로 */
   font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",sans-serif;-webkit-text-stroke:0;
