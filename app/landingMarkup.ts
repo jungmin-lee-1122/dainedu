@@ -74,7 +74,7 @@ export const landingMarkup = `
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slide-open2-m.png"/><img src="/slide-open2.png" alt="다인에듀 2026.10.01 그랜드 오픈 — 고등부·N수 프리미엄 캠퍼스"/></picture></div>
-              <div class="dn-slide dn-slide-video"><video src="/slide-teachers.mp4" poster="/slide-teachers-poster.jpg" muted playsinline preload="metadata" aria-label="대치·목동·분당·평촌 검증된 강사진이 동탄에서 함께합니다" disablePictureInPicture disableRemotePlayback></video></div>
+              <div class="dn-slide dn-slide-video"><video src="/slide-teachers.mp4?v=2" poster="/slide-teachers-poster.jpg?v=2" muted playsinline preload="metadata" aria-label="대치·목동·분당·평촌 검증된 강사진이 동탄에서 함께합니다" disablePictureInPicture disableRemotePlayback></video></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></div>
               <div class="dn-slide dn-slide-video"><video src="/slide-standard.mp4" poster="/slide-standard-poster.jpg" muted playsinline preload="metadata" aria-label="새로운 입시의 기준을 세우다 — 재수종합반 · 독학재수반 · 고등종합/단과" disablePictureInPicture disableRemotePlayback></video></div>
             </div>
