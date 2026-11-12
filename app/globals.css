@@ -644,11 +644,18 @@ img,video,svg{max-width:100%}
 .dn-hall-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--dn-gold) 20%,#F2E3C4 50%,var(--dn-gold) 80%,transparent);opacity:0;transition:opacity .28s ease}
 .dn-hall-card:hover::before{opacity:1}
 .dn-hall-text{position:relative;z-index:2}
-.dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--dn-gold);margin-bottom:10px}
-.dn-hall-label-sub{color:var(--dn-gold);letter-spacing:-.01em;font-weight:700}
+/* 금색 라벨 — 조금 얇게 + 금색 그라데이션 */
+.dn-hall-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;margin-bottom:10px;
+  background:linear-gradient(95deg,#B08A3F 0%,#DFC590 44%,#C0994F 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.dn-hall-label-sub{color:transparent;letter-spacing:-.01em;font-weight:700}
 .dn-hall-title-row{display:flex;align-items:center;gap:12px}
-.dn-hall-title{font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:32px;font-weight:900;color:var(--dn-navy);margin:0;letter-spacing:-.02em}
+/* 포르타 · 고등전문관 · 클라비스 · N수전문관 — 명조(Noto Serif KR) 아주 굵게 */
+.dn-hall-title{font-family:"Noto Serif KR","KoPubWorld Batang",serif;font-size:32px;font-weight:900;
+  color:var(--dn-navy);margin:0;letter-spacing:-.035em;-webkit-text-stroke:1.1px currentColor}
 .dn-hall-play{
+  /* 화살표는 원래 글씨체 그대로 */
+  font-family:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",sans-serif;-webkit-text-stroke:0;
   display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
   border-radius:50%;background:linear-gradient(135deg,#E7CE9A,var(--dn-gold));
   color:#10192E;font-size:20px;font-weight:700;line-height:1;
