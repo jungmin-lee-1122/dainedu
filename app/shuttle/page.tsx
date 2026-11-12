@@ -185,31 +185,17 @@ export default function ShuttlePage() {
 
           {/* ── 지정 픽업 안내 — 노선표에서 가장 중요한 부분이라 따로 강조합니다 ── */}
           <aside className="sh-pickup">
-            <span className="sh-pickup-glow" aria-hidden="true" />
-            <div className="sh-pickup-ico" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7}
-                strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" />
-                <circle cx="12" cy="10" r="2.6" />
-              </svg>
-            </div>
-            <div className="sh-pickup-body">
-              <p className="sh-pickup-head">
-                <span className="sh-pickup-label">{pickupNote.label}</span>
-                <b>{pickupNote.title}</b>
+            <p className="sh-pickup-label">{pickupNote.title}</p>
+            {pickupNote.lines.map((parts, li) => (
+              <p className={"sh-pickup-line" + (li === 0 ? " is-lead" : "")} key={li}>
+                {parts.map((p, pi) =>
+                  p.em ? <em key={pi}>{p.t}</em> : <span key={pi}>{p.t}</span>
+                )}
               </p>
-              {pickupNote.lines.map((parts, li) => (
-                <p className="sh-pickup-line" key={li}>
-                  {parts.map((p, pi) =>
-                    p.em ? <em key={pi}>{p.t}</em> : <span key={pi}>{p.t}</span>
-                  )}
-                </p>
-              ))}
-              <a className="sh-pickup-tel" href={`tel:${pickupNote.tel.replace(/[^0-9]/g, "")}`}>
-                셔틀 노선 문의 {pickupNote.tel}
-                <i aria-hidden="true">›</i>
-              </a>
-            </div>
+            ))}
+            <a className="sh-pickup-tel" href={`tel:${pickupNote.tel.replace(/[^0-9]/g, "")}`}>
+              셔틀 노선 문의 {pickupNote.tel}
+            </a>
           </aside>
         </div>
       </section>
