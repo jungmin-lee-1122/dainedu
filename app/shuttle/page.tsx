@@ -167,22 +167,6 @@ export default function ShuttlePage() {
             </div>
           ))}
 
-          <ul className="sh-route-note">
-            {routeNote.map((lines) => (
-              <li key={lines[0]}>
-                <span aria-hidden="true">*</span>
-                <span className="sh-route-note-t">
-                  {lines.map((t, i) => (
-                    <span key={t}>
-                      {i > 0 && <br className="sh-pcbr" />}
-                      {t}
-                    </span>
-                  ))}
-                </span>
-              </li>
-            ))}
-          </ul>
-
           {/* ── 지정 픽업 안내 — 노선표에서 가장 중요한 부분이라 따로 강조합니다 ── */}
           <aside className="sh-pickup">
             <span className="sh-pickup-glow" aria-hidden="true" />
@@ -211,6 +195,23 @@ export default function ShuttlePage() {
               </a>
             </div>
           </aside>
+
+          {/* 변경 가능성 각주 — 강조 카드 아래 */}
+          <ul className="sh-route-note">
+            {routeNote.map((lines) => (
+              <li key={lines[0]}>
+                <span aria-hidden="true">*</span>
+                <span className="sh-route-note-t">
+                  {lines.map((t, i) => (
+                    <span key={t}>
+                      {i > 0 && <br className="sh-pcbr" />}
+                      {t}
+                    </span>
+                  ))}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
