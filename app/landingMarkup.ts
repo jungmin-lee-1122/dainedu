@@ -126,7 +126,7 @@ export const landingMarkup = `
             <div class="dn-hall-text">
               <span class="dn-hall-label">PORTA H<span class="dn-hall-label-sub"> | 합격의 문을 짓는 3년의 설계를 담다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">포르타<span class="dn-hall-div" aria-hidden="true"></span>고등전문관</h3>
+                <h3 class="dn-hall-title"><span class="dn-hall-tx">포르타<span class="dn-hall-div" aria-hidden="true"></span>고등전문관</span><span class="dn-hall-tx is-sheen" aria-hidden="true">포르타<span class="dn-hall-div"></span>고등전문관</span></h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
@@ -136,7 +136,7 @@ export const landingMarkup = `
             <div class="dn-hall-text">
               <span class="dn-hall-label">CLAVIS N<span class="dn-hall-label-sub"> | 합격의 문을 열어낼 단 하나의 열쇠를 쥐다</span></span>
               <div class="dn-hall-title-row">
-                <h3 class="dn-hall-title">클라비스<span class="dn-hall-div" aria-hidden="true"></span>N수전문관</h3>
+                <h3 class="dn-hall-title"><span class="dn-hall-tx">클라비스<span class="dn-hall-div" aria-hidden="true"></span>N수전문관</span><span class="dn-hall-tx is-sheen" aria-hidden="true">클라비스<span class="dn-hall-div"></span>N수전문관</span></h3>
                 <span class="dn-hall-play" aria-hidden="true">›</span>
               </div>
             </div>
