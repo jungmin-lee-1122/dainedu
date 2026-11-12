@@ -5089,23 +5089,37 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .sh-route-note li>span:first-child{flex:0 0 auto;color:var(--dn-gold);font-weight:800}
 .sh-route-note-t{min-width:0}
 
-/* ── 지정 픽업 안내 ──
-   노선표에서 가장 중요한 안내. 금색 세로선 + 명조 인용 — 상세페이지에서
-   이미 쓰고 있는 방식 그대로입니다(상자·광·아이콘 없음). */
-.sh-pickup{margin:26px 0 0;padding:4px 0 4px clamp(18px,2.4vw,30px);
-  border-left:2px solid var(--dn-gold)}
-.sh-pickup-label{margin:0 0 13px;font-size:11px;font-weight:800;letter-spacing:.17em;
-  color:var(--dn-gold)}
-.sh-pickup-line{margin:0;font-family:"Noto Serif KR",serif;
-  font-size:clamp(16px,1.9vw,21px);font-weight:400;line-height:1.72;
-  letter-spacing:-.035em;color:#4A5468;word-break:keep-all}
-.sh-pickup-line.is-lead{color:var(--dn-navy)}
-.sh-pickup-line em{font-style:normal;font-weight:700;color:var(--dn-navy)}
-.sh-pickup-tel{display:inline-block;margin-top:17px;padding-bottom:2px;
-  font-size:13px;font-weight:700;letter-spacing:-.01em;color:var(--dn-gold);
-  text-decoration:none;border-bottom:1px solid rgba(192,153,79,.4);
-  transition:border-color .25s ease}
-.sh-pickup-tel:hover{border-bottom-color:var(--dn-gold)}
+/* ── 지정 픽업 안내 (강조 카드) ──
+   노선표에서 가장 중요한 안내라, 회색 각주와 달리 딥네이비 카드로 띄웁니다. */
+.sh-pickup{position:relative;overflow:hidden;isolation:isolate;
+  display:flex;gap:18px;align-items:flex-start;
+  margin:18px 0 0;padding:24px 28px;border-radius:18px;
+  background:linear-gradient(142deg,#101D36 0%,#172643 46%,#1E3157 100%);
+  box-shadow:0 22px 48px -30px rgba(16,25,46,.7),inset 0 1px 0 rgba(255,255,255,.07)}
+.sh-pickup::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg,#9A7735,#E3CB94 42%,#C0994F 72%,rgba(192,153,79,0))}
+.sh-pickup-glow{position:absolute;right:-70px;top:-90px;width:300px;height:300px;z-index:-1;
+  background:radial-gradient(circle,rgba(192,153,79,.3) 0%,rgba(192,153,79,0) 68%)}
+.sh-pickup-ico{flex:0 0 auto;display:grid;place-items:center;width:44px;height:44px;
+  border-radius:13px;color:#F0DCB4;
+  background:linear-gradient(140deg,rgba(240,220,180,.2),rgba(192,153,79,.08));
+  border:1px solid rgba(240,220,180,.32)}
+.sh-pickup-ico svg{width:22px;height:22px}
+.sh-pickup-body{min-width:0}
+.sh-pickup-head{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:2px 0 11px}
+.sh-pickup-label{padding:4px 9px;border-radius:999px;
+  border:1px solid rgba(240,220,180,.3);background:rgba(240,220,180,.08);
+  font-size:9.5px;font-weight:800;letter-spacing:.2em;color:#E3CB94}
+.sh-pickup-head b{font-size:17px;font-weight:800;letter-spacing:-.03em;color:#fff}
+.sh-pickup-line{margin:0;font-size:14px;line-height:1.85;word-break:keep-all;
+  color:rgba(255,255,255,.66)}
+.sh-pickup-line+.sh-pickup-line{margin-top:2px}
+/* 하이라이트(금색 밑칠)는 빼고 흰색 굵게만 */
+.sh-pickup-line em{font-style:normal;font-weight:800;color:#fff}
+.sh-pickup-tel{display:inline-flex;align-items:center;gap:7px;margin-top:16px;
+  font-size:13px;font-weight:800;letter-spacing:-.01em;color:#E3CB94;text-decoration:none}
+.sh-pickup-tel i{font-style:normal;font-size:15px;transition:transform .25s ease}
+.sh-pickup-tel:hover i{transform:translateX(4px)}
 /* 지정한 줄바꿈은 넓은 화면에서만 — 좁은 화면에서는 자연스럽게 흐르게 둡니다 */
 .sh-pcbr{display:inline}
 
@@ -5173,9 +5187,12 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
   .sh-pcbr{display:none}
   .sh-route-note{margin-top:16px;padding:12px 14px}
   .sh-route-note li{font-size:12px;line-height:1.7}
-  .sh-pickup{margin-top:20px;padding-left:15px}
-  .sh-pickup-label{margin-bottom:10px;font-size:10px;letter-spacing:.14em}
-  .sh-pickup-line{font-size:15px;line-height:1.75}
+  .sh-pickup{flex-direction:column;gap:14px;padding:20px 18px;border-radius:15px}
+  .sh-pickup-ico{width:38px;height:38px;border-radius:11px}
+  .sh-pickup-ico svg{width:19px;height:19px}
+  .sh-pickup-head{gap:8px;margin-bottom:9px}
+  .sh-pickup-head b{font-size:15.5px}
+  .sh-pickup-line{font-size:13px;line-height:1.8}
   .sh-pickup-tel{margin-top:14px;font-size:12.5px}
   .sh-notes{margin-top:20px}
   .sh-notes li{grid-template-columns:28px minmax(0,1fr);gap:0 8px;padding:13px 2px}
