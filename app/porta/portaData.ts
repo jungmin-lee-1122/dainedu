@@ -29,18 +29,6 @@ export const heroSlides = [
     alt: "2027 정시 지원전략 설명회 — 12월 19일(토) 오후 2시 · 동탄 롯데시네마 3관 · 2027학년도 수험생 및 학부모 대상 · 강연 이해웅 소장 ((주)타임교육 입시전략연구소장)",
   },
   {
-    tab: "예비고1 설명회",
-    img: "/porta/sem-go1.jpg",
-    href: "/events/event-mvkq1sai0bkt",
-    alt: "고교선택전략 & 대입 로드맵 설명회 — 2026.11.15(일) 오전 11:00 · 롯데시네마 동탄점 3관 · 예비고1(현 중3) 학생 및 학부모",
-  },
-  {
-    tab: "예비고2·고3 설명회",
-    img: "/porta/sem-go23.jpg",
-    href: "/events/event-mvkq3sx6rfv1",
-    alt: "대입개편 전략 & 학년별 맞춤전략 설명회 — 2026.11.15(일) 오후 2:00 · 롯데시네마 동탄점 3관 · 예비 고2·고3 학생 및 학부모",
-  },
-  {
     tab: "PRE 윈터스쿨",
     img: "/porta/pre-go1.jpg",
     href: "/pre-winter",

@@ -9,6 +9,7 @@ import { quickMenuMarkup } from "../quickMenu";
 import { subjects } from "./teachersData";
 import { getTeachers } from "@/lib/content";
 import { shortSchool } from "@/lib/schoolLabel";
+import { sloganOf } from "@/lib/teacherSlogan";
 import { photo, photoSet } from "@/lib/img";
 
 export const dynamic = "force-dynamic";
@@ -83,6 +84,12 @@ export default async function TeachersPage({
                     </div>
                     <p className="tc-card-subject">{teacher.subject}</p>
                     <h2 className="tc-card-name">{teacher.name}</h2>
+                    {/* 한 줄 슬로건 — 이름 바로 아래 (lib/teacherSlogan.ts) */}
+                    {sloganOf(teacher.name, teacher.copy) && (
+                      <p className="tc-card-slogan">
+                        {sloganOf(teacher.name, teacher.copy)}
+                      </p>
+                    )}
                     {teacher.school && (
                       <p className="tc-card-school">{shortSchool(teacher.school)}</p>
                     )}
@@ -103,7 +110,8 @@ export default async function TeachersPage({
 
                     <div className="tc-card-overlay">
                       <small>PROFILE</small>
-                      <strong>{teacher.school || teacher.copy}</strong>
+                      {/* 슬로건은 이름 아래로 옮겼으므로 여기에는 학력만 둡니다 */}
+                      {teacher.school && <strong>{teacher.school}</strong>}
                       <ul>
                         {teacher.career.map((career) => <li key={career}>{career}</li>)}
                       </ul>

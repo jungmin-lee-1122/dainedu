@@ -13,6 +13,7 @@ import { getTeachers, getCourses } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
 import { facultyVideo } from "@/lib/facultyVideo";
 import { facultyPose, facultyAnimDir, animPath, poseVars } from "@/lib/facultyAnim";
+import { sloganOf } from "@/lib/teacherSlogan";
 import { teacherPlan, planPage } from "@/lib/teacherPlan";
 import { planDocByName } from "@/lib/planDoc";
 import { planDocStyles } from "@/lib/planDocStyles";
@@ -205,8 +206,11 @@ export default async function TeacherDetailPage({
               <h2 className="rs-name">
                 {current.name} <small>선생님</small>
               </h2>
+              {/* 한 줄 슬로건 — 이름 바로 아래, 학력 줄 위 (lib/teacherSlogan.ts) */}
+              {sloganOf(current.name, current.copy) && (
+                <p className="rs-slogan">{sloganOf(current.name, current.copy)}</p>
+              )}
               {current.school && <p className="rs-school">{current.school}</p>}
-              {current.copy && <p className="rs-slogan">{current.copy}</p>}
 
               <div className="rs-rule" aria-hidden="true" />
 
