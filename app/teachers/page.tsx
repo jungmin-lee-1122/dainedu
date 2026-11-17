@@ -84,12 +84,6 @@ export default async function TeachersPage({
                     </div>
                     <p className="tc-card-subject">{teacher.subject}</p>
                     <h2 className="tc-card-name">{teacher.name}</h2>
-                    {/* 한 줄 슬로건 — 이름 바로 아래 (lib/teacherSlogan.ts) */}
-                    {sloganOf(teacher.name, teacher.copy) && (
-                      <p className="tc-card-slogan">
-                        {sloganOf(teacher.name, teacher.copy)}
-                      </p>
-                    )}
                     {teacher.school && (
                       <p className="tc-card-school">{shortSchool(teacher.school)}</p>
                     )}
@@ -110,8 +104,14 @@ export default async function TeachersPage({
 
                     <div className="tc-card-overlay">
                       <small>PROFILE</small>
-                      {/* 슬로건은 이름 아래로 옮겼으므로 여기에는 학력만 둡니다 */}
+                      {/* 학력(대학) — 원래 자리 그대로 */}
                       {teacher.school && <strong>{teacher.school}</strong>}
+                      {/* 한 줄 슬로건 — 21명 모두 같은 자리 (lib/teacherSlogan.ts) */}
+                      {sloganOf(teacher.name, teacher.copy) && (
+                        <em className="tc-card-slogan">
+                          {sloganOf(teacher.name, teacher.copy)}
+                        </em>
+                      )}
                       <ul>
                         {teacher.career.map((career) => <li key={career}>{career}</li>)}
                       </ul>
