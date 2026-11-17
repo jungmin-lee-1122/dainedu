@@ -53,12 +53,11 @@ export const resumeStyles = `
   color:var(--dn-deep)}
 .rs-name small{margin-left:9px;font-family:"Pretendard Variable",Pretendard,sans-serif;
   font-size:.4em;font-weight:700;letter-spacing:-.02em;color:#8A8F98}
-/* 한 줄 슬로건이 이름 바로 아래, 그 다음이 학력 줄입니다 */
-.rs-slogan{margin:15px 0 0;font-family:"Noto Serif KR",serif;
-  font-size:clamp(18px,1.75vw,23px);font-weight:700;line-height:1.5;
-  color:var(--dn-navy);word-break:keep-all}
-.rs-school{margin:11px 0 0;font-size:clamp(15px,1.35vw,17.5px);font-weight:600;line-height:1.6;
+.rs-school{margin:14px 0 0;font-size:clamp(15px,1.35vw,17.5px);font-weight:600;line-height:1.6;
   color:var(--dn-ink);word-break:keep-all}
+.rs-slogan{margin:16px 0 0;font-family:"Noto Serif KR",serif;
+  font-size:clamp(19px,1.9vw,25px);font-weight:700;line-height:1.5;
+  color:var(--dn-navy);word-break:keep-all}
 .rs-rule{width:64px;height:2px;margin:auto 0 22px;background:var(--rs-gold)}
 
 /* 학력 · 약력 두 칸 */
