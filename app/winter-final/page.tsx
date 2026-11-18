@@ -3,21 +3,23 @@
 //
 //  설명회가 학년별 3회차라, 안내는 이 한 페이지에서 하고
 //  신청은 각 회차의 원래 예약 페이지(/events/event-…)로 보냅니다.
-//  → 예약 폼은 손대지 않으므로 명단·광고 전환이 회차별로 그대로 갈립니다.
+//  → 예약 폼(구글 시트 연동)은 손대지 않으므로 명단과 광고 전환이
+//    회차별로 그대로 갈립니다.
 //
-//  · 윈터스쿨(/winter) 과 같은 디자인 틀(wt-*)을 씁니다.
+//  · 화면 틀은 설명회 상세(/events/event-…) 와 똑같은 ev-* 를 씁니다.
+//    오른쪽 예약 신청서 자리에만 "회차 고르기" 카드 3개가 들어갑니다.
 //  · 이 페이지에만 있는 부분만 wf-* (winterFinalStyles.ts).
 //  · 글·일시·주소는 전부 winterFinalData.ts 에 있습니다.
 // ═══════════════════════════════════════════════════════════
-import Script from "next/script";
+import Link from "next/link";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
-import PageBand from "../PageBand";
 import { quickMenuMarkup } from "../quickMenu";
-import { winterScript } from "../winter/winterScript";
 import { winterFinalStyles } from "./winterFinalStyles";
-import { hero, intro, ROUNDS, facts, points, PLACE, TEL } from "./winterFinalData";
+import {
+  hero, intro, ROUNDS, points, notice, PLACE, PLACE_SUB, TEL, TARGETS,
+} from "./winterFinalData";
 
 export const metadata: Metadata = {
   title: "2027 윈터스쿨 확장 추가 모집 설명회 — 다인에듀 동탄점",
@@ -27,155 +29,170 @@ export const metadata: Metadata = {
 
 export default function WinterFinalPage() {
   return (
-    <main className="wt wf">
+    <main className="dn-body ev-page ev-view">
       <style dangerouslySetInnerHTML={{ __html: winterFinalStyles }} />
       <SiteHeader />
 
-      <div id="top">
-        <PageBand
-          eyebrow="Briefing"
-          title="윈터스쿨 확장 추가 모집 설명회"
-          crumb={[
-            { label: "이벤트 · 설명회", href: "/event" },
-            { label: "윈터스쿨 확장 추가 모집 설명회" },
-          ]}
-        />
-      </div>
+      {/* ── 상단 키비주얼 ── */}
+      <section className="ev-kv">
+        <div className="ev-wrap">
+          <nav className="ev-crumb ev-crumb-inv" aria-label="현재 위치">
+            <Link href="/">홈</Link>
+            <span aria-hidden="true">›</span>
+            <Link href="/event">이벤트 · 설명회</Link>
+            <span aria-hidden="true">›</span>
+            <b>설명회</b>
+          </nav>
 
-      {/* ══ 키비주얼 ══ */}
-      <section className="wt-kv">
-        <div className="wt-kv-box">
-          <div className="wt-kv-bg" aria-hidden="true">
-            <span className="wt-kv-beam" />
-            <span className="wt-kv-orb" />
+          <div className="ev-kv-badges">
+            <span className="ev-state ev-state-open">접수중</span>
+            <span className="ev-kind ev-kind-inv">설명회</span>
+            {TARGETS.map((t) => (
+              <span className="ev-badge ev-badge-inv" key={t}>{t}</span>
+            ))}
           </div>
 
-          <div className="wt-kv-in">
-            <p className="wt-kv-eyebrow">{hero.eyebrow}</p>
-            <p className="wt-kv-title">
-              {hero.title[0]}
-              <br />
-              <em>{hero.title[1]}</em>
-            </p>
-            <p className="wt-kv-sub">{hero.sub}</p>
-            <div className="wt-kv-chips">
-              {hero.chips.map((c) => (
-                <span className="wt-chip" key={c}>{c}</span>
-              ))}
+          <h1 className="ev-kv-title">{hero.title}</h1>
+          <p className="ev-kv-lead">{hero.lead}</p>
+        </div>
+      </section>
+
+      {/* ── 요약표 ── */}
+      <section className="ev-sec ev-sec-tight">
+        <div className="ev-wrap">
+          <div className="ev-summary">
+            <dl className="ev-summary-grid">
+              <div>
+                <dt>일시</dt>
+                <dd>학년별 상이 · 11.28(토) · 11.29(일)</dd>
+              </div>
+              <div>
+                <dt>대상</dt>
+                <dd>{TARGETS.join(" · ")}</dd>
+              </div>
+              <div>
+                <dt>장소</dt>
+                <dd>
+                  {PLACE}
+                  <em> {PLACE_SUB}</em>
+                </dd>
+              </div>
+              <div>
+                <dt>접수</dt>
+                <dd>사전 예약제 · 선착순 마감</dd>
+              </div>
+            </dl>
+
+            <div className="ev-summary-act">
+              <a className="ev-book-btn" href="#rounds">회차 고르고 예약하기</a>
+              <p className="ev-summary-help">
+                학년별로 회차가 다릅니다 · 정원이 차면 접수가 마감됩니다.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 1) 회차 안내 ══ */}
-      <section className="wt-sec wt-result" id="rounds">
-        <div className="wt-wrap">
-          <p className="wt-tag">Schedule</p>
-          <h2 className="wt-h2">
-            학년에 맞는 회차를<br />
-            <em>골라 신청해 주세요</em>
-          </h2>
-          {intro.map((p) => (
-            <p className="wt-lead wt-dark" key={p}>{p}</p>
-          ))}
+      {/* ── 본문 ── */}
+      <section className="ev-sec">
+        <div className="ev-wrap ev-body-grid">
+          <div className="ev-body-main">
+            <figure className="ev-poster">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/poster-wfinal.jpg" alt={`${hero.title} 안내 포스터`}
+                   loading="lazy" decoding="async" />
+            </figure>
 
-          <div className="wf-rounds">
-            {ROUNDS.map((r, i) => (
-              <a
-                className="wf-round wt-up"
-                style={{ transitionDelay: `${i * 110}ms` }}
-                href={r.href}
-                key={r.href}
-              >
-                <p className="wf-grade">
-                  <b>{r.grade}</b>
-                  <span>{r.gradeSub}</span>
-                </p>
-                <p className="wf-when">
-                  <b>{r.day}</b>
-                  <span>{r.time}</span>
-                </p>
-                <p className="wf-msg">{r.message}</p>
-                <span className="wf-go">
-                  신청하기 <i aria-hidden="true">→</i>
-                </span>
-              </a>
-            ))}
+            <div className="ev-block">
+              <h2 className="ev-h2">설명회 안내</h2>
+              {intro.map((p, i) => (
+                <p className="ev-p" key={i}>{p}</p>
+              ))}
+            </div>
+
+            <div className="ev-block">
+              <h2 className="ev-h2">회차 안내</h2>
+              <ol className="ev-program">
+                {ROUNDS.map((r) => (
+                  <li key={r.href}>
+                    <span className="ev-program-time">{r.day} {r.time}</span>
+                    <span className="ev-program-desc">
+                      <b>{r.grade}</b>({r.gradeSub}) — {r.message}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="ev-block">
+              <h2 className="ev-h2">설명회에서 확인하실 수 있습니다</h2>
+              <ul className="wf-points">
+                {points.map((p) => (
+                  <li key={p.no}>
+                    <b>{p.no}</b>
+                    <strong>{p.title}</strong>
+                    <span>{p.desc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="ev-block">
+              <h2 className="ev-h2">유의사항</h2>
+              <ul className="ev-notice">
+                {notice.map((n, i) => (
+                  <li key={i}>{n}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* ══ 2) 윈터스쿨에서 안내드리는 것 ══ */}
-      <section className="wt-sec wt-faculty" id="points">
-        <div className="wt-wrap">
-          <p className="wt-tag">What We Cover</p>
-          <h2 className="wt-h2">
-            설명회에서<br />
-            <em>직접 확인하세요</em>
-          </h2>
+          {/* 우측 — 회차 고르기 (각 회차의 예약 신청서로 이동) */}
+          <aside className="ev-aside">
+            <div className="ev-aside-card wf-pick" id="rounds">
+              <span className="ev-state ev-state-open">접수중</span>
+              <h3 className="ev-aside-title">회차를 골라 주세요</h3>
+              <p className="ev-aside-desc">
+                학년마다 설명회 일정이 다릅니다. 해당 학년을 누르면 예약 신청서가 열립니다.
+              </p>
 
-          <div className="wf-points">
-            {points.map((p, i) => (
-              <article
-                className="wf-point wt-up"
-                style={{ transitionDelay: `${i * 100}ms` }}
-                key={p.no}
-              >
-                <b>{p.no}</b>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 3) 공통 안내 ══ */}
-      <section className="wt-sec wt-reform" id="info">
-        <div className="wt-wrap">
-          <p className="wt-tag wt-tag-inv">Notice</p>
-          <h2 className="wt-h2 wt-inv">
-            세 회차 모두<br />
-            <em>{PLACE} 에서 열립니다</em>
-          </h2>
-
-          <dl className="wf-facts wt-up">
-            {facts.map((f) => (
-              <div className="wf-fact" key={f.label}>
-                <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
+              <div className="wf-rounds">
+                {ROUNDS.map((r) => (
+                  <a className="wf-round" href={r.href} key={r.href}>
+                    <p className="wf-grade">
+                      <b>{r.grade}</b>
+                      <span>{r.gradeSub}</span>
+                    </p>
+                    <p className="wf-when">
+                      <b>{r.day}</b>
+                      <span>{r.time}</span>
+                    </p>
+                    <p className="wf-msg">{r.message}</p>
+                    <span className="wf-go">예약 신청서 열기 <i aria-hidden="true">→</i></span>
+                  </a>
+                ))}
               </div>
-            ))}
-          </dl>
 
-          <div className="mk-acts" style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 30 }}>
-            <a className="wt-btn wt-btn-primary" href="#rounds">회차 고르고 신청하기</a>
-            <a className="wt-btn wt-btn-ghost" href={`tel:${TEL.replace(/[^0-9]/g, "")}`}>
-              전화 문의 {TEL}
-            </a>
-          </div>
+              <p className="wf-tel">
+                문의 <a href={`tel:${TEL.replace(/[^0-9]/g, "")}`}>{TEL}</a>
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
-
-      {/* ══ 하단 고정바 ══ */}
-      <div className="wt-fixed" id="wtFixed">
-        <div className="wt-fixed-in">
-          <div className="wt-fixed-info">
-            <span><b>윈터스쿨</b> 확장 추가 모집 설명회</span>
-            <span><b>일시</b> 11.28(토) · 11.29(일) 학년별</span>
-          </div>
-          <a className="wt-fixed-btn" href="#rounds">회차 고르고 신청</a>
-        </div>
-      </div>
 
       <SiteFooter />
-      <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
 
-      <Script
-        id="winter-final-script"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: winterScript }}
-      />
+      {/* 모바일 하단 고정 버튼 */}
+      <div className="ev-fixcta">
+        <span className="ev-fixcta-info">
+          <b>11.28(토) · 11.29(일)</b>
+          <em>학년별 회차</em>
+        </span>
+        <a className="ev-book-btn" href="#rounds">회차 고르기</a>
+      </div>
+
+      <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />
     </main>
   );
 }
