@@ -8,6 +8,8 @@
 export const winterFinalStyles = `
 /* 오른쪽 신청서 칸 — 회차가 3개라 안쪽 여백만 줄입니다 */
 .wf-pick .wf-rounds{margin-top:16px}
+/* 일정 확인 안내 — 굵게 */
+.wf-warn{font-weight:800;color:var(--dn-deep);word-break:keep-all}
 
 /* ── 회차 아코디언 ── */
 .wf-rounds{display:grid;gap:12px;margin-top:20px}

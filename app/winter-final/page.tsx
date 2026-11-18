@@ -22,7 +22,7 @@ import { reserveModalMarkup } from "../event/reserveModal";
 import { winterFinalStyles } from "./winterFinalStyles";
 import { winterFinalScript } from "./winterFinalScript";
 import {
-  hero, intro, ROUNDS, points, notice, PLACE, PLACE_SUB, TEL, TARGETS,
+  hero, intro, ROUNDS, notice, PLACE, PLACE_SUB, TEL, TARGETS,
 } from "./winterFinalData";
 
 export const metadata: Metadata = {
@@ -144,19 +144,6 @@ export default function WinterFinalPage() {
             </div>
 
             <div className="ev-block">
-              <h2 className="ev-h2">설명회에서 확인하실 수 있습니다</h2>
-              <ul className="wf-points">
-                {points.map((p) => (
-                  <li key={p.no}>
-                    <b>{p.no}</b>
-                    <strong>{p.title}</strong>
-                    <span>{p.desc}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="ev-block">
               <h2 className="ev-h2">유의사항</h2>
               <ul className="ev-notice">
                 {notice.map((n, i) => (
@@ -171,8 +158,8 @@ export default function WinterFinalPage() {
             <div className="ev-aside-card wf-pick" id="reserve">
               <span className="ev-state ev-state-open">접수중</span>
               <h3 className="ev-aside-title">예약 신청서</h3>
-              <p className="ev-aside-desc">
-                학년마다 설명회 일정이 다릅니다. 해당 학년을 누르면 신청서가 펼쳐집니다.
+              <p className="ev-aside-desc wf-warn">
+                ※ 학년마다 설명회 일정이 다르니 꼭 확인하시고 신청 바랍니다.
               </p>
 
               <div className="wf-rounds">
