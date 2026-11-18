@@ -21,31 +21,35 @@ export const intro = [
   "학년마다 겨울방학에 해야 할 공부가 다르기 때문에 설명회도 학년별로 따로 진행합니다. 우리 아이 학년에 맞는 회차를 골라 신청해 주세요.",
 ];
 
-/** 회차 — 신청 버튼은 각 회차의 예약 페이지로 갑니다 */
+/** 회차 — eventId 는 관리자에서 만든 설명회의 주소값입니다.
+ *  이 값으로 명단과 광고 전환이 회차별로 갈립니다. 바꾸지 마세요. */
 export const ROUNDS = [
   {
+    key: "go1",
     grade: "예비 고1",
     gradeSub: "현 중3",
     day: "11월 28일(토)",
     time: "오후 2:00",
     message: "고등 첫 출발, 겨울에 기준을 세웁니다",
-    href: "/events/event-mwm1q4ir13md",
+    eventId: "event-mwm1q4ir13md",
   },
   {
+    key: "go2",
     grade: "예비 고2",
     gradeSub: "현 고1",
     day: "11월 29일(일)",
     time: "오후 1:00",
     message: "내신과 수능, 두 마리 토끼를 겨울에 잡습니다",
-    href: "/events/event-mwm1ta54t0pu",
+    eventId: "event-mwm1ta54t0pu",
   },
   {
+    key: "go3",
     grade: "예비 고3",
     gradeSub: "현 고2",
     day: "11월 29일(일)",
     time: "오후 4:00",
     message: "수험생의 시작, 겨울 성적이 1년을 결정합니다",
-    href: "/events/event-mwm1u8u0mf9k",
+    eventId: "event-mwm1u8u0mf9k",
   },
 ];
 

@@ -9,6 +9,7 @@ import { eventViewScript } from "../eventScript";
 import { reserveModalMarkup } from "../reserveModal";
 import { findEventById } from "@/lib/content";
 import { photo, photoSet } from "@/lib/img";
+import { isHiddenEvent } from "@/lib/hiddenEvents";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -24,6 +25,8 @@ export async function generateMetadata({
   return {
     title: `${ev.title} — 다인에듀 동탄점`,
     description: `${ev.lead} · ${ev.date} · ${ev.place}`,
+    /* 묶음 안내 페이지(/winter-final)가 따로 있는 회차는 검색에 안 잡히게 합니다 */
+    ...(isHiddenEvent(id) ? { robots: { index: false, follow: false } } : {}),
   };
 }
 

@@ -282,3 +282,6 @@ ${commonScript}
 
 ${mobileMenuScript}
 `;
+
+/** 공통 스크립트(시계·D-day·푸터·퀵메뉴·스크롤 등장) — 다른 페이지에서도 쓸 수 있게 내보냅니다 */
+export const eventCommonScript = commonScript;

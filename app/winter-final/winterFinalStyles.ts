@@ -2,35 +2,48 @@
 //  /winter-final 전용 보탬 스타일
 //
 //  ※ 화면 틀은 설명회 상세와 같은 ev-* 를 그대로 씁니다.
-//    여기에는 이 페이지에만 있는 것(회차 카드 등)만 wf-* 로 적습니다.
+//    여기에는 이 페이지에만 있는 것(회차 아코디언 등)만 wf-* 로 적습니다.
 //    globals.css 는 건드리지 않습니다.
 // ═══════════════════════════════════════════════════════════
 export const winterFinalStyles = `
-/* ── 오른쪽 "회차 고르기" 칸 ── */
-.wf-rounds{display:grid;gap:10px;margin-top:18px}
-.wf-round{display:block;padding:16px 16px 14px;border:1px solid #E3E7EF;border-radius:14px;
-  background:#fff;text-decoration:none;
-  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
-.wf-round:hover{border-color:var(--dn-gold);transform:translateY(-2px);
-  box-shadow:0 16px 34px -26px rgba(16,25,46,.55)}
-.wf-grade{display:flex;align-items:baseline;gap:7px;margin:0 0 11px}
-.wf-grade b{font-family:"Noto Serif KR",serif;font-size:19px;font-weight:900;
-  letter-spacing:-.04em;color:var(--dn-deep)}
-.wf-grade span{font-size:11.5px;font-weight:700;color:var(--dn-gold)}
-.wf-when{margin:0;padding:10px 0;border-top:1px solid #EDF0F6;border-bottom:1px solid #EDF0F6;
-  display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.wf-when b{font-size:14px;font-weight:800;letter-spacing:-.03em;color:var(--dn-deep)}
-.wf-when span{font-size:13px;font-weight:700;color:var(--dn-gold)}
-.wf-msg{margin:11px 0 0;font-size:13px;line-height:1.7;color:#6B7485;word-break:keep-all}
-.wf-go{display:inline-flex;align-items:center;gap:6px;margin-top:13px;
-  font-size:12.5px;font-weight:800;letter-spacing:-.02em;color:var(--dn-navy)}
-.wf-go i{font-style:normal;transition:transform .25s ease}
-.wf-round:hover .wf-go{color:var(--dn-gold)}
-.wf-round:hover .wf-go i{transform:translateX(4px)}
-.wf-tel{margin:16px 0 0;font-size:12.5px;color:#9AA1AC;text-align:center}
-.wf-tel a{font-weight:800;color:var(--dn-navy);text-decoration:none}
+/* 본문은 한 줄로 (상세페이지는 2단이지만 여기는 폼이 들어가서 넓게 씁니다) */
+.wf-main{max-width:860px}
+.wf-main .ev-poster{margin:0 0 clamp(26px,3vw,38px)}
+.wf-main .ev-poster img{width:100%;height:auto;display:block;border-radius:16px}
 
-/* ── 본문의 "설명회에서 확인하실 수 있습니다" 4칸 ── */
+/* ── 회차 아코디언 ── */
+.wf-rounds{display:grid;gap:12px;margin-top:20px}
+.wf-item{border:1px solid #E3E7EF;border-radius:16px;background:#fff;overflow:hidden;
+  transition:border-color .25s ease,box-shadow .25s ease}
+.wf-item.is-open{border-color:var(--dn-gold);
+  box-shadow:0 20px 44px -30px rgba(16,25,46,.5)}
+
+.wf-round{display:block;width:100%;padding:20px 22px;border:0;background:none;
+  text-align:left;cursor:pointer;font:inherit;color:inherit}
+.wf-round:hover{background:#FAFBFD}
+.wf-grade{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.wf-grade b{font-family:"Noto Serif KR",serif;font-size:21px;font-weight:900;
+  letter-spacing:-.04em;color:var(--dn-deep)}
+.wf-grade>span{font-size:12px;font-weight:700;color:var(--dn-gold)}
+.wf-when{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
+  padding:11px 0;border-top:1px solid #EDF0F6;border-bottom:1px solid #EDF0F6}
+.wf-when b{font-size:15px;font-weight:800;letter-spacing:-.03em;color:var(--dn-deep)}
+.wf-when span{font-size:13.5px;font-weight:700;color:var(--dn-gold)}
+.wf-msg{display:block;margin-top:12px;font-size:13.5px;line-height:1.7;
+  color:#6B7485;word-break:keep-all}
+.wf-go{display:inline-flex;align-items:center;gap:7px;margin-top:14px;
+  font-size:13px;font-weight:800;letter-spacing:-.02em;color:var(--dn-navy)}
+.wf-go i{font-style:normal;font-size:15px;line-height:1;transition:transform .3s ease}
+.wf-item.is-open .wf-go{color:var(--dn-gold)}
+.wf-item.is-open .wf-go i{transform:rotate(180deg)}
+
+/* 펼쳐진 신청서 칸 */
+.wf-panel{padding:0 22px 22px;border-top:1px solid #EDF0F6;background:#FAFBFD;
+  animation:wfOpen .34s cubic-bezier(.22,1,.36,1)}
+@keyframes wfOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.wf-panel .rv{margin-top:18px}
+
+/* ── "설명회에서 확인하실 수 있습니다" 4칸 ── */
 .wf-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
   gap:18px clamp(18px,2.6vw,34px);margin:16px 0 0;padding:0;list-style:none}
 .wf-points li{padding-top:15px;border-top:2px solid var(--dn-navy)}
@@ -40,8 +53,13 @@ export const winterFinalStyles = `
   letter-spacing:-.035em;color:var(--dn-deep)}
 .wf-points span{font-size:13.5px;line-height:1.75;color:#6B7485;word-break:keep-all}
 
+.wf-tel{margin:20px 0 0;font-size:13px;color:#9AA1AC}
+.wf-tel a{font-weight:800;color:var(--dn-navy);text-decoration:none}
+
 @media(max-width:720px){
   .wf-points{grid-template-columns:1fr;gap:16px}
-  .wf-round{padding:14px 14px 12px}
+  .wf-round{padding:17px 16px}
+  .wf-panel{padding:0 14px 18px}
+  .wf-grade b{font-size:19px}
 }
 `;

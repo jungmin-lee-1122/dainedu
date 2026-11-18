@@ -8,6 +8,7 @@ import { quickMenuMarkup } from "../quickMenu";
 import { eventListScript } from "./eventScript";
 import { statusFilters } from "./eventData";
 import { getEvents } from "@/lib/content";
+import { isHiddenEvent } from "@/lib/hiddenEvents";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -19,7 +20,8 @@ export const metadata: Metadata = {
 };
 
 export default async function EventListPage() {
-  const events = await getEvents();
+  /* 묶음 안내 페이지가 따로 있는 설명회는 목록에서 감춥니다 (lib/hiddenEvents.ts) */
+  const events = (await getEvents()).filter((e) => !isHiddenEvent(e.id));
   const openCount = events.filter((e) => e.status === "접수중").length;
   return (
     <main className="dn-body ev-page">
