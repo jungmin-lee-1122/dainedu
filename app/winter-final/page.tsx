@@ -118,7 +118,7 @@ export default function WinterFinalPage() {
           <div className="ev-body-main">
             <figure className="ev-poster">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/poster-wfinal.jpg" alt={`${hero.title} 안내 포스터`}
+              <img src="/poster-wfinal.jpg?v=2" alt={`${hero.title} 안내 포스터`}
                    loading="lazy" decoding="async" />
             </figure>
 
