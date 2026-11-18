@@ -6,10 +6,8 @@
 //    globals.css 는 건드리지 않습니다.
 // ═══════════════════════════════════════════════════════════
 export const winterFinalStyles = `
-/* 본문은 한 줄로 (상세페이지는 2단이지만 여기는 폼이 들어가서 넓게 씁니다) */
-.wf-main{max-width:860px}
-.wf-main .ev-poster{margin:0 0 clamp(26px,3vw,38px)}
-.wf-main .ev-poster img{width:100%;height:auto;display:block;border-radius:16px}
+/* 오른쪽 신청서 칸 — 회차가 3개라 안쪽 여백만 줄입니다 */
+.wf-pick .wf-rounds{margin-top:16px}
 
 /* ── 회차 아코디언 ── */
 .wf-rounds{display:grid;gap:12px;margin-top:20px}
@@ -18,11 +16,11 @@ export const winterFinalStyles = `
 .wf-item.is-open{border-color:var(--dn-gold);
   box-shadow:0 20px 44px -30px rgba(16,25,46,.5)}
 
-.wf-round{display:block;width:100%;padding:20px 22px;border:0;background:none;
+.wf-round{display:block;width:100%;padding:16px 16px;border:0;background:none;
   text-align:left;cursor:pointer;font:inherit;color:inherit}
 .wf-round:hover{background:#FAFBFD}
 .wf-grade{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
-.wf-grade b{font-family:"Noto Serif KR",serif;font-size:21px;font-weight:900;
+.wf-grade b{font-family:"Noto Serif KR",serif;font-size:19px;font-weight:900;
   letter-spacing:-.04em;color:var(--dn-deep)}
 .wf-grade>span{font-size:12px;font-weight:700;color:var(--dn-gold)}
 .wf-when{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
@@ -38,7 +36,7 @@ export const winterFinalStyles = `
 .wf-item.is-open .wf-go i{transform:rotate(180deg)}
 
 /* 펼쳐진 신청서 칸 */
-.wf-panel{padding:0 22px 22px;border-top:1px solid #EDF0F6;background:#FAFBFD;
+.wf-panel{padding:0 12px 16px;border-top:1px solid #EDF0F6;background:#FAFBFD;
   animation:wfOpen .34s cubic-bezier(.22,1,.36,1)}
 @keyframes wfOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .wf-panel .rv{margin-top:18px}
@@ -58,8 +56,8 @@ export const winterFinalStyles = `
 
 @media(max-width:720px){
   .wf-points{grid-template-columns:1fr;gap:16px}
-  .wf-round{padding:17px 16px}
-  .wf-panel{padding:0 14px 18px}
-  .wf-grade b{font-size:19px}
+  .wf-round{padding:15px 14px}
+  .wf-panel{padding:0 10px 14px}
+  .wf-grade b{font-size:18px}
 }
 `;

@@ -1,10 +1,11 @@
 // ═══════════════════════════════════════════════════════════
 //  /winter-final  —  2027 윈터스쿨 확장 추가 모집 설명회 (묶음 페이지)
 //
-//  설명회가 학년별 3회차라, 이 한 페이지에서 안내하고
-//  회차 카드를 누르면 그 자리에서 예약 신청서가 펼쳐집니다.
+//  설명회 상세페이지(/events/event-…) 와 똑같은 화면 틀입니다.
+//  다른 점은 오른쪽 칸 하나뿐 — 예약 신청서가 하나가 아니라
+//  회차 3개가 접힌 채로 있고, 누르면 그 자리에서 펼쳐집니다.
 //
-//  · 신청서는 설명회 상세페이지에서 쓰는 것과 같은 폼입니다.
+//  · 신청서는 상세페이지에서 쓰는 것과 같은 폼입니다.
 //    보내는 항목(eventId · name · phone …)과 주소(/api/reserve)가 같아서
 //    구글 시트 명단과 광고 전환이 회차별로 그대로 갈립니다.
 //  · 한 페이지에 폼이 3개라 id 만 회차별로 다르게 붙입니다(-go1/-go2/-go3).
@@ -96,13 +97,13 @@ export default function WinterFinalPage() {
                 </dd>
               </div>
               <div>
-                <dt>접수</dt>
+                <dt>정원</dt>
                 <dd>사전 예약제 · 선착순 마감</dd>
               </div>
             </dl>
 
             <div className="ev-summary-act">
-              <a className="ev-book-btn" href="#rounds">회차 고르고 예약하기</a>
+              <a className="ev-book-btn" href="#reserve">예약하기</a>
               <p className="ev-summary-help">
                 학년별로 회차가 다릅니다 · 정원이 차면 접수가 마감됩니다.
               </p>
@@ -113,96 +114,114 @@ export default function WinterFinalPage() {
 
       {/* ── 본문 ── */}
       <section className="ev-sec">
-        <div className="ev-wrap wf-main">
-          <figure className="ev-poster">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/poster-wfinal.jpg" alt={`${hero.title} 안내 포스터`}
-                 loading="lazy" decoding="async" />
-          </figure>
+        <div className="ev-wrap ev-body-grid">
+          <div className="ev-body-main">
+            <figure className="ev-poster">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/poster-wfinal.jpg" alt={`${hero.title} 안내 포스터`}
+                   loading="lazy" decoding="async" />
+            </figure>
 
-          <div className="ev-block">
-            <h2 className="ev-h2">설명회 안내</h2>
-            {intro.map((p, i) => (
-              <p className="ev-p" key={i}>{p}</p>
-            ))}
-          </div>
-
-          {/* ── 회차 고르기 + 그 자리에서 예약 ── */}
-          <div className="ev-block" id="rounds">
-            <h2 className="ev-h2">회차를 골라 예약해 주세요</h2>
-            <p className="ev-p">
-              해당 학년을 누르면 바로 아래에 예약 신청서가 펼쳐집니다.
-              형제·자매가 학년이 다르면 각 회차에 따로 신청해 주세요.
-            </p>
-
-            <div className="wf-rounds">
-              {ROUNDS.map((r) => (
-                <div className="wf-item" key={r.key}>
-                  <button
-                    className="wf-round"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls={`wfPanel-${r.key}`}
-                  >
-                    <span className="wf-grade">
-                      <b>{r.grade}</b>
-                      <span>{r.gradeSub}</span>
-                    </span>
-                    <span className="wf-when">
-                      <b>{r.day}</b>
-                      <span>{r.time}</span>
-                    </span>
-                    <span className="wf-msg">{r.message}</span>
-                    <span className="wf-go">
-                      예약 신청서 열기 <i aria-hidden="true">˅</i>
-                    </span>
-                  </button>
-
-                  <div className="wf-panel" id={`wfPanel-${r.key}`} hidden>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: withSuffix(
-                          reserveModalMarkup({
-                            id: r.eventId,
-                            title: `${hero.title} — ${r.grade}(${r.gradeSub})`,
-                            date: `2026.${r.day} ${r.time}`,
-                            targets: `${r.grade}(${r.gradeSub})`,
-                            place: `${PLACE} · ${PLACE_SUB}`,
-                          }),
-                          r.key
-                        ),
-                      }}
-                    />
-                  </div>
-                </div>
+            <div className="ev-block">
+              <h2 className="ev-h2">설명회 안내</h2>
+              {intro.map((p, i) => (
+                <p className="ev-p" key={i}>{p}</p>
               ))}
+            </div>
+
+            <div className="ev-block">
+              <h2 className="ev-h2">회차 안내</h2>
+              <ol className="ev-program">
+                {ROUNDS.map((r) => (
+                  <li key={r.key}>
+                    <span className="ev-program-time">{r.day} {r.time}</span>
+                    <span className="ev-program-desc">
+                      <b>{r.grade}</b>({r.gradeSub}) — {r.message}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="ev-block">
+              <h2 className="ev-h2">설명회에서 확인하실 수 있습니다</h2>
+              <ul className="wf-points">
+                {points.map((p) => (
+                  <li key={p.no}>
+                    <b>{p.no}</b>
+                    <strong>{p.title}</strong>
+                    <span>{p.desc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="ev-block">
+              <h2 className="ev-h2">유의사항</h2>
+              <ul className="ev-notice">
+                {notice.map((n, i) => (
+                  <li key={i}>{n}</li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          <div className="ev-block">
-            <h2 className="ev-h2">설명회에서 확인하실 수 있습니다</h2>
-            <ul className="wf-points">
-              {points.map((p) => (
-                <li key={p.no}>
-                  <b>{p.no}</b>
-                  <strong>{p.title}</strong>
-                  <span>{p.desc}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* ── 우측 — 예약 신청서 (회차를 누르면 그 자리에서 펼쳐집니다) ── */}
+          <aside className="ev-aside">
+            <div className="ev-aside-card wf-pick" id="reserve">
+              <span className="ev-state ev-state-open">접수중</span>
+              <h3 className="ev-aside-title">예약 신청서</h3>
+              <p className="ev-aside-desc">
+                학년마다 설명회 일정이 다릅니다. 해당 학년을 누르면 신청서가 펼쳐집니다.
+              </p>
 
-          <div className="ev-block">
-            <h2 className="ev-h2">유의사항</h2>
-            <ul className="ev-notice">
-              {notice.map((n, i) => (
-                <li key={i}>{n}</li>
-              ))}
-            </ul>
-            <p className="wf-tel">
-              문의 <a href={`tel:${TEL.replace(/[^0-9]/g, "")}`}>{TEL}</a>
-            </p>
-          </div>
+              <div className="wf-rounds">
+                {ROUNDS.map((r) => (
+                  <div className="wf-item" key={r.key}>
+                    <button
+                      className="wf-round"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls={`wfPanel-${r.key}`}
+                    >
+                      <span className="wf-grade">
+                        <b>{r.grade}</b>
+                        <span>{r.gradeSub}</span>
+                      </span>
+                      <span className="wf-when">
+                        <b>{r.day}</b>
+                        <span>{r.time}</span>
+                      </span>
+                      <span className="wf-go">
+                        예약 신청서 열기 <i aria-hidden="true">˅</i>
+                      </span>
+                    </button>
+
+                    <div className="wf-panel" id={`wfPanel-${r.key}`} hidden>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: withSuffix(
+                            reserveModalMarkup({
+                              id: r.eventId,
+                              title: `${hero.title} — ${r.grade}(${r.gradeSub})`,
+                              date: `2026.${r.day} ${r.time}`,
+                              targets: `${r.grade}(${r.gradeSub})`,
+                              place: `${PLACE} · ${PLACE_SUB}`,
+                            }),
+                            r.key
+                          ),
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="wf-tel">
+                문의 <a href={`tel:${TEL.replace(/[^0-9]/g, "")}`}>{TEL}</a>
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -214,7 +233,7 @@ export default function WinterFinalPage() {
           <b>11.28(토) · 11.29(일)</b>
           <em>학년별 회차</em>
         </span>
-        <a className="ev-book-btn" href="#rounds">회차 고르기</a>
+        <a className="ev-book-btn" href="#reserve">예약하기</a>
       </div>
 
       <div dangerouslySetInnerHTML={{ __html: quickMenuMarkup }} />

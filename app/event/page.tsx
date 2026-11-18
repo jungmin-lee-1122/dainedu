@@ -9,6 +9,11 @@ import { eventListScript } from "./eventScript";
 import { statusFilters } from "./eventData";
 import { getEvents } from "@/lib/content";
 import { isHiddenEvent } from "@/lib/hiddenEvents";
+import {
+  hero as WF_HERO,
+  TARGETS as WF_TARGETS,
+  PLACE as WF_PLACE,
+} from "../winter-final/winterFinalData";
 
 // 60초마다 새로 만들어 둡니다. 관리자에서 고치면 즉시 반영됩니다.
 export const revalidate = 60;
@@ -22,7 +27,7 @@ export const metadata: Metadata = {
 export default async function EventListPage() {
   /* 묶음 안내 페이지가 따로 있는 설명회는 목록에서 감춥니다 (lib/hiddenEvents.ts) */
   const events = (await getEvents()).filter((e) => !isHiddenEvent(e.id));
-  const openCount = events.filter((e) => e.status === "접수중").length;
+  const openCount = events.filter((e) => e.status === "접수중").length + 1; // +1 = 윈터 FINAL 묶음 설명회
   return (
     <main className="dn-body ev-page">
       <SiteHeader />
@@ -65,6 +70,54 @@ export default async function EventListPage() {
           </div>
 
           <ul className="ev-list" id="evList">
+            {/* 윈터스쿨 확장 추가 모집 설명회 — 학년별 3회차라 묶음 페이지로 안내합니다
+                (회차 3개는 lib/hiddenEvents.ts 에서 목록에 안 뜨게 해 두었습니다) */}
+            <li className="ev-item" data-status="접수중">
+              <a className="ev-card" href="/winter-final">
+                <div className="ev-card-side">
+                  <span className="ev-state ev-state-open">접수중</span>
+                  <span className="ev-kind">설명회</span>
+                </div>
+
+                <div className="ev-card-main">
+                  <div className="ev-badges">
+                    {WF_TARGETS.map((t) => (
+                      <span className="ev-badge" key={t}>{t}</span>
+                    ))}
+                  </div>
+                  <h2 className="ev-card-title">{WF_HERO.title}</h2>
+                  <p className="ev-card-lead">{WF_HERO.lead}</p>
+                  <dl className="ev-meta">
+                    <div>
+                      <dt>일시</dt>
+                      <dd>
+                        학년별 상이 · 예비고1 11.28(토) 오후 2시 · 예비고2 11.29(일) 오후 1시 ·
+                        예비고3 11.29(일) 오후 4시
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>장소</dt>
+                      <dd>
+                        다인에듀 동탄점
+                        <em> · {WF_PLACE}</em>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>정원</dt>
+                      <dd>사전 예약제 · 선착순 마감</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div className="ev-card-go">
+                  <span className="ev-card-btn">
+                    회차 고르고 예약
+                    <i aria-hidden="true">›</i>
+                  </span>
+                </div>
+              </a>
+            </li>
+
             {events.map((e) => (
               <li className="ev-item" data-status={e.status} key={e.id}>
                 {/* /event/1 은 중계 서버가 가로채므로 /events/… 로 엽니다 */}
