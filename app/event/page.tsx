@@ -27,7 +27,17 @@ export const metadata: Metadata = {
 export default async function EventListPage() {
   /* 묶음 안내 페이지가 따로 있는 설명회는 목록에서 감춥니다 (lib/hiddenEvents.ts) */
   const events = (await getEvents()).filter((e) => !isHiddenEvent(e.id));
-  const openCount = events.filter((e) => e.status === "접수중").length + 1; // +1 = 윈터 FINAL 묶음 설명회
+  /* 윈터 FINAL 묶음 설명회는 관리자 목록이 아니라 손으로 넣은 카드라,
+     건수에도 한 건으로 같이 세어 줍니다.
+     설명회가 끝나 "마감" 으로 바꿀 때는 아래 WF_STATUS 만 "마감" 으로 고치면
+     카드 배지 · 필터 건수가 한 번에 따라갑니다. (카드 자체를 내리려면 WF_SHOW = false) */
+  const WF_SHOW = true;
+  const WF_STATUS = "접수중" as "접수중" | "접수예정" | "마감";
+
+  const count = (s: string) =>
+    events.filter((e) => e.status === s).length + (WF_SHOW && WF_STATUS === s ? 1 : 0);
+  const totalCount = events.length + (WF_SHOW ? 1 : 0);
+  const openCount = count("접수중");
   return (
     <main className="dn-body ev-page">
       <SiteHeader />
@@ -64,7 +74,7 @@ export default async function EventListPage() {
                 key={s}
               >
                 {s}
-                <i>{s === "전체" ? events.length : events.filter((e) => e.status === s).length}</i>
+                <i>{s === "전체" ? totalCount : count(s)}</i>
               </button>
             ))}
           </div>
@@ -72,10 +82,13 @@ export default async function EventListPage() {
           <ul className="ev-list" id="evList">
             {/* 윈터스쿨 확장 추가 모집 설명회 — 학년별 3회차라 묶음 페이지로 안내합니다
                 (회차 3개는 lib/hiddenEvents.ts 에서 목록에 안 뜨게 해 두었습니다) */}
-            <li className="ev-item" data-status="접수중">
+            {WF_SHOW && (
+            <li className="ev-item" data-status={WF_STATUS}>
               <a className="ev-card" href="/winter-final">
                 <div className="ev-card-side">
-                  <span className="ev-state ev-state-open">접수중</span>
+                  <span className={`ev-state ev-state-${WF_STATUS === "접수중" ? "open" : WF_STATUS === "접수예정" ? "soon" : "closed"}`}>
+                    {WF_STATUS}
+                  </span>
                   <span className="ev-kind">설명회</span>
                 </div>
 
@@ -111,12 +124,13 @@ export default async function EventListPage() {
 
                 <div className="ev-card-go">
                   <span className="ev-card-btn">
-                    회차 고르고 예약
+                    {WF_STATUS === "마감" ? "내용 보기" : "자세히 보고 예약"}
                     <i aria-hidden="true">›</i>
                   </span>
                 </div>
               </a>
             </li>
+            )}
 
             {events.map((e) => (
               <li className="ev-item" data-status={e.status} key={e.id}>
