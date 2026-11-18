@@ -1,5 +1,6 @@
 import Script from "next/script";
 import Link from "next/link";
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
@@ -80,6 +81,56 @@ export default async function EventListPage() {
           </div>
 
           <ul className="ev-list" id="evList">
+
+            {events.map((e, idx) => (
+              <Fragment key={e.id}>
+              <li className="ev-item" data-status={e.status}>
+                {/* /event/1 은 중계 서버가 가로채므로 /events/… 로 엽니다 */}
+                <a className="ev-card" href={`/events/${e.id}`}>
+                  <div className="ev-card-side">
+                    <span className={`ev-state ev-state-${e.status === "접수중" ? "open" : e.status === "접수예정" ? "soon" : "closed"}`}>
+                      {e.status}
+                    </span>
+                    <span className="ev-kind">{e.kind}</span>
+                  </div>
+
+                  <div className="ev-card-main">
+                    <div className="ev-badges">
+                      {e.targets.map((t) => (
+                        <span className="ev-badge" key={t}>{t}</span>
+                      ))}
+                    </div>
+                    <h2 className="ev-card-title">{e.title}</h2>
+                    <p className="ev-card-lead">{e.lead}</p>
+                    <dl className="ev-meta">
+                      <div>
+                        <dt>일시</dt>
+                        <dd>{e.date}</dd>
+                      </div>
+                      <div>
+                        <dt>장소</dt>
+                        <dd>
+                          {e.place}
+                          {e.placeDetail && <em> · {e.placeDetail}</em>}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt>정원</dt>
+                        <dd>{e.capacity}</dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <div className="ev-card-go">
+                    <span className="ev-card-btn">
+                      {e.status === "마감" ? "내용 보기" : "자세히 보고 예약"}
+                      <i aria-hidden="true">›</i>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              {idx === 0 && (
+                <>
             {/* 윈터스쿨 확장 추가 모집 설명회 — 학년별 3회차라 묶음 페이지로 안내합니다
                 (회차 3개는 lib/hiddenEvents.ts 에서 목록에 안 뜨게 해 두었습니다) */}
             {WF_SHOW && (
@@ -131,53 +182,9 @@ export default async function EventListPage() {
               </a>
             </li>
             )}
-
-            {events.map((e) => (
-              <li className="ev-item" data-status={e.status} key={e.id}>
-                {/* /event/1 은 중계 서버가 가로채므로 /events/… 로 엽니다 */}
-                <a className="ev-card" href={`/events/${e.id}`}>
-                  <div className="ev-card-side">
-                    <span className={`ev-state ev-state-${e.status === "접수중" ? "open" : e.status === "접수예정" ? "soon" : "closed"}`}>
-                      {e.status}
-                    </span>
-                    <span className="ev-kind">{e.kind}</span>
-                  </div>
-
-                  <div className="ev-card-main">
-                    <div className="ev-badges">
-                      {e.targets.map((t) => (
-                        <span className="ev-badge" key={t}>{t}</span>
-                      ))}
-                    </div>
-                    <h2 className="ev-card-title">{e.title}</h2>
-                    <p className="ev-card-lead">{e.lead}</p>
-                    <dl className="ev-meta">
-                      <div>
-                        <dt>일시</dt>
-                        <dd>{e.date}</dd>
-                      </div>
-                      <div>
-                        <dt>장소</dt>
-                        <dd>
-                          {e.place}
-                          {e.placeDetail && <em> · {e.placeDetail}</em>}
-                        </dd>
-                      </div>
-                      <div>
-                        <dt>정원</dt>
-                        <dd>{e.capacity}</dd>
-                      </div>
-                    </dl>
-                  </div>
-
-                  <div className="ev-card-go">
-                    <span className="ev-card-btn">
-                      {e.status === "마감" ? "내용 보기" : "자세히 보고 예약"}
-                      <i aria-hidden="true">›</i>
-                    </span>
-                  </div>
-                </a>
-              </li>
+                </>
+              )}
+              </Fragment>
             ))}
           </ul>
 
