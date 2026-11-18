@@ -2525,7 +2525,9 @@ img,video,svg{max-width:100%}
 @media(max-width:1000px){
   .ev-body-grid{grid-template-columns:1fr;gap:34px}
   .ev-aside{display:block;width:100%}
-  .ev-summary{grid-template-columns:1fr;gap:0;align-items:start;margin-top:-26px;padding:22px 22px 20px}
+  /* 좁은 화면에서는 키비주얼에 겹치지 않고, 위아래 여백을 똑같이 둡니다 */
+  .ev-sec-tight{padding:18px 0}
+  .ev-summary{grid-template-columns:1fr;gap:0;align-items:start;margin-top:0;padding:22px 22px 20px}
   /* 정보 / 예약 영역을 선으로 나눠 구조가 또렷하게 */
   .ev-summary-act{margin-top:18px;padding-top:18px;border-top:1px solid var(--dn-line)}
   .ev-summary-help{margin-top:2px}
