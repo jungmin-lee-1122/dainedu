@@ -85,8 +85,10 @@ export default async function PortaPage() {
   ]);
   /* 이벤트·설명회 페이지(/event) 맨 위 2개를 그대로 가져옵니다.
      순서를 바꾸려면 관리자 → 이벤트·설명회에서 항목 순서를 조정하세요. */
-  /* 윈터 FINAL 설명회(학년별 3회차)는 묶음 페이지로 맨 앞에 한 줄만 넣습니다 */
-  const lectures = [WINTER_FINAL_LECTURE, ...events].slice(0, 2);
+  /* 윈터 FINAL 설명회(학년별 3회차)는 묶음 페이지로 두 번째에 한 줄만 넣습니다 */
+  const lectures = [events[0], WINTER_FINAL_LECTURE, ...events.slice(1)]
+    .filter(Boolean)
+    .slice(0, 2);
 
   return (
     <main className="dn-body cv-page">

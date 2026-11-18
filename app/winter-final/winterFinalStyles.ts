@@ -22,8 +22,7 @@ export const winterFinalStyles = `
   text-align:left;cursor:pointer;font:inherit;color:inherit}
 .wf-round:hover{background:#FAFBFD}
 .wf-grade{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
-.wf-grade b{font-family:"Noto Serif KR",serif;font-size:19px;font-weight:900;
-  letter-spacing:-.04em;color:var(--dn-deep)}
+.wf-grade b{font-size:19px;font-weight:900;letter-spacing:-.035em;color:var(--dn-navy)}
 .wf-grade>span{font-size:12px;font-weight:700;color:var(--dn-gold)}
 .wf-when{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
   padding:11px 0;border-top:1px solid #EDF0F6;border-bottom:1px solid #EDF0F6}
