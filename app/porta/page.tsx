@@ -15,6 +15,7 @@ import {
   sideBanners,
 } from "./portaData";
 import { getClips, getTeachers, getEvents } from "@/lib/content";
+import { WINTER_FINAL_LECTURE } from "@/lib/winterFinalLecture";
 import { getVisiblePosts } from "@/lib/blog";
 
 /** 여러 형태의 날짜 문구에서 "월.일 / 요일 · 시각" 을 뽑아냅니다.
@@ -84,7 +85,8 @@ export default async function PortaPage() {
   ]);
   /* 이벤트·설명회 페이지(/event) 맨 위 2개를 그대로 가져옵니다.
      순서를 바꾸려면 관리자 → 이벤트·설명회에서 항목 순서를 조정하세요. */
-  const lectures = events.slice(0, 2);
+  /* 윈터 FINAL 설명회(학년별 3회차)는 묶음 페이지로 맨 앞에 한 줄만 넣습니다 */
+  const lectures = [WINTER_FINAL_LECTURE, ...events].slice(0, 2);
 
   return (
     <main className="dn-body cv-page">
@@ -157,7 +159,7 @@ export default async function PortaPage() {
                 const d = semDate(l.startAt, l.date);
                 return (
                   <li key={l.id}>
-                    <a className="cv-sem-item" href={`/events/${l.id}`}>
+                    <a className="cv-sem-item" href={"href" in l && l.href ? l.href : `/events/${l.id}`}>
                       <div className="cv-sem-date">
                         <b>{d.md}</b>
                         <span>{d.sub}</span>
