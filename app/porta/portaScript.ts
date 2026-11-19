@@ -220,7 +220,7 @@ fadeSlider({ id:"cvSide", slide:".cv-side-slide", dots:"cvSideDots", playSel:".c
 (function(){
   var num=document.getElementById("dnDdayNum"); if(!num) return;
   var cap=document.getElementById("dnDdayCap");
-  var SUNEUNG=new Date(2026,10,19);
+  var SUNEUNG=new Date(2027,10,18);
   SUNEUNG.setHours(0,0,0,0);
   var now=new Date(); now.setHours(0,0,0,0);
   var d=Math.round((SUNEUNG-now)/86400000);

@@ -152,7 +152,7 @@ for(var g=0;g<groups.length;g++){
   var num=document.getElementById("dnDdayNum");
   if(num){
     var cap=document.getElementById("dnDdayCap");
-    var S=new Date(2026,10,19); S.setHours(0,0,0,0);
+    var S=new Date(2027,10,18); S.setHours(0,0,0,0);
     var now=new Date(); now.setHours(0,0,0,0);
     var d=Math.round((S-now)/86400000);
     num.textContent = d>0 ? ("D-"+d) : (d===0?"D-DAY":("D+"+(-d)));
