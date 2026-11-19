@@ -61,6 +61,53 @@ $$(".jp-faq-list details").forEach(function(el){
   },{threshold:0}).observe(hero);
 })();
 
+
+/* ═══════ 첫 화면 간편 상담 신청 ═══════
+   온라인 상담과 같은 시트로 보냅니다(/api/jaesu-consult → 시트의 "재수선행반" 탭). */
+(function(){
+  var form=$(".jp-quick"); if(!form) return;
+  var btn=$(".jp-quick-submit",form), msg=$(".jp-quick-msg",form);
+  var tel=form.querySelector('[name="phone"]');
+  if(tel) tel.addEventListener("input",function(){
+    var v=tel.value.replace(/[^0-9]/g,"").slice(0,11);
+    if(v.length<4) tel.value=v;
+    else if(v.length<8) tel.value=v.slice(0,3)+"-"+v.slice(3);
+    else tel.value=v.slice(0,3)+"-"+v.slice(3,7)+"-"+v.slice(7);
+  });
+  function say(kind,t){ msg.className="jp-quick-msg"+(kind?" is-"+kind:""); msg.textContent=t||""; }
+  function pick(n){ var el=form.querySelector('[name="'+n+'"]:checked'); return el?el.value:""; }
+
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var data={
+      role: pick("role"),
+      name: String(form.querySelector('[name="name"]').value||"").trim(),
+      phone: String(tel.value||"").trim(),
+      grade: pick("grade"),
+      content: String(form.querySelector('[name="content"]').value||"").trim(),
+      agree: form.querySelector('[name="agree"]').checked
+    };
+    if(!data.name){ say("error","학생 이름을 입력해 주세요."); form.querySelector('[name="name"]').focus(); return; }
+    if(!/^01[0-9]-[0-9]{3,4}-[0-9]{4}$/.test(data.phone)){ say("error","연락처를 010-0000-0000 형식으로 입력해 주세요."); tel.focus(); return; }
+    if(!data.grade){ say("error","구분(고3 · 재수 · N수)을 선택해 주세요."); return; }
+    if(!data.agree){ say("error","개인정보 수집·이용에 동의해 주세요."); return; }
+
+    btn.disabled=true; btn.textContent="전송 중…"; say("","");
+    fetch("/api/jaesu-consult",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    }).then(function(r){ return r.json().catch(function(){ return {ok:false}; }).then(function(j){ return r.ok&&j&&j.ok; }); })
+      .then(function(ok){
+        if(!ok) throw new Error();
+        form.reset();
+        say("ok","상담 신청이 접수되었습니다. 입력하신 연락처로 전화드리겠습니다.");
+      })
+      .catch(function(){ say("error","전송에 실패했습니다. 잠시 후 다시 시도하시거나 1644-8022로 연락해 주세요."); })
+      .then(function(){ btn.disabled=false; btn.textContent="상담 신청하기"; });
+  });
+})();
+
 /* ═══════ 스크롤 등장 ═══════
    묶음(섹션 조각)이 화면에 들어오는 순간, 그 안의 조각들을 차례로 보여 줍니다.
    [묶음, [[조각, 방식], …], 간격(ms)]  ·  조각이 "self" 면 묶음 자신 */

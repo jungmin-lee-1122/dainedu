@@ -22,6 +22,37 @@
 function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents);
+
+    // ── 탭을 따로 지정해 보낸 신청(예: 재수선행반 간편 상담)은 그 탭에 쌓습니다 ──
+    //    홈페이지가 sheetTab: "재수선행반" 처럼 탭 이름을 함께 보냅니다.
+    //    탭이 없으면 자동으로 만들고, 첫 줄(제목 줄)도 자동으로 넣습니다.
+    //    기존 온라인 상담(탭 지정 없음)은 아래 원래 흐름 그대로입니다.
+    if (data.sheetTab) {
+      var ss = SpreadsheetApp.getActiveSpreadsheet();
+      var tab = ss.getSheetByName(String(data.sheetTab)) || ss.insertSheet(String(data.sheetTab));
+      if (tab.getLastRow() === 0) {
+        tab.appendRow([
+          "접수시각", "상담자유형", "학생이름", "연락처", "구분",
+          "관심과정", "유입경로", "문의내용", "처리상태"
+        ]);
+        tab.setFrozenRows(1);
+      }
+      tab.appendRow([
+        new Date(),
+        data.role || "",
+        data.name || "",
+        data.phone || "",
+        data.grade || "",
+        data.course || "",
+        data.source || "",
+        data.content || "",
+        "접수"
+      ]);
+      return ContentService
+        .createTextOutput(JSON.stringify({ ok: true }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
     // 첫 실행이면 헤더 행 자동 생성

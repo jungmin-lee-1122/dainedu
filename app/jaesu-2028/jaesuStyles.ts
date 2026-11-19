@@ -573,4 +573,49 @@ export const jaesuStyles = `
 .jp-open-date b{font-weight:800;color:var(--gold-light)}
 
 
+/* ── 첫 화면 간편 상담 신청 ── */
+.jp-hero-grid{gap:44px}
+.jp-hero-copy{flex:1 1 auto;min-width:0;max-width:640px}
+.jp-hero h1{font-size:clamp(40px,4.3vw,60px)}
+.jp-quick{flex:0 0 384px;padding:26px 26px 24px;border-radius:16px;background:#fff;color:var(--ink);
+  box-shadow:0 34px 70px -30px rgba(4,10,24,.85);animation:jpUp 1.1s var(--ease) .55s both}
+.jp-quick-title{display:block;font-size:21px;font-weight:760;line-height:1.35;letter-spacing:-.035em}
+.jp-quick-sub{margin-top:4px;font-size:14px;line-height:1.6;color:var(--muted)}
+.jp-quick-field{margin-top:13px}
+.jp-quick-label{display:block;margin-bottom:6px;font-size:13px;font-weight:650;letter-spacing:-.01em;color:#43516a}
+.jp-quick-label i{margin-left:4px;font-style:normal;font-weight:500;color:#8a93a3}
+.jp-quick input[type=text],.jp-quick input[type=tel],.jp-quick textarea{display:block;width:100%;padding:11px 13px;
+  border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:15px;line-height:1.5;
+  transition:border-color .2s,box-shadow .2s}
+.jp-quick textarea{resize:vertical;min-height:62px}
+.jp-quick input::placeholder,.jp-quick textarea::placeholder{color:#a3acba}
+.jp-quick input[type=text]:focus,.jp-quick input[type=tel]:focus,.jp-quick textarea:focus{outline:0;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,170,102,.24)}
+.jp-quick-seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.jp-quick-seg label{position:relative;cursor:pointer}
+.jp-quick-seg input{position:absolute;opacity:0;pointer-events:none}
+.jp-quick-seg span{display:block;padding:9px 6px;border:1px solid var(--line);border-radius:9px;text-align:center;
+  font-size:14px;font-weight:600;color:#43516a;transition:background .2s,border-color .2s,color .2s}
+.jp-quick-seg label:hover span{border-color:#b9c3d1}
+.jp-quick-seg input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff}
+.jp-quick-seg input:focus-visible+span{outline:3px solid #a5843f;outline-offset:2px}
+.jp-quick-agree{display:flex;align-items:flex-start;gap:8px;margin-top:14px;font-size:13px;line-height:1.5;color:#43516a;cursor:pointer}
+.jp-quick-agree input{flex:0 0 auto;width:16px;height:16px;margin:2px 0 0;accent-color:var(--navy)}
+.jp-quick-agree-detail{margin:5px 0 0 24px;font-size:11.5px;line-height:1.65;color:#8a93a3}
+.jp-quick-msg{margin-top:10px;font-size:13px;line-height:1.55}
+.jp-quick-msg:empty{display:none}
+.jp-quick-msg.is-error{color:#c0392b}
+.jp-quick-msg.is-ok{padding:10px 12px;border-radius:9px;background:#EEF7F1;color:#1f7a4d;font-weight:600}
+.jp-quick-submit{width:100%;margin-top:12px;min-height:52px}
+.jp-quick-submit:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+@media(max-width:1000px){
+  .jp-hero-grid{display:block}
+  .jp-hero-copy{max-width:700px}
+  .jp-quick{margin-top:38px;max-width:460px}
+}
+@media(max-width:600px){
+  .jp-hero h1{font-size:clamp(33px,9.2vw,43px)}
+  .jp-quick{max-width:none;margin-top:32px;padding:22px 20px 20px;border-radius:14px}
+}
+
 `;
