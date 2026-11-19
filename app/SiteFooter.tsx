@@ -76,7 +76,7 @@ export default function SiteFooter() {
                 <b>다인아카데미학원</b>
                 <span>사업자등록번호 628-85-03457</span>
                 <span>학원설립·운영등록번호 제5475호</span>
-                <a className="dn-foot-badge" href="#tuition">교습비 안내</a>
+                
               </li>
               <li>
                 <b>주식회사 다인교육</b>
