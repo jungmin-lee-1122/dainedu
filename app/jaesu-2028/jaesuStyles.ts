@@ -617,5 +617,6 @@ export const jaesuStyles = `
   .jp-hero h1{font-size:clamp(33px,9.2vw,43px)}
   .jp-quick{max-width:none;margin-top:32px;padding:22px 20px 20px;border-radius:14px}
 }
+.jp-quick{scroll-margin-top:120px}
 
 `;

@@ -123,6 +123,20 @@ $$(".jp-faq-list details").forEach(function(el){
   });
 })();
 
+/* ═══════ 상담 폼으로 가는 버튼 — 부드럽게 올라가고 이름 칸에 커서 ═══════ */
+(function(){
+  var form=document.getElementById("jp-quick"); if(!form) return;
+  $$('a[href="#jp-quick"]').forEach(function(a){
+    a.addEventListener("click",function(e){
+      e.preventDefault();
+      var slow=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      form.scrollIntoView({behavior:slow?"auto":"smooth",block:"center"});
+      var first=form.querySelector('[name="name"]');
+      if(first) setTimeout(function(){ first.focus({preventScroll:true}); },slow?0:700);
+    });
+  });
+})();
+
 /* ═══════ 스크롤 등장 ═══════
    묶음(섹션 조각)이 화면에 들어오는 순간, 그 안의 조각들을 차례로 보여 줍니다.
    [묶음, [[조각, 방식], …], 간격(ms)]  ·  조각이 "self" 면 묶음 자신 */
