@@ -82,7 +82,7 @@ $$(".jp-faq-list details").forEach(function(el){
     [".jp-management-intro",[[":scope>.jp-eyebrow,:scope>h2,:scope>.jp-sub","up"],[".jp-management-image","clip"]],110],
     [".jp-care-accordion",[["details","up"]],120],
     [".jp-day-aside",[[":scope>*","up"]],110],
-    [".jp-day-main",[["self","up"],[".jp-day-tabs","up"],[".jp-time-panel:not([hidden]) .jp-time-row,.jp-time-panel:not([hidden]) .jp-fine","up"]],60],
+    [".jp-day-main",[[".jp-day-tabs","up"],[".jp-time-panel:not([hidden]) .jp-time-row,.jp-time-panel:not([hidden]) .jp-fine","up"]],60],
     [".jp-record-copy",[[":scope>.jp-eyebrow,:scope>h2,:scope>.jp-sub","up"],[".jp-record-steps span","scale"]],110],
     [".jp-report-col",[[".jp-report","tilt"],[".jp-report-row","left"],[".jp-report-caption","up"]],110],
     [".jp-tablet-strip",[[":scope>img","left"],[":scope>div","up"]],160],
