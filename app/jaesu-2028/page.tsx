@@ -5,8 +5,7 @@
 //  · 본문은 전달받은 시안을 그대로 옮겼습니다 (jaesuMarkup.ts).
 //  · 모양은 jaesuStyles.ts, 움직임은 jaesuScript.ts.
 //
-//  ※ 개강일·수강료·강사진이 "확정 후 안내" 인 초안이라 검색에 잡히지 않게
-//    해 두었습니다(시안도 같은 설정이었습니다). 공개할 때 IS_DRAFT 를 false 로.
+//  ※ 2026.11.19 공개 — 검색에 잡힙니다. 다시 감추려면 IS_DRAFT 를 true 로.
 // ═══════════════════════════════════════════════════════════
 import Script from "next/script";
 import type { Metadata } from "next";
@@ -18,8 +17,8 @@ import { jaesuMarkup } from "./jaesuMarkup";
 import { jaesuStyles } from "./jaesuStyles";
 import { jaesuScript } from "./jaesuScript";
 
-/** 내용이 확정되어 공개할 때 false 로 바꾸세요 */
-const IS_DRAFT = true;
+/** true 로 바꾸면 검색에 잡히지 않습니다(초안 상태) */
+const IS_DRAFT = false;
 
 export const metadata: Metadata = {
   title: "2028 재수선행반 — 다인에듀 동탄점",

@@ -13,6 +13,7 @@ const PAGES: [string, number, "daily" | "weekly" | "monthly"][] = [
   ["/", 1.0, "daily"],
   ["/pre-winter", 0.9, "weekly"],
   ["/winter", 0.9, "weekly"],
+  ["/jaesu-2028", 0.9, "weekly"],
   ["/porta", 0.9, "weekly"],
   ["/clavis", 0.9, "weekly"],
   ["/teachers", 0.8, "weekly"],
