@@ -97,13 +97,28 @@ $$(".jp-faq-list details").forEach(function(el){
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(data)
-    }).then(function(r){ return r.json().catch(function(){ return {ok:false}; }).then(function(j){ return r.ok&&j&&j.ok; }); })
-      .then(function(ok){
-        if(!ok) throw new Error();
-        form.reset();
-        say("ok","상담 신청이 접수되었습니다. 입력하신 연락처로 전화드리겠습니다.");
+    }).then(function(r){ return r.json().catch(function(){ return {ok:false,error:"badjson",status:r.status}; }); })
+      .then(function(res){
+        if(res&&res.ok){
+          form.reset();
+          say("ok","상담 신청이 접수되었습니다. 입력하신 연락처로 전화드리겠습니다.");
+          return;
+        }
+        /* 원인별 안내 — 무엇을 고쳐야 하는지 바로 알 수 있게 */
+        var why=(res&&res.error)||"unknown";
+        var t="전송에 실패했습니다. 잠시 후 다시 시도하시거나 1644-8022로 연락해 주세요.";
+        if(why==="no_webhook") t="[설정 필요] 시트 주소(JAESU_CONSULT_WEBHOOK_URL)가 등록되지 않았습니다.";
+        else if(why==="invalid") t="입력하신 내용을 다시 확인해 주세요.";
+        else if(why==="sheet"){
+          if(res.hint==="access") t="[연결 실패] 구글 웹 앱의 액세스 권한이 '모든 사용자'가 아닙니다.";
+          else if(res.hint==="html") t="[연결 실패] 시트 주소가 웹 앱 주소(…/exec)가 아닌 것 같습니다. ("+(res.status||"")+")";
+          else t="[연결 실패] 시트 스크립트 오류: "+String(res.detail||"").slice(0,120);
+        }
+        else if(why==="badjson") t="[연결 실패] 접수 주소가 아직 배포되지 않았습니다. ("+(res.status||"")+")";
+        say("error",t);
+        if(window.console) console.error("[재수선행반 상담 실패]",res);
       })
-      .catch(function(){ say("error","전송에 실패했습니다. 잠시 후 다시 시도하시거나 1644-8022로 연락해 주세요."); })
+      .catch(function(){ say("error","네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."); })
       .then(function(){ btn.disabled=false; btn.textContent="상담 신청하기"; });
   });
 })();

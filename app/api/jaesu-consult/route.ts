@@ -90,7 +90,19 @@ export async function POST(request: Request) {
 
     if (!res.ok || !sheetOk) {
       console.error("Sheet save failed:", res.status, text.slice(0, 300));
-      return NextResponse.json({ ok: false, error: "sheet" }, { status: 502 });
+      // 원인을 화면에서 바로 알 수 있게 단서를 함께 돌려줍니다.
+      //  · 구글 로그인 화면(HTML)이 돌아오면 → 웹 앱 액세스 권한이 "모든 사용자" 가 아님
+      //  · {"ok":false,"error":"…"} 가 돌아오면 → 스크립트 안에서 난 오류
+      const isHtml = /^\s*</.test(text);
+      const hint = isHtml
+        ? /accounts\.google\.com|ServiceLogin|로그인|Sign in/i.test(text)
+          ? "access"
+          : "html"
+        : "script";
+      return NextResponse.json(
+        { ok: false, error: "sheet", hint, status: res.status, detail: isHtml ? "" : text.slice(0, 160) },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({ ok: true });
