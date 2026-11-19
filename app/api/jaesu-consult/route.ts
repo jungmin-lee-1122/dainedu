@@ -3,8 +3,9 @@ import { NextResponse } from "next/server";
 // ═══════════════════════════════════════════════════════════
 //  2028 재수선행반 — 첫 화면 간편 상담 신청 → 구글 시트 저장
 //
-//  온라인 상담(/api/consult)과 같은 길로 보냅니다.
-//   · 같은 환경변수 CONSULT_WEBHOOK_URL (같은 구글 시트)
+//  온라인 상담(/api/consult)과 같은 방식으로 보냅니다.
+//   · 재수선행반 전용 시트: 환경변수 JAESU_CONSULT_WEBHOOK_URL
+//     (없으면 온라인 상담 시트 CONSULT_WEBHOOK_URL 로 보냅니다)
 //   · 다만 입력 항목이 적어서 검사 기준만 따로 둡니다
 //     (온라인 상담 API 는 이메일·주소·비밀번호 등이 필수라 그대로는 못 씁니다)
 //   · sheetTab: "재수선행반" 을 함께 보내, 시트의 "재수선행반" 탭에 쌓이게 합니다
@@ -38,9 +39,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
     }
 
-    const webhook = (process.env.CONSULT_WEBHOOK_URL || "").trim();
+    // 재수선행반 전용 시트 주소가 있으면 그쪽으로, 없으면 온라인 상담 시트로 보냅니다.
+    const webhook = (
+      process.env.JAESU_CONSULT_WEBHOOK_URL ||
+      process.env.CONSULT_WEBHOOK_URL ||
+      ""
+    ).trim();
     if (!webhook) {
-      console.error("CONSULT_WEBHOOK_URL is not set");
+      console.error("JAESU_CONSULT_WEBHOOK_URL / CONSULT_WEBHOOK_URL is not set");
       return NextResponse.json({ ok: false, error: "no_webhook" }, { status: 500 });
     }
 
