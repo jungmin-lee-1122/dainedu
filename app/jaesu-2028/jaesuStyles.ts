@@ -572,4 +572,5 @@ export const jaesuStyles = `
 .jp-open-date{gap:8px}
 .jp-open-date b{font-weight:800;color:var(--gold-light)}
 
+
 `;

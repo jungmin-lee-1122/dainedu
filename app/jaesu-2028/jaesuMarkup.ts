@@ -16,7 +16,7 @@ export const jaesuMarkup = `
       <img class="jp-hero-photo" src="/jaesu-2028/study-open.jpg" alt="다인에듀 동탄 자습실" fetchpriority="high">
       <div class="jp-wrap jp-hero-grid"><div class="jp-hero-copy"><span class="jp-eyebrow">DAIN EDU · EARLY START PROGRAM</span><p class="jp-hero-product">2028학년도 재수선행반</p><h1 id="jp-heroTitle">다시 시작하는 공부,<br><em>이번에는 더 분명하게.</em></h1><p class="jp-lead">쌓아온 실력을 점검하고, 달라진 수능에 맞춰 <br>내게 필요한 공부와 하루의 기준을 세웁니다.</p><div class="jp-hero-actions"><a class="jp-button jp-gold" href="#jp-admission">선행반 상담 안내</a><a class="jp-button jp-line jp-open-date" href="#jp-admission">재수선행반 개강일 <b>1월 4일</b></a></div></div><p class="jp-hero-location">다인에듀 동탄 학습공간<span>DAIN EDU · DONGTAN</span></p></div>
     </section>
-    <div class="jp-hero-baseline"><div class="jp-wrap jp-baseline-grid"><div><strong>07:50</strong><span>월–토 등원<br>매일 같은 시간</span></div><div><strong>1:1</strong><span>담임 케어<br>개인별 학습 점검</span></div><div><strong class="jp-words">학습 · 입시 · 생활 · 규정</strong><span>4대 밀착 케어</span></div></div></div>
+    
 
     <nav class="jp-secnav" aria-label="페이지 메뉴"><div class="jp-wrap jp-secnav-in"><a href="#jp-change">2028 수능</a><a href="#jp-study">학습 방향</a><a href="#jp-care">관리 시스템</a><a href="#jp-day">하루 일과</a><a href="#jp-admission" class="jp-secnav-cta">모집 안내</a></div></nav>
 

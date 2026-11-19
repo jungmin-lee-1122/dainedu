@@ -69,7 +69,6 @@ $$(".jp-faq-list details").forEach(function(el){
   if(slow||!("IntersectionObserver" in window)) return;   /* 감추지 않고 그대로 둡니다 */
 
   var PLAN=[
-    [".jp-hero-baseline",[[".jp-baseline-grid>div","up"]],120],
     [".jp-secnav",[["self","up"]]],
     [".jp-intro-copy",[[":scope>*","up"]],110],
     [".jp-change-col",[[".jp-change-item","right"],[".jp-policy-note","up"]],130],
