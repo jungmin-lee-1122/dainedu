@@ -111,15 +111,13 @@ export default function SiteHeader({ current }: { current?: "porta" | "clavis" }
               </div>
             ) : current === "clavis" ? (
               <div className="dn-gnb-sub">
-                {/* 2028 재수종합반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
-                <span className="dn-gnb-soon">2028 재수종합반</span>
+                <a href="/jaesu-2028">2028 재수선행반</a>
               </div>
             ) : (
               <div className="dn-gnb-sub dn-gnb-sub-grouped">
                 {SHOW_PRE_WINTER && <a href="/pre-winter">2027 PRE 윈터스쿨</a>}
                 <a href="/winter">2027 윈터스쿨</a>
-                {/* 2028 재수종합반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 */}
-                <span className="dn-gnb-soon">2028 재수종합반</span>
+                <a href="/jaesu-2028">2028 재수선행반</a>
                 <span className="dn-gnb-gtitle">고등부 단과</span>
                 <a href="/schedule">단과 시간표</a>
               </div>

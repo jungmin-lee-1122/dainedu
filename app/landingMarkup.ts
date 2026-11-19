@@ -32,8 +32,7 @@ export const landingMarkup = `
         <div class="dn-gnb-sub dn-gnb-sub-grouped">
           <a href="/pre-winter">2027 PRE 윈터스쿨</a>
           <a href="/winter">2027 윈터스쿨</a>
-          <!-- 2028 재수종합반 — 페이지가 준비되면 <a href="..."> 로 바꿔주세요 -->
-          <span class="dn-gnb-soon">2028 재수종합반</span>
+          <a href="/jaesu-2028">2028 재수선행반</a>
           <span class="dn-gnb-gtitle">고등부 단과</span>
           <a href="/schedule">단과 시간표</a>
         </div>
