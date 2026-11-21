@@ -140,11 +140,12 @@ export default async function ClavisPage() {
       {/* ── 그랜드 오픈 배너 ── */}
       <section className="cv-stats-sec">
         <div className="cv-wrap">
-          <a className="cv-statsbn" href="/winter" aria-label="2027 다인에듀 윈터스쿨 안내">
+          {/* N수관이라 윈터스쿨 대신 재수선행반 배너를 겁니다 (포르타는 윈터스쿨 그대로) */}
+          <a className="cv-statsbn" href="/jaesu-2028" aria-label="2028 재수선행반 안내">
             <picture>
-              <source media="(max-width:900px)" srcSet="/clavis/winter-banner-m.jpg" />
+              <source media="(max-width:900px)" srcSet="/clavis/jaesu-banner-m.jpg" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/clavis/winter-banner.jpg" alt="2027 다인에듀 윈터스쿨 — 교육기간 2027.01.04~02.19, 모집대상 예비 고1·고2·고3" />
+              <img src="/clavis/jaesu-banner.jpg" alt="2028 재수선행반 — 다시 시작하는 공부, 이번에는 더 분명하게 · 개강일자 2027.01.04(월) · 모집대상 2028학년도 수능 재도전 수험생 · 수학집중관리 · 매일의 학습관리 · 개인별 학습 상담" />
             </picture>
             <span className="cv-statsbn-sheen" aria-hidden="true" />
           </a>
