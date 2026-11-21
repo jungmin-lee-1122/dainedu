@@ -15,7 +15,7 @@ import {
   sideBanners,
 } from "./clavisData";
 import { getClips, getTeachers, getEvents } from "@/lib/content";
-import { WINTER_FINAL_LECTURE } from "@/lib/winterFinalLecture";
+import { pickLectures } from "@/lib/lectureOrder";
 import { getVisiblePosts } from "@/lib/blog";
 
 /** 여러 형태의 날짜 문구에서 "월.일 / 요일 · 시각" 을 뽑아냅니다.
@@ -86,13 +86,8 @@ export default async function ClavisPage() {
   /* 이벤트·설명회 페이지(/event) 맨 위 2개를 그대로 가져옵니다.
      순서를 바꾸려면 관리자 → 이벤트·설명회에서 항목 순서를 조정하세요. */
   /* N수관이라 정시 지원전략 설명회를 맨 앞에 둡니다 (2026.11.19 요청).
-     그 뒤는 포르타와 같은 순서 — 윈터 FINAL 설명회(학년별 3회차)는 묶음 페이지로 한 줄만 넣습니다. */
-  const JEONGSI_ID = "event-mwauzxcvlm73";
-  const jeongsi = events.find((e) => e.id === JEONGSI_ID);
-  const others = events.filter((e) => e.id !== JEONGSI_ID);
-  const lectures = [jeongsi, others[0], WINTER_FINAL_LECTURE, ...others.slice(1)]
-    .filter((l): l is NonNullable<typeof l> => Boolean(l))
-    .slice(0, 2);
+     고르는 규칙은 lib/lectureOrder.ts — 마감된 설명회는 뒤로 갑니다. */
+  const lectures = pickLectures(events, { first: "event-mwauzxcvlm73" });
 
   return (
     <main className="dn-body cv-page">
