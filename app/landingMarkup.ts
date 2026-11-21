@@ -88,8 +88,7 @@ export const landingMarkup = `
                바꾸려면 아래 슬라이드의 이미지 경로만 고치세요.
                링크를 걸 때는 <div class="dn-poster-sl"> 를 <a href="..."> 로 바꾸면 됩니다. -->
           <div class="dn-poster dn-poster-roll" id="dnPosterRoll">
-            <a class="dn-poster-sl is-on" href="/events/event-mwacxlpxjs77"><picture><source media="(max-width:900px)" srcset="/poster-pre-sem3-m.jpg"/><img src="/poster-pre-sem3.jpg" alt="2027 프리윈터스쿨 &amp; 수학 설명회 — 11월 21일(토) 오후 6시 30분 · 다인에듀 본관 스타프라자 6층 · 예비 고1·고2·고3 학생 및 학부모 대상 · 강연 임종희 부원장"/></picture></a>
-            <a class="dn-poster-sl" href="/winter-final"><picture><source media="(max-width:900px)" srcset="/poster-wfinal-m.jpg?v=2"/><img src="/poster-wfinal.jpg?v=2" alt="2027 윈터스쿨 FINAL 설명회 — 확장 추가 모집 · 예비고1 11월 28일(토) 오후 2시 · 예비고2 11월 29일(일) 오후 1시 · 예비고3 11월 29일(일) 오후 4시 · 다인에듀 6층 본관 The Hall 01"/></picture></a>
+            <a class="dn-poster-sl is-on" href="/winter-final"><picture><source media="(max-width:900px)" srcset="/poster-wfinal-m.jpg?v=2"/><img src="/poster-wfinal.jpg?v=2" alt="2027 윈터스쿨 FINAL 설명회 — 확장 추가 모집 · 예비고1 11월 28일(토) 오후 2시 · 예비고2 11월 29일(일) 오후 1시 · 예비고3 11월 29일(일) 오후 4시 · 다인에듀 6층 본관 The Hall 01"/></picture></a>
             <a class="dn-poster-sl" href="/events/event-mwauzxcvlm73"><picture><source media="(max-width:900px)" srcset="/poster-jeongsi-m.jpg"/><img src="/poster-jeongsi.jpg" alt="2027 정시 지원전략 설명회 — 12월 19일(토) 오후 2시 · 동탄 롯데시네마 3관 · 2027학년도 수험생 및 학부모 대상 · 강연 이해웅 소장 ((주)타임교육 입시전략연구소장)"/></picture></a>
             <a class="dn-poster-sl" href="/jaesu-2028"><picture><source media="(max-width:900px)" srcset="/poster-jaesu-m.jpg"/><img src="/poster-jaesu.jpg" alt="2028 재수선행반 — 다시 시작하는 공부, 이번에는 더 분명하게 · 개강일자 2027.01.04(월) · 기본기 보완 · 1:1 수학 책임담임 · 학습·생활 관리"/></picture></a>
             <a class="dn-poster-sl" href="/pre-winter"><picture><source media="(max-width:900px)" srcset="/poster-pre-go1-m.jpg"/><img src="/poster-pre-go1.jpg" alt="예비고1을 위한 PRE WINTER SCHOOL — 다인에듀 동탄점"/></picture></a>
@@ -106,7 +105,6 @@ export const landingMarkup = `
                 <button type="button" data-go="2" aria-label="3번 포스터"></button>
                 <button type="button" data-go="3" aria-label="4번 포스터"></button>
                 <button type="button" data-go="4" aria-label="5번 포스터"></button>
-                <button type="button" data-go="5" aria-label="6번 포스터"></button>
               </span>
               <button class="dn-poster-arrow" type="button" data-dir="next" aria-label="다음 포스터">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
