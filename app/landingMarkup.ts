@@ -72,6 +72,7 @@ export const landingMarkup = `
         <div class="dn-rolling-row">
           <div class="dn-slider" id="dnSlider">
             <div class="dn-slides">
+              <a class="dn-slide" href="/jaesu-2028"><picture><source media="(max-width:900px)" srcset="/slide-jaesu-m.jpg"/><img src="/slide-jaesu.jpg" alt="2028 재수선행반 모집 — 다시 시작하는 공부, 이번에는 분명하게 · 1월 4일(월) 개강 · 수학집중관리 1:1 수학책임담임제 · 매일의 학습관리 · 개인별 학습 상담"/></picture></a>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slide-open2-m.png"/><img src="/slide-open2.png" alt="다인에듀 2026.10.01 그랜드 오픈 — 고등부·N수 프리미엄 캠퍼스"/></picture></div>
               <div class="dn-slide dn-slide-video"><video src="/slide-teachers.mp4?v=2" poster="/slide-teachers-poster.jpg?v=2" muted playsinline preload="metadata" aria-label="대치·목동·분당·평촌 검증된 강사진이 동탄에서 함께합니다" disablePictureInPicture disableRemotePlayback></video></div>
               <div class="dn-slide"><picture><source media="(max-width:900px)" srcset="/slideC-m.png"/><img src="/slideC.png" alt="시작부터 완성까지 한곳에서"/></picture></div>
