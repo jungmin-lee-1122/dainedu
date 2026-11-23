@@ -149,9 +149,11 @@ export default function PlanSection({
 
       {/* ── 03 주간 운영 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no"><b>03</b><s aria-hidden="true" />WEEKLY OPERATION</p>
-        <h3 className="pl-h2">한 주는 이렇게 돌아갑니다</h3>
-        <p className="pl-lead">수업 · 테스트 · 과제의 주 단위 운영 방식입니다.</p>
+        <p className="pl-sec-no"><b>03</b><s aria-hidden="true" />{doc.heads?.weekly?.en ?? "WEEKLY OPERATION"}</p>
+        <h3 className="pl-h2">{doc.heads?.weekly?.title ?? "한 주는 이렇게 돌아갑니다"}</h3>
+        <p className="pl-lead">
+          {doc.heads?.weekly?.lead ?? "수업 · 테스트 · 과제의 주 단위 운영 방식입니다."}
+        </p>
 
         <div className="pl-weekly">
           {doc.weekly.map((w) => (
@@ -166,9 +168,11 @@ export default function PlanSection({
 
       {/* ── 04 관리 · 피드백 ── */}
       <section className="pl-sec">
-        <p className="pl-sec-no"><b>04</b><s aria-hidden="true" />CARE & FEEDBACK</p>
-        <h3 className="pl-h2">관리 · 피드백</h3>
-        <p className="pl-lead">결석 보강부터 상담까지, 수업 밖에서 챙기는 것들입니다.</p>
+        <p className="pl-sec-no"><b>04</b><s aria-hidden="true" />{doc.heads?.care?.en ?? "CARE & FEEDBACK"}</p>
+        <h3 className="pl-h2">{doc.heads?.care?.title ?? "관리 · 피드백"}</h3>
+        <p className="pl-lead">
+          {doc.heads?.care?.lead ?? "결석 보강부터 상담까지, 수업 밖에서 챙기는 것들입니다."}
+        </p>
 
         <ul className="pl-care">
           {doc.care.map((c) => (

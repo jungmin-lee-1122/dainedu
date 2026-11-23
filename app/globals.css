@@ -5234,6 +5234,8 @@ a.pw-flow-in:hover{background:rgba(255,255,255,.1);border-color:rgba(192,153,79,
 .td-plan-raw[open]>summary i{transform:rotate(45deg)}
 
 .td-plan-pages{display:flex;flex-direction:column;gap:16px;padding:16px}
+/* 한 장짜리 자료(포스터)는 화면 가득 키우지 않고 가운데에 적당한 크기로 */
+.td-plan-pages.is-single{max-width:640px;margin:0 auto}
 .td-plan-page{position:relative;display:block;overflow:hidden;
   border:1px solid var(--dn-line);border-radius:12px;background:#fff;
   box-shadow:0 14px 34px -26px rgba(16,25,46,.45);

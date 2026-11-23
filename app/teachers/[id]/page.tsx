@@ -272,10 +272,10 @@ export default async function TeacherDetailPage({
               {plan && (
                 <details className="td-plan-raw">
                   <summary>
-                    {planDoc ? "선생님이 주신 원본 계획서 보기" : plan.title}
+                    {plan.summary ?? (planDoc ? "선생님이 주신 원본 계획서 보기" : plan.title)}
                     <i aria-hidden="true">＋</i>
                   </summary>
-                  <div className="td-plan-pages">
+                  <div className={"td-plan-pages" + (plan.pages === 1 ? " is-single" : "")}>
                     {Array.from({ length: plan.pages }, (_, i) => (
                       <a
                         className="td-plan-page"
@@ -287,7 +287,11 @@ export default async function TeacherDetailPage({
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={planPage(plan.dir, i + 1)}
-                          alt={`${current.name} 선생님 연간 계획서 ${i + 1}쪽`}
+                          alt={
+                            plan.kind
+                              ? `${current.name} 선생님 ${plan.kind}`
+                              : `${current.name} 선생님 연간 계획서 ${i + 1}쪽`
+                          }
                           loading="lazy"
                           decoding="async"
                         />

@@ -24,6 +24,10 @@ export type TeacherPlan = {
   title: string;
   /** 제목 아래 한 줄 설명 */
   desc?: string;
+  /** 접힌 칸에 보일 문구 — 없으면 "선생님이 주신 원본 계획서 보기" */
+  summary?: string;
+  /** 이미지 설명(대체 글)에 쓸 자료 이름 — 없으면 "연간 계획서" */
+  kind?: string;
 };
 
 const PLAN_BY_NAME: Record<string, TeacherPlan> = {
@@ -32,6 +36,15 @@ const PLAN_BY_NAME: Record<string, TeacherPlan> = {
     pages: 6,
     title: "2027 수능 · 내신 연간 커리큘럼",
     desc: "Season #01~#04 월별 진행 과정과 주간 관리 시스템을 담았습니다.",
+  },
+  /* 김기수 — 계획서 원본이 아니라 SYNERGY(신어지) 모의고사 포스터 1장입니다.
+     상세페이지 맨 아래에 접어 두고, 누르면 펼쳐집니다. */
+  김기수: {
+    dir: "kimkisu",
+    pages: 1,
+    title: "SYNERGY 통합과학 모의고사 포스터",
+    summary: "SYNERGY(신어지) 통합과학 모의고사 포스터 보기",
+    kind: "SYNERGY 통합과학 모의고사 포스터",
   },
 };
 
