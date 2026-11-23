@@ -689,4 +689,112 @@ export const jaesuStyles = `
   .jp-plan-card h3,.jp-plan-extra h3{font-size:18px}
   .jp-plan-extra{padding:22px 20px;border-radius:14px}
 }
+
+/* ── 마스터플랜 : 띠와 카드 연결 · 접히는 칸 ── */
+.jp-plan-seg{cursor:pointer}
+.jp-plan-seg-bar i{transition:transform .9s var(--ease) calc(var(--n) * .3s + .2s),opacity .35s ease}
+.jp-plan-seg-name,.jp-plan-seg-wk{transition:opacity .35s ease,color .35s ease}
+.jp-plan-rail.is-live .jp-plan-seg:not(.is-active) .jp-plan-seg-bar i{opacity:.3}
+.jp-plan-rail.is-live .jp-plan-seg:not(.is-active) .jp-plan-seg-name{opacity:.45}
+.jp-plan-seg.is-active .jp-plan-seg-wk{color:var(--gold-light);font-weight:700}
+.jp-plan-hint{display:none}
+.jp-plan-extra summary{list-style:none;pointer-events:none}
+.jp-plan-extra summary::-webkit-details-marker{display:none}
+.jp-plan-extra summary h3{margin:0}
+.jp-plan-extra ul{margin-top:14px}
+
+/* ── 마스터플랜 : 모바일 ──
+   카드 네 장을 세로로 쌓으면 스크롤이 너무 길어져서, 옆으로 넘겨 보게 했습니다.
+   위쪽 띠가 지금 보고 있는 시기를 표시하고, 띠를 눌러도 이동합니다.
+   아래 두 칸(대학별고사 · 컨설팅)은 접어 두고 누르면 펼쳐집니다. */
+@media(max-width:600px){
+  .jp-plan-rail{margin-bottom:12px}
+  .jp-plan-hint{display:block;margin:0 0 14px;font-size:12.5px;line-height:1.5;color:#8fa0ba}
+  .jp-plan-list{display:flex;gap:12px;margin:0 -20px;padding:4px 20px 24px;overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;scroll-padding:0 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .jp-plan-list::-webkit-scrollbar{display:none}
+  .jp-plan-card{flex:0 0 86%;scroll-snap-align:start}
+  .jp-plan-card:hover{transform:none}
+  .jp-plan-after{gap:10px;margin-top:0}
+  .jp-plan-extra{padding:18px 20px}
+  .jp-plan-extra summary{pointer-events:auto;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .jp-plan-extra summary::after{content:"+";flex:0 0 auto;font-size:22px;font-weight:300;line-height:1;color:var(--gold-light);
+    transition:transform .3s var(--ease)}
+  .jp-plan-extra[open] summary::after{transform:rotate(45deg)}
+  .jp-plan-extra[open]>ul{animation:jpFold .45s var(--ease)}
+}
+
+/* ── 마스터플랜 : 대학별고사(세미 강조) · 1:1 컨설팅(강조) ── */
+.jp-plan-after{grid-template-columns:1fr;gap:18px}
+
+/* 대학별고사 — 금색 세로선 + 세 칸 */
+.jp-plan-exam{position:relative;padding:28px 34px 30px 38px;overflow:hidden}
+.jp-plan-exam::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--gold-light),var(--gold) 45%,rgba(201,170,102,0));
+  transform-origin:top;transition:transform 1.1s var(--ease) .15s}
+.jp-armed .jp-plan-exam:not(.jp-seen)::before{transform:scaleY(0)}
+.jp-plan-exam summary{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.jp-plan-exam summary h3{font-size:22px}
+.jp-plan-chips{display:flex;align-items:center;gap:6px}
+.jp-plan-chips span{padding:4px 13px;border-radius:999px;border:1px solid rgba(234,215,166,.42);background:rgba(234,215,166,.08);
+  font-size:13px;font-weight:650;color:var(--gold-light)}
+.jp-plan-chips i{margin-left:3px;font-style:normal;font-size:13px;color:#9fb0c8}
+.jp-plan-exam ul{display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px;margin-top:20px;counter-reset:jpexam}
+.jp-plan-exam li{counter-increment:jpexam;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.16)}
+.jp-plan-exam li+li{margin-top:0}
+.jp-plan-exam li::before{content:counter(jpexam,decimal-leading-zero);position:static;display:block;width:auto;height:auto;margin-bottom:8px;
+  border-radius:0;background:none;font-size:12.5px;font-weight:700;letter-spacing:.08em;color:var(--gold)}
+
+/* 1:1 컨설팅 — 금색 테두리가 한 바퀴 그려지고, 문이 세워집니다 */
+.jp-plan-consult{position:relative;display:grid;grid-template-columns:150px 1fr;gap:10px 42px;align-items:center;
+  padding:38px 46px 40px 40px;border-radius:18px;color:#fff;
+  background:linear-gradient(120deg,#1b2d52 0%,#12203d 52%,#0c1730 100%);box-shadow:0 36px 70px -42px rgba(0,0,0,.95)}
+.jp-consult-frame{position:absolute;left:.75px;top:.75px;width:calc(100% - 1.5px);height:calc(100% - 1.5px);overflow:visible;pointer-events:none}
+.jp-consult-frame rect{fill:none;stroke:#d9bf85;stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:0;
+  transition:stroke-dashoffset 2.2s var(--ease) .25s}
+.jp-armed .jp-plan-consult:not(.jp-seen) .jp-consult-frame rect{stroke-dashoffset:1}
+.jp-gate{width:150px;height:auto;overflow:visible}
+.jp-gate g{transition:opacity .8s var(--ease),transform 1s var(--ease)}
+.jp-gate-path{transition-delay:.3s}
+.jp-gate-p1{transition-delay:.5s}
+.jp-gate-p2{transition-delay:.66s}
+.jp-gate-top{transition-delay:.95s}
+.jp-gate .jp-gate-light{transition:opacity 1.4s ease 1.35s}
+.jp-armed .jp-plan-consult:not(.jp-seen) .jp-gate g{opacity:0}
+.jp-armed .jp-plan-consult:not(.jp-seen) .jp-gate-p1,.jp-armed .jp-plan-consult:not(.jp-seen) .jp-gate-p2{transform:translateY(18px)}
+.jp-armed .jp-plan-consult:not(.jp-seen) .jp-gate-top{transform:translateY(-14px)}
+.jp-consult-body h3{font-size:clamp(22px,2.4vw,29px);line-height:1.4;color:#fff}
+.jp-consult-body h3 em{font-style:normal;color:var(--gold-light)}
+.jp-consult-body ul{list-style:none;margin:16px 0 0;padding:0}
+.jp-consult-body li{position:relative;padding-left:15px;font-size:15.5px;line-height:1.75;color:#c6d0de}
+.jp-consult-body li+li{margin-top:6px}
+.jp-consult-body li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.jp-consult-quote{position:relative;margin-top:22px;padding-top:20px;font-size:clamp(17px,1.75vw,21px);font-weight:650;
+  line-height:1.5;letter-spacing:-.03em;color:var(--gold-light)}
+.jp-consult-quote::before{content:"";position:absolute;left:0;top:0;width:100%;height:1px;
+  background:linear-gradient(90deg,var(--gold),rgba(201,170,102,0));transform-origin:left;transition:transform 1.3s var(--ease) .9s}
+.jp-armed .jp-plan-consult:not(.jp-seen) .jp-consult-quote::before{transform:scaleX(0)}
+
+@media(max-width:850px){
+  .jp-plan-exam ul{grid-template-columns:1fr}
+  .jp-plan-exam li{padding-top:14px}
+  .jp-plan-exam li+li{margin-top:14px}
+  .jp-plan-consult{grid-template-columns:118px 1fr;gap:10px 28px;padding:32px 30px 34px 28px}
+  .jp-gate{width:118px}
+}
+@media(max-width:600px){
+  .jp-plan-after{gap:12px;margin-top:0}
+  .jp-plan-exam{padding:18px 20px 18px 22px}
+  .jp-plan-exam summary{gap:10px;flex-wrap:nowrap}
+  .jp-plan-exam summary h3{font-size:18px;white-space:nowrap}
+  .jp-plan-exam summary::after{margin-left:auto}
+  .jp-plan-chips span{padding:3px 9px;font-size:12px}
+  .jp-plan-chips i{display:none}
+  .jp-plan-exam ul{margin-top:16px}
+  .jp-plan-consult{display:block;padding:24px 22px 26px}
+  .jp-gate{width:84px;margin:-2px 0 10px -4px}
+  .jp-consult-body h3{font-size:21px}
+  .jp-consult-body li{font-size:15px}
+  .jp-consult-quote{margin-top:18px;padding-top:16px;font-size:16.5px}
+}
 `;

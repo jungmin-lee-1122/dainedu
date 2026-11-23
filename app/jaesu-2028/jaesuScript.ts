@@ -137,6 +137,114 @@ $$(".jp-faq-list details").forEach(function(el){
   });
 })();
 
+/* ═══════ 마스터플랜 — 띠와 카드 연결 · 모바일 넘겨 보기 · 주 수 세기 ═══════ */
+(function(){
+  var rail=$(".jp-plan-rail"), list=$(".jp-plan-list"); if(!rail||!list) return;
+  var segs=$$(".jp-plan-seg",rail), cards=$$(".jp-plan-card",list), extras=$$(".jp-plan-extra");
+  var mq=window.matchMedia?window.matchMedia("(max-width:600px)"):null;
+  function mobile(){ return !!(mq&&mq.matches); }
+  function step(){ return (cards.length>1?cards[1].offsetLeft-cards[0].offsetLeft:0)||1; }
+  function setActive(n){
+    rail.classList.toggle("is-live",n>=0);
+    segs.forEach(function(s,i){ s.classList.toggle("is-active",i===n); });
+  }
+
+  /* PC — 카드에 마우스를 올리면 그 시기의 띠만 밝게 남습니다 */
+  cards.forEach(function(c,i){
+    c.addEventListener("mouseenter",function(){ if(!mobile()) setActive(i); });
+    c.addEventListener("mouseleave",function(){ if(!mobile()) setActive(-1); });
+  });
+
+  /* 띠를 누르면 그 시기 카드로 갑니다 */
+  segs.forEach(function(s,i){
+    s.addEventListener("click",function(){
+      var c=cards[i]; if(!c) return;
+      if(mobile()) list.scrollTo({left:i*step(),behavior:"smooth"});
+      else c.scrollIntoView({behavior:"smooth",block:"center"});
+    });
+  });
+
+  /* 모바일 — 옆으로 넘길 때마다 지금 보는 시기를 띠에 표시합니다 */
+  var busy=false;
+  list.addEventListener("scroll",function(){
+    if(!mobile()||busy) return; busy=true;
+    requestAnimationFrame(function(){
+      busy=false;
+      setActive(Math.max(0,Math.min(cards.length-1,Math.round(list.scrollLeft/step()))));
+    });
+  });
+
+  /* 아래 두 칸 — 모바일에서는 접어 두고, PC 에서는 항상 펼칩니다 */
+  extras.forEach(function(d){
+    var sm=d.querySelector("summary"); if(!sm) return;
+    sm.addEventListener("click",function(e){
+      if(!mobile()){ e.preventDefault(); return; }
+      d.setAttribute("data-touched","1");
+    });
+  });
+  function sync(){
+    if(mobile()) setActive(Math.max(0,Math.min(cards.length-1,Math.round(list.scrollLeft/step()))));
+    else setActive(-1);
+    extras.forEach(function(d){
+      if(!mobile()) d.open=true;
+      else if(!d.hasAttribute("data-touched")) d.open=false;
+    });
+  }
+  sync();
+  if(mq){ if(mq.addEventListener) mq.addEventListener("change",sync); else if(mq.addListener) mq.addListener(sync); }
+
+  /* 모바일 — 5초마다 다음 시기로 넘어가고, 마지막 다음에는 처음으로 돌아가 계속 돕니다.
+     손으로 넘기거나 띠를 누른 뒤 7초 동안은 멈추고, 화면에 안 보일 때도 멈춥니다. */
+  (function(){
+    if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var STEP=5000, HOLD=7000, holdUntil=0, inView=false;
+    function cur(){ return Math.max(0,Math.min(cards.length-1,Math.round(list.scrollLeft/step()))); }
+    function hold(){ holdUntil=Date.now()+HOLD; }
+    function next(){
+      if(!mobile()||!inView||document.hidden||Date.now()<holdUntil) return;
+      var n=cur()+1; if(n>=cards.length) n=0;
+      list.scrollTo({left:n*step(),behavior:"smooth"});
+    }
+    list.addEventListener("touchstart",hold,{passive:true});
+    list.addEventListener("touchend",hold,{passive:true});
+    list.addEventListener("pointerdown",hold);
+    segs.forEach(function(sg){ sg.addEventListener("click",hold); });
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(en){
+        inView=en[0].isIntersecting;
+        if(inView) holdUntil=Math.max(holdUntil,Date.now()+1500);
+      },{threshold:0.35}).observe(list);
+    }else inView=true;
+    setInterval(next,STEP);
+  })();
+
+  /* 주 수 세기 — 띠가 차오를 때 숫자도 같이 올라갑니다 */
+  var slow=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(slow||!("IntersectionObserver" in window)) return;
+  function count(){
+    segs.forEach(function(s,i){
+      var el=s.querySelector(".jp-plan-seg-wk"); if(!el) return;
+      var raw=String(el.textContent), to=parseFloat(raw), dec=raw.indexOf(".")>=0?1:0;
+      if(!(to>0)) return;
+      var t0=null, wait=i*300+200, dur=900;
+      el.textContent=(0).toFixed(dec)+"주";
+      function tick(ts){
+        if(t0===null) t0=ts;
+        var p=(ts-t0-wait)/dur;
+        if(p<0){ requestAnimationFrame(tick); return; }
+        if(p>1) p=1;
+        el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(dec)+"주";
+        if(p<1) requestAnimationFrame(tick); else el.textContent=to.toFixed(dec)+"주";
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  var io=new IntersectionObserver(function(en){
+    if(en[0].isIntersecting){ count(); io.disconnect(); }
+  },{threshold:0.5});
+  io.observe(rail);
+})();
+
 /* ═══════ 스크롤 등장 ═══════
    묶음(섹션 조각)이 화면에 들어오는 순간, 그 안의 조각들을 차례로 보여 줍니다.
    [묶음, [[조각, 방식], …], 간격(ms)]  ·  조각이 "self" 면 묶음 자신 */
@@ -155,7 +263,9 @@ $$(".jp-faq-list details").forEach(function(el){
     [".jp-plan-head",[[":scope>*","up"]],120],
     [".jp-plan-rail",[[".jp-plan-seg","up"]],140],
     [".jp-plan-card",[["self","up"]]],
-    [".jp-plan-after",[[".jp-plan-extra","up"]],150],
+    [".jp-plan-hint",[["self","up"]]],
+    [".jp-plan-exam",[["self","up"],[".jp-plan-chips span","scale"]],110],
+    [".jp-plan-consult",[["self","up"],[".jp-consult-body>h3,.jp-consult-body li","up"],[".jp-consult-quote","up"]],150],
     [".jp-study-layout",[["self","up"]]],
     [".jp-curriculum .jp-wrap>.jp-fine",[["self","up"]]],
     [".jp-management-intro",[[":scope>.jp-eyebrow,:scope>h2,:scope>.jp-sub","up"],[".jp-management-image","clip"]],110],
@@ -205,7 +315,9 @@ $$(".jp-faq-list details").forEach(function(el){
   }
   function near(el){
     var r=el.getBoundingClientRect(), vh=window.innerHeight||document.documentElement.clientHeight;
-    return r.top<vh*0.84 && r.bottom>0;
+    var vw=window.innerWidth||document.documentElement.clientWidth;
+    /* 옆으로 넘겨 보는 칸 안의 카드는, 실제로 화면 안에 들어왔을 때만 */
+    return r.top<vh*0.84 && r.bottom>0 && r.left<vw*0.92 && r.right>0;
   }
 
   root.classList.add("jp-armed");
