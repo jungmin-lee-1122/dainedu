@@ -43,7 +43,7 @@ const PLAN_BY_NAME: Record<string, TeacherPlan> = {
     dir: "kimkisu",
     pages: 1,
     title: "SYNERGY 통합과학 모의고사 포스터",
-    summary: "SYNERGY(신어지) 통합과학 모의고사 포스터 보기",
+    summary: "SYNERGY(신어지) 통합과학 김기수T 포스터",
     kind: "SYNERGY 통합과학 모의고사 포스터",
   },
 };
