@@ -619,4 +619,74 @@ export const jaesuStyles = `
 }
 .jp-quick{scroll-margin-top:120px}
 
+/* ═══════════════════════════════════════════════════════════
+   시기별 학습 마스터플랜 (재수 1년 타임라인)
+   · 위쪽 금색 띠는 각 시기의 주 수(6 · 18 · 13 · 7.5주)에 비례한 길이입니다.
+   · 카드의 계단 그림은 지금까지 쌓인 단계는 채워지고, 남은 단계는 점선으로 보입니다.
+   ═══════════════════════════════════════════════════════════ */
+.jp-plan{background:var(--navy);color:#fff}
+.jp-plan .jp-eyebrow{color:var(--gold-light)}
+.jp-plan-head h2{color:#fff}
+.jp-plan-quote{max-width:790px;color:#b7c3d4}
+
+/* 비례 띠 */
+.jp-plan-rail{display:flex;gap:6px;margin:clamp(36px,4.2vw,54px) 0 clamp(34px,4vw,50px)}
+.jp-plan-seg{position:relative;flex:var(--w) 1 0;min-width:0}
+.jp-plan-seg-name{display:block;margin-bottom:11px;font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.3;
+  color:var(--gold-light);white-space:nowrap}
+.jp-plan-seg-bar{display:block;height:6px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+.jp-plan-seg-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#b8944c,#ead7a6);
+  transform-origin:left center;transition:transform .9s var(--ease);transition-delay:calc(var(--n) * .3s + .2s)}
+.jp-plan-seg-wk{display:block;margin-top:10px;font-size:13px;line-height:1.4;color:#9fb0c8;font-variant-numeric:tabular-nums}
+.jp-plan-mark{position:absolute;right:0;bottom:0;font-style:normal;font-size:12.5px;font-weight:600;line-height:1.4;
+  color:#dfe6f0;white-space:nowrap}
+.jp-plan-mark::before{content:"";display:inline-block;width:6px;height:6px;margin-right:7px;vertical-align:1px;
+  transform:rotate(45deg);background:var(--gold)}
+
+/* 시기 카드 */
+.jp-plan-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.jp-plan-card{padding:24px 30px 28px;border-radius:16px;background:#fff;color:var(--ink);
+  box-shadow:0 30px 60px -36px rgba(4,10,24,.9);transition:transform .35s var(--ease),box-shadow .35s ease}
+.jp-plan-card:hover{transform:translateY(-4px)}
+.jp-plan-card.jp-is-now{box-shadow:0 0 0 1.5px var(--gold),0 30px 60px -36px rgba(4,10,24,.9)}
+.jp-plan-card-head{display:flex;align-items:center;gap:18px;margin-bottom:17px;padding-bottom:15px;border-bottom:1px solid var(--line)}
+.jp-iso{flex:0 0 auto;width:88px;height:auto;overflow:visible}
+.jp-plan-step{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.jp-plan-step b{font-size:27px;font-weight:760;letter-spacing:-.035em;line-height:1.2;color:var(--gold-d)}
+.jp-plan-step span{padding:2px 11px;border-radius:999px;background:#FBF4E3;font-size:13px;font-weight:650;color:#857042}
+.jp-plan-course{margin-top:4px;font-size:14px;color:var(--muted)}
+.jp-plan-card h3{margin-bottom:14px;font-size:20px;line-height:1.45}
+.jp-plan-card ul,.jp-plan-extra ul{list-style:none;margin:0;padding:0}
+.jp-plan-card li,.jp-plan-extra li{position:relative;padding-left:15px;font-size:15px;line-height:1.75;color:var(--muted)}
+.jp-plan-card li+li,.jp-plan-extra li+li{margin-top:7px}
+.jp-plan-card li::before,.jp-plan-extra li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;
+  border-radius:50%;background:var(--gold)}
+.jp-plan-card li b{font-weight:650;color:var(--ink)}
+
+/* 대학별고사 · 컨설팅 */
+.jp-plan-after{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:18px}
+.jp-plan-extra{padding:26px 30px 28px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14)}
+.jp-plan-extra h3{margin-bottom:14px;font-size:20px;line-height:1.45;color:#fff}
+.jp-plan-extra h3 small{margin-left:6px;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--gold-light)}
+.jp-plan-extra li{color:#b7c3d4}
+
+/* 움직임 — 띠가 차오르고, 계단이 한 칸씩 올라옵니다 */
+.jp-iso-col{transition:opacity .7s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--k) * .14s + .3s)}
+.jp-armed .jp-plan-card:not(.jp-seen) .jp-iso-col{opacity:0;transform:translateY(14px)}
+.jp-armed .jp-plan-rail:not(.jp-seen) .jp-plan-seg-bar i{transform:scaleX(0)}
+
+@media(max-width:850px){
+  .jp-plan-list,.jp-plan-after{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .jp-plan-rail{gap:4px}
+  .jp-plan-seg-name,.jp-plan-mark{display:none}
+  .jp-plan-seg-wk{font-size:12px}
+  .jp-plan-card{padding:20px 20px 22px;border-radius:14px}
+  .jp-plan-card-head{gap:14px}
+  .jp-iso{width:70px}
+  .jp-plan-step b{font-size:23px}
+  .jp-plan-card h3,.jp-plan-extra h3{font-size:18px}
+  .jp-plan-extra{padding:22px 20px;border-radius:14px}
+}
 `;
