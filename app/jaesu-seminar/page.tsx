@@ -41,6 +41,9 @@ function withSuffix(html: string, sfx: string) {
   return out;
 }
 
+/** 진행 순서(1차 · 2차 동일) 표를 보여 줄지 — 지금은 숨김 */
+const SHOW_PROGRAM: boolean = false;
+
 export default function JaesuSeminarPage() {
   return (
     <main className="dn-body ev-page ev-view wf-page">
@@ -123,6 +126,8 @@ export default function JaesuSeminarPage() {
               <p className="ev-p">{intro.closing}</p>
             </div>
 
+            {/* 진행 순서 — 잠시 숨겨 두었습니다. 다시 보이게 하려면 위 SHOW_PROGRAM 을 true 로 */}
+            {SHOW_PROGRAM && (
             <div className="ev-block">
               <h2 className="ev-h2">진행 순서 <small style={{ fontSize: ".62em", fontWeight: 600, color: "#8A8F98" }}>1차 · 2차 동일</small></h2>
               <ol className="ev-program">
@@ -134,6 +139,7 @@ export default function JaesuSeminarPage() {
                 ))}
               </ol>
             </div>
+            )}
 
             <div className="ev-block">
               <h2 className="ev-h2">유의사항</h2>
