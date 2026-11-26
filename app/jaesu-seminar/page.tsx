@@ -18,7 +18,7 @@ import { quickMenuMarkup } from "../quickMenu";
 import { reserveModalMarkup } from "../event/reserveModal";
 import { winterFinalStyles } from "../winter-final/winterFinalStyles";
 import { winterFinalScript } from "../winter-final/winterFinalScript";
-import { hero, intro, topics, program, ROUNDS, notice, PLACE, TEL, TARGETS } from "./jaesuSeminarData";
+import { hero, intro, program, ROUNDS, notice, PLACE, TEL, TARGETS } from "./jaesuSeminarData";
 
 export const metadata: Metadata = {
   title: "2028 재수선행반 설명회 — 다인에듀 동탄점",
@@ -120,20 +120,7 @@ export default function JaesuSeminarPage() {
               {intro.body.map((p, i) => (
                 <p className="ev-p" key={i}>{p}</p>
               ))}
-            </div>
-
-            <div className="ev-block">
-              <h2 className="ev-h2">이번 설명회에서 안내하는 내용</h2>
-              <ul className="wf-points">
-                {topics.map((t, i) => (
-                  <li key={t.title}>
-                    <b>{String(i + 1).padStart(2, "0")}</b>
-                    <strong>{t.title}</strong>
-                    <span>{t.desc}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="ev-p" style={{ marginTop: 22 }}>{intro.closing}</p>
+              <p className="ev-p">{intro.closing}</p>
             </div>
 
             <div className="ev-block">

@@ -1,6 +1,5 @@
 import Script from "next/script";
 import Link from "next/link";
-import { Fragment } from "react";
 import type { Metadata } from "next";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
@@ -84,6 +83,28 @@ export default async function EventListPage() {
     events.filter((e) => e.status === s).length + manual.filter((m) => m.status === s).length;
   const totalCount = events.length + manual.length;
   const openCount = count("접수중");
+
+  /* 보여 주는 순서 — 접수중 · 접수예정이 위, 마감은 아래로.
+     같은 묶음 안에서는 손으로 넣은 카드가 먼저, 그다음 관리자 순서대로입니다. */
+  const all = [
+    ...manual.map((m) => ({ ...m, kind: "설명회" })),
+    ...events.map((e) => ({
+      status: e.status as string,
+      href: `/events/${e.id}`,
+      kind: e.kind,
+      targets: e.targets,
+      title: e.title,
+      lead: e.lead,
+      date: e.date,
+      place: e.place,
+      placeDetail: e.placeDetail,
+      capacity: e.capacity,
+    })),
+  ];
+  const cards = [
+    ...all.filter((c) => c.status !== "마감"),
+    ...all.filter((c) => c.status === "마감"),
+  ];
   return (
     <main className="dn-body ev-page">
       <SiteHeader />
@@ -126,105 +147,52 @@ export default async function EventListPage() {
           </div>
 
           <ul className="ev-list" id="evList">
-
-            {events.map((e, idx) => (
-              <Fragment key={e.id}>
-              <li className="ev-item" data-status={e.status}>
+            {cards.map((c) => (
+              <li className="ev-item" data-status={c.status} key={c.href}>
                 {/* /event/1 은 중계 서버가 가로채므로 /events/… 로 엽니다 */}
-                <a className="ev-card" href={`/events/${e.id}`}>
+                <a className="ev-card" href={c.href}>
                   <div className="ev-card-side">
-                    <span className={`ev-state ev-state-${e.status === "접수중" ? "open" : e.status === "접수예정" ? "soon" : "closed"}`}>
-                      {e.status}
+                    <span className={`ev-state ev-state-${c.status === "접수중" ? "open" : c.status === "접수예정" ? "soon" : "closed"}`}>
+                      {c.status}
                     </span>
-                    <span className="ev-kind">{e.kind}</span>
+                    <span className="ev-kind">{c.kind}</span>
                   </div>
 
                   <div className="ev-card-main">
                     <div className="ev-badges">
-                      {e.targets.map((t) => (
+                      {c.targets.map((t) => (
                         <span className="ev-badge" key={t}>{t}</span>
                       ))}
                     </div>
-                    <h2 className="ev-card-title">{e.title}</h2>
-                    <p className="ev-card-lead">{e.lead}</p>
+                    <h2 className="ev-card-title">{c.title}</h2>
+                    <p className="ev-card-lead">{c.lead}</p>
                     <dl className="ev-meta">
                       <div>
                         <dt>일시</dt>
-                        <dd>{e.date}</dd>
+                        <dd>{c.date}</dd>
                       </div>
                       <div>
                         <dt>장소</dt>
                         <dd>
-                          {e.place}
-                          {e.placeDetail && <em> · {e.placeDetail}</em>}
+                          {c.place}
+                          {c.placeDetail && <em> · {c.placeDetail}</em>}
                         </dd>
                       </div>
                       <div>
                         <dt>정원</dt>
-                        <dd>{e.capacity}</dd>
+                        <dd>{c.capacity}</dd>
                       </div>
                     </dl>
                   </div>
 
                   <div className="ev-card-go">
                     <span className="ev-card-btn">
-                      {e.status === "마감" ? "내용 보기" : "자세히 보고 예약"}
+                      {c.status === "마감" ? "내용 보기" : "자세히 보고 예약"}
                       <i aria-hidden="true">›</i>
                     </span>
                   </div>
                 </a>
               </li>
-              {idx === 0 && (
-                <>
-            {manual.map((m) => (
-            <li className="ev-item" data-status={m.status} key={m.href}>
-              <a className="ev-card" href={m.href}>
-                <div className="ev-card-side">
-                  <span className={`ev-state ev-state-${m.status === "접수중" ? "open" : m.status === "접수예정" ? "soon" : "closed"}`}>
-                    {m.status}
-                  </span>
-                  <span className="ev-kind">설명회</span>
-                </div>
-
-                <div className="ev-card-main">
-                  <div className="ev-badges">
-                    {m.targets.map((t) => (
-                      <span className="ev-badge" key={t}>{t}</span>
-                    ))}
-                  </div>
-                  <h2 className="ev-card-title">{m.title}</h2>
-                  <p className="ev-card-lead">{m.lead}</p>
-                  <dl className="ev-meta">
-                    <div>
-                      <dt>일시</dt>
-                      <dd>{m.date}</dd>
-                    </div>
-                    <div>
-                      <dt>장소</dt>
-                      <dd>
-                        {m.place}
-                        {m.placeDetail && <em> · {m.placeDetail}</em>}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>정원</dt>
-                      <dd>{m.capacity}</dd>
-                    </div>
-                  </dl>
-                </div>
-
-                <div className="ev-card-go">
-                  <span className="ev-card-btn">
-                    {m.status === "마감" ? "내용 보기" : "자세히 보고 예약"}
-                    <i aria-hidden="true">›</i>
-                  </span>
-                </div>
-              </a>
-            </li>
-            ))}
-                </>
-              )}
-              </Fragment>
             ))}
           </ul>
 
