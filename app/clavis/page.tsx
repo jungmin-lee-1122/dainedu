@@ -16,6 +16,7 @@ import {
 } from "./clavisData";
 import { getClips, getTeachers, getEvents } from "@/lib/content";
 import { pickLectures } from "@/lib/lectureOrder";
+import { JAESU_SEMINAR_LECTURE } from "@/lib/jaesuSeminarLecture";
 import { getVisiblePosts } from "@/lib/blog";
 
 /** 여러 형태의 날짜 문구에서 "월.일 / 요일 · 시각" 을 뽑아냅니다.
@@ -87,7 +88,11 @@ export default async function ClavisPage() {
      순서를 바꾸려면 관리자 → 이벤트·설명회에서 항목 순서를 조정하세요. */
   /* N수관이라 정시 지원전략 설명회를 맨 앞에 둡니다 (2026.11.19 요청).
      고르는 규칙은 lib/lectureOrder.ts — 마감된 설명회는 뒤로 갑니다. */
-  const lectures = pickLectures(events, { first: "event-mwauzxcvlm73" });
+  /* 재수선행반 설명회를 맨 앞에, 그다음 정시 지원전략 설명회 (2026.11.26 요청) */
+  const lectures = [
+    JAESU_SEMINAR_LECTURE,
+    ...pickLectures(events, { first: "event-mwauzxcvlm73" }),
+  ].slice(0, 2);
 
   return (
     <main className="dn-body cv-page">
