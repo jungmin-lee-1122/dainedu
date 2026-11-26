@@ -7,6 +7,12 @@
 /** 1) 메인 롤링 배너 (탭 + 자동재생) */
 export const heroSlides = [
   {
+    tab: "재수선행반 설명회",
+    img: "/clavis/jaesu-sem.jpg",
+    href: "/jaesu-seminar",
+    alt: "2028 재수선행반 설명회 — 달라진 수능에 맞춘 재도전의 시작 · 1차 12월 5일(토) 오후 2시 · 2차 12월 12일(토) 오후 2시 · 대상 2028학년도 수능 재도전 수험생 · 장소 다인에듀 동탄 6층 본관",
+  },
+  {
     tab: "정시 지원전략 설명회",
     img: "/clavis/sem-jeongsi.jpg",
     href: "/events/event-mwauzxcvlm73",
