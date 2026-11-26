@@ -215,7 +215,7 @@ export const jaesuStyles = `
 .jp-final-cta .jp-eyebrow{color:var(--gold-light)}
 .jp-final-cta h2{font-size:clamp(32px,3.8vw,48px);line-height:1.4}
 .jp-final-cta p{color:#b9c6d7;font-size:18px;margin:22px 0 30px}
-.jp-final-buttons{display:flex;gap:12px;justify-content:center}
+.jp-final-buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .jp-floating-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid #d9e0e8;z-index:35;box-shadow:0 -4px 30px #101d3508;transform:translateY(110%);transition:transform .25s}
 .jp-floating-cta.jp-is-visible{transform:translateY(0)}
 .jp-floating-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
