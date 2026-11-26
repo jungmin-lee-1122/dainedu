@@ -23,6 +23,7 @@ const PAGES: [string, number, "daily" | "weekly" | "monthly"][] = [
   ["/schedule", 0.6, "weekly"],
   ["/notices", 0.7, "daily"],
   ["/event", 0.7, "daily"],
+  ["/jaesu-seminar", 0.7, "weekly"],
   ["/archive", 0.7, "daily"],
   ["/consult", 0.7, "monthly"],
 ];
