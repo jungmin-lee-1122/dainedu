@@ -569,6 +569,11 @@ export const jaesuStyles = `
   .jp-campus-gallery figure:first-child img{flex:1 1 auto;height:0;min-height:300px}
 }
 /* 첫 화면 개강일 안내 */
+.jp-hero-benefit{display:flex;align-items:center;gap:12px;margin-top:20px;font-size:16px;font-weight:500;color:#dfe5ee;letter-spacing:-.01em}
+.jp-hero-benefit span{flex:none;padding:4px 10px;border:1px solid rgba(231,214,170,.55);border-radius:6px;font-size:13px;font-weight:600;color:var(--gold-light);line-height:1.4}
+.jp-hero-benefit b{font-weight:800;color:var(--gold-light)}
+.jp-hero-copy>*:nth-child(6){animation-delay:.9s}
+@media(max-width:600px){.jp-hero-benefit{font-size:15px;margin-top:16px}}
 .jp-open-date{gap:8px}
 .jp-open-date b{font-weight:800;color:var(--gold-light)}
 

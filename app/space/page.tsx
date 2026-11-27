@@ -25,7 +25,7 @@ const SHOW_RENDER = false;
 export const metadata: Metadata = {
   title: "시설 안내 — 다인에듀 동탄점",
   description:
-    "180평이 어떻게 나뉘고 어떻게 쓰이는지, 공사 전에 먼저 보여드립니다. 다인에듀 동탄점 시설 미리보기.",
+    "총 350평이 어떻게 나뉘고 어떻게 쓰이는지, 공사 전에 먼저 보여드립니다. 다인에듀 동탄점 시설 미리보기.",
 };
 
 export default function SpacePage() {
@@ -49,7 +49,7 @@ export default function SpacePage() {
             시설 <em>미리보기</em>
           </h1>
           <p className="sp-sub">
-            180평이 어떻게 나뉘고 어떻게 쓰이는지, 공사 전에 먼저 보여드립니다.
+            총 350평이 어떻게 나뉘고 어떻게 쓰이는지, 공사 전에 먼저 보여드립니다.
           </p>
         </div>
       </section>
